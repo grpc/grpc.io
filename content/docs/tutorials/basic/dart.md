@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - Dart
-aliases: [/docs/tutorials/basic/dart.html]
+type: basic
+short: Dart
 ---
 This tutorial provides a basic Dart programmer's introduction to
 working with gRPC.

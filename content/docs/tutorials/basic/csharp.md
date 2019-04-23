@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - C#
-aliases: [/docs/tutorials/basic/csharp.html]
+type: basic
+short: C#
 ---
 This tutorial provides a basic C# programmer's introduction to working with gRPC.
 

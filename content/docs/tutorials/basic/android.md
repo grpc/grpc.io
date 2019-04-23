@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - Android Java
-aliases: [/docs/tutorials/basic/android.html]
+short: Android
+type: basic
 ---
 
 This tutorial provides a basic Android Java programmer's introduction to working with gRPC.
