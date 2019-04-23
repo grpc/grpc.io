@@ -2,7 +2,6 @@
 bodyclass: docs
 headline: Go Generated Code Reference
 layout: docs
-aliases: [/docs/reference/go/generated-code.html]
 ---
 # Go Generated Code Reference
 
