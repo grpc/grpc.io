@@ -1,6 +1,7 @@
 ---
 title: Go Quick Start
 layout: quickstart
+short: Go
 aliases: [/docs/quickstart/go.html]
 ---
 <p class="lead">This guide gets you started with gRPC in Go with a simple

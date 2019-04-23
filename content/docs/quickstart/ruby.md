@@ -1,6 +1,7 @@
 ---
 title: Ruby Quick Start
 layout: quickstart
+short: Ruby
 aliases: [/docs/quickstart/ruby.html]
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: quickstart
-title: Java Quickstart
+title: Java Quick Start
+short: Java
 aliases: [/docs/quickstart/java.html]
 ---
 <p class="lead">This guide gets you started with gRPC in Java with a simple

@@ -1,6 +1,7 @@
 ---
 layout: quickstart
-title: C++ Quickstart
+title: C++ Quick Start
+short: C++
 aliases: [/docs/quickstart/cpp.html]
 ---
 <p class="lead">This guide gets you started with gRPC in C++ with a simple

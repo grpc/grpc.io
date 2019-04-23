@@ -1,6 +1,7 @@
 ---
 layout: quickstart
-title: PHP Quickstart
+title: PHP Quick Start
+short: PHP
 aliases: [/docs/quickstart/php.html]
 ---
 <p class="lead">This guide gets you started with gRPC in PHP with a simple

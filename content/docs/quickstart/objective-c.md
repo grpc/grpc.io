@@ -1,6 +1,7 @@
 ---
 layout: quickstart
-title: Objective-C Quickstart
+title: Objective-C Quick Start
+short: Objective-C
 aliases: [/docs/quickstart/objective-c.html]
 ---
 <p class="lead">This guide gets you started with gRPC on the iOS platform in

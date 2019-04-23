@@ -1,6 +1,7 @@
 ---
 title: Web Quick Start
 layout: quickstart
+short: Web
 aliases: [/docs/quickstart/web.html]
 ---
 <p class="lead">This guide gets you started with gRPC-Web with a simple

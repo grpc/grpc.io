@@ -1,6 +1,7 @@
 ---
 layout: quickstart
 title: Dart Quickstart
+short: Dart
 aliases: [/docs/quickstart/dart.html]
 ---
 <p class="lead">This guide gets you started with gRPC in Dart with a simple

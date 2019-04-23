@@ -1,6 +1,7 @@
 ---
 title: C# Quick Start
 layout: quickstart
+short: C#
 aliases: [/docs/quickstart/csharp.html]
 ---
 
