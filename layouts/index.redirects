@@ -2,3 +2,4 @@
 {{- range $splatRedirects -}}
 /grpc-{{ . }}/*     https://grpc.github.io/grpc-{{ . }}/:splat
 {{ end -}}
+/grpc/*     https://grpc.github.io/grpc/:splat
