@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC Basics - C&#43;&#43; &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/"  class="active">Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/" >Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+
+<div class="quickstartcols">
+
+<div class="quickstartcol1">
+
+<h8>Tutorials</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/async/helloasync-cpp/" >Async - C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/auth/oauth2-objective-c/" >Auth - Objective C</a>
+<h8>Basic</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/c/" class="active">C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/csharp/" >C#</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/dart/" >Dart</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/go/" >Go</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/java/" >Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/android/" >Android Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/node/" >Node</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/objective-c/" >Objective-C</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/php/" >PHP</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/python/" >Python</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/ruby/" >Ruby</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/web/" >Web</a>
+
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">gRPC Basics - C&#43;&#43;</h3>
+
+    
+
+<p>This tutorial provides a basic C++ programmer&rsquo;s introduction to working with gRPC.</p>
+
+<p>By walking through this example you&rsquo;ll learn how to:</p>
+
+<ul>
+<li>Define a service in a .proto file.</li>
+<li>Generate server and client code using the protocol buffer compiler.</li>
+<li>Use the C++ gRPC API to write a simple client and server for your service.</li>
+</ul>
+
+<p>It assumes that you have read the <a href="/docs/">Overview</a> and are familiar
+with <a href="https://developers.google.com/protocol-buffers/docs/overview">protocol
+buffers</a>. Note
+that the example in this tutorial uses the proto3 version of the protocol
+buffers language: you can find out more in
+the <a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3 language
+guide</a> and <a href="https://developers.google.com/protocol-buffers/docs/reference/cpp-generated">C++
+generated code
+guide</a>.</p>
+
+<div id="toc"></div>
+
+<h3 id="why-use-grpc">Why use gRPC?</h3>
+
+<p>Our example is a simple route mapping application that lets clients get
+information about features on their route, create a summary of their route, and
+exchange route information such as traffic updates with the server and other
+clients.</p>
+
+<p>With gRPC we can define our service once in a .proto file and implement clients
+and servers in any of gRPC&rsquo;s supported languages, which in turn can be run in
+environments ranging from servers inside Google to your own tablet - all the
+complexity of communication between different languages and environments is
+handled for you by gRPC. We also get all the advantages of working with protocol
+buffers, including efficient serialization, a simple IDL, and easy interface
+updating.</p>
+
+<h3 id="example-code-and-setup">Example code and setup</h3>
+
+<p>The example code for our tutorial is in
+<a href="https://github.com/grpc/grpc/tree/
+v1.20.0/examples/cpp/route_guide">grpc/grpc/examples/cpp/route_guide</a>. To
+download the example, clone the <code>grpc</code> repository by running the following
+command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone -b v1.20.0 https://github.com/grpc/grpc</code></pre></div>
+<p>Then change your current directory to <code>examples/cpp/route_guide</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd examples/cpp/route_guide</code></pre></div>
+<p>You also should have the relevant tools installed to generate the server and
+client interface code - if you don&rsquo;t already, follow the setup instructions in
+<a href="/docs/quickstart/cpp">the C++ quick start guide</a>.</p>
+
+<h3 id="defining-the-service">Defining the service</h3>
+
+<p>Our first step (as you&rsquo;ll know from the <a href="/docs/">Overview</a>) is to
+define the gRPC <em>service</em> and the method <em>request</em> and <em>response</em> types using
+<a href="https://developers.google.com/protocol-buffers/docs/overview">protocol buffers</a>.
+You can see the complete .proto file in
+<a href="https://github.com/grpc/grpc/blob/
+v1.20.0/examples/protos/route_guide.proto"><code>examples/protos/route_guide.proto</code></a>.</p>
+
+<p>To define a service, you specify a named <code>service</code> in your .proto file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">service RouteGuide {
+   ...
+}</code></pre></div>
+<p>Then you define <code>rpc</code> methods inside your service definition, specifying their
+request and response types. gRPC lets you define four kinds of service method,
+all of which are used in the <code>RouteGuide</code> service:</p>
+
+<ul>
+<li>A <em>simple RPC</em> where the client sends a request to the server using the stub
+and waits for a response to come back, just like a normal function call.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Obtains the feature at a given position.
+</span><span style="color:#75715e"></span>rpc <span style="color:#a6e22e">GetFeature</span>(Point) returns (Feature) {}</code></pre></div>
+<ul>
+<li>A <em>server-side streaming RPC</em> where the client sends a request to the server
+and gets a stream to read a sequence of messages back. The client reads from
+the returned stream until there are no more messages. As you can see in our
+example, you specify a server-side streaming method by placing the <code>stream</code>
+keyword before the <em>response</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Obtains the Features available within the given Rectangle.  Results are
+</span><span style="color:#75715e">// streamed rather than returned at once (e.g. in a response message with a
+</span><span style="color:#75715e">// repeated field), as the rectangle may cover a large area and contain a
+</span><span style="color:#75715e">// huge number of features.
+</span><span style="color:#75715e"></span>rpc <span style="color:#a6e22e">ListFeatures</span>(Rectangle) returns (stream Feature) {}</code></pre></div>
+<ul>
+<li>A <em>client-side streaming RPC</em> where the client writes a sequence of messages
+and sends them to the server, again using a provided stream. Once the client
+has finished writing the messages, it waits for the server to read them all
+and return its response. You specify a client-side streaming method by placing
+the <code>stream</code> keyword before the <em>request</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Accepts a stream of Points on a route being traversed, returning a
+</span><span style="color:#75715e">// RouteSummary when traversal is completed.
+</span><span style="color:#75715e"></span>rpc <span style="color:#a6e22e">RecordRoute</span>(stream Point) returns (RouteSummary) {}</code></pre></div>
+<ul>
+<li>A <em>bidirectional streaming RPC</em> where both sides send a sequence of messages
+using a read-write stream. The two streams operate independently, so clients
+and servers can read and write in whatever order they like: for example, the
+server could wait to receive all the client messages before writing its
+responses, or it could alternately read a message then write a message, or
+some other combination of reads and writes. The order of messages in each
+stream is preserved. You specify this type of method by placing the <code>stream</code>
+keyword before both the request and the response.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Accepts a stream of RouteNotes sent while a route is being traversed,
+</span><span style="color:#75715e">// while receiving other RouteNotes (e.g. from other users).
+</span><span style="color:#75715e"></span>rpc <span style="color:#a6e22e">RouteChat</span>(stream RouteNote) returns (stream RouteNote) {}</code></pre></div>
+<p>Our .proto file also contains protocol buffer message type definitions for all
+the request and response types used in our service methods - for example, here&rsquo;s
+the <code>Point</code> message type:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Points are represented as latitude-longitude pairs in the E7 representation
+</span><span style="color:#75715e">// (degrees multiplied by 10**7 and rounded to the nearest integer).
+</span><span style="color:#75715e">// Latitudes should be in the range +/- 90 degrees and longitude should be in
+</span><span style="color:#75715e">// the range +/- 180 degrees (inclusive).
+</span><span style="color:#75715e"></span>message Point {
+  int32 latitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  int32 longitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+}</code></pre></div>
+<h3 id="generating-client-and-server-code">Generating client and server code</h3>
+
+<p>Next we need to generate the gRPC client and server interfaces from our .proto
+service definition. We do this using the protocol buffer compiler <code>protoc</code> with
+a special gRPC C++ plugin.</p>
+
+<p>For simplicity, we&rsquo;ve provided a <a href="https://github.com/grpc/grpc/blob/
+v1.20.0/examples/cpp/route_guide/Makefile">Makefile</a>
+that runs <code>protoc</code> for you with the appropriate plugin, input, and output (if
+you want to run this yourself, make sure you&rsquo;ve installed protoc and followed
+the gRPC code <a href="https://github.com/grpc/grpc/blob/
+v1.20.0/src/cpp/README.md#make">installation instructions</a> first):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ make route_guide.grpc.pb.cc route_guide.pb.cc</code></pre></div>
+<p>which actually runs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ protoc -I ../../protos --grpc_out<span style="color:#f92672">=</span>. --plugin<span style="color:#f92672">=</span>protoc-gen-grpc<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>which grpc_cpp_plugin<span style="color:#e6db74">`</span> ../../protos/route_guide.proto
+$ protoc -I ../../protos --cpp_out<span style="color:#f92672">=</span>. ../../protos/route_guide.proto</code></pre></div>
+<p>Running this command generates the following files in your current directory:</p>
+
+<ul>
+<li><code>route_guide.pb.h</code>, the header which declares your generated message classes</li>
+<li><code>route_guide.pb.cc</code>, which contains the implementation of your message classes</li>
+<li><code>route_guide.grpc.pb.h</code>, the header which declares your generated service
+classes</li>
+<li><code>route_guide.grpc.pb.cc</code>, which contains the implementation of your service
+classes</li>
+</ul>
+
+<p>These contain:</p>
+
+<ul>
+<li>All the protocol buffer code to populate, serialize, and retrieve our request
+and response message types</li>
+
+<li><p>A class called <code>RouteGuide</code> that contains</p>
+
+<ul>
+<li>a remote interface type (or <em>stub</em>) for clients to call with the methods
+defined in the <code>RouteGuide</code> service.</li>
+<li>two abstract interfaces for servers to implement, also with the methods
+defined in the <code>RouteGuide</code> service.</li>
+</ul></li>
+</ul>
+
+<p><a name="server"></a></p>
+
+<h3 id="creating-the-server">Creating the server</h3>
+
+<p>First let&rsquo;s look at how we create a <code>RouteGuide</code> server. If you&rsquo;re only
+interested in creating gRPC clients, you can skip this section and go straight
+to <a href="#client">Creating the client</a> (though you might find it interesting
+anyway!).</p>
+
+<p>There are two parts to making our <code>RouteGuide</code> service do its job:</p>
+
+<ul>
+<li>Implementing the service interface generated from our service definition:
+doing the actual &ldquo;work&rdquo; of our service.</li>
+<li>Running a gRPC server to listen for requests from clients and return the
+service responses.</li>
+</ul>
+
+<p>You can find our example <code>RouteGuide</code> server in
+<a href="https://github.com/grpc/grpc/blob/
+v1.20.0/examples/cpp/route_guide/route_guide_server.cc">examples/cpp/route_guide/route_guide_server.cc</a>.
+Let&rsquo;s take a closer look at how it works.</p>
+
+<h4 id="implementing-routeguide">Implementing RouteGuide</h4>
+
+<p>As you can see, our server has a <code>RouteGuideImpl</code> class that implements the
+generated <code>RouteGuide::Service</code> interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">class</span><span style="color:#960050;background-color:#1e0010"> </span><span style="color:#a6e22e">RouteGuideImpl</span> <span style="color:#66d9ef">final</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> RouteGuide<span style="color:#f92672">::</span>Service {
+...
+}
+</code></pre></div>
+<p>In this case we&rsquo;re implementing the <em>synchronous</em> version of <code>RouteGuide</code>, which
+provides our default gRPC server behaviour. It&rsquo;s also possible to implement an
+asynchronous interface, <code>RouteGuide::AsyncService</code>, which allows you to further
+customize your server&rsquo;s threading behaviour, though we won&rsquo;t look at this in
+this tutorial.</p>
+
+<p><code>RouteGuideImpl</code> implements all our service methods. Let&rsquo;s look at the simplest
+type first, <code>GetFeature</code>, which just gets a <code>Point</code> from the client and returns
+the corresponding feature information from its database in a <code>Feature</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Status <span style="color:#a6e22e">GetFeature</span>(ServerContext<span style="color:#f92672">*</span> context, <span style="color:#66d9ef">const</span> Point<span style="color:#f92672">*</span> point,
+                  Feature<span style="color:#f92672">*</span> feature) <span style="color:#66d9ef">override</span> {
+  feature<span style="color:#f92672">-&gt;</span>set_name(GetFeatureName(<span style="color:#f92672">*</span>point, feature_list_));
+  feature<span style="color:#f92672">-&gt;</span>mutable_location()<span style="color:#f92672">-&gt;</span>CopyFrom(<span style="color:#f92672">*</span>point);
+  <span style="color:#66d9ef">return</span> Status<span style="color:#f92672">::</span>OK;
+}
+</code></pre></div>
+<p>The method is passed a context object for the RPC, the client&rsquo;s <code>Point</code> protocol
+buffer request, and a <code>Feature</code> protocol buffer to fill in with the response
+information. In the method we populate the <code>Feature</code> with the appropriate
+information, and then <code>return</code> with an <code>OK</code> status to tell gRPC that we&rsquo;ve
+finished dealing with the RPC and that the <code>Feature</code> can be returned to the
+client.</p>
+
+<p>Note that all service methods can (and will!) be called from multiple threads at
+the same time. You have to make sure that your method implementations are
+thread safe. In our example, <code>feature_list_</code> is never changed after
+construction, so it is safe by design. But if <code>feature_list_</code> would change during
+the lifetime of the service, we would need to synchronize access to this member.</p>
+
+<p>Now let&rsquo;s look at something a bit more complicated - a streaming RPC.
+<code>ListFeatures</code> is a server-side streaming RPC, so we need to send back multiple
+<code>Feature</code>s to our client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Status <span style="color:#a6e22e">ListFeatures</span>(ServerContext<span style="color:#f92672">*</span> context, <span style="color:#66d9ef">const</span> Rectangle<span style="color:#f92672">*</span> rectangle,
+                    ServerWriter<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;*</span> writer) <span style="color:#66d9ef">override</span> {
+  <span style="color:#66d9ef">auto</span> lo <span style="color:#f92672">=</span> rectangle<span style="color:#f92672">-&gt;</span>lo();
+  <span style="color:#66d9ef">auto</span> hi <span style="color:#f92672">=</span> rectangle<span style="color:#f92672">-&gt;</span>hi();
+  <span style="color:#66d9ef">long</span> left <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>min(lo.longitude(), hi.longitude());
+  <span style="color:#66d9ef">long</span> right <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>max(lo.longitude(), hi.longitude());
+  <span style="color:#66d9ef">long</span> top <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>max(lo.latitude(), hi.latitude());
+  <span style="color:#66d9ef">long</span> bottom <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>min(lo.latitude(), hi.latitude());
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> Feature<span style="color:#f92672">&amp;</span> f : feature_list_) {
+    <span style="color:#66d9ef">if</span> (f.location().longitude() <span style="color:#f92672">&gt;=</span> left <span style="color:#f92672">&amp;&amp;</span>
+        f.location().longitude() <span style="color:#f92672">&lt;=</span> right <span style="color:#f92672">&amp;&amp;</span>
+        f.location().latitude() <span style="color:#f92672">&gt;=</span> bottom <span style="color:#f92672">&amp;&amp;</span>
+        f.location().latitude() <span style="color:#f92672">&lt;=</span> top) {
+      writer<span style="color:#f92672">-&gt;</span>Write(f);
+    }
+  }
+  <span style="color:#66d9ef">return</span> Status<span style="color:#f92672">::</span>OK;
+}
+</code></pre></div>
+<p>As you can see, instead of getting simple request and response objects in our
+method parameters, this time we get a request object (the <code>Rectangle</code> in which
+our client wants to find <code>Feature</code>s) and a special <code>ServerWriter</code> object. In the
+method, we populate as many <code>Feature</code> objects as we need to return, writing them
+to the <code>ServerWriter</code> using its <code>Write()</code> method. Finally, as in our simple RPC,
+we <code>return Status::OK</code> to tell gRPC that we&rsquo;ve finished writing responses.</p>
+
+<p>If you look at the client-side streaming method <code>RecordRoute</code> you&rsquo;ll see it&rsquo;s
+quite similar, except this time we get a <code>ServerReader</code> instead of a request
+object and a single response. We use the <code>ServerReader</code>s <code>Read()</code> method to
+repeatedly read in our client&rsquo;s requests to a request object (in this case a
+<code>Point</code>) until there are no more messages: the server needs to check the return
+value of <code>Read()</code> after each call. If <code>true</code>, the stream is still good and it
+can continue reading; if <code>false</code> the message stream has ended.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">while</span> (stream<span style="color:#f92672">-&gt;</span>Read(<span style="color:#f92672">&amp;</span>point)) {
+  ...<span style="color:#75715e">//process client input
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Status <span style="color:#a6e22e">RouteChat</span>(ServerContext<span style="color:#f92672">*</span> context,
+                 ServerReaderWriter<span style="color:#f92672">&lt;</span>RouteNote, RouteNote<span style="color:#f92672">&gt;*</span> stream) <span style="color:#66d9ef">override</span> {
+  std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;</span> received_notes;
+  RouteNote note;
+  <span style="color:#66d9ef">while</span> (stream<span style="color:#f92672">-&gt;</span>Read(<span style="color:#f92672">&amp;</span>note)) {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> RouteNote<span style="color:#f92672">&amp;</span> n : received_notes) {
+      <span style="color:#66d9ef">if</span> (n.location().latitude() <span style="color:#f92672">==</span> note.location().latitude() <span style="color:#f92672">&amp;&amp;</span>
+          n.location().longitude() <span style="color:#f92672">==</span> note.location().longitude()) {
+        stream<span style="color:#f92672">-&gt;</span>Write(n);
+      }
+    }
+    received_notes.push_back(note);
+  }
+
+  <span style="color:#66d9ef">return</span> Status<span style="color:#f92672">::</span>OK;
+}
+</code></pre></div>
+<p>This time we get a <code>ServerReaderWriter</code> that can be used to read <em>and</em> write
+messages. The syntax for reading and writing here is exactly the same as for our
+client-streaming and server-streaming methods. Although each side will always
+get the other&rsquo;s messages in the order they were written, both the client and
+server can read and write in any order — the streams operate completely
+independently.</p>
+
+<h4 id="starting-the-server">Starting the server</h4>
+
+<p>Once we&rsquo;ve implemented all our methods, we also need to start up a gRPC server
+so that clients can actually use our service. The following snippet shows how we
+do this for our <code>RouteGuide</code> service:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">RunServer</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span> db_path) {
+  std<span style="color:#f92672">::</span>string server_address(<span style="color:#e6db74">&#34;0.0.0.0:50051&#34;</span>);
+  RouteGuideImpl service(db_path);
+
+  ServerBuilder builder;
+  builder.AddListeningPort(server_address, grpc<span style="color:#f92672">::</span>InsecureServerCredentials());
+  builder.RegisterService(<span style="color:#f92672">&amp;</span>service);
+  std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Server<span style="color:#f92672">&gt;</span> server(builder.BuildAndStart());
+  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Server listening on &#34;</span> <span style="color:#f92672">&lt;&lt;</span> server_address <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+  server<span style="color:#f92672">-&gt;</span>Wait();
+}
+</code></pre></div>
+<p>As you can see, we build and start our server using a <code>ServerBuilder</code>. To do this, we:</p>
+
+<ol>
+<li>Create an instance of our service implementation class <code>RouteGuideImpl</code>.</li>
+<li>Create an instance of the factory <code>ServerBuilder</code> class.</li>
+<li>Specify the address and port we want to use to listen for client requests
+using the builder&rsquo;s <code>AddListeningPort()</code> method.</li>
+<li>Register our service implementation with the builder.</li>
+<li>Call <code>BuildAndStart()</code> on the builder to create and start an RPC server for
+our service.</li>
+<li>Call <code>Wait()</code> on the server to do a blocking wait until process is killed or
+<code>Shutdown()</code> is called.</li>
+</ol>
+
+<p><a name="client"></a></p>
+
+<h3 id="creating-the-client">Creating the client</h3>
+
+<p>In this section, we&rsquo;ll look at creating a C++ client for our <code>RouteGuide</code>
+service. You can see our complete example client code in
+<a href="https://github.com/grpc/grpc/blob/
+v1.20.0/examples/cpp/route_guide/route_guide_client.cc">examples/cpp/route_guide/route_guide_client.cc</a>.</p>
+
+<h4 id="creating-a-stub">Creating a stub</h4>
+
+<p>To call service methods, we first need to create a <em>stub</em>.</p>
+
+<p>First we need to create a gRPC <em>channel</em> for our stub, specifying the server
+address and port we want to connect to - in our case we&rsquo;ll use no SSL:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">grpc<span style="color:#f92672">::</span>CreateChannel(<span style="color:#e6db74">&#34;localhost:50051&#34;</span>, grpc<span style="color:#f92672">::</span>InsecureChannelCredentials());
+</code></pre></div>
+<p>Note: In order to set additional options for the <em>channel</em>, use the <code>grpc::CreateCustomChannel()</code> api with any special channel arguments - <code>grpc::ChannelArguments</code></p>
+
+<p>Now we can use the channel to create our stub using the <code>NewStub</code> method provided in the <code>RouteGuide</code> class we generated from our .proto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+ RouteGuideClient(std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>ChannelInterface<span style="color:#f92672">&gt;</span> channel,
+                  <span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string<span style="color:#f92672">&amp;</span> db)
+     <span style="color:#f92672">:</span> stub_(RouteGuide<span style="color:#f92672">::</span>NewStub(channel)) {
+   ...
+ }
+</code></pre></div>
+<h4 id="calling-service-methods">Calling service methods</h4>
+
+<p>Now let&rsquo;s look at how we call our service methods. Note that in this tutorial
+we&rsquo;re calling the <em>blocking/synchronous</em> versions of each method: this means
+that the RPC call waits for the server to respond, and will either return a
+response or raise an exception.</p>
+
+<h5 id="simple-rpc">Simple RPC</h5>
+
+<p>Calling the simple RPC <code>GetFeature</code> is nearly as straightforward as calling a
+local method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Point point;
+Feature feature;
+point <span style="color:#f92672">=</span> MakePoint(<span style="color:#ae81ff">409146138</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">746188906</span>);
+GetOneFeature(point, <span style="color:#f92672">&amp;</span>feature);
+
+...
+
+<span style="color:#66d9ef">bool</span> GetOneFeature(<span style="color:#66d9ef">const</span> Point<span style="color:#f92672">&amp;</span> point, Feature<span style="color:#f92672">*</span> feature) {
+  ClientContext context;
+  Status status <span style="color:#f92672">=</span> stub_<span style="color:#f92672">-&gt;</span>GetFeature(<span style="color:#f92672">&amp;</span>context, point, feature);
+  ...
+}
+</code></pre></div>
+<p>As you can see, we create and populate a request protocol buffer object (in our
+case <code>Point</code>), and create a response protocol buffer object for the server to
+fill in. We also create a <code>ClientContext</code> object for our call - you can
+optionally set RPC configuration values on this object, such as deadlines,
+though for now we&rsquo;ll use the default settings. Note that you cannot reuse this
+object between calls. Finally, we call the method on the stub, passing it the
+context, request, and response. If the method returns <code>OK</code>, then we can read the
+response information from the server from our response object.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found feature called &#34;</span> <span style="color:#f92672">&lt;&lt;</span> feature<span style="color:#f92672">-&gt;</span>name()  <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; at &#34;</span>
+          <span style="color:#f92672">&lt;&lt;</span> feature<span style="color:#f92672">-&gt;</span>location().latitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span>
+          <span style="color:#f92672">&lt;&lt;</span> feature<span style="color:#f92672">-&gt;</span>location().longitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</code></pre></div>
+<h5 id="streaming-rpcs">Streaming RPCs</h5>
+
+<p>Now let&rsquo;s look at our streaming methods. If you&rsquo;ve already read <a href="#server">Creating the
+server</a> some of this may look very familiar - streaming RPCs are
+implemented in a similar way on both sides. Here&rsquo;s where we call the server-side
+streaming method <code>ListFeatures</code>, which returns a stream of geographical
+<code>Feature</code>s:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>ClientReader<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> reader(
+    stub_<span style="color:#f92672">-&gt;</span>ListFeatures(<span style="color:#f92672">&amp;</span>context, rect));
+<span style="color:#66d9ef">while</span> (reader<span style="color:#f92672">-&gt;</span>Read(<span style="color:#f92672">&amp;</span>feature)) {
+  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Found feature called &#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> feature.name() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; at &#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> feature.location().latitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> feature.location().longitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+}
+Status status <span style="color:#f92672">=</span> reader<span style="color:#f92672">-&gt;</span>Finish();
+</code></pre></div>
+<p>Instead of passing the method a context, request, and response, we pass it a
+context and request and get a <code>ClientReader</code> object back. The client can use the
+<code>ClientReader</code> to read the server&rsquo;s responses. We use the <code>ClientReader</code>s
+<code>Read()</code> method to repeatedly read in the server&rsquo;s responses to a response
+protocol buffer object (in this case a <code>Feature</code>) until there are no more
+messages: the client needs to check the return value of <code>Read()</code> after each
+call. If <code>true</code>, the stream is still good and it can continue reading; if
+<code>false</code> the message stream has ended. Finally, we call <code>Finish()</code> on the stream
+to complete the call and get our RPC status.</p>
+
+<p>The client-side streaming method <code>RecordRoute</code> is similar, except there we pass
+the method a context and response object and get back a <code>ClientWriter</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>ClientWriter<span style="color:#f92672">&lt;</span>Point<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> writer(
+    stub_<span style="color:#f92672">-&gt;</span>RecordRoute(<span style="color:#f92672">&amp;</span>context, <span style="color:#f92672">&amp;</span>stats));
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> kPoints; i<span style="color:#f92672">++</span>) {
+  <span style="color:#66d9ef">const</span> Feature<span style="color:#f92672">&amp;</span> f <span style="color:#f92672">=</span> feature_list_[feature_distribution(generator)];
+  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Visiting point &#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> f.location().latitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;, &#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> f.location().longitude()<span style="color:#f92672">/</span>kCoordFactor_ <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>writer<span style="color:#f92672">-&gt;</span>Write(f.location())) {
+    <span style="color:#75715e">// Broken stream.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">break</span>;
+  }
+  std<span style="color:#f92672">::</span>this_thread<span style="color:#f92672">::</span>sleep_for(std<span style="color:#f92672">::</span>chrono<span style="color:#f92672">::</span>milliseconds(
+      delay_distribution(generator)));
+}
+writer<span style="color:#f92672">-&gt;</span>WritesDone();
+Status status <span style="color:#f92672">=</span> writer<span style="color:#f92672">-&gt;</span>Finish();
+<span style="color:#66d9ef">if</span> (status.IsOk()) {
+  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Finished trip with &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stats.point_count() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; points</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Passed &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stats.feature_count() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; features</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Travelled &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stats.distance() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; meters</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;It took &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stats.elapsed_time() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; seconds&#34;</span>
+            <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+} <span style="color:#66d9ef">else</span> {
+  std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;RecordRoute rpc failed.&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+}
+</code></pre></div>
+<p>Once we&rsquo;ve finished writing our client&rsquo;s requests to the stream using <code>Write()</code>,
+we need to call <code>WritesDone()</code> on the stream to let gRPC know that we&rsquo;ve
+finished writing, then <code>Finish()</code> to complete the call and get our RPC status.
+If the status is <code>OK</code>, our response object that we initially passed to
+<code>RecordRoute()</code> will be populated with the server&rsquo;s response.</p>
+
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>. In this
+case, we just pass a context to the method and get back a <code>ClientReaderWriter</code>,
+which we can use to both write and read messages.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>shared_ptr<span style="color:#f92672">&lt;</span>ClientReaderWriter<span style="color:#f92672">&lt;</span>RouteNote, RouteNote<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> stream(
+    stub_<span style="color:#f92672">-&gt;</span>RouteChat(<span style="color:#f92672">&amp;</span>context));
+</code></pre></div>
+<p>The syntax for reading and writing here is exactly the same as for our
+client-streaming and server-streaming methods. Although each side will always
+get the other&rsquo;s messages in the order they were written, both the client and
+server can read and write in any order — the streams operate completely
+independently.</p>
+
+<h3 id="try-it-out">Try it out!</h3>
+
+<p>Build client and server:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ make</code></pre></div>
+<p>Run the server, which will listen on port 50051:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./route_guide_server</code></pre></div>
+<p>Run the client (in a different terminal):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./route_guide_client</code></pre></div>
+</div>
+</div>
+
+</div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

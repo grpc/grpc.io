@@ -1,0 +1,16 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    {{ partial "docs-topnav.html" . }}
+    <div class="refsection">
+    {{ .Content }}
+    </div>
+{{ end }}
+

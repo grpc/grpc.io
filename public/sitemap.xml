@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://cjyabraham.github.io/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/hello-pancakes/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/state-of-grpc-web/</loc>
+    <lastmod>2019-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/grpc-dotnet-build/</loc>
+    <lastmod>2018-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/grpc-stacks/</loc>
+    <lastmod>2018-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/grpc-web-ga/</loc>
+    <lastmod>2018-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/about/</loc>
+    <lastmod>2018-09-11T14:11:42+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/a_short_introduction_to_channelz/</loc>
+    <lastmod>2018-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/grpc_on_http2/</loc>
+    <lastmod>2018-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/grpc-with-json/</loc>
+    <lastmod>2018-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/take-the-grpc-survey/</loc>
+    <lastmod>2018-08-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/http2_smarter_at_scale/</loc>
+    <lastmod>2018-07-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/gracefully_clean_up_in_grpc_junit_tests/</loc>
+    <lastmod>2018-06-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/kotlin-gradle-projects/</loc>
+    <lastmod>2018-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/optimizing-grpc-part-2/</loc>
+    <lastmod>2018-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/optimizing-grpc-part-1/</loc>
+    <lastmod>2018-03-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/deadlines/</loc>
+    <lastmod>2018-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/2018-01-22-grpc-go-engineering-practices/</loc>
+    <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/meetup-kit/</loc>
+    <lastmod>2017-09-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/2017-08-22-grpc-go-perf-improvements/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/2017-08-17-community-meeting-update/</loc>
+    <lastmod>2017-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/flatbuffers/</loc>
+    <lastmod>2017-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/loadbalancing/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/helmgrpc/</loc>
+    <lastmod>2017-05-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/yygrpc/</loc>
+    <lastmod>2017-04-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/bazel_rules_protobuf/</loc>
+    <lastmod>2016-10-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/vscogrpc/</loc>
+    <lastmod>2016-09-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/vendastagrpc/</loc>
+    <lastmod>2016-08-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/gablogpost/</loc>
+    <lastmod>2016-08-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/coreos/</loc>
+    <lastmod>2016-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/installation/</loc>
+    <lastmod>2016-04-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/pubsub/</loc>
+    <lastmod>2016-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/beta_release/</loc>
+    <lastmod>2015-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/blog/principles/</loc>
+    <lastmod>2015-09-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/go/generated-code/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/python/generated-code/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/android/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/async/helloasync-cpp/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/auth/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/benchmarking/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/csharp/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/c/client/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/cpp/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/c/server/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/community/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/contribute/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/contributing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/dart/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/error/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/java/client/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/java/generated-code/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/java/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/java/server/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/node/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/auth/oauth2-objective-c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/objective-c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/php/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/talks/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/python/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/reference/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/ruby/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/samples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/quickstart/web/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/android/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/csharp/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/dart/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/go/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/java/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/node/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/objective-c/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/php/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/python/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/ruby/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/tutorials/basic/web/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cjyabraham.github.io/docs/guides/concepts/</loc>
+  </url>
+  
+</urlset>

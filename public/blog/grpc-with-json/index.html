@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC &#43; JSON &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC &#43; JSON</h1>
+  <h5>Posted on Wednesday, August 15, 2018 
+    by 
+    
+      <a href="https://carlmastrangelo.com">Carl Mastrangelo</a>
+    
+  </h5>
+  <p>
+    <p>So you&rsquo;ve bought into this whole RPC thing and want to try it out, but aren&rsquo;t quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?</p>
+
+<p>Fortunately, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we&rsquo;ll go through how to make gRPC work with other encodings and types.  Let&rsquo;s try using JSON.</p>
+
+<p>gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC&rsquo;s benefits.  <a href="https://github.com/google/gson">Gson</a> is a popular library for Java for doing JSON encoding.  Let&rsquo;s remove all the protobuf related things and replace them with Gson:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">- Protobuf wire encoding
+</span><span style="color:#f92672">- Protobuf generated message types
+</span><span style="color:#f92672">- gPRC generated stub types
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+ JSON wire encoding
+</span><span style="color:#a6e22e">+ Gson message types
+</span></code></pre></div>
+<p>Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  Gson allows us to bring our own types in our code, but provides a way of serializing those types into bytes.</p>
+
+<p>Let&rsquo;s continue with the <a href="https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller">Key-Value</a> store service.  We will be modifying the code used my previous <a href="/blog/optimizing-grpc-part-2">So You Want to Optimize gRPC</a> post.</p>
+
+<h2 id="what-is-a-service-anyways">What is a Service Anyways?</h2>
+
+<p>From the point of view of gRPC, a <em>Service</em> is a collection of <em>Methods</em>.  In Java, a method is represented as a <a href="https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html"><code>MethodDescriptor</code></a>.  Each <code>MethodDescriptor</code> includes the name of the method, a <code>Marshaller</code> for encoding requests, and a <code>Marshaller</code> for encoding responses.  They also include additional detail, such as if the call is streaming or not.  For simplicity, we&rsquo;ll stick with unary RPCs which have a single request and single response.</p>
+
+<p>Since we won&rsquo;t be generating any code, we&rsquo;ll need to write the message classes ourselves.  There are four methods, each which have a request and a response type.  This means we need to make eight messages:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateRequest</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> key<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> value<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateResponse</span> <span style="color:#f92672">{</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RetrieveRequest</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> key<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RetrieveResponse</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> value<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateRequest</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> key<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> value<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UpdateResponse</span> <span style="color:#f92672">{</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeleteRequest</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> key<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeleteResponse</span> <span style="color:#f92672">{</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p>Because GSON uses reflection to determine how the fields in our classes map to the serialized JSON, we don&rsquo;t need to annotate the messages.</p>
+
+<p>Our client and server logic will use the request and response types, but gRPC needs to know how to produce and consume these messages.  To do this, we need to implement a <a href="https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.Marshaller.html"><code>Marshaller</code></a>.  A marshaller knows how to convert from an arbitrary type to an <code>InputStream</code>, which is then passed down into the gRPC core library.  It is also capable of doing the reverse transformation when decoding data from the network.  For GSON, here is what the marshaller looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> Marshaller<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">marshallerFor</span><span style="color:#f92672">(</span>Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> clz<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    Gson gson <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Gson<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Marshaller<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+      <span style="color:#a6e22e">@Override</span>
+      <span style="color:#66d9ef">public</span> InputStream <span style="color:#a6e22e">stream</span><span style="color:#f92672">(</span>T value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ByteArrayInputStream<span style="color:#f92672">(</span>gson<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>value<span style="color:#f92672">,</span> clz<span style="color:#f92672">).</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span>StandardCharsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">));</span>
+      <span style="color:#f92672">}</span>
+
+      <span style="color:#a6e22e">@Override</span>
+      <span style="color:#66d9ef">public</span> T <span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span>InputStream stream<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">return</span> gson<span style="color:#f92672">.</span><span style="color:#a6e22e">fromJson</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InputStreamReader<span style="color:#f92672">(</span>stream<span style="color:#f92672">,</span> StandardCharsets<span style="color:#f92672">.</span><span style="color:#a6e22e">UTF_8</span><span style="color:#f92672">),</span> clz<span style="color:#f92672">);</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">};</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p>Given a <code>Class</code> object for a some request or response, this function will produce a marshaller.  Using the marshallers, we can compose a full <code>MethodDescriptor</code> for each of the four CRUD methods.  Here is an example of the Method descriptor for <em>Create</em>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> MethodDescriptor<span style="color:#f92672">&lt;</span>CreateRequest<span style="color:#f92672">,</span> CreateResponse<span style="color:#f92672">&gt;</span> CREATE_METHOD <span style="color:#f92672">=</span>
+      MethodDescriptor<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">(</span>
+          marshallerFor<span style="color:#f92672">(</span>CreateRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">),</span>
+          marshallerFor<span style="color:#f92672">(</span>CreateResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">))</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">setFullMethodName</span><span style="color:#f92672">(</span>
+              MethodDescriptor<span style="color:#f92672">.</span><span style="color:#a6e22e">generateFullMethodName</span><span style="color:#f92672">(</span>SERVICE_NAME<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Create&#34;</span><span style="color:#f92672">))</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">setType</span><span style="color:#f92672">(</span>MethodType<span style="color:#f92672">.</span><span style="color:#a6e22e">UNARY</span><span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span></code></pre></div>
+<p>Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the
+<a href="https://github.com/carl-mastrangelo/kvstore/blob/03-nonblocking-server/build/generated/source/proto/main/grpc/io/grpc/examples/proto/KeyValueServiceGrpc.java#L44">method descriptors</a>
+would be generated automatically.</p>
+
+<h2 id="sending-rpcs">Sending RPCs</h2>
+
+<p>Now that we can marshal JSON requests and responses, we need to update our
+<a href="https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98"><code>KvClient</code></a>,
+the gRPC client used in the previous post, to use our MethodDescriptors.  Additionally, since we won&rsquo;t be using any Protobuf types, the code needs to use <code>ByteBuffer</code> rather than <code>ByteString</code>.  That said, we can still use the <code>grpc-stub</code> package on Maven to issue the RPC.  Using the <em>Create</em> method again as an example, here&rsquo;s how to make an RPC:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    ByteBuffer key <span style="color:#f92672">=</span> createRandomKey<span style="color:#f92672">();</span>
+    ClientCall<span style="color:#f92672">&lt;</span>CreateRequest<span style="color:#f92672">,</span> CreateResponse<span style="color:#f92672">&gt;</span> call <span style="color:#f92672">=</span>
+        chan<span style="color:#f92672">.</span><span style="color:#a6e22e">newCall</span><span style="color:#f92672">(</span>KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CREATE_METHOD</span><span style="color:#f92672">,</span> CallOptions<span style="color:#f92672">.</span><span style="color:#a6e22e">DEFAULT</span><span style="color:#f92672">);</span>
+    KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateRequest</span> req <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateRequest</span><span style="color:#f92672">();</span>
+    req<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">array</span><span style="color:#f92672">();</span>
+    req<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> randomBytes<span style="color:#f92672">(</span>MEAN_VALUE_SIZE<span style="color:#f92672">).</span><span style="color:#a6e22e">array</span><span style="color:#f92672">();</span>
+
+    ListenableFuture<span style="color:#f92672">&lt;</span>CreateResponse<span style="color:#f92672">&gt;</span> res <span style="color:#f92672">=</span> ClientCalls<span style="color:#f92672">.</span><span style="color:#a6e22e">futureUnaryCall</span><span style="color:#f92672">(</span>call<span style="color:#f92672">,</span> req<span style="color:#f92672">);</span>
+    <span style="color:#f92672">//</span> <span style="color:#f92672">...</span></code></pre></div>
+<p>As you can see, we create a new <code>ClientCall</code> object from the <code>MethodDescriptor</code>, create the request, and then send it using <code>ClientCalls.futureUnaryCall</code> in the stub library.  gRPC takes care of the rest for us.  You can also make blocking stubs or async stubs instead of future stubs.</p>
+
+<h2 id="receiving-rpcs">Receiving RPCs</h2>
+
+<p>To update the server, we need to create a key-value service and implementation.  Recall that in gRPC, a <em>Server</em> can handle one or more <em>Services</em>.  Again, what Protobuf would normally have generated for us we need to write ourselves.  Here is what the base service looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KeyValueServiceImplBase</span> <span style="color:#66d9ef">implements</span> BindableService <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>
+        KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateRequest</span> request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>CreateResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">);</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">retrieve</span><span style="color:#f92672">(</span><span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span><span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete</span><span style="color:#f92672">(</span><span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+
+    <span style="color:#75715e">/* Called by the Server to wire up methods to the handlers */</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> ServerServiceDefinition <span style="color:#a6e22e">bindService</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      ServerServiceDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span> ssd <span style="color:#f92672">=</span> ServerServiceDefinition<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span>SERVICE_NAME<span style="color:#f92672">);</span>
+      ssd<span style="color:#f92672">.</span><span style="color:#a6e22e">addMethod</span><span style="color:#f92672">(</span>CREATE_METHOD<span style="color:#f92672">,</span> ServerCalls<span style="color:#f92672">.</span><span style="color:#a6e22e">asyncUnaryCall</span><span style="color:#f92672">(</span>
+          <span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">-&gt;</span> create<span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> responseObserver<span style="color:#f92672">)));</span>
+
+      ssd<span style="color:#f92672">.</span><span style="color:#a6e22e">addMethod</span><span style="color:#f92672">(</span>RETRIEVE_METHOD<span style="color:#f92672">,</span> <span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+      ssd<span style="color:#f92672">.</span><span style="color:#a6e22e">addMethod</span><span style="color:#f92672">(</span>UPDATE_METHOD<span style="color:#f92672">,</span> <span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+      ssd<span style="color:#f92672">.</span><span style="color:#a6e22e">addMethod</span><span style="color:#f92672">(</span>DELETE_METHOD<span style="color:#f92672">,</span> <span style="color:#75715e">/*...*/</span><span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">return</span> ssd<span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p><code>KeyValueServiceImplBase</code> will serve as both the service definition (which describes which methods the server can handle) and as the implementation (which describes what to do for each method).  It serves as the glue between gRPC and our application logic.  Practically no changes are needed to swap from Proto to GSON in the server code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KvService</span> <span style="color:#66d9ef">extends</span> KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">KeyValueServiceImplBase</span> <span style="color:#f92672">{</span>
+
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>
+      KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateRequest</span> request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>KvGson<span style="color:#f92672">.</span><span style="color:#a6e22e">CreateResponse</span><span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    ByteBuffer key <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">wrap</span><span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">);</span>
+    ByteBuffer value <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">wrap</span><span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">);</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">}</span></code></pre></div>
+<p>After implementing all the methods on the server, we now have a fully functioning gRPC Java, JSON encoding RPC system.  And to show you there is nothing up my sleeve:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./gradlew :dependencies | grep -i proto
+$ <span style="color:#75715e"># no proto deps!</span></code></pre></div>
+<h2 id="optimizing-the-code">Optimizing the Code</h2>
+
+<p>While Gson is not as fast as Protobuf, there&rsquo;s no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
+
+INFO: Did <span style="color:#ae81ff">215</span>.883 RPCs/s</code></pre></div>
+<p>What happened?  In the previous <a href="/blog/optimizing-grpc-part-2">optimization</a> post, we saw the Protobuf version do nearly <em>2,500 RPCs/s</em>.  JSON is slow, but not <em>that</em> slow.  We can see what the problem is by printing out the JSON data as it goes through the marshaller:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;key&#34;</span>:[<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">-100</span>,<span style="color:#ae81ff">-48</span>,<span style="color:#ae81ff">22</span>,<span style="color:#ae81ff">-128</span>,<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">115</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">56</span>,<span style="color:#ae81ff">34</span>,<span style="color:#ae81ff">-48</span>,<span style="color:#ae81ff">-1</span>,<span style="color:#ae81ff">-119</span>,<span style="color:#ae81ff">60</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">-13</span>,<span style="color:#ae81ff">-118</span>]}</code></pre></div>
+<p>That&rsquo;s not right!  Looking at a <code>RetrieveRequest</code>, we see that the key bytes are being encoded as an array, rather than as a byte string.  The wire size is much larger than it needs to be, and may not be compatible with other JSON code.  To fix this, let&rsquo;s tell GSON to encode and decode this data as base64 encoded bytes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> Gson gson <span style="color:#f92672">=</span>
+      <span style="color:#66d9ef">new</span> GsonBuilder<span style="color:#f92672">().</span><span style="color:#a6e22e">registerTypeAdapter</span><span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[].</span><span style="color:#a6e22e">class</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> TypeAdapter<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]&gt;()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span><span style="color:#f92672">(</span>JsonWriter out<span style="color:#f92672">,</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> value<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+      out<span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">(</span>Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">getEncoder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">encodeToString</span><span style="color:#f92672">(</span>value<span style="color:#f92672">));</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>JsonReader in<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">getDecoder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">decode</span><span style="color:#f92672">(</span>in<span style="color:#f92672">.</span><span style="color:#a6e22e">nextString</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}).</span><span style="color:#a6e22e">create</span><span style="color:#f92672">();</span></code></pre></div>
+<p>Using this in our marshallers, we can see a dramatic performance difference:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
+
+INFO: Did <span style="color:#ae81ff">2</span>,202.2 RPCs/s</code></pre></div>
+<p>Almost <strong>10x</strong> faster than before!  We can still take advantage of gRPC&rsquo;s efficiency while bringing our own encoders and messages.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC lets you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility, type checking, and performance it gives you.)</p>
+
+<p>All the code is avaialable on <a href="https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller">GitHub</a> if you would like to see a fully working implementation.</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

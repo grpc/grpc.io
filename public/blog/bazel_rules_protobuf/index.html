@@ -1,0 +1,1063 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  Building gRPC services with bazel and rules_protobuf &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>Building gRPC services with bazel and rules_protobuf</h1>
+  <h5>Posted on Thursday, October 13, 2016 
+    by 
+    
+      Paul Cody Johnston
+    
+  </h5>
+  <p>
+    <p><a href="/">gRPC</a> makes it easier to build high-performance
+microservices by providing generated service entrypoints in a variety
+of different languages.  <a href="https://bazel.io">Bazel</a> complements these
+efforts with a capable and fast polyglot build environment.</p>
+
+<p><a href="https://github.com/pubref/rules_protobuf">rules_protobuf</a> extends
+bazel and makes it easier develop gRPC services.</p>
+
+<p>It does this by:</p>
+
+<ol>
+<li>Building <code>protoc</code> (the protocol buffer compiler) and all the
+necessary <code>protoc-gen-*</code> plugins.</li>
+<li>Building the protobuf and gRPC libraries required for gRPC-related
+code to compile.</li>
+<li>Abstracting away <code>protoc</code> plugin invocation (you don&rsquo;t have to
+necessarily learn or remember how to call <code>protoc</code>).</li>
+<li>Regenerating and recompiling outputs when protobuf source files
+change.</li>
+</ol>
+
+<p>In this post I&rsquo;ll provide background about how bazel works
+(<a href="#about-bazel">Part 1</a>) and how to get started building gRPC
+services with rules_protobuf
+(<a href="#building-a-grpc-service-with-rulesprotobuf">Part 2</a>).  If
+you&rsquo;re already a bazel aficionado, you can skip directly to Part 2.</p>
+
+<p>To best follow along,
+<a href="https://www.bazel.io/versions/master/docs/install.html">install bazel</a>
+and clone the rules_protobuf repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ git clone https://github.com/pubref/rules_protobuf
+~$ cd rules_protobuf
+~/rules_protobuf$</code></pre></div>
+<p>Great. Let&rsquo;s get started!</p>
+
+<h1 id="1-about-bazel">1: About Bazel</h1>
+
+<p><a href="https://www.bazel.io/">Bazel</a> is Google&rsquo;s open-source version of
+their internal build tool called &ldquo;Blaze&rdquo;.  Blaze originated from the
+challenges of managing a large monorepo with code written in a variety
+of languages.  Blaze was the inspiration for other capable and fast
+build tools including <a href="https://www.pantsbuild.org/">Pants</a> and
+<a href="https://buckbuild.com/">Buck</a>.  Bazel is conceptually simple but
+there are some core concepts &amp; terminology to understand:</p>
+
+<ol>
+<li><p><strong>Bazel command</strong>: a function that does some type of work when
+called from the command line. Common ones include <code>bazel build</code>
+(compile a libary), <code>bazel run</code> (run a binary executable), <code>bazel
+test</code> (execute tests), and <code>bazel query</code> (tell me something about
+the build dependency graph).  See all with <code>bazel help</code>.</p></li>
+
+<li><p><strong>Build phases</strong>: the three stages (loading, analysis, and
+execution) that bazel goes through when calling a bazel command.</p></li>
+
+<li><p><strong>The WORKSPACE file</strong>: a required file that defines the project
+root.  It is primarily used to declare external dependencies
+(external workspaces).</p></li>
+
+<li><p><strong>BUILD files</strong>: the presence of a <code>BUILD</code> file in a directory
+defines it as a <em>package</em>.  <code>BUILD</code> files contain <em>rules</em> that define
+<em>targets</em> which can be selected using the <em>target pattern syntax</em>.
+Rules are written in a python-like language called
+<a href="https://bazel.io/versions/master/docs/skylark/index.html"><em>skylark</em></a>.
+Syklark has stronger deterministic guarantees than python but is
+intentionally minimal, excluding language features such as recursion,
+classes, and lambdas.</p></li>
+</ol>
+
+<h2 id="1-1-package-structure">1.1: Package Structure</h2>
+
+<p>To illustrate these concepts, let&rsquo;s look at the package structure of
+the
+<a href="https://github.com/pubref/rules_protobuf/tree/master/examples">rules_protobuf examples subdirectory</a>.
+Let&rsquo;s look at the file tree, showing only those folder having a
+<code>BUILD</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">$ tree -P &#39;BUILD|WORKSPACE&#39; -I &#39;third_party|bzl&#39; examples/
+.
+├── BUILD
+├── WORKSPACE
+└── examples
+    ├── helloworld
+    │   ├── cpp
+    │   │   └── BUILD
+    │   ├── go
+    │   │   ├── client
+    │   │   │   └── BUILD
+    │   │   ├── greeter_test
+    │   │   │   └── BUILD
+    │   │   └── server
+    │   │       └── BUILD
+    │   ├── grpc_gateway
+    │   │   └── BUILD
+    │   ├── java
+    │   │   └── org
+    │   │       └── pubref
+    │   │           └── rules_protobuf
+    │   │               └── examples
+    │   │                   └── helloworld
+    │   │                       ├── client
+    │   │                       │   └── BUILD
+    │   │                       └── server
+    │   │                           └── BUILD
+    │   └── proto
+    │       └── BUILD
+    └── proto
+        └── BUILD
+</code></pre></div>
+<h2 id="1-2-targets">1.2: Targets</h2>
+
+<p>To get a list of targets within the <code>examples/</code> folder, use a query.
+This says <em>&ldquo;Ok bazel, show me all the callable targets in all packages
+within the examples folder, and say what kind of thing it is in
+addition to its path label&rdquo;</em>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/rules_protobuf$ bazel query //examples/... --output label_kind | sort | column -t
+
+cc_binary                   rule  //examples/helloworld/cpp:client
+cc_binary                   rule  //examples/helloworld/cpp:server
+cc_library                  rule  //examples/helloworld/cpp:clientlib
+cc_library                  rule  //examples/helloworld/proto:cpp
+cc_library                  rule  //examples/proto:cpp
+cc_proto_compile            rule  //examples/helloworld/proto:cpp.pb
+cc_proto_compile            rule  //examples/proto:cpp.pb
+cc_test                     rule  //examples/helloworld/cpp:test
+filegroup                   rule  //examples/helloworld/proto:protos
+filegroup                   rule  //examples/proto:protos
+go_binary                   rule  //examples/helloworld/go/client:client
+go_binary                   rule  //examples/helloworld/go/server:server
+go_library                  rule  //examples/helloworld/go/server:greeter
+go_library                  rule  //examples/helloworld/grpc_gateway:gateway
+go_library                  rule  //examples/helloworld/proto:go
+go_library                  rule  //examples/proto:go_default_library
+go_proto_compile            rule  //examples/helloworld/proto:go.pb
+go_proto_compile            rule  //examples/proto:go_default_library.pb
+go_test                     rule  //examples/helloworld/go/greeter_test:greeter_test
+go_test                     rule  //examples/helloworld/grpc_gateway:greeter_test
+grpc_gateway_proto_compile  rule  //examples/helloworld/grpc_gateway:gateway.pb
+java_binary                 rule  //examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/client:netty
+java_binary                 rule  //examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:netty
+java_library                rule  //examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/client:client
+java_library                rule  //examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:server
+java_library                rule  //examples/helloworld/proto:java
+java_library                rule  //examples/proto:java
+java_proto_compile          rule  //examples/helloworld/proto:java.pb
+java_proto_compile          rule  //examples/proto:java.pb
+js_proto_compile            rule  //examples/helloworld/proto:js
+js_proto_compile            rule  //examples/proto:js
+py_proto_compile            rule  //examples/helloworld/proto:py.pb
+ruby_proto_compile          rule  //examples/proto:rb.pb</code></pre></div>
+<p>We&rsquo;re not limited to targets in our own workspace.  As it turns out,
+the <a href="https://github.com/google/protobuf">Google Protobuf repo</a> is
+named as an external repository (more on this later) and we can also
+address targets in that workspace in the same way.  Here&rsquo;s a partial
+list:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/rules_protobuf$ bazel query @com_github_google_protobuf//... --output label_kind | sort | column -t
+
+cc_binary       rule  @com_github_google_protobuf//:protoc
+cc_library      rule  @com_github_google_protobuf//:protobuf
+cc_library      rule  @com_github_google_protobuf//:protobuf_lite
+cc_library      rule  @com_github_google_protobuf//:protoc_lib
+cc_library      rule  @com_github_google_protobuf//util/python:python_headers
+filegroup       rule  @com_github_google_protobuf//:well_known_protos
+java_library    rule  @com_github_google_protobuf//:protobuf_java
+objc_library    rule  @com_github_google_protobuf//:protobuf_objc
+py_library      rule  @com_github_google_protobuf//:protobuf_python
+...</code></pre></div>
+<p>This is possible because the protobuf team provides a
+<a href="https://github.com/google/protobuf/blob/master/BUILD">BUILD file</a> at
+the root of their repository.  Thanks Protobuf team!  Later we&rsquo;ll
+learn how to &ldquo;inject&rdquo; our own BUILD files into repositories that don&rsquo;t
+already have one.</p>
+
+<p>Inspecting the list above, we see a <code>cc_binary</code> rule named <code>protoc</code>.
+If we <code>bazel run</code> that target, bazel will clone the protobuf repo,
+build all the dependent libraries, build a pristine executable binary
+from source, and call it (pass command line arguments to binary rules
+after the double-dash):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/rules_protobuf$ bazel run @com_github_google_protobuf//:protoc -- --help
+Usage: /private/var/tmp/_bazel_pcj/63330772b4917b139280caef8bb81867/execroot/rules_protobuf/bazel-out/local-fastbuild/bin/external/com_github_google_protobuf/protoc <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span> PROTO_FILES
+Parse PROTO_FILES and generate output based on the options given:
+  -IPATH, --proto_path<span style="color:#f92672">=</span>PATH   Specify the directory in which to search <span style="color:#66d9ef">for</span>
+                              imports.  May be specified multiple times;
+                              directories will be searched in order.  If not
+                              given, the current working directory is used.
+  --version                   Show version info and exit.
+  -h, --help                  Show this text and exit.
+...</code></pre></div>
+<p>As we&rsquo;ll see in a moment, <em>we name the protobuf external dependency
+with a specific commit ID so there&rsquo;s no ambiguity about which protoc
+version we&rsquo;re using</em>.  In this way you can vendor in tools with your
+project with reliable, repeable, secure precision without bloating
+your repository by checking in binaries, resorting to git submodules,
+or similar hacks.  Very clean!</p>
+
+<blockquote>
+<p>Note: the gRPC repository also has a BUILD file: <code>$ bazel query
+@com_github_grpc_grpc//... --output label_kind</code></p>
+</blockquote>
+
+<h2 id="1-3-target-pattern-syntax">1.3: Target Pattern Syntax</h2>
+
+<p>With those examples under our belt, let&rsquo;s examine the target syntax a
+bit more.  When I first started working with bazel I found the
+target-pattern syntax somewhat intimidating.  It&rsquo;s actually not too
+bad. Here&rsquo;s a closer look:</p>
+
+<p><img src="/img/target-pattern-syntax.png" alt="" /></p>
+
+<ul>
+<li><p>The <code>@</code> (at-sign) selects an external workspace. These are
+established by
+<a href="https://bazel.io/docs/be/workspace.html#workspace-rules">workspace rules</a>
+that bind a name to something fetched over the network (or your
+filesystem).</p></li>
+
+<li><p>The <code>//</code> (double-slash) selects the workspace root.</p></li>
+
+<li><p>The <code>:</code> (colon) selects a target (rule or file) within a <em>package</em>.
+Recall that a package is established by the presence of a <code>BUILD</code>
+file in a subfolder of the workspace.</p></li>
+
+<li><p>The <code>/</code> (single-slash) selects a folder within a workspace or
+package.</p></li>
+</ul>
+
+<blockquote>
+<p>A common source of confusion is that the mere presence of a
+BUILD file defines that filesystem subtree as a package and
+therefore one must always account for that.  For example, if there
+exists a file <code>qux.js</code> in <code>foo/bar/baz/</code> and there exists a BUILD
+file in <code>baz/</code> also, the file is selected with <code>foo/bar/baz:qux.js</code>
+and not <code>foo/bar/baz/quz.js</code></p>
+</blockquote>
+
+<p><em>Common shortcut</em>: if there exists a rule having the same name as the
+package, this is the implied target and can be omitted.  For example,
+there is a <code>:jar</code> target in the <code>//jar</code> package in the external
+workspace <code>com_google_guava_guava</code>, so the following are eqivalent:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">deps <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;@com_google_guava_guava//jar:jar&#34;</span>]
+deps <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;@com_google_guava_guava//jar&#34;</span>]</code></pre></div>
+<h2 id="1-4-external-dependencies-workspace-rules">1.4: External Dependencies: Workspace Rules</h2>
+
+<p>Many large organizations check-in in all the required tools,
+compilers, linkers, etc to guarantee correct, repeatable builds.  With
+external workspaces, one can effectively accomplish the same thing
+without bloating your repository.</p>
+
+<blockquote>
+<p>Note: the bazel convention is to use a fully-namespaced identifier
+for external dependency names (replacing special chars with
+underscore).  For example, the remote repository URL is
+<a href="https://github.com/google/protobuf.git">https://github.com/google/protobuf.git</a>.  This is simplified to the
+workspace identifier com_github_google_protobuf.  Similarly, by
+convention the jar artifact <code>io.grpc:grpc-netty:jar:1.0.0-pre1</code>
+becomes <code>io_grpc_grpc_netty</code>.</p>
+</blockquote>
+
+<h3 id="1-4-1-workspace-rules-that-require-a-pre-existing-workspace">1.4.1: Workspace Rules that require a pre-existing WORKSPACE</h3>
+
+<p>These rules assume that the remote resource or URL contains a
+WORKSPACE file at the top of the file tree and BUILD files that define
+rule targets.  These are referred to as <em>bazel repositories</em>.</p>
+
+<ul>
+<li><p><a href="https://bazel.io/docs/be/workspace.html#git_repository">git_repository</a>:
+external bazel dependency from a git repository.  The rule requires
+<code>commit</code> (or <code>tag</code>).</p></li>
+
+<li><p><a href="https://bazel.io/docs/be/workspace.html#http_archive">http_archive</a>:
+an external zip or tar.gz dependency from a URL. It is highly
+recommended to name a sha265 for security.</p></li>
+</ul>
+
+<blockquote>
+<p>Note: although you don&rsquo;t interact directly with the bazel
+execution_root, you can peek at what these external dependencies
+look like when unpacked at <code>$(bazel info
+execution_root)/external/WORKSPACE_NAME</code>.</p>
+</blockquote>
+
+<h3 id="1-4-2-workspace-rules-that-autogenerate-a-workspace-file-for-you">1.4.2: Workspace Rules that autogenerate a WORKSPACE file for you</h3>
+
+<p>The implementation of these repository rules contain logic to
+autogenerate a WORKSPACE file and BUILD file(s) to make resources
+available. As always, it is recommended to provide a known sha265 for
+security to prevent a malicious agent from slipping in tainted code
+via a compromised network.</p>
+
+<ul>
+<li><p><a href="https://bazel.io/docs/be/workspace.html#http_jar">http_jar</a>:
+external jar from a URL. The jar file is available as a
+<code>java_library</code> dependency as <code>@WORKSPACE_NAME//jar</code>.</p></li>
+
+<li><p><a href="https://bazel.io/docs/be/workspace.html#maven_jar">maven_jar</a>:
+external jar from a URL. The jar file is available as a
+<code>java_library</code> dependency as <code>@WORKSPACE_NAME//jar</code>.</p></li>
+
+<li><p><a href="https://bazel.io/docs/be/workspace.html#http_file">http_file</a>:
+external file from a URL. The resource is available as a <code>filegroup</code>
+via <code>@WORKSPACE_NAME//file</code>.</p></li>
+</ul>
+
+<p>For example, we can peek at the generated BUILD file for the
+<code>maven_jar</code> guava dependency via:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/rules_protobuf$ cat <span style="color:#66d9ef">$(</span>bazel info execution_root<span style="color:#66d9ef">)</span>/external/com_google_guava_guava/jar/BUILD</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># DO NOT EDIT: automatically generated BUILD file for maven_jar rule com_google_guava_guava</span>
+java_import(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;jar&#39;</span>,
+    jars <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;guava-19.0.jar&#39;</span>],
+    visibility <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;//visibility:public&#39;</span>]
+)
+
+filegroup(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;file&#39;</span>,
+    srcs <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;guava-19.0.jar&#39;</span>],
+    visibility <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;//visibility:public&#39;</span>]
+)</code></pre></div>
+<blockquote>
+<p>Note: the external workspace directory won&rsquo;t exist until you
+actually need it, so you&rsquo;ll have to have built a target that
+requires it, such as <code>bazel build
+examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/client</code></p>
+</blockquote>
+
+<h3 id="1-4-3-workspace-rules-that-accept-a-build-file-as-an-argument">1.4.3: Workspace Rules that accept a BUILD file as an argument</h3>
+
+<p>If a repository has no BUILD file(s), you can put one into its
+filesystem root to adapt the external resource into bazel&rsquo;s worldview
+and make those resources available to your project.</p>
+
+<p>For example, consider
+<a href="https://github.com/madler/zlib">Mark Adler&rsquo;s zlib library</a>. To start,
+let&rsquo;s learn what depends on this code.  This query says &ldquo;<em>Ok bazel,
+for all targets in examples, find all dependencies (a transitive
+closure set), then tell me which ones depend on the zlib target in the
+root package of the external workspace com_github_madler_zlib.</em>&rdquo; Bazel
+reports this reverse dependency set.  We request the output in
+graphviz format and pipe this to dot to generate the figure:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/rules_protobuf$ bazel query <span style="color:#e6db74">&#34;rdeps(deps(//examples/...), @com_github_madler_zlib//:zlib)&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>                  --output graph | dot -Tpng -O</code></pre></div>
+<p><img src="/img/zlib-deps.png" alt="" /></p>
+
+<p>So we can see that all grpc-related C code ultimately depends on this
+library.  But, there is no BUILD file in Mark&rsquo;s repo&hellip; where did it
+come from?</p>
+
+<p>By using the variant workspace rule <code>new_git_repository</code>, we can
+provide our
+<a href="https://github.com/pubref/rules_protobuf/blob/master/protobuf/build_file/com_github_madler_zlib.BUILD">own BUILD file</a>
+(which defines the <code>cc_library</code> target) as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_git_repository(
+  name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com_github_madler_zlib&#34;</span>,
+  remote <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://github.com/madler/zlib&#34;</span>,
+  tag: <span style="color:#e6db74">&#34;v1.2.8&#34;</span>,
+  build_file: <span style="color:#e6db74">&#34;//bzl:build_file/com_github_madler_zlib.BUILD&#34;</span>,
+)</code></pre></div>
+<p>This <code>new_*</code> family of workspace rules keeps your repository lean and
+allows you to vendor in pretty much any type of network-available
+resource.  Awesome!</p>
+
+<ul>
+<li><a href="https://bazel.io/docs/be/workspace.html#new_git_repository">new_git_repository</a></li>
+<li><a href="https://bazel.io/docs/be/workspace.html#new_local_repository">new_local_repository</a></li>
+<li><a href="https://bazel.io/docs/be/workspace.html#new_http_archive">new_http_archive</a></li>
+</ul>
+
+<blockquote>
+<p>You can also
+<a href="https://bazel.io/docs/skylark/repository_rules.html">write your own repository rules</a>
+that have custom logic to pull resources from the net and bind it
+into bazel&rsquo;s view of the universe.</p>
+</blockquote>
+
+<h2 id="1-5-bazel-summary">1.5: Bazel Summary</h2>
+
+<p>When presented with a command and a target-pattern, bazel goes through
+the following three phases:</p>
+
+<ol>
+<li><p>Loading: Read the WORKSPACE and required BUILD files. Generate a
+dependency graph.</p></li>
+
+<li><p>Analysis: for all nodes in the graph, which nodes are actually
+required for this build? Do we have all the necessary
+resources available?</p></li>
+
+<li><p>Execution: execute each required node in the dependency graph and
+generate outputs.</p></li>
+</ol>
+
+<p>Hopefully you now have enough conceptual knowledge of bazel to be
+productive.</p>
+
+<h2 id="1-6-rules-protobuf">1.6: rules_protobuf</h2>
+
+<p><a href="https://github.com/pubref/rules_protobuf">rules_protobuf</a> is an
+extension to bazel that takes care of:</p>
+
+<ol>
+<li><p>Building the protocol buffer compiler <code>protoc</code>,</p></li>
+
+<li><p>Downloading and/or building all the necessary protoc-gen plugins.</p></li>
+
+<li><p>Downloading and/or building all the necessary gRPC-related support
+libraries.</p></li>
+
+<li><p>Invoking protoc for you (on demand), smoothing out the
+idiosyncracies of different protoc plugins.</p></li>
+</ol>
+
+<p>It works by passing one or more <code>proto_language</code> specifications to the
+<code>proto_compile</code> rule.  A <code>proto_language</code> rule contains the metadata
+about how to invoke the plugin and the predicted file outputs, while
+the <code>proto_compile</code> rule interprets a <code>proto_language</code> spec and builds
+the appropriate command-line arguments to <code>protoc</code>.  For example,
+here&rsquo;s how we can generate outputs for multiple languages
+simultaneously:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> proto_compile(
+   name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pluriproto&#34;</span>,
+   protos <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;:protos&#34;</span>],
+   langs <span style="color:#f92672">=</span> [
+       <span style="color:#e6db74">&#34;//cpp&#34;</span>,
+       <span style="color:#e6db74">&#34;//csharp&#34;</span>,
+       <span style="color:#e6db74">&#34;//closure&#34;</span>,
+       <span style="color:#e6db74">&#34;//ruby&#34;</span>,
+       <span style="color:#e6db74">&#34;//java&#34;</span>,
+       <span style="color:#e6db74">&#34;//java:nano&#34;</span>,
+       <span style="color:#e6db74">&#34;//python&#34;</span>,
+       <span style="color:#e6db74">&#34;//objc&#34;</span>,
+       <span style="color:#e6db74">&#34;//node&#34;</span>,
+   ],
+   verbose <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+   with_grpc <span style="color:#f92672">=</span> True,
+ )</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ bazel build :pluriproto
+<span style="color:#75715e"># ************************************************************</span>
+cd <span style="color:#66d9ef">$(</span>bazel info execution_root<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> bazel-out/host/bin/external/com_github_google_protobuf/protoc <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--plugin<span style="color:#f92672">=</span>protoc-gen-grpc-java<span style="color:#f92672">=</span>bazel-out/host/genfiles/third_party/protoc_gen_grpc_java/protoc_gen_grpc_java <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--plugin<span style="color:#f92672">=</span>protoc-gen-grpc<span style="color:#f92672">=</span>bazel-out/host/bin/external/com_github_grpc_grpc/grpc_cpp_plugin <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--plugin<span style="color:#f92672">=</span>protoc-gen-grpc-nano<span style="color:#f92672">=</span>bazel-out/host/genfiles/third_party/protoc_gen_grpc_java/protoc_gen_grpc_java <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--plugin<span style="color:#f92672">=</span>protoc-gen-grpc-csharp<span style="color:#f92672">=</span>bazel-out/host/genfiles/external/nuget_grpc_tools/protoc-gen-grpc-csharp <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--plugin<span style="color:#f92672">=</span>protoc-gen-go<span style="color:#f92672">=</span>bazel-out/host/bin/external/com_github_golang_protobuf/protoc_gen_go <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--descriptor_set_out<span style="color:#f92672">=</span>bazel-genfiles/examples/proto/pluriproto.descriptor_set <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--ruby_out<span style="color:#f92672">=</span>bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--python_out<span style="color:#f92672">=</span>bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--cpp_out<span style="color:#f92672">=</span>bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--grpc_out<span style="color:#f92672">=</span>bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--objc_out<span style="color:#f92672">=</span>bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--csharp_out<span style="color:#f92672">=</span>bazel-genfiles/examples/proto <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--java_out<span style="color:#f92672">=</span>bazel-genfiles/examples/proto/pluriproto_java.jar <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--javanano_out<span style="color:#f92672">=</span>ignore_services<span style="color:#f92672">=</span>true:bazel-genfiles/examples/proto/pluriproto_nano.jar <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--js_out<span style="color:#f92672">=</span>import_style<span style="color:#f92672">=</span>closure,error_on_name_conflict,binary,library<span style="color:#f92672">=</span>examples/proto/pluriproto:bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--js_out<span style="color:#f92672">=</span>import_style<span style="color:#f92672">=</span>commonjs,error_on_name_conflict,binary:bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--go_out<span style="color:#f92672">=</span>plugins<span style="color:#f92672">=</span>grpc,Mexamples/proto/common.proto<span style="color:#f92672">=</span>github.com/pubref/rules_protobuf/examples/proto/pluriproto:bazel-genfiles <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--grpc-java_out<span style="color:#f92672">=</span>bazel-genfiles/examples/proto/pluriproto_java.jar <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--grpc-nano_out<span style="color:#f92672">=</span>ignore_services<span style="color:#f92672">=</span>true:bazel-genfiles/examples/proto/pluriproto_nano.jar <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--grpc-csharp_out<span style="color:#f92672">=</span>bazel-genfiles/examples/proto <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--proto_path<span style="color:#f92672">=</span>. <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>examples/proto/common.proto
+<span style="color:#75715e"># ************************************************************</span>
+examples/proto/common_pb.rb
+examples/proto/pluriproto_java.jar
+examples/proto/pluriproto_nano.jar
+examples/proto/common_pb2.py
+examples/proto/common.pb.h
+examples/proto/common.pb.cc
+examples/proto/common.grpc.pb.h
+examples/proto/common.grpc.pb.cc
+examples/proto/Common.pbobjc.h
+examples/proto/Common.pbobjc.m
+examples/proto/pluriproto.js
+examples/proto/Common.cs
+examples/proto/CommonGrpc.cs
+examples/proto/common.pb.go
+examples/proto/common_pb.js
+examples/proto/pluriproto.descriptor_set</code></pre></div>
+<p>The various <code>*_proto_library</code> rules (that we&rsquo;ll be using below)
+internally invoke this <code>proto_compile</code> rule, then consume the
+generated outputs and compile them with the requisite libraries into
+<code>.class</code>, <code>.so</code>, <code>.a</code> (or whatever) objects.</p>
+
+<p>So let&rsquo;s <em>make something</em> already! We&rsquo;ll use bazel and rules_protobuf
+to build a gRPC application.</p>
+
+<h1 id="2-building-a-grpc-service-with-rules-protobuf">2: Building a gRPC service with rules_protobuf</h1>
+
+<p>The application will involve communication between two
+different gRPC services:</p>
+
+<h2 id="2-1-services">2.1: Services</h2>
+
+<ol>
+<li><p><strong>The Greeter service</strong>: This is the familiar &ldquo;Hello World&rdquo; starter
+example that accepts a request with a <code>user</code> argument and replies
+back with the string <code>Hello {user}</code>.</p></li>
+
+<li><p><strong>The GreeterTimer service</strong>: This gRPC service will repeatedly
+call a Greeter service in batches and report back aggregate batch
+times (in milliseconds).  In this way we can compare some average
+rpc times for the different Greeter service implementations.</p></li>
+</ol>
+
+<blockquote>
+<p>This is an informal benchmark intended only for demonstration of
+building gRPC applications.  For more formal performance testing,
+consult the
+<a href="https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5760820306771968">gRPC performance dashboard</a>.</p>
+</blockquote>
+
+<h2 id="2-2-compiled-programs">2.2: Compiled Programs</h2>
+
+<p>For the demo, we&rsquo;ll use 6 different compiled programs written in 4
+languages:</p>
+
+<ul>
+<li><p>A <code>GreeterTimer</code> client (go).  This command-line interface requires
+the <code>greetertimer.proto</code> service definition defined locally in the
+<code>//proto:greetertimer.proto</code> file.</p></li>
+
+<li><p>A <code>GreeterTimer</code> server (java).  This netty-based server requires
+both the <code>//proto/greetertimer.proto</code> file and the proto definition
+defined externally in
+<code>@org_pubref_rules_protobuf//examples/helloworld/proto:helloworld.proto</code>.</p></li>
+
+<li><p>Four <code>Greeter</code> server implementations (C++, java, go, and C#).
+rules_protobuf already provides these example implementations, so
+we&rsquo;ll just use them directly.</p></li>
+</ul>
+
+<h2 id="2-3-protobuf-definitions">2.3: Protobuf Definitions</h2>
+
+<p>GreeterTimer accepts a unary <code>TimerRequest</code> and streams back a
+sequence of <code>BatchReponse</code> until all messages have been processed, at
+which point the remote procedure call is complete.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">service GreeterTimer {
+  <span style="color:#75715e">// Unary request followed by multiple streamed responses.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Response granularity will be set by the request batch size.
+</span><span style="color:#75715e"></span>  rpc timeHello(TimerRequest) returns (stream BatchResponse);
+}</code></pre></div>
+<p><code>TimerRequest</code> includes metadata about where to contact the Greeter
+service, how many total RPC calls to make, and how frequent to stream
+back a BatchResponse (configured via the batch size).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">message TimerRequest {
+  <span style="color:#75715e">// the host where the grpc server is running
+</span><span style="color:#75715e"></span>  string host <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#75715e">// The port of the grpc server
+</span><span style="color:#75715e"></span>  int32 port <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#75715e">// The total number of hellos
+</span><span style="color:#75715e"></span>  int32 total <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+  <span style="color:#75715e">// The number of hellos before sending a BatchResponse.
+</span><span style="color:#75715e"></span>  int32 batchSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+}</code></pre></div>
+<p><code>BatchResponse</code> reports the number of calls made in the batch, how
+long the batch run took, and the number of remaining calls.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">message BatchResponse {
+  <span style="color:#75715e">// The number of checks that are remaining, calculated relative to
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// totalChecks in the request.
+</span><span style="color:#75715e"></span>  int32 remaining <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  <span style="color:#75715e">// The number of checks actually performed in this batch.
+</span><span style="color:#75715e"></span>  int32 batchCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#75715e">// The number of checks that failed.
+</span><span style="color:#75715e"></span>  int32 errCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+  <span style="color:#75715e">// The total time spent, expressed as a number of milliseconds per
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// request batch size (total time spent performing batchSize number
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// of health checks).
+</span><span style="color:#75715e"></span>  int64 batchTimeMillis <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+}</code></pre></div>
+<p>The non-streaming <code>Greeter</code> service takes a unary <code>HelloRequest</code> and
+responds with a single <code>HelloReply</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+  string name <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+  common.Config config <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+}
+
+message HelloReply {
+  string message <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+}</code></pre></div>
+<blockquote>
+<p>The <code>common.Config</code> message type is not particularly functional here
+but serves to demonstrate the use of imports.  rules_protobuf can
+help with more complex setups having multiple proto → proto
+dependencies.</p>
+</blockquote>
+
+<h2 id="2-4-build-the-grpc-greetertimer-example-application">2.4: Build the grpc_greetertimer example application.</h2>
+
+<p>This demo application can be cloned at
+<a href="https://github.com/pubref/grpc_greetertimer">https://github.com/pubref/grpc_greetertimer</a>.</p>
+
+<h3 id="2-4-1-create-the-project-layout">2.4.1: Create the Project Layout</h3>
+
+<p>Here&rsquo;s the directory layout and relevant BUILD files we&rsquo;ll be using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~$ mkdir grpc_greetertimer <span style="color:#f92672">&amp;&amp;</span> cd grpc_greetertimer
+~/grpc_greetertimer$ mkdir -p proto/ go/ java/org/pubref/grpc/greetertimer/
+~/grpc_greetertimer$ touch WORKSPACE
+~/grpc_greetertimer$ touch proto/BUILD
+~/grpc_greetertimer$ touch proto/greetertimer.proto
+~/grpc_greetertimer$ touch go/BUILD
+~/grpc_greetertimer$ touch go/main.go
+~/grpc_greetertimer$ touch java/org/pubref/grpc/greetertimer/BUILD
+~/grpc_greetertimer$ touch java/org/pubref/grpc/greetertimer/GreeterTimerServer.java</code></pre></div>
+<h3 id="2-4-2-the-workspace">2.4.2: The WORKSPACE</h3>
+
+<p>We&rsquo;ll begin by creating the <a href="https://github.com/pubref/grpc_greetertimer">WORKSPACE</a> file with a
+reference to the rules_protobuf repository.  We load the main
+entrypoint skylark file
+<a href="https://github.com/pubref/rules_protobuf/blob/master/protobuf/rules.bzl">rules.bzl</a>
+in the <code>//bzl</code> package and call its <code>protobuf_repositories</code> function
+with the languages to we want to use (in this case <code>java</code> and <code>go</code>).
+We also load <a href="https://github.com/bazelbuild/rules_go">rules_go</a> for go
+compile support (not shown).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># File //:WORKSPACE</span>
+workspace(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;org_pubref_grpc_greetertimer&#34;</span>)
+
+git_repository(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;org_pubref_rules_protobuf&#34;</span>,
+    remote <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://github.com/pubref/rules_protobuf.git&#34;</span>,
+    tag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;v0.6.0&#34;</span>,
+)
+
+<span style="color:#75715e"># Load language-specific dependencies</span>
+load(<span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//java:rules.bzl&#34;</span>, <span style="color:#e6db74">&#34;java_proto_repositories&#34;</span>)
+java_proto_repositories()
+
+load(<span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//go:rules.bzl&#34;</span>, <span style="color:#e6db74">&#34;go_proto_repositories&#34;</span>)
+go_proto_repositories()</code></pre></div>
+<blockquote>
+<p>Refer to the
+<a href="https://github.com/pubref/rules_protobuf/protobuf/internal/repositories.bzl">repositories.bzl file</a>,
+if you are interested in inspecting the dependencies.</p>
+</blockquote>
+
+<p>Bazel won&rsquo;t actually <em>fetch</em> something unless we actually need it by
+some other rule later, so let&rsquo;s go ahead and write some code.  We&rsquo;ll
+store our protocol buffer sources in <code>//proto</code>, our java sources in
+<code>//java</code>, and go source in <code>//go</code>.</p>
+
+<blockquote>
+<p>Note: go development within a bazel workspace is a little different
+than vanilla go.  In particular, one does not have to adhere to a
+typical <code>GOCODE</code> layout having a <code>src/</code>, <code>pkg/</code>, <code>bin/</code>
+subdirectories.</p>
+</blockquote>
+
+<h3 id="2-4-3-the-greetertimer-server">2.4.3: The GreeterTimer Server</h3>
+
+<p>The
+<a href="java/org/pubref/grpc/greetertimer/GreeterTimerServer.java">java server&rsquo;s</a>
+main job is to accept requests and then connect to the requested
+Greeter service as a client.  The implementation counts down the
+number of remaining messages and does a blocking <code>sayHello(request)</code>
+for each one.  If the batchSize limit is met, the
+<code>observer.onNext(response)</code> message is invoked, streaming back a
+response to the client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/* File //java/org/pubref/grpc/greetertimer:GreeterTimerServer.java */</span>
+
+  <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>remaining<span style="color:#f92672">--</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>batchCount<span style="color:#f92672">++</span> <span style="color:#f92672">==</span> batchSize<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      BatchResponse response <span style="color:#f92672">=</span> BatchResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setRemaining</span><span style="color:#f92672">(</span>remaining<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setBatchCount</span><span style="color:#f92672">(</span>batchCount<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setBatchTimeMillis</span><span style="color:#f92672">(</span>batchTime<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setErrCount</span><span style="color:#f92672">(</span>errCount<span style="color:#f92672">)</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+      observer<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>response<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    blockingStub<span style="color:#f92672">.</span><span style="color:#a6e22e">sayHello</span><span style="color:#f92672">(</span>HelloRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+                          <span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;#&#34;</span> <span style="color:#f92672">+</span> remaining<span style="color:#f92672">)</span>
+                          <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">());</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<h3 id="2-4-4-the-greetertimer-client">2.4.4: The GreeterTimer Client</h3>
+
+<p>The
+<a href="go/main.go">go client</a>
+prepares a <code>TimerRequest</code> and gets back a stream interface from the
+<code>client.TimeHello</code> method.  We call its <code>Recv()</code> method until EOF, at
+which point the call is complete.  A summary of each BatchResponse is
+simply printed out to the terminal.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// File: //go:main.go
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">submit</span>(<span style="color:#a6e22e">client</span> <span style="color:#a6e22e">greeterTimer</span>.<span style="color:#a6e22e">GreeterTimerClient</span>, <span style="color:#a6e22e">request</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">greeterTimer</span>.<span style="color:#a6e22e">TimerRequest</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">TimeHello</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#a6e22e">request</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;could not submit request: %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+	}
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">batchResponse</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Recv</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+		}
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;error during batch recv: %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+		}
+		<span style="color:#a6e22e">reportBatchResult</span>(<span style="color:#a6e22e">batchResponse</span>)
+	}
+}</code></pre></div>
+<h3 id="2-4-5-generate-the-go-protobuf-grpc-code">2.4.5: Generate the go protobuf+gRPC code</h3>
+
+<p>In our <code>//proto:BUILD</code> file, we have a <code>go_proto_library</code> rule loaded
+from the rules_protobuf repository.  Internally, the rule declares to
+bazel that it is responsible for creating <code>greetertimer.pb.go</code> output
+file. This rule won&rsquo;t actually <em>do</em> anything unless we depend on it
+somewhere else.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># File: //proto:BUILD</span>
+load(<span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//go:rules.bzl&#34;</span>, <span style="color:#e6db74">&#34;go_proto_library&#34;</span>)
+
+go_proto_library(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;go_default_library&#34;</span>,
+    protos <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;greetertimer.proto&#34;</span>,
+    ],
+    with_grpc <span style="color:#f92672">=</span> True,
+)</code></pre></div>
+<p>The go client implementation depends on the <code>go_proto_library</code> as
+source file provider to the <code>go_binary</code> rule.  We also pass in some
+compile-time dependencies named in the
+<code>GRPC_COMPILE_DEPS</code> list.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">load(<span style="color:#e6db74">&#34;@io_bazel_rules_go//go:def.bzl&#34;</span>, <span style="color:#e6db74">&#34;go_binary&#34;</span>)
+load(<span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//go:rules.bzl&#34;</span>, <span style="color:#e6db74">&#34;GRPC_COMPILE_DEPS&#34;</span>)
+
+go_binary(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello_client&#34;</span>,
+    srcs <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;main.go&#34;</span>,
+    ],
+    deps <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;//proto:go_default_library&#34;</span>,
+    ] <span style="color:#f92672">+</span> GRPC_COMPILE_DEPS,
+)</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/grpc_greetertimer$ bazel build //go:client</code></pre></div>
+<p>Here&rsquo;s what happens when we invoke bazel to actually build the client
+binary:</p>
+
+<ol>
+<li><p>Bazel checks to see if the inputs (files) that the binary depends
+on have changed (by content hash and filestamps).  Bazel recognizes
+that the output files for the <code>//proto:go_default_library</code> have not
+been built.</p></li>
+
+<li><p>Bazel checks to see if all the necessary inputs (including tools)
+for the <code>go_proto_library</code> are available.  If not, download and
+build all the necessary tools.  Then, invoke the rule.</p>
+
+<ol>
+<li><p>Fetch the <code>google/protobuf</code> repository and build <code>protoc</code> from
+source (via a cc_binary rule).</p></li>
+
+<li><p>Build the <code>protoc-gen-go</code> plugin from source (via a go_binary
+rule).</p></li>
+
+<li><p>Invoke <code>protoc</code> with the <code>protoc-gen-go</code> plugin with the
+appropriate options and arguments.</p></li>
+
+<li><p>Confirm that all the declared outputs of the <code>go_proto_library</code>
+where actually built (should be in <code>bazel-bin/proto/greetertimer.pb.go</code>).</p></li>
+</ol></li>
+
+<li><p>Compile the generated <code>greetertimer.pb.go</code> with the client
+<code>main.go</code> file, creating the <code>bazel-bin/go/client</code> executable.</p></li>
+</ol>
+
+<h3 id="2-4-6-generate-the-java-protobuf-libraries">2.4.6: Generate the java protobuf libraries</h3>
+
+<p>The <code>java_proto_library</code> rule is functionally identical to the
+<code>go_proto_library</code> rule.  However, instead of providing a <code>*.pb.go</code>
+file, it bundles up all the generated outputs into a <code>*.srcjar</code> file
+(which is then used as an input to the <code>java_library</code> rule).  This an
+implementation detail of the java rule.  Here is how we build the
+final java binary:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">java_binary(
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;server&#34;</span>,
+    main_class <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;org.pubref.grpc.greetertimer.GreeterTimerServer&#34;</span>,
+    srcs <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;GreeterTimerServer.java&#34;</span>,
+    ],
+    deps <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;:timer_protos&#34;</span>,
+        <span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//examples/helloworld/proto:java&#34;</span>,
+        <span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//java:grpc_compiletime_deps&#34;</span>,
+    ],
+    runtime_deps <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#34;@org_pubref_rules_protobuf//java:netty_runtime_deps&#34;</span>,
+    ],
+)</code></pre></div>
+<ol>
+<li><p>The <code>:timer_protos</code> is a locally defined <code>java_proto_library</code> rule.</p></li>
+
+<li><p>The <code>@org_pubref_rules_protobuf//examples/helloworld/proto:java</code> is
+an external <code>java_proto_library</code> rule that generates the greeter service
+client stub in our own workspace.</p></li>
+
+<li><p>Finally, we name the compile-time and run-time dependencies for the
+executable jar.  If these jar files have not yet been downloaded from
+maven central, they will be fetch as soon as we need them:</p></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/grpc_greetertimer$ bazel build java/org/pubref/grpc/greetertimer:server
+~/grpc_greetertimer$ bazel build java/org/pubref/grpc/greetertimer:server_deploy.jar</code></pre></div>
+<p>This last form (having the extra <code>_deploy.jar</code>) is called an <em>implicit
+target</em> of the <code>:server</code> rule.  When invoked this way, bazel will pack
+up all the required classes and generate a standalone executable jar
+that can be run independently in a jvm.</p>
+
+<h3 id="2-4-7-run-it">2.4.7: Run it!</h3>
+
+<p>First, we&rsquo;ll start a greeter server (one at a time):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/grpc_greetertimer$ cd ~/rules_protobuf
+~/rules_protobuf$ bazel run examples/helloworld/go/server
+~/rules_protobuf$ bazel run examples/helloworld/cpp/server
+~/rules_protobuf$ bazel run examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:netty
+~/rules_protobuf$ bazel run examples/helloworld/csharp/GreeterServer
+INFO: Server started, listening on <span style="color:#ae81ff">50051</span></code></pre></div>
+<p>In a separate terminal, start the greetertimer server:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/grpc_greetertimer$ bazel build //java/org/pubref/grpc/greetertimer:server_deploy.jar
+~/grpc_greetertimer$ java -jar bazel-bin/java/org/pubref/grpc/greetertimer/server_deploy.jar</code></pre></div>
+<p>Finally, in a third terminal, invoke the greetertimer client:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Timings for the java server</span>
+~/rules_protobuf$ bazel run examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:netty
+
+~/grpc_greeterclient$ bazel run //go:client -- -total_size <span style="color:#ae81ff">10000</span> -batch_size <span style="color:#ae81ff">1000</span>
+<span style="color:#ae81ff">17</span>:31:04 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">8999</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span>.7 hellos/ms or ~590µs per hello
+<span style="color:#75715e"># ... plus a few runs to warm up the jvm...</span>
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">8999</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~149µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">7998</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">6997</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">8</span>.9 hellos/ms or ~112µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">5996</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.2 hellos/ms or ~109µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">4995</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.4 hellos/ms or ~106µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">3994</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">2993</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.4 hellos/ms or ~107µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">1992</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.4 hellos/ms or ~107µs per hello
+<span style="color:#ae81ff">17</span>:31:13 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">991</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.1 hellos/ms or ~110µs per hello
+<span style="color:#ae81ff">17</span>:31:14 <span style="color:#ae81ff">991</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, -1 remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello<span style="color:#e6db74">```</span>
+
+<span style="color:#e6db74">```</span>sh
+<span style="color:#75715e"># Timings for the go server</span>
+~/rules_protobuf$ bazel run examples/helloworld/go/server
+
+~/grpc_greeterclient$ bazel run //go:client -- -total_size <span style="color:#ae81ff">10000</span> -batch_size <span style="color:#ae81ff">1000</span>
+<span style="color:#ae81ff">17</span>:32:33 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">8999</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.5 hellos/ms or ~134µs per hello
+<span style="color:#ae81ff">17</span>:32:33 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">7998</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.9 hellos/ms or ~127µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">6997</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.8 hellos/ms or ~128µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">5996</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.7 hellos/ms or ~130µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">4995</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.9 hellos/ms or ~126µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">3994</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">8</span>.0 hellos/ms or ~125µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">2993</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.6 hellos/ms or ~132µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">1992</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.9 hellos/ms or ~126µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">991</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.9 hellos/ms or ~127µs per hello
+<span style="color:#ae81ff">17</span>:32:34 <span style="color:#ae81ff">991</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, -1 remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">7</span>.8 hellos/ms or ~128µs per hello</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Timings for the C++ server</span>
+~/rules_protobuf$ bazel run examples/helloworld/cpp:server
+
+~/grpc_greeterclient$ bazel run //go:client -- -total_size <span style="color:#ae81ff">10000</span> -batch_size <span style="color:#ae81ff">1000</span>
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">8999</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.1 hellos/ms or ~110µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">7998</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">6997</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.1 hellos/ms or ~110µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">5996</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">8</span>.6 hellos/ms or ~116µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">4995</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">3994</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">2993</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.1 hellos/ms or ~110µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">1992</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:33:10 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">991</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello
+<span style="color:#ae81ff">17</span>:33:11 <span style="color:#ae81ff">991</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, -1 remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">9</span>.0 hellos/ms or ~111µs per hello</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Timings for the C# server</span>
+~/rules_protobuf$ bazel run examples/helloworld/csharp/GreeterServer
+
+~/grpc_greeterclient$ bazel run //go:client -- -total_size <span style="color:#ae81ff">10000</span> -batch_size <span style="color:#ae81ff">1000</span>
+<span style="color:#ae81ff">17</span>:34:37 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">8999</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.0 hellos/ms or ~166µs per hello
+<span style="color:#ae81ff">17</span>:34:37 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">7998</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~150µs per hello
+<span style="color:#ae81ff">17</span>:34:37 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">6997</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.8 hellos/ms or ~148µs per hello
+<span style="color:#ae81ff">17</span>:34:37 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">5996</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.8 hellos/ms or ~147µs per hello
+<span style="color:#ae81ff">17</span>:34:37 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">4995</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~150µs per hello
+<span style="color:#ae81ff">17</span>:34:38 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">3994</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~150µs per hello
+<span style="color:#ae81ff">17</span>:34:38 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">2993</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~149µs per hello
+<span style="color:#ae81ff">17</span>:34:38 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">1992</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.7 hellos/ms or ~149µs per hello
+<span style="color:#ae81ff">17</span>:34:38 <span style="color:#ae81ff">1001</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, <span style="color:#ae81ff">991</span> remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.8 hellos/ms or ~148µs per hello
+<span style="color:#ae81ff">17</span>:34:38 <span style="color:#ae81ff">991</span> hellos <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> errs, -1 remaining<span style="color:#f92672">)</span>: <span style="color:#ae81ff">6</span>.8 hellos/ms or ~147µs per hello</code></pre></div>
+<p>The informal analysis demonstrated comparable timings for c++, go, and
+java greeter service implementations.  The c++ server had the overall
+fastest and most consistent performance.  The go implementation was
+also very consistent, but slightly slower than C++.  Java demonstrated
+some initial relative slowness likely due to the JVM warming up but
+soon converged on timings similar to the C++ implementation.  C# has
+consistent performance but marginally slower.</p>
+
+<h2 id="2-5-summary">2.5: Summary</h2>
+
+<p>Bazel assists in the construction of gRPC applications by providing a
+capable build environment for services built in a multitude of
+languages.  <a href="https://github.com/pubref/rules_protobuf/">rules_protobuf</a> complements bazel by packaging up all the
+dependencies needed and abstracting away the need to call protoc
+directly.</p>
+
+<p>In this workflow one does not need to check in the generated source code
+(it is always generated on-demand within your workspace).  For
+projects that <em>do</em> require this, one can use the <code>output_to_workspace</code> option to place the generated
+files alongside the protobuf definitions.</p>
+
+<p>Finally, rules_protobuf has full support for the
+<a href="https://github.com/grpc-ecosystem/grpc-gateway">grpc-gateway</a> project
+via the
+<a href="https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_proto_library">grpc_gateway_proto_library</a>
+and
+<a href="https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_binary">grpc_gateway_binary</a> rules, so you can easily bridge your gRPC apps with HTTP/1.1 gateways.</p>
+
+<p>Refer to the <a href="https://github.com/pubref/rules_protobuf/#rules">complete list of supported languages and gRPC versions</a> for more information.</p>
+
+<p>And&hellip; that&rsquo;s a wrap.  Happy procedure calling!</p>
+
+<blockquote>
+<p>Paul Johnston is the principal at <a href="https://pubref.org">PubRef</a>
+(<a href="https://twitter.com/pub_ref">@pub_ref</a>), a solutions provider for
+scientific communications workflows.  If you have an organizational
+need for assistance with Bazel, gRPC, or related technologies,
+please contact pcj@pubref.org.  Thanks!</p>
+</blockquote>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

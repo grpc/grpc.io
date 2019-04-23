@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC Basics - Go &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/"  class="active">Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/" >Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+
+<div class="quickstartcols">
+
+<div class="quickstartcol1">
+
+<h8>Tutorials</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/async/helloasync-cpp/" >Async - C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/auth/oauth2-objective-c/" >Auth - Objective C</a>
+<h8>Basic</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/c/" >C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/csharp/" >C#</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/dart/" >Dart</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/go/" class="active">Go</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/java/" >Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/android/" >Android Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/node/" >Node</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/objective-c/" >Objective-C</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/php/" >PHP</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/python/" >Python</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/ruby/" >Ruby</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/web/" >Web</a>
+
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">gRPC Basics - Go</h3>
+
+    
+
+<p>This tutorial provides a basic Go programmer&rsquo;s introduction to
+working with gRPC.</p>
+
+<p>By walking through this example you&rsquo;ll learn how to:</p>
+
+<ul>
+<li>Define a service in a .proto file.</li>
+<li>Generate server and client code using the protocol buffer compiler.</li>
+<li>Use the Go gRPC API to write a simple client and server for your service.</li>
+</ul>
+
+<p>It assumes that you have read the <a href="/docs/">Overview</a> and are familiar
+with <a href="https://developers.google.com/protocol-buffers/docs/overview">protocol buffers</a>. Note that the
+example in this tutorial uses the proto3 version of the protocol buffers
+language: you can find out more in the
+<a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3 language
+guide</a> and the <a href="https://developers.google.com/protocol-buffers/docs/reference/go-generated">Go
+generated code
+guide</a>.</p>
+
+<div id="toc"></div>
+
+<h3 id="why-use-grpc">Why use gRPC?</h3>
+
+<p>Our example is a simple route mapping application that lets clients get
+information about features on their route, create a summary of their route, and
+exchange route information such as traffic updates with the server and other
+clients.</p>
+
+<p>With gRPC we can define our service once in a .proto file and implement clients
+and servers in any of gRPC&rsquo;s supported languages, which in turn can be run in
+environments ranging from servers inside Google to your own tablet - all the
+complexity of communication between different languages and environments is
+handled for you by gRPC. We also get all the advantages of working with protocol
+buffers, including efficient serialization, a simple IDL, and easy interface
+updating.</p>
+
+<h3 id="example-code-and-setup">Example code and setup</h3>
+
+<p>The example code for our tutorial is in
+<a href="https://github.com/grpc/grpc-go/tree/master/examples/route_guide">grpc/grpc-go/examples/route_guide</a>.
+To download the example, clone the <code>grpc-go</code> repository by running the following
+command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go get google.golang.org/grpc</code></pre></div>
+<p>Then change your current directory to <code>grpc-go/examples/route_guide</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide</code></pre></div>
+<p>You also should have the relevant tools installed to generate the server and client interface code - if you don&rsquo;t already, follow the setup instructions in <a href="/docs/quickstart/go/">the Go quick start guide</a>.</p>
+
+<h3 id="defining-the-service">Defining the service</h3>
+
+<p>Our first step (as you&rsquo;ll know from the <a href="/docs/">Overview</a>) is to
+define the gRPC <em>service</em> and the method <em>request</em> and <em>response</em> types using
+<a href="https://developers.google.com/protocol-buffers/docs/overview">protocol buffers</a>. You can see the
+complete .proto file in
+<a href="https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto"><code>examples/route_guide/routeguide/route_guide.proto</code></a>.</p>
+
+<p>To define a service, you specify a named <code>service</code> in your .proto file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">service</span> RouteGuide {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#f92672">...</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>Then you define <code>rpc</code> methods inside your service definition, specifying their
+request and response types. gRPC lets you define four kinds of service method,
+all of which are used in the <code>RouteGuide</code> service:</p>
+
+<ul>
+<li>A <em>simple RPC</em> where the client sends a request to the server using the stub
+and waits for a response to come back, just like a normal function call.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Obtains the feature at a given position.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> GetFeature(Point) <span style="color:#66d9ef">returns</span> (Feature) {}</code></pre></div>
+<ul>
+<li>A <em>server-side streaming RPC</em> where the client sends a request to the server
+and gets a stream to read a sequence of messages back. The client reads from
+the returned stream until there are no more messages. As you can see in our
+example, you specify a server-side streaming method by placing the <code>stream</code>
+keyword before the <em>response</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Obtains the Features available within the given Rectangle.  Results are
+</span><span style="color:#75715e">// streamed rather than returned at once (e.g. in a response message with a
+</span><span style="color:#75715e">// repeated field), as the rectangle may cover a large area and contain a
+</span><span style="color:#75715e">// huge number of features.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> ListFeatures(Rectangle) <span style="color:#66d9ef">returns</span> (stream Feature) {}</code></pre></div>
+<ul>
+<li>A <em>client-side streaming RPC</em> where the client writes a sequence of messages
+and sends them to the server, again using a provided stream. Once the client
+has finished writing the messages, it waits for the server to read them all
+and return its response. You specify a client-side streaming method by placing
+the <code>stream</code> keyword before the <em>request</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Accepts a stream of Points on a route being traversed, returning a
+</span><span style="color:#75715e">// RouteSummary when traversal is completed.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> RecordRoute(stream Point) <span style="color:#66d9ef">returns</span> (RouteSummary) {}</code></pre></div>
+<ul>
+<li>A <em>bidirectional streaming RPC</em> where both sides send a sequence of messages
+using a read-write stream. The two streams operate independently, so clients
+and servers can read and write in whatever order they like: for example, the
+server could wait to receive all the client messages before writing its
+responses, or it could alternately read a message then write a message, or
+some other combination of reads and writes. The order of messages in each
+stream is preserved. You specify this type of method by placing the <code>stream</code>
+keyword before both the request and the response.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Accepts a stream of RouteNotes sent while a route is being traversed,
+</span><span style="color:#75715e">// while receiving other RouteNotes (e.g. from other users).
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> RouteChat(stream RouteNote) <span style="color:#66d9ef">returns</span> (stream RouteNote) {}</code></pre></div>
+<p>Our .proto file also contains protocol buffer message type definitions for all the request and response types used in our service methods - for example, here&rsquo;s the <code>Point</code> message type:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Points are represented as latitude-longitude pairs in the E7 representation
+</span><span style="color:#75715e">// (degrees multiplied by 10**7 and rounded to the nearest integer).
+</span><span style="color:#75715e">// Latitudes should be in the range +/- 90 degrees and longitude should be in
+</span><span style="color:#75715e">// the range +/- 180 degrees (inclusive).
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">message</span> <span style="color:#a6e22e">Point</span> {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">int32</span> latitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">int32</span> longitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<h3 id="generating-client-and-server-code">Generating client and server code</h3>
+
+<p>Next we need to generate the gRPC client and server interfaces from our .proto
+service definition. We do this using the protocol buffer compiler <code>protoc</code> with
+a special gRPC Go plugin.
+This is similar to what we did in the <a href="/docs/quickstart/go/">quickstart guide</a></p>
+
+<p>From the <code>route_guide</code> example directory run :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"> protoc -I routeguide/ routeguide/route_guide.proto --go_out<span style="color:#f92672">=</span>plugins<span style="color:#f92672">=</span>grpc:routeguide</code></pre></div>
+<p>Running this command generates the following file in the <code>routeguide</code> directory under the <code>route_guide</code> example directory:
+- <code>route_guide.pb.go</code></p>
+
+<p>This contains:
+- All the protocol buffer code to populate, serialize, and retrieve our request
+  and response message types
+- An interface type (or <em>stub</em>) for clients to call with the methods defined in
+  the <code>RouteGuide</code> service.
+- An interface type for servers to implement, also with the methods defined in
+  the <code>RouteGuide</code> service.</p>
+
+<p><a name="server"></a></p>
+
+<h3 id="creating-the-server">Creating the server</h3>
+
+<p>First let&rsquo;s look at how we create a <code>RouteGuide</code> server. If you&rsquo;re only
+interested in creating gRPC clients, you can skip this section and go straight
+to <a href="#client">Creating the client</a> (though you might find it interesting
+anyway!).</p>
+
+<p>There are two parts to making our <code>RouteGuide</code> service do its job:</p>
+
+<ul>
+<li>Implementing the service interface generated from our service definition:
+doing the actual &ldquo;work&rdquo; of our service.</li>
+<li>Running a gRPC server to listen for requests from clients and dispatch them to
+the right service implementation.</li>
+</ul>
+
+<p>You can find our example <code>RouteGuide</code> server in
+<a href="https://github.com/grpc/grpc-go/tree/master/examples/route_guide/server/server.go">grpc-go/examples/route_guide/server/server.go</a>.
+Let&rsquo;s take a closer look at how it works.</p>
+
+<h4 id="implementing-routeguide">Implementing RouteGuide</h4>
+
+<p>As you can see, our server has a <code>routeGuideServer</code> struct type that implements the generated <code>RouteGuideServer</code> interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">routeGuideServer</span> <span style="color:#66d9ef">struct</span> {
+        <span style="color:#f92672">...</span>
+}
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">GetFeature</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">point</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Point</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Feature</span>, <span style="color:#66d9ef">error</span>) {
+        <span style="color:#f92672">...</span>
+}
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">ListFeatures</span>(<span style="color:#a6e22e">rect</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Rectangle</span>, <span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_ListFeaturesServer</span>) <span style="color:#66d9ef">error</span> {
+        <span style="color:#f92672">...</span>
+}
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">RecordRoute</span>(<span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_RecordRouteServer</span>) <span style="color:#66d9ef">error</span> {
+        <span style="color:#f92672">...</span>
+}
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">RouteChat</span>(<span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_RouteChatServer</span>) <span style="color:#66d9ef">error</span> {
+        <span style="color:#f92672">...</span>
+}
+<span style="color:#f92672">...</span></code></pre></div>
+<h5 id="simple-rpc">Simple RPC</h5>
+
+<p><code>routeGuideServer</code> implements all our service methods. Let&rsquo;s look at the
+simplest type first, <code>GetFeature</code>, which just gets a <code>Point</code> from the client and
+returns the corresponding feature information from its database in a <code>Feature</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">GetFeature</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>, <span style="color:#a6e22e">point</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Point</span>) (<span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Feature</span>, <span style="color:#66d9ef">error</span>) {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">feature</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">savedFeatures</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">feature</span>.<span style="color:#a6e22e">Location</span>, <span style="color:#a6e22e">point</span>) {
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">feature</span>, <span style="color:#66d9ef">nil</span>
+		}
+	}
+	<span style="color:#75715e">// No feature was found, return an unnamed feature
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Feature</span>{<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">point</span>}, <span style="color:#66d9ef">nil</span>
+}</code></pre></div>
+<p>The method is passed a context object for the RPC and the client&rsquo;s <code>Point</code>
+protocol buffer request. It returns a <code>Feature</code> protocol buffer object with the
+response information and an <code>error</code>. In the method we populate the <code>Feature</code>
+with the appropriate information, and then <code>return</code> it along with an <code>nil</code> error
+to tell gRPC that we&rsquo;ve finished dealing with the RPC and that the <code>Feature</code> can
+be returned to the client.</p>
+
+<h5 id="server-side-streaming-rpc">Server-side streaming RPC</h5>
+
+<p>Now let&rsquo;s look at one of our streaming RPCs. <code>ListFeatures</code> is a server-side
+streaming RPC, so we need to send back multiple <code>Feature</code>s to our client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">ListFeatures</span>(<span style="color:#a6e22e">rect</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Rectangle</span>, <span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_ListFeaturesServer</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">feature</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">savedFeatures</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">inRange</span>(<span style="color:#a6e22e">feature</span>.<span style="color:#a6e22e">Location</span>, <span style="color:#a6e22e">rect</span>) {
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Send</span>(<span style="color:#a6e22e">feature</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+				<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+			}
+		}
+	}
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+}</code></pre></div>
+<p>As you can see, instead of getting simple request and response objects in our
+method parameters, this time we get a request object (the <code>Rectangle</code> in which
+our client wants to find <code>Feature</code>s) and a special
+<code>RouteGuide_ListFeaturesServer</code> object to write our responses.</p>
+
+<p>In the method, we populate as many <code>Feature</code> objects as we need to return,
+writing them to the <code>RouteGuide_ListFeaturesServer</code> using its <code>Send()</code> method.
+Finally, as in our simple RPC, we return a <code>nil</code> error to tell gRPC that we&rsquo;ve
+finished writing responses. Should any error happen in this call, we return a
+non-<code>nil</code> error; the gRPC layer will translate it into an appropriate RPC status
+to be sent on the wire.</p>
+
+<h5 id="client-side-streaming-rpc">Client-side streaming RPC</h5>
+
+<p>Now let&rsquo;s look at something a little more complicated: the client-side
+streaming method <code>RecordRoute</code>, where we get a stream of <code>Point</code>s from the
+client and return a single <code>RouteSummary</code> with information about their trip. As
+you can see, this time the method doesn&rsquo;t have a request parameter at all.
+Instead, it gets a <code>RouteGuide_RecordRouteServer</code> stream, which the server can
+use to both read <em>and</em> write messages - it can receive client messages using
+its <code>Recv()</code> method and return its single response using its <code>SendAndClose()</code>
+method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">RecordRoute</span>(<span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_RecordRouteServer</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pointCount</span>, <span style="color:#a6e22e">featureCount</span>, <span style="color:#a6e22e">distance</span> <span style="color:#66d9ef">int32</span>
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Point</span>
+	<span style="color:#a6e22e">startTime</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">point</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Recv</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+			<span style="color:#a6e22e">endTime</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">SendAndClose</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteSummary</span>{
+				<span style="color:#a6e22e">PointCount</span>:   <span style="color:#a6e22e">pointCount</span>,
+				<span style="color:#a6e22e">FeatureCount</span>: <span style="color:#a6e22e">featureCount</span>,
+				<span style="color:#a6e22e">Distance</span>:     <span style="color:#a6e22e">distance</span>,
+				<span style="color:#a6e22e">ElapsedTime</span>:  int32(<span style="color:#a6e22e">endTime</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">startTime</span>).<span style="color:#a6e22e">Seconds</span>()),
+			})
+		}
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+		}
+		<span style="color:#a6e22e">pointCount</span><span style="color:#f92672">++</span>
+		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">feature</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">savedFeatures</span> {
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">Equal</span>(<span style="color:#a6e22e">feature</span>.<span style="color:#a6e22e">Location</span>, <span style="color:#a6e22e">point</span>) {
+				<span style="color:#a6e22e">featureCount</span><span style="color:#f92672">++</span>
+			}
+		}
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#a6e22e">distance</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">calcDistance</span>(<span style="color:#a6e22e">lastPoint</span>, <span style="color:#a6e22e">point</span>)
+		}
+		<span style="color:#a6e22e">lastPoint</span> = <span style="color:#a6e22e">point</span>
+	}
+}</code></pre></div>
+<p>In the method body we use the <code>RouteGuide_RecordRouteServer</code>&rsquo;s <code>Recv()</code> method to
+repeatedly read in our client&rsquo;s requests to a request object (in this case a
+<code>Point</code>) until there are no more messages: the server needs to check the
+error returned from <code>Read()</code> after each call. If this is <code>nil</code>, the stream is
+still good and it can continue reading; if it&rsquo;s <code>io.EOF</code> the message stream has
+ended and the server can return its <code>RouteSummary</code>. If it has any other value,
+we return the error &ldquo;as is&rdquo; so that it&rsquo;ll be translated to an RPC status by the
+gRPC layer.</p>
+
+<h5 id="bidirectional-streaming-rpc">Bidirectional streaming RPC</h5>
+
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">s</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">routeGuideServer</span>) <span style="color:#a6e22e">RouteChat</span>(<span style="color:#a6e22e">stream</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RouteGuide_RouteChatServer</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">in</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Recv</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+		}
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+		}
+		<span style="color:#a6e22e">key</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">serialize</span>(<span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">Location</span>)
+                <span style="color:#f92672">...</span> <span style="color:#75715e">// look for notes to be sent to client
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">note</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">routeNotes</span>[<span style="color:#a6e22e">key</span>] {
+			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Send</span>(<span style="color:#a6e22e">note</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+				<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+			}
+		}
+	}
+}</code></pre></div>
+<p>This time we get a <code>RouteGuide_RouteChatServer</code> stream that, as in our
+client-side streaming example, can be used to read and write messages. However,
+this time we return values via our method&rsquo;s stream while the client is still
+writing messages to <em>their</em> message stream.</p>
+
+<p>The syntax for reading and writing here is very similar to our client-streaming
+method, except the server uses the stream&rsquo;s <code>Send()</code> method rather than
+<code>SendAndClose()</code> because it&rsquo;s writing multiple responses. Although each side
+will always get the other&rsquo;s messages in the order they were written, both the
+client and server can read and write in any order — the streams operate
+completely independently.</p>
+
+<h4 id="starting-the-server">Starting the server</h4>
+
+<p>Once we&rsquo;ve implemented all our methods, we also need to start up a gRPC server
+so that clients can actually use our service. The following snippet shows how we
+do this for our <code>RouteGuide</code> service:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
+<span style="color:#a6e22e">lis</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Listen</span>(<span style="color:#e6db74">&#34;tcp&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;:%d&#34;</span>, <span style="color:#f92672">*</span><span style="color:#a6e22e">port</span>))
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;failed to listen: %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+}
+<span style="color:#a6e22e">grpcServer</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">NewServer</span>()
+<span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">RegisterRouteGuideServer</span>(<span style="color:#a6e22e">grpcServer</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">routeGuideServer</span>{})
+<span style="color:#f92672">...</span> <span style="color:#75715e">// determine whether to use TLS
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">grpcServer</span>.<span style="color:#a6e22e">Serve</span>(<span style="color:#a6e22e">lis</span>)</code></pre></div>
+<p>To build and start a server, we:</p>
+
+<ol>
+<li>Specify the port we want to use to listen for client requests using <code>lis, err
+:= net.Listen(&quot;tcp&quot;, fmt.Sprintf(&quot;:%d&quot;, *port))</code>.</li>
+<li>Create an instance of the gRPC server using <code>grpc.NewServer()</code>.</li>
+<li>Register our service implementation with the gRPC server.</li>
+<li>Call <code>Serve()</code> on the server with our port details to do a blocking wait
+until the process is killed or <code>Stop()</code> is called.</li>
+</ol>
+
+<p><a name="client"></a></p>
+
+<h3 id="creating-the-client">Creating the client</h3>
+
+<p>In this section, we&rsquo;ll look at creating a Go client for our <code>RouteGuide</code>
+service. You can see our complete example client code in
+<a href="https://github.com/grpc/grpc-go/tree/master/examples/route_guide/client/client.go">grpc-go/examples/route_guide/client/client.go</a>.</p>
+
+<h4 id="creating-a-stub">Creating a stub</h4>
+
+<p>To call service methods, we first need to create a gRPC <em>channel</em> to communicate
+with the server. We create this by passing the server address and port number to
+<code>grpc.Dial()</code> as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">conn</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">Dial</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">serverAddr</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#f92672">...</span>
+}
+<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">Close</span>()</code></pre></div>
+<p>You can use <code>DialOptions</code> to set the auth credentials (e.g., TLS, GCE
+credentials, JWT credentials) in <code>grpc.Dial</code> if the service you request requires
+that - however, we don&rsquo;t need to do this for our <code>RouteGuide</code> service.</p>
+
+<p>Once the gRPC <em>channel</em> is setup, we need a client <em>stub</em> to perform RPCs. We
+get this using the <code>NewRouteGuideClient</code> method provided in the <code>pb</code> package we
+generated from our .proto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">NewRouteGuideClient</span>(<span style="color:#a6e22e">conn</span>)</code></pre></div>
+<h4 id="calling-service-methods">Calling service methods</h4>
+
+<p>Now let&rsquo;s look at how we call our service methods. Note that in gRPC-Go, RPCs
+operate in a blocking/synchronous mode, which means that the RPC call waits for
+the server to respond, and will either return a response or an error.</p>
+
+<h5 id="simple-rpc-1">Simple RPC</h5>
+
+<p>Calling the simple RPC <code>GetFeature</code> is nearly as straightforward as calling a
+local method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">feature</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">GetFeature</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Point</span>{<span style="color:#ae81ff">409146138</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">746188906</span>})
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#f92672">...</span>
+}</code></pre></div>
+<p>As you can see, we call the method on the stub we got earlier. In our method
+parameters we create and populate a request protocol buffer object (in our case
+<code>Point</code>). We also pass a <code>context.Context</code> object which lets us change our RPC&rsquo;s
+behaviour if necessary, such as time-out/cancel an RPC in flight. If the call
+doesn&rsquo;t return an error, then we can read the response information from the
+server from the first return value.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">feature</span>)</code></pre></div>
+<h5 id="server-side-streaming-rpc-1">Server-side streaming RPC</h5>
+
+<p>Here&rsquo;s where we call the server-side streaming method <code>ListFeatures</code>, which
+returns a stream of geographical <code>Feature</code>s. If you&rsquo;ve already read <a href="#server">Creating
+the server</a> some of this may look very familiar - streaming RPCs are
+implemented in a similar way on both sides.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">rect</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Rectangle</span>{ <span style="color:#f92672">...</span> }  <span style="color:#75715e">// initialize a pb.Rectangle
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">ListFeatures</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(), <span style="color:#a6e22e">rect</span>)
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+    <span style="color:#f92672">...</span>
+}
+<span style="color:#66d9ef">for</span> {
+    <span style="color:#a6e22e">feature</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Recv</span>()
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+        <span style="color:#66d9ef">break</span>
+    }
+    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;%v.ListFeatures(_) = _, %v&#34;</span>, <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span>)
+    }
+    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">feature</span>)
+}</code></pre></div>
+<p>As in the simple RPC, we pass the method a context and a request. However,
+instead of getting a response object back, we get back an instance of
+<code>RouteGuide_ListFeaturesClient</code>. The client can use the
+<code>RouteGuide_ListFeaturesClient</code> stream to read the server&rsquo;s responses.</p>
+
+<p>We use the <code>RouteGuide_ListFeaturesClient</code>&rsquo;s <code>Recv()</code> method to repeatedly read
+in the server&rsquo;s responses to a response protocol buffer object (in this case a
+<code>Feature</code>) until there are no more messages: the client needs to check the error
+<code>err</code> returned from <code>Recv()</code> after each call. If <code>nil</code>, the stream is still good
+and it can continue reading; if it&rsquo;s <code>io.EOF</code> then the message stream has ended;
+otherwise there must be an RPC error, which is passed over through <code>err</code>.</p>
+
+<h5 id="client-side-streaming-rpc-1">Client-side streaming RPC</h5>
+
+<p>The client-side streaming method <code>RecordRoute</code> is similar to the server-side
+method, except that we only pass the method a context and get a
+<code>RouteGuide_RecordRouteClient</code> stream back, which we can use to both write <em>and</em>
+read messages.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Create a random number of random points
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">r</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">rand</span>.<span style="color:#a6e22e">NewSource</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>().<span style="color:#a6e22e">UnixNano</span>()))
+<span style="color:#a6e22e">pointCount</span> <span style="color:#f92672">:=</span> int(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Int31n</span>(<span style="color:#ae81ff">100</span>)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">// Traverse at least two points
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">points</span> []<span style="color:#f92672">*</span><span style="color:#a6e22e">pb</span>.<span style="color:#a6e22e">Point</span>
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">pointCount</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+	<span style="color:#a6e22e">points</span> = append(<span style="color:#a6e22e">points</span>, <span style="color:#a6e22e">randomPoint</span>(<span style="color:#a6e22e">r</span>))
+}
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Traversing %d points.&#34;</span>, len(<span style="color:#a6e22e">points</span>))
+<span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">RecordRoute</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;%v.RecordRoute(_) = _, %v&#34;</span>, <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span>)
+}
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">point</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">points</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Send</span>(<span style="color:#a6e22e">point</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+			<span style="color:#66d9ef">break</span>
+		}
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;%v.Send(%v) = %v&#34;</span>, <span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">point</span>, <span style="color:#a6e22e">err</span>)
+	}
+}
+<span style="color:#a6e22e">reply</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">CloseAndRecv</span>()
+<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;%v.CloseAndRecv() got error %v, want %v&#34;</span>, <span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">err</span>, <span style="color:#66d9ef">nil</span>)
+}
+<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Route summary: %v&#34;</span>, <span style="color:#a6e22e">reply</span>)</code></pre></div>
+<p>The <code>RouteGuide_RecordRouteClient</code> has a <code>Send()</code> method that we can use to send
+requests to the server. Once we&rsquo;ve finished writing our client&rsquo;s requests to the
+stream using <code>Send()</code>, we need to call <code>CloseAndRecv()</code> on the stream to let
+gRPC know that we&rsquo;ve finished writing and are expecting to receive a response.
+We get our RPC status from the <code>err</code> returned from <code>CloseAndRecv()</code>. If the
+status is <code>nil</code>, then the first return value from <code>CloseAndRecv()</code> will be a
+valid server response.</p>
+
+<h5 id="bidirectional-streaming-rpc-1">Bidirectional streaming RPC</h5>
+
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>. As in the
+case of <code>RecordRoute</code>, we only pass the method a context object and get back a
+stream that we can use to both write and read messages. However, this time we
+return values via our method&rsquo;s stream while the server is still writing messages
+to <em>their</em> message stream.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">stream</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">RouteChat</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
+<span style="color:#a6e22e">waitc</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">struct</span>{})
+<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+	<span style="color:#66d9ef">for</span> {
+		<span style="color:#a6e22e">in</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Recv</span>()
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">EOF</span> {
+			<span style="color:#75715e">// read done.
+</span><span style="color:#75715e"></span>			close(<span style="color:#a6e22e">waitc</span>)
+			<span style="color:#66d9ef">return</span>
+		}
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+			<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;Failed to receive a note : %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+		}
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Got message %s at point(%d, %d)&#34;</span>, <span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">Message</span>, <span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">Location</span>.<span style="color:#a6e22e">Latitude</span>, <span style="color:#a6e22e">in</span>.<span style="color:#a6e22e">Location</span>.<span style="color:#a6e22e">Longitude</span>)
+	}
+}()
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">note</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">notes</span> {
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">Send</span>(<span style="color:#a6e22e">note</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;Failed to send a note: %v&#34;</span>, <span style="color:#a6e22e">err</span>)
+	}
+}
+<span style="color:#a6e22e">stream</span>.<span style="color:#a6e22e">CloseSend</span>()
+<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">waitc</span></code></pre></div>
+<p>The syntax for reading and writing here is very similar to our client-side
+streaming method, except we use the stream&rsquo;s <code>CloseSend()</code> method once we&rsquo;ve
+finished our call. Although each side will always get the other&rsquo;s messages in
+the order they were written, both the client and server can read and write in
+any order — the streams operate completely independently.</p>
+
+<h3 id="try-it-out">Try it out!</h3>
+
+<p>To compile and run the server, assuming you are in the folder
+<code>$GOPATH/src/google.golang.org/grpc/examples/route_guide</code>, simply:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go run server/server.go</code></pre></div>
+<p>Likewise, to run the client:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go run client/client.go</code></pre></div>
+</div>
+</div>
+
+</div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build</h1>
+  <h5>Posted on Tuesday, December 18, 2018 
+    by 
+    
+      <a href="https://github.com/kkm000">Kirill &#39;kkm&#39; Katsnelson</a>
+    
+  </h5>
+  <p>
+    <p>As part of Microsoft&rsquo;s move towards its cross-platform .NET offering, they have
+greatly simplified the project file format, and allowed a tight integration of
+third-party code generators with .NET projects. We are listening, and now proud
+to introduce integrated compilation of Protocol Buffer and gRPC service
+<code>.proto</code> files in .NET C# projects starting with the version 1.17 of the
+Grpc.Tools NuGet package, now available from Nuget.org.</p>
+
+<p>You no longer need to use hand-written scripts to generate code from <code>.proto</code>
+files: The .NET build magic handles this for you. The integrated tools locate
+the proto compiler and gRPC plugin, standard Protocol Buffer imports, and track
+dependencies before invoking the code generators, so that the generated C#
+source files are never out of date, at the same time keeping regeneration to
+the minimum required. In essence, <code>.proto</code> files are treated as first-class
+sources in a .NET C# project.</p>
+
+<h2 id="a-walkthrough">A Walkthrough</h2>
+
+<p>In this blog post, we&rsquo;ll walk through the simplest and probably the most common
+scenario of creating a library from <code>.proto</code> files using the cross-platform
+<code>dotnet</code> command. We will implement essentially a clone of the <code>Greeter</code>
+library, shared by client and server projects in the <a href="https://github.com/grpc/grpc/tree/master/examples/csharp/Helloworld/Greeter">C# <code>Helloworld</code> example
+directory
+</a>.</p>
+
+<h3 id="create-a-new-project">Create a new project</h3>
+
+<p>Let&rsquo;s start by creating a new library project.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/work$ dotnet new classlib -o MyGreeter
+The template <span style="color:#e6db74">&#34;Class library&#34;</span> was created successfully.
+
+~/work$ cd MyGreeter
+~/work/MyGreeter$ ls -lF
+total <span style="color:#ae81ff">12</span>
+-rw-rw-r-- <span style="color:#ae81ff">1</span> kkm kkm   <span style="color:#ae81ff">86</span> Nov  <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">16</span>:10 Class1.cs
+-rw-rw-r-- <span style="color:#ae81ff">1</span> kkm kkm  <span style="color:#ae81ff">145</span> Nov  <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">16</span>:10 MyGreeter.csproj
+drwxrwxr-x <span style="color:#ae81ff">2</span> kkm kkm <span style="color:#ae81ff">4096</span> Nov  <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">16</span>:10 obj/</code></pre></div>
+<p>Observe that the <code>dotnet new</code> command has created the file <code>Class1.cs</code> that
+we won&rsquo;t need, so remove it. Also, we need some <code>.proto</code> files to compile. For
+this exercise, we&rsquo;ll copy an example file <a href="https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto"><code>examples/protos/helloworld.proto</code>
+</a>
+from the gRPC distribution.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/work/MyGreeter$ rm Class1.cs
+~/work/MyGreeter$ wget -q https://raw.githubusercontent.com/grpc/grpc/master/examples/protos/helloworld.proto</code></pre></div>
+<p>(on Windows, use <code>del Class1.cs</code>, and, if you do not have the wget command,
+just <a href="https://raw.githubusercontent.com/grpc/grpc/master/examples/protos/helloworld.proto">open the above URL
+</a>
+and use a <em>Save As&hellip;</em> command from your Web browser).</p>
+
+<p>Next, add required NuGet packages to the project:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/work/MyGreeter$ dotnet add package Grpc
+info : PackageReference <span style="color:#66d9ef">for</span> package <span style="color:#e6db74">&#39;Grpc&#39;</span> version <span style="color:#e6db74">&#39;1.17.0&#39;</span> added to file <span style="color:#e6db74">&#39;/home/kkm/work/MyGreeter/MyGreeter.csproj&#39;</span>.
+~/work/MyGreeter$ dotnet add package Grpc.Tools
+info : PackageReference <span style="color:#66d9ef">for</span> package <span style="color:#e6db74">&#39;Grpc.Tools&#39;</span> version <span style="color:#e6db74">&#39;1.17.0&#39;</span> added to file <span style="color:#e6db74">&#39;/home/kkm/work/MyGreeter/MyGreeter.csproj&#39;</span>.
+~/work/MyGreeter$ dotnet add package Google.Protobuf
+info : PackageReference <span style="color:#66d9ef">for</span> package <span style="color:#e6db74">&#39;Google.Protobuf&#39;</span> version <span style="color:#e6db74">&#39;3.6.1&#39;</span> added to file <span style="color:#e6db74">&#39;/home/kkm/work/MyGreeter/MyGreeter.csproj&#39;</span>.</code></pre></div>
+<h3 id="add-proto-files-to-the-project">Add <code>.proto</code> files to the project</h3>
+
+<p><strong>Next comes an important part.</strong> First of all, by default, a <code>.csproj</code> project
+file automatically finds all <code>.cs</code> files in its directory, although
+<a href="https://docs.microsoft.com/dotnet/core/tools/csproj#recommendation">Microsoft now recommends suppressing this globbing
+behavior</a>,
+so we too decided against globbing <code>.proto</code> files. Thus the <code>.proto</code>
+files must be added to the project explicitly.</p>
+
+<p>Second of all, it is important to add a property <code>PrivateAssets=&quot;All&quot;</code> to the
+Grpc.Tools package reference, so that it will not be needlessly fetched by the
+consumers of your new library. This makes sense, as the package only contains
+compilers, code generators and import files, which are not needed outside of
+the project where the <code>.proto</code> files have been compiled. While not strictly
+required in this simple walkthrough, it must be your standard practice to do
+that always.</p>
+
+<p>So edit the file <code>MyGreeter.csproj</code> to add the <code>helloworld.proto</code> so that it
+will be compiled, and the <code>PrivateAssets</code> property to the Grpc.Tools package
+reference. Your resulting project file should now look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
+
+  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+    <span style="color:#f92672">&lt;TargetFramework&gt;</span>netstandard2.0<span style="color:#f92672">&lt;/TargetFramework&gt;</span>
+  <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+
+  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
+    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Google.Protobuf&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;3.6.1&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Grpc&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.17.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+
+    <span style="color:#75715e">&lt;!-- The Grpc.Tools package generates C# sources from .proto files during
+</span><span style="color:#75715e">         project build, but is not needed by projects using the built library.
+</span><span style="color:#75715e">         It&#39;s IMPORTANT to add the &#39;PrivateAssets=&#34;All&#34;&#39; to this reference: --&gt;</span>
+    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Grpc.Tools&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.17.0&#34;</span> <span style="color:#a6e22e">PrivateAssets=</span><span style="color:#e6db74">&#34;All&#34;</span> <span style="color:#f92672">/&gt;</span>
+
+    <span style="color:#75715e">&lt;!-- Explicitly include our helloworld.proto file by adding this line: --&gt;</span>
+    <span style="color:#f92672">&lt;Protobuf</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;helloworld.proto&#34;</span> <span style="color:#f92672">/&gt;</span>
+  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+
+<span style="color:#f92672">&lt;/Project&gt;</span></code></pre></div>
+<h3 id="build-it">Build it!</h3>
+
+<p>At this point you can build the project with the <code>dotnet build</code> command to
+compile the <code>.proto</code> file and the library assembly. For this walkthrough, we&rsquo;ll
+add a logging switch <code>-v:n</code> to the command, so we can see that the command to
+compile the <code>helloworld.proto</code> file was in fact run. You may find it a good
+idea to always do that the very first time you compile a project!</p>
+
+<p>Note that many output lines are omitted below, as the build output is quite
+verbose.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/work/MyGreeter$ dotnet build -v:n
+
+Build started <span style="color:#ae81ff">11</span>/9/18 <span style="color:#ae81ff">5</span>:33:44 PM.
+  <span style="color:#ae81ff">1</span>:7&gt;Project <span style="color:#e6db74">&#34;/home/kkm/work/MyGreeter/MyGreeter.csproj&#34;</span> on node <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>Build target<span style="color:#f92672">(</span>s<span style="color:#f92672">))</span>.
+   <span style="color:#ae81ff">1</span>&gt;_Protobuf_CoreCompile:
+      /home/kkm/.nuget/packages/grpc.tools/1.17.0/tools/linux_x64/protoc
+        --csharp_out<span style="color:#f92672">=</span>obj/Debug/netstandard2.0
+        --plugin<span style="color:#f92672">=</span>protoc-gen-grpc<span style="color:#f92672">=</span>/home/kkm/.nuget/packages/grpc.tools/1.17.0/tools/linux_x64/grpc_csharp_plugin
+        --grpc_out<span style="color:#f92672">=</span>obj/Debug/netstandard2.0 --proto_path<span style="color:#f92672">=</span>/home/kkm/.nuget/packages/grpc.tools/1.17.0/build/native/include
+        --proto_path<span style="color:#f92672">=</span>. --dependency_out<span style="color:#f92672">=</span>obj/Debug/netstandard2.0/da39a3ee5e6b4b0d_helloworld.protodep helloworld.proto
+     CoreCompile:
+
+        <span style="color:#f92672">[</span> ... skipping long output ... <span style="color:#f92672">]</span>
+
+       MyGreeter -&gt; /home/kkm/work/MyGreeter/bin/Debug/netstandard2.0/MyGreeter.dll
+
+Build succeeded.</code></pre></div>
+<p>If at this point you invoke the <code>dotnet build -v:n</code> command again, <code>protoc</code>
+would not be invoked, and no C# sources would be compiled. But if you change
+the <code>helloworld.proto</code> source, then its outputs will be regenerated and then
+recompiled by the C# compiler during the build. This is a regular dependency
+tracking behavior that you expect from modifying any source file.</p>
+
+<p>Of course, you can also add <code>.cs</code> files to the same project: It is a regular C#
+project building a .NET library, after all. This is done in our <a href="https://github.com/grpc/grpc/tree/master/examples/csharp/RouteGuide/RouteGuide">RouteGuide
+</a>
+example.</p>
+
+<h3 id="where-are-the-generated-files">Where are the generated files?</h3>
+
+<p>You may wonder where the proto compiler and gRPC plugin output C# files are. By
+default, they are placed in the same directory as other generated files, such
+as objects (termed the &ldquo;intermediate output&rdquo; directory in the .NET build
+parlance), under the <code>obj/</code> directory. This is a regular practice of .NET
+builds, so that autogenerated files do not clutter the working directory or
+accidentally placed under source control. Otherwise, they are accessible to the
+tools like the debugger. You can see other autogenerated sources in that
+directory, too:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">~/work/MyGreeter$ find obj -name <span style="color:#e6db74">&#39;*.cs&#39;</span>
+obj/Debug/netstandard2.0/MyGreeter.AssemblyInfo.cs
+obj/Debug/netstandard2.0/Helloworld.cs
+obj/Debug/netstandard2.0/HelloworldGrpc.cs</code></pre></div>
+<p>(use <code>dir /s obj\*.cs</code> if you are following this walkthrough from a Windows
+command prompt).</p>
+
+<h2 id="there-is-more-to-it">There Is More To It</h2>
+
+<p>While the simplest default behavior is adequate in many cases, there are many
+ways to fine-tune your <code>.proto</code> compilation process in a large project. We
+encourage you to read the <a href="https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md">documentation file BUILD-INTEGRATION.md
+</a>
+for available options if you find that the default arrangement does not suit
+your workflow. The package also extends the Visual Studio&rsquo;s Properties window,
+so you may set some options per file in the Visual Studio interface.</p>
+
+<p>&ldquo;Classic&rdquo; <code>.csproj</code> projects and Mono are also supported.</p>
+
+<h2 id="share-your-experience">Share Your Experience</h2>
+
+<p>As with any initial release of a complex feature, we are thrilled to receive
+your feedback. Did something not work as expected? Do you have a scenario that
+is not easy to cover with the new tools? Do you have an idea how to improve the
+workflow in general? Please read the documentation carefully, and then <a href="https://github.com/grpc/grpc/issues">open an
+issue</a> in the gRPC code repository on
+GitHub. Your feedback is important to determine the future direction for our
+build integration work!</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

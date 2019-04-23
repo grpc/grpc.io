@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  So You Want to Optimize gRPC - Part 2 &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>So You Want to Optimize gRPC - Part 2</h1>
+  <h5>Posted on Monday, April 16, 2018 
+    by 
+    
+      <a href="https://carlmastrangelo.com/">Carl Mastrangelo</a>
+    
+  </h5>
+  <p>
+    <p>How fast is gRPC?  Pretty fast if you understand how modern clients and servers are built.  In
+<a href="/blog/optimizing-grpc-part-1">part 1</a>, I showed how to get an easy <strong>60%</strong> improvement.  In this
+post I show how to get a <strong>10000%</strong> improvement.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>As in <a href="/blog/optimizing-grpc-part-1">part 1</a>, we will start with an existing, Java based,
+key-value service.  The service will offer concurrent access for creating, reading, updating,
+and deleting keys and values.  All the code can be seen
+<a href="https://github.com/carl-mastrangelo/kvstore/tree/03-nonblocking-server">here</a> if you want to try
+it out.</p>
+
+<h2 id="server-concurrency">Server Concurrency</h2>
+
+<p>Let&rsquo;s look at the <a href="https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java">KvService</a>
+class.  This service handles the RPCs sent by the client, making sure that none of them
+accidentally corrupt the state of storage.  To ensure this, the service uses the <code>synchronized</code>
+keyword to ensure only one RPC is active at a time:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Map<span style="color:#f92672">&lt;</span>ByteBuffer<span style="color:#f92672">,</span> ByteBuffer<span style="color:#f92672">&gt;</span> store <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
+
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>
+      CreateRequest request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>CreateResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    ByteBuffer key <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    ByteBuffer value <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    simulateWork<span style="color:#f92672">(</span>WRITE_DELAY_MILLIS<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>store<span style="color:#f92672">.</span><span style="color:#a6e22e">putIfAbsent</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>CreateResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">getDefaultInstance</span><span style="color:#f92672">());</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Status<span style="color:#f92672">.</span><span style="color:#a6e22e">ALREADY_EXISTS</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asRuntimeException</span><span style="color:#f92672">());</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p>While this code is thread safe, it comes at a high price: only one RPC can ever be active!  We
+need some way of allowing multiple operations to happen safely at the same time.  Otherwise,
+the program can&rsquo;t take advantage of all the available processors.</p>
+
+<h3 id="breaking-the-lock">Breaking the Lock</h3>
+
+<p>To solve this, we need to know a little more about the <em>semantics</em> of our RPCs.  The more we know
+about how the RPCs are supposed to work, the more optimizations we can make.  For a key-value
+service, we notice that <em>operations to different keys don&rsquo;t interfere with each other</em>.  When
+we update key &lsquo;foo&rsquo;, it has no bearing on the value stored for key &lsquo;bar&rsquo;.  But, our server is
+written such that operations to any key must be synchronized with respect to each other.  If we
+could make operations to different keys happen concurrently, our server could handle a lot more
+load.</p>
+
+<p>With the idea in place, we need to figure out how to modify the server.  The
+<code>synchronized</code> keyword causes Java to acquire a lock on <code>this</code>, which is the instance of
+<code>KvService</code>.  The lock is acquired when the <code>create</code> method is entered, and released on return.
+The reason we need synchronization is to protect the <code>store</code> Map.  Since it is implemented as a
+<a href="https://en.wikipedia.org/wiki/Hash_table"><code>HashMap</code></a>, modifications to it change the internal
+arrays.  Because the internal state of the <code>HashMap</code> will be corrupted if not properly
+synchronized, we can&rsquo;t just remove the synchronization on the method.</p>
+
+<p>However, Java offers a solution here: <code>ConcurrentHashMap</code>.  This class offers the ability to
+safely access the contents of the map concurrently.  For example, in our usage we want to check
+if a key is present.   If not present, we want to add it, else we want to return an error.  The
+<code>putIfAbsent</code> method atomically checks if a value is present, adds it if not, and tells us if
+it succeeded.</p>
+
+<p>Concurrent maps provide stronger guarantees about the safety of <code>putIfAbsent</code>, so we can swap the
+<code>HashMap</code> to a <code>ConcurrentHashMap</code> and remove <code>synchronized</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> ConcurrentMap<span style="color:#f92672">&lt;</span>ByteBuffer<span style="color:#f92672">,</span> ByteBuffer<span style="color:#f92672">&gt;</span> store <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;();</span>
+ 
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>
+      CreateRequest request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>CreateResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    ByteBuffer key <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    ByteBuffer value <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    simulateWork<span style="color:#f92672">(</span>WRITE_DELAY_MILLIS<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>store<span style="color:#f92672">.</span><span style="color:#a6e22e">putIfAbsent</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">)</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>CreateResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">getDefaultInstance</span><span style="color:#f92672">());</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Status<span style="color:#f92672">.</span><span style="color:#a6e22e">ALREADY_EXISTS</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asRuntimeException</span><span style="color:#f92672">());</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<h3 id="if-at-first-you-don-t-succeed">If at First You Don&rsquo;t Succeed</h3>
+
+<p>Updating <code>create</code> was pretty easy.  Doing the same for <code>retrieve</code> and <code>delete</code> is easy too.
+However, the <code>update</code> method is a little trickier.  Let&rsquo;s take a look at what it&rsquo;s doing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>
+      UpdateRequest request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>UpdateResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    ByteBuffer key <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getKey</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    ByteBuffer newValue <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getValue</span><span style="color:#f92672">().</span><span style="color:#a6e22e">asReadOnlyByteBuffer</span><span style="color:#f92672">();</span>
+    simulateWork<span style="color:#f92672">(</span>WRITE_DELAY_MILLIS<span style="color:#f92672">);</span>
+    ByteBuffer oldValue <span style="color:#f92672">=</span> store<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>oldValue <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Status<span style="color:#f92672">.</span><span style="color:#a6e22e">NOT_FOUND</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asRuntimeException</span><span style="color:#f92672">());</span>
+      <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    store<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> oldValue<span style="color:#f92672">,</span> newValue<span style="color:#f92672">);</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>UpdateResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">getDefaultInstance</span><span style="color:#f92672">());</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p>Updating a key to a new value needs two interactions with the <code>store</code>:</p>
+
+<ol>
+<li>Check to see if the key exists at all.</li>
+<li>Update the previous value to the new value.</li>
+</ol>
+
+<p>Unfortunately <code>ConcurrentMap</code> doesn&rsquo;t have a straightforward method to do this.  Since we may not
+be the only ones modifying the map, we need to handle the possibility that our assumptions
+have changed.  We read the old value out, but by the time we replace it, it may have been deleted.</p>
+
+<p>To reconcile this, let&rsquo;s retry if <code>replace</code> fails.   It returns true if the replace
+was successful.  (<code>ConcurrentMap</code> asserts that the operations will not corrupt the internal
+structure, but doesn&rsquo;t say that they will succeed!)  We will use a do-while loop:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span><span style="color:#f92672">(</span>
+      UpdateRequest request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>UpdateResponse<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    ByteBuffer oldValue<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">do</span> <span style="color:#f92672">{</span>
+      oldValue <span style="color:#f92672">=</span> store<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>key<span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>oldValue <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Status<span style="color:#f92672">.</span><span style="color:#a6e22e">NOT_FOUND</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asRuntimeException</span><span style="color:#f92672">());</span>
+        <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">while</span> <span style="color:#f92672">(!</span>store<span style="color:#f92672">.</span><span style="color:#a6e22e">replace</span><span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> oldValue<span style="color:#f92672">,</span> newValue<span style="color:#f92672">));</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>UpdateResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">getDefaultInstance</span><span style="color:#f92672">());</span>
+    responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+  <span style="color:#f92672">}</span></code></pre></div>
+<p>The code wants to fail if it ever sees null, but never if there is a non-null previous value.  One
+thing to note is that if <em>another</em> RPC modifies the value between the <code>store.get()</code> call and the
+<code>store.replace()</code> call, it will fail.  This is a non-fatal error for us, so we will just try again.
+Once it has successfully put the new value in, the service can respond back to the user.</p>
+
+<p>There is one other possibility that could happen: two RPCs could update the same value and
+overwrite each other&rsquo;s work.  While this may be okay for some applications, it would not be
+suitable for APIs that provide transactionality.  It is out of scope for this post to show how to
+fix this, but be aware it can happen.</p>
+
+<h2 id="measuring-the-performance">Measuring the Performance</h2>
+
+<p>In the last post, we modified the client to be asynchronous and use the gRPC ListenableFuture API.
+To avoid running out of memory, the client was modified to have at most <strong>100</strong> active RPCs at a
+time.  As we now see from the server code, performance was bottlenecked on acquiring locks.
+Since we have removed those, we expect to see a 100x improvement.  The same amount of work is done
+per RPC, but a lot more are happening at the same time.  Let&rsquo;s see if our hypothesis holds:</p>
+
+<p>Before:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./gradlew installDist
+$ time ./build/install/kvstore/bin/kvstore
+Apr <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">2018</span> <span style="color:#ae81ff">10</span>:38:42 AM io.grpc.examples.KvRunner runClient
+INFO: Did <span style="color:#ae81ff">24</span>.067 RPCs/s
+
+real	1m0.886s
+user	0m9.340s
+sys	0m1.660s</code></pre></div>
+<p>After:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Apr <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">2018</span> <span style="color:#ae81ff">10</span>:36:48 AM io.grpc.examples.KvRunner runClient
+INFO: Did <span style="color:#ae81ff">2</span>,449.8 RPCs/s
+
+real	1m0.968s
+user	0m52.184s
+sys	0m20.692s</code></pre></div>
+<p>Wow!  From 24 RPCs per second to 2,400 RPCs per second.  And we didn&rsquo;t have to change our API or
+our client.  This is why understanding your code and API semantics is important.  By exploiting the
+properties of the key-value API, namely the independence of operations on different keys, the code
+is now much faster.</p>
+
+<p>One noteworthy artifact of this code is the <code>user</code> timing in the results.  Previously the user time
+was only 9 seconds, meaning that the CPU was active only 9 of the 60 seconds the code was running.
+Afterwards, the usage went up by more than 5x to 52 seconds.  The reason is that more CPU cores are
+active.  The <code>KvServer</code> is simulating work by sleeping for a few milliseconds.  In a real
+application, it would be doing useful work and not have such a dramatic change.  Rather than
+scaling per the number of RPCs, it would scale per the number of cores.  Thus, if your machine had
+12 cores, you would expect to see a 12x improvement.  Still not bad though!</p>
+
+<h3 id="more-errors">More Errors</h3>
+
+<p>If you run this code yourself, you will see a lot more log spam in the form:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Apr <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">2018</span> <span style="color:#ae81ff">10</span>:38:40 AM io.grpc.examples.KvClient$3 onFailure
+INFO: Key not found
+io.grpc.StatusRuntimeException: NOT_FOUND</code></pre></div>
+<p>The reason is that the new version of the code makes API level race conditions more apparent.
+With 100 times as many RPCs happening, the chance of updates and deletes colliding with each other
+is more likely.  To solve this we will need to modify the API definition.   Stay tuned for the next
+post showing how to fix this.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>There are a lot of opportunities to optimize your gRPC code.  To take advantage of these, you
+need to understand what your code is doing.  This post shows how to convert a lock-based service into
+a low-contention, lock-free service.  Always make sure to measure before and after your changes.</p>
+
+<p>In Part 3, we will optimize the code even further.  2,400 RPC/s is just the beginning!</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

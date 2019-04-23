@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC in Helm &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC in Helm</h1>
+  <h5>Posted on Monday, May 15, 2017 
+    by 
+    
+      Brian Hardock
+    
+  </h5>
+  <p>
+    <p><em>Our guest post today comes from Brian Hardock, a software engineer from Deis working on the <a href="https://helm.sh/">Helm</a> project.</em></p>
+
+<p>Helm is the package manager for Kubernetes. Helm provides its users with a customizable mechanism for
+managing distributed applications and controlling their deployment.</p>
+
+<p>I have the good fortune to be a member of the phenomenal open-source Kubernetes Helm community serving as
+a core contributor. My first day working with the Helm team was spent prototyping the architecture for
+the next generation of Helm. By the end of that day, we had procured the preliminary RPC protocol data model
+used to enable communication between Helm and its in-cluster server component, Tiller.</p>
+
+<p>We chose to use protocol buffers - the default framework gRPC uses for serialization and over-the-air
+transmission - as our data definition language. By the end of that first day hacking with the Helm team,
+gRPC and protocol buffers proved to be a powerful combination. We had successfully had acheived communication
+between the Helm client and Tiller server using code generated from the protobuf and gRPC service definitions.
+As a personal preference, we found that the protobuf files and resulting generated gRPC
+code provided an aesthetic, nearly self-documenting developer experience compared to something like Swagger.</p>
+
+<p>Within a few days, the Helm team was scoping and implementing features for our users. By choosing gRPC/Proto
+we had reduced the typical time spent bikeshedding that, in general, inevitably evolves from API modeling and
+churning out boilerplate server code. If we had not reaped the benefits of gRPC/protobuf from day 1, we would
+have spent significantly more time pivoting up and down the stack, as opposed to honing our focus on what
+matters: the users and the features they requested.</p>
+
+<p>In addition to serving as the Helm/Tiller communication protocol, one of our more interesting applications
+of protocol buffers is that we use it to model what&rsquo;s referred to in Kubernetes parlance as a &ldquo;Chart&rdquo;. Charts
+are an encapsulation of Kubernetes manifests that enable you to define, install, and upgrade Kubernetes applications.
+For more complex Kubernetes applications, the set of manifests may be large. By virtue of its inherent compression
+capabilities, protocol buffers and gRPC allowed us to mitigate the nuisance of transmitting bulky and
+sprawling Kubernetes manifests.</p>
+
+<p>For a deeper dive into:</p>
+
+<ul>
+<li>The Helm proto, see: <a href="https://github.com/kubernetes/helm/tree/master/_proto/hapi">https://github.com/kubernetes/helm/tree/master/_proto/hapi</a></li>
+<li>Its generated counterpart, see: <a href="https://github.com/kubernetes/helm/tree/master/pkg/proto/hapi">https://github.com/kubernetes/helm/tree/master/pkg/proto/hapi</a></li>
+<li>The interface to our Helm client, see: <a href="https://github.com/kubernetes/helm/tree/master/pkg/helm">https://github.com/kubernetes/helm/tree/master/pkg/helm</a></li>
+</ul>
+
+<p>In summary, protobuf and gRPC provided Helm with:</p>
+
+<ul>
+<li>Clearly defined message and protocol semantics for client and server communications.</li>
+<li>Increased feature development via a reduction in time spent on boilerplate server code / API modeling.</li>
+<li>High performance transmission of data through generated code and compression.</li>
+<li>Minimized cognitive cycles spent going from 0 to client/server communications.</li>
+</ul>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

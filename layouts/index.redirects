@@ -1,0 +1,4 @@
+{{- $redirects := site.Data.redirects -}}
+{{- range $redirects }}
+/grpc-{{ . }}     https://github.com/grpc/grpc-{{ . }}
+{{- end }}

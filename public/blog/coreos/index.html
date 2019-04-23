@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC with REST and Open APIs &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC with REST and Open APIs</h1>
+  <h5>Posted on Monday, May 09, 2016 
+    by 
+    
+      Brandon Phillips
+    
+  </h5>
+  <p>
+    <p>Our guest post today comes from Brandon Phillips of <a href="https://coreos.com/">CoreOS</a>. CoreOS builds open source projects and products for Linux Containers. Their flagship product for consensus and discovery <a href="https://coreos.com/etcd/">etcd</a> and their container engine <a href="https://coreos.com/rkt/">rkt</a> are early adopters of gRPC.</p>
+
+<p>One of the key reasons CoreOS chose gRPC is because it uses HTTP/2, enabling applications to present both a HTTP 1.1 REST/JSON API and an efficient gRPC interface on a single TCP port (available for Go). This provides developers with compatibility with the REST web ecosystem, while advancing a new, high-efficiency RPC protocol. With the recent release of Go 1.6, Go ships with a stable <code>net/http2</code> package by default.</p>
+
+<p>Since many CoreOS clients speak HTTP 1.1 with JSON, gRPC&rsquo;s easy interoperability with JSON and the <a href="https://github.com/OAI/OpenAPI-Specification">Open API Specification</a> (formerly Swagger) was extremely valuable. For their users who are more comfortable with HTTP/1.1+JSON-based and Open API Spec APIs they used a combination of open source libraries to make their gRPC services available in both gRPC and HTTP REST flavors, using API multiplexers to give users the best of both worlds. Let&rsquo;s dive into the details and find out how they did it!</p>
+
+<p><em>This post was originally published at the <a href="https://coreos.com/blog/gRPC-protobufs-swagger.html">CoreOS blog</a>. We are reproducing it here with some edits.</em></p>
+
+<h2 id="a-grpc-application-called-echoservice">A gRPC application called EchoService</h2>
+
+<p>In this post we will build a small proof-of-concept gRPC application from a gRPC API definition, add a REST service gateway, and finally serve it all on a single TLS port. The application is called EchoService, and is the web equivalent of the shell command echo: the service returns, or &ldquo;echoes&rdquo;, whatever text is sent to it.</p>
+
+<p>First, let’s define the arguments to EchoService in a protobuf message called EchoMessage, which includes a single field called value. We will define this message in a protobuf &ldquo;.proto&rdquo; file called <code>service.proto</code>. Here is our EchoMessage:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">message</span> <span style="color:#a6e22e">EchoMessage</span> {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span> <span style="color:#66d9ef">string</span> value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>In this same .proto file, we define a gRPC service that takes this data structure and returns it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">service</span> EchoService {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">rpc</span> Echo(EchoMessage) <span style="color:#66d9ef">returns</span> (EchoMessage) {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  }<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>Running this <code>service.proto</code> file &ldquo;as is&rdquo; through the Protocol Buffer compiler <code>protoc</code> generates a stub gRPC service in Go, along with clients in various languages. But gRPC alone isn’t as useful as a service that also exposes a REST interface, so we won’t stop with the gRPC service stub.</p>
+
+<p>Next, we add the gRPC REST Gateway. This library will build a RESTful proxy on top of the gRPC EchoService. To build this gateway, we add metadata to the EchoService .proto to indicate that the Echo RPC maps to a RESTful POST method with all RPC parameters mapped to a JSON body. The gateway can map RPC parameters to URL paths and query parameters, but we omit those complications here for brevity.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">service</span> EchoService {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">rpc</span> Echo(EchoMessage) <span style="color:#66d9ef">returns</span> (EchoMessage) {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#66d9ef">option</span> (google.api.http) <span style="color:#f92672">=</span> {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>      post<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;/v1/echo&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>      body<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    };<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  }<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>This means the gateway, once generated by <code>protoc</code>, can now accept a HTTP request from <code>curl</code> like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -X POST -k https://localhost:10000/v1/echo -d <span style="color:#e6db74">&#39;{&#34;value&#34;: &#34;CoreOS is hiring!&#34;}&#39;</span></code></pre></div>
+<p>The whole system so far looks like this, with a single <code>service.proto</code> file generating both a gRPC server and a REST proxy:</p>
+
+<p><img src="/img/grpc-rest-gateway.png" class="img-responsive" alt="gRPC API with REST gateway"></p>
+
+<p>To bring this all together, the echo service creates a Go <code>http.Handler</code> to detect if the protocol is HTTP/2 and the Content-Type is &ldquo;application/grpc&rdquo;, and sends such requests to the gRPC server. Everything else is routed to the REST gateway. The code looks something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">ProtoMajor</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">Contains</span>(<span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>), <span style="color:#e6db74">&#34;application/grpc&#34;</span>) {
+	<span style="color:#a6e22e">grpcServer</span>.<span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>)
+} <span style="color:#66d9ef">else</span> {
+	<span style="color:#a6e22e">otherHandler</span>.<span style="color:#a6e22e">ServeHTTP</span>(<span style="color:#a6e22e">w</span>, <span style="color:#a6e22e">r</span>)
+}</code></pre></div>
+<p>To try it out, all you need is a working Go 1.6 development environment and the following simple commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go get -u github.com/philips/grpc-gateway-example
+$ grpc-gateway-example serve</code></pre></div>
+<p>With the server running you can try requests on both HTTP 1.1 and gRPC interfaces:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">grpc-gateway-example echo Take a REST from REST with gRPC
+curl -X POST -k https://localhost:10000/v1/echo -d <span style="color:#e6db74">&#39;{&#34;value&#34;: &#34;CoreOS is hiring!&#34;}&#39;</span></code></pre></div>
+<p>One last bonus: because we have an Open API specification, you can browse the Open API UI running at <code>https://localhost:10000/swagger-ui/#!/EchoService/Echo</code> if you have the server above running on your laptop.</p>
+
+<p><img src="/img/grpc-swaggerscreen.png" class="img-responsive" alt="gRPC/REST Open API document"></p>
+
+<p>We’ve taken a look at how to use gRPC to bridge to the world of REST. If you want to take a look at the complete project, check out the <a href="https://github.com/philips/grpc-gateway-example">repo on GitHub</a>. We think this pattern of using a single protobuf to describe an API leads to an easy to consume, flexible API framework, and we’re excited to leverage it in more of our projects.</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC Project is now 1.0 and ready for production deployments &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC Project is now 1.0 and ready for production deployments</h1>
+  <h5>Posted on Tuesday, August 23, 2016 
+    by 
+    
+      Varun Talwar
+    
+  </h5>
+  <p>
+    <p>Today, the gRPC project has reached a significant milestone with its <a href="https://github.com/grpc/grpc/releases">1.0 release</a>.
+Languages moving to 1.0 include C++, Java, Go, Node, Ruby, Python and C# across Linux, Windows, and Mac. Objective-C and Android Java support on iOS and Android is also moving to 1.0. The 1.0 release means that the core protocol and API surface are now stable with measured performance, stress tested and developers can rely on these APIs and deploy in production, they will follow semantic versioning from here.</p>
+
+<p>We are very excited about the progress we have made so far and would like to thank all our users and contributors. First announced in March 2015 with <a href="https://corner.squareup.com/2015/02/grpc.html">Square</a>, gRPC is already being used in many open source projects like <a href="https://github.com/coreos/etcd">etcd</a> from CoreOS, <a href="https://github.com/docker/containerd">containerd</a> from Docker, <a href="https://github.com/cockroachdb/cockroach">cockroachdb</a> from Cockroach Labs, and by many other companies like <a href="https://vendasta.com">Vendasta</a>, <a href="https://github.com/Netflix/ribbon">Netflix</a>, <a href="http://yikyakapp.com">YikYak</a> and <a href="http://carbon3d.com">Carbon 3d</a>.  Outside of microservices, telecom giants like <a href="https://github.com/CiscoDevNet/grpc-getting-started">Cisco</a>, <a href="https://github.com/Juniper/open-nti">Juniper</a>, <a href="https://github.com/aristanetworks/goarista">Arista</a>, and Ciena, are building support for streaming telemetry and network configuration from their network devices using gRPC, as part of <a href="http://www.openconfig.net/">OpenConfig</a> effort.</p>
+
+<p>From the beta release, we have made significant strides in the areas of usability, interoperability, and performance measurement on the <a href="https://www.youtube.com/watch?v=_vfbVJ_u5mE">road to 1.0</a>. In most of the languages, the <a href="/blog/installation">installation of the gRPC runtime</a> as well as setup of a development environment is a single command. Beyond installation, we have set up automated tests for gRPC across languages and RPC types in order to stress test our APIs and ensure interoperability. There is now a <a href="https://goo.gl/tHPEfD">performance dashboard</a> available in the open to see latency and throughput for unary and streaming ping pong for various languages. Other measurements have shown significant gains from using gRPC/Protobuf instead of HTTP/JSON such as in <a href="https://blog.gopheracademy.com/advent-2015/etcd-distributed-key-value-store-with-grpc-http2/">CoreOS blogpost</a> and in <a href="https://cloud.google.com/blog/big-data/2016/03/announcing-grpc-alpha-for-google-cloud-pubsub">Google Cloud PubSub testing</a>. In the coming months, we will invest a lot more in performance tuning.</p>
+
+<p>Even within Google, we have seen Google cloud APIs like <a href="https://cloudplatform.googleblog.com/2015/07/A-Go-client-for-Google-Cloud-Bigtable.html">BigTable</a>, PubSub, <a href="https://github.com/GoogleCloudPlatform/java-docs-samples/tree/master/speech/grpc">Speech</a>, launch of a gRPC-based API surface leading to ease of use and performance benefits. Products like <a href="https://research.googleblog.com/2016/02/running-your-models-in-production-with.html">Tensorflow</a> have effectively used gRPC for inter-process communication as well.
+Beyond usage, we are keen to see the contributor community grow with gRPC. We are already starting to see contributions around gRPC in meaningful ways in the <a href="https://github.com/grpc-ecosystem">grpc-ecosystem</a> organization. We are very happy to see projects like <a href="https://github.com/grpc-ecosystem/grpc-gateway">grpc-gateway</a> to enable users to serve REST clients with gRPC based services, <a href="https://github.com/grpc-ecosystem/polyglot">Polyglot</a> to have a CLI for gRPC, <a href="https://github.com/grpc-ecosystem/go-grpc-prometheus">Prometheus monitoring</a> of gRPC Services and work with <a href="https://github.com/grpc-ecosystem/grpc-opentracing">OpenTracing</a>. You can suggest and contribute projects to this organization <a href="https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74/edit">here</a>. We look forward to working with the community to take the gRPC project to new heights.</p>
+
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

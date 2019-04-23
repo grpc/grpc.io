@@ -1,0 +1,44 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    {{ partial "docs-topnav.html" . }}
+
+<div class="quickstartcols">
+
+<div class="quickstartcol1">
+
+<h8>Tutorials</h8>
+<a href="{{ .Site.BaseURL }}docs/tutorials/async/helloasync-cpp/" {{ if in .RelPermalink "helloasync-cpp" }}class="active"{{ end }}>Async - C++</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/auth/oauth2-objective-c/" {{ if in .RelPermalink "oauth2-objective-c" }}class="active"{{ end }}>Auth - Objective C</a>
+<h8>Basic</h8>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/c/" {{ if in .RelPermalink "basic/c/" }}class="active"{{ end }}>C++</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/csharp/" {{ if in .RelPermalink "csharp" }}class="active"{{ end }}>C#</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/dart/" {{ if in .RelPermalink "dart" }}class="active"{{ end }}>Dart</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/go/" {{ if in .RelPermalink "go" }}class="active"{{ end }}>Go</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/java/" {{ if in .RelPermalink "java" }}class="active"{{ end }}>Java</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/android/" {{ if in .RelPermalink "android" }}class="active"{{ end }}>Android Java</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/node/" {{ if in .RelPermalink "node" }}class="active"{{ end }}>Node</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/objective-c/" {{ if in .RelPermalink "objective-c" }}class="active"{{ end }}>Objective-C</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/php/" {{ if in .RelPermalink "php" }}class="active"{{ end }}>PHP</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/python/" {{ if in .RelPermalink "python" }}class="active"{{ end }}>Python</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/ruby/" {{ if in .RelPermalink "ruby" }}class="active"{{ end }}>Ruby</a>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/web/" {{ if in .RelPermalink "web" }}class="active"{{ end }}>Web</a>
+
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">{{ .Title }}</h3>
+
+    {{ .Content }}
+</div>
+</div>
+
+</div>
+{{ end }}

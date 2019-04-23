@@ -1,0 +1,43 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+
+<div class="blogcols">          
+<div class="blogcol1" style="margin-top:4%">
+
+{{ range .Paginator.Pages }}
+  <h3 style="margin-top:0px;"><a href="{{.Permalink}}">{{ .Title }}</a></h3>
+  <h5>{{ .Date.Format "January 02, 2006" }}</h5>
+<p>
+  {{ .Summary }}
+</p>
+
+<a href="{{.Permalink}}">Read More</a>
+<br><br><br>
+{{ end }}
+{{ template "_internal/pagination.html" . }}
+</div>
+
+
+
+<div class="blogcol2">
+
+<h5 style="font-size:12pt;margin-bottom:20px">All blog posts</h5>
+{{ range .Pages }}
+  <a href="{{.Permalink}}">{{.Title}}</a><br><br>
+{{ end }}
+
+</div>
+
+
+
+</div>
+
+{{ end }}

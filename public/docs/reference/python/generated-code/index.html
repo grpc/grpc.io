@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+   &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/" >Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/"  class="active">Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+    <div class="refsection">
+    
+
+<h1 id="python-generated-code-reference">Python Generated Code Reference</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>gRPC Python relies on the protocol buffers compiler (<code>protoc</code>) to generate
+code.  It uses a plugin to supplement the generated code by plain <code>protoc</code>
+with gRPC-specific code.  For a <code>.proto</code> service description containing
+gRPC services, the plain <code>protoc</code> generated code is synthesized in
+a <code>_pb2.py</code> file, and the gRPC-specifc code lands in a <code>_grpc_pb2.py</code> file.
+The latter python module imports the former.  In this guide, we focus
+on the gRPC-specific subset of the generated code.</p>
+
+<h2 id="illustrative-example">Illustrative Example</h2>
+
+<p>Let&rsquo;s look at the following <code>FortuneTeller</code> proto service:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">service</span> FortuneTeller {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#75715e">// Returns the horoscope and zodiac sign for the given month and day.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">rpc</span> TellFortune(HoroscopeRequest) <span style="color:#66d9ef">returns</span> (HoroscopeResponse) {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e">// errors: invalid month or day, fortune unavailable
+</span><span style="color:#75715e"></span>  }<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#75715e">// Replaces the fortune for the given zodiac sign with the provided one.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">rpc</span> SuggestFortune(SuggestionRequest) <span style="color:#66d9ef">returns</span> (SuggestionResponse) {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e">// errors: invalid zodiac sign
+</span><span style="color:#75715e"></span>  }<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>gRPC <code>protoc</code> plugin will synthesize code elements along the lines
+of what follows in the corresponding <code>_pb2_grpc.py</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> grpc
+
+<span style="color:#f92672">import</span> fortune_pb2
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FortuneTellerStub</span>(object):
+
+  <span style="color:#66d9ef">def</span> __init__(self, channel):
+    <span style="color:#e6db74">&#34;&#34;&#34;Constructor.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">      channel: A grpc.Channel.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    self<span style="color:#f92672">.</span>TellFortune <span style="color:#f92672">=</span> channel<span style="color:#f92672">.</span>unary_unary(
+        <span style="color:#e6db74">&#39;/example.FortuneTeller/TellFortune&#39;</span>,
+        request_serializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>HoroscopeRequest<span style="color:#f92672">.</span>SerializeToString,
+        response_deserializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>HoroscopeResponse<span style="color:#f92672">.</span>FromString,
+        )
+    self<span style="color:#f92672">.</span>SuggestFortune <span style="color:#f92672">=</span> channel<span style="color:#f92672">.</span>unary_unary(
+        <span style="color:#e6db74">&#39;/example.FortuneTeller/SuggestFortune&#39;</span>,
+        request_serializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>SuggestionRequest<span style="color:#f92672">.</span>SerializeToString,
+        response_deserializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>SuggestionResponse<span style="color:#f92672">.</span>FromString,
+        )
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FortuneTellerServicer</span>(object):
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">TellFortune</span>(self, request, context):
+    <span style="color:#e6db74">&#34;&#34;&#34;Returns the horoscope and zodiac sign for the given month and day.
+</span><span style="color:#e6db74">    errors: invalid month or day, fortune unavailable
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    context<span style="color:#f92672">.</span>set_code(grpc<span style="color:#f92672">.</span>StatusCode<span style="color:#f92672">.</span>UNIMPLEMENTED)
+    context<span style="color:#f92672">.</span>set_details(<span style="color:#e6db74">&#39;Method not implemented!&#39;</span>)
+    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">NotImplementedError</span>(<span style="color:#e6db74">&#39;Method not implemented!&#39;</span>)
+
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">SuggestFortune</span>(self, request, context):
+    <span style="color:#e6db74">&#34;&#34;&#34;Replaces the fortune for the given zodiac sign with the provided
+</span><span style="color:#e6db74">one.
+</span><span style="color:#e6db74">    errors: invalid zodiac sign
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    context<span style="color:#f92672">.</span>set_code(grpc<span style="color:#f92672">.</span>StatusCode<span style="color:#f92672">.</span>UNIMPLEMENTED)
+    context<span style="color:#f92672">.</span>set_details(<span style="color:#e6db74">&#39;Method not implemented!&#39;</span>)
+    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">NotImplementedError</span>(<span style="color:#e6db74">&#39;Method not implemented!&#39;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_FortuneTellerServicer_to_server</span>(servicer, server):
+  rpc_method_handlers <span style="color:#f92672">=</span> {
+      <span style="color:#e6db74">&#39;TellFortune&#39;</span>: grpc<span style="color:#f92672">.</span>unary_unary_rpc_method_handler(
+          servicer<span style="color:#f92672">.</span>TellFortune,
+          request_deserializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>HoroscopeRequest<span style="color:#f92672">.</span>FromString,
+          response_serializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>HoroscopeResponse<span style="color:#f92672">.</span>SerializeToString,
+      ),
+      <span style="color:#e6db74">&#39;SuggestFortune&#39;</span>: grpc<span style="color:#f92672">.</span>unary_unary_rpc_method_handler(
+          servicer<span style="color:#f92672">.</span>SuggestFortune,
+          request_deserializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>SuggestionRequest<span style="color:#f92672">.</span>FromString,
+          response_serializer<span style="color:#f92672">=</span>fortune_pb2<span style="color:#f92672">.</span>SuggestionResponse<span style="color:#f92672">.</span>SerializeToString,
+      ),
+  }
+  generic_handler <span style="color:#f92672">=</span> grpc<span style="color:#f92672">.</span>method_handlers_generic_handler(
+      <span style="color:#e6db74">&#39;example.FortuneTeller&#39;</span>, rpc_method_handlers)
+  server<span style="color:#f92672">.</span>add_generic_rpc_handlers((generic_handler,))</code></pre></div>
+<h2 id="code-elements">Code Elements</h2>
+
+<p>The gRPC generated code starts by importing the <code>grpc</code> package and the plain
+<code>_pb2</code> module, synthesized by <code>protoc</code>, which defines non-gRPC-specifc code
+elements, like the classes corresponding to protocol buffers messages and
+descriptors used by reflection.</p>
+
+<p>For each service <code>Foo</code> in the <code>.proto</code> file, three primary elements are
+generated:</p>
+
+<ul>
+<li><a href="#stub"><strong>Stub</strong></a>: <code>FooStub</code> used by the client to connect to a gRPC service.</li>
+<li><a href="#servicer"><strong>Servicer</strong></a>: <code>FooServicer</code> used by the server to implement a
+gRPC service.</li>
+<li><a href="#registration-function"><strong>Registration Function</strong></a>:
+<code>add_FooServicer_to_server</code> function used to register a servicer with a
+<code>grpc.Server</code> object.</li>
+</ul>
+
+<h3 id="stub">Stub</h3>
+
+<p><a name="stub"></a>The generated <code>Stub</code> class is used by the gRPC clients.  It
+will have a constructor that takes a <code>grpc.Channel</code> object and initializes the
+stub.  For each method in the service, the initializer adds a corresponding
+attribute to the stub object with the same name.  Depending on the RPC type
+(<em>i.e.</em> unary or streaming), the value of that attribute will be callable
+objects of type
+<a href="/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable">UnaryUnaryMultiCallable</a>,
+<a href="/grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable">UnaryStreamMultiCallable</a>,
+<a href="/grpc/python/grpc.html?#grpc.StreamUnaryMultiCallable">StreamUnaryMultiCallable</a>,
+or
+<a href="/grpc/python/grpc.html?#grpc.StreamStreamMultiCallable">StreamStreamMultiCallable</a>.</p>
+
+<h3 id="servicer">Servicer</h3>
+
+<p><a name="servicer"></a>For each service, a <code>Servicer</code> class is generated.  This
+class is intended to serve as the superclass of a service implementation.  For
+each method in the service, a corresponding function in the <code>Servicer</code> class
+will be synthesized which is intended to be overriden in the actual service
+implementation.  Comments associated with code elements
+in the <code>.proto</code> file will be transferred over as docstrings in
+the generated python code.</p>
+
+<h3 id="registration-function">Registration Function</h3>
+
+<p><a name="registration-function"></a>For each service, a function will be
+generated that registers a <code>Servicer</code> object implementing it on a <code>grpc.Server</code>
+object, so that the server would be able to appropriately route the queries to
+the respective servicer.  This function takes an object that implements the
+<code>Servicer</code>, typically an instance of a subclass of the generated <code>Servicer</code>
+code element described above, and a
+<a href="/grpc/python/_modules/grpc.html#Server"><code>grpc.Server</code></a>
+object.</p>
+
+    </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

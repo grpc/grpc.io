@@ -1,0 +1,87 @@
+baseURL = "https://cjyabraham.github.io/"
+languageCode = "en-us"
+title = "gRPC"
+pygmentsCodeFences = true
+
+[params]
+grpc_release_tag = "v1.20.0"
+grpc_release_tag_no_v = "1.20.0"
+grpc_java_release_tag = "v1.20.0"
+milestones_link = "https://github.com/grpc/grpc/milestones"
+
+[mediaTypes."text/netlify"]
+delimiter = ""
+
+[outputFormats.REDIRECTS]
+mediaType = "text/netlify"
+baseName = "_redirects"
+
+[outputs]
+home = ["HTML", "REDIRECTS"]
+
+# Site menus
+[menu]
+[[menu.dropdown]]
+name = "Overview"
+url = "/docs"
+weight = 1
+
+[[menu.dropdown]]
+name = "Quick Start"
+url = "/docs/quickstart/"
+weight = 2
+
+[[menu.dropdown]]
+name = "Guides"
+url = "/docs/guides/"
+weight = 3
+
+[[menu.dropdown]]
+name = "Tutorials"
+url = "/docs/tutorials/"
+weight = 4
+
+[[menu.dropdown]]
+name = "Reference"
+url = "/docs/reference/"
+weight = 5
+
+[[menu.dropdown]]
+name = "Samples"
+url = "/docs/samples/"
+weight = 6
+
+[[menu.dropdown]]
+name = "Presentations"
+url = "/docs/talks"
+weight = 7
+
+[[menu.guides]]
+name = "What is gRPC?"
+url = "/docs/guides/"
+weight = 1
+
+[[menu.guides]]
+name = "gRPC Concepts"
+url = "/docs/guides/concepts/"
+weight = 2
+
+[[menu.guides]]
+name = "Authentication"
+url = "/docs/guides/auth/"
+weight = 3
+
+[[menu.guides]]
+name = "Error handling and debugging"
+url = "/docs/guides/error/"
+weight = 4
+
+[[menu.guides]]
+name = "Benchmarking"
+url = "/docs/guides/benchmarking/"
+weight = 5
+
+[[menu.guides]]
+name = "gRPC Wire Format"
+url = "https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md"
+weight = 6

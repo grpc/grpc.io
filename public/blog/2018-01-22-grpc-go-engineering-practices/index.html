@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  2018-01-19 gRPC-Go Engineering Practices &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>2018-01-19 gRPC-Go Engineering Practices</h1>
+  <h5>Posted on Monday, January 22, 2018 
+    by 
+    
+      Doug Fawley, gRPC-Go TL
+    
+  </h5>
+  <p>
+    <p>It&rsquo;s the start of the new year, and almost the end of my first full year on the
+gRPC-Go project, so I&rsquo;d like to take this opportunity to provide an update on
+the state of gRPC-Go development and give some visibility into how we manage the
+project.  For me, personally, this is the first open source project to which
+I&rsquo;ve meaningfully contributed, so this year has been a learning experience for
+me.  Over this year, the team has made constant improvements to our work habits
+and communication.  I still see room for improvement, but I believe we are in a
+considerably better place than we were a year ago.</p>
+
+<h2 id="repo-health">Repo Health</h2>
+
+<p>When I first joined the gRPC-Go team, they had been without their previous
+technical lead for a few months.  At that time, we had 45 open PRs, the oldest
+of which was over a year old at the time.  As a new team member and maintainer,
+the accumulation of stale PRs made it difficult to assess priorities and
+understand the state of things.  For our contributors, neglecting PRs was both
+disrespectful and an inconvenience when we started asking for rebases due to
+other commits.  To resolve this, we made a concerted effort to either merge or
+close all of those PRs, and we now hold weekly meetings to review the status of
+every active PR to prevent the situation from reoccurring.</p>
+
+<p>At the same time, we had 103 open issues, many of which were already fixed or
+outdated or untriaged.  Since then, we fixed or closed 85 of those and put in
+place a process to ensure we triage and prioritize new issues on a weekly
+rotation.  Similarly to our PRs, we also review our assigned and high-priority
+issues in a weekly meeting.</p>
+
+<p>Our ongoing SLO for new issues and PRs is 1 week to triage and first response.</p>
+
+<p>We also revamped our <a href="https://github.com/grpc/grpc-go/labels">labels</a> for issues
+and PRs to help with organization.  We typically apply a priority (P0-P3) and a
+type (e.g. Bug, Feature, or Performance) to every issue.  We also have a
+collection of status labels we apply in various situations.  The type labels are
+also applied to PRs to aid in generating our release notes.</p>
+
+<h2 id="versioning-and-backward-compatibility">Versioning and Backward Compatibility</h2>
+
+<p>We have recently documented our <a href="https://github.com/grpc/grpc-go/blob/master/Documentation/versioning.md">versioning
+policy</a>.
+Our goal is to maintain full backward compatibility except in limited
+circumstances, including experimental APIs and mitigating security risks (most
+notably <a href="https://github.com/grpc/grpc-go/pull/1392">#1392</a>). If you notice a
+behavior regression, please don&rsquo;t hesitate to <a href="https://github.com/grpc/grpc-go/issues/new">open an
+issue</a> in our repo (please <a href="https://xkcd.com/1172/">be
+reasonable</a>).</p>
+
+<h2 id="grfc">gRFC</h2>
+
+<p>The <a href="https://github.com/grpc/proposal">gRPC proposal repo</a> contains proposals
+for substantial feature changes for gRPC that need to be designed upfront,
+called gRFCs.  The purpose of this process is to provide visibility and solicit
+feedback from the community.  Each change is discussed on our <a href="https://groups.google.com/forum/#!forum/grpc-io">mailing
+list</a> and debated before the
+change is made.  We leveraged this before making the
+backward-compatibility-breaking metadata change (<a href="https://github.com/grpc/proposal/blob/master/L7-go-metadata-api.md">gRFC
+L7</a>), and
+also for designing the new resolver/balancer API (<a href="https://github.com/grpc/proposal/pull/30">gRFC
+L9</a>).</p>
+
+<h2 id="regression-testing">Regression Testing</h2>
+
+<p>Every PR in our repo must pass our unit and end-to-end tests.  Our current test
+coverage is 85%.  Anytime a regression is identified, we add a test that covers
+the failing scenario, both to prove to ourselves that the problem is resolved by
+the fix, and to prevent it from reoccurring in the future.  This helps us
+improve our overall coverage numbers as well.  We also intend to re-enable
+coverage reporting for all PRs, but in a non-blocking fashion (<a href="https://github.com/grpc/grpc-go/issues/1676">related
+issue</a>).</p>
+
+<p>In addition to testing for correctness, any PR that we suspect will impact
+performance is run though our benchmarks.  We have a set of benchmarks both in
+our <a href="https://github.com/grpc/grpc-go/tree/master/benchmark">open source repo</a>
+and also within Google.  These comprise a variety of workloads that we believe
+are most important for our users, both streaming and unary, and some are
+specifically designed to measure our optimal QPS, throughput, or latency.</p>
+
+<h2 id="releases">Releases</h2>
+
+<p>The GA release of gRPC-Go was made in conjunction with the other languages in
+July of 2016.  The team performed several patch releases between then and the
+end of 2016, but none included release notes.  Our subsequent releases have
+improved in regularity (a minor release is performed every six weeks) and
+in the quality of the release notes.  We also are responsive with patch
+releases, back-porting bug fixes to older releases either on demand or for more
+serious issues within a week.</p>
+
+<p>When performing a release, in addition to the tests in our repo, we also run a
+full suite of inter-op tests with other gRPC language implementations.  This
+process has been working well for us, and we will cover more about this in a
+future blog post.</p>
+
+<h2 id="non-open-source-work">Non-Open Source Work</h2>
+
+<p>We have taken an &ldquo;open source first&rdquo; approach to developing gRPC.  This means
+that, wherever possible, gRPC functionality is added directly into the open
+source project.  However, to work within Google&rsquo;s infrastructure, our team
+sometimes needs to provide additional functionality on top of gRPC.  This is
+typically done through hooks like the <a href="https://godoc.org/google.golang.org/grpc/stats#Handler">stats
+API</a> or
+<a href="https://godoc.org/google.golang.org/grpc#UnaryClientInterceptor">interceptors</a>
+or <a href="https://godoc.org/google.golang.org/grpc/resolver">custom resolvers</a>.</p>
+
+<p>To keep Google&rsquo;s internal version of gRPC up-to-date with the open source
+version, we do weekly or on-demand imports.  Before an import, we run every test
+within Google that depends upon gRPC.  This gives us another way in which we can
+catch problems before performing releases in Open Source.</p>
+
+<h2 id="looking-forward">Looking Forward</h2>
+
+<p>In 2018, we intend to do more of the same, and maintain our SLOs around
+addressing issues and accepting contributions to the project.  We also would
+like to more aggressively tag issues with the <a href="https://github.com/grpc/grpc-go/labels/Status%3A%20Help%20Wanted">&ldquo;Help
+Wanted&rdquo;</a> label
+for anyone looking to contribute to have a bigger selection of issues to choose
+from.</p>
+
+<p>For gRPC itself, one of our main focuses right now is performance, which we hope
+will transparently benefit many of our users.  In the near-term, we have some
+exciting changes we&rsquo;re wrapping up that should provide a 30+% reduction in
+latency with high concurrency, resulting in a QPS improvement of ~25%.  Once
+that work is done, we have a list of other <a href="https://github.com/grpc/grpc-go/issues?q=is%3Aissue+is%3Aopen+label%3A%22Type%3A+Performance%22">performance
+issues</a>
+that we&rsquo;ll be tackling next.</p>
+
+<p>On user experience, we want to provide better documentation, and are starting to
+improve our godoc with better comments and more examples.  We want to improve
+the overall experience of using gRPC, so we will be working closely on projects
+around distributed tracing, monitoring, and testing to make gRPC services easier
+to manage in production.  We want to do more, and we are hoping that starting
+with these and listening to feedback will help us ship improvements steadily.</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

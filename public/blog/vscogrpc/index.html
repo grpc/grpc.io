@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC at VSCO &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>gRPC at VSCO</h1>
+  <h5>Posted on Tuesday, September 06, 2016 
+    by 
+    
+      Robert Sayre and Melinda Lu
+    
+  </h5>
+  <p>
+    <p>Our guest post today comes from Robert Sayre and Melinda Lu of VSCO.</p>
+
+<p>Founded in 2011, <a href="https://vsco.co">VSCO</a> is a community for expression—empowering people to create, discover and connect through images and words. VSCO is in the process of migrating their stack to gRPC.</p>
+
+<p>In 2015, user growth forced VSCO down a familiar path. A monolithic PHP application in existence since the early days of the company was exhibiting performance problems and becoming difficult to maintain. We experimented with some smaller services in node.js, Go, and Java. At the same time, a larger messaging service for email, push messages, and in-app notifications was built in Go. Taking a first step away from JSON, we chose <a href="https://developers.google.com/protocol-buffers/">Protocol Buffers</a> as the serialization format for this system.</p>
+
+<p>Today, VSCO has largely settled on Go for new services. There are exceptions, particularly where a mature JVM solution is available for a given problem. Additionally, VSCO uses node.js for web applications, often with server-side <a href="https://facebook.github.io/react/">React</a>. Given that mix of languages, services, and some future data pipeline work detailed below, VSCO settled on gRPC and Protocol Buffers as the most practical solution for interprocess communication. A gradual migration from JSON over HTTP/1.1 APIs to gRPC over HTTP/2 is underway and going well. That said, there have been issues with the maturity of the PHP implementation relative to other languages.</p>
+
+<p>Protocol buffers have been particularly valuable in building out our data ecosystem, where we rely on them to standardize and allow safe evolution of our data schemas in a language-agnostic way. As one example, we’ve built a Go service that feeds off our MySQL and MongoDB database replication logs and transforms backend database changes into a stream of immutable events in Kafka, with each row- or document-change event encoded as a protocol buffer. This database event stream allows us to add real-time data consumers as desired, without impacting production traffic and without having to coordinate with other systems. By processing all database events into protocol buffers en-route to Kafka, we can ensure that data is encoded in a uniform way that makes it easy to consume and use from multiple languages. Our implementation of <a href="https://github.com/vsco/autobahn-binlog">MySQL-binary-log</a> and <a href="https://github.com/vsco/autobahn-oplog">Mongo-oplog</a> tailers are available on GitHub.</p>
+
+<p>Elsewhere in our data pipeline, we’ve begun using gRPC and protocol buffers to deliver behavioral events from our iOS and Android clients to a Go ingestion service, which then publishes these events to Kafka. To support this high-volume use case, we needed (1) a performant, fault-tolerant, language-agnostic RPC framework, (2) a way to ensure data compatibility as our product evolves, and (3) horizontally-scalable infrastructure. We’ve found gRPC, protocol buffers, and Go services running in Kubernetes a good fit for all three. As this was our first client-facing Go gRPC service, we did experience some new points of friction — in particular, load-balancer support and amenities like curl-like debugging have been lagging due to the youth of the HTTP/2 ecosystem. However, the ease of defining services with the gRPC IDL, using built-in architecture like interceptors, and scaling with Go have made the tradeoffs worthwhile.</p>
+
+<p>As a first step in bringing gRPC to our mobile clients, we’ve shipped telemetry code in our iOS and Android apps. As of gRPC 1.0, this process is relatively straightforward. They only post events to our servers so far, and don’t do much with gRPC responses. The previous implementation was based on JSON, and our move to a single protocol buffer definition of our events uncovered a bunch of subtle bugs and differences between the clients.</p>
+
+<p>One slight roadblock we ran into was the need for our clients to maintain compatibility with our JSON implementation as we ramp up, and for integration with vendor SDKs. This required a little bit of key-value coding on iOS, but it got more difficult on Android. We ended up having to write a protobuf compiler plugin to get the reflection features we needed while maintaining adequate performance. Drawing from that experience, we’ve made a concise <a href="https://github.com/vsco/protoc-demo">example protoc plugin</a> built with <a href="https://bazel.io/">Bazel</a> available on GitHub.</p>
+
+<p>As more and more of our data becomes available in protocol buffer form, we plan to build upon this unified schema to expand our machine-learning and analytics systems. For example, we write our Kafka database replication streams to Amazon S3 as <a href="https://parquet.apache.org/">Apache Parquet</a>, an efficient columnar disk-storage format. Parquet has low-level support for protocol buffers, so we can use our existing data definitions to write optimized tables and do partial deserializations where desired.</p>
+
+<p>From S3, we run computations on our data using Apache Spark, which can use our protocol buffer definitions to define types. We’re also building new machine-learning applications with <a href="https://www.tensorflow.org/">TensorFlow</a>. It uses protocol buffers natively and allows us to serve our models as gRPC services with <a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a>.</p>
+
+<p>So far, we’ve had good luck with gRPC and Protocol Buffers. They don’t eliminate every integration headache. However it’s easy to see how they help our engineers avoid writing a lot of boilerplate RPC code, while side-stepping the endless data-quality papercuts that come with looser serialization formats.</p>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

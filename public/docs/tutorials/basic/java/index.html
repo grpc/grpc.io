@@ -1,0 +1,799 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  gRPC Basics - Java &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/"  class="active">Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/" >Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+
+<div class="quickstartcols">
+
+<div class="quickstartcol1">
+
+<h8>Tutorials</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/async/helloasync-cpp/" >Async - C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/auth/oauth2-objective-c/" >Auth - Objective C</a>
+<h8>Basic</h8>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/c/" >C++</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/csharp/" >C#</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/dart/" >Dart</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/go/" >Go</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/java/" class="active">Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/android/" >Android Java</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/node/" >Node</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/objective-c/" >Objective-C</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/php/" >PHP</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/python/" >Python</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/ruby/" >Ruby</a>
+<a href="https://cjyabraham.github.io/docs/tutorials/basic/web/" >Web</a>
+
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">gRPC Basics - Java</h3>
+
+    
+
+<p>This tutorial provides a basic Java programmer&rsquo;s introduction to
+working with gRPC.</p>
+
+<p>By walking through this example you&rsquo;ll learn how to:</p>
+
+<ul>
+<li>Define a service in a .proto file.</li>
+<li>Generate server and client code using the protocol buffer compiler.</li>
+<li>Use the Java gRPC API to write a simple client and server for your service.</li>
+</ul>
+
+<p>It assumes that you have read the <a href="/docs/">Overview</a> and are familiar
+with <a href="https://developers.google.com/protocol-buffers/docs/overview">protocol
+buffers</a>. Note
+that the example in this tutorial uses the
+<a href="https://github.com/google/protobuf/releases">proto3</a> version of the protocol
+buffers language: you can find out more in the <a href="https://developers.google.com/protocol-buffers/docs/proto3">proto3 language
+guide</a> and <a href="https://developers.google.com/protocol-buffers/docs/reference/java-generated">Java
+generated code
+guide</a>.</p>
+
+<div id="toc"></div>
+
+<h3 id="why-use-grpc">Why use gRPC?</h3>
+
+<p>Our example is a simple route mapping application that lets clients get
+information about features on their route, create a summary of their route, and
+exchange route information such as traffic updates with the server and other
+clients.</p>
+
+<p>With gRPC we can define our service once in a .proto file and implement clients
+and servers in any of gRPC&rsquo;s supported languages, which in turn can be run in
+environments ranging from servers inside Google to your own tablet - all the
+complexity of communication between different languages and environments is
+handled for you by gRPC. We also get all the advantages of working with protocol
+buffers, including efficient serialization, a simple IDL, and easy interface
+updating.</p>
+
+<h3 id="example-code-and-setup">Example code and setup</h3>
+
+<p>The example code for our tutorial is in
+<a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples">grpc/grpc-java/examples/src/main/java/io/grpc/examples</a>.
+To download the example, clone the latest release in <code>grpc-java</code> repository by
+running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone -b v1.20.0 https://github.com/grpc/grpc-java.git</code></pre></div>
+<p>Then change your current directory to <code>grpc-java/examples</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd grpc-java/examples</code></pre></div>
+<h3 id="defining-the-service">Defining the service</h3>
+
+<p>Our first step (as you&rsquo;ll know from the <a href="/docs/">Overview</a>) is to
+define the gRPC <em>service</em> and the method <em>request</em> and <em>response</em> types using
+<a href="https://developers.google.com/protocol-buffers/docs/overview">protocol
+buffers</a>. You can
+see the complete .proto file in
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/proto/route_guide.proto"><code>grpc-java/examples/src/main/proto/route_guide.proto</code></a>.</p>
+
+<p>As we&rsquo;re generating Java code in this example, we&rsquo;ve specified a <code>java_package</code>
+file option in our .proto:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">option</span> java_package <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;io.grpc.examples.routeguide&#34;</span>;</code></pre></div>
+<p>This specifies the package we want to use for our generated Java classes. If no
+explicit <code>java_package</code> option is given in the .proto file, then by default the
+proto package (specified using the &ldquo;package&rdquo; keyword) will be used. However,
+proto packages generally do not make good Java packages since proto packages are
+not expected to start with reverse domain names. If we generate code in another
+language from this .proto, the <code>java_package</code> option has no effect.</p>
+
+<p>To define a service, we specify a named <code>service</code> in the .proto file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#66d9ef">service</span> RouteGuide {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>   <span style="color:#f92672">...</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<p>Then we define <code>rpc</code> methods inside our service definition, specifying their
+request and response types. gRPC lets you define four kinds of service methods,
+all of which are used in the <code>RouteGuide</code> service:</p>
+
+<ul>
+<li>A <em>simple RPC</em> where the client sends a request to the server using the stub
+and waits for a response to come back, just like a normal function call.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Obtains the feature at a given position.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> GetFeature(Point) <span style="color:#66d9ef">returns</span> (Feature) {}</code></pre></div>
+<ul>
+<li>A <em>server-side streaming RPC</em> where the client sends a request to the server
+and gets a stream to read a sequence of messages back. The client reads from
+the returned stream until there are no more messages. As you can see in our
+example, you specify a server-side streaming method by placing the <code>stream</code>
+keyword before the <em>response</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Obtains the Features available within the given Rectangle.  Results are
+</span><span style="color:#75715e">// streamed rather than returned at once (e.g. in a response message with a
+</span><span style="color:#75715e">// repeated field), as the rectangle may cover a large area and contain a
+</span><span style="color:#75715e">// huge number of features.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> ListFeatures(Rectangle) <span style="color:#66d9ef">returns</span> (stream Feature) {}</code></pre></div>
+<ul>
+<li>A <em>client-side streaming RPC</em> where the client writes a sequence of messages
+and sends them to the server, again using a provided stream. Once the client
+has finished writing the messages, it waits for the server to read them all
+and return its response. You specify a client-side streaming method by placing
+the <code>stream</code> keyword before the <em>request</em> type.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Accepts a stream of Points on a route being traversed, returning a
+</span><span style="color:#75715e">// RouteSummary when traversal is completed.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> RecordRoute(stream Point) <span style="color:#66d9ef">returns</span> (RouteSummary) {}</code></pre></div>
+<ul>
+<li>A <em>bidirectional streaming RPC</em> where both sides send a sequence of messages
+using a read-write stream. The two streams operate independently, so clients
+and servers can read and write in whatever order they like: for example, the
+server could wait to receive all the client messages before writing its
+responses, or it could alternately read a message then write a message, or
+some other combination of reads and writes. The order of messages in each
+stream is preserved. You specify this type of method by placing the <code>stream</code>
+keyword before both the request and the response.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Accepts a stream of RouteNotes sent while a route is being traversed,
+</span><span style="color:#75715e">// while receiving other RouteNotes (e.g. from other users).
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">rpc</span> RouteChat(stream RouteNote) <span style="color:#66d9ef">returns</span> (stream RouteNote) {}</code></pre></div>
+<p>Our .proto file also contains protocol buffer message type definitions for all
+the request and response types used in our service methods - for example, here&rsquo;s
+the <code>Point</code> message type:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto"><span style="color:#75715e">// Points are represented as latitude-longitude pairs in the E7 representation
+</span><span style="color:#75715e">// (degrees multiplied by 10**7 and rounded to the nearest integer).
+</span><span style="color:#75715e">// Latitudes should be in the range +/- 90 degrees and longitude should be in
+</span><span style="color:#75715e">// the range +/- 180 degrees (inclusive).
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">message</span> <span style="color:#a6e22e">Point</span> {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">int32</span> latitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#66d9ef">int32</span> longitude <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>}</code></pre></div>
+<h3 id="generating-client-and-server-code">Generating client and server code</h3>
+
+<p>Next we need to generate the gRPC client and server interfaces from our .proto
+service definition. We do this using the protocol buffer compiler <code>protoc</code> with
+a special gRPC Java plugin. You need to use the
+<a href="https://github.com/google/protobuf/releases">proto3</a> compiler (which supports
+both proto2 and proto3 syntax) in order to generate gRPC services.</p>
+
+<p>When using Gradle or Maven, the protoc build plugin can generate the necessary
+code as part of the build. You can refer to the <a
+href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
+how to generate code from your own .proto files.</p>
+
+<p>The following classes are generated from our service definition:</p>
+
+<ul>
+<li><code>Feature.java</code>, <code>Point.java</code>, <code>Rectangle.java</code>, and others which contain all
+the protocol buffer code to populate, serialize, and retrieve our request and
+response message types.</li>
+<li><code>RouteGuideGrpc.java</code> which contains (along with some other useful code):
+
+<ul>
+<li>a base class for <code>RouteGuide</code> servers to implement,
+<code>RouteGuideGrpc.RouteGuideImplBase</code>, with all the methods defined in the
+<code>RouteGuide</code> service.</li>
+<li><em>stub</em> classes that clients can use to talk to a <code>RouteGuide</code> server.</li>
+</ul></li>
+</ul>
+
+<p><a name="server"></a></p>
+
+<h3 id="creating-the-server">Creating the server</h3>
+
+<p>First let&rsquo;s look at how we create a <code>RouteGuide</code> server. If you&rsquo;re only
+interested in creating gRPC clients, you can skip this section and go straight
+to <a href="#client">Creating the client</a> (though you might find it interesting
+anyway!).</p>
+
+<p>There are two parts to making our <code>RouteGuide</code> service do its job:</p>
+
+<ul>
+<li>Overriding the service base class generated from our service definition: doing
+the actual &ldquo;work&rdquo; of our service.</li>
+<li>Running a gRPC server to listen for requests from clients and return the
+service responses.</li>
+</ul>
+
+<p>You can find our example <code>RouteGuide</code> server in
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideServer.java">grpc-java/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideServer.java</a>.
+Let&rsquo;s take a closer look at how it works.</p>
+
+<h4 id="implementing-routeguide">Implementing RouteGuide</h4>
+
+<p>As you can see, our server has a <code>RouteGuideService</code> class that extends the
+generated <code>RouteGuideGrpc.RouteGuideImplBase</code> abstract class:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RouteGuideService</span> <span style="color:#66d9ef">extends</span> RouteGuideGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">RouteGuideImplBase</span> <span style="color:#f92672">{</span>
+<span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<h4 id="simple-rpc">Simple RPC</h4>
+
+<p><code>RouteGuideService</code> implements all our service methods. Let&rsquo;s
+look at the simplest type first, <code>GetFeature</code>, which just gets a <code>Point</code> from
+the client and returns the corresponding feature information from its database
+in a <code>Feature</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getFeature</span><span style="color:#f92672">(</span>Point request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>checkFeature<span style="color:#f92672">(</span>request<span style="color:#f92672">));</span>
+  responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#66d9ef">private</span> Feature <span style="color:#a6e22e">checkFeature</span><span style="color:#f92672">(</span>Point location<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Feature feature <span style="color:#f92672">:</span> features<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>feature<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> location<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">()</span>
+        <span style="color:#f92672">&amp;&amp;</span> feature<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> location<span style="color:#f92672">.</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">return</span> feature<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#75715e">// No feature was found, return an unnamed feature.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> Feature<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">setLocation</span><span style="color:#f92672">(</span>location<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p><code>getFeature()</code> takes two parameters:</p>
+
+<ul>
+<li><code>Point</code>: the request</li>
+<li><code>StreamObserver&lt;Feature&gt;</code>: a response observer, which is a special interface
+for the server to call with its response.</li>
+</ul>
+
+<p>To return our response to the client and complete the call:</p>
+
+<ol>
+<li>We construct and populate a <code>Feature</code> response object to return to the
+client, as specified in our service definition. In this example, we do this
+in a separate private <code>checkFeature()</code> method.</li>
+<li>We use the response observer&rsquo;s <code>onNext()</code> method to return the <code>Feature</code>.</li>
+<li>We use the response observer&rsquo;s <code>onCompleted()</code> method to specify that we&rsquo;ve
+finished dealing with the RPC.</li>
+</ol>
+
+<h5 id="server-side-streaming-rpc">Server-side streaming RPC</h5>
+
+<p>Next let&rsquo;s look at one of our streaming RPCs. <code>ListFeatures</code> is a server-side
+streaming RPC, so we need to send back multiple <code>Feature</code>s to our client.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> Collection<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> features<span style="color:#f92672">;</span>
+
+<span style="color:#f92672">...</span>
+
+<span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">listFeatures</span><span style="color:#f92672">(</span>Rectangle request<span style="color:#f92672">,</span> StreamObserver<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> min<span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLo</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getHi</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">());</span>
+  <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> max<span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLo</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getHi</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">());</span>
+  <span style="color:#66d9ef">int</span> top <span style="color:#f92672">=</span> max<span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLo</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getHi</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">());</span>
+  <span style="color:#66d9ef">int</span> bottom <span style="color:#f92672">=</span> min<span style="color:#f92672">(</span>request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLo</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getHi</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">());</span>
+
+  <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>Feature feature <span style="color:#f92672">:</span> features<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>RouteGuideUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">(</span>feature<span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#66d9ef">int</span> lat <span style="color:#f92672">=</span> feature<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">int</span> lon <span style="color:#f92672">=</span> feature<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>lon <span style="color:#f92672">&gt;=</span> left <span style="color:#f92672">&amp;&amp;</span> lon <span style="color:#f92672">&lt;=</span> right <span style="color:#f92672">&amp;&amp;</span> lat <span style="color:#f92672">&gt;=</span> bottom <span style="color:#f92672">&amp;&amp;</span> lat <span style="color:#f92672">&lt;=</span> top<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>feature<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>Like the simple RPC, this method gets a request object (the <code>Rectangle</code> in which
+our client wants to find <code>Feature</code>s) and a <code>StreamObserver</code> response observer.</p>
+
+<p>This time, we get as many <code>Feature</code> objects as we need to return to the client
+(in this case, we select them from the service&rsquo;s feature collection based on
+whether they&rsquo;re inside our request <code>Rectangle</code>), and write them each in turn to
+the response observer using its <code>onNext()</code> method. Finally, as in our simple
+RPC, we use the response observer&rsquo;s <code>onCompleted()</code> method to tell gRPC that
+we&rsquo;ve finished writing responses.</p>
+
+<h5 id="client-side-streaming-rpc">Client-side streaming RPC</h5>
+
+<p>Now let&rsquo;s look at something a little more complicated: the client-side streaming
+method <code>RecordRoute</code>, where we get a stream of <code>Point</code>s from the client and
+return a single <code>RouteSummary</code> with information about their trip.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>Point<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">recordRoute</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteSummary<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> StreamObserver<span style="color:#f92672">&lt;</span>Point<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">int</span> pointCount<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> featureCount<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">int</span> distance<span style="color:#f92672">;</span>
+    Point previous<span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">long</span> startTime <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">nanoTime</span><span style="color:#f92672">();</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>Point point<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      pointCount<span style="color:#f92672">++;</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>RouteGuideUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">exists</span><span style="color:#f92672">(</span>checkFeature<span style="color:#f92672">(</span>point<span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
+        featureCount<span style="color:#f92672">++;</span>
+      <span style="color:#f92672">}</span>
+      <span style="color:#75715e">// For each point after the first, add the incremental distance from the previous point
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// to the total distance value.
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>previous <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        distance <span style="color:#f92672">+=</span> calcDistance<span style="color:#f92672">(</span>previous<span style="color:#f92672">,</span> point<span style="color:#f92672">);</span>
+      <span style="color:#f92672">}</span>
+      previous <span style="color:#f92672">=</span> point<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Throwable t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Encountered error in recordRoute&#34;</span><span style="color:#f92672">,</span> t<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">long</span> seconds <span style="color:#f92672">=</span> NANOSECONDS<span style="color:#f92672">.</span><span style="color:#a6e22e">toSeconds</span><span style="color:#f92672">(</span>System<span style="color:#f92672">.</span><span style="color:#a6e22e">nanoTime</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> startTime<span style="color:#f92672">);</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>RouteSummary<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setPointCount</span><span style="color:#f92672">(</span>pointCount<span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">setFeatureCount</span><span style="color:#f92672">(</span>featureCount<span style="color:#f92672">).</span><span style="color:#a6e22e">setDistance</span><span style="color:#f92672">(</span>distance<span style="color:#f92672">)</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">setElapsedTime</span><span style="color:#f92672">((</span><span style="color:#66d9ef">int</span><span style="color:#f92672">)</span> seconds<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">());</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">};</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As you can see, like the previous method types our method gets a
+<code>StreamObserver</code> response observer parameter, but this time it returns a
+<code>StreamObserver</code> for the client to write its <code>Point</code>s.</p>
+
+<p>In the method body we instantiate an anonymous <code>StreamObserver</code> to return, in
+which we:</p>
+
+<ul>
+<li>Override the <code>onNext()</code> method to get features and other information each time
+the client writes a <code>Point</code> to the message stream.</li>
+<li>Override the <code>onCompleted()</code> method (called when the <em>client</em> has finished
+writing messages) to populate and build our <code>RouteSummary</code>. We then call our
+method&rsquo;s own response observer&rsquo;s <code>onNext()</code> with our <code>RouteSummary</code>, and then
+call its <code>onCompleted()</code> method to finish the call from the server side.</li>
+</ul>
+
+<h5 id="bidirectional-streaming-rpc">Bidirectional streaming RPC</h5>
+
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span>
+<span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">routeChat</span><span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>RouteNote note<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      List<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;</span> notes <span style="color:#f92672">=</span> getOrCreateNotes<span style="color:#f92672">(</span>note<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">());</span>
+
+      <span style="color:#75715e">// Respond with all previous notes at this location.
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>RouteNote prevNote <span style="color:#f92672">:</span> notes<span style="color:#f92672">.</span><span style="color:#a6e22e">toArray</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> RouteNote<span style="color:#f92672">[</span>0<span style="color:#f92672">]))</span> <span style="color:#f92672">{</span>
+        responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>prevNote<span style="color:#f92672">);</span>
+      <span style="color:#f92672">}</span>
+
+      <span style="color:#75715e">// Now add the new note to the list
+</span><span style="color:#75715e"></span>      notes<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>note<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Throwable t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Encountered error in routeChat&#34;</span><span style="color:#f92672">,</span> t<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      responseObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">};</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As with our client-side streaming example, we both get and return a
+<code>StreamObserver</code> response observer, except this time we return values via our
+method&rsquo;s response observer while the client is still writing messages to <em>their</em>
+message stream. The syntax for reading and writing here is exactly the same as
+for our client-streaming and server-streaming methods. Although each side will
+always get the other&rsquo;s messages in the order they were written, both the client
+and server can read and write in any order — the streams operate completely
+independently.</p>
+
+<h4 id="starting-the-server">Starting the server</h4>
+
+<p>Once we&rsquo;ve implemented all our methods, we also need to start up a gRPC server
+so that clients can actually use our service. The following snippet shows how we
+do this for our <code>RouteGuide</code> service:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RouteGuideServer</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> port<span style="color:#f92672">,</span> URL featureFile<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>ServerBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">forPort</span><span style="color:#f92672">(</span>port<span style="color:#f92672">),</span> port<span style="color:#f92672">,</span> RouteGuideUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">parseFeatures</span><span style="color:#f92672">(</span>featureFile<span style="color:#f92672">));</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">/** Create a RouteGuide server using serverBuilder as a base and features as data. */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RouteGuideServer</span><span style="color:#f92672">(</span>ServerBuilder<span style="color:#f92672">&lt;?&gt;</span> serverBuilder<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">,</span> Collection<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> features<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> port<span style="color:#f92672">;</span>
+  server <span style="color:#f92672">=</span> serverBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">addService</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> RouteGuideService<span style="color:#f92672">(</span>features<span style="color:#f92672">))</span>
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+<span style="color:#f92672">...</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+  server<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+  logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Server started, listening on &#34;</span> <span style="color:#f92672">+</span> port<span style="color:#f92672">);</span>
+ <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As you can see, we build and start our server using a <code>ServerBuilder</code>.</p>
+
+<p>To do this, we:</p>
+
+<ol>
+<li>Specify the address and port we want to use to listen for client requests
+using the builder&rsquo;s <code>forPort()</code> method.</li>
+<li>Create an instance of our service implementation class <code>RouteGuideService</code>
+and pass it to the builder&rsquo;s <code>addService()</code> method.</li>
+<li>Call <code>build()</code> and <code>start()</code> on the builder to create and start an RPC server
+for our service.</li>
+</ol>
+
+<p><a name="client"></a></p>
+
+<h2 id="creating-the-client">Creating the client</h2>
+
+<p>In this section, we&rsquo;ll look at creating a Java client for our <code>RouteGuide</code>
+service. You can see our complete example client code in
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java">grpc-java/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java</a>.</p>
+
+<h4 id="creating-a-stub">Creating a stub</h4>
+
+<p>To call service methods, we first need to create a <em>stub</em>, or rather, two stubs:</p>
+
+<ul>
+<li>a <em>blocking/synchronous</em> stub: this means that the RPC call waits for the
+server to respond, and will either return a response or raise an exception.</li>
+<li>a <em>non-blocking/asynchronous</em> stub that makes non-blocking calls to the
+server, where the response is returned asynchronously. You can make certain
+types of streaming call only using the asynchronous stub.</li>
+</ul>
+
+<p>First we need to create a gRPC <em>channel</em> for our stub, specifying the server
+address and port we want to connect to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RouteGuideClient</span><span style="color:#f92672">(</span>String host<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> port<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span>ManagedChannelBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">forAddress</span><span style="color:#f92672">(</span>host<span style="color:#f92672">,</span> port<span style="color:#f92672">).</span><span style="color:#a6e22e">usePlaintext</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e">/** Construct client for accessing RouteGuide server using the existing channel. */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">RouteGuideClient</span><span style="color:#f92672">(</span>ManagedChannelBuilder<span style="color:#f92672">&lt;?&gt;</span> channelBuilder<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  channel <span style="color:#f92672">=</span> channelBuilder<span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+  blockingStub <span style="color:#f92672">=</span> RouteGuideGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">newBlockingStub</span><span style="color:#f92672">(</span>channel<span style="color:#f92672">);</span>
+  asyncStub <span style="color:#f92672">=</span> RouteGuideGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">newStub</span><span style="color:#f92672">(</span>channel<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>We use a <code>ManagedChannelBuilder</code> to create the channel.</p>
+
+<p>Now we can use the channel to create our stubs using the <code>newStub</code> and
+<code>newBlockingStub</code> methods provided in the <code>RouteGuideGrpc</code> class we generated
+from our .proto.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">blockingStub <span style="color:#f92672">=</span> RouteGuideGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">newBlockingStub</span><span style="color:#f92672">(</span>channel<span style="color:#f92672">);</span>
+asyncStub <span style="color:#f92672">=</span> RouteGuideGrpc<span style="color:#f92672">.</span><span style="color:#a6e22e">newStub</span><span style="color:#f92672">(</span>channel<span style="color:#f92672">);</span></code></pre></div>
+<h4 id="calling-service-methods">Calling service methods</h4>
+
+<p>Now let&rsquo;s look at how we call our service methods.</p>
+
+<h5 id="simple-rpc-1">Simple RPC</h5>
+
+<p>Calling the simple RPC <code>GetFeature</code> on the blocking stub is as straightforward
+as calling a local method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Point request <span style="color:#f92672">=</span> Point<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setLatitude</span><span style="color:#f92672">(</span>lat<span style="color:#f92672">).</span><span style="color:#a6e22e">setLongitude</span><span style="color:#f92672">(</span>lon<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+Feature feature<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+  feature <span style="color:#f92672">=</span> blockingStub<span style="color:#f92672">.</span><span style="color:#a6e22e">getFeature</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>StatusRuntimeException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;RPC failed: {0}&#34;</span><span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getStatus</span><span style="color:#f92672">());</span>
+  <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>We create and populate a request protocol buffer object (in our case <code>Point</code>),
+pass it to the <code>getFeature()</code> method on our blocking stub, and get back a
+<code>Feature</code>.</p>
+
+<p>If an error occurs, it is encoded as a <code>Status</code>, which we can obtain from the
+<code>StatusRuntimeException</code>.</p>
+
+<h5 id="server-side-streaming-rpc-1">Server-side streaming RPC</h5>
+
+<p>Next, let&rsquo;s look at a server-side streaming call to <code>ListFeatures</code>, which
+returns a stream of geographical <code>Feature</code>s:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Rectangle request <span style="color:#f92672">=</span>
+    Rectangle<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setLo</span><span style="color:#f92672">(</span>Point<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setLatitude</span><span style="color:#f92672">(</span>lowLat<span style="color:#f92672">).</span><span style="color:#a6e22e">setLongitude</span><span style="color:#f92672">(</span>lowLon<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">())</span>
+        <span style="color:#f92672">.</span><span style="color:#a6e22e">setHi</span><span style="color:#f92672">(</span>Point<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">setLatitude</span><span style="color:#f92672">(</span>hiLat<span style="color:#f92672">).</span><span style="color:#a6e22e">setLongitude</span><span style="color:#f92672">(</span>hiLon<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span>
+Iterator<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> features<span style="color:#f92672">;</span>
+<span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+  features <span style="color:#f92672">=</span> blockingStub<span style="color:#f92672">.</span><span style="color:#a6e22e">listFeatures</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>StatusRuntimeException ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;RPC failed: {0}&#34;</span><span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">getStatus</span><span style="color:#f92672">());</span>
+  <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As you can see, it&rsquo;s very similar to the simple RPC we just looked at, except
+instead of returning a single <code>Feature</code>, the method returns an <code>Iterator</code> that
+the client can use to read all the returned <code>Feature</code>s.</p>
+
+<h5 id="client-side-streaming-rpc-1">Client-side streaming RPC</h5>
+
+<p>Now for something a little more complicated: the client-side streaming method
+<code>RecordRoute</code>, where we send a stream of <code>Point</code>s to the server and get back a
+single <code>RouteSummary</code>. For this method we need to use the asynchronous stub. If
+you&rsquo;ve already read <a href="#server">Creating the server</a> some of this may look very
+familiar - asynchronous streaming RPCs are implemented in a similar way on both
+sides.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">recordRoute</span><span style="color:#f92672">(</span>List<span style="color:#f92672">&lt;</span>Feature<span style="color:#f92672">&gt;</span> features<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> numPoints<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+  info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;*** RecordRoute&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">final</span> CountDownLatch finishLatch <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CountDownLatch<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+  StreamObserver<span style="color:#f92672">&lt;</span>RouteSummary<span style="color:#f92672">&gt;</span> responseObserver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteSummary<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>RouteSummary summary<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Finished trip with {0} points. Passed {1} features. &#34;</span>
+          <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Travelled {2} meters. It took {3} seconds.&#34;</span><span style="color:#f92672">,</span> summary<span style="color:#f92672">.</span><span style="color:#a6e22e">getPointCount</span><span style="color:#f92672">(),</span>
+          summary<span style="color:#f92672">.</span><span style="color:#a6e22e">getFeatureCount</span><span style="color:#f92672">(),</span> summary<span style="color:#f92672">.</span><span style="color:#a6e22e">getDistance</span><span style="color:#f92672">(),</span> summary<span style="color:#f92672">.</span><span style="color:#a6e22e">getElapsedTime</span><span style="color:#f92672">());</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Throwable t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      Status status <span style="color:#f92672">=</span> Status<span style="color:#f92672">.</span><span style="color:#a6e22e">fromThrowable</span><span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>
+      logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;RecordRoute Failed: {0}&#34;</span><span style="color:#f92672">,</span> status<span style="color:#f92672">);</span>
+      finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">countDown</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+      info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Finished RecordRoute&#34;</span><span style="color:#f92672">);</span>
+      finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">countDown</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">};</span>
+
+  StreamObserver<span style="color:#f92672">&lt;</span>Point<span style="color:#f92672">&gt;</span> requestObserver <span style="color:#f92672">=</span> asyncStub<span style="color:#f92672">.</span><span style="color:#a6e22e">recordRoute</span><span style="color:#f92672">(</span>responseObserver<span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// Send numPoints points randomly selected from the features list.
+</span><span style="color:#75715e"></span>    Random rand <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">();</span>
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> numPoints<span style="color:#f92672">;</span> <span style="color:#f92672">++</span>i<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>features<span style="color:#f92672">.</span><span style="color:#a6e22e">size</span><span style="color:#f92672">());</span>
+      Point point <span style="color:#f92672">=</span> features<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>index<span style="color:#f92672">).</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">();</span>
+      info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Visiting point {0}, {1}&#34;</span><span style="color:#f92672">,</span> RouteGuideUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">(</span>point<span style="color:#f92672">),</span>
+          RouteGuideUtil<span style="color:#f92672">.</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">(</span>point<span style="color:#f92672">));</span>
+      requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>point<span style="color:#f92672">);</span>
+      <span style="color:#75715e">// Sleep for a bit before sending the next one.
+</span><span style="color:#75715e"></span>      Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span>rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span> <span style="color:#f92672">+</span> 500<span style="color:#f92672">);</span>
+      <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">getCount</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#75715e">// RPC completed or errored before we finished sending.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// Sending further requests won&#39;t error, but they will just be thrown away.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+      <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>RuntimeException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// Cancel RPC
+</span><span style="color:#75715e"></span>    requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">throw</span> e<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#75715e">// Mark the end of requests
+</span><span style="color:#75715e"></span>  requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+
+  <span style="color:#75715e">// Receiving happens asynchronously
+</span><span style="color:#75715e"></span>  finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">await</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">MINUTES</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As you can see, to call this method we need to create a <code>StreamObserver</code>, which
+implements a special interface for the server to call with its <code>RouteSummary</code>
+response. In our <code>StreamObserver</code> we:</p>
+
+<ul>
+<li>Override the <code>onNext()</code> method to print out the returned information when the
+server writes a <code>RouteSummary</code> to the message stream.</li>
+<li>Override the <code>onCompleted()</code> method (called when the <em>server</em> has completed
+the call on its side) to reduce a <code>CountDownLatch</code> that we can check to see if
+the server has finished writing.</li>
+</ul>
+
+<p>We then pass the <code>StreamObserver</code> to the asynchronous stub&rsquo;s <code>recordRoute()</code>
+method and get back our own <code>StreamObserver</code> request observer to write our
+<code>Point</code>s to send to the server.  Once we&rsquo;ve finished writing points, we use the
+request observer&rsquo;s <code>onCompleted()</code> method to tell gRPC that we&rsquo;ve finished
+writing on the client side. Once we&rsquo;re done, we check our <code>CountDownLatch</code> to
+check that the server has completed on its side.</p>
+
+<h5 id="bidirectional-streaming-rpc-1">Bidirectional streaming RPC</h5>
+
+<p>Finally, let&rsquo;s look at our bidirectional streaming RPC <code>RouteChat()</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">routeChat</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">throws</span> Exception <span style="color:#f92672">{</span>
+  info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;*** RoutChat&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">final</span> CountDownLatch finishLatch <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CountDownLatch<span style="color:#f92672">(</span>1<span style="color:#f92672">);</span>
+  StreamObserver<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;</span> requestObserver <span style="color:#f92672">=</span>
+      asyncStub<span style="color:#f92672">.</span><span style="color:#a6e22e">routeChat</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> StreamObserver<span style="color:#f92672">&lt;</span>RouteNote<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>RouteNote note<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+          info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Got message \&#34;{0}\&#34; at {1}, {2}&#34;</span><span style="color:#f92672">,</span> note<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(),</span> note<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">()</span>
+              <span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">(),</span> note<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">());</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>Throwable t<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+          Status status <span style="color:#f92672">=</span> Status<span style="color:#f92672">.</span><span style="color:#a6e22e">fromThrowable</span><span style="color:#f92672">(</span>t<span style="color:#f92672">);</span>
+          logger<span style="color:#f92672">.</span><span style="color:#a6e22e">log</span><span style="color:#f92672">(</span>Level<span style="color:#f92672">.</span><span style="color:#a6e22e">WARNING</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;RouteChat Failed: {0}&#34;</span><span style="color:#f92672">,</span> status<span style="color:#f92672">);</span>
+          finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">countDown</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+          info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Finished RouteChat&#34;</span><span style="color:#f92672">);</span>
+          finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">countDown</span><span style="color:#f92672">();</span>
+        <span style="color:#f92672">}</span>
+      <span style="color:#f92672">});</span>
+
+  <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+    RouteNote<span style="color:#f92672">[]</span> requests <span style="color:#f92672">=</span>
+        <span style="color:#f92672">{</span>newNote<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;First message&#34;</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 0<span style="color:#f92672">),</span> newNote<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Second message&#34;</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 1<span style="color:#f92672">),</span>
+            newNote<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Third message&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> 0<span style="color:#f92672">),</span> newNote<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Fourth message&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">,</span> 1<span style="color:#f92672">)};</span>
+
+    <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>RouteNote request <span style="color:#f92672">:</span> requests<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      info<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Sending message \&#34;{0}\&#34; at {1}, {2}&#34;</span><span style="color:#f92672">,</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">()</span>
+          <span style="color:#f92672">.</span><span style="color:#a6e22e">getLatitude</span><span style="color:#f92672">(),</span> request<span style="color:#f92672">.</span><span style="color:#a6e22e">getLocation</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getLongitude</span><span style="color:#f92672">());</span>
+      requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onNext</span><span style="color:#f92672">(</span>request<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>RuntimeException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// Cancel RPC
+</span><span style="color:#75715e"></span>    requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onError</span><span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">throw</span> e<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#75715e">// Mark the end of requests
+</span><span style="color:#75715e"></span>  requestObserver<span style="color:#f92672">.</span><span style="color:#a6e22e">onCompleted</span><span style="color:#f92672">();</span>
+
+  <span style="color:#75715e">// Receiving happens asynchronously
+</span><span style="color:#75715e"></span>  finishLatch<span style="color:#f92672">.</span><span style="color:#a6e22e">await</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> TimeUnit<span style="color:#f92672">.</span><span style="color:#a6e22e">MINUTES</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As with our client-side streaming example, we both get and return a
+<code>StreamObserver</code> response observer, except this time we send values via our
+method&rsquo;s response observer while the server is still writing messages to <em>their</em>
+message stream. The syntax for reading and writing here is exactly the same as
+for our client-streaming method. Although each side will always get the other&rsquo;s
+messages in the order they were written, both the client and server can read and
+write in any order — the streams operate completely independently.</p>
+
+<h3 id="try-it-out">Try it out!</h3>
+
+<p>Follow the instructions in the example directory
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/README.md">README</a> to
+build and run the client and server.</p>
+
+</div>
+</div>
+
+</div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

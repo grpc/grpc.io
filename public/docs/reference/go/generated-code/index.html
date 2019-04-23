@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+   &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/" >Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/"  class="active">Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+    <div class="refsection">
+    
+
+<h1 id="go-generated-code-reference">Go Generated Code Reference</h1>
+
+<p>This guide describes the code generated with the <a href="https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc">grpc plugin</a> to <code>protoc-gen-go</code>
+when compiling <code>.proto</code> files with <code>protoc</code>.</p>
+
+<p>You can find out how to define a gRPC service in a <code>.proto</code> file in <a href="/docs/guides/concepts/#service-definition">Service Definitions</a>.</p>
+
+<p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
+to be run on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
+so e.g. <i>individual streams</i> do not support <i>concurrent reads</i> or <i>concurrent writes</i> (but reads are safely concurrent <i>with</i> writes).
+</p>
+
+<h2 id="methods-on-generated-server-interfaces">Methods on generated server interfaces</h2>
+
+<p>On the server side, each <code>service Bar</code> in the <code>.proto</code> file results in the function:</p>
+
+<p><code>func RegisterBarServer(s *grpc.Server, srv BarServer)</code></p>
+
+<p>The application can define a concrete implementation of the <code>BarServer</code> interface and register it with a <code>grpc.Server</code> instance
+(before starting the server instance) by using this function.</p>
+
+<h3 id="unary-methods">Unary methods</h3>
+
+<p>These methods have the following signature on the generated service interface:</p>
+
+<p><code>Foo(context.Context, *MsgA) (*MsgB, error)</code></p>
+
+<p>In this context, <code>MsgA</code> is the protobuf message sent from the client, and <code>MsgB</code> is the protobuf message sent back from the server.</p>
+
+<h3 id="server-streaming-methods">Server-streaming methods</h3>
+
+<p>These methods have the following signature on the generated service interface:</p>
+
+<p><code>Foo(*MsgA, &lt;ServiceName&gt;_FooServer) error</code></p>
+
+<p>In this context, <code>MsgA</code> is the single request from the client, and the <code>&lt;ServiceName&gt;_FooServer</code> parameter represents the server-to-client stream
+of <code>MsgB</code> messages.</p>
+
+<p><code>&lt;ServiceName&gt;_FooServer</code> has an embedded <code>grpc.ServerStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooServer</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Send</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgB</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ServerStream</span>
+}</code></pre></div>
+<p>The server-side handler can send a stream of protobuf messages to the client through this parameter&rsquo;s <code>Send</code> method. End-of-stream for the server-to-client
+stream is caused by the <code>return</code> of the handler method.</p>
+
+<h3 id="client-streaming-methods">Client-streaming methods</h3>
+
+<p>These methods have the following signature on the generated service interface:</p>
+
+<p><code>Foo(&lt;ServiceName&gt;_FooServer) error</code></p>
+
+<p>In this context, <code>&lt;ServiceName&gt;_FooServer</code> can be used both to read the client-to-server message stream and to send the single server response message.</p>
+
+<p><code>&lt;ServiceName&gt;_FooServer</code> has an embedded <code>grpc.ServerStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooServer</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">SendAndClose</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgA</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">Recv</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgB</span>, <span style="color:#66d9ef">error</span>)
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ServerStream</span>
+}</code></pre></div>
+<p>The server-side handler can repeatedly call <code>Recv</code> on this parameter in order to receive the full stream of
+messages from the client. <code>Recv</code> returns <code>(nil, io.EOF)</code> once it has reached the end of the stream.
+The single response message from the server is sent by calling the <code>SendAndClose</code> method on this <code>&lt;ServiceName&gt;_FooServer</code> parameter.
+Note that <code>SendAndClose</code> must be called once and only once.</p>
+
+<h3 id="bidi-streaming-methods">Bidi-streaming methods</h3>
+
+<p>These methods have the following signature on the generated service interface:</p>
+
+<p><code>Foo(&lt;ServiceName&gt;_FooServer) error</code></p>
+
+<p>In this context, <code>&lt;ServiceName&gt;_FooServer</code> can be used to access both the client-to-server message stream and the server-to-client message stream.
+<code>&lt;ServiceName&gt;_FooServer</code> has an embedded <code>grpc.ServerStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooServer</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Send</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgA</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">Recv</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgB</span>, <span style="color:#66d9ef">error</span>)
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ServerStream</span>
+}</code></pre></div>
+<p>The server-side handler can repeatedly call <code>Recv</code> on this parameter in order to read the client-to-server message stream.
+<code>Recv</code> returns <code>(nil, io.EOF)</code> once it has reached the end of the client-to-server stream.
+The response server-to-client message stream is sent by repeatedly calling the <code>Send</code> method of on this <code>ServiceName&gt;_FooServer</code> parameter.
+End-of-stream for the server-to-client stream is indicated by the <code>return</code> of the bidi method handler.</p>
+
+<h2 id="methods-on-generated-client-interfaces">Methods on generated client interfaces</h2>
+
+<p>For client side usage, each <code>service Bar</code> in the <code>.proto</code> file also results in the function: <code>func BarClient(cc *grpc.ClientConn) BarClient</code>, which
+returns a concrete implementation of the <code>BarClient</code> interface (this concrete implementation also lives in the generated <code>.pb.go</code> file).</p>
+
+<h3 id="unary-methods-1">Unary Methods</h3>
+
+<p>These methods have the following signature on the generated client stub:</p>
+
+<p><code>(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (*MsgB, error)</code></p>
+
+<p>In this context, <code>MsgA</code> is the single request from client to server, and <code>MsgB</code> contains the response sent back from the server.</p>
+
+<h3 id="server-streaming-methods-1">Server-Streaming methods</h3>
+
+<p>These methods have the following signature on the generated client stub:</p>
+
+<p><code>Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (&lt;ServiceName&gt;_FooClient, error)</code></p>
+
+<p>In this context, <code>&lt;ServiceName&gt;_FooClient</code> represents the server-to-client <code>stream</code> of <code>MsgB</code> messages.</p>
+
+<p>This stream has an embedded <code>grpc.ClientStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooClient</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Recv</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgB</span>, <span style="color:#66d9ef">error</span>)
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ClientStream</span>
+}</code></pre></div>
+<p>The stream begins when the client calls the <code>Foo</code> method on the stub.
+The client can then repeatedly call the <code>Recv</code> method on the returned <code>&lt;ServiceName&gt;_FooClient</code> <i>stream</i> in order to read the server-to-client response stream.
+This <code>Recv</code> method returns <code>(nil, io.EOF)</code> once the server-to-client stream has been completely read through.</p>
+
+<h3 id="client-streaming-methods-1">Client-Streaming methods</h3>
+
+<p>These methods have the following signature on the generated client stub:</p>
+
+<p><code>Foo(ctx context.Context, opts ...grpc.CallOption) (&lt;ServiceName&gt;_FooClient, error)</code></p>
+
+<p>In this context, <code>&lt;ServiceName&gt;_FooClient</code> represents the client-to-server <code>stream</code> of <code>MsgA</code> messages.</p>
+
+<p><code>&lt;ServiceName&gt;_FooClient</code> has an embedded <code>grpc.ClientStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooClient</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Send</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgA</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">CloseAndRecv</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgA</span>, <span style="color:#66d9ef">error</span>)
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ClientStream</span>
+}</code></pre></div>
+<p>The stream begins when the client calls the <code>Foo</code> method on the stub.
+The client can then repeatedly call the <code>Send</code> method on the returned <code>&lt;ServiceName&gt;_FooClient</code> stream in order to send the client-to-server message stream.
+The <code>CloseAndRecv</code> method on this stream must be called once and only once, in order to both close the client-to-server stream
+and receive the single response message from the server.</p>
+
+<h3 id="bidi-streaming-methods-1">Bidi-Streaming methods</h3>
+
+<p>These methods have the following signature on the generated client stub:</p>
+
+<p><code>Foo(ctx context.Context, opts ...grpc.CallOption) (&lt;ServiceName&gt;_FooClient, error)</code></p>
+
+<p>In this context, <code>&lt;ServiceName&gt;_FooClient</code> represents both the client-to-server and server-to-client message streams.</p>
+
+<p><code>&lt;ServiceName&gt;_FooClient</code> has an embedded <code>grpc.ClientStream</code> and the following interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> &lt;<span style="color:#a6e22e">ServiceName</span>&gt;<span style="color:#a6e22e">_FooClient</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Send</span>(<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgA</span>) <span style="color:#66d9ef">error</span>
+	<span style="color:#a6e22e">Recv</span>() (<span style="color:#f92672">*</span><span style="color:#a6e22e">MsgB</span>, <span style="color:#66d9ef">error</span>)
+	<span style="color:#a6e22e">grpc</span>.<span style="color:#a6e22e">ClientStream</span>
+}</code></pre></div>
+<p>The stream begins when the client calls the <code>Foo</code> method on the stub.
+The client can then repeatedly call the <code>Send</code> method on the returned <code>&lt;SericeName&gt;_FooClient</code> stream in order to send the
+client-to-server message stream. The client can also repeatedly call <code>Recv</code> on this stream in order to
+receive the full server-to-client message stream.</p>
+
+<p>End-of-stream for the server-to-client stream is indicated by a return value of <code>(nil, io.EOF)</code> on the <code>Recv</code> method of the stream.
+End-of-stream for the client-to-server stream can be indicated from the client by calling the <code>CloseSend</code> method on the stream.</p>
+
+<h2 id="packages-and-namespaces">Packages and Namespaces</h2>
+
+<p>When the <code>protoc</code> compiler is invoked with <code>--go_out=plugins=grpc:</code>, the <code>proto package</code> to Go package translation
+works the same as when the <code>protoc-gen-go</code> plugin is used without the <code>grpc</code> plugin.</p>
+
+<p>So, for example, if <code>foo.proto</code> declares itself to be in <code>package foo</code>, then the generated <code>foo.pb.go</code> file will also be in
+the Go package <code>foo</code>.</p>
+
+    </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guides on gRPC</title>
+    <link>https://cjyabraham.github.io/docs/guides/</link>
+    <description>Recent content in Guides on gRPC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://cjyabraham.github.io/docs/guides/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Authentication</title>
+      <link>https://cjyabraham.github.io/docs/guides/auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/docs/guides/auth/</guid>
+      <description>This document provides an overview of gRPC authentication, including our built-in supported auth mechanisms, how to plug in your own authentication systems, and examples of how to use gRPC auth in our supported languages.
+ Overview gRPC is designed to work with a variety of authentication mechanisms, making it easy to safely use gRPC to talk to other systems. You can use our supported mechanisms - SSL/TLS with or without Google token-based authentication - or you can plug in your own authentication system by extending our provided code.</description>
+    </item>
+    
+    <item>
+      <title>Benchmarking</title>
+      <link>https://cjyabraham.github.io/docs/guides/benchmarking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/docs/guides/benchmarking/</guid>
+      <description>gRPC is designed to support high-performance open-source RPCs in many languages. This document describes the performance benchmarking tools, the scenarios considered by the tests, and the testing infrastructure.
+ 
+Overview gRPC is designed for both high-performance and high-productivity design of distributed applications. Continuous performance benchmarking is a critical part of the gRPC development workflow. Multi-language performance tests run hourly against the master branch, and these numbers are reported to a dashboard for visualization.</description>
+    </item>
+    
+    <item>
+      <title>Contribution Guidelines</title>
+      <link>https://cjyabraham.github.io/docs/guides/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/docs/guides/contributing/</guid>
+      <description>Contribution Guidelines Coming soon!</description>
+    </item>
+    
+    <item>
+      <title>Error Handling</title>
+      <link>https://cjyabraham.github.io/docs/guides/error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/docs/guides/error/</guid>
+      <description>This page describes how gRPC deals with errors, including gRPC&#39;s built-in error codes. Example code in different languages can be found here.
+ Error model As you&amp;rsquo;ll have seen in our concepts document and examples, when a gRPC call completes successfully the server returns an OK status to the client (depending on the language the OK status may or may not be directly used in your code). But what happens if the call isn&amp;rsquo;t successful?</description>
+    </item>
+    
+    <item>
+      <title>gRPC Concepts</title>
+      <link>https://cjyabraham.github.io/docs/guides/concepts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/docs/guides/concepts/</guid>
+      <description>This document introduces some key gRPC concepts with an overview of gRPC&#39;s architecture and RPC life cycle.
+It assumes that you&amp;rsquo;ve read What is gRPC?. For language-specific details, see the Quick Start, tutorial, and reference documentation for your chosen language(s), where available (complete reference docs are coming soon).
+ Overview Service definition Like many RPC systems, gRPC is based around the idea of defining a service, specifying the methods that can be called remotely with their parameters and return types.</description>
+    </item>
+    
+  </channel>
+</rss>

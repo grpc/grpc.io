@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  2017-08-22 gRPC-Go performance Improvements &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h1>2017-08-22 gRPC-Go performance Improvements</h1>
+  <h5>Posted on Tuesday, August 22, 2017 
+    by 
+    
+      Mahak Mukhi
+    
+  </h5>
+  <p>
+    <p><p>
+<span style="margin-bottom:5%">For past few months we&rsquo;ve been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-Go flow control. After several optimizations and new features we&rsquo;ve been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain.
+Benchmark results at the end.</p>
+
+<p>This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.</style>
+</p><br></p>
+
+<h3 id="recently-implemented-optimizations">Recently Implemented Optimizations</h3>
+
+<h6 id="expanding-stream-window-on-receiving-large-messages">Expanding stream window on receiving large messages</h6>
+
+<p><a href="https://github.com/grpc/grpc-go/pull/1248">Code link</a></p>
+
+<p>This is an optimization used by gRPC-C to achieve performance benefits for large messages. The idea is that when there&rsquo;s an active read by the application on the receive side, we can effectively bypass stream-level flow control to request the whole message. This proves to be very helpful with large messages. Since the application is already committed to reading and has allocated enough memory for it, it makes sense that we send a proactive large window update (if necessary) to get the whole message rather than receiving it in chunks and sending window updates when we run low on window.</p>
+
+<p>This optimization alone provided a 10x improvement for large messages on high-latency networks.</p>
+
+<h6 id="decoupling-application-reads-from-connection-flow-control">Decoupling application reads from connection flow control</h6>
+
+<p><a href="https://github.com/grpc/grpc-go/pull/1265">Code link</a></p>
+
+<p>After having several discussions with gRPC-Java and gRPC-C core team we realized that gRPC-Go&rsquo;s connection-level flow control was overly restrictive in the sense that window updates on the connection depended upon if the application had read data from it or not. It must be noted that it makes perfect sense to have stream-level flow control depended on application read but not so much for connection-level flow control. The rationale is as follows: A connection is shared by several streams (RPCs). If there were at least one stream that read slowly or didn&rsquo;t read at all, it would hamper the performance or completely stall other streams on that connection. This happens because we won&rsquo;t send out window updates on the connection until that slow or inactive stream read data. Therefore, it makes sense to decouple the connection&rsquo;s flow control from application reads.</p>
+
+<p>However, this begs at least two questions:</p>
+
+<ol>
+<li><p>Won&rsquo;t a client be able to send as much data as it wants to the server by creating new streams when one runs out?</p></li>
+
+<li><p>Why even have connection-level flow control if the stream-level flow control is enough?</p></li>
+</ol>
+
+<p>The answer to the first question is short and simple: no. A server has an option to limit the number of streams that it intends to serve concurrently. Therefore, although at first it may seem like a problem, it really is not.</p>
+
+<p>The need for connection-level flow control:</p>
+
+<p>It is true that stream-level flow control is sufficient to throttle a sender from sending too much data. But not having connection-level flow control (or using an unlimited connection-level window) makes it so that when things get slower on a stream, opening a new one will appear to make things faster. This will only take one so far since the number of streams are limited. However, having a connection-level flow control window set to the Bandwidth Delay Product (BDP) of the network puts an upper-bound on how much performance can realistically be squeezed out of the network.</p>
+
+<h6 id="piggyback-window-updates">Piggyback window updates</h6>
+
+<p><a href="https://github.com/grpc/grpc-go/pull/1273">Code link</a></p>
+
+<p>Sending a window update itself has a cost associated to it; a flush operation is necessary, which results in a syscall. Syscalls are blocking and slow. Therefore, when sending out a stream-level window update, it makes sense to also check if a connection-level window update can be sent using the same flush syscall.</p>
+
+<h6 id="bdp-estimation-and-dynamic-flow-control-window">BDP estimation and dynamic flow control window</h6>
+
+<p><a href="https://github.com/grpc/grpc-go/pull/1310">Code link</a></p>
+
+<p>This feature is the latest and in some ways the most awaited optimization feature that has helped us close the final gap between gRPC and HTTP/1.1 performance on high latency networks.</p>
+
+<p>Bandwidth Delay Product (BDP) is the bandwidth of a network connection times its round-trip latency.  This effectively tells us how many bytes can be &ldquo;on the wire&rdquo; at a given moment, if full utilization is achieved.</p>
+
+<p>The <a href="https://docs.google.com/document/d/1Eq4eBEbNt1rc8EYuwqsduQd1ZfcBOCYt9HVSBa--m-E/pub">algorithm</a> to compute BDP and adapt accordingly was first proposed by @ejona and later implemented by both gRPC-C core and gRPC-Java (note that it isn&rsquo;t enabled in Java yet). The idea is simple and powerful: every time a receiver gets a data frame it sends out a BDP ping (a ping with unique data only used by BDP estimator). After this, the receiver starts counting the number of bytes it receives (including the ones that triggered the BDP ping) until it receives the ack for that ping. This total sum of all bytes received in about 1.5 RTT (Round-Trip Time) is an approximation of the effective BDP * 1.5. If this is close to our current window size (say, more than 2/3rd of it) we must increase the window size. We put our window sizes (both streaming and connection) to be twice the BDP we sampled(total sum of all bytes received).</p>
+
+<p>This algorithm by itself could cause the BDP estimation to increase indefinitely; an increase in window will result in sampling more bytes which in turn will cause the window to be increased further. This phenomenon is called <a href="https://en.wikipedia.org/wiki/Bufferbloat">buffer-bloat</a> and was discovered by earlier implementations in gRPC-C core and gRPC-Java. The solution to this is to calculate the bandwidth for every sample and check if it is greater than the maximum bandwidth noted so far. If so, only then increase our window sizes. The bandwidth, as we know, can be calculated by dividing the sample by RTT * 1.5 (remember the sample was for one and a half round trips). If the bandwidth doesn&rsquo;t increase with an increase in sampled bytes that&rsquo;s indicative that this change is because of an increased window size and doesn&rsquo;t really reflect the nature of the network itself.</p>
+
+<p>While running experiments on VMs in different continents we realized that every once in awhile a rogue, unnaturally fast ping-ack at the right time (really the wrong time) would cause our window sizes to go up. This happens because such a ping-ack would cause us to notice a decreased RTT and calculate a high bandwidth value. Now if that sample of bytes was greater than 2/3rd of our window then we would increase the window sizes. However, this ping ack was an aberration and shouldn&rsquo;t have changed our perception of the network RTT al together. Therefore, we keep a running average of the RTTs we note weighted by a constant rather than the total number of samples to heed more to recent RTTs and less to the ones in past. It is important because networks might change over time.</p>
+
+<p>During implementation, we experimented with several tuning parameters, such as the multiplier to compute the window size from the sample size to select the best settings, that balanced between growth and accuracy.</p>
+
+<p>Given that we&rsquo;re always bound by the flow control of TCP which for most cases is upper bounded at 4MB, we bound the growth of our window sizes by the same number: 4MB.</p>
+
+<p>BDP estimation and dynamically adjusting window sizes is turned-on by default and can be turned off by setting values manually for connection and/or stream window sizes.</p>
+
+<h6 id="near-future-efforts">Near-future efforts</h6>
+
+<p>We are now looking into improving our throughput by better CPU utilization, the following efforts are in-line with that.</p>
+
+<h6 id="reducing-flush-syscalls">Reducing flush syscalls</h6>
+
+<p>We noticed a bug in our transport layer which causes us to make a flush syscall for every data frame we write, even if the same goroutine has more data to send. We can batch a lot of these writes to use only one flush. This in fact will not be a big change to the code itself.</p>
+
+<p>In our efforts to get rid of unnecessary flushes we recently combined the headers and data write for unary and server streaming RPCs to one flush on the client-side. Link to <a href="https://github.com/grpc/grpc-go/pull/1343">code</a></p>
+
+<p>Another related idea proposed by one of our users @petermattic in <a href="https://github.com/grpc/grpc-go/pull/1373">this</a> PR was to combine a server response to a unary RPC into one flush. We are currently looking into that as well.</p>
+
+<h6 id="reducing-memory-allocation">Reducing memory allocation</h6>
+
+<p>For every data frame read from the wire a new memory allocation takes place. The same holds true at the gRPC layer for every new message for decompressing and decoding. These allocations result in excessive garbage collection cycles, which are expensive. Reusing memory buffers can reduce this GC pressure, and we are prototyping approaches to do so. As requests need buffers of differing sizes, one approach would be to maintain individual memory pools of fixed sizes (powers of two). So now when reading x bytes from the wire we can find the nearest power of 2 greater than x and reuse a buffer from our cache if available or allocate a new one if need be. We will be using golang sync Pools so we don&rsquo;t have to worry about garbage collection. However, we will need to run sufficient tests before committing to this.</p>
+
+<h6 id="results">Results:</h6>
+
+<ul>
+<li><p>Benchmark on a real network:</p>
+
+<ul>
+<li>Server and client were launched on two VMs in different continents. RTT of ~152ms.</li>
+<li>Client made an RPC with a payload and server responded back with an empty message.</li>
+<li>The time taken for each RPC was measured.</li>
+<li><a href="https://github.com/grpc/grpc-go/compare/master...MakMukhi:http_greeter">Code link</a></li>
+</ul></li>
+</ul>
+
+<table>
+<tr><th>Message Size </th><th>GRPC </th><th>HTTP 1.1</th></tr>
+
+<tr><td>1 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>1 MB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 MB</td><td>~622 ms</td><td>~630 ms</td></tr>
+<tr><td>100 MB</td><td>~5 sec</td><td>~5 sec</td></tr>
+
+
+</table>
+
+<ul>
+<li>Benchmark on simulated network:
+
+<ul>
+<li>Server and client were launched on the same machine and different network latencies were simulated.</li>
+<li>Client made an RPC with 1MB of payload and server responded back with an empty message.</li>
+<li>The time taken for each RPC was measured.</li>
+<li>Following tables show time taken by first 10 RPCs.</li>
+<li><a href="https://github.com/grpc/grpc-go/compare/master...MakMukhi:grpc_vs_http">Code link</a></li>
+</ul></li>
+</ul>
+
+<h5 id="no-latency-network">No Latency Network</h5>
+
+<table>
+<thead>
+<tr>
+<th>GRPC</th>
+<th align="center">HTTP 2.0</th>
+<th align="right">HTTP 1.1</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>5.097809ms</td>
+<td align="center">16.107461ms</td>
+<td align="right">18.298959ms</td>
+</tr>
+
+<tr>
+<td>4.46083ms</td>
+<td align="center">4.301808ms</td>
+<td align="right">7.715456ms</td>
+</tr>
+
+<tr>
+<td>5.081421ms</td>
+<td align="center">4.076645ms</td>
+<td align="right">8.118601ms</td>
+</tr>
+
+<tr>
+<td>4.338013ms</td>
+<td align="center">4.232606ms</td>
+<td align="right">6.621028ms</td>
+</tr>
+
+<tr>
+<td>5.013544ms</td>
+<td align="center">4.693488ms</td>
+<td align="right">5.83375ms</td>
+</tr>
+
+<tr>
+<td>3.963463ms</td>
+<td align="center">4.558047ms</td>
+<td align="right">5.571579ms</td>
+</tr>
+
+<tr>
+<td>3.509808ms</td>
+<td align="center">4.855556ms</td>
+<td align="right">4.966938ms</td>
+</tr>
+
+<tr>
+<td>4.864618ms</td>
+<td align="center">4.324159ms</td>
+<td align="right">6.576279ms</td>
+</tr>
+
+<tr>
+<td>3.545933ms</td>
+<td align="center">4.61375ms</td>
+<td align="right">6.105608ms</td>
+</tr>
+
+<tr>
+<td>3.481094ms</td>
+<td align="center">4.621215ms</td>
+<td align="right">7.001607ms</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="network-with-rtt-of-16ms">Network with RTT of 16ms</h5>
+
+<table>
+<thead>
+<tr>
+<th>GRPC</th>
+<th align="center">HTTP 2.0</th>
+<th align="right">HTTP 1.1</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>118.837625ms</td>
+<td align="center">84.453913ms</td>
+<td align="right">58.858109ms</td>
+</tr>
+
+<tr>
+<td>36.801006ms</td>
+<td align="center">22.476308ms</td>
+<td align="right">20.877585ms</td>
+</tr>
+
+<tr>
+<td>35.008349ms</td>
+<td align="center">21.206222ms</td>
+<td align="right">19.793881ms</td>
+</tr>
+
+<tr>
+<td>21.153461ms</td>
+<td align="center">20.940937ms</td>
+<td align="right">22.18179ms</td>
+</tr>
+
+<tr>
+<td>20.640364ms</td>
+<td align="center">21.888247ms</td>
+<td align="right">21.4666ms</td>
+</tr>
+
+<tr>
+<td>21.410346ms</td>
+<td align="center">21.186008ms</td>
+<td align="right">20.925514ms</td>
+</tr>
+
+<tr>
+<td>19.755766ms</td>
+<td align="center">21.818027ms</td>
+<td align="right">20.553768ms</td>
+</tr>
+
+<tr>
+<td>20.388882ms</td>
+<td align="center">21.366796ms</td>
+<td align="right">21.460029ms</td>
+</tr>
+
+<tr>
+<td>20.623342ms</td>
+<td align="center">20.681414ms</td>
+<td align="right">20.586908ms</td>
+</tr>
+
+<tr>
+<td>20.452023ms</td>
+<td align="center">20.781208ms</td>
+<td align="right">20.278481ms</td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="network-with-rtt-of-64ms">Network with RTT of 64ms</h5>
+
+<table>
+<thead>
+<tr>
+<th>GRPC</th>
+<th align="center">HTTP 2.0</th>
+<th align="right">HTTP 1.1</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>455.072669ms</td>
+<td align="center">275.290241ms</td>
+<td align="right">208.826314ms</td>
+</tr>
+
+<tr>
+<td>195.43357ms</td>
+<td align="center">70.386788ms</td>
+<td align="right">70.042513ms</td>
+</tr>
+
+<tr>
+<td>132.215978ms</td>
+<td align="center">70.01131ms</td>
+<td align="right">71.19429ms</td>
+</tr>
+
+<tr>
+<td>69.239273ms</td>
+<td align="center">70.032237ms</td>
+<td align="right">69.479335ms</td>
+</tr>
+
+<tr>
+<td>68.669903ms</td>
+<td align="center">70.192272ms</td>
+<td align="right">70.858937ms</td>
+</tr>
+
+<tr>
+<td>70.458108ms</td>
+<td align="center">69.395154ms</td>
+<td align="right">71.161921ms</td>
+</tr>
+
+<tr>
+<td>68.488057ms</td>
+<td align="center">69.252731ms</td>
+<td align="right">71.374758ms</td>
+</tr>
+
+<tr>
+<td>68.816031ms</td>
+<td align="center">69.628744ms</td>
+<td align="right">70.141381ms</td>
+</tr>
+
+<tr>
+<td>69.170105ms</td>
+<td align="center">68.935813ms</td>
+<td align="right">70.685521ms</td>
+</tr>
+
+<tr>
+<td>68.831608ms</td>
+<td align="center">69.728349ms</td>
+<td align="right">69.45605ms</td>
+</tr>
+</tbody>
+</table>
+  </p>
+
+
+  </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>

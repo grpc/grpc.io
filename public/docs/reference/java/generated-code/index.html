@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>
+  Java Generated Code Reference &ndash; gRPC
+</title>
+
+		
+		<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192" >
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/favicons/manifest.json">
+		<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#2DA6B0">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/favicons/mstile-150x150.png">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-60127042-1');
+    </script>
+
+  </head>
+  <body>
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="https://cjyabraham.github.io/">
+              <img src="https://cjyabraham.github.io/img/grpc-logo.png" width="114" height="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/about/">About</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="https://cjyabraham.github.io/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Docs
+                  </a>
+
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                    
+                    <a class="dropdown-item" href="/docs">
+                      Overview
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/quickstart/">
+                      Quick Start
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/guides/">
+                      Guides
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/tutorials/">
+                      Tutorials
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/reference/">
+                      Reference
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/samples/">
+                      Samples
+                    </a>
+                    
+                    
+                    <a class="dropdown-item" href="/docs/talks">
+                      Presentations
+                    </a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/blog">
+                    Blog
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/community">Community</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://packages.grpc.io/">
+                    Packages
+                  </a> 
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="https://cjyabraham.github.io/faq/">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+          
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    <div class="subnav d-none d-md-block">
+  <a href="https://cjyabraham.github.io/docs/" >Overview</a>
+|  <a href="https://cjyabraham.github.io/docs/quickstart/" >Quick Start</a>
+|  <a href="https://cjyabraham.github.io/docs/guides/" >Guides</a>
+|  <a href="https://cjyabraham.github.io/docs/tutorials/" >Tutorials</a>
+|  <a href="https://cjyabraham.github.io/docs/reference/"  class="active">Reference</a>
+|  <a href="https://cjyabraham.github.io/docs/samples/" >Samples</a>
+|  <a href="https://cjyabraham.github.io/docs/talks/" >Presentations</a>
+</div>
+
+    <div class="refsection">
+    
+
+<h1 id="java-generated-code-reference">Java Generated Code Reference</h1>
+
+<h2 id="packages">Packages</h2>
+
+<p>For each service defined in a .proto file, the Java code generation produces a
+Java class. The class name is the service&rsquo;s name suffixed by <code>Grpc</code>. The package
+for the generated code is specified in the .proto file using the <code>java_package</code>
+option.</p>
+
+<p>For example, if <code>ServiceName</code> is defined in a .proto file containing the
+following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-protobuf" data-lang="protobuf"><span style="color:#f92672">package</span> grpcexample;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">option</span> java_package <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;io.grpc.examples&#34;</span>;</code></pre></div>
+<p>Then the generated class will be <code>io.grpc.examples.ServiceNameGrpc</code>.</p>
+
+<p>If <code>java_package</code> is not specified, the generated class will use the <code>package</code>
+as specified in the .proto file. This should be avoided, as proto packages
+usually do not begin with a reversed domain name.</p>
+
+<h2 id="service-stub">Service Stub</h2>
+
+<p>The generated Java code contains an inner abstract class suffixed with
+<code>ImplBase</code>, such as <code>ServiceNameImplBase</code>. This class defines one Java method
+for each method in the service definition. It is up to the service implementer
+to extend this class and implement the functionality of these methods. Without
+being overridden, the methods return an error to the client saying the method is
+unimplemented.</p>
+
+<p>The signatures of the stub methods in <code>ServiceNameImplBase</code> vary depending on
+the type of RPCs it handles. There are four types of gRPC service methods:
+unary, server-streaming, client-streaming, and bidirectional-streaming.</p>
+
+<h3 id="unary">Unary</h3>
+
+<p>The service stub signature for a unary RPC method <code>unaryExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unaryExample</span><span style="color:#f92672">(</span>
+    RequestType request<span style="color:#f92672">,</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h3 id="server-streaming">Server-streaming</h3>
+
+<p>The service stub signature for a server-streaming RPC method
+<code>serverStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">serverStreamingExample</span><span style="color:#f92672">(</span>
+    RequestType request<span style="color:#f92672">,</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<p>Notice that the signatures for unary and server-streaming RPCs are the same. A
+single <code>RequestType</code> is received from the client, and the service implementation
+sends its response(s) by invoking <code>responseObserver.onNext(ResponseType
+response)</code>.</p>
+
+<h3 id="client-streaming">Client-streaming</h3>
+
+<p>The service stub signature for a client-streaming RPC method
+<code>clientStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>RequestType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">clientStreamingExample</span><span style="color:#f92672">(</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h3 id="bidirectional-streaming">Bidirectional-streaming</h3>
+
+<p>The service stub signature for a bidirectional-streaming RPC method
+<code>bidirectionalStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>RequestType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">bidirectionalStreamingExample</span><span style="color:#f92672">(</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<p>The signatures for client and bidirectional-streaming RPCs are the same. Since
+the client can send multiple messages to the service, the service implementation
+is reponsible for returning a <code>StreamObserver&lt;RequestType&gt;</code> instance. This
+<code>StreamObserver</code> is invoked whenever additional messages are received from the
+client.</p>
+
+<h2 id="client-stubs">Client Stubs</h2>
+
+<p>The generated class also contains stubs for use by gRPC clients to call methods
+defined by the service. Each stub wraps a <code>Channel</code>, supplied by the user of the
+generated code. The stub uses this channel to send RPCs to the service.</p>
+
+<p>gRPC Java generates code for three types of stubs: asynchronous, blocking, and
+future. Each type of stub has a corresponding class in the generated code, such
+as <code>ServiceNameStub</code>, <code>ServiceNameBlockingStub</code>, and <code>ServiceNameFutureStub</code>.</p>
+
+<h3 id="asynchronous-stub">Asynchronous Stub</h3>
+
+<p>RPCs made via an asynchronous stub operate entirely through callbacks on
+<code>StreamObserver</code>.</p>
+
+<p>The asynchronous stub contains one Java method for each method from the service
+definition.</p>
+
+<p>A new asynchronous stub is instantiated via the <code>ServiceNameGrpc.newStub(Channel
+channel)</code> static method.</p>
+
+<h4 id="unary-1">Unary</h4>
+
+<p>The asynchronous stub signature for a unary RPC method <code>unaryExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">unaryExample</span><span style="color:#f92672">(</span>
+    RequestType request<span style="color:#f92672">,</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h4 id="server-streaming-1">Server-streaming</h4>
+
+<p>The asynchronous stub signature for a server-streaming RPC method
+<code>serverStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">serverStreamingExample</span><span style="color:#f92672">(</span>
+    RequestType request<span style="color:#f92672">,</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h4 id="client-streaming-1">Client-streaming</h4>
+
+<p>The asynchronous stub signature for a client-streaming RPC method
+<code>clientStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>RequestType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">clientStreamingExample</span><span style="color:#f92672">(</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h4 id="bidirectional-streaming-1">Bidirectional-streaming</h4>
+
+<p>The asynchronous stub signature for a bidirectional-streaming RPC method
+<code>bidirectionalStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> StreamObserver<span style="color:#f92672">&lt;</span>RequestType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">bidirectionalStreamingExample</span><span style="color:#f92672">(</span>
+    StreamObserver<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> responseObserver<span style="color:#f92672">)</span></code></pre></div>
+<h3 id="blocking-stub">Blocking Stub</h3>
+
+<p>RPCs made through a blocking stub, as the name implies, block until the response
+from the service is available.</p>
+
+<p>The blocking stub contains one Java method for each unary and server-streaming
+method in the service definition. Blocking stubs do not support client-streaming
+or bidirectional-streaming RPCs.</p>
+
+<p>A new blocking stub is instantiated via the
+<code>ServiceNameGrpc.newBlockingStub(Channel channel)</code> static method.</p>
+
+<h4 id="unary-2">Unary</h4>
+
+<p>The blocking stub signature for a unary RPC method <code>unaryExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> ResponseType <span style="color:#a6e22e">unaryExample</span><span style="color:#f92672">(</span>RequestType request<span style="color:#f92672">)</span></code></pre></div>
+<h4 id="server-streaming-2">Server-streaming</h4>
+
+<p>The blocking stub signature for a server-streaming RPC method
+<code>serverStreamingExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> Iterator<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">serverStreamingExample</span><span style="color:#f92672">(</span>RequestType request<span style="color:#f92672">)</span></code></pre></div>
+<h3 id="future-stub">Future Stub</h3>
+
+<p>RPCs made via a future stub wrap the return value of the asynchronous stub in a
+<code>GrpcFuture&lt;ResponseType&gt;</code>, which implements the
+<code>com.google.common.util.concurrent.ListenableFuture</code> interface.</p>
+
+<p>The future stub contains one Java method for each unary method in the service
+definition. Future stubs do not support streaming calls.</p>
+
+<p>A new future stub is instantiated via the <code>ServiceNameGrpc.newFutureStub(Channel
+channel)</code> static method.</p>
+
+<h4 id="unary-3">Unary</h4>
+
+<p>The future stub signature for a unary RPC method <code>unaryExample</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> ListenableFuture<span style="color:#f92672">&lt;</span>ResponseType<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">unaryExample</span><span style="color:#f92672">(</span>RequestType request<span style="color:#f92672">)</span></code></pre></div>
+<h2 id="codegen">Codegen</h2>
+
+<p>Typically the build system handles creation of the gRPC generated code.</p>
+
+<p>For protobuf-based codegen, you can put your <code>.proto</code> files in the <code>src/main/proto</code>
+and <code>src/test/proto</code> directories along with an appropriate plugin.</p>
+
+<p>A typical <a href="https://www.xolstice.org/protobuf-maven-plugin/">protobuf-maven-plugin</a> configuration for generating gRPC and Protocol
+Buffers code would look like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;build&gt;</span>
+  <span style="color:#f92672">&lt;extensions&gt;</span>
+    <span style="color:#f92672">&lt;extension&gt;</span>
+      <span style="color:#f92672">&lt;groupId&gt;</span>kr.motd.maven<span style="color:#f92672">&lt;/groupId&gt;</span>
+      <span style="color:#f92672">&lt;artifactId&gt;</span>os-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+      <span style="color:#f92672">&lt;version&gt;</span>1.4.1.Final<span style="color:#f92672">&lt;/version&gt;</span>
+    <span style="color:#f92672">&lt;/extension&gt;</span>
+  <span style="color:#f92672">&lt;/extensions&gt;</span>
+  <span style="color:#f92672">&lt;plugins&gt;</span>
+    <span style="color:#f92672">&lt;plugin&gt;</span>
+      <span style="color:#f92672">&lt;groupId&gt;</span>org.xolstice.maven.plugins<span style="color:#f92672">&lt;/groupId&gt;</span>
+      <span style="color:#f92672">&lt;artifactId&gt;</span>protobuf-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+      <span style="color:#f92672">&lt;version&gt;</span>0.5.0<span style="color:#f92672">&lt;/version&gt;</span>
+      <span style="color:#f92672">&lt;configuration&gt;</span>
+        <span style="color:#f92672">&lt;protocArtifact&gt;</span>com.google.protobuf:protoc:3.3.0:exe:${os.detected.classifier}<span style="color:#f92672">&lt;/protocArtifact&gt;</span>
+        <span style="color:#f92672">&lt;pluginId&gt;</span>grpc-java<span style="color:#f92672">&lt;/pluginId&gt;</span>
+        <span style="color:#f92672">&lt;pluginArtifact&gt;</span>io.grpc:protoc-gen-grpc-java:1.4.0:exe:${os.detected.classifier}<span style="color:#f92672">&lt;/pluginArtifact&gt;</span>
+      <span style="color:#f92672">&lt;/configuration&gt;</span>
+      <span style="color:#f92672">&lt;executions&gt;</span>
+        <span style="color:#f92672">&lt;execution&gt;</span>
+          <span style="color:#f92672">&lt;goals&gt;</span>
+            <span style="color:#f92672">&lt;goal&gt;</span>compile<span style="color:#f92672">&lt;/goal&gt;</span>
+            <span style="color:#f92672">&lt;goal&gt;</span>compile-custom<span style="color:#f92672">&lt;/goal&gt;</span>
+          <span style="color:#f92672">&lt;/goals&gt;</span>
+        <span style="color:#f92672">&lt;/execution&gt;</span>
+      <span style="color:#f92672">&lt;/executions&gt;</span>
+    <span style="color:#f92672">&lt;/plugin&gt;</span>
+  <span style="color:#f92672">&lt;/plugins&gt;</span>
+<span style="color:#f92672">&lt;/build&gt;</span></code></pre></div>
+<p>Eclipse and NetBeans users should also look at <code>os-maven-plugin</code>&rsquo;s
+<a href="https://github.com/trustin/os-maven-plugin#issues-with-eclipse-m2e-or-other-ides">IDE documentation</a>.</p>
+
+<p>A typical <a href="https://github.com/google/protobuf-gradle-plugin">protobuf-gradle-plugin</a> configuration would look like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-gradle" data-lang="gradle">apply plugin: <span style="color:#e6db74">&#39;java&#39;</span>
+apply plugin: <span style="color:#e6db74">&#39;com.google.protobuf&#39;</span>
+
+buildscript <span style="color:#f92672">{</span>
+  repositories <span style="color:#f92672">{</span>
+    mavenCentral<span style="color:#f92672">()</span>
+  <span style="color:#f92672">}</span>
+  dependencies <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// ASSUMES GRADLE 2.12 OR HIGHER. Use plugin version 0.7.5 with earlier
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// gradle versions
+</span><span style="color:#75715e"></span>    classpath <span style="color:#e6db74">&#39;com.google.protobuf:protobuf-gradle-plugin:0.8.0&#39;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+
+protobuf <span style="color:#f92672">{</span>
+  protoc <span style="color:#f92672">{</span>
+    artifact <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;com.google.protobuf:protoc:3.2.0&#34;</span>
+  <span style="color:#f92672">}</span>
+  plugins <span style="color:#f92672">{</span>
+    grpc <span style="color:#f92672">{</span>
+      artifact <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;io.grpc:protoc-gen-grpc-java:1.4.0&#39;</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+  generateProtoTasks <span style="color:#f92672">{</span>
+    all<span style="color:#f92672">()*.</span><span style="color:#a6e22e">plugins</span> <span style="color:#f92672">{</span>
+      grpc <span style="color:#f92672">{}</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>Bazel developers can use the
+<a href="https://github.com/grpc/grpc-java/blob/master/java_grpc_library.bzl"><code>java_grpc_library</code></a>
+rule, typically as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">load<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;@grpc_java//:java_grpc_library.bzl&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;java_grpc_library&#34;</span><span style="color:#f92672">)</span>
+
+proto_library<span style="color:#f92672">(</span>
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;helloworld_proto&#34;</span><span style="color:#f92672">,</span>
+    srcs <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;src/main/proto/helloworld.proto&#34;</span><span style="color:#f92672">],</span>
+<span style="color:#f92672">)</span>
+
+java_proto_library<span style="color:#f92672">(</span>
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;helloworld_java_proto&#34;</span><span style="color:#f92672">,</span>
+    deps <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;:helloworld_proto&#34;</span><span style="color:#f92672">],</span>
+<span style="color:#f92672">)</span>
+
+java_grpc_library<span style="color:#f92672">(</span>
+    name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;helloworld_java_grpc&#34;</span><span style="color:#f92672">,</span>
+    srcs <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;:helloworld_proto&#34;</span><span style="color:#f92672">],</span>
+    deps <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;:helloworld_java_proto&#34;</span><span style="color:#f92672">],</span>
+<span style="color:#f92672">)</span></code></pre></div>
+<p>Android developers please see <a href="/docs/tutorials/basic/android/#generating-client-code">this</a> for reference.</p>
+
+<p>If you wish to invoke the protobuf plugin for gRPC Java directly,
+the command-line syntax is as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ protoc --plugin<span style="color:#f92672">=</span>protoc-gen-grpc-java <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --grpc-java_out<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$OUTPUT_FILE<span style="color:#e6db74">&#34;</span> --proto_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$DIR_OF_PROTO_FILE<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$PROTO_FILE<span style="color:#e6db74">&#34;</span></code></pre></div>
+    </div>
+
+          
+          
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </body>
+</html>
