@@ -57,6 +57,10 @@ p img {
   width: 100%;
 }
 
+.highlight pre {
+  padding: 1rem;
+}
+
 
 .btn {
   margin-top: 2%;

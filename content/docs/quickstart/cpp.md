@@ -225,28 +225,30 @@ int main(int argc, char** argv) {
 Just like we did before, from the `examples/cpp/helloworld` directory:
 
 1. Build the client and server after having made changes:
-   ```sh
-   $ make
-   ```
+
+    ```sh
+    $ make
+    ```
 
 2. Run the server
 
-   ```sh
-   $ ./greeter_server
-   ```
+    ```sh
+    $ ./greeter_server
+    ```
 
 3. On a different terminal, run the client
 
-   ```sh
-   $ ./greeter_client
-   ```
+    ```sh
+    $ ./greeter_client
+    ```
 
-   You should see the updated output:
-   ```sh
-   $ ./greeter_client
-   Greeter received: Hello world
-   Greeter received: Hello again world
-   ```
+    You should see the updated output:
+
+    ```sh
+    $ ./greeter_client
+    Greeter received: Hello world
+    Greeter received: Hello again world
+    ```
 
 ### What's next
 
