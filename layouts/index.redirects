@@ -1,4 +1,4 @@
 {{- $splatRedirects := site.Data.redirects.splat -}}
 {{- range $splatRedirects -}}
-/grpc-{{ . }}/*     https://github.com/grpc/grpc-{{ . }}/:splat
+/grpc-{{ . }}/*     https://grpc.github.io/grpc-{{ . }}/:splat
 {{ end -}}
