@@ -1,3 +1,4 @@
+splat:
 - go
 - java
 - python
@@ -7,3 +8,10 @@
 - web
 - dart
 - community
+- node
+- swift
+- php
+- java-api-checker
+- docker-library
+- experiments
+- haskell
