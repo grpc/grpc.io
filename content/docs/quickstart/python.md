@@ -1,7 +1,7 @@
 ---
 layout: quickstart
-title: Python Quickstart
-aliases: [/docs/quickstart/python.html]
+title: Python Quick Start
+short: Python
 ---
 <p class="lead">This guide gets you started with gRPC in Python with a simple
 working example.</p>

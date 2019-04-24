@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - Java
-aliases: [/docs/tutorials/basic/java.html]
+group: basic
+short: Java
 ---
 This tutorial provides a basic Java programmer's introduction to
 working with gRPC.

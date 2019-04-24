@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - Ruby
-aliases: [/docs/tutorials/basic/ruby.html]
+group: basic
+short: Ruby
 ---
 This tutorial provides a basic Ruby programmer's introduction to working with gRPC.
 

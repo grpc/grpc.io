@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: gRPC Basics - Node.js
-aliases: [/docs/tutorials/basic/node.html]
+group: basic
+short: Node
 ---
 This tutorial provides a basic Node.js programmer's introduction
 to working with gRPC.

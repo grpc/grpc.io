@@ -1,7 +1,6 @@
 ---
 layout: guides
 title: gRPC Concepts
-aliases: [/docs/guides/concepts.html]
 ---
 <p class="lead">This document introduces some key gRPC concepts with an overview
 of gRPC's architecture and RPC life cycle.</p> 

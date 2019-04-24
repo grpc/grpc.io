@@ -1,8 +1,10 @@
 ---
 layout: tutorials
 title: OAuth2 on gRPC - Objective-C
-aliases: [/docs/tutorials/auth/oauth2-objective-c.html]
+short: Auth - Objective-C
+group: auth
 ---
+
 This example demonstrates how to use OAuth2 on gRPC to make
 authenticated API calls on behalf of a user.
 

@@ -1,7 +1,7 @@
 ---
 title: C# Quick Start
 layout: quickstart
-aliases: [/docs/quickstart/csharp.html]
+short: C#
 ---
 
 <p class="lead">This guide gets you started with gRPC in C# with a simple

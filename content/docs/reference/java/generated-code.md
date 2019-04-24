@@ -2,7 +2,6 @@
 bodyclass: docs
 title: Java Generated Code Reference
 layout: docs
-aliases: [/docs/reference/java/generated-code.html]
 ---
 # Java Generated Code Reference
 

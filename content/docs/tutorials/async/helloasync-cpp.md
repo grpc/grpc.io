@@ -1,7 +1,8 @@
 ---
 layout: tutorials
 title: Asynchronous Basics - C++
-aliases: [docs/tutorials/async/helloasync-cpp.html]
+short: Async - C++
+group: async
 ---
 
 This tutorial shows you how to write a simple server and client in C++ using
