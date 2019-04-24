@@ -2,9 +2,8 @@
 title: Node Quick Start
 layout: quickstart
 short: Node
+description: This guide gets you started with gRPC in Node with a simple working example.
 ---
-<p class="lead">This guide gets you started with gRPC in Node with a simple
-working example.</p>
 
 <div id="toc"></div>
 

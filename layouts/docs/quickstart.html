@@ -35,8 +35,13 @@
 
 <div class="quickstartcol2" style="margin-top:4%">
 <h3 style="margin-top:0px;">{{ .Title }}</h3>
+  {{ with .Params.description }}
+  <p class="lead">
+    {{ . | markdownify }}
+  </p>
+  {{ end }}
 
-    {{ .Content }}
+  {{ .Content }}
 </div>
 </div>
 

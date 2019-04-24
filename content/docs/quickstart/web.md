@@ -2,9 +2,8 @@
 title: Web Quick Start
 layout: quickstart
 short: Web
+description: This guide gets you started with gRPC-Web with a simple working example.
 ---
-<p class="lead">This guide gets you started with gRPC-Web with a simple
-working example from the browser.</p>
 
 <div id="toc"></div>
 

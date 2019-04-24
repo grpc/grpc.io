@@ -1,10 +1,8 @@
 ---
 title: Quick Start
 layout: quickstart
+description: Get started with gRPC
 ---
-<p class="lead">
-Get started with gRPC
-</p>
 
 <div id="toc" class="toc mobile-toc"></div>
 
