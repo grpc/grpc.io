@@ -1,9 +1,9 @@
 ---
 layout: guides
 title: gRPC Concepts
+description: |
+  This document introduces some key gRPC concepts with an overview of gRPC's architecture and RPC life cycle.
 ---
-<p class="lead">This document introduces some key gRPC concepts with an overview
-of gRPC's architecture and RPC life cycle.</p> 
 
 It assumes that you've read [What is gRPC?](/docs/guides). For
 language-specific details, see the Quick Start, tutorial, and reference

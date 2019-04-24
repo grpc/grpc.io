@@ -34,6 +34,12 @@
     {{ .Title }}
   </h3>
 
+  {{ with .Params.description }}
+  <p class="lead">
+    {{ . | markdownify }}
+  </p>
+  {{ end }}
+
   {{ .Content }}
 </div>
 </div>
