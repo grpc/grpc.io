@@ -35,8 +35,8 @@
       <div class="row">
         <div class="topbanner{{ if not .IsHome }}sub{{ end }}">
           <nav class="navbar navbar-expand-md navbar-dark topnav">
-            <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-              <img src="{{ .Site.BaseURL }}img/grpc-logo.png" width="114" height="50">
+            <a class="navbar-brand" href="/">
+              <img src="/img/grpc-logo.png" width="114" height="50">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,10 +46,10 @@
             <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item {{ if in .RelPermalink "about" }}active{{ end }}">
-                  <a class="nav-link" href="{{ .Site.BaseURL }}about/">About</a>
+                  <a class="nav-link" href="/about/">About</a>
                 </li>
                 <li class="nav-item dropdown {{ if in .RelPermalink "docs" }}active{{ end }}">
-                  <a class="nav-link dropdown-toggle" href="{{ .Site.BaseURL }}docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Docs
                   </a>
 
