@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Node.js
-type: basic
+group: basic
 short: Node
 ---
 This tutorial provides a basic Node.js programmer's introduction

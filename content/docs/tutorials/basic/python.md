@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Python
-type: basic
+group: basic
 short: Python
 ---
 This tutorial provides a basic Python programmer's introduction

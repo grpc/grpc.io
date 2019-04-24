@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Java
-type: basic
+group: basic
 short: Java
 ---
 This tutorial provides a basic Java programmer's introduction to

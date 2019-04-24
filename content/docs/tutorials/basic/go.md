@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Go
-type: basic
+group: basic
 short: Go
 ---
 This tutorial provides a basic Go programmer's introduction to

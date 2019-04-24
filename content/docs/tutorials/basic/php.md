@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - PHP
-type: basic
+group: basic
 short: PHP
 ---
 This tutorial provides a basic PHP programmer's introduction to

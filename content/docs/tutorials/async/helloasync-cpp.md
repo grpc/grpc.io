@@ -2,7 +2,7 @@
 layout: tutorials
 title: Asynchronous Basics - C++
 short: Async - C++
-type: async
+group: async
 ---
 
 This tutorial shows you how to write a simple server and client in C++ using
