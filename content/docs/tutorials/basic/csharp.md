@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - C#
-type: basic
+group: basic
 short: C#
 ---
 This tutorial provides a basic C# programmer's introduction to working with gRPC.

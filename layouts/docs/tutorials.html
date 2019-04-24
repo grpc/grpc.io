@@ -5,9 +5,9 @@
 {{ define "main" }}
 {{ $currentUrl := .RelPermalink }}
 {{ $tutorials  := where site.Pages ".Layout" "tutorials" }}
-{{ $async      := where $tutorials ".Params.type" "eq" "async" }}
-{{ $auth       := where $tutorials ".Params.type" "eq" "auth" }}
-{{ $basic      := where $tutorials ".Params.type" "eq" "basic" }}
+{{ $async      := where $tutorials ".Params.group" "eq" "async" }}
+{{ $auth       := where $tutorials ".Params.group" "eq" "auth" }}
+{{ $basic      := where $tutorials ".Params.group" "eq" "basic" }}
 
             <div class="headertext">Documentation</div>
   </div>

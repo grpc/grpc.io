@@ -2,7 +2,7 @@
 layout: tutorials
 title: gRPC Basics - Android Java
 short: Android
-type: basic
+group: basic
 ---
 
 This tutorial provides a basic Android Java programmer's introduction to working with gRPC.

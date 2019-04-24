@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Web
-type: basic
+group: basic
 short: Web
 ---
 

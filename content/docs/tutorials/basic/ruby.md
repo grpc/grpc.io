@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Ruby
-type: basic
+group: basic
 short: Ruby
 ---
 This tutorial provides a basic Ruby programmer's introduction to working with gRPC.

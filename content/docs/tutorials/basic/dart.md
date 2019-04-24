@@ -1,7 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Dart
-type: basic
+group: basic
 short: Dart
 ---
 This tutorial provides a basic Dart programmer's introduction to
