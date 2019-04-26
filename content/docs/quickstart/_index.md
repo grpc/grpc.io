@@ -2,6 +2,7 @@
 title: Quick Start
 layout: quickstart
 description: Get started with gRPC
+weight: 1
 ---
 
 <div id="toc" class="toc mobile-toc"></div>

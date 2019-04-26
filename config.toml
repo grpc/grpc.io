@@ -1,4 +1,4 @@
-baseURL = "https://grpc-io.netlify.com/"
+baseURL = "https://grpc.io/"
 languageCode = "en-us"
 title = "gRPC"
 pygmentsCodeFences = true

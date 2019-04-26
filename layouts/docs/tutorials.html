@@ -33,7 +33,7 @@
 {{ range $async }}
 {{ $isCurrentPage := eq $currentUrl .RelPermalink }}
 {{ $title := .Params.short }}
-<a href="{{ .RelPermalink }}">
+<a href="{{ .RelPermalink }}"{{ if $isCurrentPage }} class="active"{{ end }}>
   {{ $title }}
 </a>
 {{ end }}
@@ -43,7 +43,7 @@
 {{ range $basic }}
 {{ $isCurrentPage := eq $currentUrl .RelPermalink }}
 {{ $title := .Params.short }}
-<a href="{{ .RelPermalink }}">
+<a href="{{ .RelPermalink }}"{{ if $isCurrentPage }} class="active"{{ end }}>
   {{ $title }}
 </a>
 {{ end }}
