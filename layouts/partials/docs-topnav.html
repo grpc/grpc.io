@@ -1,9 +1,17 @@
+{{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
+{{ $isDocsHome     := eq .RelPermalink "/docs/" }}
+{{ $currentSection := .CurrentSection.Title }}
 <div class="subnav d-none d-md-block">
-  <a href="{{ .Site.BaseURL }}docs/" {{ if eq (countrunes .RelPermalink) 6 }} class="active"{{ end }}>Overview</a>
-|  <a href="{{ .Site.BaseURL }}docs/quickstart/" {{ if in .RelPermalink "quickstart" }} class="active"{{ end }}>Quick Start</a>
-|  <a href="{{ .Site.BaseURL }}docs/guides/" {{ if in .RelPermalink "guides" }} class="active"{{ end }}>Guides</a>
-|  <a href="{{ .Site.BaseURL }}docs/tutorials/" {{ if in .RelPermalink "tutorials" }} class="active"{{ end }}>Tutorials</a>
-|  <a href="{{ .Site.BaseURL }}docs/reference/" {{ if in .RelPermalink "reference" }} class="active"{{ end }}>Reference</a>
-|  <a href="{{ .Site.BaseURL }}docs/samples/" {{ if in .RelPermalink "samples" }} class="active"{{ end }}>Samples</a>
-|  <a href="{{ .Site.BaseURL }}docs/talks/" {{ if in .RelPermalink "talks" }} class="active"{{ end }}>Presentations</a>
+  <a href="/docs"{{ if $isDocsHome }} class="active"{{ end }}>
+    Overview
+  </a>
+
+  {{ range $docsSections }}
+  {{ $isCurrentSection := eq $currentSection .CurrentSection.Title }}
+  {{ $title := cond (isset .Params "short") .Params.short .Title }}
+  |
+  <a href="{{ .RelPermalink }}"{{ if $isCurrentSection }} class="active"{{ end }}>
+    {{ $title }}
+  </a>
+  {{ end }}
 </div>

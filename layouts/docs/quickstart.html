@@ -20,10 +20,6 @@
 
   <h8>Quick Start</h8>
 
-  <a href="/docs/quickstart">
-    Quick Start Home
-  </a>
-
   {{ range $quickstartDocs }}
   {{ $isCurrentPage := eq $currentUrl .RelPermalink }}
   {{ $title := .Params.short }}
@@ -35,8 +31,13 @@
 
 <div class="quickstartcol2" style="margin-top:4%">
 <h3 style="margin-top:0px;">{{ .Title }}</h3>
+  {{ with .Params.description }}
+  <p class="lead">
+    {{ . | markdownify }}
+  </p>
+  {{ end }}
 
-    {{ .Content }}
+  {{ .Content }}
 </div>
 </div>
 

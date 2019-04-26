@@ -2,9 +2,8 @@
 layout: quickstart
 title: Dart Quickstart
 short: Dart
+description: This guide gets you started with gRPC in Dart with a simple working example.
 ---
-<p class="lead">This guide gets you started with gRPC in Dart with a simple
-working example.</p>
 
 <div id="toc"></div>
 

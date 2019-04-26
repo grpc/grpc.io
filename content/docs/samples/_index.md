@@ -4,7 +4,9 @@ headline: 'gRPC Samples'
 layout: docs
 title: Samples
 type: markdown
+weight: 5
 ---
+
 <p class="lead">Here are some sample apps to help developers build certain functionalities</p>
 
 <ul>

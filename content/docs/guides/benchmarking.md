@@ -1,11 +1,9 @@
 ---
 layout: guides
 title: Benchmarking
+description: |
+  gRPC is designed to support high-performance open-source RPCs in many languages. This document describes the performance benchmarking tools, the scenarios considered by the tests, and the testing infrastructure.
 ---
-<p class="lead">gRPC is designed to support high-performance
-open-source RPCs in many languages. This document describes the
-performance benchmarking tools, the scenarios considered by the tests,
-and the testing infrastructure.</p>
 
 <div id="toc"></div>
 

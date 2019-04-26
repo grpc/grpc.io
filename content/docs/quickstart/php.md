@@ -2,9 +2,8 @@
 layout: quickstart
 title: PHP Quick Start
 short: PHP
+description: This guide gets you started with gRPC in PHP with a simple working example.
 ---
-<p class="lead">This guide gets you started with gRPC in PHP with a simple
-working example.</p>
 
 <div id="toc"></div>
 

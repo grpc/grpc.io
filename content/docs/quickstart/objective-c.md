@@ -2,9 +2,8 @@
 layout: quickstart
 title: Objective-C Quick Start
 short: Objective-C
+description: This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.
 ---
-<p class="lead">This guide gets you started with gRPC on the iOS platform in
-Objective-C with a simple working example.</p>
 
 <div id="toc"></div>
 

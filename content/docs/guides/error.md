@@ -1,8 +1,9 @@
 ---
 layout: guides
 title: Error Handling
+description: |
+  This page describes how gRPC deals with errors, including gRPC's built-in error codes. Example code in different languages can be found [here](https://github.com/avinassh/grpc-errors).
 ---
-<p class="lead"> This page describes how gRPC deals with errors, including gRPC's built-in error codes. Example code in different languages can be found <a href="https://github.com/avinassh/grpc-errors">here</a>.</p>
 
 <div id="toc" class="toc mobile-toc"></div>
 
