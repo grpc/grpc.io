@@ -1,6 +1,7 @@
 ---
 title: Quick Start
 layout: quickstart
+weight: 1
 ---
 <p class="lead">
 Get started with gRPC

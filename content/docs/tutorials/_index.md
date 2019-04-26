@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: Tutorials
+weight: 3
 ---
 
 This section contains tutorials for each of our supported languages. They

@@ -1,6 +1,7 @@
 ---
 layout: guides
 title: Guides
+weight: 2
 ---
 
 This document introduces you to gRPC and protocol buffers. gRPC can use

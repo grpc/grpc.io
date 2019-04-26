@@ -1,7 +1,9 @@
 ---
 layout: docs
 title: Presentations & Talks
+short: Presentations
 type: markdown
+weight: 6
 ---
 
 <p class="lead">gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:</p>
