@@ -558,7 +558,7 @@ $opts = [
   'credentials' => $channel_credentials
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
-````
+```
 
 ##### Authenticate with Google using Oauth2 token (legacy approach)
 
