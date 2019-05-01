@@ -3,3 +3,4 @@
 /grpc-{{ . }}/*     https://grpc.github.io/grpc-{{ . }}/:splat
 {{ end -}}
 /grpc/*     https://grpc.github.io/grpc/:splat
+/release     https://grpc.github.io/release     200
