@@ -56,7 +56,7 @@ Credentials can be of two types:
 - **Call credentials**, which are attached to a call (or `ClientContext` in
   C++).
 
-You can also combine these in a`CompositeChannelCredentials`, allowing you to
+You can also combine these in a `CompositeChannelCredentials`, allowing you to
 specify, for example, SSL details for the channel along with call credentials
 for each call made on the channel. A `CompositeChannelCredentials` associates a
 `ChannelCredentials` and a `CallCredentials` to create a new
