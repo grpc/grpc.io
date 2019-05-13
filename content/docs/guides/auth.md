@@ -61,7 +61,7 @@ specify, for example, SSL details for the channel along with call credentials
 for each call made on the channel. A `CompositeChannelCredentials` associates a
 `ChannelCredentials` and a `CallCredentials` to create a new
 `ChannelCredentials`. The result will send the authentication data associated
-with the composed `CallCredentials`with every call made on the channel.
+with the composed `CallCredentials` with every call made on the channel.
 
 For example, you could create a `ChannelCredentials` from an `SslCredentials`
 and an `AccessTokenCredentials`. The result when applied to a `Channel` would
