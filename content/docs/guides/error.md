@@ -20,21 +20,20 @@ Error information is available to gRPC clients in all supported languages.
 
 ### Advanced error modeling
 
-The error model described above is the official gRPC error model and
-is supported by all gRPC client/server libraries and is independent of
+The error model described above is the official gRPC error model,
+is supported by all gRPC client/server libraries, and is independent of
 the gRPC data format (whether protocol buffers or something else). You
 may have noticed that it's quite limited and doesn't include the
-ability to communicate error details in a standard way.
+ability to communicate error details.
 
 If you're using protocol buffers as your data format, however, many of
 the [gRPC language libraries](https://grpc.io/docs/reference/) now
 support the richer error model developed and used by Google as
 described
-[here](https://cloud.google.com/apis/design/errors#error_model).
-
-*TODO*: this [SO post](https://stackoverflow.com/a/48750825) states that
-"Support is coming to each language to handle the type". What can be said
-here about that commitment and status/timeline?
+[here](https://cloud.google.com/apis/design/errors#error_model). *TODO:
+this [SO post](https://stackoverflow.com/a/48750825) states that
+"Support is coming to each language to handle the type". What can be
+said here about that commitment and status/timeline?*
 
 Even if you're not using protocol buffers, you can similarly use gRPC
 response metadata to extend the standard error response with error
@@ -48,7 +47,7 @@ request processors don't have visibility into the error details and
 thus wouldn't be able to leverage them for monitoring or other
 purposes.
 
-*TODO* What other caveats, if any, should be mentioned here?
+*TODO What other caveats, if any, should be mentioned here?*
 
 ### Error status codes
 
