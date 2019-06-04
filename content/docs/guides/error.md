@@ -52,19 +52,16 @@ in order to make practical use of it in your APIs.
 There are important considerations to be aware of when deciding whether to
 use such an extended error model, however, including:
 
-* library implementations of the extended error model may not be consistent
+  * library implementations of the extended error model may not be consistent
 across languages in terms of requirements for and expectations of the error
 details payload
-
-* existing proxies, loggers, and other standard HTTP request
+  * existing proxies, loggers, and other standard HTTP request
 processors don't have visibility into the error details and thus
 wouldn't be able to leverage them for monitoring or other purposes
-
-* additional error detail in the trailers interferes with head-of-line
+  * additional error detail in the trailers interferes with head-of-line
 blocking, and will decrease HTTP/2 header compression efficiency due to
 more frequent cache misses
-
-* larger error detail payloads may run into protocol limits (like
+  * larger error detail payloads may run into protocol limits (like
 max headers size), effectively losing the original error
 
 ### Error status codes
