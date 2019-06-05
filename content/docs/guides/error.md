@@ -18,7 +18,7 @@ If an error occurs, gRPC returns one of its error status codes instead, with an
 optional string error message that provides further details about what happened.
 Error information is available to gRPC clients in all supported languages.
 
-### Advanced error modeling
+### Richer error model
 
 The error model described above is the official gRPC error model,
 is supported by all gRPC client/server libraries, and is independent of
