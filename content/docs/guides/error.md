@@ -26,10 +26,9 @@ the gRPC data format (whether protocol buffers or something else). You
 may have noticed that it's quite limited and doesn't include the
 ability to communicate error details.
 
-If you're using protocol buffers as your data format, however, many of
-the [gRPC language libraries](https://grpc.io/docs/reference/) now
-provide experimental support for the richer error model developed and
-used by Google as described
+If you're using protocol buffers as your data format, however, you may
+wish to consider using the the richer error model developed and used
+by Google as described
 [here](https://cloud.google.com/apis/design/errors#error_model). This
 model enables servers to return and clients to consume additional
 error details expressed as one or more protobuf messages. It further
@@ -40,9 +39,13 @@ violations, and stack traces). The protobuf binary encoding of this
 extra error information is provided as trailing metadata in the
 response.
 
-**TODO: this [SO post](https://stackoverflow.com/a/48750825) states
-that "Support is coming to each language to handle the type". What can
-be said here about that commitment and status/timeline?**
+This richer error model is already supported in the C++, Go, Java,
+Python, and Ruby libraries, and at least the grpc-web and Node.js
+libraries have open issues requesting it. Other language libraries may
+add support in the future if there's demand, so check their github
+repos if interested. Note however that the grpc-core library written
+in C will not likely ever support it since it is purposely data format
+agnostic.
 
 You could use a similar approach (put error details in trailing
 response metadata) if you're not using protocol buffers, but you'd
