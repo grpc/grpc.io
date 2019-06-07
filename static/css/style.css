@@ -510,7 +510,7 @@ a {
   margin-left: 10%;
   width: 100%;
   font-weight: 100;
-  font-size: 11pt;
+  font-size: 1em;
   padding-left: 5%;
   float: left;
 }
@@ -1003,7 +1003,7 @@ h8 {
     width: 100% !important;
     margin-left: 4%;
     font-weight: 100;
-    font-size: 11pt;
+    font-size: 1em;
     padding-left: 5%;
     float: left;
   }
