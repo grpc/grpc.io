@@ -10,14 +10,14 @@
 
   <div class="singleblog"> 
   <h1>{{ .Title }}</h1>
-  <h5>Posted on {{ .Date.Format "Monday, January 02, 2006" }} 
+  <h6>Posted on {{ .Date.Format "Monday, January 02, 2006" }}
     {{ cond ( isset $.Params "author" ) "by" "" }} 
     {{ if isset $.Params "author-link" }}
       <a href="{{ $.Param "author-link" }}">{{ $.Param "author" }}</a>
     {{ else }}
       {{ $.Param "author" }}
     {{ end }}
-  </h5>
+  </h6>
   <p>
     {{ .Content }}
   </p>

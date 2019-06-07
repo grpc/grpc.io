@@ -448,13 +448,6 @@ button {
   background-color: #EBF2F2;
   float: left;
 }
-.doclangsection h4 {
-  font-size: 2.3em !important;
-  padding-top: 3%;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
 
 .docprojectsection {
   font-family: 'Open Sans', sans-serif;
@@ -754,74 +747,53 @@ a {
   margin-top: 2%;
 }
 
+/* Moving common style between all heading elements here */
+h1, h2, h3, h4, h5, h6, h8 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin-top: 0.9em;
+  margin-bottom: 0.6em;
+}
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2.5em;
-  color: #0CC1C8;
-  margin-bottom: 3%;
-  margin-top: 1%;
-  font-weight: 300;
+  font-size: 2.6em;
+  color: hsl(182, 90%, 47%);
 }
 
 h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-size: 2.2em;
+  color: hsl(182, 90%, 47%);
+}
+
+h3 {
+  font-size: 1.8em;
+  color: hsl(182, 90%, 37%);
+}
+
+h4 {
   font-size: 1.5em;
-  color: #0CC1C8;
-  margin-bottom: 3%;
-  margin-top: 3%;
-  font-weight: 300;
+  color: hsl(182, 90%, 32%);
+}
+
+h5 {
+  font-size: 1.1em;
+  color: hsl(182, 90%, 27%);
+}
+
+h6 {
+  font-size: 1em;
+  font-weight: 400;
+  color: hsl(182, 90%, 22%);
+}
+
+h8 {
+  font-size: 2em;
+  color: hsl(182, 48%, 28%);
 }
 
 .lead {
   font-size: 1em !important;
 }
-
-
-h3 {
-  font-family: 'Open Sans', sans-serif;
-  color: #266B6B;
-  font-weight: 300;
-  padding-top: 2%;
-  padding-bottom: 1%;
-}
-
-h4 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5em;
-  padding-top: 3%;
-  padding-bottom: 0%;
-  color: #33838b;
-  margin-bottom: 3%;
-  color: #0CC1C8;
-  font-weight: 300;
-  margin-top: 3%;
-}
-
-h5 {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 9pt;
-  font-weight: 300;
-}
-
-h6 {
-  font-size: 1.4em;
-  font-family: 'Open Sans', sans-serif;
-  color: #266B6B;
-  font-weight: 300;
-  padding-top: 2%;
-  padding-bottom: 1%;
-}
-
-h8 {
-  font-size: 2em;
-  font-family: 'Open Sans', sans-serif;
-  color: #266B6B;
-  font-weight: 300;
-  padding-top: 2%;
-  padding-bottom: 1%;
-}
-
 
 @media screen and (max-width: 1100px) {
   table {
@@ -847,7 +819,6 @@ h8 {
     line-height: 2em;
     background-color: #efefef;
     text-align: left;
-    padding: 2%;
     border: 0.5px solid #cccccc;
     padding: 5% !important;
   }
@@ -979,9 +950,7 @@ h8 {
     width: 90%;
     line-height: 1.6em;
     margin-right: 2%;
-    padding: 3%;
-    padding-right: 3%;
-    padding-top: 2%;
+    padding: 2% 3% 3%;
     font-size: 0.8em;
   }
 
@@ -989,12 +958,6 @@ h8 {
     padding-bottom: 3%;
     margin-bottom: 5%;
     margin-right: 5%;
-  }
-
-  h2 {
-    font-size: 1.5em !important;
-    padding-top: 2%;
-    padding-bottom: 2%;
   }
 
   .quickstartcols {
@@ -1012,14 +975,6 @@ h8 {
     width: 100% !important;
   }
 
-  .quickstartcol2 h3 {
-    font-size: 2.3em !important;
-  }
-
-  .quickstartcol2 h1 {
-    font-size: 2em !important;
-  }
-
   .blogcol2 {
     display: none;
   }
@@ -1029,10 +984,8 @@ h8 {
     text-align: left;
     width: 25%;
     line-height: 2em;
-    padding: 0%;
     margin-right: 3%;
-    padding-right: 0%;
-    padding-top: 5%;
+    padding: 5% 0 0;
   }
 
   .quickstartcol2 {
@@ -1041,12 +994,10 @@ h8 {
     width: 60%;
     line-height: 1.6em;
     margin-right: 2%;
-    padding-left: 2%;
     padding-left: 4%;
     border-left: 0.5px solid #cccccc;
   }
 }
-
 
 @media screen and (max-width: 700px) {
   .headertext {
@@ -1151,18 +1102,6 @@ h8 {
     margin-bottom: 10% !important;
   }
 
-  h2 {
-    font-size: 1.5em;
-    padding-top: 4%;
-    padding-bottom: 4%;
-  }
-
-  h1 {
-    font-size:2.2em;
-    padding-top:4%;
-    padding-bottom:4%;
-  }
-
   .companybox img {
     width:20%;
   }
@@ -1212,10 +1151,6 @@ h8 {
     padding-top: 5%;
     font-size: 0.9em !important;
     padding-left: 8%;
-  }
-
-  h3 {
-    font-size: 1.8em;
   }
 
   .companybox {

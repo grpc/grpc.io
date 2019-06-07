@@ -8,15 +8,15 @@ gRPC has an active community of developers who are using, enhancing, and buildin
 
 gRPC has an active community of developers who are using, enhancing and building valuable integrations with other software projects. We are always looking for active contributors in gRPC and gRPC Ecosystem. Here are a few areas where we would love community contribution in grpc project. Be sure to follow our [community addition guidelines](/contribute).
 
-## [gRPC C-based](https://github.com/grpc/grpc/labels/disposition%2Fhelp%20wanted)
+#### [gRPC C-based](https://github.com/grpc/grpc/labels/disposition%2Fhelp%20wanted)
 
 Or shortcut to [C](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%2Fcore+label%3A%22disposition%2Fhelp+wanted%22), [C++](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fc%2B%2B), [Node.js](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fnode), [Python](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2FPython), [Ruby](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fruby), [Objective-C](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2FObjC), [PHP](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fphp), and [C#](https://github.com/grpc/grpc/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fc%23+).
 
-## [gRPC Java](https://github.com/grpc/grpc-java/labels/help%20wanted)
+#### [gRPC Java](https://github.com/grpc/grpc-java/labels/help%20wanted)
 
 For Android Java and Java.
 
-## [gRPC Go](https://github.com/grpc/grpc-go/labels/Status:%20help%20wanted)
+#### [gRPC Go](https://github.com/grpc/grpc-go/labels/Status:%20help%20wanted)
 
 For the Go implementation.
 

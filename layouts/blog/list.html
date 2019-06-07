@@ -14,7 +14,7 @@
 
 {{ range .Paginator.Pages }}
   <h3 style="margin-top:0px;"><a href="{{.Permalink}}">{{ .Title }}</a></h3>
-  <h5>{{ .Date.Format "January 02, 2006" }}</h5>
+  <h6>{{ .Date.Format "January 02, 2006" }}</h6>
 <p>
   {{ .Summary }}
 </p>
