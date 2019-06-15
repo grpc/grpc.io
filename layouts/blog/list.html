@@ -29,7 +29,17 @@
 
 <div class="blogcol2">
 
-<h5 style="font-size:12pt;margin-bottom:20px">All blog posts</h5>
+<h4>All blog posts</h4>
+
+<span class="rss-button">
+  <a href="{{ "/feed.xml" | absURL }}">
+    RSS feed
+  </a>
+</span>
+
+<br />
+<br />
+
 {{ range .Pages }}
   <a href="{{.Permalink}}">{{.Title}}</a><br><br>
 {{ end }}
