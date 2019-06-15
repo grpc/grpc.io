@@ -17,8 +17,11 @@ delimiter = ""
 mediaType = "text/netlify"
 baseName = "_redirects"
 
+[outputFormats.RSS]
+baseName = "feed"
+
 [outputs]
-home = ["HTML", "REDIRECTS"]
+home = ["HTML", "REDIRECTS", "RSS"]
 
 # Site menus
 [menu]
