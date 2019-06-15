@@ -7,6 +7,23 @@ contentDiv {
 }
 */
 
+.rss-button a {
+  margin: 1rem 0;
+  display: inline-block;
+  background-color: white;
+  color: #116068;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  border: 2px solid #116068;
+}
+
+.rss-button a:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #116068;
+}
+
 .cncf-section p {
   font-size: 1.5rem;
 }
