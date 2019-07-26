@@ -6,7 +6,8 @@ serve:
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
-		--disableFastRender
+		--disableFastRender \
+		--forceSyncStatic
 
 docker-serve:
 	docker run --rm -it -v $(CURDIR):/src -p 1313:1313 $(DOCKER_IMG) $(SERVE_CMD)
