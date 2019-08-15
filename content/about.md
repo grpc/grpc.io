@@ -153,6 +153,10 @@ Check out what people are saying below:
 </tr>
 
 <tr>
+<td>Objective-C</td><td>Mac OS X 10.11+/iOS 7.0+</td><td>Xcode 7.2+</td>
+</tr>
+
+<tr>
 <td>PHP * </td><td>Linux/Mac</td><td> PHP 5.5+ and PHP 7.0+</td>
 </tr>
 
@@ -176,6 +180,7 @@ Check out what people are saying below:
 | Go | Windows/Linux/Mac | Go 1.6+ |
 | Java | Windows/Linux/Mac | JDK 8 recommended. Gingerbread+ for Android |
 | Node.js | Windows/Linux/Mac | Node v4+ |
+| Objective-C | Mac OS X 10.11+/iOS 7.0+ | Xcode 7.2+ |
 | PHP * | Linux/Mac | PHP 5.5+ and PHP 7.0+ |
 | Python | Windows/Linux/Mac | Python 2.7 and Python 3.4+ |
 | Ruby | Windows/Linux/Mac | |
