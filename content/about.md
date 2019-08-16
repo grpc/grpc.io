@@ -123,13 +123,12 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>C/C++</td><td>Linux</td><td>GCC 4.4 <br/> GCC 4.6 <br> GCC 5.3 <br> Clang 3.5 <br> Clang 3.6 <br> Clang 3.7|</td>
+<td>C/C++</td><td>Linux</td><td>GCC 4.4 <br/> GCC 4.6 <br> GCC 5.3 <br> Clang 3.5 <br> Clang 3.6 <br> Clang 3.7</td>
 </tr>
 
 <tr>
 <td>C/C++</td><td>Windows 7+</td><td>Visual Studio 2013+</td>
 </tr>
-
 
 <tr>
 <td>C#</td><td>Windows 7+ </td><td> Linux <br> .NET Core, .NET 4.5+ <br> .NET Core, Mono 4+ <br> .NET Core, Mono 4+</td>
@@ -138,7 +137,6 @@ Check out what people are saying below:
 <tr>
 <td>Dart</td><td>Windows/Linux/Mac</td><td> Dart 2.0+</td>
 </tr>
-
 
 <tr>
 <td>Go</td><td>Windows/Linux/Mac</td><td> Go 1.6+</td>
@@ -157,7 +155,7 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>PHP * </td><td>Linux/Mac</td><td> PHP 5.5+ and PHP 7.0+</td>
+<td>PHP (Beta) </td><td>Linux/Mac</td><td> PHP 5.5+ and PHP 7.0+</td>
 </tr>
 
 <tr>
@@ -165,7 +163,7 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>Ruby </td><td>Windows/Linux/Mac</td>
+<td>Ruby </td><td>Windows/Linux/Mac</td><td></td>
 </tr>
 
 </table>
