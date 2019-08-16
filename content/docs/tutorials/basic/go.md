@@ -158,6 +158,7 @@ Running this command generates the following file in the `routeguide` directory 
 - `route_guide.pb.go`
 
 This contains:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request
   and response message types
 - An interface type (or *stub*) for clients to call with the methods defined in
