@@ -2,7 +2,7 @@
 layout: tutorials
 title: gRPC Basics - C++
 group: basic
-short: C
+short: C++
 ---
 
 This tutorial provides a basic C++ programmer's introduction to working with gRPC.
