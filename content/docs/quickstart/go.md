@@ -162,7 +162,7 @@ Edit `greeter_server/main.go` and add the following function to it:
 
 ```go
 func (s *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-        return &pb.HelloReply{Message: "Hello again " + in.Name}, nil
+        return &pb.HelloReply{Message: "Hello again " + in.GetName()}, nil
 }
 ```
 
@@ -175,7 +175,7 @@ r, err = c.SayHelloAgain(ctx, &pb.HelloRequest{Name: name})
 if err != nil {
         log.Fatalf("could not greet: %v", err)
 }
-log.Printf("Greeting: %s", r.Message)
+log.Printf("Greeting: %s", r.GetMessage())
 ```
 
 #### Run!
