@@ -1,3 +1,10 @@
+@media screen and (min-width: 680px) {
+  html {font-size: 14px; } }
+@media screen and (min-width: 1224px) {
+  html {font-size: 18px; } }
+@media screen and (min-width: 1400px) {
+  html {font-size: 20px; } }
+
 /*
 contentDiv {
   background-color: orange;
@@ -87,7 +94,6 @@ th {
 
 html {
   overflow-x: hidden;
-  font-size: 20px;
 }
 
 p img {
