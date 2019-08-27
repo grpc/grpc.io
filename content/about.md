@@ -123,31 +123,35 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>C/C++</td><td>Linux</td><td>GCC 4.4 <br/> GCC 4.6 <br> GCC 5.3 <br> Clang 3.5 <br> Clang 3.6 <br> Clang 3.7</td>
+<td>C/C++</td><td>Linux/Mac</td><td>GCC 4.8+ <br> Clang 3.3+</td>
 </tr>
 
 <tr>
-<td>C/C++</td><td>Windows 7+</td><td>Visual Studio 2013+</td>
+<td>C/C++</td><td>Windows 7+</td><td>Visual Studio 2015+</td>
 </tr>
 
 <tr>
-<td>C#</td><td>Windows 7+ </td><td> Linux <br> .NET Core, .NET 4.5+ <br> .NET Core, Mono 4+ <br> .NET Core, Mono 4+</td>
+<td>C#</td><td>Linux/Mac</td><td>.NET Core, Mono 4+</td>
 </tr>
 
 <tr>
-<td>Dart</td><td>Windows/Linux/Mac</td><td> Dart 2.0+</td>
+<td>C#</td><td>Windows 7+</td><td>.NET Core, .NET 4.5+</td>
 </tr>
 
 <tr>
-<td>Go</td><td>Windows/Linux/Mac</td><td> Go 1.6+</td>
+<td>Dart</td><td>Windows/Linux/Mac</td><td>Dart 2.0+</td>
 </tr>
 
 <tr>
-<td>Java</td><td>Windows/Linux/Mac</td><td> JDK 8 recommended. Gingerbread+ for Android</td>
+<td>Go</td><td>Windows/Linux/Mac</td><td>Go 1.6+</td>
 </tr>
 
 <tr>
-<td>Node.js</td><td>Windows/Linux/Mac</td><td> Node v4+</td>
+<td>Java</td><td>Windows/Linux/Mac</td><td>JDK 8 recommended. Gingerbread+ for Android</td>
+</tr>
+
+<tr>
+<td>Node.js</td><td>Windows/Linux/Mac</td><td>Node v4+</td>
 </tr>
 
 <tr>
@@ -155,15 +159,15 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>PHP (Beta) </td><td>Linux/Mac</td><td> PHP 5.5+ and PHP 7.0+</td>
+<td>PHP (Beta) </td><td>Linux/Mac</td><td>PHP 5.5+ and PHP 7.0+</td>
 </tr>
 
 <tr>
-<td>Python </td><td>Windows/Linux/Mac</td><td> Python 2.7 and Python 3.4+</td>
+<td>Python </td><td>Windows/Linux/Mac</td><td>Python 2.7 and Python 3.4+</td>
 </tr>
 
 <tr>
-<td>Ruby </td><td>Windows/Linux/Mac</td><td></td>
+<td>Ruby </td><td>Windows/Linux/Mac</td><td>Ruby 2.3+</td>
 </tr>
 
 </table>
@@ -171,9 +175,10 @@ Check out what people are saying below:
 
 | Language | Platform | Compiler |
 | -------- | -------- | -------- |
-| C/C++ | Linux | GCC 4.4 <br/> GCC 4.6 <br> GCC 5.3 <br> Clang 3.5 <br> Clang 3.6 <br> Clang 3.7|
-| C/C++ | Windows 7+ | Visual Studio 2013+ |
-| C# | Windows 7+ <br> Linux <br> Mac | .NET Core, .NET 4.5+ <br> .NET Core, Mono 4+ <br> .NET Core, Mono 4+ |
+| C/C++ | Linux/Mac | GCC 4.8+ <br> Clang 3.3+ |
+| C/C++ | Windows 7+ | Visual Studio 2015+ |
+| C# | Linux/Mac | .NET Core, Mono 4+ |
+| C# | Windows 7+ | .NET Core, .NET 4.5+ |
 | Dart | Windows/Linux/Mac | Dart 2.0+ |
 | Go | Windows/Linux/Mac | Go 1.6+ |
 | Java | Windows/Linux/Mac | JDK 8 recommended. Gingerbread+ for Android |
@@ -181,7 +186,7 @@ Check out what people are saying below:
 | Objective-C | Mac OS X 10.11+/iOS 7.0+ | Xcode 7.2+ |
 | PHP * | Linux/Mac | PHP 5.5+ and PHP 7.0+ |
 | Python | Windows/Linux/Mac | Python 2.7 and Python 3.4+ |
-| Ruby | Windows/Linux/Mac | |
+| Ruby | Windows/Linux/Mac | Ruby 2.3+ |
 _* still in beta_
 -->
 
