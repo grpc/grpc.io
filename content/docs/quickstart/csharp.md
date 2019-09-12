@@ -7,6 +7,9 @@ description: This guide gets you started with gRPC in C# with a simple working e
 
 <div id="toc"></div>
 
+NOTE: This is a quick start guide for the gRPC C# implementation based on Core native library.
+See [gRPC for .NET Quick Start](/docs/quickstart/csharp-dotnet/) for how to start with the "grpc-dotnet" implementation.
+
 ### Before you begin
 
 #### Prerequisites
