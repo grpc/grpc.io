@@ -16,7 +16,7 @@ See https://github.com/grpc/grpc-dotnet for general info about the "gRPC for .NE
 
 ### gRPC ASP.NET Core Tutorial
 
-The best way to start is the [gRPC ASP.NET Core Tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-3.0&tabs=visual-studio). See the [gRPC documentation](https://docs.microsoft.com/en-us/aspnet/core/grpc/?view=aspnetcore-3.0) section in ASP.NET Core's documentation for a more thorough overview.
+The best way to start is the [gRPC ASP.NET Core Tutorial](https://docs.microsoft.com/aspnet/core/tutorials/grpc/grpc-start). See the [gRPC documentation](https://docs.microsoft.com/aspnet/core/grpc) section in ASP.NET Core's documentation for a more thorough overview.
 
 ### More Examples
 
