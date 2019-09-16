@@ -21,7 +21,3 @@ The best way to start is the [gRPC ASP.NET Core Tutorial](https://docs.microsoft
 ### More Examples
 
 More code examples for grpc-dotnet are at https://github.com/grpc/grpc-dotnet/tree/master/examples
-
-
-
-
