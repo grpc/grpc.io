@@ -1,3 +1,10 @@
+@media screen and (min-width: 680px) {
+  html {font-size: 14px; } }
+@media screen and (min-width: 1224px) {
+  html {font-size: 18px; } }
+@media screen and (min-width: 1400px) {
+  html {font-size: 20px; } }
+
 /*
 contentDiv {
   background-color: orange;
@@ -97,7 +104,6 @@ p img {
   padding: 1rem;
 }
 
-
 .btn {
   margin-top: 2%;
   margin-left: 0%;
@@ -115,7 +121,6 @@ p img {
 .pt-thumbnail {
   width: 100% !important;
 }
-
 
 .page-item.active .page-link {
   background-color: #0CC1C8 !important;
@@ -135,11 +140,10 @@ p img {
   padding-right: 4%;
   font-size: 0.8em;
   line-height: 1.5em;
-  color :#333333 !important;
+  color: #333333 !important;
   font-style: italic;
   padding-top: 2%;
 }
-
 
 .testimonialrow {
   vertical-align: top;
@@ -150,11 +154,9 @@ p img {
   padding-top: 2%;
 }
 
-
 .testimonialsection img {
   display: inline-block;
   width: 60%;
-
   padding-bottom: 6%;
   vertical-align: top;
 }
@@ -164,7 +166,6 @@ p img {
   padding: 3%;
   vertical-align: top;
 }
-
 
 .testimonialquote {
   float: left;
@@ -184,7 +185,6 @@ p img {
   margin-right: 2%;
 }
 
-
 .plusmain {
   color: #333333;
   display: inline;
@@ -195,9 +195,8 @@ p img {
 }
 
 .dropdown-item {
- font-size: 0.8em;
+  font-size: 0.8em;
 }
-
 
 .arrow {
   animation: bouncing 1s infinite ease-in-out;
@@ -209,8 +208,6 @@ p img {
   position: absolute;
   width: 50px;
 }
-
-
 
 body {
   margin: 0 auto;
@@ -227,9 +224,8 @@ body {
   font-size: 1.3em;
   background-image: url('../img/graphic-04.svg');
   background-repeat: repeat;
-  position:relative;
-   background-size: 100%;
-
+  position: relative;
+  background-size: 100%;
 }
 
 .topbannersub {
@@ -240,18 +236,17 @@ body {
   float: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 18pt;
+  font-size: 0.9rem;
   background-image: url('../img/graphic-04.svg');
   background-repeat: repeat;
   position: relative;
   background-size: 100%;
 }
 
-
 .topnav {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 10pt;
+  font-size: 0.8rem;
   letter-spacing: 0.05em;
   margin-right: 5%;
   color: white;
@@ -270,7 +265,7 @@ body {
 .logonav {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 10pt;
+  font-size: 0.8rem;
   float: left;
   position: absolute;
   letter-spacing: 0.05em;
@@ -283,14 +278,14 @@ body {
   text-transform: uppercase;
 }
 
-.logonav img{
+.logonav img {
   width: 100% !important;
 }
 
 .subnav {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 10pt;
+  font-size: 0.8rem;
   letter-spacing: 0.05em;
   background-color: #EBF2F2;
   color: #505050;
@@ -313,7 +308,7 @@ body {
   color: #0CC1C8;
 }
 
-.subnav.selected a:selected:link, a:selected:active{
+.subnav.selected a:selected:link, a:selected:active {
   color: #0CC1C8;
 }
 
@@ -334,12 +329,12 @@ col-md-9 faq-container {
 */
 
 .headertext {
-  font-size: 30pt;
+  font-size: 1.5rem;
   padding-top: 6%;
   text-align: center;
 }
 
-.topbannertext{
+.topbannertext {
   width: 35%;
   margin-left: 32.5%;
   padding-top: 0.5%;
@@ -359,11 +354,9 @@ col-md-9 faq-container {
   width: 100%;
 }
 
-
-.bannerlogo img{
+.bannerlogo img {
   width: 50%;
 }
-
 
 button {
   font-family: 'Open Sans', sans-serif;
@@ -377,7 +370,7 @@ button {
   padding-bottom: 1.5%;
   margin: 2%;
   letter-spacing: 0.07em;
-  font-size: 13pt;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
@@ -394,17 +387,16 @@ button {
 }
 
 .docssection2 {
-  padding-top:1%;
+  padding-top: 1%;
   font-family: 'Open Sans', sans-serif;
-  width:100%;
-  font-weight:100;
-  font-size:1em;
-  color:#606060;
-  line-height:1.7em;
-  padding-left:0%;
-  text-align:center;
+  width: 100%;
+  font-weight: 100;
+  font-size: 1em;
+  color: #606060;
+  line-height: 1.7em;
+  padding-left: 0%;
+  text-align: center;
 }
-
 
 .section3 {
   font-family: 'Open Sans', sans-serif;
@@ -445,11 +437,12 @@ button {
 
 .docusecasesection {
   font-family: 'Open Sans', sans-serif;
-  width:100%;
+  width: 100%;
   margin-top: 2%;
   font-weight: 100;
   float: left;
 }
+
 .docusecasesection h4 {
   font-size: 2.3em !important;
   padding-top: 3%;
@@ -465,13 +458,13 @@ button {
   background-color: #EBF2F2;
   float: left;
 }
+
 .doclangsection h4 {
   font-size: 2.3em !important;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
 }
-
 
 .docprojectsection {
   font-family: 'Open Sans', sans-serif;
@@ -520,18 +513,16 @@ a {
   float: left;
 }
 
-
 .quickstartcols {
   margin-bottom: 17%;
   font-family: 'Open Sans', sans-serif;
   margin-left: 10%;
   width: 100%;
   font-weight: 100;
-  font-size: 11pt;
+  font-size: 0.6 rem;
   padding-left: 5%;
   float: left;
 }
-
 
 .quickstartcol1 {
   float: left;
@@ -545,7 +536,6 @@ a {
   padding-top: 5%;
 }
 
-
 .quickstartcol2 {
   float: left;
   text-align: left;
@@ -556,14 +546,12 @@ a {
   border-left: 0.5px solid #cccccc;
 }
 
-
-.quickstartcol1 h8{
+.quickstartcol1 h8 {
   font-size: 1.2em;
   display: block;
   line-height: 1.3em;
   margin-bottom: 10%;
 }
-
 
 .quickstartcol1 a {
   line-height: 1.5em;
@@ -594,7 +582,7 @@ a {
   width: 70%;
   margin-left: 15%;
   font-weight: 100;
-  font-size: 11pt;
+  font-size: 0.6rem;
   margin-top: 4%;
   float: left;
 }
@@ -648,7 +636,6 @@ a {
   padding-bottom: 3%;
 }
 
-
 .docscol1 {
   float: left;
   width: 28%;
@@ -677,14 +664,13 @@ a {
   font-family: 'Open Sans', sans-serif;
   width: 90%;
   float: left;
-  font-size: 12pt;
-  padding-bottom:1%;
+  font-size: 0.6rem;
+  padding-bottom: 1%;
   color: #707070;
   line-height: 1.5em;
   padding-right: 5%;
   margin-bottom: 5%;
 }
-
 
 .col1 {
   float: left;
@@ -703,7 +689,7 @@ a {
   padding-bottom: 2%;
 }
 
-.col1image{
+.col1image {
   float: left;
   display: block;
   width: 25%;
@@ -713,7 +699,7 @@ a {
   display: block;
 }
 
-.col2image{
+.col2image {
   float: left;
   width: 25%;
   margin-right: 5%;
@@ -749,14 +735,12 @@ a {
   background-color: white;
 }
 
-
-
 .section4 {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   background-size: 100%;
   float: left;
-  font-size: 14pt;
+  font-size: 1rem;
   text-align: center;
   background-image: url('../img/graphic-04.svg');
   background-repeat: no-repeat;
@@ -770,7 +754,6 @@ a {
   color: white;
   margin-top: 2%;
 }
-
 
 h1 {
   font-family: 'Open Sans', sans-serif;
@@ -794,7 +777,6 @@ h2 {
   font-size: 1em !important;
 }
 
-
 h3 {
   font-family: 'Open Sans', sans-serif;
   color: #266B6B;
@@ -817,7 +799,7 @@ h4 {
 
 h5 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 9pt;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -839,27 +821,23 @@ h8 {
   padding-bottom: 1%;
 }
 
-
 @media screen and (max-width: 1100px) {
   table {
     margin-top: 4%;
     margin-bottom: 4%;
     width: 100% !important;
   }
-
   tr {
-    padding:5% !important;
+    padding: 5% !important;
     line-height: 1.2em;
     border: 0.5px solid #cccccc;
   }
-
   td {
     font-size: 0.9em;
     text-align: left;
     border: 0.5px solid #cccccc;
     padding: 2%;
   }
-
   th {
     line-height: 2em;
     background-color: #efefef;
@@ -868,12 +846,10 @@ h8 {
     border: 0.5px solid #cccccc;
     padding: 5% !important;
   }
-
   .refsection {
     width: 90%;
     padding-left: 10%;
   }
-
   .col1image {
     padding-bottom: 0%;
     padding-top: 0%;
@@ -881,51 +857,41 @@ h8 {
     margin-right: 5%;
     width: 20%;
   }
-
   .col1 {
     width: 80%;
     padding-bottom: 0%;
     margin-bottom: 0%;
   }
-
   .col2 {
     width: 80%;
     padding-bottom: 0%;
     margin-bottom: 0%;
   }
-
   .cols {
     padding-bottom: 5%;
     padding-left: 15%;
   }
-
   .col1 h3 {
     font-size: 0.5em !important;
   }
-
   .col2 h3 {
     font-size: 0.5em !important;
   }
-
   .section4 {
     background-repeat: repeat;
   }
-
   .col1image {
     padding-bottom: 3%;
     margin-bottom: 0%;
     margin-right: 5%;
   }
-
   .colpart1 {
     padding-bottom: 0%;
   }
-
   .colpart2 {
     padding-top: 0%;
     padding-bottom: 0%;
   }
-
   .section2 {
     padding-top: 3%;
     font-family: 'Open Sans', sans-serif;
@@ -937,7 +903,6 @@ h8 {
     padding-left: 10%;
     text-align: center;
   }
-
   .bannerlogo img {
     width: 35% !important;
   }
@@ -948,7 +913,6 @@ h8 {
     width: 100%;
     background-image: url('../img/graphic-04-mobile.svg');
   }
-
   .topbannersub {
     width: 100%;
     background-image: url('../img/graphic-04-mobile.svg');
@@ -956,30 +920,26 @@ h8 {
     position: relative;
     background-size: 100%;
   }
-
   .bannerlogo img {
-    width:60% !important;
+    width: 60% !important;
   }
-
- .topbannertext {
+  .topbannertext {
     width: 70% !important;
     margin-left: 15% !important;
     padding-top: 2%;
     font-size: 1em !important;
     padding-bottom: 0% !important;
   }
-
   .singleblog {
     margin-bottom: 10%;
     font-family: 'Open Sans', sans-serif;
     width: 90%;
     margin-left: 5%;
     font-weight: 100;
-    font-size: 11pt;
+    font-size: 0.6rem;
     margin-top: 4%;
     float: left;
   }
-
   .blogcols {
     margin-bottom: 17%;
     font-family: 'Open Sans', sans-serif;
@@ -989,7 +949,6 @@ h8 {
     font-size: 0.8em;
     float: left;
   }
-
   .blogcol1 {
     float: left;
     text-align: left;
@@ -1001,46 +960,38 @@ h8 {
     padding-top: 2%;
     font-size: 0.8em;
   }
-
   .col1image {
     padding-bottom: 3%;
     margin-bottom: 5%;
     margin-right: 5%;
   }
-
   h2 {
     font-size: 1.5em !important;
     padding-top: 2%;
     padding-bottom: 2%;
   }
-
   .quickstartcols {
     margin-bottom: 17%;
     font-family: 'Open Sans', sans-serif;
     width: 100% !important;
     margin-left: 4%;
     font-weight: 100;
-    font-size: 11pt;
+    font-size: 0.6rem;
     padding-left: 5%;
     float: left;
   }
-
   .quickstartcols img {
     width: 100% !important;
   }
-
   .quickstartcol2 h3 {
     font-size: 2.3em !important;
   }
-
   .quickstartcol2 h1 {
     font-size: 2em !important;
   }
-
   .blogcol2 {
     display: none;
   }
-
   .quickstartcol1 {
     float: left;
     text-align: left;
@@ -1051,7 +1002,6 @@ h8 {
     padding-right: 0%;
     padding-top: 5%;
   }
-
   .quickstartcol2 {
     float: left;
     text-align: left;
@@ -1064,12 +1014,10 @@ h8 {
   }
 }
 
-
 @media screen and (max-width: 700px) {
   .headertext {
     padding-top: 15%;
   }
-
   .subnav {
     font-size: 1em;
     padding-top: 3%;
@@ -1077,7 +1025,6 @@ h8 {
     padding-left: 2%;
     padding-right: 2%;
   }
-
   .docscol1 {
     float: left;
     width: 90%;
@@ -1086,7 +1033,6 @@ h8 {
     padding-bottom: 3%;
     text-align: center;
   }
-
   .docscol2 {
     float: left;
     width: 90% !important;
@@ -1095,7 +1041,6 @@ h8 {
     padding-bottom: 3%;
     text-align: center;
   }
-
   .docscol3 {
     float: left;
     width: 90%;
@@ -1104,7 +1049,6 @@ h8 {
     padding-bottom: 3%;
     text-align: center;
   }
-
   .doccols {
     margin-bottom: 3%;
     margin-top: 0%;
@@ -1117,7 +1061,6 @@ h8 {
     padding-left: 5%;
     float: left;
   }
-
   .docstext {
     width: 95%;
     font-size: 0.9em;
@@ -1125,74 +1068,59 @@ h8 {
     padding-bottom: 5%;
     text-align: center;
   }
-
   .dropdown-menu {
     opacity: 0.9;
     float: right !important;
     width: 50%;
   }
-
   .topbannertext {
     margin-bottom: 5%;
     width: 80%;
     margin-left: 10%;
     font-size: 1em;
   }
-
   .section4 {
     background-image: url('../img/graphic-04-mobile.svg');
   }
-
   .button {
     padding-bottom: 5%;
   }
-
   .col1 {
     width: 90%;
   }
-
   .col2 {
     width: 90%;
   }
-
   .cols {
     padding-bottom: 8%;
   }
-
   .section4 {
     background-repeat: repeat;
   }
-
   .col1image {
     margin-right: 5%;
     margin-bottom: 10% !important;
   }
-
   h2 {
     font-size: 1.5em;
     padding-top: 4%;
     padding-bottom: 4%;
   }
-
   h1 {
-    font-size:2.2em;
-    padding-top:4%;
-    padding-bottom:4%;
+    font-size: 2.2em;
+    padding-top: 4%;
+    padding-bottom: 4%;
   }
-
   .companybox img {
-    width:20%;
+    width: 20%;
   }
-
   .section2 {
-    padding-bottom:4%;
+    padding-bottom: 4%;
   }
-
   .section3 {
-    width:100%;
-    margin-bottom:7%;
+    width: 100%;
+    margin-bottom: 7%;
   }
-
   button {
     font-family: 'Open Sans', sans-serif;
     background-color: white;
@@ -1206,39 +1134,32 @@ h8 {
     margin: 1%;
     margin-bottom: 10%;
     letter-spacing: 0.07em;
-    font-size: 13pt;
+    font-size: 0.7rem;
   }
-
   .colpart1 {
     padding-bottom: 5%;
     text-align: left;
   }
-
   .colpart2 {
     padding-top: 0%;
     padding-bottom: 0%;
   }
-
   .coltext1 {
     text-align: left;
     display: block;
   }
-
   .cols {
     padding-bottom: 14%;
     padding-top: 5%;
     font-size: 0.9em !important;
     padding-left: 8%;
   }
-
   h3 {
     font-size: 1.8em;
   }
-
   .companybox {
     margin-left: 10%;
   }
-
   .videosection {
     padding-top: 3%;
     padding-bottom: 3%;
@@ -1253,7 +1174,7 @@ h8 {
   }
 }
 
-@media screen and (max-width:450px){
+@media screen and (max-width:450px) {
   .col1image {
     padding-bottom: 5%;
     margin-bottom: 20% !important;
