@@ -27,7 +27,7 @@ cd GrpcGreeter
 dotnet run
 ```
 
-To create a gRPC client and test with the newly created gRPC Greeter service, you can [follow the rest of this tutorial here](https://docs.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-3.0&tabs=visual-studio-code).
+To create a gRPC client and test with the newly created gRPC Greeter service, you can [follow the rest of this tutorial here](https://docs.microsoft.com/aspnet/core/tutorials/grpc/grpc-start).
 
 ##  What's new?
 
@@ -37,7 +37,7 @@ Unlike the existing C-Core based implementation ([Grpc.Core](https://github.com/
 
 On the server side, the `Grpc.AspNetCore.Server` package integrates into ASP.NET Core, allowing developers to benefit from ecosystem of common cross-cutting concerns of logging, configuration, dependency injection, authentication, authorization etc. which have already been solved by ASP.NET Core. Popular libraries in the ASP.NET ecosystem such as [Entity Framework Core (ORM)](https://github.com/aspnet/EntityFrameworkCore), [Serilog (Logging library)](https://github.com/serilog/serilog), and [Identity Server](https://github.com/IdentityServer/IdentityServer4) among others now work seamlessly with gRPC.
 
-On the client side, the `Grpc.Net.Client` package builds upon the familiar `HttpClient` API that ships as part of .NET Core. As with the server, gRPC clients greatly benefit from the ecosystem of packages that build upon `HttpClient`. It is now possible to use existing packages such as [**Polly**(Resilience and fault-handling library)](https://github.com/App-vNext/Polly) and [HttpClientFactory(manage HTTPClient lifetimes)](https://github.com/aspnet/Extensions/tree/master/src/HttpClientFactory) with gRPC clients.
+On the client side, the `Grpc.Net.Client` package builds upon the familiar `HttpClient` API that ships as part of .NET Core. As with the server, gRPC clients greatly benefit from the ecosystem of packages that build upon `HttpClient`. It is now possible to use existing packages such as [**Polly**(Resilience and fault-handling library)](https://github.com/App-vNext/Polly) and [HttpClientFactory(manage HTTPClient lifetimes)](https://docs.microsoft.com/aspnet/core/fundamentals/http-requests) with gRPC clients.
 
 The diagram below captures the exhaustive list of all new .NET packages for gRPC and their relationship with the existing packages.
 
