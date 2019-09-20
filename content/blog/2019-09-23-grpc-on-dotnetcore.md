@@ -29,6 +29,15 @@ dotnet run
 
 To create a gRPC client and test with the newly created gRPC Greeter service, you can [follow the rest of this tutorial here](https://docs.microsoft.com/aspnet/core/tutorials/grpc/grpc-start).
 
+## Doesn't gRPC already work with .NET Core?
+
+There are currently two official implementations of gRPC for .NET:
+
+- [**Grpc.Core**](https://github.com/grpc/grpc/tree/master/src/csharp): The original gRPC C# implementation based on the native gRPC Core library.
+- [**grpc-dotnet**](https://github.com/grpc/grpc-dotnet): The new implementation written entirely in C# with no native dependencies and based on the newly released .NET Core 3.0.
+
+The implementations coexist side-by-side and each has its own advantages in terms of available features, integrations, supported platforms, maturity level and performance. Both implementations share the same API for invoking and handling RPCs, thus limiting the lock-in and enabling users to choose the implementation that satisfies their needs the best.
+
 ##  What's new?
 
 Unlike the existing C-Core based implementation ([Grpc.Core](https://github.com/grpc/grpc/tree/master/src/csharp)), the new libraries ([grpc-dotnet](https://github.com/grpc/grpc-dotnet)) make use of the existing networking primitives in the .NET Core Base Class Libraries (BCL). The diagram below highlights the difference between the existing **Grpc.Core** library and the new **grpc-dotnet** libraries.
