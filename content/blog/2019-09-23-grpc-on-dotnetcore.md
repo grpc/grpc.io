@@ -52,7 +52,7 @@ The diagram below captures the exhaustive list of all new .NET packages for gRPC
 
 <p><img src="/img/grpc-dotnet-packages.svg" alt="grpc-dotnet packages" style="max-width: 800px" /></p>
 
-In addition to the new published packages that ship as part of **grpc-dotnet**, we've also made improvements that benefit both stacks. There have been improvements to the existing packages including a more cohesive experience when working in Visual Studio especially around design-time build.
+In addition to the new published packages that ship as part of **grpc-dotnet**, we've also made improvements that benefit both stacks. There have been improvements to the existing packages including a more cohesive experience when working in Visual Studio especially around design-time build and language grammar support for protocol buffers.
 
 ## Feedback
 
