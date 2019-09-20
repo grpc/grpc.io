@@ -54,6 +54,8 @@ The diagram below captures the exhaustive list of all new .NET packages for gRPC
 
 In addition to the new published packages that ship as part of **grpc-dotnet**, we've also made improvements that benefit both stacks. There have been improvements to the existing packages including a more cohesive experience when working in Visual Studio especially around design-time build and language grammar support for protocol buffers.
 
+<p><img src="/img/grpc-visualstudio.png" alt="gRPC in Visual Studio 2019" /></p>
+
 ## Feedback
 
 We're were excited about improving the gRPC experience for .NET developers. Please give it a try and let us about any feature ideas or bugs you may encounter at the [grpc-dotnet issue tracker](https://github.com/grpc/grpc-dotnet/issues). 
