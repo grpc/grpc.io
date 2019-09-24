@@ -7,7 +7,7 @@ title: .NET Core ❤ gRPC
 url: blog/grpc-on-dotnetcore
 ---
 
-_This is a guest post by [Sourabh Shirhatti](https://twitter.com/sshirhatti), a Program Manger on the .NET team at Microsoft._
+_This is a guest post by [Sourabh Shirhatti](https://twitter.com/sshirhatti), a Program Manager on the .NET team at Microsoft._
 
 The .NET team at Microsoft has been working in close collaboration with the gRPC team since November 2018 on a new fully managed implementation of gRPC for .NET Core.
 
