@@ -4,8 +4,8 @@ title = "gRPC"
 pygmentsCodeFences = true
 
 [params]
-grpc_release_tag = "v1.23.0"
-grpc_release_tag_no_v = "1.23.0"
+grpc_release_tag = "v1.24.0"
+grpc_release_tag_no_v = "1.24.0"
 grpc_java_release_tag = "v1.23.0"
 milestones_link = "https://github.com/grpc/grpc/milestones"
 
