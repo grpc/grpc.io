@@ -355,7 +355,7 @@ the server an `Enumerable`.
 ```ruby
 ...
 reqs = RandomRoute.new(features, points_on_route)
-resp = stub.record_route(reqs.each, deadline)
+resp = stub.record_route(reqs.each)
 ...
 ```
 
