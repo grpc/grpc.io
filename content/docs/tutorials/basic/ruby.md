@@ -363,8 +363,8 @@ Finally, let's look at our bidirectional streaming RPC `route_chat`. In this
 case, we pass `Enumerable` to the method and get back an `Enumerable`.
 
 ```ruby
-resps = stub.route_chat(ROUTE_CHAT_NOTES)
-resps.each { |r| p "received #{r.inspect}" }
+sleeping_enumerator = SleepingEnumerator.new(ROUTE_CHAT_NOTES, 1)
+stub.route_chat(sleeping_enumerator.each_item) { |r| p "received #{r.inspect}" }
 ```
 
 Although it's not shown well by this example, each enumerable is independent of
