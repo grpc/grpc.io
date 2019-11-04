@@ -250,26 +250,15 @@ Finally, let's look at our bidirectional streaming RPC `route_chat`.
 
 ```ruby
 def route_chat(notes)
-  q = EnumeratorQueue.new(self)
-  t = Thread.new do
-    begin
-      notes.each do |n|
-      	...
-    end
-      end
-  q = EnumeratorQueue.new(self)
-...
-  return q.each_item
+  RouteChatEnumerator.new(notes, @received_notes).each_item
 end
 ```
 
 Here the method receives an
 [Enumerable](https://ruby-doc.org//core-2.2.0/Enumerable.html), but also returns
 an [Enumerator](https://ruby-doc.org//core-2.2.0/Enumerator.html) that yields the
-responses.  The implementation demonstrates how to set these up so that the
-requests and responses can be handled concurrently.  Although each side will
-always get the other's messages in the order they were written, both the client
-and server can read and write in any order — the streams operate completely
+responses. Although each side will always get the other's messages in the order they were written,
+both the client and server can read and write in any order — the streams operate completely
 independently.
 
 #### Starting the server
