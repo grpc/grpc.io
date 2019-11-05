@@ -20,7 +20,7 @@ gRPC is actually a collection of technologies that have high cohesion, rather th
 ```diff
 - Protobuf wire encoding
 - Protobuf generated message types
-- gPRC generated stub types
+- gRPC generated stub types
 + JSON wire encoding
 + Gson message types
 ```
