@@ -200,25 +200,27 @@ class GreeterServiceImpl final : public Greeter::Service {
 
 #### Update the client
 
-Edit `examples/objective-c/helloworld/main.m` to call the new method like this:
+Edit the main function in `examples/objective-c/helloworld/main.m` to call the new method like this:
 
 ```c
 int main(int argc, char * argv[]) {
   @autoreleasepool {
-    [GRPCCall useInsecureConnectionsForHost:kHostAddress];
-    [GRPCCall setUserAgentPrefix:@"HelloWorld/1.0" forHost:kHostAddress];
-
     HLWGreeter *client = [[HLWGreeter alloc] initWithHost:kHostAddress];
 
     HLWHelloRequest *request = [HLWHelloRequest message];
     request.name = @"Objective-C";
 
-    [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
-      NSLog(@"%@", response.message);
-    }];
-    [client sayHelloAgainWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
-      NSLog(@"%@", response.message);
-    }];
+    GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
+    // this example does not use TLS (secure channel); use insecure channel instead
+    options.transport = GRPCDefaultTransportImplList.core_insecure;
+    options.userAgentPrefix = @"HelloWorld/1.0";
+
+    [[client sayHelloWithMessage:request
+                 responseHandler:[[HLWResponseHandler alloc] init]
+                     callOptions:options] start];
+    [[client sayHelloAgainWithMessage:request
+                      responseHandler:[[HLWResponseHandler alloc] init]
+                          callOptions:options] start];
 
     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
   }

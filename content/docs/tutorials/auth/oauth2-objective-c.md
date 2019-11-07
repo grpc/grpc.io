@@ -105,16 +105,20 @@ The next sections guide you step-by-step through how the gRPC call in
 `MakeRPCViewController` is performed. You can see the complete code in
 [MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/objective-c/auth_sample/MakeRPCViewController.m).
 
-<a name="rpc-object"></a>
+<a name="rpc-call"></a>
 
-### Create an RPC object
+### Create a call with access token
 
-The other basic tutorials show how to invoke an RPC by calling an asynchronous
-method in a generated client object. However, to make an authenticated call you
-need to initialize an object that represents the RPC, and configure it _before_
-starting the network request. First let's look at how to create the RPC object.
+To make an authenticated call, first you need to initialize a `GRPCCallOptions` object and configure
+it with the access token.
 
-Assume you have a proto service definition like this:
+```objective-c
+GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
+options.oauth2AccessToken = myAccessToken;
+```
+
+Then you need to create and start your call with this call options object. Assume you have a proto
+service definition like this:
 
 ```protobuf
 option objc_class_prefix = "AUTH";
@@ -124,97 +128,62 @@ service TestService {
 }
 ```
 
-A `unaryCallWithRequest:handler:` method, with which you're already familiar, is
+A `unaryCallWithMessage:responseHandler:callOptions:` method, with which you're already familiar, is
 generated for the `AUTHTestService` class:
 
 ```objective-c
-[client unaryCallWithRequest:request handler:^(AUTHResponse *response, NSError *error) {
+- (GRPCUnaryProtoRPC *)unaryCallWithMessage:(AUTHRequest *)message
+                            responseHandler:(id<GRPCProtoResponseHandler>)responseHandler
+                                callOptions:(GRPCCallOptions *)callOptions;
+```
+
+Use this method to generated the RPC object with your request options object:
+
+```objective-c
+GRPCUnaryProtoRPC *rpc = [client unaryCallWithMessage:myRequestMessage
+                                      responseHandler:myResponseHandler
+                                          callOptions:options];
+```
+
+You can then start the RPC represented by this object at any later time like this:
+
+```objective-c
+[rpc start];
+```
+
+<a name="authorization-protocol">
+
+### An alternative way to provide access token
+Rather than setting `oauth2AccessToken` option in `GRPCCallOptions` before the RPC object is
+created, an alternative approach allows users providing access token at call start time.
+
+To use this approach, first create a class in your project that conforms to
+`GRPCAuthorizationProtocol` protocol.
+
+```objective-c
+@interface TokenProvider : NSObject<GRPCAuthorizationProtocol>
+...
+@end
+
+@implementation TokenProvider
+
+- (void)getTokenWithHandler:(void (^)(NSString* token))handler {
   ...
-}];
+}
+
+@end
 ```
 
-In addition, an `RPCToUnaryCallWithRequest:handler:` method is generated, which returns a
-not-yet-started RPC object:
-
+When creating an RPC object, pass an instance of this class to call option `authTokenProvider`:
 ```objective-c
-#import <ProtoRPC/ProtoRPC.h>
-
-ProtoRPC *call =
-    [client RPCToUnaryCallWithRequest:request handler:^(AUTHResponse *response, NSError *error) {
-      ...
-    }];
+GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
+options.authTokenProvider = [[TokenProvider alloc] init];
+GRPCUnaryProtoCall *rpc = [client unaryCallWithMessage:myRequestMessage
+                                       responseHandler:myResponseHandler
+                                           callOptions:options] start];
+[rpc start];
 ```
 
-You can start the RPC represented by this object at any later time like this:
-
-```objective-c
-[call start];
-```
-<a name="request-metadata"></a>
-
-### Setting request metadata: Auth header with an access token
-
-Now let's look at how to configure some settings on the RPC object. The
-`ProtoRPC` class has a `requestHeaders` property (inherited from `GRPCCall`)
-defined like this:
-
-```objective-c
-@property(atomic, readonly) id<GRPCRequestHeaders> requestHeaders
-```
-
-You can think of the `GRPCRequestHeaders` protocol as equivalent to the
-`NSMutableDictionary` class. Setting elements of this dictionary of metadata
-keys and values means this metadata will be sent on the wire when the call is
-started. gRPC metadata are pieces of information about the call sent by the
-client to the server (and vice versa). They take the form of key-value pairs and
-are essentially opaque to gRPC itself.
-
-For convenience, the property is initialized with an empty
-`NSMutableDictionary`, so that request metadata elements can be set like this:
-
-```objective-c
-call.requestHeaders[@"My-Header"] = @"Value for this header";
-call.requestHeaders[@"Another-Header"] = @"Its value";
-```
-
-A typical use of metadata is for authentication details, as in our example. If
-you have an access token, OAuth2 specifies it is to be sent in this format:
-
-```objective-c
-call.requestHeaders[@"Authorization"] = [@"Bearer " stringByAppendingString:accessToken];
-```
-
-<a name="response-metadata"></a>
-
-### Getting response metadata: Auth challenge header
-
-The `ProtoRPC` class also inherits a pair of properties, `responseHeaders` and
-`responseTrailers`, analogous to the request metadata we just looked at but sent
-back by the server to the client. They are defined like this:
-
-```objective-c
-@property(atomic, readonly) NSDictionary *responseHeaders;
-@property(atomic, readonly) NSDictionary *responseTrailers;
-```
-
-In OAuth2, if there's an authentication error the server will send back a
-challenge header. This is returned in the RPC's response headers. To access
-this, as in our example's error-handling code, you write:
-
-```objective-c
-call.responseHeaders[@"www-authenticate"]
-```
-
-Note that, as gRPC metadata elements are mapped to HTTP/2 headers (or trailers),
-the keys of the response metadata are always ASCII strings in lowercase.
-
-Many uses cases of response metadata involve getting more details about an RPC
-error. For convenience, when a `NSError` instance is passed to an RPC handler
-block, the response headers and trailers dictionaries can also be accessed this
-way:
-
-```objective-c
-error.userInfo[kGRPCHeadersKey] == call.responseHeaders
-error.userInfo[kGRPCTrailersKey] == call.responseTrailers
-```
-
+When the call starts, it will call the `TokenProvider` instance's `getTokenWithHandler:` method with
+a callback `handler` and waits for the callback. The `TokenProvider` instance may call the handler
+at any time to provide the token for this call and resume the call process.
