@@ -65,7 +65,7 @@ tr {
 td {
   min-width: 20%;
   word-break: break-word;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   text-align: left;
   border: 0.5px solid #cccccc;
   padding: 2%;
@@ -138,7 +138,7 @@ p img {
   text-align: center;
   width: 33%;
   padding-right: 4%;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   line-height: 1.5em;
   color: #333333 !important;
   font-style: italic;
@@ -169,7 +169,7 @@ p img {
 
 .testimonialquote {
   float: left;
-  font-size: 3em;
+  font-size: 3rem;
   color: #333333 !important;
   font-style: italic;
   padding: 2%;
@@ -195,7 +195,7 @@ p img {
 }
 
 .dropdown-item {
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 .arrow {
@@ -221,7 +221,7 @@ body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1.3rem;
   background-image: url('../img/graphic-04.svg');
   background-repeat: repeat;
   position: relative;
@@ -379,7 +379,7 @@ button {
   font-family: 'Open Sans', sans-serif;
   width: 82%;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 1rem;
   color: #606060;
   line-height: 1.7em;
   padding-left: 16%;
@@ -391,7 +391,7 @@ button {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 1rem;
   color: #606060;
   line-height: 1.7em;
   padding-left: 0%;
@@ -415,7 +415,7 @@ button {
   font-family: 'Open Sans', sans-serif;
   width: 85%;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 1rem;
   color: #606060;
   line-height: 1.7em;
   padding-left: 15%;
@@ -428,7 +428,7 @@ button {
   font-family: 'Open Sans', sans-serif;
   width: 80%;
   font-weight: 100;
-  font-size: 1em;
+  font-size: 1rem;
   color: #606060;
   line-height: 1.7em;
   padding-left: 20%;
@@ -444,7 +444,7 @@ button {
 }
 
 .docusecasesection h4 {
-  font-size: 2.3em !important;
+  font-size: 2.3rem !important;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
@@ -460,7 +460,7 @@ button {
 }
 
 .doclangsection h4 {
-  font-size: 2.3em !important;
+  font-size: 2.3rem !important;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
@@ -476,7 +476,7 @@ button {
 }
 
 .docprojectsection h4 {
-  font-size: 2.3em !important;
+  font-size: 2.3rem !important;
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 3%;
@@ -503,7 +503,7 @@ a {
   margin-top: 5%;
   margin-bottom: 3%;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.95em;
+  font-size: 0.95rem;
   color: #505050;
   font-weight: 100;
   background-color: #EBF2F2;
@@ -519,7 +519,7 @@ a {
   margin-left: 10%;
   width: 100%;
   font-weight: 100;
-  font-size: 0.6 rem;
+  font-size: 1rem;
   padding-left: 5%;
   float: left;
 }
@@ -528,7 +528,7 @@ a {
   float: left;
   line-height: 1em !important;
   display: block;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   text-align: left;
   width: 20%;
   margin-right: 0%;
@@ -547,7 +547,7 @@ a {
 }
 
 .quickstartcol1 h8 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   display: block;
   line-height: 1.3em;
   margin-bottom: 10%;
@@ -571,7 +571,7 @@ a {
   width: 90%;
   margin-left: 8%;
   font-weight: 100;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   padding-left: 8%;
   float: left;
 }
@@ -582,7 +582,7 @@ a {
   width: 70%;
   margin-left: 15%;
   font-weight: 100;
-  font-size: 0.6rem;
+  font-size: 1rem;
   margin-top: 4%;
   float: left;
 }
@@ -597,7 +597,7 @@ a {
   padding-left: 0px;
   padding-right: 3%;
   padding-top: 2%;
-  font-size: 0.8em !important;
+  font-size: 0.8rem !important;
 }
 
 .blogcol2 {
@@ -607,7 +607,7 @@ a {
   width: 20%;
   line-height: 2em;
   padding-top: 1%;
-  font-size: 0.7em;
+  font-size: 0.7rem;
   margin-right: 2%;
   padding-left: 3%;
   padding-left: 3%;
@@ -664,7 +664,7 @@ a {
   font-family: 'Open Sans', sans-serif;
   width: 90%;
   float: left;
-  font-size: 0.6rem;
+  font-size: 1rem;
   padding-bottom: 1%;
   color: #707070;
   line-height: 1.5em;
@@ -757,7 +757,7 @@ a {
 
 h1 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: #0CC1C8;
   margin-bottom: 3%;
   margin-top: 1%;
@@ -766,7 +766,7 @@ h1 {
 
 h2 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: #0CC1C8;
   margin-bottom: 3%;
   margin-top: 3%;
@@ -774,7 +774,7 @@ h2 {
 }
 
 .lead {
-  font-size: 1em !important;
+  font-size: 1rem !important;
 }
 
 h3 {
@@ -787,7 +787,7 @@ h3 {
 
 h4 {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   padding-top: 3%;
   padding-bottom: 0%;
   color: #33838b;
@@ -804,7 +804,7 @@ h5 {
 }
 
 h6 {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-family: 'Open Sans', sans-serif;
   color: #266B6B;
   font-weight: 300;
@@ -813,7 +813,7 @@ h6 {
 }
 
 h8 {
-  font-size: 2em;
+  font-size: 2rem;
   font-family: 'Open Sans', sans-serif;
   color: #266B6B;
   font-weight: 300;
@@ -833,7 +833,7 @@ h8 {
     border: 0.5px solid #cccccc;
   }
   td {
-    font-size: 0.9em;
+    font-size: 0.9rem;
     text-align: left;
     border: 0.5px solid #cccccc;
     padding: 2%;
@@ -872,10 +872,10 @@ h8 {
     padding-left: 15%;
   }
   .col1 h3 {
-    font-size: 0.5em !important;
+    font-size: 0.5rem !important;
   }
   .col2 h3 {
-    font-size: 0.5em !important;
+    font-size: 0.5rem !important;
   }
   .section4 {
     background-repeat: repeat;
@@ -897,7 +897,7 @@ h8 {
     font-family: 'Open Sans', sans-serif;
     width: 90%;
     font-weight: 100;
-    font-size: 1em;
+    font-size: 1rem;
     color: #606060;
     line-height: 1.7em;
     padding-left: 10%;
@@ -936,7 +936,7 @@ h8 {
     width: 90%;
     margin-left: 5%;
     font-weight: 100;
-    font-size: 0.6rem;
+    font-size: 1rem;
     margin-top: 4%;
     float: left;
   }
@@ -946,7 +946,7 @@ h8 {
     width: 100%;
     margin-left: 2%;
     font-weight: 100;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     float: left;
   }
   .blogcol1 {
@@ -958,7 +958,7 @@ h8 {
     padding: 3%;
     padding-right: 3%;
     padding-top: 2%;
-    font-size: 0.8em;
+    font-size: 0.8rem;
   }
   .col1image {
     padding-bottom: 3%;
@@ -966,7 +966,7 @@ h8 {
     margin-right: 5%;
   }
   h2 {
-    font-size: 1.5em !important;
+    font-size: 1.5rem !important;
     padding-top: 2%;
     padding-bottom: 2%;
   }
@@ -976,7 +976,7 @@ h8 {
     width: 100% !important;
     margin-left: 4%;
     font-weight: 100;
-    font-size: 0.6rem;
+    font-size: 1rem;
     padding-left: 5%;
     float: left;
   }
@@ -984,10 +984,10 @@ h8 {
     width: 100% !important;
   }
   .quickstartcol2 h3 {
-    font-size: 2.3em !important;
+    font-size: 2.3rem !important;
   }
   .quickstartcol2 h1 {
-    font-size: 2em !important;
+    font-size: 2rem !important;
   }
   .blogcol2 {
     display: none;
@@ -1019,7 +1019,7 @@ h8 {
     padding-top: 15%;
   }
   .subnav {
-    font-size: 1em;
+    font-size: 1rem;
     padding-top: 3%;
     padding-bottom: 3%;
     padding-left: 2%;
@@ -1063,7 +1063,7 @@ h8 {
   }
   .docstext {
     width: 95%;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     padding-left: 5%;
     padding-bottom: 5%;
     text-align: center;
@@ -1102,12 +1102,12 @@ h8 {
     margin-bottom: 10% !important;
   }
   h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     padding-top: 4%;
     padding-bottom: 4%;
   }
   h1 {
-    font-size: 2.2em;
+    font-size: 2.2rem;
     padding-top: 4%;
     padding-bottom: 4%;
   }
@@ -1151,11 +1151,11 @@ h8 {
   .cols {
     padding-bottom: 14%;
     padding-top: 5%;
-    font-size: 0.9em !important;
+    font-size: 0.9rem !important;
     padding-left: 8%;
   }
   h3 {
-    font-size: 1.8em;
+    font-size: 1.8rem;
   }
   .companybox {
     margin-left: 10%;
@@ -1166,7 +1166,7 @@ h8 {
     font-family: 'Open Sans', sans-serif;
     width: 90%;
     font-weight: 100;
-    font-size: 1em;
+    font-size: 1rem;
     color: #606060;
     line-height: 1.7em;
     padding-left: 10%;
