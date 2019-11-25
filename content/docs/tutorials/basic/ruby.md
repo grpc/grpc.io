@@ -250,26 +250,15 @@ Finally, let's look at our bidirectional streaming RPC `route_chat`.
 
 ```ruby
 def route_chat(notes)
-  q = EnumeratorQueue.new(self)
-  t = Thread.new do
-    begin
-      notes.each do |n|
-      	...
-    end
-      end
-  q = EnumeratorQueue.new(self)
-...
-  return q.each_item
+  RouteChatEnumerator.new(notes, @received_notes).each_item
 end
 ```
 
 Here the method receives an
 [Enumerable](https://ruby-doc.org//core-2.2.0/Enumerable.html), but also returns
 an [Enumerator](https://ruby-doc.org//core-2.2.0/Enumerator.html) that yields the
-responses.  The implementation demonstrates how to set these up so that the
-requests and responses can be handled concurrently.  Although each side will
-always get the other's messages in the order they were written, both the client
-and server can read and write in any order — the streams operate completely
+responses. Although each side will always get the other's messages in the order they were written,
+both the client and server can read and write in any order — the streams operate completely
 independently.
 
 #### Starting the server
@@ -279,12 +268,15 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```ruby
-addr = "0.0.0.0:8080"
+port = '0.0.0.0:50051'
 s = GRPC::RpcServer.new
-s.add_http2_port(addr, :this_port_is_insecure)
-logger.info("... running insecurely on #{addr}")
+s.add_http2_port(port, :this_port_is_insecure)
+GRPC.logger.info("... running insecurely on #{port}")
 s.handle(ServerImpl.new(feature_db))
-s.run_till_terminated
+# Runs the server with SIGHUP, SIGINT and SIGQUIT signal handlers to
+#   gracefully shutdown.
+# User could also choose to run server via call to run_till_terminated
+s.run_till_terminated_or_interrupted([1, 'int', 'SIGQUIT'])
 ```
 As you can see, we build and start our server using a `GRPC::RpcServer`. To do
 this, we:
@@ -366,7 +358,7 @@ the server an `Enumerable`.
 ```ruby
 ...
 reqs = RandomRoute.new(features, points_on_route)
-resp = stub.record_route(reqs.each, deadline)
+resp = stub.record_route(reqs.each)
 ...
 ```
 
@@ -374,8 +366,8 @@ Finally, let's look at our bidirectional streaming RPC `route_chat`. In this
 case, we pass `Enumerable` to the method and get back an `Enumerable`.
 
 ```ruby
-resps = stub.route_chat(ROUTE_CHAT_NOTES)
-resps.each { |r| p "received #{r.inspect}" }
+sleeping_enumerator = SleepingEnumerator.new(ROUTE_CHAT_NOTES, 1)
+stub.route_chat(sleeping_enumerator.each_item) { |r| p "received #{r.inspect}" }
 ```
 
 Although it's not shown well by this example, each enumerable is independent of
