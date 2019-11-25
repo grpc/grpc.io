@@ -111,7 +111,17 @@ Check out what people are saying below:
          Last but not least, while there are a number of network communicationprotocols for configuration, operational state retrieval and network telemetry, gRPC provides us with a unified flexible protocol and transport to ease client/server interaction.
     </div>
 
-</div>    
+</div>
+
+<div class="testimonialsection">
+    <div class="testimonialimage"><a href="http://www.pingcap.com">
+        <img src="../img/pingcap5.png" /></a></div>
+        <div>
+            <div class="testimonialquote">“ </div>
+            At PingCAP, we use gRPC in almost every project that involves interactions or communications through network. As has been proven, gRPC has well met our demands in terms of performance and usability. We also provide gRPC library for Rust, which is the first production-ready gRPC implementation in the Rust community.
+        </div>
+
+</div>
 
 <div class="aboutsection2">
 <h2>Officially Supported Platforms</h2>
