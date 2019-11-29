@@ -45,7 +45,7 @@ gRPC lets you define four kinds of service method:
   single response back, just like a normal function call.
 
 ```proto
-rpc SayHello(HelloRequest) returns (HelloResponse){
+rpc SayHello(HelloRequest) returns (HelloResponse) {
 }
 ```
 
@@ -55,7 +55,7 @@ rpc SayHello(HelloRequest) returns (HelloResponse){
   ordering within an individual RPC call.
 
 ```proto
-rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
+rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse) {
 }
 ```
 
@@ -79,7 +79,7 @@ rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
   stream is preserved.
 
 ```proto
-rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){
+rpc BidiHello(stream HelloRequest) returns (stream HelloResponse) {
 }
 ```
 
