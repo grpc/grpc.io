@@ -245,7 +245,7 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecur
 ##### With server authentication SSL/TLS
 
 ```ruby
-creds = GRPC::Core::Credentials.new(load_certs)  # load_certs typically loads a CA roots file
+creds = GRPC::Core::ChannelCredentials.new(load_certs)  # load_certs typically loads a CA roots file
 stub = Helloworld::Greeter::Stub.new('myservice.example.com', creds)
 ```
 
