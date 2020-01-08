@@ -266,22 +266,23 @@ expects a `NSString *` with the server address and port we want to connect to:
 ```objective-c
 #import <GRPCClient/GRPCCall+Tests.h>
 #import <RouteGuide/RouteGuide.pbrpc.h>
+#import <GRPCClient/GRPCTransport.h>
 
 static NSString * const kHostAddress = @"localhost:50051";
 ...
-[GRPCCall useInsecureConnectionsForHost:kHostAddress];
+GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
+options.transport = GRPCDefaultTransportImplList.core_insecure;
 
-RTGRouteGuide *service = [[RTGRouteGuide alloc] initWithHost:kHostAddress];
+RTGRouteGuide *service = [[RTGRouteGuide alloc] initWithHost:kHostAddress callOptions:options];
 ```
 
-Notice that before constructing our service object we've told the gRPC library
-to use insecure connections for that host:port pair. This is because the server
-we will be using to test our client doesn't use
+Notice that we our service is constructed with an insecure transport. This is
+because the server we will be using to test our client doesn't use
 [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security). This is fine
 because it will be running locally on our development machine. The most common
 case, though, is connecting with a gRPC server on the internet, running gRPC
-over TLS. For that case, the `useInsecureConnectionsForHost:` call isn't needed,
-and the port defaults to 443 if absent.
+over TLS. For that case, the setting the option `options.transport` isn't
+needed because gRPC will use a secure TLS transport by default.
 
 
 #### Calling service methods
@@ -296,17 +297,23 @@ Calling the simple RPC `GetFeature` is as straightforward as calling any other
 asynchronous method on Cocoa.
 
 ```objective-c
+
 RTGPoint *point = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
 
-[service getFeatureWithRequest:point handler:^(RTGFeature *response, NSError *error) {
-  if (response) {
-    // Successful response received
-  } else {
-    // RPC error
-  }
-}];
+GRPCUnaryResponseHandler *handler =
+    [[GRPCUnaryResponseHandler alloc] initWithResponseHandler:
+        ^(RTGFeature *response, NSError *error) {
+          if (response) {
+            // Successful response received
+          } else {
+            // RPC error
+          }
+        }
+                                        responseDispatchQueue:nil];
+
+[[service getFeatureWithMessage:point responseHandler:handler callOptions:nil] start];
 ```
 
 As you can see, we create and populate a request protocol buffer object (in our
@@ -318,10 +325,6 @@ argument. If, instead, some RPC error happens, the handler block is called with
 a `nil` response argument, and we can read the details of the problem from the
 error argument.
 
-```objective-c
-NSLog(@"Found feature called %@ at %@.", response.name, response.location);
-```
-
 ##### Streaming RPCs
 
 Now let's look at our streaming methods. Here's where we call the
@@ -329,32 +332,37 @@ response-streaming method `ListFeatures`, which results in our client app
 receiving a stream of geographical `RTGFeature`s:
 
 ```objective-c
-[service listFeaturesWithRequest:rectangle
-                    eventHandler:^(BOOL done, RTGFeature *response, NSError *error) {
-  if (response) {
+
+- (void)didReceiveProtoMessage(GPBMessage *)message {
+  if (message) {
     NSLog(@"Found feature at %@ called %@.", response.location, response.name);
-  } else if (error) {
+  }
+}
+
+- (void)didCloseWithTrailingMetadata:(NSDictionary *)trailingMetadata error:(NSError *)error {
+  if (error) {
     NSLog(@"RPC error: %@", error);
   }
-}];
+}
+
+- (void)execRequest {
+  ...
+  [[service listFeaturesWithMessage:rectangle responseHandler:self callOptions:nil] start];
+}
 ```
 
-Notice how the signature of the handler block now includes a `BOOL done`
-parameter. The handler block can be called any number of times; only on the last
-call is the `done` argument value set to `YES`. If an error occurs, the RPC
-finishes and the handler is called with the arguments `(YES, nil, error)`.
+Notice that instead of providing a response handler object, the view controller
+object itself handles the responses. The method `didReceiveProtoMessage:` is
+called when there's a message received; it can be called any number of times.
+The method `didCloseWithTrailingMetadata:` is called when the call is complete
+and the gRPC status is received from the server (or when there's any error
+happens during the call).
 
 The request-streaming method `RecordRoute` expects a stream of `RTGPoint`s from
-the cient. This stream is passed to the method as an object that conforms to the
-`GRXWriter` protocol. The simplest way to create one is to initialize one from a
-`NSArray` object:
-
+the cient. This stream can be written to the gRPC call object after the call
+starts.
 
 ```objective-c
-#import <gRPC/GRXWriter+Immediate.h>
-
-...
-
 RTGPoint *point1 = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
@@ -363,41 +371,59 @@ RTGPoint *point2 = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
 
-GRXWriter *locationsWriter = [GRXWriter writerWithContainer:@[point1, point2]];
-
-[service recordRouteWithRequestsWriter:locationsWriter handler:^(RTGRouteSummary *response, NSError *error) {
-  if (response) {
-    NSLog(@"Finished trip with %i points", response.pointCount);
-    NSLog(@"Passed %i features", response.featureCount);
-    NSLog(@"Travelled %i meters", response.distance);
-    NSLog(@"It took %i seconds", response.elapsedTime);
-  } else {
-    NSLog(@"RPC error: %@", error);
-  }
-}];
-
+GRPCUnaryResponseHandler *handler =
+    [[GRPCUnaryResponseHandler alloc] initWithResponseHandler:
+        ^(RTGRouteSummary *response, NSError *error) {
+            if (response) {
+              NSLog(@"Finished trip with %i points", response.pointCount);
+              NSLog(@"Passed %i features", response.featureCount);
+              NSLog(@"Travelled %i meters", response.distance);
+              NSLog(@"It took %i seconds", response.elapsedTime);
+            } else {
+              NSLog(@"RPC error: %@", error);
+            }
+        }
+                                        responseDispatchQueue:nil];
+GRPCStreamingProtoCall *call = 
+    [service recordRouteWithResponseHandler:handler callOptions:nil];
+[call start];
+[call writeMessage:point1];
+[call writeMessage:point2];
+[call finish];
 ```
 
-The `GRXWriter` protocol is generic enough to allow for asynchronous streams, streams of future values, or even infinite streams.
+Note that since the gRPC call object does not know the end of the request
+stream, users must invoke `finish:` method when the request stream is complete.
 
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`. The way to
 call a bidirectional streaming RPC is just a combination of how to call
 request-streaming RPCs and response-streaming RPCs.
 
 ```objective-c
-[service routeChatWithRequestsWriter:notesWriter handler:^(BOOL done, RTGRouteNote *note, NSError *error) {
+
+- (void)didReceiveProtoMessage(GPBMessage *)message {
+  RTGRouteNote *note = (RTGRouteNote *)message;
   if (note) {
     NSLog(@"Got message %@ at %@", note.message, note.location);
-  } else if (error) {
-    NSLog(@"RPC error: %@", error);
   }
-  if (done) {
+}
+
+- (void)didCloseWithTrailingMetadata:(NSDictionary *)trailingMetadata error:(NSError *)error {
+  if (error) {
+    NSLog(@"RPC error: %@", error);
+  } else {
     NSLog(@"Chat ended.");
   }
-}];
-```
+}
 
-The semantics for the handler block and the `GRXWriter` argument here are
-exactly the same as for our request-streaming and response-streaming methods.
-Although both client and server will always get the other's messages in the
-order they were written, the two streams operate completely independently.
+- (void)execRequest {
+  ...
+  GRPCStreamingProtoCall *call =
+      [service routeChatWithResponseHandler:self callOptions:nil];
+  [call start];
+  [call writeMessage:note1];
+  ...
+  [call writeMessage:noteN];
+  [call finish];
+}
+```
