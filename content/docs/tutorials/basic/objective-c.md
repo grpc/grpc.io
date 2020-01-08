@@ -2,6 +2,7 @@
 layout: tutorials
 title: gRPC Basics - Objective-C
 group: basic
+short: Objective-C
 ---
 This tutorial provides a basic Objective-C programmer's
 introduction to working with gRPC.
