@@ -123,7 +123,7 @@ Check out what people are saying below:
 </tr>
 
 <tr>
-<td>C/C++</td><td>Linux/Mac</td><td>GCC 4.8+ <br> Clang 3.3+</td>
+<td>C/C++</td><td>Linux/Mac</td><td>GCC 4.9+ <br> Clang 3.4+</td>
 </tr>
 
 <tr>
@@ -175,7 +175,7 @@ Check out what people are saying below:
 
 | Language | Platform | Compiler |
 | -------- | -------- | -------- |
-| C/C++ | Linux/Mac | GCC 4.8+ <br> Clang 3.3+ |
+| C/C++ | Linux/Mac | GCC 4.9+ <br> Clang 3.4+ |
 | C/C++ | Windows 7+ | Visual Studio 2015+ |
 | C# | Linux/Mac | .NET Core, Mono 4+ |
 | C# | Windows 7+ | .NET Core, .NET 4.5+ |
