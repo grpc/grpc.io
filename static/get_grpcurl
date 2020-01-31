@@ -1,0 +1,108 @@
+#!/bin/sh
+
+set -e
+
+UNATTENDED="false"
+if [ "$#" = "1" ] && [ "$1" = "-y" ]; then
+  UNATTENDED="true"
+elif [ "$#" -gt 1 ]; then
+  echo "Usage: $0 [-y]" 1>&2
+  exit 1
+fi
+
+detect_os () {
+  RAW_OS=$(uname -s)
+  OS="linux"
+  case "$RAW_OS" in
+    "Linux") OS="linux";;
+    "Darwin") OS="osx";;
+    *) echo "Unsupported operating system \"${RAW_OS}\"" 1>&2; exit 1;;
+  esac
+  echo "${OS}"
+}
+
+detect_architecture () {
+  RAW_ARCH=$(uname -m)
+  ARCH="x86_64"
+  case "$RAW_ARCH" in
+    "x86_64") ARCH="x86_64";;
+    "i386") ARCH="x86_32";;
+    *) echo "Unsupported architecture \"${RAW_ARCH}\"" 1>&2; exit 1;;
+  esac
+  echo "${ARCH}"
+}
+
+detect_platform () {
+  OS=$(detect_os)
+  ARCH=$(detect_architecture)
+  echo "${OS}_${ARCH}"
+}
+
+confirm () {
+  if [ "$UNATTENDED" = "true" ]; then
+    return 0
+  fi
+  echo "$1"
+  printf "[y/n]"
+  read -r RESPONSE </dev/tty
+  printf "\n"
+  case "$RESPONSE" in
+    "yes" | "y" | "YES" | "Y" ) return 0;;
+    "no" | "n" | "NO" | "N" ) echo "Aborting." 1>&2; exit 1;;
+    *) echo "Unrecognized response. Aborting." 1>&2; exit 1;;
+  esac
+}
+
+ensure_command () {
+  if command -v "$1" 1>/dev/null 2>&1; then
+    return 0
+  else
+    echo "$1 is not installed. Please install it to proceed." 1>&2
+    exit 1
+  fi
+}
+
+modify_config_file () {
+  FILE="$1"
+  BIN_DIR="$2"
+  BACKUP="${FILE}.bak.$(date | sed 's/ /-/g')"
+  if ! stat "${FILE}" 1>/dev/null 2>&1; then
+    return 1
+  fi
+  cp "${FILE}" "${BACKUP}"
+  printf "\n# Added by https://grpc.io/get_grpcurl\nexport PATH=\"\$PATH:%s\"\n" "${BIN_DIR}" >> "${FILE}"
+}
+
+ensure_command "curl"
+ensure_command "cut"
+ensure_command "cp"
+ensure_command "date"
+ensure_command "grep"
+ensure_command "mkdir"
+ensure_command "sed"
+ensure_command "stat"
+ensure_command "uname"
+
+GITHUB_URL="https://github.com"
+GRPCURL_REPO="fullstorydev/grpcurl"
+
+PLATFORM=$(detect_platform)
+
+BIN_DIR="${HOME}/.grpcurl/bin"
+
+confirm "This script will perform a user install of grpcurl. Would you like to proceed?"
+
+mkdir -p "${BIN_DIR}"
+
+curl -Ls "${GITHUB_URL}/${GRPCURL_REPO}/releases/latest" | \
+  grep "href=.*${PLATFORM}.tar.gz" | \
+  cut -d '"' -f 2 | \
+  echo "${GITHUB_URL}$(cat -)" | \
+  curl -sL "$(cat -)" --output - | \
+  tar -C "${BIN_DIR}" -xzf - grpcurl
+
+modify_config_file "${HOME}/.bashrc" "${BIN_DIR}" || \
+modify_config_file "${HOME}/.bash_profile" "${BIN_DIR}" || \
+modify_config_file "${HOME}/.profile" "${BIN_DIR}"
+
+echo "${BIN_DIR} has been added to your PATH. Please open a new shell to use grpcurl."
