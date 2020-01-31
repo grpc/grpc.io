@@ -3,7 +3,7 @@
 set -e
 
 UNATTENDED="false"
-if [ "$#" = "1" -a "$1" = "-y" ]; then
+if [ "$#" = "1" ] && [ "$1" = "-y" ]; then
   UNATTENDED="true"
 elif [ "$#" -gt 1 ]; then
   echo "Usage: $0 [-y]" 1>&2
@@ -43,7 +43,8 @@ confirm () {
     return 0
   fi
   echo "$1"
-  read -p "[y/n]" -r RESPONSE </dev/tty
+  printf "[y/n]"
+  read -r RESPONSE </dev/tty
   printf "\n"
   case "$RESPONSE" in
     "yes" | "y" | "YES" | "Y" ) return 0;;
@@ -65,7 +66,7 @@ modify_config_file () {
   FILE="$1"
   BIN_DIR="$2"
   BACKUP="${FILE}.bak.$(date | sed 's/ /-/g')"
-  if ! stat ${FILE} 1>/dev/null 2>&1; then
+  if ! stat "${FILE}" 1>/dev/null 2>&1; then
     return 1
   fi
   cp "${FILE}" "${BACKUP}"
