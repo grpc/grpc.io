@@ -32,17 +32,17 @@ detect_platform () {
 
 confirm () {
   echo "$1"
-  read -p "[y/n]" RESPONSE </dev/tty
+  read -p "[y/n]" -r RESPONSE </dev/tty
   printf "\n"
   case "$RESPONSE" in
-    "yes" | "y" ) return 0;;
-    "no" | "n" ) echo "Aborting." 1>&2; exit 1;;
+    "yes" | "y" | "YES" | "Y" ) return 0;;
+    "no" | "n" | "NO" | "N" ) echo "Aborting." 1>&2; exit 1;;
     *) echo "Unrecognized response. Aborting." 1>&2; exit 1;;
   esac
 }
 
 ensure_command () {
-  if which "$1" 1>/dev/null 2>&1; then
+  if command -v "$1" 1>/dev/null 2>&1; then
     return 0
   else
     echo "$1 is not installed. Please install it to proceed." 1>&2
@@ -67,11 +67,11 @@ curl -Ls "${GITHUB_URL}/${GRPCURL_REPO}/releases/latest" | \
   grep "href=.*${PLATFORM}.tar.gz" | \
   cut -d '"' -f 2 | \
   echo "${GITHUB_URL}$(cat -)" | \
-  curl -sL $(cat -) --output - | \
+  curl -sL "$(cat -)" --output - | \
   tar -C "${BIN_DIR}" -xzf - grpcurl
 
-cp ${HOME}/.bashrc ${HOME}/.bashrc.bak.$(date | sed 's/ /-/g')
-printf "\n# Added by https://grpc.io/get_grpcurl\nexport PATH=\"\$PATH:${BIN_DIR}\"\n" >> ${HOME}/.bashrc
+cp "${HOME}/.bashrc" "${HOME}/.bashrc.bak.$(date | sed 's/ /-/g')"
+printf "\n# Added by https://grpc.io/get_grpcurl\nexport PATH=\"\$PATH:%s\"\n" "${BIN_DIR}" >> "${HOME}/.bashrc"
 
 echo "${BIN_DIR} has been added to your PATH. Please open a new shell or source "
 echo "your .bashrc to use grpcurl."
