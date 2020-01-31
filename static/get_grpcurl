@@ -1,0 +1,77 @@
+#!/bin/sh
+
+set -e
+
+detect_os () {
+  RAW_OS=$(uname -s)
+  OS="linux"
+  case "$RAW_OS" in
+    "Linux") OS="linux";;
+    "Darwin") OS="osx";;
+    *) echo "Unrecognized operating system \"${RAW_OS}\"" 1>&2; exit 1;;
+  esac
+  echo "${OS}"
+}
+
+detect_architecture () {
+  RAW_ARCH=$(uname -m)
+  ARCH="x86_64"
+  case "$RAW_ARCH" in
+    "x86_64") ARCH="x86_64";;
+    "i386") ARCH="x86_32";;
+    *) echo "Unrecognized architecture \"${RAW_ARCH}\"" 1>&2; exit 1;;
+  esac
+  echo "${ARCH}"
+}
+
+detect_platform () {
+  OS=$(detect_os)
+  ARCH=$(detect_architecture)
+  echo "${OS}_${ARCH}"
+}
+
+confirm () {
+  echo "$1"
+  read -p "[y/n]" RESPONSE </dev/tty
+  printf "\n"
+  case "$RESPONSE" in
+    "yes" | "y" ) return 0;;
+    "no" | "n" ) echo "Aborting." 1>&2; exit 1;;
+    *) echo "Unrecognized response. Aborting." 1>&2; exit 1;;
+  esac
+}
+
+ensure_command () {
+  if which "$1" 1>/dev/null 2>&1; then
+    return 0
+  else
+    echo "$1 is not installed. Please install it to proceed." 1>&2
+    exit 1
+  fi
+}
+
+GITHUB_URL="https://github.com"
+GRPCURL_REPO="fullstorydev/grpcurl"
+
+PLATFORM=$(detect_platform)
+
+BIN_DIR="${HOME}/.grpcurl/bin"
+
+confirm "This script will perform a user install of grpcurl. Would you like to proceed?"
+
+ensure_command "curl"
+
+mkdir -p "${BIN_DIR}"
+
+curl -Ls "${GITHUB_URL}/${GRPCURL_REPO}/releases/latest" | \
+  grep "href=.*${PLATFORM}.tar.gz" | \
+  cut -d '"' -f 2 | \
+  echo "${GITHUB_URL}$(cat -)" | \
+  curl -sL $(cat -) --output - | \
+  tar -C "${BIN_DIR}" -xzf - grpcurl
+
+cp ${HOME}/.bashrc ${HOME}/.bashrc.bak.$(date | sed 's/ /-/g')
+printf "\n# Added by https://grpc.io/get_grpcurl\nexport PATH=\"\$PATH:${BIN_DIR}\"\n" >> ${HOME}/.bashrc
+
+echo "${BIN_DIR} has been added to your PATH. Please open a new shell or source "
+echo "your .bashrc to use grpcurl."
