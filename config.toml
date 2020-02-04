@@ -4,14 +4,17 @@ title = "gRPC"
 pygmentsCodeFences = true
 
 [params]
-grpc_release_tag = "v1.25.0"
-grpc_release_tag_no_v = "1.25.0"
+grpc_release_tag = "v1.26.0"
+grpc_release_tag_no_v = "1.26.0"
 grpc_java_release_tag = "v1.26.0"
 
 milestones_link = "https://github.com/grpc/grpc/milestones"
 
 # Configuration required for auto-generating the Netlify _redirects file
 [mediaTypes."text/netlify"]
+delimiter = ""
+
+[mediaTypes."text/plain"]
 delimiter = ""
 
 [outputFormats.REDIRECTS]
@@ -21,8 +24,11 @@ baseName = "_redirects"
 [outputFormats.RSS]
 baseName = "feed"
 
+[outputFormats.RELEASE]
+baseName = "release"
+
 [outputs]
-home = ["HTML", "REDIRECTS", "RSS"]
+home = ["HTML", "REDIRECTS", "RSS", "RELEASE"]
 
 # Site menus
 [menu]
