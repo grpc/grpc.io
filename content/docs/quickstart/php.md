@@ -91,10 +91,10 @@ You can download the pre-compiled gRPC extension from the PECL
 
 #### Build from Source with gRPC C core library
 
-Clone this repository
+Clone this repository at given release tag
 
 ```sh
-$ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 ```
 
 ##### Build and install the gRPC C core library
@@ -243,7 +243,7 @@ in the future.
 You can also just build the gRPC PHP protoc plugin by running:
 
 ```sh
-$ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 $ make grpc_php_plugin
