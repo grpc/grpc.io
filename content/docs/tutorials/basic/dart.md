@@ -149,7 +149,7 @@ This is similar to what we did in the [quickstart guide](/docs/quickstart/)
 From the `route_guide` example directory run :
 
 ```sh
- protoc -I protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated
+protoc -I protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated
 ```
 
 Running this command generates the following files in the `lib/src/generated`
@@ -221,6 +221,7 @@ class RouteGuideService extends RouteGuideServiceBase {
 ```
 
 ##### Simple RPC
+
 `RouteGuideService` implements all our service methods. Let's look at the
 simplest type first, `GetFeature`, which just gets a `Point` from the client and
 returns the corresponding feature information from its database in a `Feature`.
@@ -328,6 +329,7 @@ messages. Once the request stream is done, the server can return its
 `RouteSummary`.
 
 ##### Bidirectional streaming RPC
+
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```dart
@@ -542,7 +544,7 @@ $ dart bin/client.dart
 
 ### Reporting issues
 
-Should you encounter an issue, please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
-in our issue tracker.</p>
+If you find a problem with Dart gRPC, please [file an issue][new issue]
+in our issue tracker.
 
+[new issue]: https://github.com/grpc/grpc-dart/issues/new

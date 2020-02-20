@@ -1,6 +1,6 @@
 ---
 layout: quickstart
-title: Dart Quickstart
+title: Dart Quick Start
 short: Dart
 description: This guide gets you started with gRPC in Dart with a simple working example.
 ---
@@ -13,9 +13,9 @@ description: This guide gets you started with gRPC in Dart with a simple working
 
 gRPC requires Dart SDK version 2.0 or higher. Dart gRPC supports Flutter and Server platforms.
 
-For installation instructions, follow this guide: [Install Dart](https://www.dartlang.org/install)
+For installation instructions, see [Install Dart](https://dart.dev/install).
 
-#### Install Protocol Buffers v3
+#### Protocol Buffers v3
 
 While not mandatory to use gRPC, gRPC applications usually leverage Protocol
 Buffers v3 for service definitions and data serialization, and our example code
@@ -26,17 +26,17 @@ binaries for your operating system (`protoc-<version>-<os>.zip`) from here:
 [https://github.com/google/protobuf/releases](https://github.com/google/protobuf/releases)
 
   * Unzip this file.
-  * Update the environment variable `PATH` to include the path to the protoc
+  * Update the environment variable `PATH` to include the path to the `protoc`
     binary file.
 
-Next, install the protoc plugin for Dart
+Next, install the `protoc` plugin for Dart
 
 ```sh
 $ pub global activate protoc_plugin
 ```
 
 The compiler plugin, `protoc-gen-dart`, is installed in `$HOME/.pub-cache/bin`.
-It must be in your $PATH for the protocol compiler, protoc, to find it.
+It must be in your `PATH` for the protocol compiler, protoc, to find it.
 
 ```sh
 $ export PATH=$PATH:$HOME/.pub-cache/bin
@@ -50,9 +50,9 @@ clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 
 ```sh
-$ # Clone the repository at the latest release to get the example code:
+# Clone the repository at the latest release to get the example code:
 $ git clone https://github.com/grpc/grpc-dart
-$ # Navigate to the "Hello World" Dart example:
+# Navigate to the "Hello World" Dart example:
 $ cd grpc-dart/example/helloworld
 ```
 
@@ -60,23 +60,23 @@ $ cd grpc-dart/example/helloworld
 
 From the `example/helloworld` directory:
 
-1. Download package dependencies
+ 1. Download package dependencies
 
-   ```sh
-   $ pub get
-   ```
+    ```sh
+    $ pub get
+    ```
 
-2. Run the server
+ 2. Run the server
 
-   ```sh
-   $ dart bin/server.dart
-   ```
+    ```sh
+    $ dart bin/server.dart
+    ```
 
-3. In another terminal, run the client
+ 3. In another terminal, run the client
 
-   ```sh
-   $ dart bin/client.dart
-   ```
+    ```sh
+    $ dart bin/client.dart
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -91,7 +91,7 @@ server and the client "stub" have a `SayHello` RPC method that takes a
 server, and that this method is defined like this:
 
 
-```dart
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -108,11 +108,12 @@ message HelloReply {
   string message = 1;
 }
 ```
+
 Let's update this so that the `Greeter` service has two methods. Edit
 `protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```dart
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -132,7 +133,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
@@ -204,26 +205,30 @@ Future<Null> main(List<String> args) async {
 
 Just like we did before, from the `example/helloworld` directory:
 
-1. Run the server
+ 1. Run the server
 
-   ```sh
-   $ dart bin/server.dart
-   ```
+    ```sh
+    $ dart bin/server.dart
+    ```
 
-2. In another terminal, run the client
+ 2. In another terminal, run the client
 
-   ```sh
-   $ dart bin/client.dart
-   ```
+    ```sh
+    $ dart bin/client.dart
+    ```
 
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: Dart](/docs/tutorials/basic/dart/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
+- Explore the [Dart gRPC API reference][].
 
+[Dart gRPC API reference]: https://pub.dev/documentation/grpc
 
 ### Reporting issues
-Should you encounter an issue, please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
-in our issue tracker.</p>
+
+If you find a problem with Dart gRPC, please [file an issue][new issue]
+in our issue tracker.
+
+[new issue]: https://github.com/grpc/grpc-dart/issues/new
