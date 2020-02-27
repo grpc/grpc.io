@@ -82,10 +82,11 @@ Congratulations! You've just run a client-server application with gRPC.
 
 ### Update a gRPC service
 
-Now let's look at how to update the application with an extra method on the
-server for the client to call. Our gRPC service is defined using protocol
-buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Dart](/docs/tutorials/basic/dart/). For now all you need to know is that both the
+In this section you'll update the application with an extra server method.
+The gRPC service is defined using protocol buffers.
+To learn more about how to define a service in a `.proto`
+file see [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
+For now, all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that this method is defined like this:
@@ -109,9 +110,8 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit
-`protos/helloworld.proto` and update it with a new `SayHelloAgain`
-method, with the same request and response types:
+Edit `protos/helloworld.proto` and add a new `SayHelloAgain` method, with the
+same request and response types:
 
 ```protobuf
 // The greeting service definition.
@@ -137,8 +137,8 @@ Remember to save the file!
 
 ### Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new
-service definition.
+Before you can use the new service method, you need to recompile the updated
+proto file.
 
 From the `example/helloworld` directory, run:
 
@@ -146,53 +146,52 @@ From the `example/helloworld` directory, run:
 $ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 ```
 
-This regenerates the files in `lib/src/generated` which contain our generated
-request and response classes, and client and server classes.
+You'll find the regenerated request and response classes, and client and server
+classes in the `lib/src/generated` directory.
 
 ### Update and run the application
 
-We now have new generated server and client code, but we still need to implement
+You have new generated server and client code, but you still need to implement
 and call the new method in the human-written parts of our example application.
 
 #### Update the server
 
-In the same directory, open `bin/server.dart`. Implement the new method like
-this:
+In the same directory, open `bin/server.dart`. Add the following
+`sayHelloAgain()` method to the `GreeterService` class:
 
 ```dart
 class GreeterService extends GreeterServiceBase {
   @override
   Future<HelloReply> sayHello(ServiceCall call, HelloRequest request) async {
-    return new HelloReply()..message = 'Hello, ${request.name}!';
+    return HelloReply()..message = 'Hello, ${request.name}!';
   }
 
   @override
-  Future<HelloReply> sayHelloAgain(
-      ServiceCall call, HelloRequest request) async {
-    return new HelloReply()..message = 'Hello again, ${request.name}!';
+  Future<HelloReply> sayHelloAgain(ServiceCall call, HelloRequest request) async {
+    return HelloReply()..message = 'Hello again, ${request.name}!';
   }
 }
-...
 ```
 
 #### Update the client
 
-In the same directory, open `bin/client.dart`. Call the new method like this:
+Add a call to `sayHelloAgain()` in `bin/client.dart` like this:
 
 ```dart
-Future<Null> main(List<String> args) async {
-  final channel = new ClientChannel('localhost',
-      port: 50051,
-      options: const ChannelOptions(
-          credentials: const ChannelCredentials.insecure()));
-  final stub = new GreeterClient(channel);
+Future<void> main(List<String> args) async {
+  final channel = ClientChannel(
+    'localhost',
+    port: 50051,
+    options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+  );
+  final stub = GreeterClient(channel);
 
   final name = args.isNotEmpty ? args[0] : 'world';
 
   try {
-    var response = await stub.sayHello(new HelloRequest()..name = name);
+    var response = await stub.sayHello(HelloRequest()..name = name);
     print('Greeter client received: ${response.message}');
-    response = await stub.sayHelloAgain(new HelloRequest()..name = name);
+    response = await stub.sayHelloAgain(HelloRequest()..name = name);
     print('Greeter client received: ${response.message}');
   } catch (e) {
     print('Caught error: $e');
@@ -203,7 +202,8 @@ Future<Null> main(List<String> args) async {
 
 #### Run!
 
-Just like we did before, from the `example/helloworld` directory:
+Run the client and server like you did before. Execute the following commands
+from the `example/helloworld` directory:
 
  1. Run the server
 
@@ -211,11 +211,19 @@ Just like we did before, from the `example/helloworld` directory:
     $ dart bin/server.dart
     ```
 
- 2. In another terminal, run the client
+ 2. In another terminal, run the client. This time, include add a name as a
+    command-line argument:
 
     ```sh
-    $ dart bin/client.dart
+    $ dart bin/client.dart Alice
     ```
+
+You should see the following output in the client terminal:
+
+```sh
+Greeter client received: Hello, Alice!
+Greeter client received: Hello again, Alice!
+```
 
 ### What's next
 
