@@ -211,8 +211,8 @@ from the `example/helloworld` directory:
     $ dart bin/server.dart
     ```
 
- 2. In another terminal, run the client. This time, include add a name as a
-    command-line argument:
+ 2. In another terminal, run the client. This time, add a name as a command-line
+    argument:
 
     ```sh
     $ dart bin/client.dart Alice
