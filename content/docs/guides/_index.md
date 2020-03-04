@@ -16,7 +16,7 @@ see our [Quick Starts](../quickstart).
 ### Overview
 
 In gRPC, a client application can directly call a method on a server application
-on a different machine as if it was a local object, making it easier for you to
+on a different machine as if it were a local object, making it easier for you to
 create distributed applications and services. As in many RPC systems, gRPC is
 based around the idea of defining a service, specifying the methods that can be
 called remotely with their parameters and return types. On the server side, the
@@ -30,7 +30,7 @@ gRPC clients and servers can run and talk to each other in a variety of environm
 
 ### Working with Protocol Buffers
 
-By default gRPC uses [Protocol Buffers][PB docs], Google’s
+By default, gRPC uses [Protocol Buffers][PB docs], Google’s
 mature open source mechanism for serializing structured data (although it
 can be used with other data formats such as JSON). Here's a quick intro to how
 it works. If you're already familiar with protocol buffers, feel free to skip
