@@ -149,7 +149,7 @@ This is similar to what we did in the [quickstart guide](/docs/quickstart/)
 From the `route_guide` example directory run :
 
 ```sh
- protoc -I protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated
+protoc -I protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated
 ```
 
 Running this command generates the following files in the `lib/src/generated`
@@ -221,6 +221,7 @@ class RouteGuideService extends RouteGuideServiceBase {
 ```
 
 ##### Simple RPC
+
 `RouteGuideService` implements all our service methods. Let's look at the
 simplest type first, `GetFeature`, which just gets a `Point` from the client and
 returns the corresponding feature information from its database in a `Feature`.
@@ -231,7 +232,7 @@ returns the corresponding feature information from its database in a `Feature`.
 @override
 Future<Feature> getFeature(grpc.ServiceCall call, Point request) async {
   return featuresDb.firstWhere((f) => f.location == request,
-      orElse: () => new Feature()..location = request);
+      orElse: () => Feature()..location = request);
 }
 ```
 
@@ -298,7 +299,7 @@ Future<RouteSummary> recordRoute(
   int featureCount = 0;
   double distance = 0.0;
   Point previous;
-  final timer = new Stopwatch();
+  final timer = Stopwatch();
 
   await for (var location in request) {
     if (!timer.isRunning) timer.start();
@@ -314,7 +315,7 @@ Future<RouteSummary> recordRoute(
     previous = location;
   }
   timer.stop();
-  return new RouteSummary()
+  return RouteSummary()
     ..pointCount = pointCount
     ..featureCount = featureCount
     ..distance = distance.round()
@@ -328,6 +329,7 @@ messages. Once the request stream is done, the server can return its
 `RouteSummary`.
 
 ##### Bidirectional streaming RPC
+
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```dart
@@ -362,9 +364,8 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```dart
-Future<Null> main(List<String> args) async {
-  final server =
-      new grpc.Server([new RouteGuideService()]);
+Future<void> main(List<String> args) async {
+  final server = grpc.Server([RouteGuideService()]);
   await server.serve(port: 8080);
   print('Server listening...');
 }
@@ -372,7 +373,7 @@ Future<Null> main(List<String> args) async {
 
 To build and start a server, we:
 
-1. Create an instance of the gRPC server using `new grpc.Server()`,
+1. Create an instance of the gRPC server using `grpc.Server()`,
    giving a list of service implementations.
 1. Call `serve()` on the server to start listening for requests, optionally passing
    in the address and port to listen on. The server will continue to serve requests
@@ -390,13 +391,13 @@ service. You can see our complete example client code in
 
 To call service methods, we first need to create a gRPC *channel* to communicate
 with the server. We create this by passing the server address and port number to
-`new ClientChannel()` as follows:
+`ClientChannel()` as follows:
 
 ```dart
-final channel = new ClientChannel('127.0.0.1',
+final channel = ClientChannel('127.0.0.1',
     port: 8080,
     options: const ChannelOptions(
-        credentials: const ChannelCredentials.insecure()));
+        credentials: ChannelCredentials.insecure()));
 ```
 
 You can use `ChannelOptions` to set TLS options (e.g., trusted certificates) for
@@ -407,8 +408,8 @@ get by creating a new instance of the `RouteGuideClient` object provided in the
 package we generated from our .proto.
 
 ```dart
-final client = new RouteGuideClient(channel,
-    options: new CallOptions(timeout: new Duration(seconds: 30)));
+final client = RouteGuideClient(channel,
+    options: CallOptions(timeout: Duration(seconds: 30)));
 ```
 
 You can use `CallOptions` to set the auth credentials (e.g., GCE credentials,
@@ -427,7 +428,7 @@ Calling the simple RPC `GetFeature` is nearly as straightforward as calling a
 local method.
 
 ```dart
-final point = new Point()
+final point = Point()
   ..latitude = 409146138
   ..longitude = -746188906;
 final feature = await stub.getFeature(point));
@@ -448,7 +449,7 @@ the server](#server) some of this may look very familiar - streaming RPCs are
 implemented in a similar way on both sides.
 
 ```dart
-final rect = new Rectangle()...; // initialize a Rectangle
+final rect = Rectangle()...; // initialize a Rectangle
 
 try {
   await for (var feature in stub.listFeatures(rect)) {
@@ -473,7 +474,7 @@ The client-side streaming method `RecordRoute` is similar to the server-side
 method, except that we pass the method a `Stream` and get a `Future` back.
 
 ```dart
-final random = new Random();
+final random = Random();
 
 // Generate a number of random points
 Stream<Point> generateRoute(int count) async* {
@@ -542,7 +543,7 @@ $ dart bin/client.dart
 
 ### Reporting issues
 
-Should you encounter an issue, please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
-in our issue tracker.</p>
+If you find a problem with Dart gRPC, please [file an issue][new issue]
+in our issue tracker.
 
+[new issue]: https://github.com/grpc/grpc-dart/issues/new
