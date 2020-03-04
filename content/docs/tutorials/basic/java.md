@@ -65,7 +65,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
-[`grpc-java/examples/src/main/proto/route_guide.proto`](https://github.com/grpc/grpc-java/blob/master/examples/src/main/proto/route_guide.proto).
+[grpc-java/examples/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/master/examples/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package`
 file option in our .proto:
@@ -167,9 +167,8 @@ a special gRPC Java plugin. You need to use the
 both proto2 and proto3 syntax) in order to generate gRPC services.
 
 When using Gradle or Maven, the protoc build plugin can generate the necessary
-code as part of the build. You can refer to the <a
-href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
-how to generate code from your own .proto files.
+code as part of the build. You can refer to the [grpc-java README][] for
+how to generate code from your own `.proto` files.
 
 The following classes are generated from our service definition:
 
@@ -214,7 +213,7 @@ private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase
 }
 ```
 
-#### Simple RPC 
+#### Simple RPC
 
 `RouteGuideService` implements all our service methods. Let's
 look at the simplest type first, `GetFeature`, which just gets a `Point` from
@@ -300,6 +299,7 @@ RPC, we use the response observer's `onCompleted()` method to tell gRPC that
 we've finished writing responses.
 
 ##### Client-side streaming RPC
+
 Now let's look at something a little more complicated: the client-side streaming
 method `RecordRoute`, where we get a stream of `Point`s from the client and
 return a single `RouteSummary` with information about their trip.
@@ -675,10 +675,10 @@ for our client-streaming method. Although each side will always get the other's
 messages in the order they were written, both the client and server can read and
 write in any order — the streams operate completely independently.
 
-
 ### Try it out!
 
-Follow the instructions in the example directory
-[README](https://github.com/grpc/grpc-java/blob/master/examples/README.md) to
-build and run the client and server.
+Follow the instructions in the [example directory README][] to build and run the
+client and server.
 
+[example directory README]: https://github.com/grpc/grpc-java/blob/master/examples/README.md
+[grpc-java README]: https://github.com/grpc/grpc-java/blob/master/README.md

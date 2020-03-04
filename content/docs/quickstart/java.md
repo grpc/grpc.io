@@ -21,9 +21,9 @@ clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 
 ```sh
-$ # Clone the repository at the latest release to get the example code:
+# Clone the repository at the latest release to get the example code:
 $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
-$ # Navigate to the Java examples:
+# Navigate to the Java examples:
 $ cd grpc-java/examples
 ```
 
@@ -31,23 +31,23 @@ $ cd grpc-java/examples
 
 From the `examples` directory:
 
-1. Compile the client and server
+ 1. Compile the client and server
 
-   ```sh
-   $ ./gradlew installDist
-   ```
+    ```sh
+    $ ./gradlew installDist
+    ```
 
-2. Run the server
+ 2. Run the server
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-server
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-server
+    ```
 
-3. In another terminal, run the client
+ 3. In another terminal, run the client
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-client
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-client
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -62,7 +62,7 @@ server and the client "stub" have a `SayHello` RPC method that takes a
 server, and that this method is defined like this:
 
 
-```java
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -83,7 +83,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```java
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -138,7 +138,6 @@ private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
     responseObserver.onCompleted();
   }
 }
-...
 ```
 
 #### Update the client
@@ -173,23 +172,23 @@ public void greet(String name) {
 
 Just like we did before, from the `examples` directory:
 
-1. Compile the client and server
+ 1. Compile the client and server
 
-   ```sh
-   $ ./gradlew installDist
-   ```
+    ```sh
+    $ ./gradlew installDist
+    ```
 
-2. Run the server
+ 2. Run the server
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-server
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-server
+    ```
 
-3. In another terminal, run the client
+ 3. In another terminal, run the client
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-client
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-client
+    ```
 
 ### What's next
 
