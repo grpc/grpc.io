@@ -11,7 +11,7 @@ description: This guide gets you started with gRPC in Android Java with a simple
 
 #### Prerequisites
 
-*   `JDK`: version 7 or higher
+*   JDK: version 7 or higher
 *   Android SDK: API level 14 or higher
 *   An android device set up for [USB
     debugging](https://developer.android.com/studio/command-line/adb.html#Enabling)
@@ -30,32 +30,32 @@ clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 
 ```sh
-$ # Clone the repository at the latest release to get the example code:
+# Clone the repository at the latest release to get the example code:
 $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
-$ # Navigate to the Java examples:
+# Navigate to the Java examples:
 $ cd grpc-java/examples
 ```
 
 ### Run a gRPC application
 
-1. Compile the server
+ 1. Compile the server
 
-   ```sh
-   $ ./gradlew installDist
-   ```
+    ```sh
+    $ ./gradlew installDist
+    ```
 
-2. Run the server
+ 2. Run the server
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-server
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-server
+    ```
 
-3. In another terminal, compile and run the client
+ 3. In another terminal, compile and run the client
 
-   ```sh
-   $ cd android/helloworld
-   $ ../../gradlew installDebug
-   ```
+    ```sh
+    $ cd android/helloworld
+    $ ../../gradlew installDebug
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -70,7 +70,7 @@ server and the client "stub" have a `SayHello` RPC method that takes a
 server, and that this method is defined like this:
 
 
-```java
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -91,7 +91,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```java
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -151,24 +151,24 @@ method like this:
 
 Just like we did before, from the `examples` directory:
 
-1. Compile the server
+ 1. Compile the server
 
-   ```sh
-   $ ./gradlew installDist
-   ```
+    ```sh
+    $ ./gradlew installDist
+    ```
 
-2. Run the server
+ 2. Run the server
 
-   ```sh
-   $ ./build/install/examples/bin/hello-world-server
-   ```
+    ```sh
+    $ ./build/install/examples/bin/hello-world-server
+    ```
 
-3. In another terminal, compile and install the client to your device
+ 3. In another terminal, compile and install the client to your device
 
-   ```sh
-   $ cd android/helloworld
-   $ ../../gradlew installDebug
-   ```
+    ```sh
+    $ cd android/helloworld
+    $ ../../gradlew installDebug
+    ```
 
 #### Connecting to the Hello World server via USB
 
@@ -198,7 +198,7 @@ enter `10.0.2.2` and `50051` as the `Host` and `Port`.
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: Android Java](/docs/tutorials/basic/android/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Android Java](/docs/tutorials/basic/android/).
 - Explore the gRPC Java core API in its [reference
-  documentation](/grpc-java/javadoc/)
+  documentation](/grpc-java/javadoc/).

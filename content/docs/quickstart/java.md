@@ -11,7 +11,7 @@ description: This guide gets you started with gRPC in Java with a simple working
 
 #### Prerequisites
 
-* `JDK`: version 7 or higher
+* JDK: version 7 or higher
 
 ### Download the example
 
@@ -193,8 +193,8 @@ Just like we did before, from the `examples` directory:
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: Java](/docs/tutorials/basic/java/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Java](/docs/tutorials/basic/java/).
 - Explore the gRPC Java core API in its [reference
-  documentation](/grpc-java/javadoc/)
+  documentation](/grpc-java/javadoc/).
 
