@@ -38,12 +38,13 @@ Then change your current directory to `grpc-java/examples/android`:
 $ cd grpc-java/examples/android
 ```
 
-You also should have the relevant tools installed to generate the client interface code - if you don't already, follow the setup instructions in [the Java README](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/README.md).
-
+You also should have the relevant tools installed to generate the client
+interface code - if you don't already, follow the setup instructions in the
+[grpc-java README][].
 
 ### Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`routeguide/app/src/main/proto/route_guide.proto`](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package` file option in our .proto:
 
@@ -135,12 +136,10 @@ a special gRPC Java plugin. You need to use the
 [proto3](https://github.com/google/protobuf/releases) compiler (which supports
 both proto2 and proto3 syntax) in order to generate gRPC services.
 
-The build system for this example is also part of Java gRPC itself's build. You
-can refer to the <a
-href="https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/README.md">README</a> and
-<a href="https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/build.gradle#L26">build.gradle</a> for
-how to generate code from your own .proto files.
-Note that for Android, we will use protobuf lite which is optimized for mobile usecase.
+The build system for this example is also part of the Java-gRPC build. Refer to
+the [grpc-java README][] and [build.gradle][] for how to generate code from your
+own `.proto` files. Note that for Android, we will use protobuf lite which is
+optimized for mobile usecase.
 
 The following classes are generated from our service definition:
 
@@ -156,7 +155,7 @@ The following classes are generated from our service definition:
 
 ### Creating the client
 
-In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [`routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java`](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java).
+In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java).
 
 #### Creating a stub
 
@@ -360,4 +359,6 @@ As with our client-side streaming example, we both get and return a `StreamObser
 Follow the instructions in the [example directory README][] to build and run the
 client and server.
 
+[build.gradle]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/build.gradle#L26
 [example directory README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/README.md
+[grpc-java README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/README.md

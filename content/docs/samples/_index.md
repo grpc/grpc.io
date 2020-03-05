@@ -1,15 +1,12 @@
 ---
 bodyclass: docs
-headline: 'gRPC Samples'
+headline: gRPC Samples
 layout: docs
 title: Samples
-type: markdown
 weight: 5
 ---
 
-<p class="lead">Here are some sample apps to help developers build certain functionalities</p>
+Here are some sample apps to help developers build certain functionalities.
 
-<ul>
-  <li><a target="_blank" href="https://github.com/GoogleCloudPlatform/ios-docs-samples/tree/master/speech/Objective-C/Speech-gRPC-Streaming">Bidirectional streaming iOS client using Cloud Speech API</a></li>
-  <li><a target="_blank" href="https://github.com/david-cao/gRPCBenchmarks">Android app benchmarking JSON/HTTP/1.1 and gRPC</a></li>
-</ul>
+- [Bidirectional streaming iOS client using Cloud Speech API](https://github.com/GoogleCloudPlatform/ios-docs-samples/tree/master/speech/Objective-C/Speech-gRPC-Streaming)
+- [Android app benchmarking JSON/HTTP/1.1 and gRPC](https://github.com/david-cao/gRPCBenchmarks)
