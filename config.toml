@@ -93,3 +93,6 @@ weight = 5
 name = "gRPC Wire Format"
 url = "https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md"
 weight = 6
+
+[markup.goldmark.renderer]
+unsafe = true
