@@ -1,0 +1,40 @@
+{{ $home  := site.BaseURL }}
+{{ $title := site.Title }}
+{{ $menu  := site.Menus.main }}
+{{ $logo  := printf "img/logos/%s" site.Params.logos.navbar | relURL }}
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ $home }}">
+        <img src="{{ $logo }}" alt="{{ $title }} navbar logo">
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        {{ range $menu }}
+        {{ $name := .Name | upper }}
+        {{ $isExternal := hasPrefix .URL "http" }}
+        {{ if .URL }}
+        <a class="navbar-item has-text-weight-bold" href="{{ .URL }}s">
+          {{ if $isExternal }}
+          <span>
+            {{ $name }}
+          </span>
+          <span class="icon">
+            <i class="fas fa-sm fa-external-link-alt"></i>
+          </span>
+          {{ else }}
+          {{ $name }}
+          {{ end }}
+        </a>
+        {{ else }}
+        <div class="navbar-item has-text-weight-bold{">
+          {{ $name }}
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</nav>

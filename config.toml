@@ -8,8 +8,12 @@ grpc_release_tag = "v1.27.0"
 grpc_release_tag_no_v = "1.27.0"
 grpc_java_release_tag = "v1.27.0"
 google_analytics_id = "UA-60127042-1"
+font_awesome_version = "5.12.1"
 
 milestones_link = "https://github.com/grpc/grpc/milestones"
+
+[params.logos]
+navbar = "grpc-horizontal-white.png"
 
 # Configuration required for auto-generating the Netlify _redirects file
 [mediaTypes."text/netlify"]
@@ -29,8 +33,37 @@ baseName = "release"
 home = ["HTML", "REDIRECTS", "RSS", "RELEASE"]
 
 # Site menus
-[menu]
-[[menu.dropdown]]
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 1
+
+[[menu.main]]
+name = "Docs"
+identifier = "docs"
+weight = 2
+
+[[menu.main]]
+name = "Blog"
+url = "/blog"
+weight = 3
+
+[[menu.main]]
+name = "Community"
+url = "/community"
+weight = 4
+
+[[menu.main]]
+name = "Packages"
+url = "https://packages.grpc.io"
+weight = 5
+
+[[menu.main]]
+name = "FAQ"
+url = "/faq"
+weight = 6
+
+[[menu.main]]
 name = "Overview"
 url = "/docs"
 weight = 1

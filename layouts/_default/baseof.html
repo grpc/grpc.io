@@ -13,65 +13,11 @@
     {{ partial "css.html" . }}
   </head>
   <body>
-    <div id="landing-content">
-      <div class="row">
-        <div class="topbanner{{ if not .IsHome }}sub{{ end }}">
-          <nav class="navbar navbar-expand-md navbar-dark topnav">
-            <a class="navbar-brand" href="/">
-              <img src="/img/grpc-logo.png" width="114" height="50">
-            </a>
+    {{ block "main" . }}
+    {{ end }}
+    {{ block "footer" . }}
+    {{ end }}
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent" style="float:right !important">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item {{ if in .RelPermalink "about" }}active{{ end }}">
-                  <a class="nav-link" href="/about/">About</a>
-                </li>
-                <li class="nav-item dropdown {{ if in .RelPermalink "docs" }}active{{ end }}">
-                  <a class="nav-link dropdown-toggle" href="/docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Docs
-                  </a>
-
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {{ range $dropdown }}
-                    {{ $isCurrentPage := eq $currentUrl .URL }}
-                    <a class="dropdown-item" href="{{ .URL }}">
-                      {{ .Name }}
-                    </a>
-                    {{ end }}
-                  </div>
-                </li>
-                <li class="nav-item {{ if in .RelPermalink "blog" }}active{{ end }}">
-                  <a class="nav-link" href="/blog">
-                    Blog
-                  </a> 
-                </li>
-                <li class="nav-item {{ if in .RelPermalink "community" }}active{{ end }}">
-                  <a class="nav-link" href="/community">Community</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://packages.grpc.io/">
-                    Packages
-                  </a> 
-                </li>
-                <li class="nav-item {{ if in .RelPermalink "faq" }}active{{ end }}">
-                  <a class="nav-link" href="/faq/">FAQ</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          
-          {{ block "main" . }}
-          {{ end }}
-          {{ block "footer" . }}
-          {{ end }}
-
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    {{ partial "javascript.html" . }}
   </body>
 </html>
