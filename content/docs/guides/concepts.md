@@ -44,20 +44,20 @@ gRPC lets you define four kinds of service method:
 - Unary RPCs where the client sends a single request to the server and gets a
   single response back, just like a normal function call.
 
-```proto
-rpc SayHello(HelloRequest) returns (HelloResponse) {
-}
-```
+  ```proto
+  rpc SayHello(HelloRequest) returns (HelloResponse) {
+  }
+  ```
 
 - Server streaming RPCs where the client sends a request to the server and gets
   a stream to read a sequence of messages back. The client reads from the
   returned stream until there are no more messages. gRPC guarantees message
   ordering within an individual RPC call.
 
-```proto
-rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse) {
-}
-```
+  ```proto
+  rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse) {
+  }
+  ```
 
 - Client streaming RPCs where the client writes a sequence of messages and sends
   them to the server, again using a provided stream. Once the client has
@@ -65,10 +65,10 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse) {
   its response.  Again gRPC guarantees message ordering within an individual RPC
   call.
 
-```proto
-rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
-}
-```
+  ```proto
+  rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
+  }
+  ```
 
 - Bidirectional streaming RPCs where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
@@ -78,10 +78,10 @@ rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
   some other combination of reads and writes. The order of messages in each
   stream is preserved.
 
-```proto
-rpc BidiHello(stream HelloRequest) returns (stream HelloResponse) {
-}
-```
+  ```proto
+  rpc BidiHello(stream HelloRequest) returns (stream HelloResponse) {
+  }
+  ```
 
 We'll look at the different types of RPC in more detail in the RPC life cycle section below.
 
@@ -122,7 +122,8 @@ about these in our language-specific pages.
 
 #### Unary RPC
 
-First let's look at the simplest type of RPC, where the client sends a single request and gets back a single response.
+First let's look at the simplest type of RPC, where the client sends a single
+request and gets back a single response.
 
 - Once the client calls the method on the stub/client object, the server is
   notified that the RPC has been invoked with the client's [metadata](#metadata)
@@ -202,11 +203,11 @@ terminates the RPC immediately so that no further work is done. It is *not* an
 
 #### Metadata
 
-Metadata is information about a particular RPC call (such as <a href="/docs/guides/auth/">authentication details</a>) in the
-form of a list of key-value pairs, where the keys are strings and the values are
-typically strings (but can be binary data). Metadata is opaque to gRPC itself -
-it lets the client provide information associated with the call to the server
-and vice versa.
+Metadata is information about a particular RPC call (such as [authentication
+details](/docs/guides/auth)) in the form of a list of key-value pairs, where the
+keys are strings and the values are typically strings (but can be binary data).
+Metadata is opaque to gRPC itself - it lets the client provide information
+associated with the call to the server and vice versa.
 
 Access to metadata is language-dependent.
 
@@ -216,7 +217,7 @@ A gRPC channel provides a connection to a gRPC server on a specified host and
 port and is used when creating a client stub (or just "client" in some
 languages). Clients can specify channel arguments to modify gRPC's default
 behaviour, such as switching on and off message compression. A channel has
-state, including <code>connected</code> and <code>idle</code>.
+state, including `connected` and `idle`.
 
 How gRPC deals with closing down channels is language-dependent. Some languages
 also permit querying channel state.
