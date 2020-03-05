@@ -55,17 +55,17 @@ in order to make practical use of it in your APIs.
 There are important considerations to be aware of when deciding whether to
 use such an extended error model, however, including:
 
-  * library implementations of the extended error model may not be consistent
-across languages in terms of requirements for and expectations of the error
-details payload
-  * existing proxies, loggers, and other standard HTTP request
-processors don't have visibility into the error details and thus
-wouldn't be able to leverage them for monitoring or other purposes
-  * additional error detail in the trailers interferes with head-of-line
-blocking, and will decrease HTTP/2 header compression efficiency due to
-more frequent cache misses
-  * larger error detail payloads may run into protocol limits (like
-max headers size), effectively losing the original error
+- Library implementations of the extended error model may not be consistent
+  across languages in terms of requirements for and expectations of the error
+  details payload
+- Existing proxies, loggers, and other standard HTTP request
+  processors don't have visibility into the error details and thus
+  wouldn't be able to leverage them for monitoring or other purposes
+- Additional error detail in the trailers interferes with head-of-line
+  blocking, and will decrease HTTP/2 header compression efficiency due to
+  more frequent cache misses
+- Larger error detail payloads may run into protocol limits (like
+  max headers size), effectively losing the original error
 
 ### Error status codes
 
@@ -76,33 +76,35 @@ languages.
 
 #### General errors
 
+<style>
+  td code { word-break: normal; }
+</style>
+
 Case | Status code
 -----|-----------
-Client application cancelled the request | GRPC&#95;STATUS&#95;CANCELLED
-Deadline expired before server returned status | GRPC&#95;STATUS&#95;DEADLINE_EXCEEDED
-Method not found on server | GRPC&#95;STATUS&#95;UNIMPLEMENTED
-Server shutting down | GRPC&#95;STATUS&#95;UNAVAILABLE
-Server threw an exception (or did something other than returning a status code to terminate the RPC) | GRPC&#95;STATUS&#95;UNKNOWN
-<br>
+Client application cancelled the request | `GRPC_STATUS_CANCELLED`
+Deadline expired before server returned status | `GRPC_STATUS_DEADLINE_EXCEEDED`
+Method not found on server | `GRPC_STATUS_UNIMPLEMENTED`
+Server shutting down | `GRPC_STATUS_UNAVAILABLE`
+Server threw an exception (or did something other than returning a status code to terminate the RPC) | `GRPC_STATUS_UNKNOWN`
 
 #### Network failures
 
 Case | Status code
 -----|-----------
-No data transmitted before deadline expires. Also applies to cases where some data is transmitted and no other failures are detected before the deadline expires | GRPC&#95;STATUS&#95;DEADLINE_EXCEEDED
-Some data transmitted (for example, the request metadata has been written to the TCP connection) before the connection breaks | GRPC&#95;STATUS&#95;UNAVAILABLE
-<br>
+No data transmitted before deadline expires. Also applies to cases where some data is transmitted and no other failures are detected before the deadline expires | `GRPC_STATUS_DEADLINE_EXCEEDED`
+Some data transmitted (for example, the request metadata has been written to the TCP connection) before the connection breaks | `GRPC_STATUS_UNAVAILABLE`
 
 #### Protocol errors
 
 Case | Status code
 -----|-----------
-Could not decompress but compression algorithm supported | GRPC&#95;STATUS&#95;INTERNAL
-Compression mechanism used by client not supported by the server | GRPC&#95;STATUS&#95;UNIMPLEMENTED
-Flow-control resource limits reached | GRPC&#95;STATUS&#95;RESOURCE_EXHAUSTED
-Flow-control protocol violation | GRPC&#95;STATUS&#95;INTERNAL
-Error parsing returned status | GRPC&#95;STATUS&#95;UNKNOWN
-Unauthenticated: credentials failed to get metadata | GRPC&#95;STATUS&#95;UNAUTHENTICATED
-Invalid host set in authority metadata | GRPC&#95;STATUS&#95;UNAUTHENTICATED
-Error parsing response protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
-Error parsing request protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
+Could not decompress but compression algorithm supported | `GRPC_STATUS_INTERNAL`
+Compression mechanism used by client not supported by the server | `GRPC_STATUS_UNIMPLEMENTED`
+Flow-control resource limits reached | `GRPC_STATUS_RESOURCE_EXHAUSTED`
+Flow-control protocol violation | `GRPC_STATUS_INTERNAL`
+Error parsing returned status | `GRPC_STATUS_UNKNOWN`
+Unauthenticated: credentials failed to get metadata | `GRPC_STATUS_UNAUTHENTICATED`
+Invalid host set in authority metadata | `GRPC_STATUS_UNAUTHENTICATED`
+Error parsing response protocol buffer | `GRPC_STATUS_INTERNAL`
+Error parsing request protocol buffer | `GRPC_STATUS_INTERNAL`
