@@ -13,13 +13,15 @@
     
     {{ partial "css.html" . }}
   </head>
-  <body class="has-navbar-fixed-top">
-    {{ partial "navbar.html" . }}
+  <body class="is-page has-navbar-fixed-top">
+    <main class="is-main">
+      {{ partial "navbar.html" . }}
 
-    {{ block "main" . }}
-    {{ end }}
-    {{ block "footer" . }}
-    {{ end }}
+      {{ block "main" . }}
+      {{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
 
     {{ partial "javascript.html" . }}
   </body>
