@@ -1,14 +1,9 @@
 
 {{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ site.Title }} &ndash; {{ .Title }}
 {{ end }}
-{{ define "main" }}
-            <div class="headertext">{{ .Title }}</div>
-  </div>
-        </div>
-        </div>
 
-  <div class="section2" style="text-align:left;margin-bottom:5%">
-    {{ .Content }}
-  </div>
+{{ define "main" }}
+{{ partial "hero.html" . }}
+{{ partial "content.html" (dict "content" .Content "size" "medium") }}
 {{ end }}

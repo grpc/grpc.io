@@ -1,0 +1,32 @@
+<!-- Generated using the data in data/platforms.yaml -->
+{{ $platforms := site.Data.platforms }}
+<table>
+  <thead>
+    <tr>
+      <th>
+        Language
+      </th>
+      <th>
+        Platform
+      </th>
+      <th>
+        Compilers
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $platforms -}}
+    <tr>
+      <td>
+        {{- .language -}}
+      </td>
+      <td>
+        {{- delimit .platforms ", " -}}
+      </td>
+      <td>
+        {{- delimit .compilers ", " -}}
+      </td>
+    </tr>
+    {{- end -}}
+  </tbody>
+</table>

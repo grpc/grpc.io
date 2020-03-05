@@ -1,0 +1,8 @@
+{{ $size := .size | default "normal" }}
+<section class="section">
+  <div class="container">
+    <div class="content is-{{ $size }}">
+      {{ .content | markdownify }}
+    </div>
+  </div>
+</section>

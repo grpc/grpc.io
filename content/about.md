@@ -130,24 +130,8 @@ Check out what people are saying below.
 
 ## Officially supported platforms
 
-<style>
-  th:first-child { width: 20%; }
-</style>
-
-| Language | Platform | Compiler |
-| -------- | -------- | -------- |
-| C/C++ | Linux/Mac | GCC 4.9+ <br> Clang 3.4+ |
-| C/C++ | Windows 7+ | Visual Studio 2015+ |
-| C# | Linux/Mac | .NET Core, Mono 4+ |
-| C# | Windows 7+ | .NET Core, .NET 4.5+ |
-| Dart | Windows/Linux/Mac | Dart 2.0+ |
-| Go | Windows/Linux/Mac | Go 1.6+ |
-| Java | Windows/Linux/Mac | JDK 8 recommended. Gingerbread+ for Android |
-| Node.js | Windows/Linux/Mac | Node v4+ |
-| Objective-C | Mac OS X 10.11+/iOS 7.0+ | Xcode 7.2+ |
-| PHP (beta) | Linux/Mac | PHP 5.5+ and PHP 7.0+ |
-| Python | Windows/Linux/Mac | Python 2.7 and Python 3.4+ |
-| Ruby | Windows/Linux/Mac | Ruby 2.3+ |
+<!-- Generated using the data in data/platforms.yaml -->
+{{< supported-platforms >}}
 
 ## The story behind gRPC
 
