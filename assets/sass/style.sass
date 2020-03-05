@@ -26,6 +26,8 @@ $grpc-blue: #5ac5c5
 // Bulma-specific overrides
 $primary: $grpc-green
 $secondary: $grpc-blue
+$secondary-dark: darken($secondary, 15%)
+$link: $secondary-dark
 $navbar-height: 5rem
 $navbar-item-img-max-height: $navbar-height * 0.6
 
@@ -125,6 +127,10 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   +touch
     margin: 0 auto
 
+.is-testimonial-logo
+  max-height: 8rem
+  width: auto
+
 .is-page
   display: flex
   flex-direction: column
@@ -136,3 +142,16 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   
 .is-feature-pane
   margin-bottom: 2rem
+
+.has-bottom-padding
+  padding-bottom: 8rem
+
+.content p a
+  font-weight: $weight-medium
+
+  &:hover
+    color: $secondary
+
+.section
+  &.has-extra-padding
+    padding: 6rem 2rem

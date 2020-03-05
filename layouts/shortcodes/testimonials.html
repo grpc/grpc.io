@@ -1,0 +1,22 @@
+{{ $testimonials := site.Data.testimonials }}
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline is-variable is-8">
+      {{- range $testimonials -}}
+      {{- $img   := printf "img/users/%s" .image | relURL -}}
+      {{- $quote := .quote | markdownify -}}
+      <div class="column is-one-third">
+        <div class="has-text-centered">
+          <a href="{{- .link -}}" target="_blank">
+            <img class="is-testimonial-logo" src="{{- $img -}}">
+          </a>
+        </div>
+
+        <div class="is-italic">
+          {{- $quote -}}
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 {{ $why      := site.Params.why | markdownify }}
 {{ $features := site.Params.features }}
-<section class="section">
+<section class="section has-extra-padding">
   <div class="container has-text-centered">
     <p class="title is-size-1 is-size-2-mobile has-text-primary has-text-weight-medium">
       Why gRPC?
@@ -12,7 +12,7 @@
   </div>
 </section>
 
-<section class="section has-background-white-bis">
+<section class="section has-background-white-bis has-extra-padding">
   <div class="container">
     <div class="columns is-vcentered is-multiline is-variable is-8">
       {{ range $features }}
