@@ -13,7 +13,9 @@
     
     {{ partial "css.html" . }}
   </head>
-  <body>
+  <body class="has-navbar-fixed-top">
+    {{ partial "navbar.html" . }}
+
     {{ block "main" . }}
     {{ end }}
     {{ block "footer" . }}

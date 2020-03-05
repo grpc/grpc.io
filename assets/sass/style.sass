@@ -101,3 +101,14 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   background-image: url("/img/graphic-04.svg")
   background-repeat: no-repeat
   background-size: cover
+
+=logo($d, $t)
+  +desktop
+    width: $d
+    margin-bottom: 2rem
+  +touch
+    width: $t
+    margin-bottom: 1rem
+
+.is-hero-logo
+  +logo(50%, 80%)
