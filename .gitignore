@@ -2,6 +2,9 @@
 /public
 /resources
 
+# Node.js assets
+node_modules/
+
 ## OS Files
 # Windows
 Thumbs.db

@@ -4,6 +4,12 @@
 <html>
   <head>
     {{ partial "meta.html" . }}
+
+    <title>
+      {{ block "title" . }}{{ .Site.Title }}{{ end }}
+    </title>
+    
+    {{ partial "css.html" . }}
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>

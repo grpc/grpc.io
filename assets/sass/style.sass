@@ -1,0 +1,111 @@
+@charset "utf-8"
+{{ $extraColors := site.Params.colors.extra }}
+{{ $fontAwesomeVersion := site.Params.font_awesome_version }}
+{{ $fonts := site.Params.fonts }}
+{{ if $fonts }}
+{{ $fontSlice := (slice) }}
+{{ range $fonts }}
+{{ $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
+{{ end }}
+{{ $fontsUrl := printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|") }}
+@import url("{{ $fontsUrl }}")
+{{ end }}
+
+{{ with $fontAwesomeVersion }}
+{{ $fontAwesomeUrl := printf "https://use.fontawesome.com/releases/v%s/css/all.css" . }}
+@import url("{{ $fontAwesomeUrl }}")
+{{ end }}
+
+// Site-specific variables here
+$grpc-green: #244c5a
+$grpc-blue: #5ac5c5
+
+
+// Extra colors specified in config
+{{ with $extraColors }}
+{{ range . }}
+${{ .name }}: '{{ .hex }}'
+{{ end }}
+{{ end }}
+
+// Initial Bulma imports
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+// Bulma-specific overrides
+$primary: $grpc-blue
+
+// Font overrides
+{{ if $fonts }}
+// Sans-serif font
+{{ with (index (where $fonts ".type" "sans_serif") 0).name }}
+$family-sans-serif: "{{ . }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+{{ end }}
+
+// Monospace font
+{{ with (index (where $fonts ".type" "monospace") 0).name }}
+$family-monospace: "{{ . }}", monospace
+{{ end }}
+{{ end }}
+
+$font-heading: {{ $.Site.Params.heading_font | default "'Fira Sans', sans-serif" }}
+
+// Final Bulma imports
+@import "bulma/sass/utilities/derived-variables"
+
+// Bulma variable overrdides that require derived variables like $dark
+$footer-background-color: $dark
+$menu-list-border-left: 0px
+
+{{ with $extraColors }}
+{{ range . }}
+$colors: mergeColorMaps(("{{ .name }}": ({{ .hex }}, $white)), $colors)
+{{ end }}
+{{ end }}
+
+// Bulma core
+@import "bulma/sass/utilities/_all"
+@import "bulma/sass/base/_all"
+@import "bulma/sass/elements/container"
+@import "bulma/sass/grid/columns"
+@import "bulma/sass/grid/tiles"
+@import "bulma/sass/layout/hero"
+@import "bulma/sass/layout/section"
+@import "bulma/sass/layout/footer"
+
+// Elements
+
+// @import "bulma/sass/elements/box"
+@import "bulma/sass/elements/button"
+// @import "bulma/sass/elements/content"
+@import "bulma/sass/elements/icon"
+// @import "bulma/sass/elements/image"
+// @import "bulma/sass/elements/notification"
+// @import "bulma/sass/elements/progress"
+// @import "bulma/sass/elements/table"
+// @import "bulma/sass/elements/tag"
+@import "bulma/sass/elements/title"
+// @import "bulma/sass/elements/other"
+
+// Forms
+// @import "bulma/sass/form/shared"
+// @import "bulma/sass/form/input-textarea"
+// @import "bulma/sass/form/checkbox-radio"
+// @import "bulma/sass/form/select"
+// @import "bulma/sass/form/file"
+// @import "bulma/sass/form/tools"
+
+// Components
+// @import "bulma/sass/components/breadcrumb"
+// @import "bulma/sass/components/card"
+// @import "bulma/sass/components/dropdown"
+// @import "bulma/sass/components/level"
+// @import "bulma/sass/components/list"
+// @import "bulma/sass/components/media"
+@import "bulma/sass/components/menu"
+// @import "bulma/sass/components/message"
+// @import "bulma/sass/components/modal"
+@import "bulma/sass/components/navbar"
+// @import "bulma/sass/components/pagination"
+// @import "bulma/sass/components/panel"
+// @import "bulma/sass/components/tabs"
