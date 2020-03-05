@@ -9,10 +9,10 @@ description: This guide gets you started with gRPC in PHP with a simple working 
 
 ### Prerequisites
 
-* `php` 5.5 or above, 7.0 or above
-* `pecl`
-* `composer`
-* `phpunit` (optional)
+- PHP 5.5 or higher, 7.0 or higher
+- PECL
+- Composer
+- PHPUnit (optional)
 
 **Install PHP and PECL on Ubuntu/Debian:**
 
@@ -65,9 +65,10 @@ $ sudo mv phpunit-old.phar /usr/bin/phpunit
 
 ### Install the gRPC PHP extension
 
-There are two ways to install gRPC PHP extension.
-* `pecl`
-* `build from source`
+There are two ways to install gRPC PHP extension:
+
+- `pecl`
+- `build from source`
 
 #### Using PECL
 
@@ -81,7 +82,7 @@ or specific version
 sudo pecl install grpc-1.7.0
 ```
 
-Note: for users on CentOS/RHEL 6, unfortunately this step won’t work. 
+Note: for users on CentOS/RHEL 6, unfortunately this step won’t work.
 Please follow the instructions below to compile the PECL extension from source.
 
 ##### Install on Windows
@@ -118,16 +119,16 @@ $ make
 $ sudo make install
 ```
 
-This will compile and install the gRPC PHP extension into the 
-standard PHP extension directory. You should be able to run 
+This will compile and install the gRPC PHP extension into the
+standard PHP extension directory. You should be able to run
 the [unit tests](#unit-tests), with the PHP extension installed.
 
 
 #### Update php.ini
 
-After installing the gRPC extension, make sure you add this line 
-to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`, 
-`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`), 
+After installing the gRPC extension, make sure you add this line
+to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`,
+`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`),
 depending on where your PHP installation is.
 
 ```sh
@@ -144,43 +145,43 @@ You need to add this to your project's `composer.json` file.
   }
 ```
 
-To run tests with generated stub code from `.proto` files, you will also 
+To run tests with generated stub code from `.proto` files, you will also
 need the `composer` and `protoc` binaries. You can find out how to get these below.
 
 
 ### Install other prerequisites for both Mac OS X and Linux
 
-* `protoc: protobuf compiler`
-* `protobuf.so: protobuf runtime library`
-* `grpc_php_plugin: Generates PHP gRPC service interface out of Protobuf IDL`
+- `protoc: protobuf compiler`
+- `protobuf.so: protobuf runtime library`
+- `grpc_php_plugin: Generates PHP gRPC service interface out of Protobuf IDL`
 
 #### Install Protobuf compiler
 
 If you don't have it already, you need to install the protobuf compiler
 `protoc`, version 3.4.0+ (the newer the better) for the current gRPC version.
-If you installed already, make sure the protobuf version is compatible with the 
+If you installed already, make sure the protobuf version is compatible with the
 grpc version you installed. If you build grpc.so from source, you can check
 the version of grpc inside package.xml file.
 
 The compatibility between the grpc and protobuf version is listed as table below:
 
 grpc | protobuf
---- | --- 
+--- | ---
 v1.0.0 | 3.0.0(GA)
 v1.0.1 | 3.0.2
-v1.1.0 | 3.1.0 
-v1.2.0 | 3.2.0 
-v1.2.0 | 3.2.0 
-v1.3.4 | 3.3.0 
+v1.1.0 | 3.1.0
+v1.2.0 | 3.2.0
+v1.2.0 | 3.2.0
+v1.3.4 | 3.3.0
 v1.3.5 | 3.2.0
-v1.4.0 | 3.3.0 
+v1.4.0 | 3.3.0
 v1.6.0 | 3.4.0
 
 If `protoc` hasn't been installed, you can download the `protoc` binaries from
 [the protocol buffers GitHub repository](https://github.com/google/protobuf/releases).
-Then unzip this file and Update the environment variable `PATH` to include the path to 
+Then unzip this file and Update the environment variable `PATH` to include the path to
 the protoc binary file./protobuf/releases).
-Then unzip this file and Update the environment variable `PATH` to include the path to 
+Then unzip this file and Update the environment variable `PATH` to include the path to
 the protoc binary file.
 
 If you really must compile `protoc` from source, you can run the following
@@ -196,11 +197,11 @@ $ sudo make install
 #### Protobuf Runtime library
 
 There are two protobuf runtime libraries to choose from. They are identical
-in terms of APIs offered. The C implementation provides better performance, 
-while the native implementation is easier to install. Make sure the installed 
+in terms of APIs offered. The C implementation provides better performance,
+while the native implementation is easier to install. Make sure the installed
 protobuf version works with grpc version.
 
-##### 1. C implementation (for better performance)
+##### C implementation (for better performance)
 
 ``` sh
 $ sudo pecl install protobuf
@@ -211,16 +212,16 @@ or specific version
 $ sudo pecl install protobuf-3.4.0
 ```
 
-After protobuf extension is installed, Update php.ini by adding this line 
-to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`, 
-`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`), 
+After protobuf extension is installed, Update php.ini by adding this line
+to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`,
+`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`),
 depending on where your PHP installation is.
 
 ```sh
 extension=protobuf.so
 ```
 
-##### 2. PHP implementation (for easier installation)
+##### PHP implementation (for easier installation)
 
 Add this to your `composer.json` file:
 
@@ -250,14 +251,14 @@ $ make grpc_php_plugin
 ```
 
 Plugin may use the new feature of the new protobuf version, thus please also
-make sure that the protobuf version installed is compatible with the grpc version 
+make sure that the protobuf version installed is compatible with the grpc version
 you build this plugin.
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 Note that currently you can only create clients in PHP for gRPC services -
@@ -265,11 +266,11 @@ you can find out how to create gRPC servers in our other tutorials,
 e.g. [Node.js](/docs/tutorials/basic/node/).
 
 ```sh
-$ # Clone the repository to get the example code:
+# Clone the repository to get the example code:
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
-$ # Build grpc_php_plugin to generate proto files if not build before
+# Build grpc_php_plugin to generate proto files if not build before
 $ cd grpc && git submodule update --init && make grpc_php_plugin
-$ # Navigate to the "hello, world" PHP example:
+# Navigate to the "hello, world" PHP example:
 $ cd examples/php
 $ ./greeter_proto_gen.sh
 $ composer install
@@ -279,21 +280,20 @@ $ composer install
 
 From the `examples/node` directory:
 
-1. Run the server
+ 1. Run the server:
 
-   ```sh
-   $ npm install
-   $ cd dynamic_codegen
-   $ node greeter_server.js
-   ```
+    ```sh
+    $ npm install
+    $ cd dynamic_codegen
+    $ node greeter_server.js
+    ```
 
-In another terminal, from the `examples/php` directory:
+ 2. From another terminal, from the `examples/php` directory,
+    run the client:
 
-1. Run the client
-
-   ```sh
-   $ ./run_greeter_client.sh
-   ```
+    ```sh
+    $ ./run_greeter_client.sh
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -308,7 +308,7 @@ server and the client "stub" have a `SayHello` RPC method that takes a
 the server, and that this method is defined like this:
 
 
-```php
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -330,7 +330,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```php
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -350,7 +350,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
@@ -410,36 +410,35 @@ function main() {
 In the same directory, open `greeter_client.php`. Call the new method like this:
 
 ```php
-    $request = new Helloworld\HelloRequest();
-    $request->setName($name);
-    list($reply, $status) = $client->SayHello($request)->wait();
-    $message = $reply->getMessage();
-    list($reply, $status) = $client->SayHelloAgain($request)->wait();
-    $message = $reply->getMessage();
+$request = new Helloworld\HelloRequest();
+$request->setName($name);
+list($reply, $status) = $client->SayHello($request)->wait();
+$message = $reply->getMessage();
+list($reply, $status) = $client->SayHelloAgain($request)->wait();
+$message = $reply->getMessage();
 ```
 
 #### Run!
 
 Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
-1. Run the server
+ 1. Run the server:
 
-   ```sh
-   $ node greeter_server.js
-   ```
+    ```sh
+    $ node greeter_server.js
+    ```
 
-In another terminal, from the `examples/php` directory:
+ 2. From another terminal, from the `examples/php` directory,
+    run the client:
 
-2. Run the client
-
-   ```sh
-   $ ./run_greeter_client.sh
-   ```
+    ```sh
+    $ ./run_greeter_client.sh
+    ```
 
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: PHP](/docs/tutorials/basic/php/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: PHP](/docs/tutorials/basic/php/).
 - Explore the gRPC PHP core API in its [reference
-  documentation](/grpc/php/namespace-Grpc.html)
+  documentation](/grpc/php/namespace-Grpc.html).

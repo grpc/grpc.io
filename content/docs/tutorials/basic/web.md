@@ -32,7 +32,6 @@ protocol buffers, including efficient serialization, a simple IDL, and easy
 interface updating. gRPC-Web lets you access gRPC services built in this manner
 from browsers using an idiomatic API.
 
-
 <a name="setup"></a>
 
 ### Define the Service
@@ -73,7 +72,6 @@ function doEcho(call, callback) {
   callback(null, {message: call.request.message});
 }
 ```
-
 
 ### Configure the Envoy Proxy
 
@@ -119,14 +117,10 @@ this:
 You may also need to add some CORS setup to make sure the browser can request
 cross-origin content.
 
-
 In this simple example, the browser makes gRPC requests to port `:8080`. Envoy
 forwards the request to the backend gRPC server listening on port `:9090`.
 
-
-
 ### Generate Protobuf Messages and Service Client Stub
-
 
 To generate the protobuf message classes from our `echo.proto`, run the
 following command:
@@ -162,7 +156,6 @@ In the `--grpc-web_out` param above:
 
 Our command generates the client stub, by default, to the file
 `echo_grpc_web_pb.js`.
-
 
 ### Write JS Client Code
 
@@ -201,7 +194,6 @@ You will need a `package.json` file
 
 ### Compile the JS Library
 
-
 Finally, putting all these together, we can compile all the relevant JS files
 into one single JS library that can be used in the browser.
 
@@ -211,7 +203,6 @@ $ npx webpack client.js
 ```
 
 Now embed `dist/main.js` into your project and see it in action!
-
 
 [protobuf documentation]:https://developers.google.com/protocol-buffers/
 [main page]:/docs/

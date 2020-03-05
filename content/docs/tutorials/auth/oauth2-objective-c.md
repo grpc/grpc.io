@@ -175,6 +175,7 @@ To use this approach, first create a class in your project that conforms to
 ```
 
 When creating an RPC object, pass an instance of this class to call option `authTokenProvider`:
+
 ```objective-c
 GRPCMutableCallOptions *options = [[GRPCMutableCallOptions alloc] init];
 options.authTokenProvider = [[TokenProvider alloc] init];

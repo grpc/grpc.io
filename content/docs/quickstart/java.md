@@ -7,17 +7,15 @@ description: This guide gets you started with gRPC in Java with a simple working
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Prerequisites
-
-* JDK: version 7 or higher
+- JDK version 7 or higher
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
@@ -37,13 +35,13 @@ From the `examples` directory:
     $ ./gradlew installDist
     ```
 
- 2. Run the server
+ 2. Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     ```
 
- 3. In another terminal, run the client
+ 3. From another terminal, run the client:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-client
@@ -103,7 +101,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Update and run the application
 
@@ -172,19 +170,19 @@ public void greet(String name) {
 
 Just like we did before, from the `examples` directory:
 
- 1. Compile the client and server
+ 1. Compile the client and server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server
+ 2. Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     ```
 
- 3. In another terminal, run the client
+ 3. From another terminal, run the client:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-client
@@ -197,4 +195,3 @@ Just like we did before, from the `examples` directory:
 - Work through a more detailed tutorial in [gRPC Basics: Java](/docs/tutorials/basic/java/).
 - Explore the gRPC Java core API in its [reference
   documentation](/grpc-java/javadoc/).
-

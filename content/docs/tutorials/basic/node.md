@@ -99,10 +99,10 @@ all of which are used in the `RouteGuide` service:
 - A *simple RPC* where the client sends a request to the server using the stub
   and waits for a response to come back, just like a normal function call.
 
-```protobuf
-// Obtains the feature at a given position.
-rpc GetFeature(Point) returns (Feature) {}
-```
+  ```protobuf
+  // Obtains the feature at a given position.
+  rpc GetFeature(Point) returns (Feature) {}
+  ```
 
 - A *server-side streaming RPC* where the client sends a request to the server
   and gets a stream to read a sequence of messages back. The client reads from
@@ -110,13 +110,13 @@ rpc GetFeature(Point) returns (Feature) {}
   example, you specify a server-side streaming method by placing the `stream`
   keyword before the *response* type.
 
-```protobuf
-// Obtains the Features available within the given Rectangle.  Results are
-// streamed rather than returned at once (e.g. in a response message with a
-// repeated field), as the rectangle may cover a large area and contain a
-// huge number of features.
-rpc ListFeatures(Rectangle) returns (stream Feature) {}
-```
+  ```protobuf
+  // Obtains the Features available within the given Rectangle.  Results are
+  // streamed rather than returned at once (e.g. in a response message with a
+  // repeated field), as the rectangle may cover a large area and contain a
+  // huge number of features.
+  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+  ```
 
 - A *client-side streaming RPC* where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
@@ -124,11 +124,11 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
   and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
-```protobuf
-// Accepts a stream of Points on a route being traversed, returning a
-// RouteSummary when traversal is completed.
-rpc RecordRoute(stream Point) returns (RouteSummary) {}
-```
+  ```protobuf
+  // Accepts a stream of Points on a route being traversed, returning a
+  // RouteSummary when traversal is completed.
+  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+  ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
@@ -139,13 +139,13 @@ rpc RecordRoute(stream Point) returns (RouteSummary) {}
   stream is preserved. You specify this type of method by placing the `stream`
   keyword before both the request and the response.
 
-```protobuf
-// Accepts a stream of RouteNotes sent while a route is being traversed,
-// while receiving other RouteNotes (e.g. from other users).
-rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
-```
+  ```protobuf
+  // Accepts a stream of RouteNotes sent while a route is being traversed,
+  // while receiving other RouteNotes (e.g. from other users).
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+  ```
 
-Our .proto file also contains protocol buffer message type definitions for all
+Our `.proto` file also contains protocol buffer message type definitions for all
 the request and response types used in our service methods - for example, here's
 the `Point` message type:
 
@@ -512,17 +512,19 @@ independently.
 
 ### Try it out!
 
-Build client and server:
+Build the client and server:
 
 ```sh
 $ npm install
 ```
-Run the server, which will listen on port 50051:
+
+Run the server:
 
 ```sh
 $ node ./dynamic_codegen/route_guide/route_guide_server.js --db_path=./dynamic_codegen/route_guide/route_guide_db.json
 ```
-Run the client (in a different terminal):
+
+From a different terminal, run the client:
 
 ```sh
 $ node ./dynamic_codegen/route_guide/route_guide_client.js --db_path=./dynamic_codegen/route_guide/route_guide_db.json

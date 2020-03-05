@@ -7,12 +7,12 @@ description: This guide gets you started with gRPC in C# with a simple working e
 
 <div id="toc"></div>
 
-NOTE: This is a quick start guide for the gRPC C# implementation based on Core native library.
-See [gRPC for .NET Quick Start](/docs/quickstart/csharp-dotnet/) for how to start with the "grpc-dotnet" implementation.
+> **Note**: This is a quick start guide for the gRPC C# implementation based on
+> Core native library. See [gRPC for .NET Quick
+> Start](/docs/quickstart/csharp-dotnet/) for how to start with the
+> "grpc-dotnet" implementation.
 
-### Before you begin
-
-#### Prerequisites
+### Prerequisites
 
 Whether you're using Windows, OS X, or Linux, you can follow this
 example by using either an IDE and its build tools,
@@ -24,14 +24,14 @@ You will also need Git to download the sample code.
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
-$ # Clone the repository to get the example code:
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc 
+# Clone the repository to get the example code:
+$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 $ cd grpc
 ```
 
@@ -61,14 +61,14 @@ From the `examples/csharp/Helloworld` directory:
 
 From the `examples/csharp/Helloworld` directory:
 
-* Run the server
+* Run the server:
 
 ```sh
 > cd GreeterServer
 > dotnet run -f netcoreapp2.1
 ```
 
-* In another terminal, run the client
+* From another terminal, run the client:
 
 ```sh
 > cd GreeterClient
@@ -130,11 +130,11 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new service definition. 
+Next we need to update the gRPC code used by our application to use the new service definition.
 
 The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries needed
 to generate the code. Starting from version 1.17 the package also integrates with
@@ -158,7 +158,7 @@ under the `Greeter/obj/Debug/TARGET_FRAMEWORK` directory:
       Greeter service implementations
     * a class `Greeter.GreeterClient` that can be used to access remote Greeter
       instances
-    
+
 ### Update and run the application
 
 We now have new generated server and client code, but we still need to implement
@@ -201,7 +201,7 @@ public static void Main(string[] args)
 
     var reply = client.SayHello(new HelloRequest { Name = user });
     Console.WriteLine("Greeting: " + reply.Message);
-    
+
     var secondReply = client.SayHelloAgain(new HelloRequest { Name = user });
     Console.WriteLine("Greeting: " + secondReply.Message);
 
@@ -220,24 +220,24 @@ example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual S
 
 Just like we did before, from the `examples/csharp/Helloworld` directory:
 
-* Run the server
+ 1. Run the server:
 
-```sh
-> cd GreeterServer
-> dotnet run -f netcoreapp2.1
-```
+    ```sh
+    > cd GreeterServer
+    > dotnet run -f netcoreapp2.1
+    ```
 
-* In another terminal, run the client
+ 2. From another terminal, run the client:
 
-```sh
-> cd GreeterClient
-> dotnet run -f netcoreapp2.1
-```
+    ```sh
+    > cd GreeterClient
+    > dotnet run -f netcoreapp2.1
+    ```
 
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: C#](/docs/tutorials/basic/csharp/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: C#](/docs/tutorials/basic/csharp/).
 - Explore the gRPC C# core API in its [reference
-  documentation](/grpc/csharp/api/Grpc.Core.html)
+  documentation](/grpc/csharp/api/Grpc.Core.html).

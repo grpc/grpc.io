@@ -9,43 +9,42 @@ description: This guide gets you started with gRPC on the iOS platform in Object
 
 ### Before you begin
 
-#### System requirement
-The minimum deployment iOS version for gRPC is 7.0.
+#### System requirements
 
-OS X El Capitan (version 10.11) or above is required to build and run this
-Quickstart.
+- macOS version 10.11 (El Capitan) or higher
+- iOS version 7.0 or higher
 
 #### Prerequisites
 
-* `CocoaPods`: version 1.0 or higher
+- CocoaPods version 1.0 or higher
 
-   * Check status and version of CocoaPods on your system with command `pod
-     --version`.
-   * If CocoaPods is not installed, follow the install instructions on CocoaPods
-     [website](https://cocoapods.org).
+  Check the status and version of CocoaPods on your system:
 
-* `Xcode`: version 7.2 or higher
+  ```sh
+  $ pod --version
+  ```
 
-   * Check your Xcode version by running Xcode from Lauchpad, then select
-     "Xcode->About Xcode" in the menu.
-   * Make sure the command line developer tools are installed:
-   ```sh
-   [sudo] xcode-select --install
-   ```
+  If CocoaPods is not installed, follow the [CocoaPods install
+  instructions](https://cocoapods.org).
 
-* `Homebrew`
-   * Check status and version of Homebrew on your system with command `brew
-     --version`.
-   * If Homebrew is not installed, install with:
-   ```sh
-   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   ```
+- Xcode version 7.2 or higher
 
-* `autoconf`, `automake`, `libtool`, `pkg-config`
-   * Install with Homebrew
-   ```sh
-   brew install autoconf automake libtool pkg-config
-   ```
+  Check your Xcode version by running Xcode from Lauchpad, then select
+  **Xcode > About Xcode** in the menu.
+
+  Make sure the command line developer tools are installed:
+
+  ```sh
+  $ xcode-select --install
+  ```
+
+- [Homebrew](https://brew.sh/)
+
+- `autoconf`, `automake`, `libtool`, `pkg-config`
+
+  ```sh
+  $ brew install autoconf automake libtool pkg-config
+  ```
 
 ### Download the example
 
@@ -58,6 +57,7 @@ $ git clone --recursive -b {{< param grpc_release_tag >}} https://github.com/grp
 ```
 
 ### Install gRPC plugins and libraries
+
 ```sh
 $ cd grpc
 $ make
@@ -65,15 +65,16 @@ $ [sudo] make install
 ```
 
 ### Install protoc compiler
+
 ```sh
 $ brew tap grpc/grpc
 $ brew install protobuf
 ```
 
-### Run the server
+### Run the server:
 
 For this sample app, we need a gRPC server running on the local machine. gRPC
-Objective-C API supports creating gRPC clients but not gRPC servers. Therefore 
+Objective-C API supports creating gRPC clients but not gRPC servers. Therefore
 instead we build and run the C++ server in the same repository:
 
 ```sh
@@ -82,7 +83,7 @@ $ make
 $ ./greeter_server &
 ```
 
-### Run the client
+### Run the client:
 
 #### Generate client libraries and dependencies
 
@@ -120,13 +121,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using Protocol
 Buffers; you can find out lots more about how to define a service in a `.proto`
-file in Protocol Buffers 
-[website](https://developers.google.com/protocol-buffers/). For now all you 
+file in Protocol Buffers
+[website](https://developers.google.com/protocol-buffers/). For now all you
 need to know is that both the server and the client "stub" have a `SayHello`
 RPC method that takes a `HelloRequest` parameter from the client and returns a
 `HelloResponse` from the server, and that this method is defined like this:
 
-```c
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -148,7 +149,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```c
+```protobuf
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -168,7 +169,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Update the client and server
 
@@ -258,59 +259,63 @@ above. Open the client Xcode project in Xcode:
 ```sh
 $ open HelloWorld.xcworkspace
 ```
-and run the client app. If you look at the console messages, you should see two RPC calls,
+
+and run the client app. If you look at the console messages, You'll see two RPC calls,
 one to SayHello and one to SayHelloAgain.
 
 ### Troubleshooting
 
-**When installing CocoaPods, error prompt `activesupport requires Ruby version >= 2.2.2.`**
+When installing CocoaPods, error `activesupport requires Ruby version >= 2.2.2`
 
-Install an older version of `activesupport`, then install CocoaPods:
-```sh
-[sudo] gem install activesupport -v 4.2.6
-[sudo] gem install cocoapods
-```
-**When installing dependencies with CocoaPods, error prompt `Unable to find a specification for !ProtoCompiler-gRPCPlugin`**
+: Install an older version of `activesupport`, then install CocoaPods:
 
-Update the local clone of spec repo by running `pod repo update`
+  ```sh
+  $ [sudo] gem install activesupport -v 4.2.6
+  $ [sudo] gem install cocoapods
+  ```
 
-**Compiler error when compiling `objective_c_plugin.cc`**
+When installing dependencies with CocoaPods, error `Unable to find a specification for !ProtoCompiler-gRPCPlugin`
 
-Removing `protobuf` package with Homebrew before building gRPC may solve
-this problem. We are working on a more elegant fix.
+: Update the local clone of spec repo by running `pod repo update`
 
-**When building HellowWorld, error prompt `ld: unknown option: --no-as-needed`**
+Compiler error when compiling `objective_c_plugin.cc`
 
-This problem is due to linker `ld` in Apple LLVM not supporting the
---no-as-needed option. We are working on a fix right now and will merge the fix
-very soon.
+: Removing `protobuf` package with Homebrew before building gRPC may solve this
+  problem. We are working on a more elegant fix.
 
-**When building grpc, error prompt `cannot find install-sh install.sh or shtool`**
+When building HellowWorld, error `ld: unknown option: --no-as-needed`
 
-Remove the gRPC directory, clone a new one and try again. It is likely that some
-auto generated files are corrupt; remove and rebuild may solve the problem.
+: This problem is due to linker `ld` in Apple LLVM not supporting the
+  `--no-as-needed` option. We are working on a fix right now and will merge the
+  fix very soon.
 
-**When building grpc, error prompt `Can't exec "aclocal"`**
+When building grpc, error `cannot find install-sh install.sh or shtool`
 
-The package `automake` is missing. Install `automake` should solve this problem.
+: Remove the gRPC directory, clone a new one and try again. It is likely that
+  some auto generated files are corrupt; remove and rebuild may solve the
+  problem.
 
-**When building grpc, error prompt `possibly undefined macro: AC_PROG_LIBTOOL`**
+When building grpc, error `Can't exec "aclocal"`
 
-The package `libtool` is missing. Install `libtool` should solve this problem.
+: The package `automake` is missing. Install `automake` should solve this problem.
 
-**When building grpc, error prompt `cannot find install-sh, install.sh, or shtool`**
+When building grpc, error `possibly undefined macro: AC_PROG_LIBTOOL`
 
-Some of the auto generated files are corrupt. Remove the entire gRPC directory, 
-clone from GitHub, and build again.
+: The package `libtool` is missing. Install `libtool` should solve this problem.
 
-**Cannot find `protoc` when building HelloWorld**
+When building grpc, error `cannot find install-sh, install.sh, or shtool`
 
-Run `brew install protobuf` to get `protoc` compiler.
+: Some of the auto generated files are corrupt. Remove the entire gRPC
+  directory, clone from GitHub, and build again.
+
+Cannot find `protoc` when building HelloWorld
+
+: Run `brew install protobuf` to get the `protoc` compiler.
 
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: Objective-C](/docs/tutorials/basic/objective-c/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Objective-C](/docs/tutorials/basic/objective-c/).
 - Explore the Objective-C core API in its [reference
-  documentation](http://cocoadocs.org/docsets/gRPC/)
+  documentation](http://cocoadocs.org/docsets/gRPC/).

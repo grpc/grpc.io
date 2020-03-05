@@ -9,11 +9,11 @@ description: This guide gets you started with gRPC in Dart with a simple working
 
 ### Prerequisites
 
-#### Dart SDK
-
-gRPC requires Dart SDK version 2.0 or higher. Dart gRPC supports Flutter and Server platforms.
+- Dart SDK version 2.0 or higher.
 
 For installation instructions, see [Install Dart](https://dart.dev/install).
+
+> Note: Dart gRPC supports the Flutter and Server platforms.
 
 #### Protocol Buffers v3
 
@@ -44,9 +44,9 @@ $ export PATH=$PATH:$HOME/.pub-cache/bin
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
@@ -66,13 +66,13 @@ From the `example/helloworld` directory:
     $ pub get
     ```
 
- 2. Run the server
+ 2. Run the server:
 
     ```sh
     $ dart bin/server.dart
     ```
 
- 3. In another terminal, run the client
+ 3. From another terminal, run the client:
 
     ```sh
     $ dart bin/client.dart
@@ -205,25 +205,25 @@ Future<void> main(List<String> args) async {
 Run the client and server like you did before. Execute the following commands
 from the `example/helloworld` directory:
 
- 1. Run the server
+ 1. Run the server:
 
     ```sh
     $ dart bin/server.dart
     ```
 
- 2. In another terminal, run the client. This time, add a name as a command-line
+ 2. From another terminal, run the client. This time, add a name as a command-line
     argument:
 
     ```sh
     $ dart bin/client.dart Alice
     ```
 
-You should see the following output in the client terminal:
+    You'll see the following output:
 
-```sh
-Greeter client received: Hello, Alice!
-Greeter client received: Hello again, Alice!
-```
+    ```sh
+    Greeter client received: Hello, Alice!
+    Greeter client received: Hello again, Alice!
+    ```
 
 ### What's next
 
