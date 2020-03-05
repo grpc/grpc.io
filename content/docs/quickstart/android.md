@@ -7,26 +7,25 @@ description: This guide gets you started with gRPC in Android Java with a simple
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Prerequisites
+- JDK version 7 or higher
+- Android SDK, API level 14 or higher
+- An android device set up for [USB debugging][] or an
+  [Android Virtual Device][]
 
-*   JDK: version 7 or higher
-*   Android SDK: API level 14 or higher
-*   An android device set up for [USB
-    debugging](https://developer.android.com/studio/command-line/adb.html#Enabling)
-    or an [Android Virtual
-    Device](https://developer.android.com/studio/run/managing-avds.html)
+[Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
+[USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
 
-Note: gRPC Java does not support running a server on an Android device. For this
-quickstart, the Android client app will connect to a server running on your
-local (non-Android) computer.
+> **Note**: gRPC Java does not support running a server on an Android device.
+> For this quick start, the Android client app will connect to a server running
+> on your local (non-Android) computer.
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
@@ -38,19 +37,19 @@ $ cd grpc-java/examples
 
 ### Run a gRPC application
 
- 1. Compile the server
+ 1. Compile the server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server
+ 2. Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     ```
 
- 3. In another terminal, compile and run the client
+ 3. From another terminal, compile and run the client:
 
     ```sh
     $ cd android/helloworld
@@ -111,7 +110,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Update and run the application
 
@@ -125,7 +124,7 @@ parts of our example application.
 
 #### Update the server
 
-Check out the Java quickstart [here](/docs/quickstart/java/#update-the-server).
+See the [Java quick start](/docs/quickstart/java/#update-the-server).
 
 #### Update the client
 
@@ -134,17 +133,17 @@ In the same directory, open
 method like this:
 
 ```java
-    try {
-        HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
-        HelloReply reply = stub.sayHello(message);
-        reply = stub.sayHelloAgain(message);
-    } catch (Exception e) {
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        e.printStackTrace(pw);
-        pw.flush();
-        return "Failed... : " + System.lineSeparator() + sw;
-    }
+try {
+    HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
+    HelloReply reply = stub.sayHello(message);
+    reply = stub.sayHelloAgain(message);
+} catch (Exception e) {
+    StringWriter sw = new StringWriter();
+    PrintWriter pw = new PrintWriter(sw);
+    e.printStackTrace(pw);
+    pw.flush();
+    return "Failed... : " + System.lineSeparator() + sw;
+}
 ```
 
 #### Run!
@@ -157,13 +156,13 @@ Just like we did before, from the `examples` directory:
     $ ./gradlew installDist
     ```
 
- 2. Run the server
+ 2. Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     ```
 
- 3. In another terminal, compile and install the client to your device
+ 3. From another terminal, compile and install the client to your device
 
     ```sh
     $ cd android/helloworld

@@ -124,22 +124,22 @@ service method, all of which are used in the `RouteGuide` service:
 - A *simple RPC* where the client sends a request to the server and receives a
   response later, just like a normal remote procedure call.
 
-```protobuf
-// Obtains the feature at a given position.
-rpc GetFeature(Point) returns (Feature) {}
-```
+  ```protobuf
+  // Obtains the feature at a given position.
+  rpc GetFeature(Point) returns (Feature) {}
+  ```
 
 - A *response-streaming RPC* where the client sends a request to the server and
   gets back a stream of response messages. You specify a response-streaming
   method by placing the `stream` keyword before the *response* type.
 
-```protobuf
-// Obtains the Features available within the given Rectangle.  Results are
-// streamed rather than returned at once (e.g. in a response message with a
-// repeated field), as the rectangle may cover a large area and contain a
-// huge number of features.
-rpc ListFeatures(Rectangle) returns (stream Feature) {}
-```
+  ```protobuf
+  // Obtains the Features available within the given Rectangle.  Results are
+  // streamed rather than returned at once (e.g. in a response message with a
+  // repeated field), as the rectangle may cover a large area and contain a
+  // huge number of features.
+  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+  ```
 
 - A *request-streaming RPC* where the client sends a sequence of messages to the
   server. Once the client has finished writing the messages, it waits for the
@@ -147,11 +147,11 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
   request-streaming method by placing the `stream` keyword before the *request*
   type.
 
-```protobuf
-// Accepts a stream of Points on a route being traversed, returning a
-// RouteSummary when traversal is completed.
-rpc RecordRoute(stream Point) returns (RouteSummary) {}
-```
+  ```protobuf
+  // Accepts a stream of Points on a route being traversed, returning a
+  // RouteSummary when traversal is completed.
+  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+  ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages
   to the other. The two streams operate independently, so clients and servers
@@ -162,13 +162,13 @@ rpc RecordRoute(stream Point) returns (RouteSummary) {}
   preserved. You specify this type of method by placing the `stream` keyword
   before both the request and the response.
 
-```protobuf
-// Accepts a stream of RouteNotes sent while a route is being traversed,
-// while receiving other RouteNotes (e.g. from other users).
-rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
-```
+  ```protobuf
+  // Accepts a stream of RouteNotes sent while a route is being traversed,
+  // while receiving other RouteNotes (e.g. from other users).
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+  ```
 
-Our .proto file also contains protocol buffer message type definitions for all
+Our `.proto` file also contains protocol buffer message type definitions for all
 the request and response types used in our service methods - for example, here's
 the `Point` message type:
 

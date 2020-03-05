@@ -17,7 +17,7 @@ It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
-[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and 
+[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and
 [C# generated code reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
 
 <div id="toc"></div>
@@ -61,7 +61,7 @@ instructions](https://github.com/grpc/grpc/tree/
 
 Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). 
+[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/
 {{< param grpc_release_tag >}}/examples/protos/route_guide.proto).
@@ -82,10 +82,10 @@ all of which are used in the `RouteGuide` service:
   object and waits for a response to come back, just like a normal function
   call.
 
-```protobuf
-// Obtains the feature at a given position.
-rpc GetFeature(Point) returns (Feature) {}
-```
+  ```protobuf
+  // Obtains the feature at a given position.
+  rpc GetFeature(Point) returns (Feature) {}
+  ```
 
 - A *server-side streaming RPC* where the client sends a request to the server
   and gets a stream to read a sequence of messages back. The client reads from
@@ -93,13 +93,13 @@ rpc GetFeature(Point) returns (Feature) {}
   example, you specify a server-side streaming method by placing the `stream`
   keyword before the *response* type.
 
-```protobuf
-// Obtains the Features available within the given Rectangle.  Results are
-// streamed rather than returned at once (e.g. in a response message with a
-// repeated field), as the rectangle may cover a large area and contain a
-// huge number of features.
-rpc ListFeatures(Rectangle) returns (stream Feature) {}
-```
+  ```protobuf
+  // Obtains the Features available within the given Rectangle.  Results are
+  // streamed rather than returned at once (e.g. in a response message with a
+  // repeated field), as the rectangle may cover a large area and contain a
+  // huge number of features.
+  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+  ```
 
 - A *client-side streaming RPC* where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
@@ -107,11 +107,11 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
   and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
-```protobuf
-// Accepts a stream of Points on a route being traversed, returning a
-// RouteSummary when traversal is completed.
-rpc RecordRoute(stream Point) returns (RouteSummary) {}
-```
+  ```protobuf
+  // Accepts a stream of Points on a route being traversed, returning a
+  // RouteSummary when traversal is completed.
+  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+  ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
@@ -122,13 +122,13 @@ rpc RecordRoute(stream Point) returns (RouteSummary) {}
   stream is preserved. You specify this type of method by placing the `stream`
   keyword before both the request and the response.
 
-```protobuf
-// Accepts a stream of RouteNotes sent while a route is being traversed,
-// while receiving other RouteNotes (e.g. from other users).
-rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
-```
+  ```protobuf
+  // Accepts a stream of RouteNotes sent while a route is being traversed,
+  // while receiving other RouteNotes (e.g. from other users).
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+  ```
 
-Our .proto file also contains protocol buffer message type definitions for all
+Our  `.proto` file also contains protocol buffer message type definitions for all
 the request and response types used in our service methods - for example, here's
 the `Point` message type:
 
@@ -480,28 +480,27 @@ using (var call = client.RouteChat())
 
 ### Try it out!
 
-#### Build the client and server:
+Build the client and server:
 
-##### Using Visual Studio (or Visual Studio For Mac)
+Using Visual Studio (or Visual Studio For Mac)
+: Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
 
-- Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
+Using `dotnet` command line tool
 
-##### Using "dotnet" command line tool
+: Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide`
+  directory. For additional instructions on building the gRPC example with the
+  `dotnet` command line tool, see [Quick Start](../../quickstart/csharp.html).
 
-- Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
-  See the [quickstart](../../quickstart/csharp.html) for additional instructions on building 
-  the gRPC example with the `dotnet` command line tool.
+Run the server:
 
-Run the server, which will listen on port 50052:
-
-```
+```sh
 > cd RouteGuideServer/bin/Debug/netcoreapp2.1
 > dotnet exec RouteGuideServer.dll
 ```
 
-Run the client (in a different terminal):
+From a different terminal, run the client:
 
-```
+```sh
 > cd RouteGuideClient/bin/Debug/netcoreapp2.1
 > dotnet exec RouteGuideClient.dll
 ```

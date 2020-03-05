@@ -7,25 +7,23 @@ description: This guide gets you started with gRPC in Node with a simple working
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Prerequisites
-
- * `node`: version 4.0.0 or higher
+- Node version 4.0.0 or higher
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
-$ # Clone the repository to get the example code
+# Clone the repository to get the example code
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
-$ # Navigate to the dynamic codegen "hello, world" Node example:
+# Navigate to the dynamic codegen "hello, world" Node example:
 $ cd grpc/examples/node/dynamic_codegen
-$ # Install the example's dependencies
+# Install the example's dependencies
 $ npm install
 ```
 
@@ -33,13 +31,13 @@ $ npm install
 
 From the `examples/node/dynamic_codegen` directory:
 
- 1. Run the server
+ 1. Run the server:
 
     ```sh
     $ node greeter_server.js
     ```
 
- 2. In another terminal, run the client
+ 2. From another terminal, run the client:
 
     ```sh
     $ node greeter_client.js
@@ -100,7 +98,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Update and run the application
 
@@ -128,7 +126,6 @@ function main() {
   server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
   server.start();
 }
-...
 ```
 
 #### Update the client
@@ -152,13 +149,13 @@ function main() {
 
 Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
- 1. Run the server
+ 1. Run the server:
 
     ```sh
     $ node greeter_server.js
     ```
 
- 2. In another terminal, run the client
+ 2. From another terminal, run the client:
 
     ```sh
     $ node greeter_client.js
@@ -167,8 +164,8 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 ### What's next
 
  - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-   and [gRPC Concepts](/docs/guides/concepts/)
- - Work through a more detailed tutorial in [gRPC Basics: Node](/docs/tutorials/basic/node/)
+   and [gRPC Concepts](/docs/guides/concepts/).
+ - Work through a more detailed tutorial in [gRPC Basics: Node](/docs/tutorials/basic/node/).
  - Explore the gRPC Node core API in its [reference
-   documentation](/grpc/node/)
+   documentation](/grpc/node/).
  - We do have more than one grpc implementation for nodejs. [Learn about the pros and cons of each here](https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md).

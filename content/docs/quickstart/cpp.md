@@ -7,9 +7,9 @@ description: This guide gets you started with gRPC in C++ with a simple working 
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Install gRPC
+#### gRPC
 
 To install gRPC on your system, follow the [instructions to install gRPC C++ via make](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make).
 
@@ -19,7 +19,7 @@ example `Makefile`s try to look up the installed gRPC path using `pkg-config`.
 On Debian-based systems like Ubuntu, this can usually be done via
 `sudo apt-get install pkg-config`.
 
-#### Install Protocol Buffers v3
+#### Protocol Buffers v3
 
 While not mandatory to use gRPC, gRPC applications usually leverage Protocol
 Buffers v3 for service definitions and data serialization, and our example code
@@ -55,11 +55,13 @@ instructions for details](https://github.com/grpc/grpc/blob/master/src/cpp/READM
 
 From the `examples/cpp/helloworld` directory, run the server, which will listen
 on port 50051:
+
 ```sh
 $ ./greeter_server
 ```
 
 From a different terminal, run the client:
+
 ```sh
 $ ./greeter_client
 ```
@@ -68,7 +70,6 @@ If things go smoothly, you will see the `Greeter received: Hello world` in the
 client side output.
 
 Congratulations! You've just run a client-server application with gRPC.
-
 
 ### Update a gRPC service
 
@@ -80,7 +81,6 @@ C++](/docs/tutorials/basic/cpp/). For now all you need to know is that both the 
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
 the client and returns a `HelloResponse` from the server, and that this method
 is defined like this:
-
 
 ```protobuf
 // The greeting service definition.
@@ -105,7 +105,6 @@ Let's update this so that the `Greeter` service has two methods. Edit
 update it with a new `SayHelloAgain` method, with the same request and response
 types:
 
-
 ```protobuf
 // The greeting service definition.
 service Greeter {
@@ -126,7 +125,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
@@ -150,7 +149,6 @@ and call the new method in the human-written parts of our example application.
 
 In the same directory, open `greeter_server.cc`. Implement the new method like
 this:
-
 
 ```c++
 class GreeterServiceImpl final : public Greeter::Service {
@@ -223,28 +221,27 @@ int main(int argc, char** argv) {
 
 Just like we did before, from the `examples/cpp/helloworld` directory:
 
-1. Build the client and server after having made changes:
+ 1. Build the client and server after having made changes:
 
     ```sh
     $ make
     ```
 
-2. Run the server
+ 2. Run the server:
 
     ```sh
     $ ./greeter_server
     ```
 
-3. On a different terminal, run the client
+ 3. On a different terminal, run the client:
 
     ```sh
     $ ./greeter_client
     ```
 
-    You should see the updated output:
+    You'll see the following output:
 
     ```sh
-    $ ./greeter_client
     Greeter received: Hello world
     Greeter received: Hello again world
     ```
@@ -252,7 +249,7 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/cpp/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/cpp/).
 - Explore the gRPC C++ core API in its [reference
-  documentation](/grpc/cpp/)
+  documentation](/grpc/cpp/).

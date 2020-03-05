@@ -7,45 +7,45 @@ description: This guide gets you started with gRPC in Ruby with a simple working
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Prerequisites
+- Ruby version 2 or higher
 
- * `ruby`: version 2 or higher
+#### gRPC
 
-#### Install gRPC
+To install gRPC, run the following command:
 
-```
+```sh
 $ gem install grpc
 ```
 
-#### Install gRPC tools
+#### gRPC tools
 
 Ruby's gRPC tools include the protocol buffer compiler `protoc` and the special
 plugin for generating server and client code from the `.proto` service
-definitions. For the first part of our quickstart example, we've already
+definitions. For the first part of our quick-start example, we've already
 generated the server and client stubs from
 [helloworld.proto](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto),
-but you'll need the tools for the rest of our quickstart, as well as later
+but you'll need the tools for the rest of our quick start, as well as later
 tutorials and your own projects.
 
-To install gRPC tools, run:
+To install gRPC tools, run the following command:
 
 ```sh
-gem install grpc-tools
+$ gem install grpc-tools
 ```
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
-$ # Clone the repository to get the example code:
+# Clone the repository to get the example code:
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
-$ # Navigate to the "hello, world" Ruby example:
+# Navigate to the "hello, world" Ruby example:
 $ cd grpc/examples/ruby
 ```
 
@@ -53,17 +53,17 @@ $ cd grpc/examples/ruby
 
 From the `examples/ruby` directory:
 
-1. Run the server
+ 1. Run the server:
 
-   ```sh
-   $ ruby greeter_server.rb
-   ```
+    ```sh
+    $ ruby greeter_server.rb
+    ```
 
-2. In another terminal, run the client
+ 2. From another terminal, run the client:
 
-   ```sh
-   $ ruby greeter_client.rb
-   ```
+    ```sh
+    $ ruby greeter_client.rb
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -120,7 +120,7 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
@@ -149,7 +149,6 @@ class GreeterServer < Helloworld::Greeter::Service
     Helloworld::HelloReply.new(message: "Hello again, #{hello_req.name}")
   end
 end
-...
 ```
 
 #### Update the client
@@ -171,22 +170,22 @@ end
 
 Just like we did before, from the `examples/ruby` directory:
 
-1. Run the server
+ 1. Run the server:
 
-   ```sh
-   $ ruby greeter_server.rb
-   ```
+    ```sh
+    $ ruby greeter_server.rb
+    ```
 
-2. In another terminal, run the client
+ 2. From another terminal, run the client:
 
-   ```sh
-   $ ruby greeter_client.rb
-   ```
+    ```sh
+    $ ruby greeter_client.rb
+    ```
 
 ### What's next
 
  - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-   and [gRPC Concepts](/docs/guides/concepts/)
- - Work through a more detailed tutorial in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby/)
+   and [gRPC Concepts](/docs/guides/concepts/).
+ - Work through a more detailed tutorial in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby/).
  - Explore the gRPC Ruby core API in its [reference
-   documentation](http://www.rubydoc.info/gems/grpc)
+   documentation](http://www.rubydoc.info/gems/grpc).

@@ -7,13 +7,12 @@ description: This guide gets you started with gRPC in Python with a simple worki
 
 <div id="toc"></div>
 
-### Before you begin
+### Prerequisites
 
-#### Prerequisites
+- Python 2.7, or Python 3.4 or higher
+- `pip` version 9.0.1 or higher
 
-gRPC Python is supported for use with Python 2.7 or Python 3.4 or higher.
-
-Ensure you have `pip` version 9.0.1 or higher:
+If necessary, upgrade your version of `pip`:
 
 ```sh
 $ python -m pip install --upgrade pip
@@ -29,7 +28,7 @@ $ source venv/bin/activate
 $ python -m pip install --upgrade pip
 ```
 
-#### Install gRPC
+#### gRPC
 
 Install gRPC:
 
@@ -55,14 +54,14 @@ You can work around this using:
 $ python -m pip install grpcio --ignore-installed
 ```
 
-#### Install gRPC tools
+#### gRPC tools
 
 Python's gRPC tools include the protocol buffer compiler `protoc` and the
 special plugin for generating server and client code from `.proto` service
-definitions. For the first part of our quickstart example, we've already
+definitions. For the first part of our quick-start example, we've already
 generated the server and client stubs from
 [helloworld.proto](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto),
-but you'll need the tools for the rest of our quickstart, as well as later
+but you'll need the tools for the rest of our quick start, as well as later
 tutorials and your own projects.
 
 To install gRPC tools, run:
@@ -73,15 +72,15 @@ $ python -m pip install grpcio-tools
 
 ### Download the example
 
-You'll need a local copy of the example code to work through this quickstart.
+You'll need a local copy of the example code to work through this quick start.
 Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quickstart
+clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
 ```sh
-$ # Clone the repository to get the example code:
+# Clone the repository to get the example code:
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
-$ # Navigate to the "hello, world" Python example:
+# Navigate to the "hello, world" Python example:
 $ cd grpc/examples/python/helloworld
 ```
 
@@ -89,13 +88,13 @@ $ cd grpc/examples/python/helloworld
 
 From the `examples/python/helloworld` directory:
 
-1. Run the server
+1. Run the server:
 
    ```sh
    $ python greeter_server.py
    ```
 
-2. In another terminal, run the client
+2. From another terminal, run the client:
 
    ```sh
    $ python greeter_client.py
@@ -156,12 +155,12 @@ message HelloReply {
 }
 ```
 
-(Don't forget to save the file!)
+Remember to save the file!
 
 ### Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. 
+service definition.
 
 From the `examples/python/helloworld` directory, run:
 
@@ -212,22 +211,22 @@ def run():
 
 Just like we did before, from the `examples/python/helloworld` directory:
 
-1. Run the server
+ 1. Run the server:
 
-   ```sh
-   $ python greeter_server.py
-   ```
+    ```sh
+    $ python greeter_server.py
+    ```
 
-2. In another terminal, run the client
+ 2. From another terminal, run the client:
 
-   ```sh
-   $ python greeter_client.py
-   ```
+    ```sh
+    $ python greeter_client.py
+    ```
 
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/)
-- Work through a more detailed tutorial in [gRPC Basics: Python](/docs/tutorials/basic/python/)
+  and [gRPC Concepts](/docs/guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Python](/docs/tutorials/basic/python/).
 - Explore the gRPC Python core API in its [reference
-  documentation](/grpc/python/)
+  documentation](/grpc/python/).
