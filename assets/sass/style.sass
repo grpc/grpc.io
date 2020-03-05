@@ -1,5 +1,4 @@
 @charset "utf-8"
-{{ $extraColors := site.Params.colors.extra }}
 {{ $fontAwesomeVersion := site.Params.font_awesome_version }}
 {{ $fonts := site.Params.fonts }}
 {{ if $fonts }}
@@ -20,20 +19,13 @@
 $grpc-green: #244c5a
 $grpc-blue: #5ac5c5
 
-
-// Extra colors specified in config
-{{ with $extraColors }}
-{{ range . }}
-${{ .name }}: '{{ .hex }}'
-{{ end }}
-{{ end }}
-
 // Initial Bulma imports
 @import "bulma/sass/utilities/initial-variables"
 @import "bulma/sass/utilities/functions"
 
 // Bulma-specific overrides
 $primary: $grpc-green
+$secondary: $grpc-blue
 $navbar-height: 5rem
 $navbar-item-img-max-height: $navbar-height * 0.6
 
@@ -56,11 +48,7 @@ $font-heading: {{ $.Site.Params.heading_font | default "'Fira Sans', sans-serif"
 @import "bulma/sass/utilities/derived-variables"
 
 // Bulma variable overrdides that require derived variables like $dark
-{{ with $extraColors }}
-{{ range . }}
-$colors: mergeColorMaps(("{{ .name }}": ({{ .hex }}, $white)), $colors)
-{{ end }}
-{{ end }}
+$colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
 // Bulma core
 @import "bulma/sass/utilities/_all"

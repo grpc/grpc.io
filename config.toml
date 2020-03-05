@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "gRPC"
 pygmentsCodeFences = true
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
 grpc_release_tag = "v1.27.0"
 grpc_release_tag_no_v = "1.27.0"
@@ -32,6 +35,11 @@ baseName = "release"
 [outputs]
 home = ["HTML", "REDIRECTS", "RSS", "RELEASE"]
 
+[[params.fonts]]
+name = "Open Sans"
+sizes = [300, 400, 600, 700]
+type = "sans_serif"
+
 # Site menus
 [[menu.main]]
 name = "About"
@@ -44,89 +52,98 @@ identifier = "docs"
 weight = 2
 
 [[menu.main]]
+name = "Guides"
+url = "/guides"
+identifier = "guides"
+weight = 3
+
+[[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Community"
 url = "/community"
-weight = 4
+weight = 5
 
 [[menu.main]]
 name = "Packages"
 url = "https://packages.grpc.io"
-weight = 5
+weight = 6
 
 [[menu.main]]
 name = "FAQ"
 url = "/faq"
-weight = 6
+weight = 7
 
 [[menu.main]]
 name = "Overview"
 url = "/docs"
 weight = 1
+parent = "docs"
 
-[[menu.dropdown]]
+[[menu.main]]
 name = "Quick Start"
 url = "/docs/quickstart/"
 weight = 2
+parent = "docs"
 
-[[menu.dropdown]]
-name = "Guides"
-url = "/docs/guides/"
-weight = 3
-
-[[menu.dropdown]]
+[[menu.main]]
 name = "Tutorials"
 url = "/docs/tutorials/"
-weight = 4
+weight = 3
+parent = "docs"
 
-[[menu.dropdown]]
+[[menu.main]]
 name = "Reference"
 url = "/docs/reference/"
-weight = 5
+weight = 4
+parent = "docs"
 
-[[menu.dropdown]]
+[[menu.main]]
 name = "Samples"
 url = "/docs/samples/"
-weight = 6
+weight = 5
+parent = "docs"
 
-[[menu.dropdown]]
+[[menu.main]]
 name = "Presentations"
 url = "/docs/talks"
-weight = 7
+weight = 6
 
-[[menu.guides]]
+[[menu.main]]
 name = "What is gRPC?"
 url = "/docs/guides/"
 weight = 1
+parent = "guides"
 
-[[menu.guides]]
+[[menu.main]]
 name = "gRPC Concepts"
 url = "/docs/guides/concepts/"
 weight = 2
+parent = "guides"
 
-[[menu.guides]]
+[[menu.main]]
 name = "Authentication"
 url = "/docs/guides/auth/"
 weight = 3
+parent = "guides"
 
-[[menu.guides]]
+[[menu.main]]
 name = "Error handling and debugging"
 url = "/docs/guides/error/"
 weight = 4
+parent = "guides"
 
-[[menu.guides]]
+[[menu.main]]
 name = "Benchmarking"
 url = "/docs/guides/benchmarking/"
 weight = 5
+parent = "guides"
 
-[[menu.guides]]
+[[menu.main]]
 name = "gRPC Wire Format"
 url = "https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md"
 weight = 6
-
-[markup.goldmark.renderer]
-unsafe = true
+parent = "guides"

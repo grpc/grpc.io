@@ -1,0 +1,50 @@
+{{ $menu  := site.Menus.main }}
+
+{{ range $menu }}
+{{ $name := .Name | upper }}
+{{ if .HasChildren }}
+{{ $url := .URL | relLangURL }}
+<div class="navbar-item is-size-5 is-size-6-mobile has-dropdown is-hoverable">
+  <a class="navbar-link is-arrowless"{{ with $url }} href="{{ . }}"{{ end }}>
+    <span>
+      {{ $name }}
+    </span>
+    <span class="icon has-text-secondary">
+      <i class="fas fa-caret-down"></i>
+    </span>
+  </a>
+
+  <div class="navbar-dropdown">
+    {{ range .Children }}
+    {{ $name       := .Name }}
+    {{ $url        := .URL }}
+    {{ $isExternal := hasPrefix .URL "http" }}
+    <a class="navbar-item"{{ with $url }} href="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank"{{ end }}>
+      <span>
+        {{ $name }}
+      </span>
+      {{ if $isExternal }}
+      <span class="icon has-text-grey">
+        <i class="fas fa-sm fa-external-link-alt"></i>
+      </span>
+      {{ end }}
+    </a>
+    {{ end }}
+  </div>
+</div>
+{{ else }}
+{{ $name       := .Name | upper }}
+{{ $url        := .URL }}
+{{ $isExternal := hasPrefix .URL "http" }}
+<a class="navbar-item is-size-5 is-size-6-mobile"{{ with $url }} href="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank"{{ end }}>
+  <span>
+    {{ $name }}
+  </span>
+  {{ if $isExternal }}
+  <span class="icon has-text-secondary">
+    <i class="fas fa-xs fa-external-link-alt"></i>
+  </span>
+  {{ end }}
+</a>
+{{ end }}
+{{ end }}

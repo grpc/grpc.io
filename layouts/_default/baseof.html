@@ -1,7 +1,8 @@
 {{ $dropdown   := site.Menus.dropdown }}
 {{ $currentUrl := .RelPermalink }}
+{{ $lang       := site.LanguageCode }}
 <!DOCTYPE html>
-<html>
+<html lang="{{ $lang }}">
   <head>
     {{ partial "google-analytics.html" . }}
     {{ partial "meta.html" . }}
