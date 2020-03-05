@@ -28,6 +28,7 @@ $primary: $grpc-green
 $secondary: $grpc-blue
 $navbar-height: 5rem
 $navbar-item-img-max-height: $navbar-height * 0.6
+$section-padding: 6rem 1.5rem
 
 // Font overrides
 {{ if $fonts }}
@@ -64,7 +65,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
 // @import "bulma/sass/elements/box"
 @import "bulma/sass/elements/button"
-// @import "bulma/sass/elements/content"
+@import "bulma/sass/elements/content"
 @import "bulma/sass/elements/icon"
 // @import "bulma/sass/elements/image"
 // @import "bulma/sass/elements/notification"
@@ -105,13 +106,25 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 =logo($d, $t)
   +desktop
     width: $d
-    margin-bottom: 2rem
   +touch
     width: $t
-    margin-bottom: 1rem
 
 .is-hero-logo
   +logo(50%, 80%)
+
+  +desktop
+    margin-bottom: 2rem
+  +touch
+    margin-bottom: 1rem
+
+.is-feature-icon
+  +tablet
+    width: 80%
+  +mobile
+    width: 30%
+
+  +touch
+    margin: 0 auto
 
 .is-page
   display: flex
@@ -120,3 +133,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
   .is-main
     flex: 1
+
+  
+.is-feature-pane
+  margin-bottom: 2rem

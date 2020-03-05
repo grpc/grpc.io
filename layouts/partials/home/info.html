@@ -1,0 +1,42 @@
+{{ $why      := site.Params.why | markdownify }}
+{{ $features := site.Params.features }}
+<section class="section">
+  <div class="container has-text-centered">
+    <p class="title is-size-1 is-size-2-mobile has-text-primary has-text-weight-medium">
+      Why gRPC?
+    </p>
+
+    <div class="content is-large has-text-weight-light">
+      {{ $why }}
+    </div>
+  </div>
+</section>
+
+<section class="section has-background-white-bis">
+  <div class="container">
+    <div class="columns is-vcentered is-multiline is-variable is-8">
+      {{ range $features }}
+      {{ $icon  := printf "img/icons/%s" .icon | relURL }}
+      {{ $title := .title }}
+      {{ $desc  := .description | markdownify }}
+      <div class="column is-half is-feature-pane">
+        <div class="columns is-variable is-8">
+          <div class="column is-one-third">
+            <img class="is-feature-icon" src="{{ $icon }}" alt="{{ $title }} feature icon">
+          </div>
+
+          <div class="column">
+            <p class="title is-size-3 is-size-4-mobile has-text-primary has-text-weight-light is-spaced">
+              {{ $title }}
+            </p>
+
+            <p class="subtitle">
+              {{ $desc }}
+            </p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
