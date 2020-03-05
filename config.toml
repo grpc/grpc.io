@@ -7,6 +7,7 @@ pygmentsCodeFences = true
 grpc_release_tag = "v1.27.0"
 grpc_release_tag_no_v = "1.27.0"
 grpc_java_release_tag = "v1.27.0"
+google_analytics_id = "UA-60127042-1"
 
 milestones_link = "https://github.com/grpc/grpc/milestones"
 

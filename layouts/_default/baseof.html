@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {{ partial "google-analytics.html" . }}
     {{ partial "meta.html" . }}
 
     <title>
@@ -10,17 +11,6 @@
     </title>
     
     {{ partial "css.html" . }}
-    
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60127042-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-60127042-1');
-    </script>
-
   </head>
   <body>
     <div id="landing-content">
