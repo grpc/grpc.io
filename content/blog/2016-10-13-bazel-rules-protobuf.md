@@ -729,8 +729,7 @@ response to the client.
 
 ### 2.4.4: The GreeterTimer Client
 
-The
-[go client](go/main.go)
+The [Go client](go/main.go)
 prepares a `TimerRequest` and gets back a stream interface from the
 `client.TimeHello` method.  We call its `Recv()` method until EOF, at
 which point the call is complete.  A summary of each BatchResponse is
