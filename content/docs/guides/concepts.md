@@ -10,8 +10,6 @@ language-specific details, see the Quick Start, tutorial, and reference
 documentation for your chosen language(s), where available (complete reference
 docs are coming soon).
 
-<div id="toc" class="toc mobile-toc"></div>
-
 ### Overview
 
 #### Service definition
@@ -170,9 +168,7 @@ before writing its responses, or the server and client could "ping-pong": the
 server gets a request, then sends back a response, then the client sends another
 request based on the response, and so on.
 
-<a name="deadlines"></a>
-
-#### Deadlines/Timeouts
+#### Deadlines/Timeouts {#deadlines}
 
 gRPC allows clients to specify how long they are willing to wait for an RPC to
 complete before the RPC is terminated with the error `DEADLINE_EXCEEDED`. On
@@ -198,8 +194,6 @@ complete before a client has sent all its requests.
 Either the client or the server can cancel an RPC at any time. A cancellation
 terminates the RPC immediately so that no further work is done. It is *not* an
 "undo": changes made before the cancellation will not be rolled back.
-
-<a name="metadata"></a>
 
 #### Metadata
 

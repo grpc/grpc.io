@@ -5,8 +5,6 @@ short: PHP
 description: This guide gets you started with gRPC in PHP with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - PHP 5.5 or higher, 7.0 or higher

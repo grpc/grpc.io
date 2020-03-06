@@ -5,8 +5,6 @@ short: Objective-C
 description: This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Before you begin
 
 #### System requirements

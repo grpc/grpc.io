@@ -5,8 +5,6 @@ short: Python
 description: This guide gets you started with gRPC in Python with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - Python 2.7, or Python 3.4 or higher

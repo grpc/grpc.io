@@ -21,8 +21,6 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Python
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 This example is a simple route mapping application that lets clients get
@@ -177,9 +175,7 @@ than creates a new one. The generated code files are called
 
 Note: The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a .proto file.
 
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how you create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -313,9 +309,7 @@ def serve():
 Because `start()` does not block you may need to sleep-loop if there is nothing
 else for your code to do while serving.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 You can see the complete example client code in
 [examples/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/python/route_guide/route_guide_client.py).

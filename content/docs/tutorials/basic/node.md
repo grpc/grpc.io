@@ -20,8 +20,6 @@ that the example in this tutorial uses the
 buffers language. You can find out more in the
 [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -191,9 +189,7 @@ Once you've done this, the stub constructor is in the `routeguide` namespace
 used to create a server) is a property of the stub
 (`protoDescriptor.routeguide.RouteGuide.service`);
 
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -368,9 +364,7 @@ As you can see, we build and start our server with the following steps:
     using the instance's `bind()` method.
  1. Call `start()` on the instance to start the RPC server.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 In this section, we'll look at creating a Node.js client for our `RouteGuide`
 service. You can see our complete example client code in

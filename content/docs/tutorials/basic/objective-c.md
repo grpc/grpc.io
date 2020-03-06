@@ -22,11 +22,7 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
 [Objective-C generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated).
 
-<div id="toc"></div>
-
-<a name="why-grpc"></a>
-
-### Why use gRPC?
+### Why use gRPC? {#why-grpc}
 
 With gRPC you can define your service once in a .proto file and implement
 clients and servers in any of gRPC's supported languages, which in turn can be
@@ -44,10 +40,7 @@ that has been optimized over the years at Google to keep code size to a minimum.
 The latter is important in Objective-C, because the ability of the compiler to
 strip unused code is limited by the dynamic nature of the language.
 
-
-<a name="setup"></a>
-
-### Example code and setup
+### Example code and setup {#setup}
 
 The example code for our tutorial is in
 [grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/objective-c/route_guide).
@@ -76,10 +69,7 @@ well as the relevant tools to generate the client library code (and a server in
 another language, for testing). You can obtain the latter by following [these
 setup instructions](https://github.com/grpc/homebrew-grpc).
 
-
-<a name="try"></a>
-
-## Try it out!
+## Try it out! {#try}
 
 To try the sample app, we need a gRPC server running locally. Let's compile and
 run, for example, the C++ server in this repository:
@@ -108,10 +98,7 @@ The next sections guide you step-by-step through how this proto service is
 defined, how to generate a client library from it, and how to create an app that
 uses that library.
 
-
-<a name="proto"></a>
-
-### Defining the service
+### Defining the service {#proto}
 
 First let's look at how the service we're using is defined. A gRPC *service* and
 its method *request* and *response* types using [protocol
@@ -200,9 +187,7 @@ You can specify a prefix to be used for your generated classes by adding the
 option objc_class_prefix = "RTG";
 ```
 
-<a name="protoc"></a>
-
-### Generating client code
+### Generating client code {#protoc}
 
 Next we need to generate the gRPC client interfaces from our .proto service
 definition. We do this using the protocol buffer compiler (`protoc`) with a
@@ -246,10 +231,7 @@ You can also use the provided Podspec file to generate client code from any
 other proto service definition; just replace the name (matching the file name),
 version, and other metadata.
 
-
-<a name="client"></a>
-
-### Creating the client application
+### Creating the client application {#client}
 
 In this section, we'll look at creating an Objective-C client for our
 `RouteGuide` service. You can see our complete example client code in

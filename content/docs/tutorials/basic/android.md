@@ -16,8 +16,6 @@ By walking through this example you'll learn how to:
 It assumes that you have read the [Overview](/docs/) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 This guide also does not cover anything on the server side. You can check the [Java guide](/docs/tutorials/basic/java/) for more information.
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get information about features on their route, create a summary of their route, and exchange route information such as traffic updates with the server and other clients.

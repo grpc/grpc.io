@@ -2,6 +2,7 @@ baseURL = "https://grpc.io/"
 languageCode = "en-us"
 title = "gRPC"
 pygmentsCodeFences = true
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [markup.goldmark.renderer]
 unsafe = true

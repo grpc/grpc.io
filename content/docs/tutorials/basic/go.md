@@ -22,8 +22,6 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and the [Go
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/go-generated).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -170,10 +168,7 @@ This contains:
 - An interface type for servers to implement, also with the methods defined in
   the `RouteGuide` service.
 
-
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -392,9 +387,7 @@ To build and start a server, we:
 4. Call `Serve()` on the server with our port details to do a blocking wait
    until the process is killed or `Stop()` is called.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#server}
 
 In this section, we'll look at creating a Go client for our `RouteGuide`
 service. You can see our complete example client code in

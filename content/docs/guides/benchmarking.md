@@ -5,10 +5,6 @@ description: |
   gRPC is designed to support high-performance open-source RPCs in many languages. This document describes the performance benchmarking tools, the scenarios considered by the tests, and the testing infrastructure.
 ---
 
-<div id="toc"></div>
-
-<a name="Overview"></a>
-
 ### Overview
 
 gRPC is designed for both high-performance and high-productivity
@@ -42,9 +38,6 @@ These workers are controlled by a
 that takes as input a scenario description (in JSON format) and an
 environment variable specifying the host:port of each worker process.
 
-
-<a name="Languages under test"></a>
-
 ### Languages under test
 
 The following languages have continuous performance testing as both
@@ -73,8 +66,6 @@ performance can be benchmarked using a proxy WorkerService written in
 another language. This code is implemented for PHP but is not yet in 
 continuous testing mode.
 
-<a name="Scenarios under test"></a>
-
 ### Scenarios under test
 
 There are several important scenarios under test and displayed in the dashboards
@@ -88,8 +79,6 @@ Most performance testing is using secure communication and
 protobufs. Some C++ tests additionally use insecure communication and
 the generic (non-protobuf) API to display peak performance. Additional
 scenarios may be added in the future.
-
-<a name="Testing infrastructure"></a>
 
 ### Testing infrastructure
 

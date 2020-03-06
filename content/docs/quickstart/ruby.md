@@ -5,8 +5,6 @@ short: Ruby
 description: This guide gets you started with gRPC in Ruby with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - Ruby version 2 or higher

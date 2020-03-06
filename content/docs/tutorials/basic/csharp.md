@@ -20,8 +20,6 @@ language: you can find out more in the
 [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and
 [C# generated code reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -170,10 +168,7 @@ under the `RouteGuide/obj/Debug/TARGET_FRAMEWORK` directory:
    - a class `RouteGuide.RouteGuideClient` that can be used to access remote
      RouteGuide instances
 
-
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -353,9 +348,7 @@ do this, we:
    This is done by adding `ServerPort` to the `Ports` collection.
 1. Call `Start` on the server instance to start an RPC server for our service.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in

@@ -17,11 +17,7 @@ By walking through this example you'll learn how to:
 It assumes a passing familiarity with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview).
 
-<div id="toc"></div>
-
-<a name="why-grpc"></a>
-
-### Why use gRPC and gRPC-Web?
+### Why use gRPC and gRPC-Web? {#why-grpc}
 
 With gRPC you can define your service once in a .proto file and implement
 clients and servers in any of gRPC's supported languages, which in turn can be
@@ -32,9 +28,7 @@ protocol buffers, including efficient serialization, a simple IDL, and easy
 interface updating. gRPC-Web lets you access gRPC services built in this manner
 from browsers using an idiomatic API.
 
-<a name="setup"></a>
-
-### Define the Service
+### Define the Service {#setup}
 
 The first step when creating a gRPC service is to define the service methods
 and their request and response message types using protocol buffers. In this

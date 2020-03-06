@@ -5,8 +5,6 @@ description: |
   This page describes how gRPC deals with errors, including gRPC's built-in error codes. Example code in different languages can be found [here](https://github.com/avinassh/grpc-errors).
 ---
 
-<div id="toc" class="toc mobile-toc"></div>
-
 ### Standard error model
 
 As you'll have seen in our concepts document and examples, when a gRPC call

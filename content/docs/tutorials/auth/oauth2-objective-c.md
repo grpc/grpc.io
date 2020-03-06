@@ -22,11 +22,7 @@ Objective-C](/docs/tutorials/basic/objective-c/) and the
 [overview](/docs/), and are familiar with OAuth2 concepts like _access
 token_.
 
-<div id="toc"></div>
-
-<a name="setup"></a>
-
-### Example code and setup
+### Example code and setup {#setup}
 
 The example code for our tutorial is in
 [gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/
@@ -66,10 +62,7 @@ As with the other Objective-C examples, you also should have
 tools to generate the client library code. You can obtain the latter by
 following [these setup instructions](https://github.com/grpc/homebrew-grpc).
 
-
-<a name="try"></a>
-
-### Try it out!
+### Try it out! {#try}
 
 To try the sample app, first have Cocoapods generate and install the client library for our .proto
 files:
@@ -105,9 +98,7 @@ The next sections guide you step-by-step through how the gRPC call in
 `MakeRPCViewController` is performed. You can see the complete code in
 [MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/objective-c/auth_sample/MakeRPCViewController.m).
 
-<a name="rpc-call"></a>
-
-### Create a call with access token
+### Create a call with access token {#rpc-call}
 
 To make an authenticated call, first you need to initialize a `GRPCCallOptions` object and configure
 it with the access token.
@@ -151,9 +142,8 @@ You can then start the RPC represented by this object at any later time like thi
 [rpc start];
 ```
 
-<a name="authorization-protocol">
+### An alternative way to provide access token {#authorization-protocol}
 
-### An alternative way to provide access token
 Rather than setting `oauth2AccessToken` option in `GRPCCallOptions` before the RPC object is
 created, an alternative approach allows users providing access token at call start time.
 

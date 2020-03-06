@@ -20,8 +20,6 @@ buffers language: you can find out more in
 the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -171,10 +169,7 @@ Running this command regenerates the following files in the lib directory:
      implementations
    - a class `Stub` that can be used to access remote RouteGuide instances
 
-
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -288,9 +283,7 @@ this, we:
 1. Call `run` on the`GRPC::RpcServer` to create and start an RPC server for our
    service.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 In this section, we'll look at creating a Ruby client for our `RouteGuide`
 service. You can see our complete example client code in

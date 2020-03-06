@@ -10,9 +10,6 @@ interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
 see our [Quick Starts](../quickstart).
 
-
-<div id="toc" class="toc mobile-toc"></div>
-
 ### Overview
 
 In gRPC, a client application can directly call a method on a server application
