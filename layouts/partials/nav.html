@@ -1,16 +1,38 @@
 {{ $here           := .RelPermalink }}
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
 {{ $currentSection := .CurrentSection }}
-<div class="tabs is-medium is-toggle-rounded is-centered">
-  <ul>
-    {{ range $docsSections }}
-    {{ $title            := .Title | upper }}
-    {{ $isCurrentSection := eq $currentSection .CurrentSection }}
-    <li{{ if $isCurrentSection }} class="is-active"{{ end }}>
-      <a href="{{ .RelPermalink }}">
-        {{ $title }}
-      </a>
-    </li>
-    {{ end }}
-  </ul>
+
+<div class="nav">
+  {{ range $docsSections }}
+  <div class="nav-section">
+    {{ $isHere := eq $here .RelPermalink }}
+    <a class="title is-size-4 is-size-5-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+      {{ if $isHere }}
+      <span class="icon has-text-secondary">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+      {{ end }}
+  
+      {{ .Title }}
+    </a>
+
+    <ul class="nav-section-links">
+      {{ range .RegularPages }}
+      {{ $isHere := eq $here .RelPermalink }}
+      {{ $title := cond (isset .Params "short") .Params.short .Title }}
+      <li{{ if $isHere }} class="is-active"{{ end }}>
+        <a href="{{ .RelPermalink }}">
+          {{ if $isHere }}
+          <span class="icon has-text-secondary">
+            <i class="fas fa-arrow-right"></i>
+          </span>
+          {{ end }}
+
+          {{ $title }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
 </div>

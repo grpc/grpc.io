@@ -28,6 +28,8 @@ $primary: $grpc-green
 $secondary: $grpc-blue
 $secondary-dark: darken($secondary, 15%)
 $link: $secondary-dark
+$code: $primary
+$code-background: $white-bis
 $navbar-height: 5rem
 $navbar-item-img-max-height: $navbar-height * 0.6
 
@@ -166,3 +168,25 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
 .is-constrained
   max-width: 80ch
+
+=active
+  color: $black
+  font-weight: 700
+
+.nav
+  &-section
+    .title
+      &.is-active
+        +active        
+
+    ul.nav-section-links
+      margin-top: 1rem
+
+      li
+        font-size: 1rem
+
+        &.is-active
+          +active
+
+    & + &
+      margin-top: 1.5rem
