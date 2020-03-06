@@ -1,0 +1,23 @@
+{{ $title := .Title }}
+{{ $desc  := .Params.description | markdownify }}
+{{ $attr  := .Params.attribution }}
+{{ $date  := dateFormat "January 2, 2006" .Date }}
+<section class="hero is-medium is-primary has-background-image">
+  <div class="hero-body">
+    <div class="container">
+      <p class="title is-size-1 is-size-2-mobile has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+        {{ $title }}
+      </p>
+
+      {{ with $attr }}
+      <p class="subtitle is-size-3 is-size-4-mobule has-text-weight-light">
+        {{ . }}
+      </p>
+      {{ end }}
+
+      <p class="is-size-4 is-size-mobile has-text-weight-medium">
+        {{ $date }}
+      </p>
+    </div>
+  </div>
+</section>

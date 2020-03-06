@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column">
+        {{ partial "content.html" (dict "content" .Content "size" "medium" "constrained" true) }}
+      </div>
+
+      <div class="column is-one-quarter">
+        {{ partial "blog/list.html" . }}
+      </div>
+    </div>
+  </div>
+</section>

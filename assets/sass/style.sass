@@ -171,7 +171,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   top: $navbar-height + 2rem
 
 .is-constrained
-  max-width: 90ch
+  max-width: 80ch
 
 =active
   color: $black
@@ -194,3 +194,10 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 
     & + &
       margin-top: 1.5rem
+
+.blog-list
+  ul
+    margin-bottom: 2rem
+
+    li + li
+      margin-top: .5rem
