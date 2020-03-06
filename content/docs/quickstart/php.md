@@ -121,7 +121,7 @@ $ sudo make install
 
 This will compile and install the gRPC PHP extension into the
 standard PHP extension directory. You should be able to run
-the [unit tests](#unit-tests), with the PHP extension installed.
+the unit tests with the PHP extension installed.
 
 
 #### Update php.ini
