@@ -155,3 +155,14 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 .section
   &.has-extra-padding
     padding: 6rem 2rem
+
+=sticky
+  position: sticky
+  position: -webkit-sticky
+
+.is-sticky
+  +sticky
+  top: $navbar-height + 2rem
+
+.is-constrained
+  max-width: 80ch

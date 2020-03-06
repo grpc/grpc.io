@@ -1,8 +1,5 @@
-{{ $size := .size | default "normal" }}
-<section class="section">
-  <div class="container">
-    <div class="content is-{{ $size }} has-bottom-padding">
-      {{ .content | markdownify }}
-    </div>
-  </div>
-</section>
+{{ $size        := .size | default "normal" }}
+{{ $constrained := .constrained | default false }}
+<div class="content is-{{ $size }} has-bottom-padding{{ if $constrained }} is-constrained{{ end }}">
+  {{ .content }}
+</div>

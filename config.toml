@@ -6,6 +6,9 @@ pygmentsCodeFences = true
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.highlight]
+style = "manni"
+
 [params]
 grpc_release_tag = "v1.27.0"
 grpc_release_tag_no_v = "1.27.0"

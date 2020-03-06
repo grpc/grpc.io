@@ -4,10 +4,11 @@
 <div class="tabs is-medium is-toggle-rounded is-centered">
   <ul>
     {{ range $docsSections }}
+    {{ $title            := .Title | upper }}
     {{ $isCurrentSection := eq $currentSection .CurrentSection }}
     <li{{ if $isCurrentSection }} class="is-active"{{ end }}>
       <a href="{{ .RelPermalink }}">
-        {{ .Title }}
+        {{ $title }}
       </a>
     </li>
     {{ end }}
