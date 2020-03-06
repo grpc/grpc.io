@@ -23,3 +23,13 @@ The gRPC website is automatically published by [Netlify](https://netlify.com). A
 ## Site content
 
 All of the [Markdown](https://www.markdownguide.org/) content used to build the site's documentation, blog, etc. is in the [`content`](./content) directory.
+
+## Checking links
+
+You can check the site's internal links by running this command:
+
+```bash
+make check-internal-links
+```
+
+This deletes the generated `public` directory, builds the "production" version of the site, and verifies that internal links are valid. Please note that internal links prefixed with `/grpc` do not work in your local environment (there are redirects applied by [Netlify](https://netlify.com)). Any errors returned from `/grpc` links are false negatives that you can ignore.
