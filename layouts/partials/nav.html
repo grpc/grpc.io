@@ -1,0 +1,15 @@
+{{ $here           := .RelPermalink }}
+{{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
+{{ $currentSection := .CurrentSection }}
+<div class="tabs is-medium is-toggle-rounded is-centered">
+  <ul>
+    {{ range $docsSections }}
+    {{ $isCurrentSection := eq $currentSection .CurrentSection }}
+    <li{{ if $isCurrentSection }} class="is-active"{{ end }}>
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</div>

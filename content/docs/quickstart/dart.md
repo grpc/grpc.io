@@ -5,8 +5,6 @@ short: Dart
 description: This guide gets you started with gRPC in Dart with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - Dart SDK version 2.0 or higher.

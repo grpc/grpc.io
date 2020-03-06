@@ -5,8 +5,6 @@ short: C++
 description: This guide gets you started with gRPC in C++ with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 #### gRPC

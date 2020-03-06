@@ -5,8 +5,6 @@ short: Android
 description: This guide gets you started with gRPC in Android Java with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - JDK version 7 or higher
