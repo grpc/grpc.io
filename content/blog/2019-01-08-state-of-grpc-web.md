@@ -18,6 +18,8 @@ Its support for polyglot environments, focus on performance, type safety, and
 developer productivity has transformed the way developers design their
 architectures.
 
+<!--more-->
+
 So far the benefits have largely only been available to mobile
 app and backend developers, whilst frontend developers have had to continue to
 rely on JSON REST interfaces as their primary means of information exchange.
@@ -26,8 +28,6 @@ addition in the toolbox of frontend developers.
 
 In this post, I'll describe some of the history of gRPC in the browser, explore
 the state of the world today, and share some thoughts on the future.
-
-<!--more-->
 
 # Beginnings
 
