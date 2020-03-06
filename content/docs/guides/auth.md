@@ -537,7 +537,6 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 $client = new helloworld\GreeterClient('localhost:50051', [
     'credentials' => Grpc\ChannelCredentials::createInsecure(),
 ]);
-...
 ```
 
 ##### Authenticate with Google

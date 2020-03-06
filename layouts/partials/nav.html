@@ -2,7 +2,7 @@
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
 {{ $currentSection := .CurrentSection }}
 
-<div class="nav">
+<div class="nav is-hidden-mobile">
   {{ range $docsSections }}
   <div class="nav-section">
     {{ $isHere := eq $here .RelPermalink }}

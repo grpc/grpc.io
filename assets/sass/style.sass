@@ -148,11 +148,15 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 .has-bottom-padding
   padding-bottom: 8rem
 
-.content p a
-  font-weight: $weight-medium
+.content
+  .highlight
+    margin-bottom: 1rem
 
-  &:hover
-    color: $secondary
+  p a
+    font-weight: $weight-medium
+
+    &:hover
+      color: $secondary
 
 .section
   &.has-extra-padding
@@ -167,7 +171,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   top: $navbar-height + 2rem
 
 .is-constrained
-  max-width: 80ch
+  max-width: 90ch
 
 =active
   color: $black
