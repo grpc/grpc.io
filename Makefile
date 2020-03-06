@@ -18,16 +18,12 @@ production-build: clean
 	hugo \
 		--minify
 
-	make check-internal-links
-
 preview-build: clean
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \
 		--buildFuture \
 		--minify
-
-	make check-internal-links
 
 link-checker-setup:
 	curl https://raw.githubusercontent.com/wjdp/htmltest/master/godownloader.sh | bash
