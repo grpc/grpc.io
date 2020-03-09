@@ -7,10 +7,11 @@
   {{ $thisSection := eq .CurrentSection $currentSection }}
   <div class="nav-section" x-data="{ open: {{ $thisSection }} }">
     {{ $isHere := eq $here .RelPermalink }}
+    {{ $title := .Title | upper }}
     <nav class="level">
       <div class="level-left">
-        <a class="title is-size-4 is-sizee-5-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
-          {{ .Title }}
+        <a class="title is-size-5 is-size-6-mobile has-text-weight-medium{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+          {{ $title }}
         </a>
       </div>
 
@@ -28,7 +29,7 @@
       {{ range . }}
       {{ $isHere := eq $here .RelPermalink }}
       {{ $title := cond (isset .Params "short") .Params.short .Title }}
-      <li{{ if $isHere }} class="is-active"{{ end }}>
+      <li class="nav-section-link{{ if $isHere }} is-active{{ end }}">
         <a href="{{ .RelPermalink }}">
           {{ if $isHere }}
           <span class="icon has-text-secondary">

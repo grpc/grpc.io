@@ -171,7 +171,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   top: $navbar-height + 2rem
 
 .is-constrained
-  max-width: 80ch
+  max-width: 90ch
 
 =active
   color: $secondary-dark
@@ -184,13 +184,14 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
         +active        
 
     ul.nav-section-links
-      margin: 1rem 0 2rem 1.25rem
-
-      li
-        font-size: 1.25rem
+      li.nav-section-link
+        font-size: 1.1rem
 
         &.is-active
           +active
+
+        & + li.nav-section-link
+          margin-top: 0.5rem
 
     & + &
       margin-top: 1.5rem
