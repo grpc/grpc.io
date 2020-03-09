@@ -41,13 +41,9 @@
 
         <section class="section">
           <div class="container">
-            {{ partial "content.html" (dict "content" .Content "constrained" true) }}
+            {{ partial "content.html" (dict "content" .Content "constrained" false) }}
           </div>
         </section>
-      </div>
-
-      <div class="column is-2 is-hidden-touch">
-        {{ partial "toc.html" . }}
       </div>
     </div>
   </div>

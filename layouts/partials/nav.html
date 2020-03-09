@@ -40,6 +40,14 @@
           {{ $title }}
         </a>
       </li>
+      
+      {{ if $isHere }}
+      {{ if gt (len .TableOfContents) 32 }}
+      <div class="nav-section-toc">
+        {{ .TableOfContents }}
+      </div>
+      {{ end }}
+      {{ end }}
       {{ end }}
     </ul>
     {{ end }}
