@@ -6,9 +6,9 @@
 {{ $reddit   := $social.reddit }}
 {{ $gitter   := $social.gitter }}
 <div class="buttons are-{{ $size }}">
-  {{ template "button" (dict "name" "Twitter" "color" "twitter-blue" "icon" "twitter" "expanded" $expanded "inverted" $inverted) }}
-  {{ template "button" (dict "name" "Reddit" "color" "reddit-orange" "icon" "reddit" "expanded" $expanded "inverted" $inverted) }}
-  {{ template "button" (dict "name" "Gitter" "color" "gitter-magenta" "icon" "gitter" "expanded" $expanded "inverted" $inverted) }}
+  {{ template "button" (dict "url" $twitter "name" "Twitter" "color" "twitter-blue" "icon" "twitter" "expanded" $expanded "inverted" $inverted) }}
+  {{ template "button" (dict "url" $reddit "name" "Reddit" "color" "reddit-orange" "icon" "reddit" "expanded" $expanded "inverted" $inverted) }}
+  {{ template "button" (dict "url" $gitter "name" "Gitter" "color" "gitter-magenta" "icon" "gitter" "expanded" $expanded "inverted" $inverted) }}
 </div>
 
 {{ define "button" }}
