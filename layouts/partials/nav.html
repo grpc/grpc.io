@@ -2,7 +2,7 @@
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
 {{ $currentSection := .CurrentSection }}
 
-<div class="nav is-sticky is-hidden-touch">
+<div class="nav is-sticky">
   {{ range $docsSections }}
   {{ $isThisSection := eq .CurrentSection.Title $currentSection.Title }}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
