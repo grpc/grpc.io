@@ -109,11 +109,6 @@ url = "https://packages.grpc.io"
 weight = 6
 
 [[menu.main]]
-name = "FAQ"
-url = "/faq"
-weight = 7
-
-[[menu.main]]
 name = "Overview"
 url = "/docs"
 weight = 1
@@ -145,8 +140,15 @@ parent = "docs"
 
 [[menu.main]]
 name = "Presentations"
-url = "/docs/talks"
+url = "/docs/talks/"
 weight = 6
+parent = "docs"
+
+[[menu.main]]
+name = "FAQ"
+url = "/faq"
+weight = 7
+parent = "docs"
 
 [[menu.main]]
 name = "What is gRPC?"

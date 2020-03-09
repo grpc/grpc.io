@@ -1,5 +1,6 @@
-{{ $title := .Title }}
-{{ $desc  := .Params.description }}
+{{ $title  := .Title }}
+{{ $desc   := .Params.description }}
+{{ $source := printf "https://github.com/grpc/grpc.io/tree/master/content/%s" .File.Path }}
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-8">
@@ -16,10 +17,21 @@
               </p>
 
               {{ with $desc }}
-              <p class="subtitle is-size-4 is-size-5-mobile has-text-weight-medium">
+              <p class="subtitle is-size-4 is-size-5-mobile has-text-grey has-text-weight-medium">
                 {{ . }}
               </p>
               {{ end }}
+
+              <div class="buttons are-small">
+                <a class="button is-outlined" href="{{ $source }}" target="_blank">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>
+                    Source
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
