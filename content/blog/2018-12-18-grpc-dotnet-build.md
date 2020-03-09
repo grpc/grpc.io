@@ -14,6 +14,8 @@ to introduce integrated compilation of Protocol Buffer and gRPC service
 `.proto` files in .NET C# projects starting with the version 1.17 of the
 Grpc.Tools NuGet package, now available from Nuget.org.
 
+<!--more-->
+
 You no longer need to use hand-written scripts to generate code from `.proto`
 files: The .NET build magic handles this for you. The integrated tools locate
 the proto compiler and gRPC plugin, standard Protocol Buffer imports, and track
@@ -21,8 +23,6 @@ dependencies before invoking the code generators, so that the generated C#
 source files are never out of date, at the same time keeping regeneration to
 the minimum required. In essence, `.proto` files are treated as first-class
 sources in a .NET C# project.
-
-<!--more-->
 
 ## A Walkthrough
 

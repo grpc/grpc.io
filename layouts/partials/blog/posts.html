@@ -1,13 +1,14 @@
 {{ $posts := where site.RegularPages "Section" "blog" }}
+{{ $max   := 200 }}
 <section class="section">
   <div class="container">
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-variable is-4">
       {{ range $posts }}
       {{ $date := dateFormat "January 2, 2006" .Date }}
       <div class="column is-one-third">
         <div class="card">
           <div class="card-content">
-            <p class="title is-size-4 is-sizee-5-mobile has-text-primary has-text-weight-medium is-spaced">
+            <p class="title is-size-4 is-sizee-5-mobile has-text-primary has-text-weight-bold is-spaced">
               <a href="{{ .RelPermalink }}">
                 {{ .Title }}
               </a>
