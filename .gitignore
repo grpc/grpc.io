@@ -12,3 +12,7 @@ $RECYCLE.BIN/
 # OSX
 .DS_Store
 *~
+
+# Link checker
+bin/
+tmp/

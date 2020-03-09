@@ -33,7 +33,7 @@ It does this by:
 In this post I'll provide background about how bazel works
 ([Part 1](#about-bazel)) and how to get started building gRPC
 services with rules_protobuf
-([Part 2](#building-a-grpc-service-with-rulesprotobuf)).  If
+([Part 2](#building)).  If
 you're already a bazel aficionado, you can skip directly to Part 2.
 
 
@@ -50,7 +50,7 @@ and clone the rules_protobuf repository:
 
 Great. Let's get started!
 
-# 1: About Bazel
+# 1: About Bazel {#about-bazel}
 
 [Bazel](https://www.bazel.io/) is Google's open-source version of
 their internal build tool called "Blaze".  Blaze originated from the
@@ -516,7 +516,7 @@ So let's *make something* already! We'll use bazel and rules_protobuf
 to build a gRPC application.
 
 
-# 2: Building a gRPC service with rules_protobuf
+# 2: Building a gRPC service with rules_protobuf {#building}
 
 The application will involve communication between two
 different gRPC services:
@@ -695,8 +695,7 @@ store our protocol buffer sources in `//proto`, our java sources in
 
 ### 2.4.3: The GreeterTimer Server
 
-The
-[java server's](java/org/pubref/grpc/greetertimer/GreeterTimerServer.java)
+The [Java server's](https://github.com/pubref/grpc_greetertimer/blob/master/java/org/pubref/grpc/greetertimer/GreeterTimerServer.java)
 main job is to accept requests and then connect to the requested
 Greeter service as a client.  The implementation counts down the
 number of remaining messages and does a blocking `sayHello(request)`
@@ -729,8 +728,7 @@ response to the client.
 
 ### 2.4.4: The GreeterTimer Client
 
-The
-[go client](go/main.go)
+The [Go client](https://github.com/pubref/grpc_greetertimer/blob/master/go/main.go)
 prepares a `TimerRequest` and gets back a stream interface from the
 `client.TimeHello` method.  We call its `Recv()` method until EOF, at
 which point the call is complete.  A summary of each BatchResponse is
