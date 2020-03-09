@@ -80,8 +80,9 @@ or specific version
 sudo pecl install grpc-1.7.0
 ```
 
-Note: for users on CentOS/RHEL 6, unfortunately this step won’t work.
-Please follow the instructions below to compile the PECL extension from source.
+{{< warning >}}
+This step unfortunately won’t work on CentOS/RHEL 6. Please follow the instructions below to compile the PECL extension from source.
+{{< /warning >}}
 
 ##### Install on Windows
 

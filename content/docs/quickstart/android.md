@@ -15,9 +15,9 @@ description: This guide gets you started with gRPC in Android Java with a simple
 [Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
 [USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
 
-> **Note**: gRPC Java does not support running a server on an Android device.
-> For this quick start, the Android client app will connect to a server running
-> on your local (non-Android) computer.
+{{< note >}}
+gRPC Java does not support running a server on an Android device. For this quick start, the Android client app will connect to a server running on your local (non-Android) computer.
+{{< /note >}}
 
 ### Download the example
 

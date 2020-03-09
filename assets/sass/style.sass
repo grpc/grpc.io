@@ -230,3 +230,22 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 
     li + li
       margin-top: .5rem
+
+=admon($color)
+  .icon
+    color: $color
+
+.admonition
+  margin-bottom: 2rem
+  padding: 1.5rem 2rem
+  border-radius: .5rem
+  border: 1.5px solid $grey-light
+
+  &.is-warning
+    +admon($warning)
+  &.is-success
+    +admon($success)
+  &.is-note
+    +admon($info)
+  &.is-requirement
+    +admon($grey)

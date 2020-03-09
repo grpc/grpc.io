@@ -5,9 +5,9 @@ short: C# with grpc-dotnet
 description: This guide gets you started with gRPC for .NET with a simple working example.
 ---
 
-> **Note**: This is a quick start guide for the "grpc-dotnet" implementation of
-> gRPC C#s. See [gRPC C# Quick Start](/docs/quickstart/csharp) for how to start
-> with the gRPC C# implementation based on native Core library.
+{{< note >}}
+This is a quick start guide for the "grpc-dotnet" implementation of gRPC C#s. See [gRPC C# Quick Start](../csharp) for how to start with the gRPC C# implementation based on native Core library.
+{{< /note >}}
 
 ### General project info
 

@@ -34,10 +34,9 @@ on the channel - Google will not allow connections without SSL/TLS, and
 most gRPC language implementations will not let you send credentials on an
 unencrypted channel.
 
-<p class="note"> <strong>WARNING</strong>: Google credentials should only
-be used to connect to Google services. Sending a Google issued OAuth2 token
-to a non-Google service could result in this token being stolen and used to
-impersonate the client to Google services.</p>
+{{< warning >}}
+Google credentials should only be used to connect to Google services. Sending a Google issued OAuth2 token to a non-Google service could result in this token being stolen and used to impersonate the client to Google services.
+{{< /warning >}}
 
 ### Authentication API
 

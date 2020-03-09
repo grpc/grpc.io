@@ -11,7 +11,9 @@ description: This guide gets you started with gRPC in Dart with a simple working
 
 For installation instructions, see [Install Dart](https://dart.dev/install).
 
-> Note: Dart gRPC supports the Flutter and Server platforms.
+{{< note >}}
+Dart gRPC supports the Flutter and Server platforms.
+{{< /note >}} 
 
 #### Protocol Buffers v3
 

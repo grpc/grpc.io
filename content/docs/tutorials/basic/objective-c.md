@@ -236,9 +236,12 @@ version, and other metadata.
 In this section, we'll look at creating an Objective-C client for our
 `RouteGuide` service. You can see our complete example client code in
 [examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/objective-c/route_guide/ViewControllers.m).
-(Note: In your apps, for maintainability and readability reasons, you shouldn't
+
+{{< note >}}
+In your apps, for maintainability and readability reasons, you shouldn't
 put all of your view controllers in a single file; it's done here only to
 simplify the learning process).
+{{< /note >}}
 
 #### Constructing a service object
 
