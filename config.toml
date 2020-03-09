@@ -185,3 +185,23 @@ name = "gRPC Wire Format"
 url = "https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md"
 weight = 6
 parent = "guides"
+
+[[menu.buttons]]
+name = "Quick Start"
+url = "/docs/quickstart"
+weight = 1
+
+[[menu.buttons]]
+name = "Docs"
+url = "/docs"
+weight = 2
+
+[[menu.buttons]]
+name = "Concepts"
+url = "/docs/guides/concepts"
+weight = 3
+
+[[menu.buttons]]
+name = "Community"
+url = "/community"
+weight = 4
