@@ -2,7 +2,7 @@
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
 {{ $currentSection := .CurrentSection }}
 
-<div class="nav is-sticky is-hidden-mobile" >
+<div class="nav is-sticky is-hidden-touch">
   {{ range $docsSections }}
   {{ $thisSection := eq .CurrentSection $currentSection }}
   <div class="nav-section" x-data="{ open: {{ $thisSection }} }">
@@ -10,7 +10,7 @@
     {{ $title := .Title | upper }}
     <nav class="level">
       <div class="level-left">
-        <a class="title is-size-5 is-size-6-mobile has-text-weight-medium{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+        <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
           {{ $title }}
         </a>
       </div>
