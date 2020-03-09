@@ -90,7 +90,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
 // @import "bulma/sass/components/breadcrumb"
 @import "bulma/sass/components/card"
 // @import "bulma/sass/components/dropdown"
-// @import "bulma/sass/components/level"
+@import "bulma/sass/components/level"
 // @import "bulma/sass/components/list"
 // @import "bulma/sass/components/media"
 @import "bulma/sass/components/menu"
@@ -174,7 +174,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
   max-width: 80ch
 
 =active
-  color: $black
+  color: $secondary-dark
   font-weight: 700
 
 .nav
@@ -184,10 +184,10 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
         +active        
 
     ul.nav-section-links
-      margin-top: 1rem
+      margin: 1rem 0 2rem 1.25rem
 
       li
-        font-size: 1rem
+        font-size: 1.25rem
 
         &.is-active
           +active
