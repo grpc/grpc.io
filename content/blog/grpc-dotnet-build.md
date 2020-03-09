@@ -1,10 +1,8 @@
 ---
+title: "gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build"
 author: Kirill 'kkm' Katsnelson
 author-link: https://github.com/kkm000
-date: "2018-12-18T00:00:00Z"
-published: true
-title: "gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build"
-url: blog/grpc-dotnet-build
+date: "2018-12-18"
 ---
 
 As part of Microsoft's move towards its cross-platform .NET offering, they have

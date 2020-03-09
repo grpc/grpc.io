@@ -1,19 +1,18 @@
 ---
+title: gRPC - now with easy installation
 attribution: Originally written by Lisa Carey with help from others at Google.
-date: "2016-04-04T00:00:00Z"
-title: gRPC - now with easy installation.
-url: blog/installation
+date: "2016-04-04"
 ---
 
 Today we are happy to provide an update that significantly simplifies the getting started experience for gRPC.
 
-   * For most languages, **the gRPC runtime can now be installed in a single step via native package managers** such as `npm` for Node.js, `gem` for Ruby and `pip` for Python. Even though our Node, Ruby and Python runtimes are wrapped on gRPC's C core, users now don't need to explicitly pre-install the C core library as a package in most Linux distributions. We autofetch it for you :-).
-
-   * **For Java, we have simplified the steps needed to add gRPC support to your build tools** by providing plugins for Maven and Gradle. These let you easily depend on the core runtime to deploy or ship generated libraries into production environments.
-
-   * You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience. 
-
 <!--more-->
+
+* For most languages, **the gRPC runtime can now be installed in a single step via native package managers** such as `npm` for Node.js, `gem` for Ruby and `pip` for Python. Even though our Node, Ruby and Python runtimes are wrapped on gRPC's C core, users now don't need to explicitly pre-install the C core library as a package in most Linux distributions. We autofetch it for you :-).
+
+* **For Java, we have simplified the steps needed to add gRPC support to your build tools** by providing plugins for Maven and Gradle. These let you easily depend on the core runtime to deploy or ship generated libraries into production environments.
+
+* You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience.
 
 The installation story is not yet complete: we are now focused on improving your development experience by packaging our protocol buffer plugins in the same way as the gRPC runtime. This will simplify code generation and setting up your development environment.
 

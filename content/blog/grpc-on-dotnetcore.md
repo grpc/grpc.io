@@ -1,10 +1,8 @@
 ---
+title: .NET Core ❤ gRPC
 author: Sourabh Shirhatti
 author-link: https://twitter.com/sshirhatti
-date: "2019-09-23T00:00:00Z"
-published: true
-title: .NET Core ❤ gRPC
-url: blog/grpc-on-dotnetcore
+date: "2019-09-23"
 ---
 
 _This is a guest post by [Sourabh Shirhatti](https://twitter.com/sshirhatti), a Program Manager on the .NET team at Microsoft._
