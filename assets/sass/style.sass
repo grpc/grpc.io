@@ -32,6 +32,7 @@ $code: $primary
 $code-background: $white-bis
 $navbar-height: 5rem
 $navbar-item-img-max-height: $navbar-height * 0.6
+$section-padding: 3rem 1.5rem
 
 // Font overrides
 {{ if $fonts }}
@@ -111,6 +112,14 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
     width: $d
   +touch
     width: $t
+
+.is-cncf-logo
+  +logo(50%, 90%)
+
+  +desktop
+    margin-top: 1.25rem
+  +touch
+    margin-top: 0.75rem
 
 .is-hero-logo
   +logo(50%, 80%)
