@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
 title: Java Generated Code Reference
-layout: docs
 ---
-# Java Generated Code Reference
 
 ## Packages
 

@@ -3,6 +3,6 @@ title: Reference
 weight: 4
 ---
 
-Links to the language-specific, automatically generated API reference documentation:
+Language-specific, automatically generated API reference documentation is available for the following languages and platforms:
 
 {{< api-links >}}

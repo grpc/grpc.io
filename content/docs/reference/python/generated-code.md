@@ -1,10 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Python Generated Code Reference
+title: Python Generated Code Reference
 ---
-
-# Python Generated Code Reference
 
 ## Introduction
 
