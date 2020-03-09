@@ -22,6 +22,11 @@ why = """
 gRPC is a modern open source high performance RPC framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
 """
 
+[params.social]
+twitter = "https://twitter.com/grpcio"
+gitter = "https://gitter.im/grpc/grpc"
+reddit = "https://www.reddit.com/r/grpc"
+
 [[params.features]]
 title = "Simple service definition"
 description = "Define your service using Protocol Buffers, a powerful binary serialization toolset and language"
@@ -46,6 +51,7 @@ icon = "feature-4.svg"
 [params.logos]
 navbar = "grpc-horizontal-white.png"
 hero = "grpc-logo.png"
+footer = "grpc-horizontal-white.png"
 
 # Configuration required for auto-generating the Netlify _redirects file
 [mediaTypes."text/netlify"]

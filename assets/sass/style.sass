@@ -18,6 +18,9 @@
 // Site-specific variables here
 $grpc-green: #244c5a
 $grpc-blue: #5ac5c5
+$twitter-blue: rgb(29, 161, 242)
+$reddit-orange: rgba(255, 86, 0, 1)
+$gitter-magenta: rgb(237, 25, 101)
 
 // Initial Bulma imports
 @import "bulma/sass/utilities/initial-variables"
@@ -53,7 +56,7 @@ $font-heading: {{ $.Site.Params.heading_font | default "'Fira Sans', sans-serif"
 @import "bulma/sass/utilities/derived-variables"
 
 // Bulma variable overrdides that require derived variables like $dark
-$colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
+$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "reddit-orange": ($reddit-orange, $white), "gitter-magenta": ($gitter-magenta, $white)), $colors)
 
 // Bulma core
 @import "bulma/sass/utilities/_all"
@@ -128,6 +131,9 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white)), $colors)
     margin-bottom: 2rem
   +touch
     margin-bottom: 1rem
+
+.is-footer-logo
+  +logo(50%, 40%)
 
 .is-feature-icon
   +tablet
