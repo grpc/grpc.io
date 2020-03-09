@@ -1,16 +1,16 @@
 ---
-layout: guides
 title: Guides
+description: Something
 weight: 2
 ---
 
 This document introduces you to gRPC and protocol buffers. gRPC can use
-protocol buffers as both its Interface Definition Language (IDL) and as its underlying message
+protocol buffers as both its Interface Definition Language (**IDL**) and as its underlying message
 interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
 see our [Quick Starts](../quickstart).
 
-### Overview
+## Overview
 
 In gRPC, a client application can directly call a method on a server application
 on a different machine as if it were a local object, making it easier for you to
@@ -27,7 +27,7 @@ gRPC clients and servers can run and talk to each other in a variety of environm
 
 ### Working with Protocol Buffers
 
-By default, gRPC uses [Protocol Buffers][PB docs], Google’s
+By default, gRPC uses [Protocol Buffers], Google’s
 mature open source mechanism for serializing structured data (although it
 can be used with other data formats such as JSON). Here's a quick intro to how
 it works. If you're already familiar with protocol buffers, feel free to skip
@@ -88,9 +88,9 @@ see an example of this below.
 To learn more about protocol buffers, including how to install `protoc` with the
 gRPC plugin in your chosen language, see the [protocol buffers documentation][PB docs].
 
-#### Protocol buffer versions
+## Protocol buffer versions
 
-While protocol buffers have been available to open source users for some time,
+While [protocol buffers] have been available to open source users for some time,
 most examples from this site use protocol buffers version 3 (proto3), which has
 a slightly simplified syntax, some useful new features, and supports more
 languages. Proto3 is currently available in Java, C++, Dart, Python,
@@ -110,6 +110,6 @@ issues with proto2 clients talking to proto3 servers and vice versa.
 [golang/protobuf GitHub repo]: https://github.com/golang/protobuf
 [proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
 [protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
-[PB docs]: https://developers.google.com/protocol-buffers/docs/overview
+[protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
 
 [reference documentation]: https://developers.google.com/protocol-buffers/docs/reference/overview

@@ -1,5 +1,5 @@
 {{ $title := .Title }}
-{{ $desc  := .Params.desc }}
+{{ $desc  := .Params.description }}
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-8">
@@ -11,7 +11,7 @@
         <section class="hero">
           <div class="hero-body">
             <div class="container">
-              <p class="title is-size-2 is-size-3-mobile has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+              <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
                 {{ .Title }}
               </p>
 

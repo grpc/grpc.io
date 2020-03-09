@@ -99,7 +99,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 // @import "bulma/sass/components/media"
 @import "bulma/sass/components/menu"
 // @import "bulma/sass/components/message"
-// @import "bulma/sass/components/modal"
+@import "bulma/sass/components/modal"
 @import "bulma/sass/components/navbar"
 // @import "bulma/sass/components/pagination"
 // @import "bulma/sass/components/panel"
@@ -173,6 +173,10 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
       max-height: 5rem
 
 .content
+  img
+    &:hover
+      cursor: pointer
+
   .highlight
     margin-bottom: 1rem
 
@@ -239,7 +243,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
   margin-bottom: 2rem
   padding: 1.5rem 2rem
   border-radius: .5rem
-  border: 1.5px solid $grey-light
+  border: 1.5px solid $secondary
 
   &.is-warning
     +admon($warning)
