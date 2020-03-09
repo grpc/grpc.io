@@ -33,8 +33,6 @@ $secondary-dark: darken($secondary, 15%)
 $link: $secondary-dark
 $code: $primary
 $code-background: $white-bis
-$navbar-height: 5rem
-$navbar-item-img-max-height: $navbar-height * 0.6
 $section-padding: 3rem 1.5rem
 
 // Font overrides
@@ -173,6 +171,11 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
       max-height: 5rem
 
 .content
+  @for $i from 1 through 6
+    h#{$i}
+      &::before
+        margin-top: 5rem
+
   img
     &:hover
       cursor: pointer

@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: Something
+description: Task-oriented walkthroughs of common use cases
 weight: 2
 ---
 
@@ -111,5 +111,4 @@ issues with proto2 clients talking to proto3 servers and vice versa.
 [proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
 [protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
 [protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
-
 [reference documentation]: https://developers.google.com/protocol-buffers/docs/reference/overview
