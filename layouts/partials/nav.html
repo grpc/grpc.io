@@ -2,7 +2,7 @@
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
 {{ $currentSection := .CurrentSection }}
 
-<div class="nav is-hidden-mobile" >
+<div class="nav is-sticky is-hidden-mobile" >
   {{ range $docsSections }}
   {{ $thisSection := eq .CurrentSection $currentSection }}
   <div class="nav-section" x-data="{ open: {{ $thisSection }} }">
@@ -17,7 +17,7 @@
       {{ if .RegularPages }}
       <div class="level-right">
         <span class="level-item" @click="open = !open">
-          <i class="fas" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
+          <i class="fas has-text-grey" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
         </span>
       </div>
       {{ end }}
