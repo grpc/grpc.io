@@ -1,0 +1,22 @@
+{{ $apiLinks := site.Data.apis }}
+
+<ul>
+  {{ range $apiLinks }}
+  {{ $isExternal := hasPrefix .url "http" }}
+  <li>
+    <a href="{{ .url }}"{{ if $isExternal }} target="_blank"{{ end }}>
+      <span>
+        {{ .language }}
+      </span>
+
+      {{ if $isExternal }}
+      <sup>
+        <span class="icon is-small">
+          <i class="fas fa-sm fa-external-link-alt"></i>
+        </span>
+      </sup>
+      {{ end }}
+    </a>
+  </li>
+  {{ end }}
+</ul>

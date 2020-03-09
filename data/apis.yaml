@@ -1,0 +1,24 @@
+- language: C++
+  url: /grpc/cpp
+- language: Dart
+  url: https://pub.dev/documentation/grpc
+- language: Java
+  url: /grpc-java/javadoc
+- language: Python
+  url: /grpc/python
+- language: Ruby
+  url: https://www.rubydoc.info/gems/grpc
+- language: Node.js
+  url: /grpc/node
+- language: C# API ("gRPC C#" implementation)
+  url: /grpc/csharp/api/Grpc.Core
+- language: C# API ("grpc-dotnet" implementation)
+  url: /grpc/csharp-dotnet/api/Grpc.Core
+- language: Go
+  url: https://godoc.org/google.golang.org/grpc
+- language: Objective-C
+  url: /grpc/objc
+- language: PHP
+  url: /grpc/php/namespace-Grpc
+- language: gRPC Core Library (for wrapped languages)
+  url: /grpc/core
