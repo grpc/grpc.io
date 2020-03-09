@@ -4,8 +4,8 @@
 
 <div class="nav is-sticky is-hidden-touch">
   {{ range $docsSections }}
-  {{ $thisSection := eq .CurrentSection $currentSection }}
-  <div class="nav-section" x-data="{ open: {{ $thisSection }} }">
+  {{ $isThisSection := eq .CurrentSection.Title $currentSection.Title }}
+  <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
     {{ $isHere := eq $here .RelPermalink }}
     {{ $title := .Title | upper }}
     <nav class="level">
