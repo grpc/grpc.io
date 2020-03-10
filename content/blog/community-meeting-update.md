@@ -1,6 +1,6 @@
 ---
 title: 2017-08-17 Community Meeting Update
-author: Jaye Pitzeruse
+author: Mya Pitzeruse
 company: Indeed
 company-link: https://www.indeed.com
 date: 2017-08-17
