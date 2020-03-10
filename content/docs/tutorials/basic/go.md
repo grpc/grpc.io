@@ -387,7 +387,7 @@ To build and start a server, we:
 4. Call `Serve()` on the server with our port details to do a blocking wait
    until the process is killed or `Stop()` is called.
 
-### Creating the client {#server}
+### Creating the client {#client}
 
 In this section, we'll look at creating a Go client for our `RouteGuide`
 service. You can see our complete example client code in
