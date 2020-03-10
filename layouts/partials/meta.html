@@ -1,16 +1,14 @@
-{{ $url     := .Permalink }}
 {{ $title   := cond .IsHome site.Title .Title }}
 {{ $type    := cond .IsHome "website" "article" }}
 {{ $desc    := .Param "description" }}
-{{ $twitter := printf "@%s" site.Params.social.twitter_handle }}
+{{ $twitter := site.Params.social.twitter_handle }}
 {{ $img     := "img/logos/grpc-icon-color.png" | absURL }}
 {{ $imgAlt  := printf "%s color logo" site.Title }}
-{{ $locale  := site.Params.locale }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 {{ with .OutputFormats.Get "rss" -}}
-{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
 {{ end -}}
 
 {{/* Twitter Card metadata */}}
@@ -21,7 +19,7 @@
 <meta name="twitter:image:alt" content="{{ $imgAlt }}">
 
 {{/* OpenGraph metadata */}}
-<meta property="og:url" content="{{ $url }}">
+<meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:title" content="{{ $title }}">
 {{ with $desc }}
 <meta property="og:description" content="{{ $desc }}">
@@ -31,4 +29,4 @@
 <meta property="og:image" content="{{ $img }}">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="{{ $imgAlt }}">
-<meta property="og:locale" content="{{ $locale }}">
+<meta property="og:locale" content="{{ site.Params.locale }}">

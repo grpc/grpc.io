@@ -28,7 +28,7 @@ gRPC is a modern open source high performance RPC framework that can run in any 
 twitter = "https://twitter.com/grpcio"
 gitter = "https://gitter.im/grpc/grpc"
 reddit = "https://www.reddit.com/r/grpc"
-twitter_handle = "grpcio"
+twitter_handle = "@grpcio"
 
 [[params.features]]
 title = "Simple service definition"
