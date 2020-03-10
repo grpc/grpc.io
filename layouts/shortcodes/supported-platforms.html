@@ -15,18 +15,18 @@
     </tr>
   </thead>
   <tbody>
-    {{- range $platforms -}}
+    {{ range $platforms }}
     <tr>
       <td>
-        {{- .language -}}
+        {{ .language }}
       </td>
       <td>
-        {{- delimit .platforms ", " -}}
+        {{ delimit .platforms ", " }}
       </td>
       <td>
-        {{- delimit .compilers ", " -}}
+        {{ delimit .compilers ", " }}
       </td>
     </tr>
-    {{- end -}}
+    {{ end }}
   </tbody>
 </table>
