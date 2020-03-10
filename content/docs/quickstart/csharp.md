@@ -41,10 +41,12 @@ dependencies for you (`Grpc`, `Grpc.Tools` and `Google.Protobuf` NuGet packages)
 ### Build the example
 
 #### Using Visual Studio (or Visual Studio for Mac)
+
 * Open the solution `Greeter.sln` with Visual Studio
 * Build the solution
 
 #### Using .NET Core SDK from the command line
+
 From the `examples/csharp/Helloworld` directory:
 
 ```sh
@@ -62,17 +64,17 @@ From the `examples/csharp/Helloworld` directory:
 
 * Run the server:
 
-    ```sh
-    > cd GreeterServer
-    > dotnet run -f netcoreapp2.1
-    ```
+  ```sh
+  > cd GreeterServer
+  > dotnet run -f netcoreapp2.1
+  ```
 
 * From another terminal, run the client:
 
-    ```sh
-    > cd GreeterClient
-    > dotnet run -f netcoreapp2.1
-    ```
+  ```sh
+  > cd GreeterClient
+  > dotnet run -f netcoreapp2.1
+  ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -219,14 +221,14 @@ example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual S
 
 Just like we did before, from the `examples/csharp/Helloworld` directory:
 
- 1. Run the server:
+1. Run the server:
 
     ```sh
     > cd GreeterServer
     > dotnet run -f netcoreapp2.1
     ```
 
- 2. From another terminal, run the client:
+2. From another terminal, run the client:
 
     ```sh
     > cd GreeterClient
