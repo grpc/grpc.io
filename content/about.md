@@ -32,7 +32,7 @@ Below are details and quotes from some of our early adopters.
 Check out what people are saying below.
 
 <!-- Generated using the data in data/testimonials.yaml and the shortcode in layouts/shortcodes/testimonials.html -->
-<!-- {{< testimonials >}} -->
+{{< testimonials >}}
 
 ## Officially supported platforms
 
