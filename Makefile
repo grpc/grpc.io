@@ -1,4 +1,4 @@
-HUGO_VERSION =  0.66.0
+HUGO_VERSION =  0.67.0
 DOCKER_IMG   := klakegg/hugo:$(HUGO_VERSION)-ext
 SERVE_CMD    =  server --buildDrafts --buildFuture --disableFastRender --ignoreCache
 
