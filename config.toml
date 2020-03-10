@@ -11,11 +11,12 @@ unsafe = true
 style = "manni"
 
 [params]
-grpc_release_tag = "v1.27.0"
-grpc_release_tag_no_v = "1.27.0"
-grpc_java_release_tag = "v1.27.0"
+grpc_release_tag = "v1.27.2"
+grpc_release_tag_no_v = "1.27.2"
+grpc_java_release_tag = "v1.27.2"
 google_analytics_id = "UA-60127042-1"
 font_awesome_version = "5.12.1"
+
 milestones_link = "https://github.com/grpc/grpc/milestones"
 description = "A high-performance, open source universal RPC framework"
 why = """
