@@ -1,14 +1,21 @@
-
 {{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ site.Title }} &ndash; {{ .Title }}
 {{ end }}
-{{ define "main" }}
-            <div class="headertext">{{ .Title }}</div>
-  </div>
-        </div>
-        </div>
 
-  <div class="section2" style="text-align:left;margin-bottom:5%">
-    {{ .Content }}
+{{ define "main" }}
+{{ partial "hero.html" . }}
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-three-quarters">
+        {{ partial "content.html" (dict "content" .Content "size" "normal" "constrained" true) }}
+      </div>
+
+      <div class="column">
+        {{ partial "toc.html" . }}
+      </div>
+    </div>
   </div>
+</section>
 {{ end }}

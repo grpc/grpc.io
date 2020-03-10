@@ -1,0 +1,50 @@
+{{ $title  := .Title }}
+{{ $desc   := .Params.description }}
+{{ $source := printf "https://github.com/grpc/grpc.io/tree/master/content/%s" .File.Path }}
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-one-quarter is-hidden-touch">
+        {{ partial "nav.html" . }}
+      </div>
+
+      <div class="column">
+        <section class="hero is-small">
+          <div class="hero-body">
+            <div class="container">
+              <p class="title is-size-2 is-size-3-mobile has-text-primary has-text-weight-bold{{ if $desc }} is-spaced{{ end }}">
+                {{ .Title }}
+              </p>
+
+              {{ with $desc }}
+              <p class="subtitle is-size-4 is-size-5-mobile has-text-grey has-text-weight-medium">
+                {{ . }}
+              </p>
+              {{ end }}
+
+              <br />
+
+              <div class="buttons are-small">
+                <a class="button is-outlined" href="{{ $source }}" target="_blank">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>
+                    Source
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="section">
+          <div class="container">
+            {{ partial "content.html" (dict "content" .Content "constrained" true) }}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

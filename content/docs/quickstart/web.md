@@ -5,8 +5,6 @@ short: Web
 description: This guide gets you started with gRPC-Web with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - `docker`

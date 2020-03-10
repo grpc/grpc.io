@@ -5,8 +5,6 @@ short: Go
 description: This guide gets you started with gRPC in Go with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - Go version 1.6 or higher.

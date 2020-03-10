@@ -5,12 +5,9 @@ short: C#
 description: This guide gets you started with gRPC in C# with a simple working example.
 ---
 
-<div id="toc"></div>
-
-> **Note**: This is a quick start guide for the gRPC C# implementation based on
-> Core native library. See [gRPC for .NET Quick
-> Start](/docs/quickstart/csharp-dotnet/) for how to start with the
-> "grpc-dotnet" implementation.
+{{< note >}}
+This is a quick start guide for the gRPC C# implementation based on Core native library. See [gRPC for .NET Quick Start](..//csharp-dotnet/) for how to start with the "grpc-dotnet" implementation.
+{{< /note >}}
 
 ### Prerequisites
 
@@ -44,18 +41,22 @@ dependencies for you (`Grpc`, `Grpc.Tools` and `Google.Protobuf` NuGet packages)
 ### Build the example
 
 #### Using Visual Studio (or Visual Studio for Mac)
+
 * Open the solution `Greeter.sln` with Visual Studio
 * Build the solution
 
 #### Using .NET Core SDK from the command line
+
 From the `examples/csharp/Helloworld` directory:
 
 ```sh
 > dotnet build Greeter.sln
 ```
 
-*NOTE: If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
-[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
+{{< note >}}
+If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
+[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.
+{{< /note >}}
 
 ### Run a gRPC application
 
@@ -63,17 +64,17 @@ From the `examples/csharp/Helloworld` directory:
 
 * Run the server:
 
-```sh
-> cd GreeterServer
-> dotnet run -f netcoreapp2.1
-```
+  ```sh
+  > cd GreeterServer
+  > dotnet run -f netcoreapp2.1
+  ```
 
 * From another terminal, run the client:
 
-```sh
-> cd GreeterClient
-> dotnet run -f netcoreapp2.1
-```
+  ```sh
+  > cd GreeterClient
+  > dotnet run -f netcoreapp2.1
+  ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -88,7 +89,7 @@ server and the client "stub" have a `SayHello` RPC method that takes a
 server, and that this method is defined like this:
 
 
-```C#
+```proto
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -110,7 +111,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```C#
+```proto
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -220,14 +221,14 @@ example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual S
 
 Just like we did before, from the `examples/csharp/Helloworld` directory:
 
- 1. Run the server:
+1. Run the server:
 
     ```sh
     > cd GreeterServer
     > dotnet run -f netcoreapp2.1
     ```
 
- 2. From another terminal, run the client:
+2. From another terminal, run the client:
 
     ```sh
     > cd GreeterClient

@@ -1,16 +1,7 @@
-
 {{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ site.Title }} &ndash; {{ .Title }}
 {{ end }}
+
 {{ define "main" }}
-            <div class="headertext">Documentation</div>
-  </div>
-        </div>
-        </div>
-
-    {{ partial "docs-topnav.html" . }}
-    <div class="refsection">
-    {{ .Content }}
-    </div>
+{{ partial "docs/article.html" . }}
 {{ end }}
-

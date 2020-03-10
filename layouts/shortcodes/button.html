@@ -1,0 +1,11 @@
+{{ $text := .Get "text" }}
+{{ $url  := .Get "url" }}
+{{ $isExternal := hasPrefix $url "http" }}
+<a class="button is-primary is-outlined" href="{{ $url }}"{{ if $isExternal }} target="_blank"{{ end }}>
+  <span class="icon">
+    <i class="fas fa-sm fa-external-link-alt"></i>
+  </span>
+  <span>
+    {{ $text }}
+  </span>
+</a>

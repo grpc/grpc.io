@@ -23,8 +23,6 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -179,9 +177,7 @@ The following classes are generated from our service definition:
     `RouteGuide` service.
   - *stub* classes that clients can use to talk to a `RouteGuide` server.
 
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -434,9 +430,7 @@ To do this, we:
 1. Call `build()` and `start()` on the builder to create and start an RPC server
    for our service.
 
-<a name="client"></a>
-
-## Creating the client
+## Creating the client {#client}
 
 In this section, we'll look at creating a Java client for our `RouteGuide`
 service. You can see our complete example client code in

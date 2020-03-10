@@ -1,0 +1,29 @@
+{{ $here  := .RelPermalink }}
+{{ $home  := site.BaseURL }}
+{{ $title := site.Title }}
+{{ $logo  := printf "img/logos/%s" site.Params.logos.navbar | relURL }}
+<nav class="navbar is-primary is-fixed-top is-transparent" x-data="{ open: false }">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ $home }}">
+        <img src="{{ $logo }}" alt="{{ $title }} navbar logo">
+      </a>
+
+      <div role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="open = !open" :class="{ 'is-active': open }">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
+      <div class="navbar-end">
+        {{ partial "navbar-menu.html" . }}
+
+        <div class="navbar-item">
+          {{ partial "social-buttons.html" (dict "expanded" false) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

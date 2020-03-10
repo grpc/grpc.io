@@ -1,10 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Python Generated Code Reference
+title: Python Generated Code Reference
 ---
-
-# Python Generated Code Reference
 
 ## Introduction
 
@@ -121,7 +117,7 @@ generated:
 
 ### Stub
 
-<a name="stub"></a>The generated `Stub` class is used by the gRPC clients.  It
+The generated `Stub` class is used by the gRPC clients.  It
 will have a constructor that takes a `grpc.Channel` object and initializes the
 stub.  For each method in the service, the initializer adds a corresponding
 attribute to the stub object with the same name.  Depending on the RPC type
@@ -135,7 +131,7 @@ or
 
 ### Servicer
 
-<a name="servicer"></a>For each service, a `Servicer` class is generated.  This
+For each service, a `Servicer` class is generated.  This
 class is intended to serve as the superclass of a service implementation.  For
 each method in the service, a corresponding function in the `Servicer` class
 will be synthesized which is intended to be overriden in the actual service
@@ -145,7 +141,7 @@ the generated python code.
 
 ### Registration Function
 
-<a name="registration-function"></a>For each service, a function will be
+For each service, a function will be
 generated that registers a `Servicer` object implementing it on a `grpc.Server`
 object, so that the server would be able to appropriately route the queries to
 the respective servicer.  This function takes an object that implements the

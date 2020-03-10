@@ -5,8 +5,6 @@ short: Node
 description: This guide gets you started with gRPC in Node with a simple working example.
 ---
 
-<div id="toc"></div>
-
 ### Prerequisites
 
 - Node version 4.0.0 or higher

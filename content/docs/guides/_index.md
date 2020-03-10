@@ -1,19 +1,16 @@
 ---
-layout: guides
 title: Guides
+description: Task-oriented walkthroughs of common use cases
 weight: 2
 ---
 
 This document introduces you to gRPC and protocol buffers. gRPC can use
-protocol buffers as both its Interface Definition Language (IDL) and as its underlying message
+protocol buffers as both its Interface Definition Language (**IDL**) and as its underlying message
 interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
 see our [Quick Starts](../quickstart).
 
-
-<div id="toc" class="toc mobile-toc"></div>
-
-### Overview
+## Overview
 
 In gRPC, a client application can directly call a method on a server application
 on a different machine as if it were a local object, making it easier for you to
@@ -24,13 +21,13 @@ server implements this interface and runs a gRPC server to handle client calls.
 On the client side, the client has a stub (referred to as just a client in some
 languages) that provides the same methods as the server.
 
-![Concept Diagram](../../img/landing-2.svg)
+![Concept Diagram](/img/landing-2.svg)
 
 gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside Google to your own desktop - and can be written in any of gRPC's supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. In addition, the latest Google APIs will have gRPC versions of their interfaces, letting you easily build Google functionality into your applications.
 
 ### Working with Protocol Buffers
 
-By default, gRPC uses [Protocol Buffers][PB docs], Google’s
+By default, gRPC uses [Protocol Buffers][], Google’s
 mature open source mechanism for serializing structured data (although it
 can be used with other data formats such as JSON). Here's a quick intro to how
 it works. If you're already familiar with protocol buffers, feel free to skip
@@ -89,11 +86,11 @@ code for populating, serializing, and retrieving your message types. You'll
 see an example of this below.
 
 To learn more about protocol buffers, including how to install `protoc` with the
-gRPC plugin in your chosen language, see the [protocol buffers documentation][PB docs].
+gRPC plugin in your chosen language, see the [protocol buffers documentation][protocol buffers].
 
-#### Protocol buffer versions
+## Protocol buffer versions
 
-While protocol buffers have been available to open source users for some time,
+While [protocol buffers][] have been available to open source users for some time,
 most examples from this site use protocol buffers version 3 (proto3), which has
 a slightly simplified syntax, some useful new features, and supports more
 languages. Proto3 is currently available in Java, C++, Dart, Python,
@@ -113,6 +110,5 @@ issues with proto2 clients talking to proto3 servers and vice versa.
 [golang/protobuf GitHub repo]: https://github.com/golang/protobuf
 [proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
 [protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
-[PB docs]: https://developers.google.com/protocol-buffers/docs/overview
-
+[protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
 [reference documentation]: https://developers.google.com/protocol-buffers/docs/reference/overview

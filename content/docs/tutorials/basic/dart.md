@@ -20,8 +20,6 @@ language: you can find out more in the
 [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -170,10 +168,7 @@ This contains:
 - An interface type for servers to implement, also with the methods defined in
   the `RouteGuide` service.
 
-
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -380,9 +375,7 @@ To build and start a server, we:
    in the address and port to listen on. The server will continue to serve requests
    asynchronously until `shutdown()` is called on it.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 In this section, we'll look at creating a Dart client for our `RouteGuide`
 service. You can see our complete example client code in

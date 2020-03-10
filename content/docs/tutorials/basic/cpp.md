@@ -23,8 +23,6 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C++
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/cpp-generated).
 
-<div id="toc"></div>
-
 ### Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get
@@ -193,9 +191,7 @@ These contain:
      defined in the `RouteGuide` service.
 
 
-<a name="server"></a>
-
-### Creating the server
+### Creating the server {#server}
 
 First let's look at how we create a `RouteGuide` server. If you're only
 interested in creating gRPC clients, you can skip this section and go straight
@@ -361,9 +357,7 @@ As you can see, we build and start our server using a `ServerBuilder`. To do thi
 6. Call `Wait()` on the server to do a blocking wait until process is killed or
    `Shutdown()` is called.
 
-<a name="client"></a>
-
-### Creating the client
+### Creating the client {#client}
 
 In this section, we'll look at creating a C++ client for our `RouteGuide`
 service. You can see our complete example client code in
@@ -380,7 +374,10 @@ address and port we want to connect to - in our case we'll use no SSL:
 ```cpp
 grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
-Note: In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
+
+{{< note >}}
+In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`.
+{{< /note >}}
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 

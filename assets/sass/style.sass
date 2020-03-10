@@ -1,0 +1,278 @@
+@charset "utf-8"
+{{ $fontAwesomeVersion := site.Params.font_awesome_version }}
+{{ $fonts := site.Params.fonts }}
+{{ if $fonts }}
+{{ $fontSlice := (slice) }}
+{{ range $fonts }}
+{{ $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
+{{ end }}
+{{ $fontsUrl := printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|") }}
+@import url("{{ $fontsUrl }}")
+{{ end }}
+
+{{ with $fontAwesomeVersion }}
+{{ $fontAwesomeUrl := printf "https://use.fontawesome.com/releases/v%s/css/all.css" . }}
+@import url("{{ $fontAwesomeUrl }}")
+{{ end }}
+
+// Site-specific variables here
+$grpc-green: #244c5a
+$grpc-blue: #5ac5c5
+$twitter-blue: rgb(29, 161, 242)
+$reddit-orange: rgba(255, 86, 0, 1)
+$gitter-magenta: rgb(237, 25, 101)
+
+// Initial Bulma imports
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+// Bulma-specific overrides
+$primary: $grpc-green
+$secondary: $grpc-blue
+$secondary-dark: darken($secondary, 15%)
+$link: $secondary-dark
+$code: $primary
+$code-background: $white-bis
+$section-padding: 3rem 1.5rem
+
+// Font overrides
+{{ if $fonts }}
+// Sans-serif font
+{{ with (index (where $fonts ".type" "sans_serif") 0).name }}
+$family-sans-serif: "{{ . }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+{{ end }}
+
+// Monospace font
+{{ with (index (where $fonts ".type" "monospace") 0).name }}
+$family-monospace: "{{ . }}", monospace
+{{ end }}
+{{ end }}
+
+$font-heading: {{ $.Site.Params.heading_font | default "'Fira Sans', sans-serif" }}
+
+// Final Bulma imports
+@import "bulma/sass/utilities/derived-variables"
+
+// Bulma variable overrdides that require derived variables like $dark
+$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "reddit-orange": ($reddit-orange, $white), "gitter-magenta": ($gitter-magenta, $white)), $colors)
+
+// Bulma core
+@import "bulma/sass/utilities/_all"
+@import "bulma/sass/base/_all"
+@import "bulma/sass/elements/container"
+@import "bulma/sass/grid/columns"
+@import "bulma/sass/grid/tiles"
+@import "bulma/sass/layout/hero"
+@import "bulma/sass/layout/section"
+@import "bulma/sass/layout/footer"
+
+// Elements
+
+// @import "bulma/sass/elements/box"
+@import "bulma/sass/elements/button"
+@import "bulma/sass/elements/content"
+@import "bulma/sass/elements/icon"
+// @import "bulma/sass/elements/image"
+// @import "bulma/sass/elements/notification"
+// @import "bulma/sass/elements/progress"
+// @import "bulma/sass/elements/table"
+// @import "bulma/sass/elements/tag"
+@import "bulma/sass/elements/title"
+// @import "bulma/sass/elements/other"
+
+// Forms
+// @import "bulma/sass/form/shared"
+// @import "bulma/sass/form/input-textarea"
+// @import "bulma/sass/form/checkbox-radio"
+// @import "bulma/sass/form/select"
+// @import "bulma/sass/form/file"
+// @import "bulma/sass/form/tools"
+
+// Components
+// @import "bulma/sass/components/breadcrumb"
+@import "bulma/sass/components/card"
+// @import "bulma/sass/components/dropdown"
+@import "bulma/sass/components/level"
+// @import "bulma/sass/components/list"
+// @import "bulma/sass/components/media"
+@import "bulma/sass/components/menu"
+// @import "bulma/sass/components/message"
+@import "bulma/sass/components/modal"
+@import "bulma/sass/components/navbar"
+// @import "bulma/sass/components/pagination"
+// @import "bulma/sass/components/panel"
+@import "bulma/sass/components/tabs"
+
+.has-background-image
+  background-image: url("/img/graphic-04.svg")
+  background-repeat: no-repeat
+  background-size: cover
+
+=logo($d, $t)
+  +desktop
+    width: $d
+  +touch
+    width: $t
+
+.is-cncf-logo
+  +logo(50%, 90%)
+
+  +desktop
+    margin-top: 1.25rem
+  +touch
+    margin-top: 0.75rem
+
+.is-hero-logo
+  +logo(50%, 80%)
+
+  +desktop
+    margin-bottom: 2rem
+  +touch
+    margin-bottom: 1rem
+
+.is-footer-logo
+  +logo(50%, 40%)
+
+.is-feature-icon
+  +tablet
+    width: 80%
+  +mobile
+    width: 30%
+
+  +touch
+    margin: 0 auto
+
+.is-testimonial-logo
+  max-height: 5rem
+  margin-bottom: 1.5rem
+
+.is-page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+  .is-main
+    flex: 1
+
+  
+.is-feature-pane
+  margin-bottom: 2rem
+
+.has-bottom-padding
+  padding-bottom: 8rem
+
+.user-logo
+  margin-bottom: 1.5rem
+
+  img
+    +desktop
+      max-height: 7rem
+    +touch
+      max-height: 5rem
+
+.content
+  .button
+    margin: 1rem 0
+
+  @for $i from 1 through 6
+    h#{$i}
+      &::before
+        margin-top: 5rem
+
+  img
+    &:hover
+      cursor: pointer
+
+  .highlight
+    margin-bottom: 1rem
+
+  p a
+    font-weight: $weight-medium
+
+    &:hover
+      color: $secondary
+
+.section
+  &.has-extra-padding
+    padding: 6rem 2rem
+
+=sticky
+  position: sticky
+  position: -webkit-sticky
+
+.is-sticky
+  +sticky
+  top: $navbar-height + 3rem
+
+.is-constrained
+  max-width: 90ch
+
+=active
+  color: $secondary-dark
+  font-weight: 700
+
+.nav
+  &-section
+    &-title
+      color: $dark
+
+      &.is-active
+        +active
+
+    &-toc
+      padding: 0.5rem 0 0.75rem 2.5rem
+
+      li a
+        color: $grey
+
+      li + li
+        margin-top: 0.5rem
+
+    ul.nav-section-links
+      margin: 0 0 2rem 1.25rem
+
+      li.nav-section-link
+        font-size: 1.1rem
+
+        &.is-active
+          +active
+
+        & + li.nav-section-link
+          margin-top: 0.5rem
+
+    & + &
+      margin-top: 1.5rem
+
+.blog-list
+  ul
+    margin-bottom: 2rem
+
+    li + li
+      margin-top: .5rem
+
+=admon($color)
+  .icon
+    color: $color
+
+.admonition
+  margin-bottom: 2rem
+  padding: 1.5rem 2rem
+  border-radius: .5rem
+  border: 1.5px solid $secondary
+
+  &.is-warning
+    +admon($warning)
+  &.is-success
+    +admon($success)
+  &.is-note
+    +admon($info)
+  &.is-requirement
+    +admon($grey)
+
+.toc
+  li
+    font-size: 1.1rem
+    line-height: 1.3
+
+    & + li
+      margin-top: 0.75rem
