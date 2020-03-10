@@ -1,10 +1,8 @@
 ---
+title: The state of gRPC in the browser
 author: Johan Brandhorst
 author-link: https://jbrandhorst.com/
-date: "2019-01-08T00:00:00Z"
-published: true
-title: The state of gRPC in the browser
-url: blog/state-of-grpc-web
+date: 2019-01-08
 ---
 
 _This is a guest post by_

@@ -1,7 +1,7 @@
 ---
 title: gRPC releases Beta, opening door for use in production environments
 attribution: Mugur Marculescu, gRPC
-date: "2015-10-26"
+date: 2015-10-26
 aliases: ["blog/beta_release"]
 ---
 

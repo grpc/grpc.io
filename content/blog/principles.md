@@ -1,6 +1,6 @@
 ---
 title: gRPC Motivation and Design Principles
-date: "2015-09-08"
+date: 2015-09-08
 attribution: Originally written by Louis Ryan with help from others at Google
 ---
 

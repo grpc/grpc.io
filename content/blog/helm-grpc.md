@@ -1,12 +1,10 @@
 ---
+title: gRPC in Helm
 author: Brian Hardock
 company: DEIS
 company-link: https://deis.com/
-date: "2017-05-15T00:00:00Z"
-published: true
+date: 2017-05-15
 thumbnail: https://gabrtv.github.io/deis-dockercon-2014/img/DeisLogo.png
-title: gRPC in Helm
-url: blog/helmgrpc
 ---
 
 *Our guest post today comes from Brian Hardock, a software engineer from Deis working on the [Helm](https://helm.sh/) project.*

@@ -1,9 +1,7 @@
 ---
-attribution: Originally written by Lisa Carey with help from others at Google.
-date: "2016-03-24T00:00:00Z"
-published: true
 title: Google Cloud PubSub - with the power of gRPC!
-url: blog/pubsub
+attribution: Originally written by Lisa Carey with help from others at Google.
+date: 2016-03-24
 ---
 
 [Google Cloud PubSub](https://cloud.google.com/pubsub/) is Google's scalable real-time messaging service that lets users send and receive messages between independent applications. It's an important part of Google Cloud Platform's big data offering, and is used by customers worldwide to build their own robust, global services. However, until now, the only way to use the Cloud PubSub API was via JSON over HTTP. That's all changed with the release of [PubSub gRPC alpha](https://cloud.google.com/blog/big-data/2016/03/announcing-grpc-alpha-for-google-cloud-pubsub). Now **users can access PubSub via gRPC** and benefit from all the advantages it brings.

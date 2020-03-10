@@ -1,23 +1,20 @@
 ---
+title: gRPC-Go performance Improvements
 author: Mahak Mukhi
 company: Google
 company-link: google.com
-date: "2017-08-22T00:00:00Z"
-published: true
-title: 2017-08-22 gRPC-Go performance Improvements
+date: 2017-08-22
 ---
-<p>
-<span style="margin-bottom:5%">For past few months we've been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-Go flow control. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain.
+
+For past few months we've been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-Go flow control. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain.
 Benchmark results at the end.
 
-This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.</style>
-</p><br>
+This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.
 <!--more-->
 
-### Recently Implemented Optimizations
+## Recently Implemented Optimizations
 
-
-###### Expanding stream window on receiving large messages
+### Expanding stream window on receiving large messages
 
 [Code link](https://github.com/grpc/grpc-go/pull/1248)
 
@@ -26,7 +23,7 @@ This is an optimization used by gRPC-C to achieve performance benefits for large
 This optimization alone provided a 10x improvement for large messages on high-latency networks.
 
 
-###### Decoupling application reads from connection flow control
+### Decoupling application reads from connection flow control
 
 [Code link](https://github.com/grpc/grpc-go/pull/1265)
 
@@ -45,14 +42,13 @@ The need for connection-level flow control:
 It is true that stream-level flow control is sufficient to throttle a sender from sending too much data. But not having connection-level flow control (or using an unlimited connection-level window) makes it so that when things get slower on a stream, opening a new one will appear to make things faster. This will only take one so far since the number of streams are limited. However, having a connection-level flow control window set to the Bandwidth Delay Product (BDP) of the network puts an upper-bound on how much performance can realistically be squeezed out of the network.
 
 
-###### Piggyback window updates
+### Piggyback window updates
 
 [Code link](https://github.com/grpc/grpc-go/pull/1273)
 
 Sending a window update itself has a cost associated to it; a flush operation is necessary, which results in a syscall. Syscalls are blocking and slow. Therefore, when sending out a stream-level window update, it makes sense to also check if a connection-level window update can be sent using the same flush syscall.
 
-
-###### BDP estimation and dynamic flow control window
+### BDP estimation and dynamic flow control window
 
 [Code link](https://github.com/grpc/grpc-go/pull/1310)
 
@@ -72,13 +68,11 @@ Given that we're always bound by the flow control of TCP which for most cases is
 
 BDP estimation and dynamically adjusting window sizes is turned-on by default and can be turned off by setting values manually for connection and/or stream window sizes.
 
-
-###### Near-future efforts
+### Near-future efforts
 
 We are now looking into improving our throughput by better CPU utilization, the following efforts are in-line with that.
 
-
-###### Reducing flush syscalls
+### Reducing flush syscalls
 
 We noticed a bug in our transport layer which causes us to make a flush syscall for every data frame we write, even if the same goroutine has more data to send. We can batch a lot of these writes to use only one flush. This in fact will not be a big change to the code itself.
 
@@ -86,15 +80,11 @@ In our efforts to get rid of unnecessary flushes we recently combined the header
 
 Another related idea proposed by one of our users @petermattic in [this](https://github.com/grpc/grpc-go/pull/1373) PR was to combine a server response to a unary RPC into one flush. We are currently looking into that as well.
 
-
-###### Reducing memory allocation
+### Reducing memory allocation
 
 For every data frame read from the wire a new memory allocation takes place. The same holds true at the gRPC layer for every new message for decompressing and decoding. These allocations result in excessive garbage collection cycles, which are expensive. Reusing memory buffers can reduce this GC pressure, and we are prototyping approaches to do so. As requests need buffers of differing sizes, one approach would be to maintain individual memory pools of fixed sizes (powers of two). So now when reading x bytes from the wire we can find the nearest power of 2 greater than x and reuse a buffer from our cache if available or allocate a new one if need be. We will be using golang sync Pools so we don't have to worry about garbage collection. However, we will need to run sufficient tests before committing to this.
 
-
-
-###### Results:
-
+### Results
 
 * Benchmark on a real network:
 
@@ -104,18 +94,14 @@ For every data frame read from the wire a new memory allocation takes place. The
   * [Code link](https://github.com/grpc/grpc-go/compare/master...MakMukhi:http_greeter)
 
 
-<table>
-<tr><th>Message Size </th><th>GRPC </th><th>HTTP 1.1</th></tr>
-
-<tr><td>1 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
-<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
-<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
-<tr><td>1 MB</td><td>~152 ms</td><td>~152 ms</td></tr>
-<tr><td>10 MB</td><td>~622 ms</td><td>~630 ms</td></tr>
-<tr><td>100 MB</td><td>~5 sec</td><td>~5 sec</td></tr>
-
-
-</table>
+Message size | gRPC | HTTP 1.1
+:------------|:-----|:--------
+1 KB   | ~152 ms | ~152 ms
+10 KB  | ~152 ms | ~152 ms
+10 KB  | ~152 ms | ~152 ms
+1 MB   | ~152 ms | ~152 ms
+10 MB  | ~622 ms | ~630 ms
+100 MB | ~5 sec  | ~5 sec
 
 * Benchmark on simulated network:
   * Server and client were launched on the same machine and different network latencies were simulated.
@@ -124,9 +110,9 @@ For every data frame read from the wire a new memory allocation takes place. The
   * Following tables show time taken by first 10 RPCs.
   * [Code link](https://github.com/grpc/grpc-go/compare/master...MakMukhi:grpc_vs_http)
 
-##### No Latency Network
+##### No-latency Network
 
-| GRPC | HTTP 2.0 | HTTP 1.1 |
+| gRPC | HTTP 2.0 | HTTP 1.1 |
 | --------------|:-------------:|-----------:|
 |5.097809ms|16.107461ms|18.298959ms |  
 |4.46083ms|4.301808ms|7.715456ms
@@ -141,7 +127,7 @@ For every data frame read from the wire a new memory allocation takes place. The
 
 ##### Network with RTT of 16ms
 
-| GRPC | HTTP 2.0 | HTTP 1.1 |
+| gRPC | HTTP 2.0 | HTTP 1.1 |
 | --------------|:-------------:|-----------:|
 |118.837625ms|84.453913ms|58.858109ms
 |36.801006ms|22.476308ms|20.877585ms

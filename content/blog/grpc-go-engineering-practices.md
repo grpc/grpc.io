@@ -1,10 +1,9 @@
 ---
+title: gRPC-Go Engineering Practices
 author: Doug Fawley, gRPC-Go TL
 company: Google
 company-link: google.com
-date: "2018-01-22T00:00:00Z"
-published: true
-title: 2018-01-19 gRPC-Go Engineering Practices
+date: 2018-01-22
 ---
 
 It's the start of the new year, and almost the end of my first full year on the

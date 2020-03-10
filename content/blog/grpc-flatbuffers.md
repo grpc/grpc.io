@@ -1,12 +1,9 @@
 ---
+title: Announcing out-of-the-box support for gRPC in the Flatbuffers serialization library
 author: Wouter van Oortmerssen
 company: Google
 company-link: https://www.google.com
-date: "2017-08-17T00:00:00Z"
-published: true
-title: Announcing out of the box support for gRPC in the Flatbuffers serialization
-  library.
-url: blog/flatbuffers
+date: 2017-08-17
 ---
 
 The recent release of Flatbuffers [version 1.7](https://github.com/google/flatbuffers/releases) introduced truly zero-copy support for gRPC out of the box. 
@@ -22,9 +19,11 @@ This is currently, fully supported in the C++ implementation of FlatBuffers, wit
 
 
 ## Example Usage
+
 Let's look at an example of how this works. 
 
 ### Use Flatbuffers as an IDL
+
 Start with an `.fbs` schema (similar to .proto, if you are familiar with protocol buffers) that declares an RPC service: 
 
 ```proto

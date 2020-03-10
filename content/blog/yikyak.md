@@ -1,12 +1,10 @@
 ---
+title: Migration to Google Cloud Platform — gRPC & grpc-gateway
 author: Miguel Mendez
 company: Yik Yak
 company-link: https://yikyakapp.com
-date: "2017-04-12T00:00:00Z"
-published: true
+date: 2017-04-12
 thumbnail: https://cdn-images-1.medium.com/max/1600/0*qYehJ2DvPgFcG_nX.
-title: Migration to Google Cloud Platform — gRPC & grpc-gateway
-url: blog/yygrpc
 ---
 
 Our guest post today comes from [Miguel Mendez](https://www.linkedin.com/in/miguel-mendez-008231/) of Yik Yak.
@@ -36,18 +34,17 @@ Third, it is great that I can use curl from the command line to hit an API, but 
 The fourth problem with a REST APIs is that, at least until [Swagger](https://swagger.io/) arrived on the scene, there was no declarative way to define a REST API and include type information. It may sound pedantic, but there are legitimate reasons to want a proper definition that includes type information in general. To reinforce the point, look at the lines of PHP server code below, which were extracted from various files, that set the “hidePin” field on “yak” which was then returned to the client. The actual line of code that executed on the server was a function of multiple parameters, so imagine that the one which was run was basically chosen at random:
 
 ```php
-    // Code omitted…
-    $yak->hidePin=false;
-    
-    // Code omitted…
-    $yak->hidePin=true;
-    
-    // Code omitted…
-    $yak->hidePin=0;
-    
-    // Code omitted…
-    $yak->hidePin=1;
+// Code omitted…
+$yak->hidePin=false;
 
+// Code omitted…
+$yak->hidePin=true;
+
+// Code omitted…
+$yak->hidePin=0;
+
+// Code omitted…
+$yak->hidePin=1;
 ```
 
 What is the type of the field hidePin? You cannot say for certain. It could be a boolean or an integer or whatever happens to have been written there by the server, but in any case now your clients have to be able to deal with these possibilities which makes them more complicated.
@@ -55,51 +52,59 @@ What is the type of the field hidePin? You cannot say for certain. It could be a
 Problems can also arise when the client’s definition of a type varies from that which the server expects. Have a look at the server code below which processed a JSON payload sent up by a client:
 
 ```php
-    // Code omitted…
-    switch ($fieldName) {
-      // Code omitted…
-      case “recipientID”:
-      // This is being added because iOS is passing the recipientID
-      // incorrectly and we still want to capture these events
-      // … expected fall through …
-      
-      case “Recipientid”:
-        $this->yakkerEvent->recipientID = $value;
-        break;
-      // Code omitted…
-    }
-    // Code omitted…
+// Code omitted...
+switch ($fieldName) {
+  // Code omitted...
+  case “recipientID”:
+  // This is being added because iOS is passing the recipientID
+  // incorrectly and we still want to capture these events
+  // … expected fall through …
+  
+  case “Recipientid”:
+    $this->yakkerEvent->recipientID = $value;
+    break;
+  // Code omitted...
+}
+// Code omitted...
 ```
 
 In this case, the server had to deal with an iOS client that sent a JSON object whose field name used unexpected casing. Again, not insurmountable but all of these little disconnects compound and work together to steal time away from the problems that really move the ball down the field.
 
-## gRPC can address the issues with REST…
+## gRPC can address the issues with REST
+
 If you’re not familiar with gRPC, it’s a “high performance, open-source universal remote procedure call (RPC) framework” that uses Google Protocol Buffers as the Interface Description Language (IDL) for describing a service interface as well as the structure of the messages exchanged. This IDL can then be compiled to produce language-specific client and server stubs. In case that seemed a little obtuse, I’ll zoom into the aspects that are important.
 
 ### gRPC is Declarative, Strongly-Typed, and Language Independent
+
 gRPC descriptions are written using an Interface Description Language that is independent of any specific programming language, yet its concepts map onto the supported languages. This means that you can describe your ideal service API, the messages that it supports, and then use “protoc”, the protocol compiler, to generate client and server stubs for your API. Out of the box, you can produce client and server stubs in C/C++, C#, Node.js, PHP, Ruby, Python, Go and Java. You can also get additional protoc plugins which can create stubs for Objective-C and Swift.
 
 Those issues that we had with “hidePin” and “recipientID” vs.”Recipientid” fields above go away because we have a single, canonical declaration that establishes the types used, and the language-specific code generation ensures that we don’t have typos in the client or server code regardless of their implementation language.
 
 ### gRPC Means No hand-rolling of RPC Code is Required
+
 This is a very powerful aspect of the gRPC ecosystem. Often times developers will hand roll their RPC code because it just seems more straightforward. However, as the number of types of clients that you need to support increases, the carrying costs of this approach also increase non-linearly.
 Imagine that you start off with a service that is called from a web browser. At some point down the road, the requirements are updated and now you have to support Android and iOS clients. Your server is likely fine, but the clients now need to be able to speak the same RPC dialect and often times there are differences that creep in. Things can get even worse if the server has to compensate for the differences amongst the clients.
 On the other hand, using gRPC you just add the protocol compiler plugins and they generate the Android and iOS client stubs. This cuts out a whole class of problems. As a bonus, if you don’t modify the generated code — and you should not have to — then any performance improvements in the generated code will be picked up.
 
 ### gRPC has Compact Serialization
+
 gRPC uses Google protocol buffers to serialize messages. This serialization format is very compact because, among other things, field names are not included in the serialized form. Compare this to a JSON object where each instance of an object carries a full copy of its field names, includes extra curly braces, etc. For a low-volume application this may not be an issue, but it can add up quickly.
 
 ### gRPC Tooling is Extensible
+
 Another very useful feature of the gRPC framework is that it is extensible. If you need support for a language that is not currently supported, there is a way to create plugins for the protocol compiler that allows you to add what you need.
 
 ### gRPC Supports Contract Updates
+
 An often overlooked aspect of service APIs is how they may evolve over time. At best, this is often a secondary consideration. If you are using gRPC, and you adhered to a few basic rules, your messages can be forward and backward compatible.
 
 ## Grpc-gateway — because REST will be with us for a while…
+
 You’re probably thinking: gRPC is great but I have a ton of REST clients to deal with. Well, there is another tool in this ecosystem and it is called grpc-gateway. Grpc-gateway “generates a reverse-proxy server which translates a RESTful JSON API into gRPC”. So if you want to support REST clients you can, and it doesn’t cost you any real extra effort.
 If your existing REST clients are pretty far from the normal REST APIs, you can use custom marshallers with grpc-gateway to compensate.
 
 ## Migration and gRPC + grpc-gateway
+
 As mentioned previously, we had a lot of PHP code and REST endpoints which we wanted to rework as part of the migration. By using the combination of gRPC and grpc-gateway, we were able to define gRPC versions of the legacy REST APIs and then use grpc-gateway to expose the exact REST endpoints that clients were used to. With these alternative implementations in place we were able to move traffic between the old and new systems using combinations of DNS updates as well as our [Experimentation and Configuration System](https://medium.com/yik-yak-eng/yik-yak-configuration-and-experiment-system-16a5c15ee77c#.7s11d3kqh) without causing any disruption to the existing clients. We were even able to leverage the existing test suites to verify functionality and establish parity between the old and new systems.
 Lets walk through the pieces and how they fit together.
 

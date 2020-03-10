@@ -1,12 +1,12 @@
 ---
+title: gRPC with REST and Open APIs
 attribution: Originally written by Brandon Phillips with additional content by Lisa
   Carey and others at Google
 author: Brandon Phillips
 company: CoreOS
 company-link: https://coreos.com
-date: "2016-05-09"
+date: 2016-05-09
 thumbnail: https://avatars2.githubusercontent.com/u/3730757?v=3&s=200
-title: gRPC with REST and Open APIs
 ---
 
 Our guest post today comes from Brandon Phillips of [CoreOS](https://coreos.com/). CoreOS builds open source projects and products for Linux Containers. Their flagship product for consensus and discovery [etcd](https://coreos.com/etcd/) and their container engine [rkt](https://coreos.com/rkt/) are early adopters of gRPC. 

@@ -1,12 +1,10 @@
 ---
+title: So You Want to Optimize gRPC - Part 1
 author: Carl Mastrangelo
 author-link: https://github.com/carl-mastrangelo
 company: Google
 company-link: https://www.google.com
-date: "2018-03-06T00:00:00Z"
-published: true
-title: So You Want to Optimize gRPC - Part 1
-url: blog/optimizing-grpc-part-1
+date: 2018-03-06
 ---
 
 A common question with gRPC is how to make it fast.  The gRPC library offers users access to high
@@ -61,26 +59,26 @@ As mentioned above, the client makes random RPCs.  For example, here is the code
 request:
 
 ```java
-  private void doCreate(KeyValueServiceBlockingStub stub) {
-    ByteString key = createRandomKey();
-    try {
-      CreateResponse res = stub.create(
-          CreateRequest.newBuilder()
-              .setKey(key)
-              .setValue(randomBytes(MEAN_VALUE_SIZE))
-              .build());
-      if (!res.equals(CreateResponse.getDefaultInstance())) {
-        throw new RuntimeException("Invalid response");
-      }
-    } catch (StatusRuntimeException e) {
-      if (e.getStatus().getCode() == Code.ALREADY_EXISTS) {
-        knownKeys.remove(key);
-        logger.log(Level.INFO, "Key already existed", e);
-      } else {
-        throw e;
-      }
+private void doCreate(KeyValueServiceBlockingStub stub) {
+  ByteString key = createRandomKey();
+  try {
+    CreateResponse res = stub.create(
+        CreateRequest.newBuilder()
+            .setKey(key)
+            .setValue(randomBytes(MEAN_VALUE_SIZE))
+            .build());
+    if (!res.equals(CreateResponse.getDefaultInstance())) {
+      throw new RuntimeException("Invalid response");
+    }
+  } catch (StatusRuntimeException e) {
+    if (e.getStatus().getCode() == Code.ALREADY_EXISTS) {
+      knownKeys.remove(key);
+      logger.log(Level.INFO, "Key already existed", e);
+    } else {
+      throw e;
     }
   }
+}
 ```
 
 A random key is created, along with a random value.  The request is sent to the server, and the
@@ -101,21 +99,21 @@ On the server side, the request is received by the
 [service handler](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java#L34):
 
 ```java
-  private final Map<ByteBuffer, ByteBuffer> store = new HashMap<>();
+private final Map<ByteBuffer, ByteBuffer> store = new HashMap<>();
 
-  @Override
-  public synchronized void create(
-      CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
-    ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
-    ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
-    simulateWork(WRITE_DELAY_MILLIS);
-    if (store.putIfAbsent(key, value) == null) {
-      responseObserver.onNext(CreateResponse.getDefaultInstance());
-      responseObserver.onCompleted();
-      return;
-    }
-    responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+@Override
+public synchronized void create(
+    CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
+  ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
+  ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
+  simulateWork(WRITE_DELAY_MILLIS);
+  if (store.putIfAbsent(key, value) == null) {
+    responseObserver.onNext(CreateResponse.getDefaultInstance());
+    responseObserver.onCompleted();
+    return;
   }
+  responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+}
 ```
 
 The service extracts the key and value as `ByteBuffer`s from the request.  It acquires the lock
@@ -164,21 +162,21 @@ decides](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96e
 what operation to do:
 
 ```java
-  void doClientWork(AtomicBoolean done) {
-    Random random = new Random();
-    KeyValueServiceBlockingStub stub = KeyValueServiceGrpc.newBlockingStub(channel);
+void doClientWork(AtomicBoolean done) {
+  Random random = new Random();
+  KeyValueServiceBlockingStub stub = KeyValueServiceGrpc.newBlockingStub(channel);
 
-    while (!done.get()) {
-      // Pick a random CRUD action to take.
-      int command = random.nextInt(4);
-      if (command == 0) {
-        doCreate(stub);
-        continue;
-      }
-      /* ... */
-      rpcCount++;
+  while (!done.get()) {
+    // Pick a random CRUD action to take.
+    int command = random.nextInt(4);
+    if (command == 0) {
+      doCreate(stub);
+      continue;
     }
+    /* ... */
+    rpcCount++;
   }
+}
 ```
 
 This means that **at most one RPC can be active at any time**.  Each RPC has to wait for the
@@ -192,7 +190,7 @@ Our code can do about 16 queries in a second, so that seems about right.  We can
 assumption by looking at the output of the `time` command used to run the code.  The server goes
 to sleep when running queries in the
 [`simulateWork`](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java#L88)
-method.  This implies that the program should be mostly idle while waiting for the RPCs to
+method. This implies that the program should be mostly idle while waiting for the RPCs to
 complete.
 
 We can confirm this is the case by looking at the `real` and `user` times of the command above.
@@ -228,39 +226,39 @@ is still roughly from top to bottom in the function.  Here is the
 method revised:
 
 ```java
-  private void doCreate(KeyValueServiceFutureStub stub, AtomicReference<Throwable> error) {
-    ByteString key = createRandomKey();
-    ListenableFuture<CreateResponse> res = stub.create(
-        CreateRequest.newBuilder()
-            .setKey(key)
-            .setValue(randomBytes(MEAN_VALUE_SIZE))
-            .build());
-    res.addListener(() -> rpcCount.incrementAndGet(), MoreExecutors.directExecutor());
-    Futures.addCallback(res, new FutureCallback<CreateResponse>() {
-      @Override
-      public void onSuccess(CreateResponse result) {
-        if (!result.equals(CreateResponse.getDefaultInstance())) {
-          error.compareAndSet(null, new RuntimeException("Invalid response"));
-        }
-        synchronized (knownKeys) {
-          knownKeys.add(key);
-        }
+private void doCreate(KeyValueServiceFutureStub stub, AtomicReference<Throwable> error) {
+  ByteString key = createRandomKey();
+  ListenableFuture<CreateResponse> res = stub.create(
+      CreateRequest.newBuilder()
+          .setKey(key)
+          .setValue(randomBytes(MEAN_VALUE_SIZE))
+          .build());
+  res.addListener(() -> rpcCount.incrementAndGet(), MoreExecutors.directExecutor());
+  Futures.addCallback(res, new FutureCallback<CreateResponse>() {
+    @Override
+    public void onSuccess(CreateResponse result) {
+      if (!result.equals(CreateResponse.getDefaultInstance())) {
+        error.compareAndSet(null, new RuntimeException("Invalid response"));
       }
+      synchronized (knownKeys) {
+        knownKeys.add(key);
+      }
+    }
 
-      @Override
-      public void onFailure(Throwable t) {
-        Status status = Status.fromThrowable(t);
-        if (status.getCode() == Code.ALREADY_EXISTS) {
-          synchronized (knownKeys) {
-            knownKeys.remove(key);
-          }
-          logger.log(Level.INFO, "Key already existed", t);
-        } else {
-          error.compareAndSet(null, t);
+    @Override
+    public void onFailure(Throwable t) {
+      Status status = Status.fromThrowable(t);
+      if (status.getCode() == Code.ALREADY_EXISTS) {
+        synchronized (knownKeys) {
+          knownKeys.remove(key);
         }
+        logger.log(Level.INFO, "Key already existed", t);
+      } else {
+        error.compareAndSet(null, t);
       }
-    });
-  }
+    }
+  });
+}
 ```
 
 The stub has been modified to be a `KeyValueServiceFutureStub`, which produces a `Future` when
@@ -323,23 +321,23 @@ permit.  To [accomplish](https://github.com/carl-mastrangelo/kvstore/blob/02-fut
 this, we will using a `Semaphore`:
 
 ```java
-  private final Semaphore limiter = new Semaphore(100);
+private final Semaphore limiter = new Semaphore(100);
 
-  private void doCreate(KeyValueServiceFutureStub stub, AtomicReference<Throwable> error)
-      throws InterruptedException {
-    limiter.acquire();
-    ByteString key = createRandomKey();
-    ListenableFuture<CreateResponse> res = stub.create(
-        CreateRequest.newBuilder()
-            .setKey(key)
-            .setValue(randomBytes(MEAN_VALUE_SIZE))
-            .build());
-    res.addListener(() ->  {
-      rpcCount.incrementAndGet();
-      limiter.release();
-    }, MoreExecutors.directExecutor());
-    /* ... */
-  }
+private void doCreate(KeyValueServiceFutureStub stub, AtomicReference<Throwable> error)
+    throws InterruptedException {
+  limiter.acquire();
+  ByteString key = createRandomKey();
+  ListenableFuture<CreateResponse> res = stub.create(
+      CreateRequest.newBuilder()
+          .setKey(key)
+          .setValue(randomBytes(MEAN_VALUE_SIZE))
+          .build());
+  res.addListener(() ->  {
+    rpcCount.incrementAndGet();
+    limiter.release();
+  }, MoreExecutors.directExecutor());
+  /* ... */
+}
 ```
 
 Now the code runs successfully, and doesn't run out of memory.
@@ -396,4 +394,3 @@ the very basics of how to approach and think about optimization.  Always make su
 before and after your changes, and use these measurements to guide your optimizations.
 
 In [Part 2](/blog/optimizing-grpc-part-2), we will continue optimizing the server part of the code.
-

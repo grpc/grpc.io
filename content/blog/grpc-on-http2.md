@@ -1,24 +1,23 @@
 ---
-author:  Jean de Klerk
-author-link: https://github.com/jadekler
-date: "2018-08-20T00:00:00Z"
-published: true
 title: gRPC on HTTP/2 Engineering a Robust, High Performance Protocol
-url: blog/grpc_on_http2
+author: Jean de Klerk
+author-link: https://github.com/jadekler
+date: 2018-08-20
 ---
 
 In a [previous article](/blog/http2_smarter_at_scale), we explored how HTTP/2 dramatically increases network efficiency and enables real-time communication by providing a framework for long-lived connections. In this article, we’ll look at how gRPC builds on HTTP/2’s long-lived connections to create a performant, robust platform for inter-service communication. We will explore the relationship between gRPC and HTTP/2, how gRPC manages HTTP/2 connections, and how gRPC uses HTTP/2 to keep connections alive, healthy, and utilized.
+
 <!--more-->
 
 ## gRPC Semantics
 
 To begin, let’s dive into how gRPC concepts relate to HTTP/2 concepts. gRPC introduces three new concepts: *channels* [1], *remote procedure calls* (RPCs), and *messages*. The relationship between the three is simple: each channel may have many RPCs while each RPC may have many messages.
 
-<img src="/img/channels_mapping_2.png" title="Channel Mapping" alt="Channel Mapping" style="max-width: 800px">
+![Channel mapping](/img/channels_mapping_2.png)
 
 Let’s take a look at how gRPC semantics relate to HTTP/2:
 
-<img src="/img/grpc_on_http2_mapping_2.png" title="gRPC on HTTP/2" alt="gRPC on HTTP/2" style="max-width: 800px">
+![gRPC on HTTP/2](/img/grpc_on_http2_mapping_2.png)
 
 Channels are a key concept in gRPC. Streams in HTTP/2 enable multiple concurrent conversations on a single connection; channels extend this concept by enabling multiple streams over multiple concurrent connections. On the surface, channels provide an easy interface for users to send messages into; underneath the hood, though, an incredible amount of engineering goes into keeping these connections alive, healthy, and utilized.
 
@@ -28,9 +27,9 @@ Channels represent virtual connections to an endpoint, which in reality may be b
 
 In order to keep connections alive, healthy, and utilized, gRPC utilizes a number of components, foremost among them *name resolvers* and *load balancers*. The resolver turns names into addresses and then hands these addresses to the load balancer. The load balancer is in charge of creating connections from these addresses and load balancing RPCs between connections.
 
-<img src="/img/dns_to_load_balancer_mapping_3.png" title="Resolvers and Load Balancers" alt="Resolvers and Load Balancers" style="max-width: 800px">
+![Resolvers and Load Balancers](/img/dns_to_load_balancer_mapping_3.png)
 
-<img src="/img/load_balance_round_robins_2.png" alt="Round Robin Load Balancer" style="max-width: 800px">
+![Round Robin Load Balancer](/img/load_balance_round_robins_2.png)
 
 A DNS resolver, for example, might resolve some host name to 13 IP addresses, and then a RoundRobin balancer might create 13 connections - one to each address - and round robin RPCs across each connection. A simpler balancer might simply create a connection to the first address. Alternatively, a user who wants multiple connections but knows that the host name will only resolve to one address might have their balancer create connections against each address 10 times to ensure that multiple connections are used.
 

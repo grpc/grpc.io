@@ -1,10 +1,8 @@
 ---
+title: Dear gRPC
 author: April Nassi
 author-link: https://www.thisisnotapril.com/
-date: "2019-03-08T00:00:00Z"
-published: true
-title: Dear gRPC
-url: blog/hello-pancakes
+date: 2019-03-08
 ---
 
 Dear gRPC,
@@ -15,7 +13,7 @@ You're 4 now and that's a big milestone! You're part of so much amazing technolo
 
 We're proud of you, gRPC, and we're going to make this up to you. For starters - we got you a puppy! He's an adorable **G**olden **R**etriever and his name is **P**an**C**akes. He loves to run back and forth with toys, packets, or messages. He's super active and no matter how much we train him, we just can't get him to REST. PanCakes is going to be your best friend, and ambassador.
 
-<img src="https://raw.githubusercontent.com/grpc/grpc-community/master/PanCakes/Pancakes_Birthday.png" alt="gRPC Mascot PanCakes" style="max-width: 547px">
+![gRPC Mascot PanCakes](https://raw.githubusercontent.com/grpc/grpc-community/master/PanCakes/Pancakes_Birthday.png)
 
 Even though it's a bit late, we still want to throw you a party, gRPC. Our friends at CNCF have planned a [big event](https://events.linuxfoundation.org/events/grpconf-2019/) for you on March 21, and there's going to be lots of people there! They'll be sharing stories about the cool things they've built, and meeting new people. It's an entire day all about you, and everyone there is going to learn so much. There will be other puppies who can play with PanCakes! Some of the amazing dogs from [Canine Companions for Independence](http://www.cci.org/) will be there to greet conference attendees and share how they help their humans live a more independent life. 
 
@@ -23,4 +21,4 @@ We are so excited to see what this year holds for you, gRPC!
 
 ~ gRPC Maintainers
 
-<img src="https://raw.githubusercontent.com/grpc/grpc-community/master/PanCakes/Pancakes_Birthday_4.png" alt="gRPC Mascot PanCakes" style="max-width: 547px">
+![gRPC Mascot PanCakes](https://raw.githubusercontent.com/grpc/grpc-community/master/PanCakes/Pancakes_Birthday_4.png)

@@ -1,6 +1,6 @@
 ---
 title: The gRPC Meetup Kit
-date: "2017-09-14"
+date: 2017-09-14
 attribution: Mark Mandel, Sandeep Dinesh
 ---
 

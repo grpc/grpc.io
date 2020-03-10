@@ -1,12 +1,10 @@
 ---
+title: gRPC + JSON
 author: Carl Mastrangelo
 author-link: https://carlmastrangelo.com
 company: Google
 company-link: https://www.google.com
-date: "2018-08-15T00:00:00Z"
-published: true
-title: gRPC + JSON
-url: blog/grpc-with-json
+date: 2018-08-15
 ---
 
 So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?
@@ -227,4 +225,3 @@ Almost **10x** faster than before!  We can still take advantage of gRPC's effici
 gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC lets you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility, type checking, and performance it gives you.)
 
 All the code is avaialable on [GitHub](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) if you would like to see a fully working implementation.
-

@@ -1,9 +1,7 @@
 ---
-author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
-date: "2018-10-23T00:00:00Z"
-published: true
 title: gRPC-Web is Generally Available
-url: blog/grpc-web-ga
+author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
+date: 2018-10-23
 ---
 
 We are excited to announce the GA release of
@@ -34,7 +32,6 @@ custom JSON seralization and deserialization logic, wrangling HTTP status codes
 From a broader architectural perspective, gRPC-Web enables end-to-end gRPC. The diagram below illustrates this:
 
 <img src="/img/grpc-web-arch.png" style="max-width: 947px">
-
 
 <p style="text-align: center"> Figure 1.
 gRPC with gRPC-Web (left) and gRPC with REST (right)</p>

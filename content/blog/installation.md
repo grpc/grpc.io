@@ -1,7 +1,7 @@
 ---
 title: gRPC - now with easy installation
 attribution: Originally written by Lisa Carey with help from others at Google.
-date: "2016-04-04"
+date: 2016-04-04
 ---
 
 Today we are happy to provide an update that significantly simplifies the getting started experience for gRPC.

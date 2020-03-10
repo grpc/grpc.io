@@ -1,12 +1,10 @@
 ---
+title: Gracefully clean up in gRPC JUnit tests
 author: Dapeng Zhang
 author-link: https://github.com/dapengzhang0
 company: Google
 company-link: https://www.google.com
-date: "2018-06-26T00:00:00Z"
-published: true
-title: Gracefully clean up in gRPC JUnit tests
-url: blog/gracefully_clean_up_in_grpc_junit_tests
+date: 2018-06-26
 ---
 
 It is best practice to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed. 
@@ -112,5 +110,5 @@ public class MyTest {
 
 Now with [`GrpcCleanupRule`][GrpcCleanupRule] you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test. So try it out and clean up in your tests!
 
-[GrpcServerRule]:https://github.com/grpc/grpc-java/blob/v1.1.x/testing/src/main/java/io/grpc/testing/GrpcServerRule.java
-[GrpcCleanupRule]:https://github.com/grpc/grpc-java/blob/v1.13.x/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java
+[GrpcServerRule]: https://github.com/grpc/grpc-java/blob/v1.1.x/testing/src/main/java/io/grpc/testing/GrpcServerRule.java
+[GrpcCleanupRule]: https://github.com/grpc/grpc-java/blob/v1.13.x/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java

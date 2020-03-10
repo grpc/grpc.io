@@ -1,15 +1,14 @@
 ---
+title: HTTP/2 Smarter At Scale
 author: Jean de Klerk
 author-link: https://github.com/jadekler
 company: Google
 company-link: https://www.google.com
-date: "2018-07-13T00:00:00Z"
-published: true
-title: HTTP/2 Smarter At Scale
-url: blog/http2_smarter_at_scale
+date: 2018-07-13
 ---
 
 Much of the web today runs on HTTP/1.1. The spec for HTTP/1.1 was published in June of 1999, just shy of 20 years ago. A lot has changed since then, which makes it all the more remarkable that HTTP/1.1 has persisted and flourished for so long. But in some areas it’s beginning to show its age; for the most part, in that the designers weren’t building for the scale at which HTTP/1.1 would be used and the astonishing amount of traffic that it would come to handle. A not-so-bad case is that subsequent tests can't pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn't have passed at all if the previously passed test had not leaked a resource.
+
 <!--more-->
 
 HTTP/2, whose specification was published in May of 2015, seeks to address some of the scalability concerns of its predecessor while still providing a similar experience to users. HTTP/2 improves upon HTTP/1.1’s design in a number of ways, perhaps most significantly in providing a semantic mapping over connections. In this post we’ll explore the concept of streams and how they can be of substantial benefit to software engineers.
@@ -20,7 +19,7 @@ There’s significant overhead to creating HTTP connections. You must establish 
 
 HTTP/2 takes the concept of persistent connections further by providing a semantic layer above connections: streams. Streams can be thought of as a series of semantically connected messages, called frames. A stream may be short-lived, such as a unary stream that requests the status of a user (in HTTP/1.1, this might equate to `GET /users/1234/status`). With increasing frequency it’s long-lived. To use the last example, instead of making individual requests to the /users/1234/status endpoint, a receiver might establish a long-lived stream and thereby continuously receive user status messages in real time.
 
-<img src="/img/conn_stream_frame_mapping.png" alt="Kotlin Android app example" style="max-width: 800px">
+![Kotlin Android app example](/img/conn_stream_frame_mapping.png)
 
 ## Streams Provide Concurrency
 
@@ -30,13 +29,13 @@ To illustrate this point, consider the case of some service A sending HTTP/1.1 r
 
 In some snapshot in time, service A has a single idle connection to service B and wants to use it to send some data. Service A wants to send a product order (request 1), a profile update (request 2), and two “new user” requests (requests 3 and 4). Since the product order arrives first, it dominates the single idle connection. The latter three smaller requests must either wait for the large product order to be sent, or some number of new HTTP/1.1 connection must be spun up for the small requests.
 
-<img src="/img/http2_queue_3.png" alt="Kotlin Android app example" style="max-width: 800px">
+![Kotlin Android app example](/img/http2_queue_3.png)
 
 Meanwhile, with HTTP/2, streaming allows messages to be sent concurrently on the same connection. Let’s imagine that service A creates a connection to service B with three streams: a “new users” stream, a “profile updates” stream, and a “product order” stream. Now, the latter requests don’t have to wait for the first-to-arrive large product order request; all requests are sent concurrently.
 
 Concurrency does not mean parallelism, though; we can only send one packet at a time on the connection. So, the sender might round robin sending packets between streams (see below). Alternatively, senders might prioritize certain streams over others; perhaps getting new users signed up is more important to the service!
 
-<img src="/img/http2_round_robin.png" alt="Kotlin Android app example" style="max-width: 800px">
+![Kotlin Android app example](/img/http2_round_robin.png)
 
 ## Flow Control
 

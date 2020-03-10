@@ -1,11 +1,9 @@
 ---
+title: gRPC Load Balancing
 author: makdharma
 company: Google
 company-link: https://www.google.com
-date: "2017-06-15T00:00:00Z"
-published: true
-title: gRPC Load Balancing
-url: blog/loadbalancing
+date: 2017-06-15
 ---
 
 This post describes various load balancing scenarios seen when deploying gRPC. If you use [gRPC](/) with multiple backends, this document is for you.

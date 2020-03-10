@@ -1,14 +1,13 @@
 ---
+title: gRPC at VSCO
 attribution: Thanks to the VSCO engineers that worked on this migration.Steven Tang,
   Sam Bobra, Daniel Song, Lucas Kacher, and many others.
 author: Robert Sayre and Melinda Lu
 company: VSCO
 company-link: https://vsco.co
-date: "2016-09-06T00:00:00Z"
-published: true
+date: 2016-09-06
 thumbnail: ../img/vsco-logo.png?raw=true
-title: gRPC at VSCO
-url: blog/vscogrpc
+aliases: ["blog/vscogrpc"]
 ---
 
 Our guest post today comes from Robert Sayre and Melinda Lu of VSCO. 

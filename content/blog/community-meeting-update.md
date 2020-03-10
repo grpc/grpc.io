@@ -1,10 +1,9 @@
 ---
+title: 2017-08-17 Community Meeting Update
 author: Jaye Pitzeruse
 company: Indeed
 company-link: https://www.indeed.com
-date: "2017-08-17T00:00:00Z"
-published: true
-title: 2017-08-17 Community Meeting Update
+date: 2017-08-17
 ---
 
 **Next Community Meeting:** Thursday, August 31, 2017 11am Pacific Time (US and Canada)

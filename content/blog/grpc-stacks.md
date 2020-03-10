@@ -1,10 +1,8 @@
 ---
+title: Visualizing gRPC Language Stacks
 author:  Carl Mastrangelo
 author-link: https://carlmastrangelo.com/
-date: "2018-12-11T00:00:00Z"
-published: true
-title: Visualizing gRPC Language Stacks
-url: blog/grpc-stacks
+date: 2018-12-11
 ---
 
 Here is a high level overview of the gRPC Stacks.  Each of the **10** default languages supported by gRPC has multiple layers, allowing you to customize what pieces you want in your application.

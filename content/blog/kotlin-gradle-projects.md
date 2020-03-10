@@ -1,16 +1,16 @@
 ---
+title: gRPC ❤ Kotlin
 author: Spencer Fang
 author-link: https://github.com/zpencer
 company: Google
 company-link: https://www.google.com
-date: "2018-06-19T00:00:00Z"
-published: true
-title: gRPC ❤ Kotlin
-url: blog/kotlin-gradle-projects
+date: 2018-06-19
 ---
 
 Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? [Kotlin](https://kotlinlang.org/) is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. To improve this experience further, we have added support to the [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
+
 <!--more-->
+
 The following examples show you how to configure a project for a JVM application and an Android application using Kotlin.
 
 ### Kotlin gRPC client and server
@@ -20,6 +20,7 @@ The full example can be found [here](https://github.com/grpc/grpc-java/tree/mast
 Configuring gRPC for a Kotlin project is the same as configuring it for a Java project.
 
 Below is a snippet of the example project's `build.gradle` highlighting some Kotlin related sections:
+
 ```groovy
 apply plugin: 'kotlin'
 apply plugin: 'com.google.protobuf'
@@ -127,6 +128,6 @@ Just like the non-Android project, run `./gradlew generateProto generateProto` t
 
 Finally, test out the Android app by opening the project in Android Studio and selecting `Run > Run 'app'`.
 
-<img src="/img/kotlin-project-android-app.png" alt="Kotlin Android app example" style="max-width: 404px">
+![Kotlin Android app example](/img/kotlin-project-android-app.png)
 
 We are excited about improving the gRPC experience for Kotlin developers. Please add enhancement ideas or bugs to the [protobuf-gradle-plugin issue tracker](https://github.com/google/protobuf-gradle-plugin/issues) or the [grpc-java issue tracker](https://github.com/grpc/grpc-java/issues). 

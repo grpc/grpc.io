@@ -1,12 +1,10 @@
 ---
+title: So You Want to Optimize gRPC - Part 2
 author: Carl Mastrangelo
 author-link: https://carlmastrangelo.com/
 company: Google
 company-link: https://www.google.com
-date: "2018-04-16T00:00:00Z"
-published: true
-title: So You Want to Optimize gRPC - Part 2
-url: blog/optimizing-grpc-part-2
+date: 2018-04-16
 ---
 
 How fast is gRPC?  Pretty fast if you understand how modern clients and servers are built.  In
@@ -32,21 +30,21 @@ accidentally corrupt the state of storage.  To ensure this, the service uses the
 keyword to ensure only one RPC is active at a time:
 
 ```java
-  private final Map<ByteBuffer, ByteBuffer> store = new HashMap<>();
+private final Map<ByteBuffer, ByteBuffer> store = new HashMap<>();
 
-  @Override
-  public synchronized void create(
-      CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
-    ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
-    ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
-    simulateWork(WRITE_DELAY_MILLIS);
-    if (store.putIfAbsent(key, value) == null) {
-      responseObserver.onNext(CreateResponse.getDefaultInstance());
-      responseObserver.onCompleted();
-      return;
-    }
-    responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+@Override
+public synchronized void create(
+    CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
+  ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
+  ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
+  simulateWork(WRITE_DELAY_MILLIS);
+  if (store.putIfAbsent(key, value) == null) {
+    responseObserver.onNext(CreateResponse.getDefaultInstance());
+    responseObserver.onCompleted();
+    return;
   }
+  responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+}
 ```
 
 While this code is thread safe, it comes at a high price: only one RPC can ever be active!  We 
@@ -81,21 +79,21 @@ Concurrent maps provide stronger guarantees about the safety of `putIfAbsent`, s
 `HashMap` to a `ConcurrentHashMap` and remove `synchronized`:
 
 ```java
-  private final ConcurrentMap<ByteBuffer, ByteBuffer> store = new ConcurrentHashMap<>();
- 
-  @Override
-  public void create(
-      CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
-    ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
-    ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
-    simulateWork(WRITE_DELAY_MILLIS);
-    if (store.putIfAbsent(key, value) == null) {
-      responseObserver.onNext(CreateResponse.getDefaultInstance());
-      responseObserver.onCompleted();
-      return;
-    }
-    responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+private final ConcurrentMap<ByteBuffer, ByteBuffer> store = new ConcurrentHashMap<>();
+
+@Override
+public void create(
+    CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
+  ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
+  ByteBuffer value = request.getValue().asReadOnlyByteBuffer();
+  simulateWork(WRITE_DELAY_MILLIS);
+  if (store.putIfAbsent(key, value) == null) {
+    responseObserver.onNext(CreateResponse.getDefaultInstance());
+    responseObserver.onCompleted();
+    return;
   }
+  responseObserver.onError(Status.ALREADY_EXISTS.asRuntimeException());
+}
 ```
 
 ### If at First You Don't Succeed
@@ -104,21 +102,21 @@ Updating `create` was pretty easy.  Doing the same for `retrieve` and `delete` i
 However, the `update` method is a little trickier.  Let's take a look at what it's doing:
 
 ```java
-  @Override
-  public synchronized void update(
-      UpdateRequest request, StreamObserver<UpdateResponse> responseObserver) {
-    ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
-    ByteBuffer newValue = request.getValue().asReadOnlyByteBuffer();
-    simulateWork(WRITE_DELAY_MILLIS);
-    ByteBuffer oldValue = store.get(key);
-    if (oldValue == null) {
-      responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
-      return;
-    }
-    store.replace(key, oldValue, newValue);
-    responseObserver.onNext(UpdateResponse.getDefaultInstance());
-    responseObserver.onCompleted();
+@Override
+public synchronized void update(
+    UpdateRequest request, StreamObserver<UpdateResponse> responseObserver) {
+  ByteBuffer key = request.getKey().asReadOnlyByteBuffer();
+  ByteBuffer newValue = request.getValue().asReadOnlyByteBuffer();
+  simulateWork(WRITE_DELAY_MILLIS);
+  ByteBuffer oldValue = store.get(key);
+  if (oldValue == null) {
+    responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+    return;
   }
+  store.replace(key, oldValue, newValue);
+  responseObserver.onNext(UpdateResponse.getDefaultInstance());
+  responseObserver.onCompleted();
+}
 ```
 
 Updating a key to a new value needs two interactions with the `store`:
@@ -135,21 +133,21 @@ was successful.  (`ConcurrentMap` asserts that the operations will not corrupt t
 structure, but doesn't say that they will succeed!)  We will use a do-while loop:
 
 ```java
-  @Override
-  public void update(
-      UpdateRequest request, StreamObserver<UpdateResponse> responseObserver) {
-    // ...
-    ByteBuffer oldValue;
-    do {
-      oldValue = store.get(key);
-      if (oldValue == null) {
-        responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
-        return;
-      }
-    } while (!store.replace(key, oldValue, newValue));
-    responseObserver.onNext(UpdateResponse.getDefaultInstance());
-    responseObserver.onCompleted();
-  }
+@Override
+public void update(
+    UpdateRequest request, StreamObserver<UpdateResponse> responseObserver) {
+  // ...
+  ByteBuffer oldValue;
+  do {
+    oldValue = store.get(key);
+    if (oldValue == null) {
+      responseObserver.onError(Status.NOT_FOUND.asRuntimeException());
+      return;
+    }
+  } while (!store.replace(key, oldValue, newValue));
+  responseObserver.onNext(UpdateResponse.getDefaultInstance());
+  responseObserver.onCompleted();
+}
 ```
 
 The code wants to fail if it ever sees null, but never if there is a non-null previous value.  One
@@ -229,4 +227,3 @@ need to understand what your code is doing.  This post shows how to convert a lo
 a low-contention, lock-free service.  Always make sure to measure before and after your changes.
 
 In Part 3, we will optimize the code even further.  2,400 RPC/s is just the beginning!
-
