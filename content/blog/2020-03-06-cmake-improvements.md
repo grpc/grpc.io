@@ -37,8 +37,8 @@ At configure time CMake uses git to clone the gRPC repository using the specifie
 
 We have addressed many of the CMake-related issues on GitHub, with bug fixes, documentation updates, and new features.
 
-- We’ve improved the documentation for [building gRPC from source](https://github.com/grpc/grpc/blob/master/BUILDING.md) and [adding gRPC as a dependency to your CMake project](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#cmake) giving developers several options for using gRPC from CMake from simply linking to a pre-built gRPC  to downloaded and building gRPC as part of the project.
-- The CMake build now generates pkgconfig (*.pc) files in the installation directory, just like the Makefile build. This allows for pkgconfig to correctly find and report a CMake built version of gRPC
+- We’ve improved the documentation for [building gRPC from source](https://github.com/grpc/grpc/blob/master/BUILDING.md) and [adding gRPC as a dependency to your CMake project](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#cmake) giving developers several options for using gRPC from CMake from simply linking to a pre-built gRPC to downloading and building gRPC as part of the project.
+- The CMake build now generates pkgconfig (*.pc) files in the installation directory, just like the Makefile build. This allows for pkgconfig to correctly find and report a CMake built version of gRPC.
 - If you are using CMake v3.13 or newer, you can now [build & install gRPC and its dependencies in a single step](https://github.com/grpc/grpc/blob/master/BUILDING.md#install-after-build), rather than building and installing each component separately.
 - The CMake build now has configuration options to enable or disable building of every protoc plugin. For example, running CMake with `-DgRPC_BUILD_GRPC_PYTHON_PLUGIN=OFF` will disable building the Python plugin. You can view and edit these options in cmake-gui (or ccmake) as you are configuring your build of gRPC.
 - When building and installing gRPC as shared libraries, CMake now sets the .so version so the libraries are correctly versioned. (for example, libgrpc.so.9.0.0, libgrpc++.so.1.27.0-dev, etc).
