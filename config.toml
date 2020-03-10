@@ -11,6 +11,7 @@ unsafe = true
 style = "manni"
 
 [params]
+locale = "en_US"
 grpc_release_tag = "v1.27.2"
 grpc_release_tag_no_v = "1.27.2"
 grpc_java_release_tag = "v1.27.2"
@@ -27,6 +28,7 @@ gRPC is a modern open source high performance RPC framework that can run in any 
 twitter = "https://twitter.com/grpcio"
 gitter = "https://gitter.im/grpc/grpc"
 reddit = "https://www.reddit.com/r/grpc"
+twitter_handle = "grpcio"
 
 [[params.features]]
 title = "Simple service definition"

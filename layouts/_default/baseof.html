@@ -2,7 +2,7 @@
 {{ $currentUrl := .RelPermalink }}
 {{ $lang       := site.LanguageCode }}
 <!DOCTYPE html>
-<html lang="{{ $lang }}">
+<html lang="{{ $lang }}" prefix="og: http://ogp.me/ns#">
   <head>
     {{ partial "google-analytics.html" . }}
     {{ partial "meta.html" . }}
