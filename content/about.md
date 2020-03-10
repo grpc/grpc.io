@@ -31,12 +31,10 @@ Below are details and quotes from some of our early adopters.
 
 Check out what people are saying below.
 
-<!-- Generated using the data in data/testimonials.yaml and the shortcode in layouts/shortcodes/testimonials.html -->
 {{< testimonials >}}
 
 ## Officially supported platforms
 
-<!-- Generated using the data in data/platforms.yaml and the shortcode in layouts/shortcodes/supported-platforms.html -->
 {{< supported-platforms >}}
 
 ## The story behind gRPC
@@ -52,5 +50,5 @@ the industry and collaborate with them to build the next version of Stubby both
 for microservices inside and outside Google but also for last mile of computing
 (mobile, web and IOT).
 
-For more background on why we created gRPC, see [gRPC Motivation and Design
-Principles blog](/blog/principles).
+For more background on why we created gRPC, see the [gRPC Motivation and Design
+Principles](/blog/principles) on the [gRPC blog](/blog).
