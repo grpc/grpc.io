@@ -1,3 +1,4 @@
+{{ $url     := .Permalink }}
 {{ $title   := cond .IsHome site.Title .Title }}
 {{ $type    := cond .IsHome "website" "article" }}
 {{ $desc    := .Param "description" }}
@@ -8,8 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 {{ with .OutputFormats.Get "rss" -}}
-{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type $url site.Title | safeHTML }}
 {{ end -}}
+
+<link rel="canonical" href="{{ $url }}">
 
 {{/* Twitter Card metadata */}}
 <meta name="twitter:card" content="summary">
@@ -19,7 +22,7 @@
 <meta name="twitter:image:alt" content="{{ $imgAlt }}">
 
 {{/* OpenGraph metadata */}}
-<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:url" content="{{ $url }}">
 <meta property="og:title" content="{{ $title }}">
 {{ with $desc }}
 <meta property="og:description" content="{{ $desc }}">

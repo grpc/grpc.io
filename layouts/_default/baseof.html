@@ -11,6 +11,7 @@
       {{ block "title" . }}{{ .Site.Title }}{{ end }}
     </title>
     
+    {{ partial "favicons.html" . }}
     {{ partial "css.html" . }}
   </head>
   <body class="is-page has-navbar-fixed-top">
