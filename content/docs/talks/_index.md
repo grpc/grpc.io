@@ -7,10 +7,6 @@ weight: 6
 
 gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:
 
-<style>
-  iframe { padding-bottom: 2em; }
-</style>
-
 {{< youtube OZ_Qmklc4zE >}}
 {{< youtube F2znfxn_5Hg >}}
 {{< youtube S7WIYLcPS1Y >}}

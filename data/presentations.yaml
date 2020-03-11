@@ -1,0 +1,30 @@
+- title: gRPC Intro
+  presenters: Jayant Kolhe and Sree Kuchibhotla, Google
+  youtube_id: OZ_Qmklc4zE
+- title: gRPC Load Balancing on Kubernetes
+  presenters: Jan Tattermusch, Google
+  youtube_id: F2znfxn_5Hg
+- title: gRPC Deep Dive
+  presenters: Sree Kuchibhotla and Jayant Kolhe, Google
+  youtube_id: S7WIYLcPS1Y
+- title: Modifying gRPC Services Over Time
+  presenters: Eric Anderson, Google
+  youtube_id: F2WYEFLTKEw
+- title: "gRPC History Talk: A Journey to 10,000 Stars on GitHub"
+  presenters: Jan Tattermusch, Google
+  youtube_id: UZcvnApm81U
+- title: Building Scalable Microservices Using Kubernetes, gRPC, and Containers
+  presenters: Sandeep Dinesh, Google
+  youtube_id: UOIJNygDNlE
+- title: Building a Scalable Python gRPC Service Using Kubernetes
+  presenters: Ian Lewis, Google
+  youtube_id: RvUP7vX2P4s
+- title: Real-time IOT Containers and gRPC
+  presenters: Mark Mandel
+  youtube_id: nz-LcdoMYWA
+- title: "gRPC: Google's high-performance, open source RPC framework"
+  presenters: Sameer Ajmani
+  youtube_id: sZx3oZt7LVg
+- title: "Building Microservices with gRPC and Kubernetes: A Practical Introduction"
+  presenters: Kelsey Hightower, Google
+  vimeo_id: F2znfxn_5Hg
