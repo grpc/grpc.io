@@ -1,0 +1,46 @@
+{{ $presentations := site.Data.presentations }}
+
+<div class="columns is-multiline is-variable is-2">
+  {{ range $presentations }}
+  <div class="column is-half">
+    <div class="card">
+      <div class="card-content">
+        {{ if .title }}
+        <p class="title is-size-4 is-size-5-mobile{{ if .presenters }} is-spaced{{ end }}">
+          {{ .title }}
+        </p>
+        {{ end }}
+  
+        {{ with .presenters }}
+        <p class="subtitle">
+          {{ . }}
+        </p>
+        {{ end }}
+  
+        {{ with .youtube_id }}
+        {{ template "pres-button" (dict "type" "YouTube" "id" .) }}
+        {{ end }}
+
+        {{ with .vimeo_id }}
+        {{ template "pres-button" (dict "type" "Vimeo" "id" . ) }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+{{ define "pres-button" }}
+{{ $type   := .type | lower | default "youtube" }}
+{{ $urlPre := cond (eq $type "youtube") "https://youtube.com" "https://vimeo.com" }}
+{{ $color  := cond (eq $type "youtube") "youtube-red" "vimeo-blue" }}
+{{ $url    := printf "%s/%s" $urlPre .id }}
+<a class="button is-black is-outlined" href="{{ $url }}" target="_blank">
+  <span class="icon has-text-{{ $color }}">
+    <i class="fab fa-{{ $type }}"></i>
+  </span>
+  <span class="has-text-weight-bold">
+    Watch on {{ .type }}
+  </span>
+</a>
+{{ end }}

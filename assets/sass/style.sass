@@ -21,6 +21,8 @@ $grpc-blue: #5ac5c5
 $twitter-blue: rgb(29, 161, 242)
 $reddit-orange: rgba(255, 86, 0, 1)
 $gitter-magenta: rgb(237, 25, 101)
+$youtube-red: rgb(255, 0, 0)
+$vimeo-blue: rgb(26, 183, 234)
 
 // Initial Bulma imports
 @import "bulma/sass/utilities/initial-variables"
@@ -54,7 +56,7 @@ $font-heading: {{ $.Site.Params.heading_font | default "'Fira Sans', sans-serif"
 @import "bulma/sass/utilities/derived-variables"
 
 // Bulma variable overrdides that require derived variables like $dark
-$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "reddit-orange": ($reddit-orange, $white), "gitter-magenta": ($gitter-magenta, $white)), $colors)
+$colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($twitter-blue, $white), "reddit-orange": ($reddit-orange, $white), "gitter-magenta": ($gitter-magenta, $white), "youtube-red": ($youtube-red, $white), "vimeo-blue": ($vimeo-blue, $white)), $colors)
 
 // Bulma core
 @import "bulma/sass/utilities/_all"

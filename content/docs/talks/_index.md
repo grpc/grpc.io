@@ -5,18 +5,7 @@ short: Presentations
 weight: 6
 ---
 
-gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:
-
-{{< youtube OZ_Qmklc4zE >}}
-{{< youtube F2znfxn_5Hg >}}
-{{< youtube S7WIYLcPS1Y >}}
-{{< youtube F2WYEFLTKEw >}}
-{{< youtube UZcvnApm81U >}}
-{{< youtube UOIJNygDNlE >}}
-{{< youtube RvUP7vX2P4s >}}
-{{< youtube nz-LcdoMYWA >}}
-{{< youtube sZx3oZt7LVg >}}
-{{< vimeo 190648663 >}}
+{{< presentations >}}
 
 ### Slides only
 
