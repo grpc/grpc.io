@@ -7,13 +7,13 @@ description: This guide gets you started with gRPC in Dart with a simple working
 
 ### Prerequisites
 
-- Dart SDK version 2.0 or higher.
+- Dart SDK version 2.2 or higher.
 
 For installation instructions, see [Install Dart](https://dart.dev/install).
 
 {{< note >}}
 Dart gRPC supports the Flutter and Server platforms.
-{{< /note >}} 
+{{< /note >}}
 
 #### Protocol Buffers v3
 

@@ -31,9 +31,7 @@ Google has been using a lot of the underlying technologies and concepts in gRPC 
 
 ### Which programming languages are supported?
 
-C++, Java (incl. support for Android), Objective-C (for iOS), Python, Ruby, Go, C#, Node.js are in GA and follow semantic versioning.
-
-Dart support is in beta.
+C++, Java (including support for Android), Objective-C (for iOS), Python, Ruby, Go, C#, Node.js are in GA and follow semantic versioning.
 
 ### How do I get started using gRPC?
 
