@@ -1,10 +1,10 @@
 ---
 title: So You Want to Optimize gRPC - Part 2
-author: Carl Mastrangelo
-author-link: https://carlmastrangelo.com/
-company: Google
-company-link: https://www.google.com
 date: 2018-04-16
+author:
+  name: Carl Mastrangelo
+  link: https://carlmastrangelo.com/
+  position: Google
 ---
 
 How fast is gRPC?  Pretty fast if you understand how modern clients and servers are built.  In

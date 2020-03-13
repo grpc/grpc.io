@@ -1,16 +1,15 @@
 ---
 title: Why we have decided to move our APIs to gRPC
-attribution: Originally written by Dale Hopkins with additional content by Lisa Carey
-  and others at Google.
-author: Dale Hopkins
-company: Vendasta
-company-link: https://vendasta.com
 date: 2016-08-29
-thumbnail: ../img/vend-icon.png?raw=true
+author:
+  name: Dale Hopkins
+  position: CTO, [Vendasta](https://vendasta.com)
+  guest: true
+  blurb: Originally written by Dale Hopkins with additional content by Lisa Carey and others at Google
+thumbnail: /img/vend-icon.png?raw=true
 aliases: ["blog/vendastagrpc"]
 ---
 
-Our guest post today comes from Dale Hopkins, CTO of [Vendasta](https://vendasta.com/). 
 
 Vendasta started out 8 years ago as a point solution provider of products for small business. From the beginning we partnered with media companies and agencies who have armies of salespeople and existing relationships with those businesses to sell our software. It is estimated that over 30 million small businesses exist in the United States alone, so scalability of our SaaS solution was considered one of our top concerns from the beginning and it was the reason we started with [Google App Engine](https://cloud.google.com/appengine/) and Datastore. This solution worked really well for us as our system scaled from hundreds to hundreds of thousands of end users. We also scaled our offering from a point solution to an entire platform with multiple products and the tools for partners to manage their sales of those products during this time.
 

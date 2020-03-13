@@ -1,10 +1,10 @@
 ---
 title: Building gRPC services with bazel and rules_protobuf
-attribution: Originally written by Paul Johnston.
-author: Paul Cody Johnston
-company: PubRef.org
-company-link: https://pubref.org
 date: 2016-10-13
+author:
+  name: Paul Cody Johnston
+  link: https://pubref.org
+  position: PubRef.org
 thumbnail: https://avatars3.githubusercontent.com/u/10408150?v=3&s=200
 ---
 

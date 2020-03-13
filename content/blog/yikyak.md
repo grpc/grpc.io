@@ -1,21 +1,21 @@
 ---
-title: Migration to Google Cloud Platform — gRPC & grpc-gateway
-author: Miguel Mendez
-company: Yik Yak
-company-link: https://yikyakapp.com
+title: "Migration to Google Cloud Platform — gRPC & grpc-gateway"
 date: 2017-04-12
+author:
+  name: Miguel Mendez
+  link: https://www.linkedin.com/in/miguel-mendez-008231
+  position: '[Yik Yak](https://yikyakapp.com)'
+  blurb: |
+    This post was originally a part of the [Yik Yak Engineering Blog](https://medium.com/yik-yak-eng) which focused on sharing the lessons learned as we evolved Yik Yak from early-stage startup code running in Amazon Web Services to an eventual incremental rewrite, re-architecture, and live-migration to Google Cloud Platform.
 thumbnail: https://cdn-images-1.medium.com/max/1600/0*qYehJ2DvPgFcG_nX.
 ---
-
-Our guest post today comes from [Miguel Mendez](https://www.linkedin.com/in/miguel-mendez-008231/) of Yik Yak.
-
-_This post was originally a part of the [Yik Yak Engineering Blog](https://medium.com/yik-yak-eng) which focused on sharing the lessons learned as we evolved Yik Yak from early-stage startup code running in Amazon Web Services to an eventual incremental rewrite, re-architecture, and live-migration to Google Cloud Platform._
 
 In our previous blog [post](https://medium.com/yik-yak-eng/migration-to-google-cloud-platform-overview-9b5e5c17c368) we gave an overview of our migration to Google Cloud Platform from Amazon Web Services. In this post we will drill down into the role that [gRPC](/) and [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) played in that migration and share some lessons which we picked up along the way.
 
 <!--more-->
 
 ## Most people have REST APIs, don’t you? What’s the problem?
+
 Yes, we actually still have REST APIs that clients use because migrating the client APIs was out of scope. To be fair, you can make REST APIs work and there are a lot of useful REST APIs out there. Having said that, the issues that we had with REST lie in the details.
 
 ### No Canonical REST Specification

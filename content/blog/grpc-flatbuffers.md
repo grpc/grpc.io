@@ -1,9 +1,9 @@
 ---
 title: Announcing out-of-the-box support for gRPC in the Flatbuffers serialization library
-author: Wouter van Oortmerssen
-company: Google
-company-link: https://www.google.com
 date: 2017-08-17
+author:
+  name: Wouter van Oortmerssen
+  position: Google
 ---
 
 The recent release of Flatbuffers [version 1.7](https://github.com/google/flatbuffers/releases) introduced truly zero-copy support for gRPC out of the box. 

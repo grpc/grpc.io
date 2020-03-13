@@ -1,10 +1,10 @@
 ---
 title: gRPC + JSON
-author: Carl Mastrangelo
-author-link: https://carlmastrangelo.com
-company: Google
-company-link: https://www.google.com
 date: 2018-08-15
+author:
+  name: Carl Mastrangelo
+  link: https://carlmastrangelo.com
+  position: Google
 ---
 
 So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?

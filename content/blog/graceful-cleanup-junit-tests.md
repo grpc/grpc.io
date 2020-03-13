@@ -1,10 +1,10 @@
 ---
 title: Gracefully clean up in gRPC JUnit tests
-author: Dapeng Zhang
-author-link: https://github.com/dapengzhang0
-company: Google
-company-link: https://www.google.com
 date: 2018-06-26
+author:
+  name: Dapeng Zhang
+  link: https://github.com/dapengzhang0
+  position: Google
 ---
 
 It is best practice to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed. 

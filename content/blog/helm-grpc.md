@@ -1,13 +1,12 @@
 ---
 title: gRPC in Helm
-author: Brian Hardock
-company: DEIS
-company-link: https://deis.com/
 date: 2017-05-15
+author:
+  name: Brian Hardock
+  position: Software engineer at [DEIS](https://deis.com), working on the [Helm](https://helm.sh) project
+  guest: true
 thumbnail: https://gabrtv.github.io/deis-dockercon-2014/img/DeisLogo.png
 ---
-
-*Our guest post today comes from Brian Hardock, a software engineer from Deis working on the [Helm](https://helm.sh/) project.*
 
 Helm is the package manager for Kubernetes. Helm provides its users with a customizable mechanism for
 managing distributed applications and controlling their deployment. 

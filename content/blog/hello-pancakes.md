@@ -1,8 +1,9 @@
 ---
 title: Dear gRPC
-author: April Nassi
-author-link: https://www.thisisnotapril.com/
 date: 2019-03-08
+author:
+  name: April Nassi
+  link: https://www.thisisnotapril.com/
 ---
 
 Dear gRPC,

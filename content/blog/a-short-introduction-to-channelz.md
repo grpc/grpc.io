@@ -1,8 +1,9 @@
 ---
 title: A short introduction to Channelz
-author: Yuxuan Li
-author-link: https://github.com/lyuxuan
 date: 2018-09-05
+author:
+  name: Yuxuan Li
+  link: https://github.com/lyuxuan
 ---
 
 Channelz is a tool that provides comprehensive runtime info about connections at

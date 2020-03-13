@@ -1,11 +1,12 @@
 ---
 title: .NET Core ❤ gRPC
-author: Sourabh Shirhatti
-author-link: https://twitter.com/sshirhatti
+auth:
+  name: Sourabh Shirhatti
+  link: https://twitter.com/sshirhatti
+  position: Program Manager on the .NET team at Microsoft
+  guest: true
 date: 2019-09-23
 ---
-
-_This is a guest post by [Sourabh Shirhatti](https://twitter.com/sshirhatti), a Program Manager on the .NET team at Microsoft._
 
 The .NET team at Microsoft has been working in close collaboration with the gRPC team since November 2018 on a new fully managed implementation of gRPC for .NET Core.
 
