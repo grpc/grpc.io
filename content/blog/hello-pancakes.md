@@ -3,7 +3,7 @@ title: Dear gRPC
 date: 2019-03-08
 author:
   name: April Nassi
-  link: https://www.thisisnotapril.com/
+  link: http://www.thisisnotapril.com/
 ---
 
 Dear gRPC,
