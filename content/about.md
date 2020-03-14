@@ -33,7 +33,7 @@ Check out what people are saying below.
 
 {{< testimonials >}}
 
-## Officially supported platforms
+## Officially supported languages and platforms
 
 {{< supported-platforms >}}
 
