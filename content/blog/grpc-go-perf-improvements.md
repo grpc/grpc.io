@@ -1,8 +1,8 @@
 ---
 title: gRPC-Go performance Improvements
-author: Mahak Mukhi
-company: Google
-company-link: google.com
+author:
+  name: Mahak Mukhi
+  position: Google
 date: 2017-08-22
 ---
 

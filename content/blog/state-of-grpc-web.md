@@ -1,13 +1,12 @@
 ---
 title: The state of gRPC in the browser
-author: Johan Brandhorst
-author-link: https://jbrandhorst.com/
 date: 2019-01-08
+author:
+  name: Johan Brandhorst
+  link: https://jbrandhorst.com
+  position: Software Engineer at [InfoSum](https://www.infosum.com)
+  guest: true
 ---
-
-_This is a guest post by_
-_[Johan Brandhorst](https://jbrandhorst.com), Software Engineer at_
-_[InfoSum](https://www.infosum.com)._
 
 gRPC 1.0 was released in August 2016 and has since grown to become one of the
 premier technical solutions for application communications. It has been adopted

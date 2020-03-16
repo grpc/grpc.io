@@ -1,11 +1,11 @@
 ---
 title: gRPC with REST and Open APIs
-attribution: Originally written by Brandon Phillips with additional content by Lisa
-  Carey and others at Google
-author: Brandon Phillips
-company: CoreOS
-company-link: https://coreos.com
 date: 2016-05-09
+author:
+  name: Brandon Phillips
+  position: CoreOS
+  link: https://coreos.com
+  blurb: Originally written by Brandon Phillips with additional content by Lisa Carey and others at Google
 thumbnail: https://avatars2.githubusercontent.com/u/3730757?v=3&s=200
 ---
 

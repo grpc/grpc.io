@@ -1,7 +1,9 @@
 ---
 title: The gRPC Meetup Kit
 date: 2017-09-14
-attribution: Mark Mandel, Sandeep Dinesh
+authors:
+- name: Mark Mandel
+- name: Sandeep Dinesh
 ---
 
 If you have ever wanted to run an event around [gRPC](/), but didn't know where to start, or weren't sure what content is available - we have released the [gRPC Meetup Kit](https://github.com/grpc-ecosystem/meetup-kit)!

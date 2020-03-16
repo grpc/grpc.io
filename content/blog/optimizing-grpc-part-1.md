@@ -1,10 +1,10 @@
 ---
 title: So You Want to Optimize gRPC - Part 1
-author: Carl Mastrangelo
-author-link: https://github.com/carl-mastrangelo
-company: Google
-company-link: https://www.google.com
 date: 2018-03-06
+author:
+  name: Carl Mastrangelo
+  link: https://github.com/carl-mastrangelo
+  position: Google
 ---
 
 A common question with gRPC is how to make it fast.  The gRPC library offers users access to high

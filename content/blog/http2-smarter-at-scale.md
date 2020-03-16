@@ -1,10 +1,10 @@
 ---
 title: HTTP/2 Smarter At Scale
-author: Jean de Klerk
-author-link: https://github.com/jadekler
-company: Google
-company-link: https://www.google.com
 date: 2018-07-13
+author:
+  name: Jean de Klerk
+  link: https://github.com/jadekler
+  position: Google
 ---
 
 Much of the web today runs on HTTP/1.1. The spec for HTTP/1.1 was published in June of 1999, just shy of 20 years ago. A lot has changed since then, which makes it all the more remarkable that HTTP/1.1 has persisted and flourished for so long. But in some areas it’s beginning to show its age; for the most part, in that the designers weren’t building for the scale at which HTTP/1.1 would be used and the astonishing amount of traffic that it would come to handle. A not-so-bad case is that subsequent tests can't pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn't have passed at all if the previously passed test had not leaked a resource.

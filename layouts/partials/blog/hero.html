@@ -1,7 +1,8 @@
-{{ $title := .Title }}
-{{ $desc  := .Params.description | markdownify }}
-{{ $attr  := .Params.attribution }}
-{{ $date  := dateFormat "January 2, 2006" .Date }}
+{{ $title  := .Title }}
+{{ $desc   := .Params.description | markdownify }}
+{{ $attr   := .Params.attribution }}
+{{ $date   := dateFormat "January 2, 2006" .Date }}
+{{ $author := .Params.author }}
 <section class="hero is-medium is-primary has-background-image">
   <div class="hero-body">
     <div class="container">
@@ -21,9 +22,45 @@
       </p>
       {{ end }}
 
+      {{ with $date }}
       <p class="is-size-4 is-size-mobile has-text-weight-medium">
-        {{ $date }}
+        {{ . }}
       </p>
+      {{ end }}
+
+      {{ with $author }}
+      <br />
+
+      <p class="subtitle is-size-4 is-size-5-mobile">
+        {{- if .link -}}
+        <a class="has-text-secondary" href="{{ .link }}" target="_blank">
+          {{- .name -}}
+        </a>
+        {{- else -}}
+        {{- .name -}}
+        {{- end -}}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}
+      </p>
+
+      {{ with .guest }}
+      <br />
+
+      <span class="tag is-medium is-success has-text-weight-bold">
+        <span class="icon">
+          <i class="fas fa-sm fa-pen"></i>
+        </span>
+        <span>
+          Guest post
+        </span>
+      </span>
+      {{ end }}
+
+      {{ with .blurb }}
+      <p class="is-size-5 is-size-6-mobile has-text-weight-light">
+        {{ . | markdownify }}
+      </p>
+      {{ end }}
+      {{ end }}
     </div>
   </div>
 </section>
