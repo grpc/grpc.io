@@ -18,6 +18,8 @@
 
     <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
       <div class="navbar-end">
+        {{ partial "search-bar.html" . }}
+
         {{ partial "navbar-menu.html" . }}
 
         <div class="navbar-item">
