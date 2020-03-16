@@ -1,6 +1,6 @@
 ---
 title: .NET Core ❤ gRPC
-auth:
+author:
   name: Sourabh Shirhatti
   link: https://twitter.com/sshirhatti
   position: Program Manager on the .NET team at Microsoft
