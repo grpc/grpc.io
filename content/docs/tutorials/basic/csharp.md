@@ -38,8 +38,7 @@ updating.
 ### Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/csharp/RouteGuide](https://github.com/grpc/grpc/tree/
-{{< param grpc_release_tag >}}/examples/csharp/RouteGuide). To
+[grpc/grpc/examples/csharp/RouteGuide](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/csharp/RouteGuide). To
 download the example, clone the `grpc` repository by running the following
 command:
 
@@ -52,8 +51,7 @@ All the files for this tutorial are in the directory
 `examples/csharp/RouteGuide`. Open the solution
 `examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio (Windows or Mac) or Visual Studio Code.
 For additional installation details, see the [How to use
-instructions](https://github.com/grpc/grpc/tree/
-{{< param grpc_release_tag >}}/src/csharp#how-to-use).
+instructions](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/src/csharp#how-to-use).
 
 ### Defining the service
 
@@ -61,8 +59,7 @@ Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/
-{{< param grpc_release_tag >}}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -183,8 +180,7 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
-{{< param grpc_release_tag >}}/examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs).
+[examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs).
 Let's take a closer look at how it works.
 
 #### Implementing RouteGuide
@@ -352,8 +348,7 @@ do this, we:
 
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/csharp/RouteGuide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
-{{< param grpc_release_tag >}}/examples/csharp/RouteGuide/RouteGuideClient/Program.cs).
+[examples/csharp/RouteGuide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/csharp/RouteGuide/RouteGuideClient/Program.cs).
 
 #### Creating a client object
 
