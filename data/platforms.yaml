@@ -19,6 +19,9 @@
 - language: "Java"
   platforms: ["Windows", "Linux", "Mac"]
   compilers: ["JDK 8 recommended (Gingerbread+ for Android)"]
+- language: "Kotlin (under development)"
+  platforms: ["-"]
+  compilers: ["-"]
 - language: "Node.js"
   platforms: ["Windows", "Linux", "Mac"]
   compilers: ["Node v4+"]
