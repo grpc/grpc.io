@@ -18,16 +18,6 @@
 
     <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
       <div class="navbar-end">
-        <div class="navbar-item is-hidden-desktop">
-          <p class="control has-icons-left">
-            <span class="icon">
-              <i class="fas fa-md fa-search"></i>
-            </span>
-
-            <input class="input" type="search" id="search-bar-mobile" placeholder="Search">
-          </p>
-        </div>
-
         {{ partial "navbar-menu.html" . }}
 
         {{ partial "search-bar.html" . }}
