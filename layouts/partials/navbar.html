@@ -18,9 +18,9 @@
 
     <div class="navbar-menu" id="navbar-menu" :class="{ 'is-active': open }">
       <div class="navbar-end">
-        {{ partial "search-bar.html" . }}
-
         {{ partial "navbar-menu.html" . }}
+
+        {{ partial "search-bar.html" . }}
 
         <div class="navbar-item">
           {{ partial "social-buttons.html" (dict "expanded" false) }}
