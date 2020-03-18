@@ -18,7 +18,7 @@ and other tutorials):
 
 ```sh
 # Clone the repository at the latest release to get the example code:
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc-kotlin
+$ git clone https://github.com/grpc/grpc-kotlin
 # Navigate to the examples:
 $ cd grpc-kotlin/examples
 ```
