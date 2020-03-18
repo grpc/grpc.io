@@ -1,13 +1,12 @@
 ---
 title: "Not just for HTTP anymore: gRPC comes to Cloud Run"
 date: 2020-03-17
-author:
-  name: Wenlei He
+authors:
+- name: Richard Belleville
+  link: https://github.com/gnossen
+- name: Wenlei He
   link: https://github.com/wlhee
 ---
-
-*This is a cross-post of [an article](https://cloud.google.com/blog/products/compute/serve-cloud-run-requests-with-grpc-not-just-http)
-originally published on the Google Cloud blog*
 
 [Cloud Run](https://cloud.google.com/run) is a managed serverless compute offering from Google Cloud that lets you run stateless server containers in a fully managed environment, without the hassle of managing the underlying infrastructure. Since its release, Cloud Run has enabled many of our customers to focus on their business logic, while leaving the provisioning, configuring, and scaling to us.
 
@@ -18,7 +17,7 @@ Most applications that run inside Cloud Run use HTTP JSON REST to serve requests
 gRPC is a high performance RPC framework developed by Google and used extensively for traditional workloads and at the edge by companies like Netflix, Cisco, Square, and others. While gRPC offers advantages over traditional HTTP, like strong interface definitions and code generation, setting up the infrastructure to run a gRPC server in production can be a real chore. Cloud Run takes the toil out of this process.
 
 
-With gRPC, you start with a strong API contract in the form of a [protocol buffer file](https://developers.google.com/protocol-buffers?_ga=2.147498999.-1743553425.1584489606):
+With gRPC, you start with a strong API contract in the form of a [protocol buffer file](https://developers.google.com/protocol-buffers):
 
 ```protobuf
 syntax = "proto3";
@@ -60,7 +59,7 @@ class Calculator(calculator_pb2_grpc.CalculatorServicer):
 ```
 Cloud Run provides everything else you need to get your code serving traffic. You just need to put together a simple Dockerfile and run a few commands:
 
-```
+```bash
 docker build -t gcr.io/my-project/my-grpc-app:latest .
 docker push gcr.io/my-project/my-grpc-app:latest
 gcloud run deploy --image gcr.io/my-project/my-grpc-app:latest --platform managed
@@ -69,3 +68,6 @@ gcloud run deploy --image gcr.io/my-project/my-grpc-app:latest --platform manage
 We've put together additional examples in [several languages](https://github.com/grpc-ecosystem/grpc-cloud-run-example) to help you get started running a simple gRPC service in fully managed Cloud Run. We're excited to see the gRPC services you'll deploy!
 
 Support for gRPC in Cloud Run is evolving. For example, we’re still working on support for streaming. For use cases where you want to send data incrementally from client to server, you're currently better off chaining together a series of unary RPCs or REST requests. Additionally, Cloud Run’s gRPC data path currently works best for small requests. As a rule of thumb, you should keep your requests below 32MB in size. We plan to improve this over time, but for now you can learn more about gRPC on Cloud Run with [this tutorial.](https://github.com/grpc-ecosystem/grpc-cloud-run-example)
+
+
+*Google Cloud Blog [cross-post](https://cloud.google.com/blog/products/compute/serve-cloud-run-requests-with-grpc-not-just-http)*
