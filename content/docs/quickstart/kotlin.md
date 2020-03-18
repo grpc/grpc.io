@@ -20,12 +20,12 @@ and other tutorials):
 # Clone the repository at the latest release to get the example code:
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc-kotlin
 # Navigate to the examples:
-$ cd grpc-kotlin/example
+$ cd grpc-kotlin/examples
 ```
 
 ### Run a gRPC application
 
-From the `example` directory:
+From the `examples` directory:
 
  1. Compile the client and server
 
@@ -36,13 +36,13 @@ From the `example` directory:
  2. Run the server:
 
     ```sh
-    $ ./build/install/example/bin/hello-world-server
+    $ ./build/install/examples/bin/hello-world-server
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./build/install/example/bin/hello-world-client
+    $ ./build/install/examples/bin/hello-world-client
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -163,7 +163,7 @@ class HelloWorldClient constructor(
 
 #### Run!
 
-Just like we did before, from the `example` directory:
+Just like we did before, from the `examples` directory:
 
  1. Compile the client and server:
 
@@ -174,13 +174,13 @@ Just like we did before, from the `example` directory:
  2. Run the server:
 
     ```sh
-    $ ./build/install/example/bin/hello-world-server
+    $ ./build/install/examples/bin/hello-world-server
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./build/install/example/bin/hello-world-client
+    $ ./build/install/examples/bin/hello-world-client
     ```
 
 ### What's next
