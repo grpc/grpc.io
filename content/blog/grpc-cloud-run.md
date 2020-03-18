@@ -1,22 +1,23 @@
 ---
 title: "Not just for HTTP anymore: gRPC comes to Cloud Run"
 date: 2020-03-17
-author:
-  name: Richard Belleville
+authors:
+- name: Richard Belleville
   link: https://github.com/gnossen
-author:
-  name: Wenlei He
+- name: Wenlei He
   link: https://github.com/wlhee
 ---
 
-**This is a cross-post of [an article](https://cloud.google.com/blog/products/compute/serve-cloud-run-requests-with-grpc-not-just-http)
-originally published on the Google Cloud blog**
+*This is a cross-post of [an article](https://cloud.google.com/blog/products/compute/serve-cloud-run-requests-with-grpc-not-just-http)
+originally published on the Google Cloud blog*
 
 [Cloud Run](https://cloud.google.com/run) is a managed serverless compute offering from Google Cloud that lets you run stateless server containers in a fully managed environment, without the hassle of managing the underlying infrastructure. Since its release, Cloud Run has enabled many of our customers to focus on their business logic, while leaving the provisioning, configuring, and scaling to us.
 
 Most applications that run inside Cloud Run use HTTP JSON REST to serve requests, but that’s not the only protocol it supports; in September, it also started to support unary gRPC services.
 
 gRPC is a high performance RPC framework developed by Google and used extensively for traditional workloads and at the edge by companies like Netflix, Cisco, Square, and others. While gRPC offers advantages over traditional HTTP, like strong interface definitions and code generation, setting up the infrastructure to run a gRPC server in production can be a real chore. Cloud Run takes the toil out of this process.
+
+<!--more-->
 
 With gRPC, you start with a strong API contract in the form of a [protocol buffer file](https://developers.google.com/protocol-buffers?_ga=2.147498999.-1743553425.1584489606):
 
@@ -45,7 +46,7 @@ service Calculator {
 
 This interface definition ensures that your clients and servers speak the same language even as you extend the capabilities of your service. You then generate code from this definition in your desired language and provide an implementation for it:
 
-```
+```python
 class Calculator(calculator_pb2_grpc.CalculatorServicer):
 
   def Calculate(self,
