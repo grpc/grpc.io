@@ -285,3 +285,17 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 
     & + li
       margin-top: 0.75rem
+
+.hashlink
+  @extend .icon
+  height: 1rem
+  width: 1rem
+  margin-left: 0.25rem
+
+.headline-hash
+  display: none
+
+@for $i from 1 through 6
+  h#{$i}
+    &:hover > .headline-hash
+      display: inline
