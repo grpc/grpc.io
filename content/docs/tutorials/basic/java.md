@@ -41,7 +41,7 @@ updating.
 ### Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc-java/examples/src/main/java/io/grpc/examples](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples).
+[grpc/grpc-java/examples/src/main/java/io/grpc/examples/routeguide](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/routeguide).
 To download the example, clone the latest release in `grpc-java` repository by
 running the following command:
 
@@ -52,7 +52,7 @@ $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-
 Then change your current directory to `grpc-java/examples`:
 
 ```sh
-$ cd grpc-java/examples
+$ cd grpc-java/examples/routeguide
 ```
 
 ### Defining the service
