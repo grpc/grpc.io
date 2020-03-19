@@ -114,7 +114,7 @@ parts of our example application.
 #### Update the server
 
 In the same directory, open
-`src/main/kotlin/io/grpc/examples/hello_world/HelloWorldServer.kt`. Implement the
+`src/main/kotlin/io/grpc/examples/helloworld/HelloWorldServer.kt`. Implement the
 new method like this:
 
 ```kotlin
@@ -134,7 +134,7 @@ private class HelloWorldService : GreeterGrpcKt.GreeterCoroutineImplBase() {
 #### Update the client
 
 In the same directory, open
-`src/main/kotlin/io/grpc/examples/hello_world/HelloWorldClient.kt`. Call the new
+`src/main/kotlin/io/grpc/examples/helloworld/HelloWorldClient.kt`. Call the new
 method like this:
 
 ```kotlin
