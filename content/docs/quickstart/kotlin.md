@@ -76,7 +76,7 @@ message HelloReply {
 }
 ```
 Let's update this so that the `Greeter` service has two methods. Edit
-`src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+`src/main/proto/hello_world.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
 ```protobuf
@@ -104,7 +104,7 @@ Remember to save the file!
 ### Update and run the application
 
 When we recompile the example, normal compilation will regenerate
-`HelloWorldProtoGrpcKt.kt`, which contains our generated gRPC client and server classes.
+`HelloWorldGrpcKt.kt`, which contains our generated gRPC client and server classes.
 This also regenerates classes for populating, serializing, and retrieving our
 request and response types.
 
@@ -114,7 +114,7 @@ parts of our example application.
 #### Update the server
 
 In the same directory, open
-`src/main/kotlin/io/grpc/examples/helloworld/HelloWorldServer.kt`. Implement the
+`src/main/kotlin/io/grpc/examples/hello_world/HelloWorldServer.kt`. Implement the
 new method like this:
 
 ```kotlin
@@ -134,7 +134,7 @@ private class HelloWorldService : GreeterGrpcKt.GreeterCoroutineImplBase() {
 #### Update the client
 
 In the same directory, open
-`src/main/kotlin/io/grpc/examples/helloworld/HelloWorldClient.kt`. Call the new
+`src/main/kotlin/io/grpc/examples/hello_world/HelloWorldClient.kt`. Call the new
 method like this:
 
 ```kotlin
