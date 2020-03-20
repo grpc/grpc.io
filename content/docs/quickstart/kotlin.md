@@ -8,6 +8,7 @@ description: This guide gets you started with gRPC in Kotlin with a simple worki
 ### Prerequisites
 
 - Kotlin version 1.3 or higher
+- JDK version 7 or higher
 
 ### Download the example
 
