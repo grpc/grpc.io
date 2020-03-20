@@ -25,7 +25,7 @@ may have noticed that it's quite limited and doesn't include the
 ability to communicate error details.
 
 If you're using protocol buffers as your data format, however, you may
-wish to consider using the the richer error model developed and used
+wish to consider using the richer error model developed and used
 by Google as described
 [here](https://cloud.google.com/apis/design/errors#error_model). This
 model enables servers to return and clients to consume additional
