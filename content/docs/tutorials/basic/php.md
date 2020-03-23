@@ -22,15 +22,9 @@ Also note that currently you can only create clients in PHP for gRPC services -
 you can find out how to create gRPC servers in our other tutorials, e.g.
 [Node.js](/docs/tutorials/basic/node/).
 
-### Why use gRPC? {#why-grpcc}
+### Why use gRPC?
 
-With gRPC you can define your service once in a .proto file and implement
-clients and servers in any of gRPC's supported languages, which in turn can be
-run in environments ranging from servers inside Google to your own tablet - all
-the complexity of communication between different languages and environments is
-handled for you by gRPC. You also get all the advantages of working with
-protocol buffers, including efficient serialization, a simple IDL, and easy
-interface updating.
+{{< why-grpc >}}
 
 ### Example code and setup {#setup}
 

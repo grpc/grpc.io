@@ -22,23 +22,9 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
 [Objective-C generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated).
 
-### Why use gRPC? {#why-grpc}
+### Why use gRPC?
 
-With gRPC you can define your service once in a .proto file and implement
-clients and servers in any of gRPC's supported languages, which in turn can be
-run in environments ranging from servers inside Google to your own tablet - all
-the complexity of communication between different languages and environments is
-handled for you by gRPC. You also get all the advantages of working with
-protocol buffers, including efficient serialization, a simple IDL, and easy
-interface updating.
-
-gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on
-top of HTTP/2, which results in network bandwidth savings over using HTTP/1.1.
-Serialization and parsing of the proto binary format is more efficient than the
-equivalent JSON, resulting in CPU and battery savings. And proto3 uses a runtime
-that has been optimized over the years at Google to keep code size to a minimum.
-The latter is important in Objective-C, because the ability of the compiler to
-strip unused code is limited by the dynamic nature of the language.
+{{< why-grpc >}}
 
 ### Example code and setup {#setup}
 
