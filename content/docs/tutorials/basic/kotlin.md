@@ -148,10 +148,9 @@ a special gRPC Kotlin and Java plugins. You need to use the
 both proto2 and proto3 syntax) in order to generate gRPC services.
 
 When using Gradle or Maven, the protoc build plugin can generate the necessary
-code as part of the build.
+code as part of the build. See the [grpc-kotlin README][] for details.
 
-<!-- You can refer to the [grpc-kotlin README][] for
-how to generate code from your own `.proto` files. -->
+[grpc-kotlin README]: https://github.com/grpc/grpc-kotlin/blob/master/README.md
 
 The following classes are generated from our service definition:
 
@@ -387,18 +386,19 @@ Now let's look at how we call our service methods.
 
 ##### Simple RPC
 
-Calling the simple RPC `GetFeature()` is nearly as straightforward as calling a
-local method.
+Calling the simple RPC `GetFeature()` is as straightforward as calling a local
+method.
 
 ```kotlin
 val request = point(latitude, longitude)
 val feature = stub.getFeature(request)
 ```
 
-The stub `getFeature()` method executes the corresponding RPC, suspending
-until the RPC completes. We want the client to await (or block) until the RPC
-completes, so we make the stub method call inside a [runBlocking][]
-coroutine builder. We wrap the entire body of the client class's `getFeature()` helper method like this:
+The stub method `getFeature()` executes the corresponding RPC, suspending until
+the RPC completes. We want the client to await (or block) until the RPC
+completes, so we make the stub method call inside a [runBlocking][] coroutine
+builder. We wrap the entire body of the client class's `getFeature()` helper
+method like this:
 
 ```kotlin
 fun getFeature(latitude: Int, longitude: Int) = runBlocking {
