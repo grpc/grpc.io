@@ -1,5 +1,5 @@
-{{- $splatRedirects := site.Data.redirects.splat -}}
-{{- range $splatRedirects -}}
-/grpc-{{ . }}/*     https://grpc.github.io/grpc-{{ . }}/:splat
-{{ end -}}
+# These redirect rules are for API reference docs. For a list of
+# source URLs, see the apis.yaml file.
+
 /grpc/*     https://grpc.github.io/grpc/:splat
+/grpc-*     https://grpc.github.io/grpc-:splat
