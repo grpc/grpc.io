@@ -4,22 +4,40 @@
   <div class="container">
     <div class="columns is-multiline is-variable is-4">
       {{ range $posts }}
-      {{ $date := dateFormat "January 2, 2006" .Date }}
+      {{ $date  := dateFormat "January 2, 2006" .Date }}
+      {{ $auth  := .Params.author }}
+      {{ $auths := .Params.authors }}
       <div class="column is-one-third">
         <div class="card">
           <div class="card-content">
-            <p class="title is-size-4 is-sizee-5-mobile has-text-primary has-text-weight-bold is-spaced">
+            <p class="title is-size-4 is-size-5-mobile has-text-primary has-text-weight-bold is-spaced">
               <a href="{{ .RelPermalink }}">
                 {{ .Title }}
               </a>
             </p>
 
-            <p class="subtitle has-text-weight-light">
+            {{ with $auth }}
+            <p class="subtitle is-size-5 is-size-6-mobile has-text-weight-bold">
+              {{ .name }}
+            </p>
+            {{ end }}
+
+            {{ with $auths }}
+            {{ $numAuths := len . }}
+            <p class="subtitle is-size-5 is-size-6-mobile has-text-weight-bold">
+              {{ range $idx, $auth := . }}
+              {{ $notLast := ne $numAuths (add $idx 1) }}
+              {{ .name }}{{ if $notLast }}, {{ end }}
+              {{ end }}
+            </p>
+            {{ end }}
+
+            <p class="subtitle has-text-grey has-text-weight-bold">
               {{ $date }}
             </p>
 
-            <p>
-              {{ .Summary }}
+            <p class="content">
+              {{ .Summary | markdownify }}
             </p>
           </div>
         </div>
