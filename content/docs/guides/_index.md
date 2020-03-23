@@ -23,13 +23,13 @@ languages) that provides the same methods as the server.
 
 ![Concept Diagram](/img/landing-2.svg)
 
-gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside Google to your own desktop - and can be written in any of gRPC's supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. In addition, the latest Google APIs will have gRPC versions of their interfaces, letting you easily build Google functionality into your applications.
+gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside large data centers to your own desktop - and can be written in any of gRPC's supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby.
 
 ### Working with Protocol Buffers
 
-By default, gRPC uses [Protocol Buffers][], Google’s
-mature open source mechanism for serializing structured data (although it
-can be used with other data formats such as JSON). Here's a quick intro to how
+By default, gRPC uses [Protocol Buffers][], a mature open source mechanism for
+serializing structured data originally created by Google (although it can be be
+used with other data formats, such as JSON). Here's a quick intro to how
 it works. If you're already familiar with protocol buffers, feel free to skip
 ahead to the next section.
 
