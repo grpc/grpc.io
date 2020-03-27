@@ -9,63 +9,111 @@ description: This guide gets you started with gRPC in C++ with a simple working 
 
 #### gRPC
 
-To install gRPC on your system, follow the [instructions to install gRPC C++ via make](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make).
+Follow the gRPC installation instructions for your OS:
 
-To run the example code, please ensure `pkg-config` is installed on your
-machine before you build and install gRPC in the previous step, since the
-example `Makefile`s try to look up the installed gRPC path using `pkg-config`.
-On Debian-based systems like Ubuntu, this can usually be done via
-`sudo apt-get install pkg-config`.
+- macOS:
+
+  ```sh
+  $ brew install grpc
+  ```
+
+- Any OS: to build and install from sources, refer to [Building from
+  source][BUILDING].
 
 #### Protocol Buffers v3
 
-While not mandatory to use gRPC, gRPC applications usually leverage Protocol
-Buffers v3 for service definitions and data serialization, and our example code
-uses Protocol Buffers as well as gRPC. If you don't already have it installed on
-your system, you can install the version cloned alongside gRPC. First ensure
-that you are running these commands in the gRPC tree you just built in the from
-the previous step.
+While not mandatory, gRPC applications usually leverage [Protocol Buffers
+v3][pbv3] for service definitions and data serialization, and the example code
+uses Protocol Buffers.
+
+- macOS (if you installed `grpc` using brew, then you can skip this step since
+  `protobuf` is installed as a prerequisite):
+
+  ```sh
+  $ brew install protobuf
+  ```
+
+- Any OS:
+
+   1. Download a zip file of the latest version of pre-compiled binaries for
+      your operating system from [github.com/google/protobuf/releases][]
+      (`protoc-<version>-<os>.zip`).
+   2. Unzip the file.
+   3. Update your environment's path variable to include the path to the
+      `protoc` executable.
+
+If you've built gRPC from sources, you have another option. You can install
+protobuf from its submodule in the `third_party` folder:
 
 ```sh
 $ cd third_party/protobuf
 $ make && sudo make install
 ```
 
-###  Build the example
+#### pkg-config
 
-Always assuming you have gRPC properly installed, go into the example's
-directory:
+Follow the installation instructions for your OS:
+
+- Linux:
+
+  ```sh
+  $ sudo apt-get install pkg-config
+  ```
+
+- macOS:
+
+  ```sh
+  $ brew install pkg-config
+  ```
+
+### Download the example
+
+You can skip this step if you've installed gRPC from sources.
+
+The example code is available from the [grpc repo][repo]. Clone the repo at the
+latest release:
 
 ```sh
-$ cd examples/cpp/helloworld/
+$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 ```
 
-Let's build the example client and server:
+###  Build the example
+
+Change to the example's directory:
+
+```sh
+$ cd examples/cpp/helloworld
+```
+
+Run make to build the example client and server:
+
 ```sh
 $ make
 ```
 
-Most failures at this point are a result of a faulty installation (or having
-installed gRPC to a non-standard location. Check out [the installation
-instructions for details](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make)).
+{{< note >}}
+  **Getting build failures?** Most issues, at this point, are a result of a
+  faulty installation, or having installed gRPC to a non-standard location.
+  Carefully recheck your installation.
+{{< /note >}}
+
 
 ### Try it!
 
-From the `examples/cpp/helloworld` directory, run the server, which will listen
-on port 50051:
+From the `examples/cpp/helloworld` directory:
 
-```sh
-$ ./greeter_server
-```
+ 1. Run the server:
 
-From a different terminal, run the client:
+    ```sh
+    $ ./greeter_server
+    ```
 
-```sh
-$ ./greeter_client
-```
+ 1. From a different terminal, run the client and see the client output:
 
-If things go smoothly, you will see the `Greeter received: Hello world` in the
-client side output.
+    ```sh
+    $ ./greeter_client
+    Greeter received: Hello world
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -74,11 +122,11 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [What is gRPC?](/docs/guides/) and [gRPC Basics:
-C++](/docs/tutorials/basic/cpp/). For now all you need to know is that both the server and the client
-"stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
-the client and returns a `HelloResponse` from the server, and that this method
-is defined like this:
+file in [What is gRPC?](/docs/guides) and [gRPC Basics:
+C++](/docs/tutorials/basic/cpp). For now all you need to know is that both the
+server and the client stub have a `SayHello()` RPC method that takes a
+`HelloRequest` parameter from the client and returns a `HelloResponse` from the
+server, and that this method is defined like this:
 
 ```protobuf
 // The greeting service definition.
@@ -100,8 +148,8 @@ message HelloReply {
 
 Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` (from the root of the cloned repository) and
-update it with a new `SayHelloAgain` method, with the same request and response
-types:
+update it with a new `SayHelloAgain()` method, with the same request and
+response types:
 
 ```protobuf
 // The greeting service definition.
@@ -128,7 +176,7 @@ Remember to save the file!
 ### Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. From the `examples/cpp/helloworld` directory:
+service definition. From the `examples/cpp/helloworld` directory, run:
 
 ```sh
 $ make
@@ -152,7 +200,7 @@ this:
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
-     // ... (pre-existing code)
+     // ...
   }
 
   Status SayHelloAgain(ServerContext* context, const HelloRequest* request,
@@ -167,9 +215,9 @@ class GreeterServiceImpl final : public Greeter::Service {
 
 #### Update the client
 
-A new `SayHelloAgain` method is now available in the stub. We'll follow the same
-pattern as for the already present `SayHello` and add a new `SayHelloAgain`
-method to `GreeterClient`:
+A new `SayHelloAgain()` method is now available in the stub. We'll follow the
+same pattern as for the already present `SayHello()` and add a new
+`SayHelloAgain()` method to `GreeterClient`:
 
 ```c++
 class GreeterClient {
@@ -199,7 +247,7 @@ class GreeterClient {
 
 ```
 
-Finally, we exercise this new method in `main`:
+Finally, invoke this new method in `main()`:
 
 ```c++
 int main(int argc, char** argv) {
@@ -217,7 +265,8 @@ int main(int argc, char** argv) {
 
 #### Run!
 
-Just like we did before, from the `examples/cpp/helloworld` directory:
+Run the client and server like you did before. Execute the following commands
+from the `examples/cpp/helloworld` directory:
 
  1. Build the client and server after having made changes:
 
@@ -239,15 +288,20 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
 
     You'll see the following output:
 
-    ```sh
+    ```nocode
     Greeter received: Hello world
     Greeter received: Hello again world
     ```
 
 ### What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/cpp/).
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides)
+  and [gRPC Concepts](/docs/guides/concepts).
+- Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/cpp).
 - Explore the gRPC C++ core API in its [reference
-  documentation](/grpc/cpp/).
+  documentation](/grpc/cpp).
+
+[BUILDING]: https://github.com/grpc/grpc/blob/master/BUILDING.md
+[github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
+[pbv3]: https://developers.google.com/protocol-buffers/docs/proto3
+[repo]: https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}
