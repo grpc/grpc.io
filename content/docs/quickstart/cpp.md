@@ -17,8 +17,7 @@ Follow the gRPC installation instructions for your OS:
   $ brew install grpc
   ```
 
-- Any OS: to build and install from sources, refer to [Building from
-  source][BUILDING].
+- Any OS: see [Start using gRPC C++][using-grpc].
 
 #### Protocol Buffers v3
 
@@ -41,14 +40,6 @@ uses Protocol Buffers.
    2. Unzip the file.
    3. Update your environment's path variable to include the path to the
       `protoc` executable.
-
-If you've built gRPC from sources, you have another option. You can install
-protobuf from its submodule in the `third_party` folder:
-
-```sh
-$ cd third_party/protobuf
-$ make && sudo make install
-```
 
 #### pkg-config
 
@@ -301,7 +292,7 @@ from the `examples/cpp/helloworld` directory:
 - Explore the gRPC C++ core API in its [reference
   documentation](/grpc/cpp).
 
-[BUILDING]: https://github.com/grpc/grpc/blob/master/BUILDING.md
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [pbv3]: https://developers.google.com/protocol-buffers/docs/proto3
 [repo]: https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}
+[using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
