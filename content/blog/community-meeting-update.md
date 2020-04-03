@@ -1,9 +1,10 @@
 ---
 title: 2017-08-17 Community Meeting Update
-author: Mya Pitzeruse
-company: Indeed
-company-link: https://www.indeed.com
 date: 2017-08-17
+author:
+  name: Mya Pitzeruse
+  position: Indeed
+  link: https://www.indeed.com
 ---
 
 **Next Community Meeting:** Thursday, August 31, 2017 11am Pacific Time (US and Canada)

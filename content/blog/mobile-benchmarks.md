@@ -1,15 +1,16 @@
 ---
 title: Mobile Benchmarks
-attribution: Originally written by David Cao with additional content by Makarand and
-  others at Google.
-author: David Cao
-company: Google
-company-link: https://cloud.google.com
 date: 2016-07-26
-thumbnail: ../img/gcp-icon.png?raw=true
+author:
+  name: David Cao
+  position: Google
+  blurb: Originally written by David Cao with additional content by Makarand and others at Google
+thumbnail: /img/gcp-icon.png?raw=true
 ---
 
-As gRPC has become a better and faster RPC framework, we've consistently gotten the question, "How _much_ faster is gRPC?" We already have comprehensive server-side benchmarks, but we don't have mobile benchmarks. Benchmarking a client is a bit different than benchmarking a server. We care more about things such as latency and request size and less about things like queries per second (QPS) and number of concurrent threads. Thus we built an Android app in order to quantify these factors and provide solid numbers behind them. 
+As gRPC has become a better and faster RPC framework, we've consistently gotten the question, "How _much_ faster is gRPC?" We already have comprehensive server-side benchmarks, but we don't have mobile benchmarks. Benchmarking a client is a bit different than benchmarking a server. We care more about things such as latency and request size and less about things like queries per second (QPS) and number of concurrent threads. Thus we built an Android app in order to quantify these factors and provide solid numbers behind them.
+
+<!--more-->
 
 Specifically what we want to benchmark is client side protobuf vs. JSON serialization/deserialization and gRPC vs. a RESTful HTTP JSON service. For the serialization benchmarks, we want to measure the size of messages and speed at which we serialize and deserialize. For the RPC benchmarks, we want to measure the latency of end-to-end requests and packet size.
 

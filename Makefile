@@ -6,6 +6,7 @@ clean:
 	rm -rf public resources
 
 serve:
+	@./check_hugo.sh
 	hugo server \
 		--buildDrafts \
 		--buildFuture \
@@ -15,10 +16,12 @@ docker-serve:
 	docker run --rm -it -v $(CURDIR):/src -p 1313:1313 $(DOCKER_IMG) $(SERVE_CMD)
 
 production-build: clean
+	@./check_hugo.sh
 	hugo \
 		--minify
 
 preview-build: clean
+	@./check_hugo.sh
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--buildDrafts \

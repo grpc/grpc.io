@@ -1,9 +1,10 @@
 ---
 title: gRPC and Deadlines
-author: Gráinne Sheerin, Google SRE
-company: Google
-company-link: https://www.google.com
 date: 2018-02-26
+author:
+  name: Gráinne Sheerin
+  position: Google SRE
+  link: https://www.google.com
 ---
 
 **TL;DR: Always set a deadline**. This post explains why we recommend being deliberate about setting deadlines, with useful code snippets to show you how.

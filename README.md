@@ -2,9 +2,9 @@
 
 This repository houses the assets used to build and deploy the gRPC website, available at https://grpc.io. The site is built using the [Hugo](https://gohugo.io) static site generator. Check out the [Hugo Quick Start](https://gohugo.io/getting-started/quick-start/) for a quick intro.
 
-## Running the site locally
+## Serving the site locally
 
-To run the site locally, you need to [install Hugo](https://gohugo.io/getting-started/installing). Once Hugo is installed:
+To build and locally serve this site, you need to [install Hugo, extended version](https://gohugo.io/getting-started/installing). Once Hugo is installed:
 
 ```bash
 make serve
@@ -18,11 +18,11 @@ make docker-serve
 
 ## Publishing the site
 
-The gRPC website is automatically published by [Netlify](https://netlify.com). Any time changes are pushed to the `master` branch, the site is re-built and re-deployed. This process does not require manual management.
+The gRPC website is _automatically_ published by [Netlify](https://netlify.com). Any time changes are pushed to the `master` branch, the site is rebuilt and redeployed.
 
 ## Site content
 
-All of the [Markdown](https://www.markdownguide.org/) content used to build the site's documentation, blog, etc. is in the [`content`](./content) directory.
+All of the [Markdown](https://www.markdownguide.org) content used to build the site's documentation, blog, etc. is in the [`content`](content) directory.
 
 ## Checking links
 

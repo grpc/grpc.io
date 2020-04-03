@@ -1,1 +1,23 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.2/dist/alpine.js" defer></script>
+
+{{/* Algolia DocSearch JS */}}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+  docsearch({
+    apiKey: 'ff74482455bef79898c0a94ad2d1c5a9',
+    indexName: 'grpc',
+    inputSelector: '#search-bar',
+    debug: false
+  });
+</script>
+
+{{/* Anchor link scroll offset */}}
+<script>
+  const navbarHeight = document.getElementsByClassName('navbar')[0].offsetHeight;
+  const extraPadding = 15;
+  const navbarOffset = -1 * (navbarHeight + extraPadding);
+  var shiftWindow = function() { scrollBy(0, navbarOffset) };
+  window.addEventListener("hashchange", shiftWindow);
+  window.addEventListener("pageshow", shiftWindow);
+  function load() { if (window.location.hash) shiftWindow(); }
+</script>

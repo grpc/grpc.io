@@ -7,27 +7,33 @@ description: This guide gets you started with gRPC in Dart with a simple working
 
 ### Prerequisites
 
-- Dart SDK version 2.0 or higher.
-
-For installation instructions, see [Install Dart](https://dart.dev/install).
+- Dart SDK version 2.2 or higher. For installation instructions, see [Install
+  Dart](https://dart.dev/install).
 
 {{< note >}}
-Dart gRPC supports the Flutter and Server platforms.
-{{< /note >}} 
+  Dart gRPC supports the Flutter and Server platforms.
+{{< /note >}}
 
 #### Protocol Buffers v3
 
-While not mandatory to use gRPC, gRPC applications usually leverage Protocol
-Buffers v3 for service definitions and data serialization, and our example code
-uses Protocol Buffers as well as gRPC.
+While not mandatory, gRPC applications usually leverage [Protocol Buffers
+v3][pbv3] for service definitions and data serialization, and the example code
+uses Protocol Buffers.
 
-The simplest way to install the protoc compiler is to download pre-compiled
-binaries for your operating system (`protoc-<version>-<os>.zip`) from here:
-[https://github.com/google/protobuf/releases](https://github.com/google/protobuf/releases)
+- macOS:
 
-  * Unzip this file.
-  * Update the environment variable `PATH` to include the path to the `protoc`
-    binary file.
+  ```sh
+  $ brew install protobuf
+  ```
+
+- Any OS:
+
+   1. Download a zip file of the latest version of pre-compiled binaries for
+      your operating system from [github.com/google/protobuf/releases][]
+      (`protoc-<version>-<os>.zip`).
+   2. Unzip the file.
+   3. Update your environment's path variable to include the path to the
+      `protoc` executable.
 
 Next, install the `protoc` plugin for Dart
 
@@ -87,7 +93,7 @@ The gRPC service is defined using protocol buffers.
 To learn more about how to define a service in a `.proto`
 file see [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
 For now, all you need to know is that both the
-server and the client "stub" have a `SayHello` RPC method that takes a
+server and the client "stub" have a `SayHello()` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that this method is defined like this:
 
@@ -110,7 +116,7 @@ message HelloReply {
 }
 ```
 
-Edit `protos/helloworld.proto` and add a new `SayHelloAgain` method, with the
+Edit `protos/helloworld.proto` and add a new `SayHelloAgain()` method, with the
 same request and response types:
 
 ```protobuf
@@ -239,4 +245,6 @@ from the `example/helloworld` directory:
 If you find a problem with Dart gRPC, please [file an issue][new issue]
 in our issue tracker.
 
+[github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [new issue]: https://github.com/grpc/grpc-dart/issues/new
+[pbv3]: https://developers.google.com/protocol-buffers/docs/proto3

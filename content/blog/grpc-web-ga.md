@@ -1,7 +1,13 @@
 ---
 title: gRPC-Web is Generally Available
-author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
 date: 2018-10-23
+authors:
+- name: Luc Perkins
+  position: Developer advocate, [Cloud Native Computing Foundation](https://cncf.io)
+- name: Stanley Cheung
+  position: Google
+- name: Kailash Sethuraman
+  position: Google
 ---
 
 We are excited to announce the GA release of

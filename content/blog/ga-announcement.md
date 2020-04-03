@@ -1,11 +1,11 @@
 ---
 title: gRPC Project is now 1.0 and ready for production deployments
-attribution: Originally written by Varun Talwar with additional content by Kailash
-  Sethuraman and others at Google.
-author: Varun Talwar
-company: Google
-company-link: https://cloud.google.com
 date: 2016-08-23
+author:
+  name: Varun Talwar
+  position: Google
+  link: https://cloud.google.com
+  blurb: Originally written by Varun Talwar with additional content by Kailash Sethuraman and others at Google.
 thumbnail: ../img/gcp-icon.png?raw=true
 aliases: ["blog/gablogpost"]
 ---

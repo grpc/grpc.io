@@ -1,9 +1,9 @@
 ---
 title: gRPC-Go Engineering Practices
-author: Doug Fawley, gRPC-Go TL
-company: Google
-company-link: google.com
 date: 2018-01-22
+author:
+  name: Doug Fawley, gRPC-Go TL
+  position: gRPC-Go Team Lead, Google
 ---
 
 It's the start of the new year, and almost the end of my first full year on the
