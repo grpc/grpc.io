@@ -3,95 +3,150 @@ layout: quickstart
 title: C++ Quick Start
 short: C++
 description: This guide gets you started with gRPC in C++ with a simple working example.
+cmake-version: 3.17.0
 ---
+
+In the C++ world, there's no universally accepted standard for managing project
+dependencies. In this quick start, you'll follow steps to build and locally
+install gRPC before building and running this quick start's Hello World example.
+
+### Setup
+
+Choose a directory to hold locally installed packages. This page assumes that
+the environment variable `MY_INSTALL_DIR` holds this directory path. For
+example:
+
+```sh
+$ export MY_INSTALL_DIR=$HOME/local
+```
+
+Ensure that the directory exists:
+
+```sh
+$ mkdir -p $MY_INSTALL_DIR
+```
+
+Add the local `bin` folder to your path variable, for example:
+
+```sh
+$ export PATH="$PATH:$MY_INSTALL_DIR/bin"
+```
 
 ### Prerequisites
 
-#### gRPC
+#### cmake
 
-Follow the gRPC installation instructions for your OS:
+Version 3.13 or later of `cmake` is required to install gRPC locally.
+
+- Linux
+
+  ```sh
+  $ sudo apt install -y cmake
+  ```
 
 - macOS:
 
   ```sh
-  $ brew install grpc
+  $ brew install cmake
   ```
 
-- Any OS: see [Start using gRPC C++][using-grpc].
+- For general `cmake` installation instructions, see [Installing CMake][].
 
-#### Protocol Buffers v3
+Check the version of `cmake`:
+
+```sh
+$ cmake --version
+```
+
+Under Linux, the version of the system-wide `cmake` can be too low. You can
+install a more recent version into your local installation directory as follows:
+
+```sh
+$ wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-Linux-x86_64.sh
+$ sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
+$ rm cmake-linux.sh
+```
+
+
+#### gRPC and Protocol Buffers v3
 
 While not mandatory, gRPC applications usually leverage [Protocol Buffers
 v3][pbv3] for service definitions and data serialization, and the example code
 uses Protocol Buffers.
 
-- macOS (if you installed `grpc` using brew, then you can skip this step since
-  `protobuf` is installed as a prerequisite):
+The following instructions will locally install gRPC and Protocol Buffers.
 
-  ```sh
-  $ brew install protobuf
-  ```
+ 1. Install the basic tools required to build gRPC:
 
-- Any OS:
+    - Linux
 
-   1. Download a zip file of the latest version of pre-compiled binaries for
-      your operating system from [github.com/google/protobuf/releases][]
-      (`protoc-<version>-<os>.zip`).
-   2. Unzip the file.
-   3. Update your environment's path variable to include the path to the
-      `protoc` executable.
+      ```sh
+      $ sudo apt install -y build-essential autoconf libtool pkg-config
+      ```
 
-#### pkg-config
+    - macOS:
 
-Follow the installation instructions for your OS:
+      ```sh
+      $ brew install autoconf automake libtool pkg-config
+      ```
 
-- Linux:
+ 2. Clone the `grpc` repo and its submodules:
 
-  ```sh
-  $ sudo apt-get install pkg-config
-  ```
+    ```sh
+    $ git clone --recurse-submodules -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
+    $ cd grpc
+    ```
 
-- macOS:
+ 3. Build and locally install gRPC and all requisite tools:
 
-  ```sh
-  $ brew install pkg-config
-  ```
+    ```sh
+    $ mkdir -p cmake/build
+    $ pushd cmake/build
+    $ cmake -DgRPC_INSTALL=ON \
+          -DgRPC_BUILD_TESTS=OFF \
+          -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+          ../..
+    $ make -j
+    $ make install
+    $ popd
+    ```
 
-### Download the example
+You can find a complete set of instructions for building gRPC C++ in [Building
+from source][from-source].
 
-You can skip this step if you've installed gRPC from sources.
-
-The example code is available from the [grpc repo][repo]. Clone the repo at the
-latest release:
-
-```sh
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
-```
+[from-source]: https://github.com/grpc/grpc/blob/master/BUILDING.md
 
 ###  Build the example
 
-Change to the example's directory:
+The example code is part of the `grpc` repo source, which you cloned as part of
+the steps of the previous section.
 
-```sh
-$ cd examples/cpp/helloworld
-```
+ 1. Change to the example's directory:
 
-Run make to build the example client and server:
+    ```sh
+    $ cd examples/cpp/helloworld
+    ```
 
-```sh
-$ make
-```
+ 2. Build the example using `cmake`:
 
-{{< note >}}
+    ```sh
+    $ mkdir -p cmake/build
+    $ pushd cmake/build
+    $ cmake ../..
+    $ make -j
+    ```
+
+    {{< note >}}
   **Getting build failures?** Most issues, at this point, are a result of a
-  faulty installation, or having installed gRPC to a non-standard location.
-  Carefully recheck your installation.
-{{< /note >}}
+  faulty installation. Ensure that the have the right versions of `cmake`, and
+  carefully recheck your installation.
+    {{< /note >}}
 
 
 ### Try it!
 
-From the `examples/cpp/helloworld` directory:
+Run the example from the example **build** directory
+`examples/cpp/helloworld/cmake/build`:
 
  1. Run the server:
 
@@ -137,10 +192,8 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit
-`examples/protos/helloworld.proto` (from the root of the cloned repository) and
-update it with a new `SayHelloAgain()` method, with the same request and
-response types:
+Edit [examples/protos/helloworld.proto][] and add a new `SayHelloAgain()` method, with the
+same request and response types:
 
 ```protobuf
 // The greeting service definition.
@@ -166,26 +219,28 @@ Remember to save the file!
 
 ### Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new
-service definition. From the `examples/cpp/helloworld` directory, run:
+Before you can use the new service method, you need to recompile the updated
+proto file.
+
+From the example **build** directory `examples/cpp/helloworld/cmake/build`, run:
 
 ```sh
-$ make
+$ make -j
 ```
 
 This regenerates `helloworld.pb.{h,cc}` and `helloworld.grpc.pb.{h,cc}`, which
-contains our generated client and server classes, as well as classes for
+contains the generated client and server classes, as well as classes for
 populating, serializing, and retrieving our request and response types.
 
 ### Update and run the application
 
-We now have new generated server and client code, but we still need to implement
+You have new generated server and client code, but you still need to implement
 and call the new method in the human-written parts of our example application.
 
 #### Update the server
 
-In the same directory, open `greeter_server.cc`. Implement the new method like
-this:
+Open `greeter_server.cc` from the example's root directory. Implement the new
+method like this:
 
 ```c++
 class GreeterServiceImpl final : public Greeter::Service {
@@ -235,7 +290,6 @@ class GreeterClient {
       return "RPC failed";
     }
   }
-
 ```
 
 Finally, invoke this new method in `main()`:
@@ -251,18 +305,17 @@ int main(int argc, char** argv) {
 
   return 0;
 }
-
 ```
 
 #### Run!
 
 Run the client and server like you did before. Execute the following commands
-from the `examples/cpp/helloworld` directory:
+from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 
  1. Build the client and server after having made changes:
 
     ```sh
-    $ make
+    $ make -j
     ```
 
  2. Run the server:
@@ -292,7 +345,9 @@ from the `examples/cpp/helloworld` directory:
 - Explore the gRPC C++ core API in its [reference
   documentation](/grpc/cpp).
 
+[examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
+[Installing CMake]: https://cmake.org/install
 [pbv3]: https://developers.google.com/protocol-buffers/docs/proto3
 [repo]: https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
