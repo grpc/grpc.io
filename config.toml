@@ -14,7 +14,7 @@ style = "manni"
 locale = "en_US"
 grpc_release_tag = "v1.28.1"
 grpc_release_tag_no_v = "1.28.1"
-grpc_java_release_tag = "v1.28.0"
+grpc_java_release_tag = "v1.28.1"
 google_analytics_id = "UA-60127042-1"
 font_awesome_version = "5.12.1"
 

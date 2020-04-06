@@ -1,5 +1,5 @@
 {{ $size        := .size | default "normal" }}
 {{ $constrained := .constrained | default false }}
 <div class="content is-{{ $size }} has-bottom-padding{{ if $constrained }} is-constrained{{ end }}">
-  {{ .content }}
+  {{ partial "headline-hash.html" .content }}
 </div>

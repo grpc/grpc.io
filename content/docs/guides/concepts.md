@@ -1,14 +1,14 @@
 ---
 layout: guides
 title: gRPC Concepts
-description: |
-  This document introduces some key gRPC concepts with an overview of gRPC's architecture and RPC life cycle.
+description: |-
+  An introduction to key gRPC concepts, with an overview of gRPC architecture
+  and RPC life cycle.
 ---
 
-It assumes that you've read [What is gRPC?](/docs/guides). For
+Not familiar with gRPC? First read [What is gRPC?](/docs/guides). For
 language-specific details, see the Quick Start, tutorial, and reference
-documentation for your chosen language(s), where available (complete reference
-docs are coming soon).
+documentation for your language of choice.
 
 ### Overview
 
@@ -17,7 +17,7 @@ docs are coming soon).
 Like many RPC systems, gRPC is based around the idea of defining a service,
 specifying the methods that can be called remotely with their parameters and
 return types. By default, gRPC uses [protocol
-buffers](https://developers.google.com/protocol-buffers/) as the Interface
+buffers](https://developers.google.com/protocol-buffers) as the Interface
 Definition Language (IDL) for describing both the service interface and the
 structure of the payload messages. It is possible to use other alternatives if
 desired.
@@ -36,15 +36,13 @@ message HelloResponse {
 }
 ```
 
-
 gRPC lets you define four kinds of service method:
 
 - Unary RPCs where the client sends a single request to the server and gets a
   single response back, just like a normal function call.
 
   ```proto
-  rpc SayHello(HelloRequest) returns (HelloResponse) {
-  }
+  rpc SayHello(HelloRequest) returns (HelloResponse);
   ```
 
 - Server streaming RPCs where the client sends a request to the server and gets
@@ -53,8 +51,7 @@ gRPC lets you define four kinds of service method:
   ordering within an individual RPC call.
 
   ```proto
-  rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse) {
-  }
+  rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse);
   ```
 
 - Client streaming RPCs where the client writes a sequence of messages and sends
@@ -64,8 +61,7 @@ gRPC lets you define four kinds of service method:
   call.
 
   ```proto
-  rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
-  }
+  rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse);
   ```
 
 - Bidirectional streaming RPCs where both sides send a sequence of messages
@@ -77,15 +73,15 @@ gRPC lets you define four kinds of service method:
   stream is preserved.
 
   ```proto
-  rpc BidiHello(stream HelloRequest) returns (stream HelloResponse) {
-  }
+  rpc BidiHello(stream HelloRequest) returns (stream HelloResponse);
   ```
 
-We'll look at the different types of RPC in more detail in the RPC life cycle section below.
+You'll learn more about the different types of RPC in the
+[RPC life cycle](#rpc-life-cycle) section below.
 
-#### Using the API surface
+#### Using the API
 
-Starting from a service definition in a .proto file, gRPC provides protocol
+Starting from a service definition in a `.proto` file, gRPC provides protocol
 buffer compiler plugins that generate client- and server-side code. gRPC users
 typically call these APIs on the client side and implement the corresponding API
 on the server side.
@@ -108,77 +104,75 @@ aspires to. On the other hand, networks are inherently asynchronous and in many
 scenarios it's useful to be able to start RPCs without blocking the current
 thread.
 
-The gRPC programming surface in most languages comes in both synchronous and
+The gRPC programming API in most languages comes in both synchronous and
 asynchronous flavors. You can find out more in each language's tutorial and
 reference documentation (complete reference docs are coming soon).
 
 ### RPC life cycle
 
-Now let's take a closer look at what happens when a gRPC client calls a gRPC
-server method. We won't look at implementation details, you can find out more
-about these in our language-specific pages.
+In this section, you'll take a closer look at what happens when a gRPC client
+calls a gRPC server method. For complete implementation details, see the
+language-specific pages.
 
 #### Unary RPC
 
-First let's look at the simplest type of RPC, where the client sends a single
-request and gets back a single response.
+First consider the simplest type of RPC where the client sends a single request
+and gets back a single response.
 
-- Once the client calls the method on the stub/client object, the server is
-  notified that the RPC has been invoked with the client's [metadata](#metadata)
-  for this call, the method name, and the specified [deadline](#deadlines) if
-  applicable.
-- The server can then either send back its own initial metadata (which must be
-  sent before any response) straight away, or wait for the client's request
-  message - which happens first is application-specific.
-- Once the server has the client's request message, it does whatever work is
-  necessary to create and populate its response. The response is then returned
-  (if successful) to the client together with status details (status code and
-  optional status message) and optional trailing metadata.
-- If the status is OK, the client then gets the response, which completes the
-  call on the client side.
+ 1. Once the client calls a stub method, the server is
+    notified that the RPC has been invoked with the client's [metadata](#metadata)
+    for this call, the method name, and the specified [deadline](#deadlines) if
+    applicable.
+ 2. The server can then either send back its own initial metadata (which must be
+    sent before any response) straight away, or wait for the client's request
+    message. Which happens first, is application-specific.
+ 3. Once the server has the client's request message, it does whatever work is
+    necessary to create and populate a response. The response is then returned
+    (if successful) to the client together with status details (status code and
+    optional status message) and optional trailing metadata.
+ 4. If the response status is OK, then the client gets the response, which
+    completes the call on the client side.
 
 #### Server streaming RPC
 
-A server-streaming RPC is similar to our simple example, except the server sends
-back a stream of responses after getting the client's request message. After
-sending back all its responses, the server's status details (status code and
-optional status message) and optional trailing metadata are sent back to
-complete on the server side. The client completes once it has all the server's
-responses.
+A server-streaming RPC is similar to a unary RPC, except that the server returns
+a stream of messages in response to a client's request. After sending all its
+messages, the server's status details (status code and optional status message)
+and optional trailing metadata are sent to the client. This completes processing
+on the server side. The client completes once it has all the server's messages.
 
 #### Client streaming RPC
 
-A client-streaming RPC is also similar to our simple example, except the client
-sends a stream of requests to the server instead of a single request. The server
-sends back a single response, typically but not necessarily after it has
-received all the client's requests, along with its status details and optional
-trailing metadata.
+A client-streaming RPC is similar to a unary RPC, except that the client sends a
+stream of messages to the server instead of a single message. The server
+responds with a single message (along with its status details and optional
+trailing metadata), typically but not necessarily after it has received all the
+client's messages.
 
 #### Bidirectional streaming RPC
 
-In a bidirectional streaming RPC, again the call is initiated by the client
-calling the method and the server receiving the client metadata, method name,
-and deadline. Again the server can choose to send back its initial metadata or
-wait for the client to start sending requests.
+In a bidirectional streaming RPC, the call is initiated by the client
+invoking the method and the server receiving the client metadata, method name,
+and deadline. The server can choose to send back its initial metadata or
+wait for the client to start streaming messages.
 
-What happens next depends on the application, as the client and server can read
-and write in any order - the streams operate completely independently. So, for
-example, the server could wait until it has received all the client's messages
-before writing its responses, or the server and client could "ping-pong": the
-server gets a request, then sends back a response, then the client sends another
-request based on the response, and so on.
+Client- and server-side stream processing is application specific. Since the two
+streams are independent, the client and server can read and write messages in
+any order. For example, a server can wait until it has received all of a
+client's messages before writing its messages, or the server and client can play
+"ping-pong" -- the server gets a request, then sends back a response, then the
+client sends another request based on the response, and so on.
 
 #### Deadlines/Timeouts {#deadlines}
 
 gRPC allows clients to specify how long they are willing to wait for an RPC to
-complete before the RPC is terminated with the error `DEADLINE_EXCEEDED`. On
+complete before the RPC is terminated with a `DEADLINE_EXCEEDED` error. On
 the server side, the server can query to see if a particular RPC has timed out,
 or how much time is left to complete the RPC.
 
-How the deadline or timeout is specified varies from language to language - for
-example, not all languages have a default deadline, some language APIs work in
-terms of a deadline (a fixed point in time), and some language APIs work in
-terms of timeouts (durations of time).
+Specifying a deadline or timeout is language specific: some language APIs work
+in terms of timeouts (durations of time), and some language APIs work in terms
+of a deadline (a fixed point in time) and may or maynot have a default deadline.
 
 #### RPC termination
 
@@ -189,30 +183,31 @@ for example, you could have an RPC that finishes successfully on the server side
 arrived after my deadline!"). It's also possible for a server to decide to
 complete before a client has sent all its requests.
 
-#### Cancelling RPCs
+#### Cancelling an RPC
 
 Either the client or the server can cancel an RPC at any time. A cancellation
-terminates the RPC immediately so that no further work is done. It is *not* an
-"undo": changes made before the cancellation will not be rolled back.
+terminates the RPC immediately so that no further work is done.
+
+{{< warning >}}
+  Changes made before a cancellation are not rolled back.
+{{< /warning >}}
 
 #### Metadata
 
 Metadata is information about a particular RPC call (such as [authentication
 details](/docs/guides/auth)) in the form of a list of key-value pairs, where the
-keys are strings and the values are typically strings (but can be binary data).
+keys are strings and the values are typically strings, but can be binary data.
 Metadata is opaque to gRPC itself - it lets the client provide information
 associated with the call to the server and vice versa.
 
-Access to metadata is language-dependent.
+Access to metadata is language dependent.
 
 #### Channels
 
 A gRPC channel provides a connection to a gRPC server on a specified host and
-port and is used when creating a client stub (or just "client" in some
-languages). Clients can specify channel arguments to modify gRPC's default
-behaviour, such as switching on and off message compression. A channel has
-state, including `connected` and `idle`.
+port. It is used when creating a client stub. Clients can specify channel
+arguments to modify gRPC's default behaviour, such as switching message
+compression on or off. A channel has state, including `connected` and `idle`.
 
-How gRPC deals with closing down channels is language-dependent. Some languages
-also permit querying channel state.
-
+How gRPC deals with closing a channel is language dependent. Some languages also
+permit querying channel state.

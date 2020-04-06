@@ -34,6 +34,11 @@ $link: $secondary-dark
 $code: $primary
 $code-background: $white-bis
 $section-padding: 3rem 1.5rem
+//$input-color: $white
+//$input-background-color: lighten($primary, 10%)
+//$input-border-color: lighten($primary, 10%)
+//$input-icon-color: $white
+//$input-focus-border-color: $secondary
 
 // Font overrides
 {{ if $fonts }}
@@ -81,12 +86,12 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 // @import "bulma/sass/elements/other"
 
 // Forms
-// @import "bulma/sass/form/shared"
-// @import "bulma/sass/form/input-textarea"
+@import "bulma/sass/form/shared"
+@import "bulma/sass/form/input-textarea"
 // @import "bulma/sass/form/checkbox-radio"
 // @import "bulma/sass/form/select"
 // @import "bulma/sass/form/file"
-// @import "bulma/sass/form/tools"
+@import "bulma/sass/form/tools"
 
 // Components
 // @import "bulma/sass/components/breadcrumb"
@@ -103,10 +108,17 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 // @import "bulma/sass/components/panel"
 @import "bulma/sass/components/tabs"
 
+.has-mouse-icon
+  &:hover
+    cursor: pointer
+
 .has-background-image
   background-image: url("/img/graphic-04.svg")
   background-repeat: no-repeat
   background-size: cover
+
+.has-margin-right
+  margin-right: 0.5rem
 
 =logo($d, $t)
   +desktop
@@ -276,3 +288,17 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 
     & + li
       margin-top: 0.75rem
+
+.hashlink
+  @extend .icon
+  height: 1rem
+  width: 1rem
+  margin-left: 0.25rem
+
+.headline-hash
+  display: none
+
+@for $i from 1 through 6
+  h#{$i}
+    &:hover > .headline-hash
+      display: inline

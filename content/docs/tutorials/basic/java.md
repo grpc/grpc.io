@@ -41,7 +41,7 @@ updating.
 ### Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc-java/examples/src/main/java/io/grpc/examples](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples).
+[grpc/grpc-java/examples/src/main/java/io/grpc/examples/routeguide](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/routeguide).
 To download the example, clone the latest release in `grpc-java` repository by
 running the following command:
 
@@ -52,7 +52,7 @@ $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-
 Then change your current directory to `grpc-java/examples`:
 
 ```sh
-$ cd grpc-java/examples
+$ cd grpc-java/examples/routeguide
 ```
 
 ### Defining the service
@@ -209,7 +209,7 @@ private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase
 #### Simple RPC
 
 `RouteGuideService` implements all our service methods. Let's
-look at the simplest type first, `GetFeature`, which just gets a `Point` from
+look at the simplest method first, `GetFeature()`, which just gets a `Point` from
 the client and returns the corresponding feature information from its database
 in a `Feature`.
 
@@ -235,7 +235,7 @@ private Feature checkFeature(Point location) {
 }
 ```
 
-`getFeature()` takes two parameters:
+The `getFeature()` method takes two parameters:
 
 - `Point`: the request
 - `StreamObserver<Feature>`: a response observer, which is a special interface
@@ -251,6 +251,7 @@ To return our response to the client and complete the call:
    finished dealing with the RPC.
 
 ##### Server-side streaming RPC
+
 Next let's look at one of our streaming RPCs. `ListFeatures` is a server-side
 streaming RPC, so we need to send back multiple `Feature`s to our client.
 
@@ -294,7 +295,7 @@ we've finished writing responses.
 ##### Client-side streaming RPC
 
 Now let's look at something a little more complicated: the client-side streaming
-method `RecordRoute`, where we get a stream of `Point`s from the client and
+method `RecordRoute()`, where we get a stream of `Point`s from the client and
 return a single `RouteSummary` with information about their trip.
 
 ```java
@@ -419,6 +420,7 @@ public void start() throws IOException {
  ...
 }
 ```
+
 As you can see, we build and start our server using a `ServerBuilder`.
 
 To do this, we:
@@ -430,13 +432,13 @@ To do this, we:
 1. Call `build()` and `start()` on the builder to create and start an RPC server
    for our service.
 
-## Creating the client {#client}
+### Creating the client {#client}
 
-In this section, we'll look at creating a Java client for our `RouteGuide`
+In this section, we'll look at creating a client for our `RouteGuide`
 service. You can see our complete example client code in
 [grpc-java/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java).
 
-#### Creating a stub
+#### Instantiating a stub
 
 To call service methods, we first need to create a *stub*, or rather, two stubs:
 
@@ -461,6 +463,7 @@ public RouteGuideClient(ManagedChannelBuilder<?> channelBuilder) {
   asyncStub = RouteGuideGrpc.newStub(channel);
 }
 ```
+
 We use a `ManagedChannelBuilder` to create the channel.
 
 Now we can use the channel to create our stubs using the `newStub` and

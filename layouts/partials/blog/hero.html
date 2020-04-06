@@ -1,8 +1,9 @@
-{{ $title  := .Title }}
-{{ $desc   := .Params.description | markdownify }}
-{{ $attr   := .Params.attribution }}
-{{ $date   := dateFormat "January 2, 2006" .Date }}
-{{ $author := .Params.author }}
+{{ $title   := .Title }}
+{{ $desc    := .Params.description | markdownify }}
+{{ $attr    := .Params.attribution }}
+{{ $date    := dateFormat "January 2, 2006" .Date }}
+{{ $author  := .Params.author }}
+{{ $authors := .Params.authors }}
 <section class="hero is-medium is-primary has-background-image">
   <div class="hero-body">
     <div class="container">
@@ -23,8 +24,36 @@
       {{ end }}
 
       {{ with $date }}
-      <p class="is-size-4 is-size-mobile has-text-weight-medium">
-        {{ . }}
+      <p class="is-size-4 is-size-mobile has-text-weight-bold">
+        <span class="icon has-margin-right has-text-grey-lighter">
+          <i class="fas fa-calendar-alt"></i>
+        </span>
+        <span>
+          {{ . }}
+        </span>
+      </p>
+      {{ end }}
+
+      {{ with $authors }}
+      {{ $numAuthors := len . }}
+      <br />
+
+      <p class="subtitle is-size-4 is-size-5-mobile">
+        <span class="icon has-margin-right has-text-grey-lighter">
+          <i class="fas fa-user-friends"></i>
+        </span>
+
+        {{ range $idx, $author := . }}
+        {{ $notLast := ne $numAuthors (add $idx 1) }}
+        {{- if .link -}}
+        <a class="has-text-secondary has-text-weight-medium is-underlined" href="{{ .link }}" target="_blank">
+          {{- .name -}}
+        </a>
+        {{- else -}}
+        {{- .name -}}
+        {{- end -}}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}, {{ end }}
+        {{ end }}
       </p>
       {{ end }}
 
@@ -32,6 +61,10 @@
       <br />
 
       <p class="subtitle is-size-4 is-size-5-mobile">
+        <span class="icon has-margin-right has-text-secondary">
+          <i class="fas fa-user"></i>
+        </span>
+
         {{- if .link -}}
         <a class="has-text-secondary" href="{{ .link }}" target="_blank">
           {{- .name -}}
