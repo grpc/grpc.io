@@ -68,11 +68,11 @@ $ rm cmake-linux.sh
 ```
 
 
-#### gRPC and Protocol Buffers v3
+#### gRPC and Protocol Buffers
 
-While not mandatory, gRPC applications usually leverage [Protocol Buffers
-v3][pbv3] for service definitions and data serialization, and the example code
-uses Protocol Buffers.
+While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
+for service definitions and data serialization, and the example code uses
+[proto3][].
 
 The following instructions will locally install gRPC and Protocol Buffers.
 
@@ -217,7 +217,7 @@ message HelloReply {
 
 Remember to save the file!
 
-### Generate gRPC code
+### Regenerate gRPC code
 
 Before you can use the new service method, you need to recompile the updated
 proto file.
@@ -348,6 +348,7 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 [examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [Installing CMake]: https://cmake.org/install
-[pbv3]: https://developers.google.com/protocol-buffers/docs/proto3
+[pb]: https://developers.google.com/protocol-buffers
+[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
 [repo]: https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
