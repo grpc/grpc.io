@@ -111,10 +111,15 @@ The following instructions will locally install gRPC and Protocol Buffers.
     $ popd
     ```
 
-You can find a complete set of instructions for building gRPC C++ in [Building
-from source][from-source].
+More information:
+
+- You can find a complete set of instructions for building gRPC C++ in [Building
+  from source][from-source].
+- For general instructions on how to add gRPC as a dependency to your C++
+  project, see [Start using gRPC C++][using-grpc].
 
 [from-source]: https://github.com/grpc/grpc/blob/master/BUILDING.md
+[using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
 
 ###  Build the example
 
@@ -132,7 +137,7 @@ the steps of the previous section.
     ```sh
     $ mkdir -p cmake/build
     $ pushd cmake/build
-    $ cmake ../..
+    $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
     $ make -j
     ```
 
