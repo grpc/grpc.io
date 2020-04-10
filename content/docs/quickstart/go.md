@@ -7,15 +7,16 @@ description: This guide gets you started with gRPC in Go with a simple working e
 
 ### Prerequisites
 
-- **Go** version 1.9+. For installation instructions, see Go's [Getting
+- **Go** version 1.12+. For installation instructions, see Go's [Getting
   Started](https://golang.org/doc/install) guide.
 
 #### gRPC
 
-Use the following command to install gRPC.
+Use the following command to install gRPC, in [module-aware mode][]:
 
 ```sh
-$ go get -u google.golang.org/grpc
+$ export GO111MODULE=on
+$ go get -u google.golang.org/grpc@{{< param grpc_release_tag >}}
 ```
 
 #### Protocol Buffers
@@ -34,14 +35,24 @@ for service definitions and data serialization, and the example code uses
 
     - Any OS:
 
-      1. Download a zip file of the latest version of pre-compiled binaries for
+       1. Download a zip file of the latest version of pre-compiled binaries for
           your operating system from [github.com/google/protobuf/releases][]
           (`protoc-<version>-<os>.zip`).
-      2. Unzip the file.
-      3. Update your environment's path variable to include the path to the
-          `protoc` executable.
+       2. Unzip the file under `$HOME/local` or a directory of your choice:
+          ```sh
+          $ unzip protoc-<version>-<os>.zip -d $HOME/local
+          ```
+       3. Update your environment's path variable to include the path to the
+          `protoc` executable. For example:
 
- 2. Install the `protoc` plugin for Go
+          ```sh
+          $ export PATH="$PATH:$HOME/local/bin"
+          ```
+
+
+ 2. The `protoc` plugin for Go (`protoc-gen-go`) was installed as a dependency
+    of the `grpc` module. You can confirm this, or install the plugin, using the
+    following command:
 
     ```sh
     $ go get -u github.com/golang/protobuf/protoc-gen-go
@@ -61,7 +72,7 @@ code.
  1. Change to the example's directory:
 
     ```sh
-    $ cd $(go env GOPATH)/src/google.golang.org/grpc/examples/helloworld
+    $ cd $(go env GOPATH)/pkg/mod/google.golang.org/grpc@{{< param grpc_release_tag >}}/examples/helloworld
     ```
 
  2. Compile and execute the server code:
@@ -214,5 +225,6 @@ from the `examples/helloworld` directory:
   documentation](https://godoc.org/google.golang.org/grpc).
 
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
+[module-aware mode]: https://github.com/golang/go/wiki/Modules
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
