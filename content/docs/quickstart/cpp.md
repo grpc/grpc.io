@@ -183,7 +183,7 @@ server, and that this method is defined like this:
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
 // The request message containing the user's name.
@@ -204,9 +204,9 @@ same request and response types:
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloReply);
   // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply);
 }
 
 // The request message containing the user's name.

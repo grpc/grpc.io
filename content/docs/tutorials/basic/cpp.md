@@ -85,7 +85,7 @@ all of which are used in the `RouteGuide` service:
 
   ```protobuf
   // Obtains the feature at a given position.
-  rpc GetFeature(Point) returns (Feature) {}
+  rpc GetFeature(Point) returns (Feature);
   ```
 
 - A *server-side streaming RPC* where the client sends a request to the server
@@ -99,7 +99,7 @@ all of which are used in the `RouteGuide` service:
   // streamed rather than returned at once (e.g. in a response message with a
   // repeated field), as the rectangle may cover a large area and contain a
   // huge number of features.
-  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+  rpc ListFeatures(Rectangle) returns (stream Feature);
   ```
 
 - A *client-side streaming RPC* where the client writes a sequence of messages
@@ -111,7 +111,7 @@ all of which are used in the `RouteGuide` service:
   ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
   // RouteSummary when traversal is completed.
-  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+  rpc RecordRoute(stream Point) returns (RouteSummary);
   ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages
@@ -126,7 +126,7 @@ all of which are used in the `RouteGuide` service:
   ```protobuf
   // Accepts a stream of RouteNotes sent while a route is being traversed,
   // while receiving other RouteNotes (e.g. from other users).
-  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+  rpc RouteChat(stream RouteNote) returns (stream RouteNote);
   ```
 
 Our `.proto` file also contains protocol buffer message type definitions for all

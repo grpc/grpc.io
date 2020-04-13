@@ -65,7 +65,7 @@ protocol buffer messages:
 // The greeter service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
 // The request message containing the user's name.
