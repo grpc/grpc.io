@@ -6,10 +6,14 @@ description: This guide gets you started with gRPC in Go with a simple working e
 protoc-version: 3.11.4
 ---
 
+<style type="text/css">
+    ol ol { list-style-type: lower-alpha !important; }
+</style>
+
 ### Prerequisites
 
-- **Go** version 1.12+. For installation instructions, see Go's [Getting
-  Started](https://golang.org/doc/install) guide.
+- **[Go][]**, any one of the **three latest major** [releases of Go][]. For
+  installation instructions, see Go's [Getting Started][] guide.
 
 #### gRPC
 
@@ -17,7 +21,7 @@ Use the following command to install gRPC as a [module][]:
 
 ```sh
 $ export GO111MODULE=on # Enable module-aware mode
-$ go get -u google.golang.org/grpc@{{< param grpc_release_tag >}}
+$ go get google.golang.org/grpc@{{< param grpc_release_tag >}}
 ```
 
 #### Protocol Buffers
@@ -28,43 +32,37 @@ for service definitions and data serialization, and the example code uses
 
  1. Install the `protoc` compiler:
 
-    - macOS:
+     1. Download a zip file of the latest version of pre-compiled binaries for
+        your operating system from [github.com/google/protobuf/releases][]
+        (`protoc-<version>-<os><arch>.zip`). For example:
 
-      ```sh
-      $ brew install protobuf
-      ```
+        ```sh
+        $ PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+        $ curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
+        ```
 
-    - Any OS:
+     2. Unzip the file under `$HOME/.local` or a directory of your choice. For
+        example:
 
-       1. Download a zip file of the latest version of pre-compiled binaries for
-          your operating system from [github.com/google/protobuf/releases][]
-          (`protoc-<version>-<os><arch>.zip`). For example:
+        ```sh
+        $ unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/.local
+        ```
 
-          ```sh
-          $ PB_REL="https://github.com/protocolbuffers/protobuf/releases"
-          $ curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
-          ```
+     3. Update your environment's path variable to include the path to the
+        `protoc` executable. For example:
 
-       2. Unzip the file under `$HOME/local` or a directory of your choice. For
-          example:
+        ```sh
+        $ export PATH="$PATH:$HOME/.local/bin"
+        ```
 
-          ```sh
-          $ unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/local
-          ```
-
-       3. Update your environment's path variable to include the path to the
-          `protoc` executable. For example:
-
-          ```sh
-          $ export PATH="$PATH:$HOME/local/bin"
-          ```
+    > **MacOS note**: Using [Homebrew][]? Simply run: `brew install protobuf`.
 
  2. The `protoc` plugin for Go (`protoc-gen-go`) was installed as a dependency
     of the `grpc` module. You can confirm this, or install the plugin, using the
     following command:
 
     ```sh
-    $ go get -u github.com/golang/protobuf/protoc-gen-go
+    $ go get github.com/golang/protobuf/protoc-gen-go
     ```
 
  3. Update your `PATH` so that the `protoc` compiler can find the plugin:
@@ -272,6 +270,10 @@ from the `examples/helloworld` directory:
   documentation](https://godoc.org/google.golang.org/grpc).
 
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
+[Getting Started]: https://golang.org/doc/install
+[Go]: https://golang.org
+[Homebrew]: https://brew.sh
 [module]: https://github.com/golang/go/wiki/Modules
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[releases of Go]: https://golang.org/doc/devel/release.html
