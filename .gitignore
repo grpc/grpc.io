@@ -4,6 +4,7 @@
 
 # npm resources
 /node_modules
+package-lock.json
 
 ## OS Files
 # Windows
