@@ -1,13 +1,13 @@
 ---
 layout: quickstart
-title: Kotlin Quick Start
-short: Kotlin
+title: Kotlin/JVM Quick Start
+short: Kotlin/JVM
 description: This guide gets you started with gRPC in Kotlin with a simple working example.
 ---
 
 ### Prerequisites
 
-- Kotlin version 1.3 or higher
+- [Kotlin][] version 1.3 or higher
 - JDK version 7 or higher
 
 ### Download the example
@@ -51,12 +51,13 @@ Congratulations! You've just run a client-server application with gRPC.
 ### Update a gRPC service
 
 Now let's look at how to update the application with an extra method on the
-server for the client to call. Our gRPC service is defined using protocol
-buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin/). For now all you need to know is that both the
-server and the client "stub" have a `SayHello` RPC method that takes a
-`HelloRequest` parameter from the client and returns a `HelloReply` from the
-server, and that this method is defined like this:
+server for the client to call. Our gRPC service is defined using [Protocol
+Buffers][pb]; you can find out lots more about how to define a service in a
+`.proto` file in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin). For now
+all you need to know is that both the server and the client "stub" have a
+`SayHello()` RPC method that takes a `HelloRequest` parameter from the client
+and returns a `HelloReply` from the server, and that this method is defined like
+this:
 
 
 ```protobuf
@@ -77,7 +78,7 @@ message HelloReply {
 }
 ```
 Let's update this so that the `Greeter` service has two methods. Edit
-`src/main/proto/hello_world.proto` and update it with a new `SayHelloAgain`
+`src/main/proto/hello_world.proto` and update it with a new `SayHelloAgain()`
 method, with the same request and response types:
 
 ```protobuf
@@ -144,16 +145,12 @@ class HelloWorldClient constructor(
 ) : Closeable {
   private val stub: GreeterCoroutineStub = GreeterCoroutineStub(channel)
 
-  fun greet(name: String) = runBlocking {
+  suspend fun greet(name: String) = coroutineScope {
     val request = HelloRequest.newBuilder().setName(name).build()
-    try {
-      val response = stub.sayHello(request)
-      println("Greeter client received: ${response.message}")
-      val response = stub.sayHelloAgain(request)
-      println("Greeter client received: ${response.message}")
-    } catch (e: StatusException) {
-      println("RPC failed: ${e.status}")
-    }
+    val response = async { stub.sayHello(request) }
+    println("Received: ${response.await().message}")
+    val againResponse = async { stub.sayHelloAgain(request) }
+    println("Received: ${againResponse.await().message}")
   }
 
   override fun close() {
@@ -164,7 +161,8 @@ class HelloWorldClient constructor(
 
 #### Run!
 
-Just like we did before, from the `examples` directory:
+Run the client and server like you did before. Execute the following commands
+from the `examples` directory:
 
  1. Compile the client and server:
 
@@ -178,10 +176,18 @@ Just like we did before, from the `examples` directory:
     $ ./build/install/examples/bin/hello-world-server
     ```
 
- 3. From another terminal, run the client:
+ 3. From another terminal, run the client. This time, add a name as a
+    command-line argument:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-client
+    $ ./build/install/examples/bin/hello-world-client Alice
+    ```
+
+    You'll see the following output:
+
+    ```nocode
+    Received: Hello Alice
+    Received: Hello again Alice
     ```
 
 ### What's next
@@ -191,3 +197,6 @@ Just like we did before, from the `examples` directory:
 - Work through a more detailed tutorial in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin/).
 - Explore the gRPC Kotlin core API in its [reference
   documentation](/grpc-kotlin/javadoc/).
+
+[Kotlin]: https://kotlinlang.org
+[pb]: https://developers.google.com/protocol-buffers

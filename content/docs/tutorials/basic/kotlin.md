@@ -1,8 +1,8 @@
 ---
 layout: tutorials
 group: basic
-title: gRPC Basics - Kotlin
-short: Kotlin
+title: gRPC Basics - Kotlin/JVM
+short: Kotlin/JVM
 description: A basic tutorial introduction to gRPC in Kotlin.
 ---
 
@@ -15,7 +15,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Kotlin gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/) and are familiar
+It assumes that you have read the [Overview](/docs) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
@@ -48,10 +48,10 @@ running the following command:
 $ git clone https://github.com/grpc/grpc-kotlin.git
 ```
 
-Then change your current directory to `grpc-kotlin/examples/routeguide`:
+Then change to the example's main source folder:
 
 ```sh
-$ cd grpc-kotlin/examples/routeguide
+$ cd grpc-kotlin/examples/src/main/kotlin/io/grpc/examples/routeguide
 ```
 
 ### Defining the service
