@@ -342,6 +342,14 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
     Greeter received: Hello again world
     ```
 
+{{< note >}}
+  Interested in an **asynchronous** version of the client and server?
+  You'll find the `greeter_async_{client,server}.cc` files in the
+  [example's source directory][src].
+
+  [src]: https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
+{{< /note >}}
+
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides)
