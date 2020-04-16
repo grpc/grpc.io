@@ -3,9 +3,11 @@ title: Kotlin, meet gRPC
 date: 2020-04-16
 authors:
 - name: Louis Wasserman
-  position: Google
+  link: https://github.com/lowasser
+  position: Software Engineer at Google
 - name: Brent Shaffer
-  position: Google
+  link: https://github.com/bshaffer
+  position: Developer Programs Engineer at Google
 ---
 
 As developers work to modernize applications, they need foundational tools that
