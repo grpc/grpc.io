@@ -196,7 +196,7 @@ from the `examples` directory:
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin/).
 - Explore the gRPC Kotlin core API in its [reference
-  documentation](/grpc-kotlin/javadoc/).
+  documentation](/grpc-kotlin/grpc-kotlin-stub).
 
 [Kotlin]: https://kotlinlang.org
 [pb]: https://developers.google.com/protocol-buffers
