@@ -1,5 +1,5 @@
 ---
-title: @gprc/grpc-js 1.0 release announcement
+title: "@gprc/grpc-js 1.0 release announcement"
 date: 2020-04-20
 author:
   name: Michael Lumish
