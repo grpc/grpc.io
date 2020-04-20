@@ -1,4 +1,10 @@
-# @grpc/grpc-js 1.0
+---
+title: @gprc/grpc-js 1.0 release announcement
+date: 2020-04-20
+author:
+  name: Michael Lumish
+  link: https://github.com/murgatroid99
+---
 
 Today we are excited to announce the release of version 1.0 of [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js). This library is a reimplementation of the original [grpc](https://www.npmjs.com/package/grpc) library for Node.js, but purely in TypeScript, no longer depending on native C++ code that requires complex compilation and installation procedures.
 
