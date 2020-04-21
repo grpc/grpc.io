@@ -1,5 +1,5 @@
 {{ $title  := .Title }}
-{{ $desc   := .Params.description }}
+{{ $desc   := .Params.description | markdownify }}
 {{ $source := printf "https://github.com/grpc/grpc.io/tree/master/content/%s" .File.Path }}
 <section class="section">
   <div class="container">
