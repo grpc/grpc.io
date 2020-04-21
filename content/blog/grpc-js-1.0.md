@@ -1,18 +1,19 @@
 ---
-title: "@gprc/grpc-js 1.0 release announcement"
+title: Announcing gRPC-JS 1.0
 date: 2020-04-20
 author:
   name: Michael Lumish
   link: https://github.com/murgatroid99
 ---
 
-Today we are excited to announce the release of version 1.0 of [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js). This library is a reimplementation of the original [grpc](https://www.npmjs.com/package/grpc) library for Node.js, but purely in TypeScript, no longer depending on native C++ code that requires complex compilation and installation procedures.
-
-With this release, the original grpc library is deprecated. We will continue releasing new binary packages for new versions of the Node and Electron runtimes, but it will not receive any new features.
-
-We worked hard to bring @grpc/grpc-js to you, with a feature set that we believe should fit most, if not all usage cases:
+We are excited to announce the release of version 1.0 of gRPC-JS
+([@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js)),
+a pure-TypeScript reimplementation of the original Node gRPC library,
+[grpc](https://www.npmjs.com/package/grpc).
 
 ## Features
+
+gRPC-JS supports the following features, which should cover most use cases:
 
 +   Clients
 +   Automatic reconnection
@@ -25,8 +26,13 @@ We worked hard to bring @grpc/grpc-js to you, with a feature set that we believe
 +   Connection Keepalives
 +   HTTP Connect support (proxies)
 
-## Which library should I use?
+## Should I use `@grpc/grpc-js` or `grpc`?
 
-As of today, we recommend that all users should use @grpc/grpc-js.
+The original Node.js gRPC library ([grpc](https://www.npmjs.com/package/grpc)) has been deprecated,
+so we recommend that you use ([@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js)).
 
-If you need some advanced features that have not yet been added to @grpc/grpc-js, such as full compression support or support for other load balancing policies, you should continue using the original native grpc library, and file [feature requests](https://github.com/grpc/grpc-node/issues/new?template=feature_request.md) to let us know which features you are missing the most. 
+However, some advanced features haven't been ported to gRPC-JS yet,
+such as full compression support or support for other load balancing policies.
+If you need one of these features, you should use the original Node `grpc` library,
+but file a [feature request](https://github.com/grpc/grpc-node/issues/new?template=feature_request.md)
+for gRPC-JS to let us know which features you are missing the most.
