@@ -9,22 +9,13 @@ params:
   grpc_release_tag: v1.28.1
   grpc_release_tag_no_v: 1.28.1
   grpc_java_release_tag: v1.29.0
-  google_analytics_id: UA-60127042-1
   font_awesome_version: 5.12.1
-  milestones_link: https://github.com/grpc/grpc/milestones
   description: A high-performance, open source universal RPC framework
-  why: >
-    gRPC is a modern open source high performance RPC framework that can run in
-    any environment. It can efficiently connect services in and across data
-    centers with pluggable support for load balancing, tracing, health checking
-    and authentication. It is also applicable in last mile of distributed
-    computing to connect devices, mobile applications and browsers to backend
-    services.
 
   social:
-    twitter: https://twitter.com/grpcio
     gitter: https://gitter.im/grpc/grpc
     reddit: https://www.reddit.com/r/grpc
+    twitter: https://twitter.com/grpcio
     twitter_handle: '@grpcio'
 
   features:

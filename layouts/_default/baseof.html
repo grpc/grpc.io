@@ -1,8 +1,5 @@
-{{ $dropdown   := site.Menus.dropdown }}
-{{ $currentUrl := .RelPermalink }}
-{{ $lang       := site.LanguageCode }}
 <!DOCTYPE html>
-<html lang="{{ $lang }}" prefix="og: http://ogp.me/ns#">
+<html lang="{{ site.LanguageCode }}" prefix="og: http://ogp.me/ns#">
   <head>
     {{ partial "google-analytics.html" . }}
     {{ partial "meta.html" . }}
@@ -10,20 +7,17 @@
     <title>
       {{ block "title" . }}{{ .Site.Title }}{{ end }}
     </title>
-    
+
     {{ partial "favicons.html" . }}
     {{ partial "css.html" . }}
   </head>
   <body class="is-page has-navbar-fixed-top">
     <main class="is-main">
       {{ partial "navbar.html" . }}
-
       {{ block "main" . }}
       {{ end }}
     </main>
-
     {{ partial "footer.html" . }}
-
     {{ partial "javascript.html" . }}
   </body>
 </html>
