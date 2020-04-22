@@ -1,14 +1,17 @@
-{{ $why      := site.Params.why | markdownify }}
 {{ $features := site.Params.features }}
 <section class="section has-extra-padding">
   <div class="container has-text-centered">
     <p class="title is-size-1 is-size-2-mobile has-text-primary has-text-weight-medium">
       Why gRPC?
     </p>
-
-    <div class="content is-large has-text-weight-light">
-      {{ $why }}
-    </div>
+    <p class="content is-large has-text-weight-light">
+      gRPC is a modern open source high performance RPC framework that can run
+      in any environment. It can efficiently connect services in and across data
+      centers with pluggable support for load balancing, tracing, health
+      checking and authentication. It is also applicable in last mile of
+      distributed computing to connect devices, mobile applications and browsers
+      to backend services.
+    </p>
   </div>
 </section>
 
@@ -29,7 +32,6 @@
             <p class="title is-size-3 is-size-4-mobile has-text-primary has-text-weight-light is-spaced">
               {{ $title }}
             </p>
-
             <p class="subtitle">
               {{ $desc }}
             </p>

@@ -1,15 +1,13 @@
-{{ $logo := printf "img/logos/%s" site.Params.logos.footer | relURL }}
-{{ $menu := site.Menus.main }}
 {{ $year := now.Year }}
 <footer class="footer has-background-image">
   <div class="container">
     <div class="columns is-variable is-8">
       <div class="column is-one-quarter">
-        <img class="is-footer-logo" src="{{ $logo }}" alt="{{ site.Title }} footer logo">
+        <img class="is-footer-logo" src="/img/logos/{{ site.Params.logos.footer }}" alt="{{ site.Title }} footer logo">
       </div>
 
       <div class="column">
-        {{ range $menu }}
+        {{ range site.Menus.main }}
         {{ $name       := .Name | upper }}
         {{ $isExternal := hasPrefix .URL "http" }}
         <a class="is-size-5 is-size-6-mobile has-text-light" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>

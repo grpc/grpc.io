@@ -1,20 +1,16 @@
-{{ $logo  := printf "img/logos/%s" site.Params.logos.hero | relURL }}
-{{ $title := site.Title }}
-{{ $desc  := site.Params.description }}
-{{ $btns  := site.Menus.buttons }}
 <section class="hero is-medium is-primary has-background-image">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <img class="is-hero-logo" src="{{ $logo }}" alt="{{ $title }} hero logo">
+      <img class="is-hero-logo" src="/img/logos/{{ site.Params.logos.hero }}" alt="{{ site.Title }} hero logo">
 
       <p class="title is-size-2 is-size-3-mobile has-text-weight-light">
-        {{ $desc }}
+        {{ site.Params.description }}
       </p>
 
       <br />
 
       <div class="buttons are-medium is-centered">
-        {{ range $btns }}
+        {{ range site.Menus.buttons }}
         <a class="button is-primary has-text-weight-bold" href="{{ .URL }}">
           {{ .Name }}
         </a>
