@@ -1,0 +1,14 @@
+{{/*
+  Param substring shortcode: psubstr PARAM_NAME START
+*/}}
+{{- $name := (.Get 0) -}}
+{{ $start := (.Get 1) -}}
+{{ with $name -}}
+  {{ with ($.Page.Param .) -}}
+    {{ substr . $start -}}
+  {{ else -}}
+    {{ errorf "Param %q not found: %s" $name $.Position -}}
+  {{ end -}}
+{{ else -}}
+  {{ errorf "Missing param key: %s" $.Position -}}
+{{ end -}}
