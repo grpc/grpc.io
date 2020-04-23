@@ -3,122 +3,54 @@ title: Go Quick Start
 layout: quickstart
 short: Go
 description: This guide gets you started with gRPC in Go with a simple working example.
-protoc-version: 3.11.4
 ---
-
-<style type="text/css">
-    ol ol { list-style-type: lower-alpha !important; }
-</style>
 
 ### Prerequisites
 
-- **[Go][]**, any one of the **three latest major** [releases of Go][]. For
-  installation instructions, see Go's [Getting Started][] guide.
+- **[Go][]**, any one of the **three latest major** [releases of Go][].
 
-#### gRPC
+  For installation instructions, see Go's [Getting Started][] guide.
 
-Use the following command to install gRPC as a [module][]:
+- **[Protocol buffer][pb] compiler**, `protoc`, [version 3][proto3].
 
-```sh
-$ export GO111MODULE=on # Enable module-aware mode
-$ go get google.golang.org/grpc@{{< param grpc_release_tag >}}
-```
+  For installation instructions, see [Protocol Buffer Compiler
+  Installation][pbc-install].
 
-#### Protocol Buffers
+- **Go plugin** for the protocol compiler:
 
-While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
-for service definitions and data serialization, and the example code uses
-[proto3][].
+   1. Install the protocol compiler plugin for Go (`protoc-gen-go`) using the
+      following command:
 
- 1. Install the `protoc` compiler:
+      ```sh
+      $ go get github.com/golang/protobuf/protoc-gen-go@v1.3.5
+      ```
 
-     1. Download a zip file of the latest version of pre-compiled binaries for
-        your operating system from [github.com/google/protobuf/releases][]
-        (`protoc-<version>-<os><arch>.zip`). For example:
+   2. Update your `PATH` so that the `protoc` compiler can find the plugin:
 
-        ```sh
-        $ PB_REL="https://github.com/protocolbuffers/protobuf/releases"
-        $ curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
-        ```
+      ```sh
+      $ export PATH="$PATH:$(go env GOPATH)/bin"
+      ```
 
-     2. Unzip the file under `$HOME/.local` or a directory of your choice. For
-        example:
+### Get the example code
 
-        ```sh
-        $ unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/.local
-        ```
+The example code is part of the [grpc-go][] repo.
 
-     3. Update your environment's path variable to include the path to the
-        `protoc` executable. For example:
-
-        ```sh
-        $ export PATH="$PATH:$HOME/.local/bin"
-        ```
-
-    > **MacOS note**: Using [Homebrew][]? Simply run: `brew install protobuf`.
-
- 2. The `protoc` plugin for Go (`protoc-gen-go`) was installed as a dependency
-    of the `grpc` module. You can confirm this, or install the plugin, using the
-    following command:
+ 1. [Dowload the repo as a zip file][download] and unzip it, or clone
+    the repo:
 
     ```sh
-    $ go get github.com/golang/protobuf/protoc-gen-go
+    $ git clone https://github.com/grpc/grpc-go
     ```
 
- 3. Update your `PATH` so that the `protoc` compiler can find the plugin:
+ 2. Change to the quick start example directory:
 
     ```sh
-    $ export PATH="$PATH:$(go env GOPATH)/bin"
-    ```
-
-### Copy the example
-
-The example code is part of the `grpc` source, which you fetched by following
-steps of the previous section. You'll need a local copy of the example code to
-work through this quick start.
-
- 1. Choose a suitable working directory, and ensure that it exists:
-
-     ```sh
-    $ export MY_EXAMPLES="$HOME/examples"
-    $ mkdir -p "$MY_EXAMPLES"
-    ```
-
- 2. Copy the example source:
-
-    ```sh
-    $ EX_SRC_DIR="$(go env GOPATH)/pkg/mod/google.golang.org/grpc@{{< param grpc_release_tag >}}/examples"
-    $ cp -R "$EX_SRC_DIR/helloworld" "$MY_EXAMPLES"
-    ```
-
- 3. Ensure that the example files are writable since you'll be making changes soon:
-
-    ```sh
-    $ chmod -R u+w "$MY_EXAMPLES/helloworld"
-    ```
-
- 4. Change to the example's directory:
-
-    ```sh
-    $ cd "$MY_EXAMPLES/helloworld"
-    ```
-
- 5. Setup the example as a module:
-
-    ```sh
-    $ go mod init examples/helloworld
-    ```
-
- 6. Adjust import paths to reference local packages (rather than those from the
-    original `google.golang.org/grpc` module):
-
-    ```sh
-    $ perl -pi -e 's|google.golang.org/grpc/||g' greeter_{client,server}/main.go
+    $ cd grpc-go/examples/helloworld
     ```
 
 ### Run the example
 
-From the `$MY_EXAMPLES/helloworld` directory:
+From the `examples/helloworld` directory:
 
  1. Compile and execute the server code:
 
@@ -192,9 +124,9 @@ Remember to save the file!
 ### Regenerate gRPC code
 
 Before you can use the new service method, you need to recompile the updated
-proto file.
+`.proto` file.
 
-From the `$MY_EXAMPLES/helloworld` directory, run the following command:
+While still in the `examples/helloworld` directory, run the following command:
 
 ```sh
 $ protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
@@ -269,11 +201,11 @@ from the `examples/helloworld` directory:
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc).
 
-[github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
+[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org
-[Homebrew]: https://brew.sh
-[module]: https://github.com/golang/go/wiki/Modules
+[grpc-go]: https://github.com/grpc/grpc-go
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[pbc-install]: /docs/protoc-installation
 [releases of Go]: https://golang.org/doc/devel/release.html
