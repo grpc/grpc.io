@@ -1,8 +1,7 @@
 ---
 layout: guides
 title: Error Handling
-description: |
-  This page describes how gRPC deals with errors, including gRPC's built-in error codes. Example code in different languages can be found [here](https://github.com/avinassh/grpc-errors).
+description: How gRPC deals with errors, and gRPC error codes.
 ---
 
 ### Standard error model
@@ -106,3 +105,10 @@ Unauthenticated: credentials failed to get metadata | `GRPC_STATUS_UNAUTHENTICAT
 Invalid host set in authority metadata | `GRPC_STATUS_UNAUTHENTICATED`
 Error parsing response protocol buffer | `GRPC_STATUS_INTERNAL`
 Error parsing request protocol buffer | `GRPC_STATUS_INTERNAL`
+
+### Sample code
+
+For sample code illustrating how to handle various gRPC errors, see the
+[grpc-errors][] repo.
+
+[grpc-errors]: https://github.com/avinassh/grpc-errors
