@@ -27,8 +27,9 @@ gRPC-JS supports the following features, which should cover most use cases:
 
 ## Should I use @grpc/grpc-js or grpc?
 
-The original Node gRPC library ([grpc][]) has been deprecated, so we recommend
-that you use gRPC-JS, [@grpc/grpc-js][grpc-js].
+The original Node gRPC library ([grpc][]) will no longer receive feature
+updates and we plan to deprecate it in a year,
+so we recommend that you use gRPC-JS, [@grpc/grpc-js][grpc-js].
 
 However, some advanced features haven't been ported to gRPC-JS yet, such as full
 compression support or support for other load balancing policies. If you need
