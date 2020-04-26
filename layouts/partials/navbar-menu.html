@@ -1,11 +1,17 @@
-{{ $menu  := site.Menus.main }}
+{{ $menu  := where site.Sections "Section" "not in" (slice "blog" "resources") }}
 
 {{ range $menu }}
-{{ $name := .Name | upper }}
-{{ if .HasChildren }}
-{{ $url := .URL | relLangURL }}
+{{ $children := .RegularPages -}}
+{{ if eq .Params.nav_children "none" -}}
+  {{ $children = false -}}
+{{ else if hasPrefix .Params.nav_children "section" -}}
+  {{ $children = .Sections -}}
+{{ end -}}
+{{ $name := .Params.short | default .Name }}
+{{ if $children }}
+{{ $url := .RelPermalink }}
 <div class="navbar-item is-size-5 is-size-6-mobile has-dropdown is-hoverable">
-  <a class="navbar-link is-arrowless"{{ with $url }} href="{{ . }}"{{ end }}>
+  <a class="navbar-link is-arrowless" href="{{ $url }}">
     <span>
       {{ $name }}
     </span>
@@ -15,8 +21,8 @@
   </a>
 
   <div class="navbar-dropdown">
-    {{ range .Children }}
-    {{ $name       := .Name }}
+    {{ range $children }}
+    {{ $name       := .Params.short | default .Name }}
     {{ $url        := .URL }}
     {{ $isExternal := hasPrefix .URL "http" }}
     <a class="navbar-item"{{ with $url }} href="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank"{{ end }}>
@@ -33,7 +39,7 @@
   </div>
 </div>
 {{ else }}
-{{ $name       := .Name | upper }}
+{{ $name       := .Params.short | default .Name }}
 {{ $url        := .URL }}
 {{ $isExternal := hasPrefix .URL "http" }}
 <a class="navbar-item is-size-5 is-size-6-mobile"{{ with $url }} href="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank"{{ end }}>
