@@ -11,11 +11,11 @@
   {{ end -}}
   {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink }}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
-    {{ $isHere := eq $here .RelPermalink -}}
+    {{ $isActive := (or $isThisSection (eq $here .RelPermalink)) -}}
     {{ $title := .Params.short | default .Title -}}
     <nav class="level">
       <div class="level-left">
-        <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+        <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isActive }} is-active{{ end }}" href="{{ .RelPermalink }}">
           {{ $title }}
         </a>
       </div>
@@ -32,21 +32,40 @@
     {{ with $children }}
     <ul class="nav-section-links" x-show="open">
       {{ range . }}
-      {{ $isHere := eq $here .RelPermalink }}
-      {{ $title := .Params.short | default .Title -}}
-      <li class="nav-section-link{{ if $isHere }} is-active{{ end }}">
-        <a href="{{ .RelPermalink }}">
-          {{ $title }}
-        </a>
+      {{ $children := .RegularPages -}}
+      {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink }}
+      {{ $isActive := eq $here .RelPermalink -}}
+      {{ if $children -}}
+        {{ $isActive = or $isActive $isThisSection -}}
+      {{ end -}}
+      <li class="nav-section-link" x-data="{ open: {{ $isThisSection }} }">
+        <nav class="level">
+          <div class="level-left{{ if $isActive }} is-active{{ end }}">
+            <a href="{{ .RelPermalink }}">
+              {{ .Params.short | default .Title }}
+            </a>
+          </div>
+          {{ if $children }}
+            <div class="level-right">
+              <span class="level-item" @click="open = !open">
+                <i class="fas has-text-grey" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
+              </span>
+            </div>
+          {{ end }}
+        </nav>
+        {{ if $children }}
+          <ul class="nav-section-links" x-show="open">
+            {{ range $children }}
+              {{ $isActive := eq $here .RelPermalink -}}
+              <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
+                <a href="{{ .RelPermalink }}">
+                  {{ .Params.short | default .Title }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
       </li>
-
-      {{ if $isHere }}
-      {{ if false }}
-      <div class="nav-section-toc">
-        {{ .TableOfContents }}
-      </div>
-      {{ end }}
-      {{ end }}
       {{ end }}
     </ul>
     {{ end }}
