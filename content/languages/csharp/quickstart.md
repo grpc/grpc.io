@@ -1,7 +1,5 @@
 ---
-title: C# Quick Start
-layout: quickstart
-short: C#
+title: Quick Start
 description: This guide gets you started with gRPC in C# with a simple working example.
 ---
 

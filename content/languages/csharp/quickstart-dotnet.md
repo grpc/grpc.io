@@ -1,7 +1,5 @@
 ---
-title: C# Quick Start (for the "grpc-dotnet" implementation)
-layout: quickstart
-short: C# with grpc-dotnet
+title: Quick Start using grpc-dotnet
 description: This guide gets you started with gRPC for .NET with a simple working example.
 ---
 

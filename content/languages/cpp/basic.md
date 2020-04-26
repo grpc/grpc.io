@@ -1,5 +1,5 @@
 ---
-title: Tutorial - C++
+title: Basics Tutorial
 ---
 
 This tutorial provides a basic C++ programmer's introduction to working with gRPC.

@@ -1,6 +1,5 @@
 ---
-title: C++ Quick Start
-short: Quick Start
+title: Quick Start
 description: This guide gets you started with gRPC in C++ with a simple working example.
 cmake-version: 3.17.0
 ---
