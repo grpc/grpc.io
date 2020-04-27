@@ -2,7 +2,7 @@
 
 {{ range $menu }}
 {{ $children := .RegularPages -}}
-{{ if eq .Params.nav_children "none" -}}
+{{ if or (eq .Params.nav_children "none") (eq .Section "community") -}}
   {{ $children = false -}}
 {{ else if hasPrefix .Params.nav_children "section" -}}
   {{ $children = .Sections -}}
