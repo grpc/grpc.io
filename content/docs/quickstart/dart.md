@@ -234,8 +234,8 @@ from the `example/helloworld` directory:
 ### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Dart](../tutorials/basic/dart/).
+  and [gRPC Concepts](../guides/concepts.md).
+- Work through a more detailed tutorial in [gRPC Basics: Dart](../tutorials/basic/dart.md).
 - Explore the [Dart gRPC API reference][].
 
 [Dart gRPC API reference]: https://pub.dev/documentation/grpc
