@@ -91,7 +91,7 @@ Congratulations! You've just run a client-server application with gRPC.
 In this section you'll update the application with an extra server method.
 The gRPC service is defined using protocol buffers.
 To learn more about how to define a service in a `.proto`
-file see [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
+file see [gRPC Basics: Dart](../tutorials/basic/dart.md).
 For now, all you need to know is that both the
 server and the client "stub" have a `SayHello()` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloReply` from the
@@ -233,9 +233,9 @@ from the `example/helloworld` directory:
 
 ### What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
-  and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts/).
+- Work through a more detailed tutorial in [gRPC Basics: Dart](../tutorials/basic/dart/).
 - Explore the [Dart gRPC API reference][].
 
 [Dart gRPC API reference]: https://pub.dev/documentation/grpc
