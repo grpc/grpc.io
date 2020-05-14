@@ -22,7 +22,8 @@ description: This guide gets you started with gRPC in Go with a simple working e
       following command:
 
       ```sh
-      $ go get github.com/golang/protobuf/protoc-gen-go@v1.3.5
+      $ export GO111MODULE=on  # Enable module mode
+      $ go get github.com/golang/protobuf/protoc-gen-go@v1.3
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugin:
