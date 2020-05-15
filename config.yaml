@@ -75,10 +75,6 @@ menu:
       url: /docs
       identifier: docs
       weight: 2
-    - name: Guides
-      url: /docs/guides
-      identifier: guides
-      weight: 3
     - name: Blog
       url: /blog
       weight: 4
@@ -100,6 +96,11 @@ menu:
       url: /docs/tutorials/
       weight: 3
       parent: docs
+    - name: Guides
+      url: /docs/guides
+      identifier: guides
+      weight: 4
+      parent: docs
     - name: Reference
       url: /docs/reference/
       weight: 4
@@ -116,30 +117,6 @@ menu:
       url: /faq
       weight: 7
       parent: docs
-    - name: What is gRPC?
-      url: /docs/guides/
-      weight: 1
-      parent: guides
-    - name: gRPC Concepts
-      url: /docs/guides/concepts/
-      weight: 2
-      parent: guides
-    - name: Authentication
-      url: /docs/guides/auth/
-      weight: 3
-      parent: guides
-    - name: Error handling and debugging
-      url: /docs/guides/error/
-      weight: 4
-      parent: guides
-    - name: Benchmarking
-      url: /docs/guides/benchmarking/
-      weight: 5
-      parent: guides
-    - name: gRPC Wire Format
-      url: https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
-      weight: 6
-      parent: guides
 
   buttons:
     - name: Quick Start
