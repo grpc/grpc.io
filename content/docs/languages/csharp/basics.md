@@ -481,15 +481,15 @@ Using `dotnet` command line tool
 Run the server:
 
 ```sh
-> cd RouteGuideServer/bin/Debug/netcoreapp2.1
-> dotnet exec RouteGuideServer.dll
+> cd RouteGuideServer
+> dotnet run
 ```
 
 From a different terminal, run the client:
 
 ```sh
-> cd RouteGuideClient/bin/Debug/netcoreapp2.1
-> dotnet exec RouteGuideClient.dll
+> cd RouteGuideClient
+> dotnet run
 ```
 
 You can also run the server and client directly from Visual Studio.
