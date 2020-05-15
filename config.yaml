@@ -117,11 +117,3 @@ menu:
       url: /faq
       weight: 7
       parent: docs
-
-  buttons:
-    - name: Learn more
-      url: /docs/guides
-      weight: 1
-    - name: Get started
-      url: /docs/quickstart
-      weight: 2
