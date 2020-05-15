@@ -1,7 +1,7 @@
 ---
 title: Guides
 description: Task-oriented walkthroughs of common use cases
-weight: 2
+weight: 4
 ---
 
 This document introduces you to gRPC and protocol buffers. gRPC can use
