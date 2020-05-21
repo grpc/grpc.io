@@ -17,7 +17,7 @@ the environment variable `MY_INSTALL_DIR` holds this directory path. For
 example:
 
 ```sh
-$ export MY_INSTALL_DIR=$HOME/local
+$ export MY_INSTALL_DIR=$HOME/.local
 ```
 
 Ensure that the directory exists:
