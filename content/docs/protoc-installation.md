@@ -2,7 +2,7 @@
 title: Protocol Buffer Compiler Installation
 short: Protoc Installation
 description: How to install the protocol buffer compiler.
-protoc-version: 3.11.4
+protoc-version: 3.12.1
 ---
 
 While not mandatory, gRPC applications often leverage [Protocol Buffers][pb] for
@@ -18,7 +18,17 @@ to install `protoc`.
 You can install the protocol compiler, `protoc`, with a package manager under
 Linux or macOS using the following commands.
 
-- Linux:
+{{< warning >}}
+  **Check the version of `protoc`** (as indicated below) after installation to
+  ensure that it is sufficiently recent. The versions of `protoc` installed by
+  some package managers can be quite dated.
+
+  Installing from pre-compiled binaries, as indicated in the [next
+  section](#binary-install), is the best way to ensure that you're using the
+  latest release of `protoc`.
+{{< /warning >}}
+
+- Linux, using `apt` or `apt-get`, for example:
 
   ```sh
   $ apt install -y protobuf-compiler
@@ -31,6 +41,8 @@ Linux or macOS using the following commands.
   $ brew install protobuf
   $ protoc --version  # Ensure compiler version is 3+
   ```
+
+<a name="binary-install"></a>
 
 ### Install pre-compiled binaries (any OS)
 
