@@ -1,5 +1,4 @@
 ---
-layout: guides
 title: gRPC Concepts
 description: |-
   An introduction to key gRPC concepts, with an overview of gRPC architecture

@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Web
 group: basic
 short: Web

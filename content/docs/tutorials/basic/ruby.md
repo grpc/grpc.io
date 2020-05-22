@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Ruby
 group: basic
 short: Ruby

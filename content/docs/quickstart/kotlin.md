@@ -1,5 +1,4 @@
 ---
-layout: quickstart
 title: Kotlin/JVM Quick Start
 short: Kotlin/JVM
 description: This guide gets you started with gRPC in Kotlin with a simple working example.

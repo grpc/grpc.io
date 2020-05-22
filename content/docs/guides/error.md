@@ -1,5 +1,4 @@
 ---
-layout: guides
 title: Error Handling
 description: How gRPC deals with errors, and gRPC error codes.
 ---

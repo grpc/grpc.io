@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - C#
 group: basic
 short: C#

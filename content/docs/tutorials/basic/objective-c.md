@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Objective-C
 group: basic
 short: Objective-C

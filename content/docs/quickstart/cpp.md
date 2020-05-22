@@ -1,5 +1,4 @@
 ---
-layout: quickstart
 title: C++ Quick Start
 short: C++
 description: This guide gets you started with gRPC in C++ with a simple working example.

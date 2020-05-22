@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Node.js
 group: basic
 short: Node

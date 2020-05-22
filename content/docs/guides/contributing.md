@@ -1,5 +1,4 @@
 ---
-layout: guides
 title: Contribution Guidelines
 ---
 

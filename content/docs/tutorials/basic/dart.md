@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Dart
 group: basic
 short: Dart

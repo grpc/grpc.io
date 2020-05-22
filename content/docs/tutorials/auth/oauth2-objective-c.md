@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: OAuth2 on gRPC - Objective-C
 short: Auth - Objective-C
 group: auth

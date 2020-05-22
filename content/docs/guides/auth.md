@@ -1,5 +1,4 @@
 ---
-layout: guides
 title: Authentication
 description: >
   An overview of gRPC authentication, including built-in auth mechanisms, and

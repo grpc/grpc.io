@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: Tutorials
 weight: 3
 ---
