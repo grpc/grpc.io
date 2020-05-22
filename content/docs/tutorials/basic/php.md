@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - PHP
 group: basic
 short: PHP

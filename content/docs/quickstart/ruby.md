@@ -1,6 +1,5 @@
 ---
 title: Ruby Quick Start
-layout: quickstart
 short: Ruby
 description: This guide gets you started with gRPC in Ruby with a simple working example.
 ---

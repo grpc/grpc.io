@@ -1,5 +1,4 @@
 ---
-layout: quickstart
 title: Python Quick Start
 short: Python
 description: This guide gets you started with gRPC in Python with a simple working example.

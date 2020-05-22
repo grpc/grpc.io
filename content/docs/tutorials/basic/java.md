@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Java
 group: basic
 short: Java

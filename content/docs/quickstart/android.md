@@ -1,5 +1,4 @@
 ---
-layout: quickstart
 title: Android Java Quickstart
 short: Android
 description: This guide gets you started with gRPC in Android Java with a simple working example.

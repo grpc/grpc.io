@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Presentations & Talks
 short: Presentations
 weight: 6

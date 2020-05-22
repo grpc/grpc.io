@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Android Java
 short: Android
 group: basic

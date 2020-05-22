@@ -1,6 +1,5 @@
 ---
 title: Go Quick Start
-layout: quickstart
 short: Go
 description: This guide gets you started with gRPC in Go with a simple working example.
 ---

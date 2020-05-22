@@ -1,5 +1,4 @@
 ---
-layout: quickstart
 title: Java Quick Start
 short: Java
 description: This guide gets you started with gRPC in Java with a simple working example.

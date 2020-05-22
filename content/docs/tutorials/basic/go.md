@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Go
 group: basic
 short: Go

@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: gRPC Basics - Python
 group: basic
 short: Python

@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 title: Asynchronous Basics - C++
 short: Async - C++
 group: async

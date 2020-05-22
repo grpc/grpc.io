@@ -1,7 +1,6 @@
 ---
 bodyclass: docs
 headline: gRPC Samples
-layout: docs
 title: Samples
 weight: 5
 ---

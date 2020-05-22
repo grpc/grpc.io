@@ -1,5 +1,4 @@
 ---
-layout: tutorials
 group: basic
 title: gRPC Basics - Kotlin/JVM
 short: Kotlin/JVM
