@@ -1,5 +1,6 @@
 ---
 title: Community
+weight: 50
 ---
 
 gRPC has an active community of developers who are using, enhancing, and building valuable integrations with other software projects. We'd love your help to improve and extend the project. You can reach us via the [Mailing List](https://groups.google.com/forum/#!forum/grpc-io), [Gitter channel](https://gitter.im/grpc/grpc), or [Twitter](https://twitter.com/grpcio) to start engaging with the project and its members.
@@ -28,7 +29,7 @@ Any questions or suggestions? Just want to be in the loop of what is going on wi
 
 ## Join the gRPC Ecosystem
 
-We have an organization for all valuable projects around gRPC in the [gRPC Ecosystem](https://github.com/grpc-ecosystem). The goal is to have all projects around gRPC (showing integrations with other projects or building utilities on top of gRPC) to be showcased here. If you have a new project you would like to add to gRPC Ecosystem, please fill up the [gRPC Ecosystem Project Request](https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74/edit) form. Please read the [contribution guidelines](https://github.com/grpc/grpc-contrib/blob/master/CONTRIBUTING.md) for gRPC Ecosystem before submitting. 
+We have an organization for all valuable projects around gRPC in the [gRPC Ecosystem](https://github.com/grpc-ecosystem). The goal is to have all projects around gRPC (showing integrations with other projects or building utilities on top of gRPC) to be showcased here. If you have a new project you would like to add to gRPC Ecosystem, please fill up the [gRPC Ecosystem Project Request](https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74/edit) form. Please read the [contribution guidelines](https://github.com/grpc/grpc-contrib/blob/master/CONTRIBUTING.md) for gRPC Ecosystem before submitting.
 
 ## Gitter Channel
 

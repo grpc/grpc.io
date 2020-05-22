@@ -1,8 +1,5 @@
 ---
-layout: docs
-title: Presentations & Talks
-short: Presentations
-weight: 6
+title: Presentations
 ---
 
 gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:

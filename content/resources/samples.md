@@ -1,9 +1,5 @@
 ---
-bodyclass: docs
-headline: gRPC Samples
-layout: docs
 title: Samples
-weight: 5
 ---
 
 Here are some sample apps to help developers build certain functionalities.

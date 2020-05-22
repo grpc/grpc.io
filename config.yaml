@@ -68,52 +68,119 @@ outputs:
 
 menu:
   main:
-    - name: About
-      url: /about
+
+    - name: What is gRPC?
+      identifier: what
+      url: /what
       weight: 1
-    - name: Docs
-      url: /docs
-      identifier: docs
+    - name: Introduction
+      url: /what/intro
       weight: 2
-    - name: Blog
-      url: /blog
-      weight: 4
+      parent: what
+    - name: Core concepts
+      url: /what/core
+      weight: 3
+      parent: what
+
+    - name: Languages
+      url: /languages
+      identifier: lang
+      weight: 2
+    - name: Android
+      url: /languages/android
+      weight: 1
+      parent: lang
+    - name: C#
+      url: /languages/csharp
+      weight: 1
+      parent: lang
+    - name: C++
+      identifier: cpp
+      url: /languages/cpp
+      weight: 1
+      parent: lang
+
+    - name: Shared Docs
+      url: /shared
+      identifier: guides
+      weight: 3
+    # - name: Guides
+    #   url: /guides
+    #   identifier: guides
+    #   weight: 3
+    # - name: Blog
+    #   url: /blog
+    #   weight: 4
     - name: Community
       url: /community
       weight: 5
-    - name: Packages
-      url: https://packages.grpc.io
-      weight: 6
-    - name: Overview
-      url: /docs
-      weight: 1
-      parent: docs
-    - name: Quick Start
-      url: /docs/quickstart/
-      weight: 2
-      parent: docs
-    - name: Tutorials
-      url: /docs/tutorials/
+    # - name: Packages
+    #   url: https://packages.grpc.io
+    #   weight: 6
+
+    # Subentries for docs
+    #
+    # - name: Quick Start
+    #   url: /quickstart/
+    #   weight: 2
+    #   parent: docs
+    # - name: Tutorials
+    #   url: /tutorials/
+    #   weight: 3
+    #   parent: docs
+    # - name: Reference
+    #   url: /reference/
+    #   weight: 4
+    #   parent: docs
+    # - name: Samples
+    #   url: /samples/
+    #   weight: 5
+    #   parent: docs
+    # - name: Presentations
+    #   url: /talks/
+    #   weight: 6
+    #   parent: docs
+    # - name: FAQ
+    #   url: /faq
+    #   weight: 7
+    #   parent: docs
+
+    # Subentries for guides
+    #
+    # - name: What is gRPC?
+    #   url: /guides/
+    #   weight: 1
+    #   parent: guides
+    - name: Authentication
+      url: /guides/auth/
       weight: 3
-      parent: docs
-    - name: Guides
-      url: /docs/guides
-      identifier: guides
+      parent: guides
+    - name: Error handling and debugging
+      url: /guides/error/
       weight: 4
-      parent: docs
-    - name: Reference
-      url: /docs/reference/
-      weight: 4
-      parent: docs
-    - name: Samples
-      url: /docs/samples/
+      parent: guides
+    - name: Benchmarking
+      url: /guides/benchmarking/
       weight: 5
-      parent: docs
-    - name: Presentations
-      url: /docs/talks/
+      parent: guides
+    - name: gRPC Wire Format
+      url: https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
       weight: 6
-      parent: docs
-    - name: FAQ
-      url: /faq
-      weight: 7
-      parent: docs
+      parent: guides
+
+  buttons:
+    - name: Tell me more!
+      url: /what/intro
+      weight: 1
+    # - name: Quick Start
+    #   url: /docs/quickstart
+    #   weight: 1
+    # - name: Docs
+    #   url: /docs
+    #   weight: 2
+    # - name: Concepts
+    #   url: /docs/guides/concepts
+    #   weight: 3
+    # - name: Community
+    #   url: /community
+    #   weight: 4

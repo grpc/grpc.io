@@ -1,13 +1,19 @@
 {{ $here           := .RelPermalink }}
 {{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
+{{ $docsSections   := site.Sections }}
 {{ $currentSection := .CurrentSection }}
 
 <div class="nav is-sticky">
   {{ range $docsSections }}
+  {{ $showSubentries := (and .RegularPages (ne .Params.short "Blog")) }}
+  {{ $subentries := .RegularPages}}
+  {{ if eq .Params.short "Blog" }}
+    {{ $subentries = false }}
+  {{ end }}
   {{ $isThisSection := eq .CurrentSection.Title $currentSection.Title }}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
-    {{ $isHere := eq $here .RelPermalink }}
-    {{ $title := .Title | upper }}
+    {{ $isHere := eq $here .RelPermalink -}}
+    {{ $title := (cond (isset .Params "short") .Params.short .Title) | upper -}}
     <nav class="level">
       <div class="level-left">
         <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
@@ -15,7 +21,7 @@
         </a>
       </div>
 
-      {{ if .RegularPages }}
+      {{ if $subentries }}
       <div class="level-right">
         <span class="level-item" @click="open = !open">
           <i class="fas has-text-grey" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
@@ -24,23 +30,17 @@
       {{ end }}
     </nav>
 
-    {{ with .RegularPages }}
+    {{ with $subentries }}
     <ul class="nav-section-links" x-show="open">
       {{ range . }}
       {{ $isHere := eq $here .RelPermalink }}
       {{ $title := cond (isset .Params "short") .Params.short .Title }}
       <li class="nav-section-link{{ if $isHere }} is-active{{ end }}">
         <a href="{{ .RelPermalink }}">
-          {{ if $isHere }}
-          <span class="icon has-text-secondary">
-            <i class="fas fa-arrow-right"></i>
-          </span>
-          {{ end }}
-
           {{ $title }}
         </a>
       </li>
-      
+
       {{ if $isHere }}
       {{ if gt (len .TableOfContents) 32 }}
       <div class="nav-section-toc">

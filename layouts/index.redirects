@@ -3,3 +3,5 @@
 
 /grpc/*     https://grpc.github.io/grpc/:splat
 /grpc-*     https://grpc.github.io/grpc-:splat
+/what  /what/intro
+/docs/*     /:splat

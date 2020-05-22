@@ -1,9 +1,10 @@
 ---
-layout: guides
-title: gRPC Concepts
-description: |-
+title: Core concepts, architecture and lifecycle
+short: Core concepts
+description: >
   An introduction to key gRPC concepts, with an overview of gRPC architecture
   and RPC life cycle.
+weight: 20
 ---
 
 Not familiar with gRPC? First read [What is gRPC?](/docs/guides). For

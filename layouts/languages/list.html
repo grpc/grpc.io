@@ -1,0 +1,7 @@
+{{ define "title" }}
+{{ site.Title }} &ndash; {{ .Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ partial "docs/article.html" . }}
+{{ end }}
