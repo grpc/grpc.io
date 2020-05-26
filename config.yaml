@@ -88,6 +88,10 @@ menu:
       url: /docs
       weight: 1
       parent: docs
+    - name: Languages
+      url: /docs/languages
+      weight: 2
+      parent: docs
     - name: Quick Start
       url: /docs/quickstart/
       weight: 2
