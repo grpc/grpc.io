@@ -29,7 +29,7 @@ For more information, see the following pages:
 - [gRPC Basics - Kotlin/JVM][] tutorial
 - [API Reference][]
 
-[API Reference]: https://grpc.io/grpc-kotlin/grpc-kotlin-stub
+[API Reference]: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 [blog]: https://cloud.google.com/blog/products/application-development/use-grpc-with-kotlin
 [Cloud Run]: https://cloud.run
 [gRPC Basics - Kotlin/JVM]: https://grpc.io/docs/tutorials/basic/kotlin
