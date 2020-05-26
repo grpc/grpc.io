@@ -5,7 +5,7 @@
 - language: Java
   url: /grpc-java/javadoc
 - language: Kotlin
-  url: /grpc-kotlin/grpc-kotlin-stub
+  url: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 - language: Python
   url: /grpc/python
 - language: Ruby
