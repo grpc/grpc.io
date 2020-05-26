@@ -9,8 +9,8 @@ Each language / platform has at least **quick start** and **tutorial** pages.
 Select a language to get started:
 
 - [Android Java](android)
-- [C++](cpp)
 - [C#](csharp)
+- [C++](cpp)
 - [Dart](dart)
 - [Go](go)
 - [Java](java)
