@@ -129,7 +129,7 @@ Before you can use the new service method, you need to recompile the updated
 While still in the `examples/helloworld` directory, run the following command:
 
 ```sh
-$ protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
+$ protoc -I helloworld --go_out=plugins=grpc:helloworld --go_opt=paths=source_relative helloworld.proto
 ```
 
 This will regenerate the `helloworld/helloworld.pb.go` file, which contains:
