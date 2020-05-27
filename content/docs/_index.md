@@ -11,27 +11,27 @@ your favourite language.
 
 Welcome to the developer documentation for gRPC.
 
+<style>
+  div > ul > li { padding-top: 1em !important; }
+</style>
 
 - **New to gRPC?** Start with the following pages:
+
   - [What is gRPC?](guides)
   - [gRPC Concepts](guides/concepts)
-- **Eager to see gRPC in action?** Select a language-specific [Quick
-  Start](quickstart).
-- **Interested in gRPC feature details?** Try one of the following:
+  - [FAQ](/faq)
+
+- **Eager to see gRPC in action?**
+
+  Select a language-specific [Quick Start](quickstart).
+
+- Interested in **gRPC feature details?**
+
+  Try one of the following:
+
   - [Tutorials](tutorials)
   - [Guides](guides)
-- **API and generated-code reference** documentation is available from the
-  [Reference](reference) page.
 
-<!--
+- Looking for **API and generated-code reference** documentation?
 
-- **Introduction to gRPC**:
-  - [What is gRPC?](guides)
-  - [gRPC Concepts](guides/concepts)
-- Quickly see gRPC in action by selecting a language-specific [Quick Start](quickstart).
-- gRPC feature details are covered in the following sections:
-  - [Tutorials](tutorials)
-  - [Guides](guides)
-- [Reference](reference)
-
--->
+  Consult the [Reference](reference) page.
