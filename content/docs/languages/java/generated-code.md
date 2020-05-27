@@ -1,5 +1,6 @@
 ---
-title: Java Generated Code Reference
+title: Java Generated-code Reference
+short: Generated Code
 ---
 
 ## Packages
