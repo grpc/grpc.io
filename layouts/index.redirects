@@ -4,8 +4,9 @@
 
 # We're using a placeholder (`:lang`) instead of a splat (`*`) to avoid
 # an infinite loop when attempting to visit `/docs/quickstart`.
-/docs/quickstart/:lang        /docs/languages/:lang/quickstart
-/docs/tutorials/basic/:lang   /docs/languages/:lang/basics
+/docs/quickstart/:lang                /docs/languages/:lang/quickstart
+/docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
+/docs/tutorials/basic/:lang           /docs/languages/:lang/basics
 
 # These redirect rules are for API reference docs. For a list of
 # source URLs, see the apis.yaml file.

@@ -1,8 +1,9 @@
 ---
-title: Go Generated Code Reference
+title: Go Generated-code Reference
+short: Generated Code
 ---
 
-This guide describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
+This page describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
 when compiling `.proto` files with `protoc`.
 
 You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](/docs/guides/concepts/#service-definition).
@@ -17,7 +18,7 @@ On the server side, each `service Bar` in the `.proto` file results in the funct
 
 `func RegisterBarServer(s *grpc.Server, srv BarServer)`
 
-The application can define a concrete implementation of the `BarServer` interface and register it with a `grpc.Server` instance 
+The application can define a concrete implementation of the `BarServer` interface and register it with a `grpc.Server` instance
 (before starting the server instance) by using this function.
 
 ### Unary methods
@@ -46,7 +47,7 @@ type <ServiceName>_FooServer interface {
 
 The server-side handler can send a stream of protobuf messages to the client through this parameter's `Send` method. End-of-stream for the server-to-client
 stream is caused by the `return` of the handler method.
-  
+
 ### Client-streaming methods
 These methods have the following signature on the generated service interface:
 
@@ -66,9 +67,9 @@ type <ServiceName>_FooServer interface {
 
 The server-side handler can repeatedly call `Recv` on this parameter in order to receive the full stream of
 messages from the client. `Recv` returns `(nil, io.EOF)` once it has reached the end of the stream.
-The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter. 
+The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter.
 Note that `SendAndClose` must be called once and only once.
-  
+
 ### Bidi-streaming methods
 These methods have the following signature on the generated service interface:
 
@@ -94,7 +95,7 @@ End-of-stream for the server-to-client stream is indicated by the `return` of th
 For client side usage, each `service Bar` in the `.proto` file also results in the function: `func BarClient(cc *grpc.ClientConn) BarClient`, which
 returns a concrete implementation of the `BarClient` interface (this concrete implementation also lives in the generated `.pb.go` file).
 
-### Unary Methods 
+### Unary Methods
 These methods have the following signature on the generated client stub:
 
 `(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (*MsgB, error)`
@@ -117,8 +118,8 @@ type <ServiceName>_FooClient interface {
 }
 ```
 
-The stream begins when the client calls the `Foo` method on the stub. 
-The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` <i>stream</i> in order to read the server-to-client response stream. 
+The stream begins when the client calls the `Foo` method on the stub.
+The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` <i>stream</i> in order to read the server-to-client response stream.
 This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
 
 ### Client-Streaming methods
@@ -138,7 +139,7 @@ type <ServiceName>_FooClient interface {
 }
 ```
 
-The stream begins when the client calls the `Foo` method on the stub. 
+The stream begins when the client calls the `Foo` method on the stub.
 The client can then repeatedly call the `Send` method on the returned `<ServiceName>_FooClient` stream in order to send the client-to-server message stream.
 The `CloseAndRecv` method on this stream must be called once and only once, in order to both close the client-to-server stream
 and receive the single response message from the server.
@@ -161,7 +162,7 @@ type <ServiceName>_FooClient interface {
 ```
 
 The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the 
+The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the
 client-to-server message stream. The client can also repeatedly call `Recv` on this stream in order to
 receive the full server-to-client message stream.
 

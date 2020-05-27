@@ -1,5 +1,6 @@
 ---
-title: Python Generated Code Reference
+title: Python Generated-code Reference
+short: Generated Code
 ---
 
 ## Introduction
