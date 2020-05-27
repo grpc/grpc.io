@@ -1,3 +1,12 @@
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp/quickstart-dotnet
+/docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
+/docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
+
+# We're using a placeholder (`:lang`) instead of a splat (`*`) to avoid
+# an infinite loop when attempting to visit `/docs/quickstart`.
+/docs/quickstart/:lang        /docs/languages/:lang/quickstart
+/docs/tutorials/basic/:lang   /docs/languages/:lang/basics
+
 # These redirect rules are for API reference docs. For a list of
 # source URLs, see the apis.yaml file.
 
