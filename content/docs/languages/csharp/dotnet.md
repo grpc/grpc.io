@@ -2,7 +2,8 @@
 title: gRPC for .NET
 ---
 
-The following pages cover the gRPC for .NET implementation:
+The following pages cover the C# implementation of gRPC for .NET
+([grpc-dotnet][]):
 
 - [Introduction to gRPC on .NET Core](https://docs.microsoft.com/aspnet/core/grpc)
 - [Tutorial: Create a gRPC client and server in ASP.NET Core][tutorial]
