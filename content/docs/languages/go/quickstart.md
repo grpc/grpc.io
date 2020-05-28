@@ -195,7 +195,7 @@ from the `examples/helloworld` directory:
 
 ### What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+- Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Go](/docs/tutorials/basic/go/).
 - Explore the gRPC Go core API in its [reference
