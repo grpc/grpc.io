@@ -1,11 +1,16 @@
 ---
-title: Quick Start using grpc-dotnet
+title: Quick Start using gRPC for .NET
 description: This guide gets you started with gRPC for .NET with a simple working example.
 weight: 2
 ---
 
 {{< note >}}
-This is a quick start guide for the "grpc-dotnet" implementation of gRPC C#s. See [gRPC C# Quick Start](../csharp) for how to start with the gRPC C# implementation based on native Core library.
+  This quick start uses the [gRPC for .NET][grpc-dotnet] implementation of gRPC.
+  For the version using the [gRPC core library][core-library], see [Quick
+  Start](../quickstart).
+
+  [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
+  [grpc-dotnet]: https://github.com/grpc/grpc-dotnet
 {{< /note >}}
 
 ### General project info

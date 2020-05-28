@@ -8,6 +8,8 @@
 /docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
 /docs/tutorials/basic/:lang           /docs/languages/:lang/basics
 
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/#grpc-for-net
+
 # These redirect rules are for API reference docs. For a list of
 # source URLs, see the apis.yaml file.
 

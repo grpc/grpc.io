@@ -5,7 +5,12 @@ weight: 1
 ---
 
 {{< note >}}
-This is a quick start guide for the gRPC C# implementation based on Core native library. See [gRPC for .NET Quick Start](..//csharp-dotnet/) for how to start with the "grpc-dotnet" implementation.
+  This quick start uses the [gRPC core library][core-library] implementation of
+  gRPC. For the version using [gRPC for .NET][grpc-dotnet], see [Quick Start
+  using gRPC for .NET](../quickstart-dotnet).
+
+  [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
+  [grpc-dotnet]: https://github.com/grpc/grpc-dotnet
 {{< /note >}}
 
 ### Prerequisites
