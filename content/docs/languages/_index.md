@@ -15,7 +15,7 @@ Select a language to get started:
 
 - [Android Java](android)
 - [C#](csharp)
-- [C++](cpp), and gRPC Core
+- [C++](cpp)
 - [Dart](dart)
 - [Go](go)
 - [Java](java)
