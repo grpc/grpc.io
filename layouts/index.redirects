@@ -1,4 +1,5 @@
-/docs/quickstart/csharp-dotnet            /docs/languages/csharp/quickstart-dotnet
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
 /docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
 /docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
 
@@ -7,8 +8,6 @@
 /docs/quickstart/:lang                /docs/languages/:lang/quickstart
 /docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
 /docs/tutorials/basic/:lang           /docs/languages/:lang/basics
-
-/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/#grpc-for-net
 
 # These redirect rules are for API reference docs. For a list of
 # source URLs, see the apis.yaml file.
