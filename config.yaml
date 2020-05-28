@@ -105,10 +105,6 @@ menu:
       identifier: guides
       weight: 4
       parent: docs
-    - name: Reference
-      url: /docs/reference/
-      weight: 4
-      parent: docs
     - name: Samples
       url: /docs/samples/
       weight: 5
