@@ -88,6 +88,10 @@ menu:
       url: /docs
       weight: 1
       parent: docs
+    - name: What is gRPC?
+      url: /docs/what-is-grpc
+      weight: 1
+      parent: docs
     - name: Languages
       url: /docs/languages
       weight: 2
