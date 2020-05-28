@@ -5,12 +5,17 @@ weight: 1
 nav_children: section
 ---
 
-Each language / platform has at least **quick start** and **tutorial** pages.
+Each language / platform has links to the following pages and more:
+
+- Quick start
+- Tutorials
+- API reference
+
 Select a language to get started:
 
 - [Android Java](android)
 - [C#](csharp)
-- [C++](cpp)
+- [C++](cpp), and gRPC Core
 - [Dart](dart)
 - [Go](go)
 - [Java](java)

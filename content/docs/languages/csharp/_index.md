@@ -7,6 +7,7 @@ core-library][core-library] implementation is covered here:
 
 - [Quick start](quickstart)
 - [Basics tutorial](basics)
+- [API reference](https://grpc.github.io/grpc/csharp/api/Grpc.Core)
 
 For details concerning the newer gRPC for .NET implementation, see [gRPC for
 .NET](dotnet).
