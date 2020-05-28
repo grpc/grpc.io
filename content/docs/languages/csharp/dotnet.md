@@ -2,8 +2,7 @@
 title: gRPC for .NET
 ---
 
-For an introduction to gRPC for .NET ([grpc-dotnet][]), a basic tutorial, and
-API reference documentation, see the following pages:
+The following pages cover the gRPC for .NET implementation:
 
 - [Introduction to gRPC on .NET Core](https://docs.microsoft.com/aspnet/core/grpc)
 - [Tutorial: Create a gRPC client and server in ASP.NET Core][tutorial]
