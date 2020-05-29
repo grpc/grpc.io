@@ -301,3 +301,12 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
   h#{$i}
     &:hover > .headline-hash
       display: inline
+
+// Currently (2020-05-29), the external-link character is used as an icon in the
+// top navbar. The "a >" prefix is used in the next rule only as a simple means
+// of excluding the style changes from applying in that case.
+a > .fa-external-link-alt::before
+  font-size: 50%
+  margin-left: 3px
+  opacity: 0.8
+  vertical-align: top
