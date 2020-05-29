@@ -287,7 +287,7 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
 
-#### C&#35;
+#### C# {#csharp}
 
 ##### Base case - no encryption or authentication
 
