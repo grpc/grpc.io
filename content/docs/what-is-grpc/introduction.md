@@ -9,7 +9,7 @@ This page introduces you to gRPC and protocol buffers. gRPC can use
 protocol buffers as both its Interface Definition Language (**IDL**) and as its underlying message
 interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
-see our [Quick Starts](../quickstart).
+see our [Quick Starts](/docs/quickstart).
 
 ## Overview
 
