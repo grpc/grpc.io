@@ -16,7 +16,7 @@ By walking through it you'll also learn how to use the Objective-C gRPC API to:
 It assumes you know the basics on how to make gRPC API calls using the
 Objective-C client library, as shown in [gRPC Basics:
 Objective-C](/docs/tutorials/basic/objective-c/) and the
-[overview](/docs/), and are familiar with OAuth2 concepts like _access
+[Introduction to gRPC](/docs/what-is-grpc/introduction), and are familiar with OAuth2 concepts like _access
 token_.
 
 ### Example code and setup {#setup}

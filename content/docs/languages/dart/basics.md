@@ -12,7 +12,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Dart gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/) and are familiar
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
@@ -55,7 +55,7 @@ You also should have the relevant tools installed to generate the server and cli
 
 ### Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/)) is to
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the
 complete .proto file in

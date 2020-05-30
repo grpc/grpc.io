@@ -5,7 +5,7 @@ title: Overview
 Welcome to the developer documentation for gRPC. Here you can learn about key
 gRPC concepts, find quick starts, reference material, and tutorials for all our
 [supported languages](languages), and more. If you’re new to gRPC we recommend that you read
-[What is gRPC?](guides) to find out more about our system and how it works. Or
+[Introduction to gRPC](what-is-grpc/introduction) to find out more about our system and how it works. Or
 if you want to see gRPC in action first, visit the [Quick Start](quickstart) for
 your favourite language.
 

@@ -1,7 +1,7 @@
 ---
 title: Supported languages and platforms
 short: Languages
-weight: 1
+weight: 2
 nav_children: section
 ---
 

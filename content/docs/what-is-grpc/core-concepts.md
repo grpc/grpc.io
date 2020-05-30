@@ -1,11 +1,12 @@
 ---
-title: gRPC Concepts
-description: |-
+title: Core concepts, architecture and lifecycle
+short: Core concepts
+description: >-
   An introduction to key gRPC concepts, with an overview of gRPC architecture
   and RPC life cycle.
 ---
 
-Not familiar with gRPC? First read [What is gRPC?](/docs/guides). For
+Not familiar with gRPC? First read [Introduction to gRPC](../introduction). For
 language-specific details, see the Quick Start, tutorial, and reference
 documentation for your language of choice.
 
