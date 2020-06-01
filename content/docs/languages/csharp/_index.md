@@ -1,5 +1,5 @@
 ---
-title: C#
+title: C# / .NET
 ---
 
 There are two official implementations of gRPC for C#. The original [gRPC

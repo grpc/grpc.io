@@ -14,7 +14,7 @@ Each language / platform has links to the following pages and more:
 Select a language to get started:
 
 - [Android Java](android)
-- [C#](csharp)
+- [C# / .NET](csharp)
 - [C++](cpp)
 - [Dart](dart)
 - [Go](go)
