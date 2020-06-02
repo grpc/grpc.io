@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: gRPC Documentation
 ---
 
 Welcome to the developer documentation for gRPC. Here you can learn about key
@@ -9,13 +9,29 @@ gRPC concepts, find quick starts, reference material, and tutorials for all our
 if you want to see gRPC in action first, visit the [Quick Start](quickstart) for
 your favourite language.
 
-## gRPC by Use Cases
+Welcome to the developer documentation for gRPC.
 
-gRPC is used in last mile of computing in mobile and web client since it can
-generate libraries for iOS and Android and uses standards based HTTP/2 as
-transport allowing it to easily traverse proxies and firewalls. There is also
-work underway to develop a JS library for use in browsers. Beyond that, it is
-ideal as a microservices interconnect, not just because the core protocol is
-very efficient but also because the framework has pluggable authentication, load
-balancing, etc. Google itself is also transitioning to use it to connect
-microservices.
+
+- **New to gRPC?** Start with the following pages:
+  - [What is gRPC?](guides)
+  - [gRPC Concepts](guides/concepts)
+- **Eager to see gRPC in action?** Select a language-specific [Quick
+  Start](quickstart).
+- **Interested in gRPC feature details?** Try one of the following:
+  - [Tutorials](tutorials)
+  - [Guides](guides)
+- **API and generated-code reference** documentation is available from the
+  [Reference](reference) page.
+
+<!--
+
+- **Introduction to gRPC**:
+  - [What is gRPC?](guides)
+  - [gRPC Concepts](guides/concepts)
+- Quickly see gRPC in action by selecting a language-specific [Quick Start](quickstart).
+- gRPC feature details are covered in the following sections:
+  - [Tutorials](tutorials)
+  - [Guides](guides)
+- [Reference](reference)
+
+-->
