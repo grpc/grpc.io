@@ -305,10 +305,14 @@ def serve():
       RouteGuideServicer(), server)
   server.add_insecure_port('[::]:50051')
   server.start()
+  server.wait_for_termination()
 ```
 
-Because `start()` does not block you may need to sleep-loop if there is nothing
-else for your code to do while serving.
+The server `start()` method is non-blocking. A new thread will be instantiated
+to handle requests. The thread calling `server.start()` will often
+not have any other work to do in the meantime. In this case, you can call
+`server.wait_for_termination()` to cleanly block the calling thread until the
+server terminates.
 
 ### Creating the client {#client}
 
