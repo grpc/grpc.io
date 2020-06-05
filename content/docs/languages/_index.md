@@ -26,3 +26,9 @@ Select a language to get started:
 - [Python](python)
 - [Ruby](ruby)
 - [Web](web)
+
+### Official support
+
+These are the officially supported language, platform and OS versions:
+
+{{< supported-platforms >}}
