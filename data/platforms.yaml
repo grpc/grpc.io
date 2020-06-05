@@ -15,7 +15,7 @@
   compilers: [Dart 2.2+]
 - language: Go
   platforms: [Windows, Linux, Mac]
-  compilers: [Go 1.6+]
+  compilers: [Go 1.12+]
 - language: Java
   platforms: [Windows, Linux, Mac]
   compilers: [JDK 8 recommended (Gingerbread+ for Android)]
