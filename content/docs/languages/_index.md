@@ -5,7 +5,7 @@ weight: 2
 nav_children: section
 ---
 
-Each language / platform has links to the following pages and more:
+Each gRPC language / platform has links to the following pages and more:
 
 - Quick start
 - Tutorials
@@ -26,3 +26,9 @@ Select a language to get started:
 - [Python](python)
 - [Ruby](ruby)
 - [Web](web)
+
+### Official support
+
+These are the officially supported gRPC language, platform and OS versions:
+
+{{< supported-platforms >}}

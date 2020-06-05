@@ -1,6 +1,6 @@
 ---
 title: About gRPC
-description: Who is using it, why they're using it, and which platforms support it
+description: Who is using gRPC and why
 ---
 
 gRPC is a modern open source high performance RPC framework that can run in any
@@ -33,10 +33,6 @@ Check out what people are saying below.
 
 {{< testimonials >}}
 
-## Officially supported languages and platforms
-
-{{< supported-platforms >}}
-
 ## The story behind gRPC
 
 Google has been using a single general-purpose RPC infrastructure called Stubby
@@ -52,3 +48,10 @@ for microservices inside and outside Google but also for last mile of computing
 
 For more background on why we created gRPC, see the [gRPC Motivation and Design
 Principles](/blog/principles) on the [gRPC blog](/blog).
+
+{{< note >}}
+  <a name="officially-supported-languages-and-platforms"></a>
+
+  Our table of **officially supported languages and platforms** has moved!
+  See [Supported languages and platforms](/docs/languages#official-support).
+{{< /note >}}
