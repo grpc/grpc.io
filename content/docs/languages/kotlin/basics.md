@@ -1,6 +1,7 @@
 ---
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Kotlin/JVM.
+weight: 50
 ---
 
 This tutorial provides a basic Kotlin programmer's introduction to

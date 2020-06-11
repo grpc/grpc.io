@@ -1,6 +1,7 @@
 ---
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Go.
+weight: 50
 ---
 
 This tutorial provides a basic Go programmer's introduction to

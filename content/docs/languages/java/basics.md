@@ -1,6 +1,7 @@
 ---
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Java.
+weight: 50
 ---
 
 This tutorial provides a basic Java programmer's introduction to
