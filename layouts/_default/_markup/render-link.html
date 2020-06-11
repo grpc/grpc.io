@@ -1,10 +1,10 @@
-{{ $isRemote := hasPrefix .Destination "http" -}}
+{{ $isExternal := hasPrefix .Destination "http" -}}
 <a href="{{ .Destination | safeURL }}"
   {{- with .Title }} title="{{ . }}"{{ end -}}
-  {{- if $isRemote }} target="_blank" rel="noopener"{{ end -}}
+  {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
 >
   {{- .Text | safeHTML -}}
-  {{ if $isRemote -}}
+  {{ if $isExternal -}}
   <i class="fas fa-external-link-alt"></i>
   {{- end -}}
 </a>
