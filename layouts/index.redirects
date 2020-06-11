@@ -12,8 +12,14 @@
 /docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
 /docs/tutorials/basic/:lang           /docs/languages/:lang/basics
 
-# These redirect rules are for API reference docs. For a list of
-# source URLs, see the apis.yaml file.
+# API reference docs (prior to 2020/06)
 
 /grpc/*     https://grpc.github.io/grpc/:splat
 /grpc-*     https://grpc.github.io/grpc-:splat
+
+# API reference docs
+
+/docs/languages/android/api       https://grpc.github.io/grpc-java/javadoc 301!
+/docs/languages/csharp/dotnet/api https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core 301!
+/docs/languages/csharp/api        https://grpc.github.io/grpc/csharp/api/Grpc.Core 301!
+#/docs/languages/:lang/api         https://grpc.github.io/grpc/:lang 301!
