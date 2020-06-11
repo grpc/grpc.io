@@ -19,7 +19,11 @@
 
 # API reference docs
 
-/docs/languages/android/api       https://grpc.github.io/grpc-java/javadoc 301!
-/docs/languages/csharp/dotnet/api https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core 301!
-/docs/languages/csharp/api        https://grpc.github.io/grpc/csharp/api/Grpc.Core 301!
-#/docs/languages/:lang/api         https://grpc.github.io/grpc/:lang 301!
+# /docs/languages/android/api       https://grpc.github.io/grpc-java/javadoc 301!
+# /docs/languages/csharp/dotnet/api https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core 301!
+# /docs/languages/csharp/api        https://grpc.github.io/grpc/csharp/api/Grpc.Core 301!
+
+/docs/languages/:lang/api/* ext=:ext      https://:splat 301!
+/docs/languages/:lang/api/* sep=:sep      https://grpc.github.io/grpc:sep:lang/:splat 301!
+/docs/languages/:notUsed/api/* lang=:lang https://grpc.github.io/grpc/:lang/:splat 301! # objc
+/docs/languages/:lang/api/*               https://grpc.github.io/grpc/:lang/:splat 301!
