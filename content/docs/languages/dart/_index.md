@@ -6,4 +6,4 @@ These language-specific pages are available:
 
 - [Quick start](quickstart)
 - [Basics tutorial](basics)
-- [API reference](https://pub.dev/documentation/grpc)
+- [API reference](api/pub.dev/documentation/grpc?ext=1)

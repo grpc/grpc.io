@@ -1,6 +1,7 @@
 ---
 title: Go Generated-code Reference
 short: Generated Code
+weight: 80
 ---
 
 This page describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`

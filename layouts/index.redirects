@@ -19,11 +19,13 @@
 
 # API reference docs
 
-# /docs/languages/android/api       https://grpc.github.io/grpc-java/javadoc 301!
-# /docs/languages/csharp/dotnet/api https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core 301!
-# /docs/languages/csharp/api        https://grpc.github.io/grpc/csharp/api/Grpc.Core 301!
+# API docs hosted on an external site (other than grpc.github.io)
+# (We can't encode the path as a param because Netlify escapes path separators.)
+/docs/languages/:_/api/* ext=:_ https://:splat 301!
 
-/docs/languages/:lang/api/* ext=:ext      https://:splat 301!
-/docs/languages/:lang/api/* sep=:sep      https://grpc.github.io/grpc:sep:lang/:splat 301!
-/docs/languages/:notUsed/api/* lang=:lang https://grpc.github.io/grpc/:lang/:splat 301! # objc
-/docs/languages/:lang/api/*               https://grpc.github.io/grpc/:lang/:splat 301!
+# API hosted on grpc.github.io using path indicated by splat
+/docs/languages/:_/api/grpc/* https://grpc.github.io/grpc/:splat
+/docs/languages/:_/api/grpc-* https://grpc.github.io/grpc-:splat
+
+# Base rule: API hosted on grpc.github.io
+/docs/languages/:lang/api/*       https://grpc.github.io/grpc/:lang/:splat 301!
