@@ -14,18 +14,17 @@
 
 # API reference docs (prior to 2020/06)
 
-/grpc/*     https://grpc.github.io/grpc/:splat
-/grpc-*     https://grpc.github.io/grpc-:splat
+/grpc/*  https://grpc.github.io/grpc/:splat
+/grpc-*  https://grpc.github.io/grpc-:splat
 
 # API reference docs
 
-# API docs hosted on an external site (other than grpc.github.io)
-# (We can't encode the path as a param because Netlify escapes path separators.)
-/docs/languages/:_/api/* ext=:_ https://:splat 301!
+# API docs hosted on an external site other than grpc.github.io
+/docs/languages/:_/api/* ext=:_  https://:splat
 
 # API hosted on grpc.github.io using path indicated by splat
-/docs/languages/:_/api/grpc/* https://grpc.github.io/grpc/:splat
-/docs/languages/:_/api/grpc-* https://grpc.github.io/grpc-:splat
+/docs/languages/:_/api/grpc/*  https://grpc.github.io/grpc/:splat
+/docs/languages/:_/api/grpc-*  https://grpc.github.io/grpc-:splat
 
 # Base rule: API hosted on grpc.github.io
-/docs/languages/:lang/api/*       https://grpc.github.io/grpc/:lang/:splat 301!
+/docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!
