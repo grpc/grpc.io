@@ -1,6 +1,7 @@
 ---
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Ruby.
+weight: 50
 ---
 
 This tutorial provides a basic Ruby programmer's introduction to working with gRPC.

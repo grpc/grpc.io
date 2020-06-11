@@ -1,6 +1,7 @@
 ---
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in C#.
+weight: 50
 ---
 
 This tutorial provides a basic C# programmer's introduction to working with gRPC.

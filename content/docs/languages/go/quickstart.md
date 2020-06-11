@@ -1,7 +1,7 @@
 ---
 title: Quick Start
 description: This guide gets you started with gRPC in Go with a simple working example.
-weight: 1
+weight: 10
 ---
 
 ### Prerequisites
