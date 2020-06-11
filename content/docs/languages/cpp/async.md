@@ -1,5 +1,7 @@
 ---
 title: Asynchronous-API Tutorial
+short: Async-API Tutorial
+weight: 60
 ---
 
 This tutorial shows you how to write a simple server and client in C++ using

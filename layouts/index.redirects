@@ -12,8 +12,19 @@
 /docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
 /docs/tutorials/basic/:lang           /docs/languages/:lang/basics
 
-# These redirect rules are for API reference docs. For a list of
-# source URLs, see the apis.yaml file.
+# API reference docs (prior to 2020/06)
 
-/grpc/*     https://grpc.github.io/grpc/:splat
-/grpc-*     https://grpc.github.io/grpc-:splat
+/grpc/*  https://grpc.github.io/grpc/:splat
+/grpc-*  https://grpc.github.io/grpc-:splat
+
+# API reference docs
+
+# API docs hosted on an external site other than grpc.github.io
+/docs/languages/:_/api/* ext=:_  https://:splat
+
+# API hosted on grpc.github.io using path indicated by splat
+/docs/languages/:_/api/grpc/*  https://grpc.github.io/grpc/:splat
+/docs/languages/:_/api/grpc-*  https://grpc.github.io/grpc-:splat
+
+# Base rule: API hosted on grpc.github.io
+/docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!

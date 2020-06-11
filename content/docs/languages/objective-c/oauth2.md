@@ -1,5 +1,6 @@
 ---
 title: OAuth2
+weight: 60
 ---
 
 This example demonstrates how to use OAuth2 on gRPC to make

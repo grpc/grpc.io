@@ -58,9 +58,20 @@
           <ul class="nav-section-links" x-show="open">
             {{ range $children -}}
               {{ $isActive := eq $here .RelPermalink -}}
+              {{ $isApi :=  findRE "^/docs/languages/.+?/api(/.*)?(\\?.*)?$" .RelPermalink -}}
+              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isApi -}}
+              {{ $href := .RelPermalink -}}
+              {{ if and $isApi .Parent.Params.api_path -}}
+                {{ $href = printf "%s%s" $href .Parent.Params.api_path -}}
+              {{ end -}}
               <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
-                <a href="{{ .RelPermalink }}">
-                  {{ .Params.short | default .Title }}
+                <a href="{{ $href }}"
+                  {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
+                >
+                  {{- .Params.short | default .Title -}}
+                  {{ if $isExternal -}}
+                    <i class="fas fa-external-link-alt"></i>
+                  {{- end -}}
                 </a>
               </li>
             {{ end -}}

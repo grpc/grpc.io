@@ -1,6 +1,7 @@
 ---
 title: Java Generated-code Reference
 short: Generated Code
+weight: 80
 ---
 
 ## Packages
