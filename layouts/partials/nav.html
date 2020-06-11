@@ -68,7 +68,7 @@
                 <a href="{{ $href }}"
                   {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
                 >
-                  {{ .Params.short | default .Title -}}
+                  {{- .Params.short | default .Title -}}
                   {{ if $isExternal -}}
                     <i class="fas fa-external-link-alt"></i>
                   {{- end -}}
