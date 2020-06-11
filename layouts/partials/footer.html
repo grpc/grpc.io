@@ -1,15 +1,13 @@
-{{ $logo := printf "img/logos/%s" site.Params.logos.footer | relURL }}
-{{ $menu := site.Menus.main }}
 {{ $year := now.Year }}
 <footer class="footer has-background-image">
   <div class="container">
     <div class="columns is-variable is-8">
       <div class="column is-one-quarter">
-        <img class="is-footer-logo" src="{{ $logo }}" alt="{{ site.Title }} footer logo">
+        <img class="is-footer-logo" src="/img/logos/{{ site.Params.logos.footer }}" alt="{{ site.Title }} footer logo">
       </div>
 
       <div class="column">
-        {{ range $menu }}
+        {{ range site.Menus.main }}
         {{ $name       := .Name | upper }}
         {{ $isExternal := hasPrefix .URL "http" }}
         <a class="is-size-5 is-size-6-mobile has-text-light" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>
@@ -40,11 +38,11 @@
     <div class="card has-background-primary has-text-light">
       <div class="card-content">
         <p class="is-size-5">
-          &copy; gRPC Authors {{ $year }} | Documentation Distributed under <a href="https://creativecommons.org/licenses/by/4.0" target="_blank">CC-BY-4.0</a>
+          &copy; gRPC Authors {{ $year }} | Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0" target="_blank">CC-BY-4.0</a>
         </p>
 
         <br />
-    
+
         <p>
           &copy; {{ $year }} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/" target="_blank">Trademark Usage</a> page.
         </p>

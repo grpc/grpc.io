@@ -1,5 +1,30 @@
-# These redirect rules are for API reference docs. For a list of
-# source URLs, see the apis.yaml file.
+/docs/guides/concepts                     /docs/what-is-grpc/core-concepts
+/docs/guides/contributing                 /community
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
+/docs/reference                           /docs/languages
+/docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
+/docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
 
-/grpc/*     https://grpc.github.io/grpc/:splat
-/grpc-*     https://grpc.github.io/grpc-:splat
+# We're using a placeholder (`:lang`) instead of a splat (`*`) to avoid
+# an infinite loop when attempting to visit `/docs/quickstart`.
+/docs/quickstart/:lang                /docs/languages/:lang/quickstart
+/docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
+/docs/tutorials/basic/:lang           /docs/languages/:lang/basics
+
+# API reference docs (prior to 2020/06)
+
+/grpc/*  https://grpc.github.io/grpc/:splat
+/grpc-*  https://grpc.github.io/grpc-:splat
+
+# API reference docs
+
+# API docs hosted on an external site other than grpc.github.io
+/docs/languages/:_/api/* ext=:_  https://:splat
+
+# API hosted on grpc.github.io using path indicated by splat
+/docs/languages/:_/api/grpc/*  https://grpc.github.io/grpc/:splat
+/docs/languages/:_/api/grpc-*  https://grpc.github.io/grpc-:splat
+
+# Base rule: API hosted on grpc.github.io
+/docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!

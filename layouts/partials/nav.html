@@ -1,56 +1,86 @@
-{{ $here           := .RelPermalink }}
-{{ $docsSections   := (index (where site.Sections "Section" "docs") 0).Sections }}
-{{ $currentSection := .CurrentSection }}
+{{ $here           := .RelPermalink -}}
+{{ $currentSection := .CurrentSection -}}
+{{ $docSections := (index (where site.Sections "Section" "docs") 0).Sections -}}
 
 <div class="nav is-sticky">
-  {{ range $docsSections }}
-  {{ $isThisSection := eq .CurrentSection.Title $currentSection.Title }}
+  {{ range $docSections -}}
+  {{ $children := .RegularPages -}}
+  {{ if eq .Params.nav_children "none" -}}
+    {{ $children = false -}}
+  {{ else if hasPrefix .Params.nav_children "section" -}}
+    {{ $children = .Sections -}}
+  {{ end -}}
+  {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink -}}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
-    {{ $isHere := eq $here .RelPermalink }}
-    {{ $title := .Title | upper }}
+    {{ $isActive := (or $isThisSection (eq $here .RelPermalink)) -}}
+    {{ $title := .Params.short | default .Title | upper -}}
     <nav class="level">
       <div class="level-left">
-        <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+        <a class="nav-section-title is-size-5 is-size-6-mobile{{ if $isActive }} is-active{{ end }}" href="{{ .RelPermalink }}">
           {{ $title }}
         </a>
       </div>
 
-      {{ if .RegularPages }}
+      {{ if $children -}}
       <div class="level-right">
         <span class="level-item" @click="open = !open">
           <i class="fas has-text-grey" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
         </span>
       </div>
-      {{ end }}
+      {{ end -}}
     </nav>
 
-    {{ with .RegularPages }}
+    {{ with $children -}}
     <ul class="nav-section-links" x-show="open">
-      {{ range . }}
-      {{ $isHere := eq $here .RelPermalink }}
-      {{ $title := cond (isset .Params "short") .Params.short .Title }}
-      <li class="nav-section-link{{ if $isHere }} is-active{{ end }}">
-        <a href="{{ .RelPermalink }}">
-          {{ if $isHere }}
-          <span class="icon has-text-secondary">
-            <i class="fas fa-arrow-right"></i>
-          </span>
-          {{ end }}
-
-          {{ $title }}
-        </a>
+      {{ range . -}}
+      {{ $children := .RegularPages -}}
+      {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink -}}
+      {{ $isActive := eq $here .RelPermalink -}}
+      {{ if $children -}}
+        {{ $isActive = or $isActive $isThisSection -}}
+      {{ end -}}
+      <li class="nav-section-link" x-data="{ open: {{ $isThisSection }} }">
+        <nav class="level">
+          <div class="level-left{{ if $isActive }} is-active{{ end }}">
+            <a href="{{ .RelPermalink }}">
+              {{ .Params.short | default .Title }}
+            </a>
+          </div>
+          {{ if $children -}}
+            <div class="level-right">
+              <span class="level-item" @click="open = !open">
+                <i class="fas has-text-grey" :class="{ 'fa-chevron-down': !open, 'fa-chevron-up': open }"></i>
+              </span>
+            </div>
+          {{ end -}}
+        </nav>
+        {{ if $children -}}
+          <ul class="nav-section-links" x-show="open">
+            {{ range $children -}}
+              {{ $isActive := eq $here .RelPermalink -}}
+              {{ $isApi :=  findRE "^/docs/languages/.+?/api(/.*)?(\\?.*)?$" .RelPermalink -}}
+              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isApi -}}
+              {{ $href := .RelPermalink -}}
+              {{ if and $isApi .Parent.Params.api_path -}}
+                {{ $href = printf "%s%s" $href .Parent.Params.api_path -}}
+              {{ end -}}
+              <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
+                <a href="{{ $href }}"
+                  {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
+                >
+                  {{- .Params.short | default .Title -}}
+                  {{ if $isExternal -}}
+                    <i class="fas fa-external-link-alt"></i>
+                  {{- end -}}
+                </a>
+              </li>
+            {{ end -}}
+          </ul>
+        {{ end -}}
       </li>
-      
-      {{ if $isHere }}
-      {{ if gt (len .TableOfContents) 32 }}
-      <div class="nav-section-toc">
-        {{ .TableOfContents }}
-      </div>
-      {{ end }}
-      {{ end }}
-      {{ end }}
+      {{ end -}}
     </ul>
-    {{ end }}
+    {{ end -}}
   </div>
-  {{ end }}
+  {{ end -}}
 </div>

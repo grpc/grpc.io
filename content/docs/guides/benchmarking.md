@@ -1,5 +1,4 @@
 ---
-layout: guides
 title: Benchmarking
 description: |
   gRPC is designed to support high-performance open-source RPCs in many languages. This document describes the performance benchmarking tools, the scenarios considered by the tests, and the testing infrastructure.
@@ -14,7 +13,7 @@ workflow. Multi-language performance tests run hourly against
 the master branch, and these numbers are reported to a dashboard for
 visualization.
 
-  * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528) 
+  * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528)
   * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
   * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
@@ -63,7 +62,7 @@ server implementation without testing the other side.
 Although PHP or mobile environments do not support a gRPC server
 (which is needed for our performance tests), their client-side
 performance can be benchmarked using a proxy WorkerService written in
-another language. This code is implemented for PHP but is not yet in 
+another language. This code is implemented for PHP but is not yet in
 continuous testing mode.
 
 ### Scenarios under test

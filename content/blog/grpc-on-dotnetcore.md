@@ -57,4 +57,4 @@ In addition to the newly published packages that ship as part of **grpc-dotnet**
 
 ## Feedback
 
-We're were excited about improving the gRPC experience for .NET developers. Please give it a try and let us about any feature ideas or bugs you may encounter at the [grpc-dotnet issue tracker](https://github.com/grpc/grpc-dotnet/issues).
+We're excited about improving the gRPC experience for .NET developers. Give it a try and let us know about feature ideas or bugs you may encounter using the [grpc-dotnet issue tracker](https://github.com/grpc/grpc-dotnet/issues).

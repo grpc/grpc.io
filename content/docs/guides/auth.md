@@ -1,8 +1,8 @@
 ---
-layout: guides
 title: Authentication
-description: |
-  This document provides an overview of gRPC authentication, including our built-in supported auth mechanisms, how to plug in your own authentication systems, and examples of how to use gRPC auth in our supported languages.
+description: >
+  An overview of gRPC authentication, including built-in auth mechanisms, and
+  how to plug in your own authentication systems.
 ---
 
 ### Overview
@@ -21,21 +21,23 @@ making a call.
 The following authentication mechanisms are built-in to gRPC:
 
 - **SSL/TLS**: gRPC has SSL/TLS integration and promotes the use of SSL/TLS
-to authenticate the server, and to encrypt all the data exchanged between
-the client and the server. Optional mechanisms are available for clients to
-provide certificates for mutual authentication.
+  to authenticate the server, and to encrypt all the data exchanged between
+  the client and the server. Optional mechanisms are available for clients to
+  provide certificates for mutual authentication.
 - **Token-based authentication with Google**: gRPC provides a generic
-mechanism (described below) to attach metadata based credentials to requests
-and responses. Additional support for acquiring access tokens
-(typically OAuth2 tokens) while accessing Google APIs through gRPC is
-provided for certain auth flows: you can see how this works in our code
-examples below. In general this mechanism must be used *as well as* SSL/TLS
-on the channel - Google will not allow connections without SSL/TLS, and
-most gRPC language implementations will not let you send credentials on an
-unencrypted channel.
+  mechanism (described below) to attach metadata based credentials to requests
+  and responses. Additional support for acquiring access tokens
+  (typically OAuth2 tokens) while accessing Google APIs through gRPC is
+  provided for certain auth flows: you can see how this works in our code
+  examples below. In general this mechanism must be used *as well as* SSL/TLS
+  on the channel - Google will not allow connections without SSL/TLS, and
+  most gRPC language implementations will not let you send credentials on an
+  unencrypted channel.
 
 {{< warning >}}
-Google credentials should only be used to connect to Google services. Sending a Google issued OAuth2 token to a non-Google service could result in this token being stolen and used to impersonate the client to Google services.
+  Google credentials should only be used to connect to Google services. Sending
+  a Google issued OAuth2 token to a non-Google service could result in this
+  token being stolen and used to impersonate the client to Google services.
 {{< /warning >}}
 
 ### Authentication API
@@ -285,7 +287,7 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
 
-#### C&#35;
+#### C# {#csharp}
 
 ##### Base case - no encryption or authentication
 
