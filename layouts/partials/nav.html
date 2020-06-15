@@ -59,7 +59,8 @@
             {{ range $children -}}
               {{ $isActive := eq $here .RelPermalink -}}
               {{ $isApi :=  findRE "^/docs/languages/.+?/api(/.*)?(\\?.*)?$" .RelPermalink -}}
-              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isApi -}}
+              {{ $isRedirected := findRE "/daily-builds/" .RelPermalink -}}
+              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isApi $isRedirected -}}
               {{ $href := .RelPermalink -}}
               {{ if and $isApi .Parent.Params.api_path -}}
                 {{ $href = printf "%s%s" $href .Parent.Params.api_path -}}

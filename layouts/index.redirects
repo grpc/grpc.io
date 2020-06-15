@@ -28,3 +28,7 @@
 
 # Base rule: API hosted on grpc.github.io
 /docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!
+
+# Daily-build pages:
+
+/docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
