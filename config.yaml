@@ -11,6 +11,8 @@ params:
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
 
+  show_banner: true
+
   social:
     gitter: https://gitter.im/grpc/grpc
     reddit: https://www.reddit.com/r/grpc
