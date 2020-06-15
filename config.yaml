@@ -81,9 +81,6 @@ menu:
     - name: Community
       url: /community
       weight: 5
-    - name: Packages
-      url: https://packages.grpc.io
-      weight: 6
     - name: Overview
       url: /docs
       weight: 1
