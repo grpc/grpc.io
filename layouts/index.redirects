@@ -1,22 +1,3 @@
-/docs/guides/concepts                     /docs/what-is-grpc/core-concepts
-/docs/guides/contributing                 /community
-/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
-/docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
-/docs/reference                           /docs/languages
-/docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
-/docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
-
-# We're using a placeholder (`:lang`) instead of a splat (`*`) to avoid
-# an infinite loop when attempting to visit `/docs/quickstart`.
-/docs/quickstart/:lang                /docs/languages/:lang/quickstart
-/docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
-/docs/tutorials/basic/:lang           /docs/languages/:lang/basics
-
-# API reference docs (prior to 2020/06)
-
-/grpc/*  https://grpc.github.io/grpc/:splat
-/grpc-*  https://grpc.github.io/grpc-:splat
-
 # API reference docs
 
 # API docs hosted on an external site other than grpc.github.io
@@ -32,3 +13,31 @@
 # Daily-build pages:
 
 /docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
+
+#
+# Redirects for the site org prior to 2020/06:
+#
+
+/docs/guides/concepts                     /docs/what-is-grpc/core-concepts
+/docs/guides/contributing                 /community
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
+/docs/reference                           /docs/languages
+/docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
+/docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
+
+/docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
+
+{{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
+{{ range $lang_2020_05 }}
+/docs/quickstart/{{ . }}                /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}           /docs/languages/{{ . }}/basics
+{{/* Handle links ending in .html (https://github.com/grpc/grpc.io/issues/286) */}}
+/docs/quickstart/{{ . }}.html           /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}.html      /docs/languages/{{ . }}/basics
+{{ end }}
+
+# API reference docs (prior to 2020/06)
+
+/grpc/*  https://grpc.github.io/grpc/:splat
+/grpc-*  https://grpc.github.io/grpc-:splat
