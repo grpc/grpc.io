@@ -1,21 +1,33 @@
+#
 # API reference docs
+#
 
-# API docs hosted on an external site other than grpc.github.io
-/docs/languages/:_/api/* ext=:_  https://:splat
+{{ range (.Site.GetPage "/docs/languages").Sections -}}
+  {{ $from_path := printf "/%sapi" .Dir -}}
 
-# API hosted on grpc.github.io using path indicated by splat
-/docs/languages/:_/api/grpc/*  https://grpc.github.io/grpc/:splat
-/docs/languages/:_/api/grpc-*  https://grpc.github.io/grpc-:splat
+  {{ $lang := path.Base .Dir -}}
+  {{ $to_url := .Params.api_path | default "" -}}
+  {{ if not (or (hasPrefix $to_url "grpc") (hasPrefix $to_url "http")) -}}
+    {{ $to_url = printf "grpc/%s/%s" $lang $to_url -}}
+  {{ end -}}
+  {{ if not (hasPrefix $to_url "http") -}}
+    {{ $to_url = printf "https://grpc.github.io/%s" $to_url -}}
+  {{ end -}}
 
-# Base rule: API hosted on grpc.github.io
-/docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!
+  {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!
+{{ end -}}
 
+# C# .NET
+/docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
+
+#
 # Daily-build pages:
+#
 
 /docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
 
 #
-# Redirects for the site org prior to 2020/06:
+# Redirects of the site org prior to 2020/06:
 #
 
 /docs/guides/concepts                     /docs/what-is-grpc/core-concepts

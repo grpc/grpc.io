@@ -8,7 +8,7 @@ core-library][core-library] implementation is covered here:
 
 - [Quick start](quickstart)
 - [Basics tutorial](basics)
-- [API reference](api/{{< param api_path >}})
+- [API reference](api)
 - [Daily builds](daily-builds)
 
 For details concerning the newer gRPC for .NET implementation, see [gRPC for
