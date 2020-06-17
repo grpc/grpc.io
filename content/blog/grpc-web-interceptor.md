@@ -1,9 +1,7 @@
 ---
 title: Interceptors in gRPC-Web
-date: 2020-06-11
-authors:
-- name: Zhenli Jiang
-  position: Google
+date: 2020-06-17
+authors: [{ name: Zhenli Jiang, position: Google }]
 ---
 
 We're pleased to announce support for _interceptors_ in [gRPC-web][] as of
@@ -14,14 +12,14 @@ web frameworks.
 
 ## Introduction
 
-Similar to other gRPC languages, gRPC-web supports _unary_ and server
-_streaming_ interceptors. For each kind of interceptor, we've [defined an
+Similar to other gRPC languages, gRPC-web supports _unary_ and
+server-_streaming_ interceptors. For each kind of interceptor, we've [defined an
 interface][interceptor.js] containing a single `intercept()` method:
 
 - `UnaryInterceptor`
 - `StreamInterceptor`
 
-For example, the `UnaryInterceptor` interface is declared like this:
+This is how the `UnaryInterceptor` interface is declared:
 
 ```js
 /*
@@ -48,25 +46,31 @@ The `StreamInterceptor` interface declaration is similar, except that the
 `invoker` return type is `ClientReadablaStream` instead of `Promise`. For
 implementation details, see [interceptor.js][].
 
+{{< note >}}
+  A `StreamInteceptor` can be applied to any RPC with a `ClientReadableStream`
+  return type, whether it's a unary or a server-streaming RPC.
+{{< /note >}}
+
 ## What can I do with an interceptor?
 
-Basically, an interceptor allows you to do the following:
+An interceptor allows you to do the following:
 
-- Update the original gRPC request before it is passed along. For example, you
-  might inject extra information such as auth headers.
+- Update the original gRPC request before passing it along &mdash; for
+  example, you might inject extra information such as auth headers
 - Manipulate the behavior of the original invoker function, such as bypassing
-  the call or updating the response before it is returned to the client.
+  the call so that you can use a cached result instead
+- Update the response before it's returned to the client
 
-Some examples are given next.
+You'll see some examples next.
 
 ## Unary interceptor example
 
 The code given below illustrates a unary interceptor that does the following:
 
 - It prepends a string to the gRPC request message before the RPC.
-- It prepends a string to the gRPC response message after it is received.
+- It prepends a string to the gRPC response message after it's received.
 
-This simple unary interceptor is defined as class that implements the
+This simple unary interceptor is defined as a class that implements the
 `UnaryInterceptor` interface:
 
 ```js
@@ -84,7 +88,7 @@ SimpleUnaryInterceptor.prototype.intercept = function(request, invoker) {
 
   // After the RPC returns successfully, update the response.
   return invoker(request).then((response) => {
-    // We could also do something with response metadata here.
+    // You can also do something with response metadata here.
     console.log(response.getMetadata());
 
     // Update the response message.
@@ -98,13 +102,14 @@ SimpleUnaryInterceptor.prototype.intercept = function(request, invoker) {
 
 ## Stream interceptor example
 
-More care is needed to intercept server streamed responses from a
+More care is needed to intercept server-streamed responses from a
 `ClientReadableStream` using a `StreamInterceptor`. These are the main steps to
 follow:
 
- 1. Create a `ClientReadableStream`-wrapper class used to intercept stream
-    events such as the reception of responses.
- 2. Create a class that implements `StreamInterceptor` and uses the stream wrapper.
+ 1. Create a `ClientReadableStream`-wrapper class, and use it to intercept
+    stream events such as the reception of server responses.
+ 2. Create a class that implements `StreamInterceptor` and that uses the stream
+    wrapper.
 
 The following sample stream-wrapper class intercepts responses and prepends a
 string to response messages:
@@ -135,7 +140,7 @@ InterceptedStream.prototype.on = function(eventType, callback) {
     // Register the new callback.
     this.stream.on(eventType, newCallback);
   } else {
-    // We could also override 'status', 'end', 'error' eventTypes.
+    // You can also override 'status', 'end', and 'error' eventTypes.
     this.stream.on(eventType, callback);
   }
   return this;
@@ -169,91 +174,25 @@ By passing an array of inteceptor instances using an appropriate option key,
 you can bind interceptors to a client when the client is instantiated:
 
 ```js
-const promiseClient = new FooServicePromiseClient(
+const promiseClient = new MyServicePromiseClient(
     host, creds, {'unaryInterceptors': [interceptor1, interceptor2, interceptor3]});
 
-const client = new FooServiceClient(
+const client = new MyServiceClient(
     host, creds, {'streamInterceptors': [interceptor1, interceptor2, interceptor3]});
 ```
 
 {{< note >}}
-  Interceptors are executed in reverse order for request processing, and in order for response processing:
+  Interceptors are executed in reverse order for request processing, and in
+  order for response processing, as illustrated here:
 
-  ```nocode
-  Request  --> interceptor3  --> interceptor2  --> interceptor1 --> Intercepted --> Server
-                                                                    request           |
-                                                                                      |
-  Intercepted <-- interceptor3 <-- interceptor2 <-- interceptor1 <--   Response  <-- Server
-  response
-  ```
+  ![Interceptor processing order](/img/grpc-web-interceptors.png)
 {{< /note >}}
-
-### Advanced example: RetryInterceptor
-
-```js
-/**
- * @constructor
- * @implements {StreamInterceptor}
- */
-const RetryInterceptor = function() {};
-
-/** @override */
-RetryInterceptor.prototype.intercept = function(request, invoker) {
-  /**
-   * @implements {ClientReadableStream}
-   * @constructor
-   * @param {!ClientReadableStream<RESPONSE>} stream
-   * @param {number} retries
-   * @template RESPONSE
-   */
-  const InterceptedStream = function(stream, retries) {
-    this.stream = stream;
-    this.retries = retries;
-    this.onDataCallback = null;
-  };
-
-  /** @override */
-  InterceptedStream.prototype.on = function(eventType, callback) {
-    if (eventType == 'data') {
-      this.onDataCallback_ = callback;
-      this.stream.on(eventType, callback);
-    } else if (eventType == 'status') {
-      const newCallback = (status) => {
-        if (this.retries > 0 && status !== StatusCode.OK) {
-          const reqMessage = request.getRequestMessage();
-          reqMessage.setMessage(`[Retry ${this.retries}]`);
-          this.stream.cancel();
-          this.stream =
-              new InterceptedStream(invoker(request), this.retries - 1);
-          this.stream.on('status', callback);
-          if (this.onDataCallback_) {
-            // Set up the new callback for the new stream.
-            this.stream.on('data', this.onDataCallback_);
-          }
-        } else {
-          callback(status);
-        }
-      };
-      this.stream.on(eventType, newCallback);
-    }
-    return this;
-  };
-
-  /** @override */
-  InterceptedStream.prototype.cancel = function() {
-    this.stream.cancel();
-    return this;
-  };
-
-  return new InterceptedStream(invoker(request), 3);
-};
-```
 
 ## Feedback
 
 Found a problem with `grpc-web` or need a feature? File an [issue][] over the
 [grpc-web][] repository. If you have general questions or comments, then
-consider posting to the [gRPC mailing list][] or sending an email to
+consider posting to the [gRPC mailing list][] or sending us an email at
 [grpc-web-team@google.com][].
 
 [1.1.0]: https://github.com/grpc/grpc-web/releases/tag/1.1.0
