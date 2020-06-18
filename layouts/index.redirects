@@ -1,17 +1,21 @@
 #
 # API reference docs
 #
+# Redirects are handled as if by the following rules (let $api_path be the
+# language page `api_path` param):
+#
+#  /docs/languages/:lang/api  https://grpc.github.io/grpc/:lang 301!  # when $api_path isn't given
+#  /docs/languages/:lang/api  $api_path 301!                          # when $api_path starts with 'http'
+#  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
 
 {{ range (.Site.GetPage "/docs/languages").Sections -}}
   {{ $from_path := printf "/%sapi" .Dir -}}
 
-  {{ $lang := path.Base .Dir -}}
-  {{ $to_url := .Params.api_path | default "" -}}
-  {{ if not (or (hasPrefix $to_url "grpc") (hasPrefix $to_url "http")) -}}
-    {{ $to_url = printf "grpc/%s/%s" $lang $to_url -}}
-  {{ end -}}
-  {{ if not (hasPrefix $to_url "http") -}}
-    {{ $to_url = printf "https://grpc.github.io/%s" $to_url -}}
+  {{ $api_path := .Params.api_path | default "grpc/LANG" -}}
+  {{ $to_url := $api_path -}}
+  {{ if not (hasPrefix $api_path "http") -}}
+    {{ $api_path = replace $api_path "LANG" (path.Base .Dir) -}}
+    {{ $to_url = printf "https://grpc.github.io/%s" $api_path -}}
   {{ end -}}
 
   {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!

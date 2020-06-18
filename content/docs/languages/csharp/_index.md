@@ -1,6 +1,6 @@
 ---
 title: C# / .NET
-api_path: api/Grpc.Core
+api_path: grpc/LANG/api/Grpc.Core
 ---
 
 There are two official implementations of gRPC for C#. The original [gRPC
