@@ -39,7 +39,7 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-go
+    $ git clone -b {{< param grpc_go_release_tag >}} https://github.com/grpc/grpc-go
     ```
 
  2. Change to the quick start example directory:
@@ -201,7 +201,7 @@ from the `examples/helloworld` directory:
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc).
 
-[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_release_tag >}}.zip
+[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org
 [grpc-go]: https://github.com/grpc/grpc-go
