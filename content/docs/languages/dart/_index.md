@@ -1,10 +1,10 @@
 ---
 title: Dart
-api_path: pub.dev/documentation/grpc?ext=1
+api_path: https://pub.dev/documentation/grpc
 ---
 
 These language-specific pages are available:
 
 - [Quick start](quickstart)
 - [Basics tutorial](basics)
-- [API reference](api/{{< param api_path >}})
+- [API reference](api)
