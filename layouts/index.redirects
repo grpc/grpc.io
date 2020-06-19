@@ -9,12 +9,12 @@
 #  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
 
 {{ range (.Site.GetPage "/docs/languages").Sections -}}
-  {{ $from_path := printf "/%sapi" .Dir -}}
+  {{ $from_path := printf "/%sapi" .File.Dir -}}
 
   {{ $api_path := .Params.api_path | default "grpc/LANG" -}}
   {{ $to_url := $api_path -}}
   {{ if not (hasPrefix $api_path "http") -}}
-    {{ $api_path = replace $api_path "LANG" (path.Base .Dir) -}}
+    {{ $api_path = replace $api_path "LANG" (path.Base .File.Dir) -}}
     {{ $to_url = printf "https://grpc.github.io/%s" $api_path -}}
   {{ end -}}
 
