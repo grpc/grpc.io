@@ -7,5 +7,6 @@ weight: 4
 The documentation covers the following techniques:
 
 - [Authentication](auth)
+- [ALTS Authentiation](alts_auth)
 - [Benchmarking](benchmarking)
 - [Error handling](error)
