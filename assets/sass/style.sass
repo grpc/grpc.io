@@ -78,7 +78,7 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 @import "bulma/sass/elements/content"
 @import "bulma/sass/elements/icon"
 // @import "bulma/sass/elements/image"
-// @import "bulma/sass/elements/notification"
+@import "bulma/sass/elements/notification"
 // @import "bulma/sass/elements/progress"
 // @import "bulma/sass/elements/table"
 @import "bulma/sass/elements/tag"
@@ -214,6 +214,8 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 .is-sticky
   +sticky
   top: $navbar-height + 3rem
+  height: 100vh
+  overflow-y: scroll
 
 .is-constrained
   max-width: 90ch
@@ -253,6 +255,9 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
 
     & + &
       margin-top: 1.5rem
+
+.level-right
+  margin-right: 0.75rem
 
 .blog-list
   ul

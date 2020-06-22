@@ -1,3 +1,39 @@
+#
+# API reference docs
+#
+# Redirects are handled as if by the following rules (let $api_path be the
+# language page `api_path` param):
+#
+#  /docs/languages/:lang/api  https://grpc.github.io/grpc/:lang 301!  # when $api_path isn't given
+#  /docs/languages/:lang/api  $api_path 301!                          # when $api_path starts with 'http'
+#  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
+
+{{ range (.Site.GetPage "/docs/languages").Sections -}}
+  {{ $from_path := printf "/%sapi" .File.Dir -}}
+
+  {{ $api_path := .Params.api_path | default "grpc/LANG" -}}
+  {{ $to_url := $api_path -}}
+  {{ if not (hasPrefix $api_path "http") -}}
+    {{ $api_path = replace $api_path "LANG" (path.Base .File.Dir) -}}
+    {{ $to_url = printf "https://grpc.github.io/%s" $api_path -}}
+  {{ end -}}
+
+  {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!
+{{ end -}}
+
+# C# .NET
+/docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
+
+#
+# Daily-build pages:
+#
+
+/docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
+
+#
+# Redirects of the site org prior to 2020/06:
+#
+
 /docs/guides/concepts                     /docs/what-is-grpc/core-concepts
 /docs/guides/contributing                 /community
 /docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
@@ -6,25 +42,18 @@
 /docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
 /docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
 
-# We're using a placeholder (`:lang`) instead of a splat (`*`) to avoid
-# an infinite loop when attempting to visit `/docs/quickstart`.
-/docs/quickstart/:lang                /docs/languages/:lang/quickstart
 /docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
-/docs/tutorials/basic/:lang           /docs/languages/:lang/basics
+
+{{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
+{{ range $lang_2020_05 }}
+/docs/quickstart/{{ . }}                /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}           /docs/languages/{{ . }}/basics
+{{/* Handle links ending in .html (https://github.com/grpc/grpc.io/issues/286) */}}
+/docs/quickstart/{{ . }}.html           /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}.html      /docs/languages/{{ . }}/basics
+{{ end }}
 
 # API reference docs (prior to 2020/06)
 
 /grpc/*  https://grpc.github.io/grpc/:splat
 /grpc-*  https://grpc.github.io/grpc-:splat
-
-# API reference docs
-
-# API docs hosted on an external site other than grpc.github.io
-/docs/languages/:_/api/* ext=:_  https://:splat
-
-# API hosted on grpc.github.io using path indicated by splat
-/docs/languages/:_/api/grpc/*  https://grpc.github.io/grpc/:splat
-/docs/languages/:_/api/grpc-*  https://grpc.github.io/grpc-:splat
-
-# Base rule: API hosted on grpc.github.io
-/docs/languages/:lang/api/*  https://grpc.github.io/grpc/:lang/:splat 301!

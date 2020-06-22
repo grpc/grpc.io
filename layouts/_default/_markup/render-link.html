@@ -1,4 +1,5 @@
-{{ $isExternal := or (hasPrefix .Destination "http") (findRE "^(|../|/docs/languages/.+?/)api(/.*)?(\\?.*)?$" .Destination) -}}
+{{ $isRedirected := findRE "^(|../|/docs/languages/.+?/)(api|daily-builds)(/.*)?(\\?.*)?$" .Destination }}
+{{ $isExternal := or (hasPrefix .Destination "http") $isRedirected -}}
 <a href="{{ .Destination | safeURL }}"
   {{- with .Title }} title="{{ . }}"{{ end -}}
   {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}

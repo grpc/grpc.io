@@ -8,3 +8,4 @@ These language-specific pages are available:
 - [Basics tutorial](basics)
 - [Generated-code reference](generated-code)
 - [API reference](api)
+- [Daily builds](daily-builds)
