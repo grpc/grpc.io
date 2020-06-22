@@ -40,12 +40,12 @@ on. The service account of a GCE VM can be set or changed using
 or via
 [GCP console](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using).
 
-Google issues an ALTS credential for each service account running on the GCE VM.
-The ALTS credentials are securely located in the hypervisor. The private key of
-an ALTS credential is not accessible to the VM and the application. The session
-keys used for end-to-end encryption are exposed to the gRPC stack. Google fully
-manages the ALTS credentials, including certificate issuing, certificate
-rotation, and certification revocation.
+Google Cloud Platform issues an ALTS credential for each service account running
+on the GCE VM. The ALTS credentials are securely located in the hypervisor. The
+private key of an ALTS credential is not accessible to the VM and the
+application. The session keys used for end-to-end encryption are exposed to the
+gRPC stack. Google Cloud Platform fully manages the ALTS credentials, including
+certificate issuing, certificate rotation, and certification revocation.
 
 ### gRPC Client with ALTS Transport Security Protocol
 
@@ -207,7 +207,7 @@ conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
 
 On a successful ALTS connection, the peer information (e.g., client’s service
 account) is stored in the AltsContext. gRPC provides a utility library for
-client authorization check. Assume that the server knows the expected client
+client authorization check. Assuming that the server knows the expected client
 identity (e.g., foo@iam.gserviceaccount.com), it can run the following example
 codes to authorize the incoming RPC.
 
