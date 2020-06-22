@@ -23,5 +23,5 @@ material for all [supported languages](languages).
 
   Try one of the following:
 
-  - [Select a language](languages) and then choose a **tutorial** or **API reference**
+  - [Select a language](languages) and then choose **Tutorial** or **API reference**
   - [Guides](guides)
