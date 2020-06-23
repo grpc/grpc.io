@@ -8,11 +8,10 @@ description: >
 ### Overview
 
 Application Layer Transport Security (ALTS) is a mutual authentication and
-transport encryption system developed by Google and used for securing RPC
-communications within Google's infrastructure. ALTS is similar in concept to
-mutual TLS but has been designed and optimized to meet the needs of Google's
-production environments. For more information about ALTS and how it works, see
-the
+transport encryption system developed by Google. It is used for securing RPC
+communications within Google's infrastructure. ALTS is similar to mutual TLS
+but has been designed and optimized to meet the needs of Google's production
+environments. For more information, take a look at the
 [ALTS whitepaper](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security).
 
 ALTS is now available to all gRPC users, if the application runs on
@@ -28,14 +27,16 @@ has the following features:
 -   Minimal code changes to enable ALTS.
 
 gRPC users can configure their applications to use ALTS as a transport security
-protocol with few lines of code, simply indicating the intent of using ALTS.
-gRPC ALTS is supported in C++, Java, Go, and Python.
+protocol with few lines of code. gRPC ALTS is supported in C++, Java, Go, and
+Python.
 
 ### Identity and Key Management
 
 Using ALTS transport security protocol, the identity of the gRPC application is
 the primary service account associated with the GCE VM that the application runs
-on. The service account of a GCE VM can be set or changed using
+on. In GKE, the identity is the underlying GKE node (GCE VM)'s primary service
+account. Supporting per-pod identity is still work in progress. The service
+account of a GCE VM can be set or changed using
 [gCloud command](https://cloud.google.com/sdk/gcloud/reference/compute/instances/set-service-account)
 or via
 [GCP console](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using).
@@ -154,11 +155,11 @@ server.add_secure_port(SERVER_ADDRESS, server_creds)
 
 ### Server Authorization
 
-gRPC has built-in server authorization support using ALTS transport security. A
-gRPC client using ALTS can set the expected service accounts prior to
-establishing the ALTS connection. Then, at the end of the ALTS handshake, it is
-guaranteed that the server identity must match one of the service accounts
-specified by the client, otherwise the connection would fail.
+gRPC has built-in server authorization support using ALTS. A gRPC client using
+ALTS can set the expected service accounts prior to establishing a connection.
+Then, at the end of the handshake, it is guaranteed that the server identity
+must match one of the service accounts specified by the client, otherwise the
+connection would fail.
 
 #### C++
 
@@ -205,8 +206,10 @@ conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
 
 ### Client Authorization
 
-On a successful ALTS connection, the peer information (e.g., client’s service
-account) is stored in the AltsContext. gRPC provides a utility library for
+On a successful connection, the peer information (e.g., client’s service
+account) is stored in the
+[AltsContext](https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto).
+gRPC provides a utility library for
 client authorization check. Assuming that the server knows the expected client
 identity (e.g., foo@iam.gserviceaccount.com), it can run the following example
 codes to authorize the incoming RPC.
