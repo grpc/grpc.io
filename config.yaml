@@ -6,9 +6,9 @@ pygmentsCodeFences: true
 
 params:
   locale: en_US
-  grpc_release_tag: v1.28.1
+  grpc_release_tag: v1.30.0
   grpc_java_release_tag: v1.30.1
-  grpc_go_release_tag: v1.30.0-dev.1
+  grpc_go_release_tag: v1.30.0
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
 
