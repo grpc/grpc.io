@@ -9,6 +9,8 @@
     {{ $children = false -}}
   {{ else if hasPrefix .Params.nav_children "section" -}}
     {{ $children = .Sections -}}
+  {{ else if hasPrefix .Params.nav_children "pages" -}}
+    {{ $children = .Pages -}}
   {{ end -}}
   {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink -}}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
