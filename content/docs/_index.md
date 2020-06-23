@@ -11,8 +11,8 @@ material for all [supported languages](languages).
 
 - **New to gRPC?** Start with the following pages:
 
-  - [What is gRPC?](guides)
-  - [gRPC Concepts](guides/concepts)
+  - [Introduction to gRPC](what-is-grpc/introduction)
+  - [Core concepts, architecture and lifecycle](what-is-grpc/core-concepts)
   - [FAQ](/faq)
 
 - **Eager to see gRPC in action?**
