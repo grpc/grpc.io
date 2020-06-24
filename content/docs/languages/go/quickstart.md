@@ -22,7 +22,7 @@ weight: 10
 
       ```sh
       $ export GO111MODULE=on  # Enable module mode
-      $ go get github.com/golang/protobuf/protoc-gen-go@v1.3
+      $ go get github.com/golang/protobuf/protoc-gen-go
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugin:
@@ -126,9 +126,10 @@ Remember to save the file!
 Before you can use the new service method, you need to recompile the updated
 `.proto` file.
 
-While still in the `examples/helloworld` directory, run the following command:
+While still in the `examples/helloworld` directory, run the following commands:
 
 ```sh
+$ rm helloworld/*.pb.go  # Temporary workaround -- see note below
 $ protoc --go_out=plugins=grpc:. --go_opt=paths=source_relative helloworld/helloworld.proto
 ```
 
@@ -137,6 +138,16 @@ This will regenerate the `helloworld/helloworld.pb.go` file, which contains:
 - Code for populating, serializing, and retrieving `HelloRequest` and
   `HelloReply` message types.
 - Generated client and server code.
+
+{{< note >}}
+  We are in the process of transitioning to a [new Go protoc plugin][#3453].
+  Until the transition is complete, you need to delete the example's existing
+  `.pb.go` files before generating new ones. To track progress on this issue,
+  see [Update Go quick start #298][#298].
+
+  [#298]: https://github.com/grpc/grpc.io/issues/298
+  [#3453]: https://github.com/grpc/grpc-go/pull/3453
+{{< /note >}}
 
 ### Update and run the application
 
