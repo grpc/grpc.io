@@ -1,9 +1,11 @@
-{{ $id := "UA-60127042-1" }}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ $id }}"></script>
+{{ $cnfc_id := "UA-163836834-2" -}}
+{{ $google_id := "UA-60127042-1" -}}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $cnfc_id }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ $id }}');
+  gtag('config', '{{ $cnfc_id }}');
+  gtag('config', '{{ $google_id }}');
 </script>
