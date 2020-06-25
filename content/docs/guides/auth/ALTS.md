@@ -139,8 +139,8 @@ import (
   "google.golang.org/grpc/credentials/alts"
 )
 
-altsTC := alts.NewClientCreds(alts.DefaultClientOptions())
-conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
+altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
+server := grpc.NewServer(grpc.Creds(altsTC))
 ```
 
 #### Python
@@ -156,10 +156,10 @@ server.add_secure_port(SERVER_ADDRESS, server_creds)
 ### Server Authorization
 
 gRPC has built-in server authorization support using ALTS. A gRPC client using
-ALTS can set the expected service accounts prior to establishing a connection.
-Then, at the end of the handshake, it is guaranteed that the server identity
-must match one of the service accounts specified by the client, otherwise the
-connection would fail.
+ALTS can set the expected server service accounts prior to establishing a
+connection. Then, at the end of the handshake, server authorization guarantees
+that the server identity matches one of the service accounts specified
+by the client. Otherwise, the connection fails.
 
 #### C++
 
