@@ -15,24 +15,29 @@ weight: 10
 [USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
 
 {{< note >}}
-gRPC Java does not support running a server on an Android device. For this quick start, the Android client app will connect to a server running on your local (non-Android) computer.
+  gRPC Java does not support running a server on an Android device. For this
+  quick start, the Android client app will connect to a server running on your
+  local (non-Android) computer.
 {{< /note >}}
 
-### Download the example
+### Get the example code
 
-You'll need a local copy of the example code to work through this quick start.
-Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quick start
-and other tutorials):
+The example code is part of the [grpc-java][] repo.
 
-```sh
-# Clone the repository at the latest release to get the example code:
-$ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
-# Navigate to the Java examples:
-$ cd grpc-java/examples
-```
+ 1. [Dowload the repo as a zip file][download] and unzip it, or clone
+    the repo:
 
-### Run a gRPC application
+    ```sh
+    $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
+    ```
+
+ 2. Change to the examples directory:
+
+    ```sh
+    $ cd grpc-java/examples
+    ```
+
+### Run the example
 
  1. Compile the server:
 
@@ -44,27 +49,34 @@ $ cd grpc-java/examples
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
+    INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, compile and run the client:
+ 3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ cd android/helloworld
-    $ ../../gradlew installDebug
+    $ (cd android/helloworld; ../../gradlew installDebug)
     ```
+
+ 4. Launch the client app from your device. Enter the host and port for your
+    device -- for details, see [Connecting to the
+    server](#connecting-to-the-server) below.
 
 Congratulations! You've just run a client-server application with gRPC.
 
+{{< note >}}
+  We've omitted timestamps from the client and server trace output shown in this
+  page.
+{{< /note >}}
+
 ### Update a gRPC service
 
-Now let's look at how to update the application with an extra method on the
-server for the client to call. Our gRPC service is defined using protocol
-buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Android Java](/docs/tutorials/basic/android/). For now all you need to know is that both the
-server and the client "stub" have a `SayHello` RPC method that takes a
-`HelloRequest` parameter from the client and returns a `HelloResponse` from the
-server, and that this method is defined like this:
-
+In this section you'll update the application by adding an extra server method.
+The gRPC service is defined using [protocol buffers][pb]. To learn more about
+how to define a service in a `.proto` file see [Basics Tutorial][]. For now, all
+you need to know is that both the server and the client stub have a `SayHello()`
+RPC method that takes a `HelloRequest` parameter from the client and returns a
+`HelloReply` from the server, and that the method is defined like this:
 
 ```protobuf
 // The greeting service definition.
@@ -83,9 +95,9 @@ message HelloReply {
   string message = 1;
 }
 ```
-Let's update this so that the `Greeter` service has two methods. Edit
-`src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
-method, with the same request and response types:
+
+Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()` method
+with the same request and response types as `SayHello()`:
 
 ```protobuf
 // The greeting service definition.
@@ -109,45 +121,49 @@ message HelloReply {
 
 Remember to save the file!
 
-### Update and run the application
+### Update the app
 
-When we recompile the example, normal compilation will regenerate
-`GreeterGrpc.java`, which contains our generated gRPC client and server classes.
-This also regenerates classes for populating, serializing, and retrieving our
-request and response types.
+When you build the example, the build process regenerates `GreeterGrpc.java`,
+which contains the generated gRPC client and server classes. This also
+regenerates classes for populating, serializing, and retrieving our request and
+response types.
 
-However, we still need to implement and call the new method in the human-written
-parts of our example application.
+However, you still need to implement and call the new method in the
+hand-written parts of the example app.
 
 #### Update the server
 
-See the [Java quick start](/docs/quickstart/java/#update-the-server).
+Follow the instructions given in [Update the
+server](/docs/quickstart/java/#update-the-server) of the Java quick start page.
 
 #### Update the client
 
 In the same directory, open
-`app/src/main/java/io/grpc/helloworldexample/HelloworldActivity.java`. Call the new
+`android/helloworld/app/src/main/java/io/grpc/helloworldexample/HelloworldActivity.java`. Call the new
 method like this:
 
 ```java
 try {
-    HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
-    HelloReply reply = stub.sayHello(message);
-    reply = stub.sayHelloAgain(message);
+  channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
+  GreeterGrpc.GreeterBlockingStub stub = GreeterGrpc.newBlockingStub(channel);
+  HelloRequest request = HelloRequest.newBuilder().setName(message).build();
+  HelloReply reply = stub.sayHelloAgain(request);
+  return reply.getMessage();
 } catch (Exception e) {
-    StringWriter sw = new StringWriter();
-    PrintWriter pw = new PrintWriter(sw);
-    e.printStackTrace(pw);
-    pw.flush();
-    return "Failed... : " + System.lineSeparator() + sw;
+  StringWriter sw = new StringWriter();
+  PrintWriter pw = new PrintWriter(sw);
+  e.printStackTrace(pw);
+  pw.flush();
+  return String.format("Failed... : %n%s", sw);
 }
 ```
 
-#### Run!
+### Run the updated app
 
-Just like we did before, from the `examples` directory:
+Run the client and server like you did before. Execute the following commands
+from the `examples` directory:
 
- 1. Compile the server
+ 1. Compile the server:
 
     ```sh
     $ ./gradlew installDist
@@ -157,39 +173,46 @@ Just like we did before, from the `examples` directory:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
+    INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, compile and install the client to your device
+ 3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ cd android/helloworld
-    $ ../../gradlew installDebug
+    $ (cd android/helloworld; ../../gradlew installDebug)
     ```
 
-#### Connecting to the Hello World server via USB
+ 4. Launch the client app from your device. Enter the host and port for your
+    device -- details are given in the next section.
 
-To run the application on a physical device via USB debugging, you must
-configure USB port forwarding to allow the device to communicate with the server
-running on your computer. This is done via the `adb` command line tool as
-follows:
+### Connecting to the server
+
+#### Connecting from a virtual device
+
+Run the Hello World app on your Android Virtual Device and use the following
+values:
+
+- **Host**: `10.0.2.2`
+- **Port**: 50051
+
+#### Connecting through USB
+
+To run the app on a physical device via USB debugging, you must configure USB
+port forwarding using the `adb` command as follows:
 
 ```sh
-adb reverse tcp:8080 tcp:50051
+$ adb reverse tcp:8080 tcp:50051
 ```
 
 This sets up port forwarding from port `8080` on the device to port `50051` on
 the connected computer, which is the port that the Hello World server is
 listening on.
 
-Now you can run the Android Hello World app on your device, using `localhost`
-and `8080` as the `Host` and `Port`.
+Run the Hello World app on your Android Virtual Device and use the following
+values:
 
-#### Connecting to the Hello World server from an Android Virtual Device
-
-To run the Hello World app on an Android Virtual Device, you don't need to
-enable port forwarding. Instead, the emulator can use the IP address
-`10.0.2.2` to refer to the host machine. Inside the Android Hello World app,
-enter `10.0.2.2` and `50051` as the `Host` and `Port`.
+- **Host**: `localhost`
+- **Port**: 8080
 
 ### What's next
 
@@ -198,3 +221,8 @@ enter `10.0.2.2` and `50051` as the `Host` and `Port`.
 - Work through a more detailed tutorial in [gRPC Basics: Android Java](/docs/tutorials/basic/android/).
 - Explore the gRPC Java core API in its [reference
   documentation](/grpc-java/javadoc/).
+
+[Basics Tutorial]: /docs/languages/android/basics
+[download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
+[grpc-java]: https://github.com/grpc/grpc-java
+[pb]: https://developers.google.com/protocol-buffers
