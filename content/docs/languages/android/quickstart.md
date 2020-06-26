@@ -58,9 +58,18 @@ The example code is part of the [grpc-java][] repo.
     $ (cd android/helloworld; ../../gradlew installDebug)
     ```
 
- 4. Launch the client app from your device. Enter the host and port for your
-    device -- for details, see [Connecting to the
-    server](#connecting-to-the-server) below.
+ 4. Launch the client app from your device.
+
+ 5. In the client app, enter the server's **Host** and **Port** information. The
+    values you enter depend on the device kind (real or virtual) &mdash; for
+    details, see [Connecting to the server](#connecting-to-the-server) below.
+
+ 6. Type "Alice" in the **Message** box and click **Send**. You'll see the
+    following response:
+
+    ```nocode
+    Hello Alice
+    ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -96,30 +105,33 @@ message HelloReply {
 }
 ```
 
-Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()` method
-with the same request and response types as `SayHello()`:
+ 1. Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()`
+    method with the same request and response types as `SayHello()`:
 
-```protobuf
-// The greeting service definition.
-service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
-}
+    ```protobuf
+    // The greeting service definition.
+    service Greeter {
+      // Sends a greeting
+      rpc SayHello (HelloRequest) returns (HelloReply) {}
+      // Sends another greeting
+      rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+    }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
-}
+    // The request message containing the user's name.
+    message HelloRequest {
+      string name = 1;
+    }
 
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
-}
-```
+    // The response message containing the greetings
+    message HelloReply {
+      string message = 1;
+    }
+    ```
 
-Remember to save the file!
+ 2. Make the same change to
+    `android/helloworld/app/src/main/proto/helloworld.proto`.
+
+Remember to save the files!
 
 ### Update the app
 
@@ -138,25 +150,25 @@ server](/docs/quickstart/java/#update-the-server) of the Java quick start page.
 
 #### Update the client
 
-In the same directory, open
-`android/helloworld/app/src/main/java/io/grpc/helloworldexample/HelloworldActivity.java`. Call the new
-method like this:
+Follow these steps:
 
-```java
-try {
-  channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
-  GreeterGrpc.GreeterBlockingStub stub = GreeterGrpc.newBlockingStub(channel);
-  HelloRequest request = HelloRequest.newBuilder().setName(message).build();
-  HelloReply reply = stub.sayHelloAgain(request);
-  return reply.getMessage();
-} catch (Exception e) {
-  StringWriter sw = new StringWriter();
-  PrintWriter pw = new PrintWriter(sw);
-  e.printStackTrace(pw);
-  pw.flush();
-  return String.format("Failed... : %n%s", sw);
-}
-```
+ 1. Open `HelloworldActivity.java` from the
+    `android/helloworld/app/src/main/java/io/grpc/helloworldexample` folder.
+
+ 2. Locate the method containing the call to `sayHello()`. You'll see these
+    lines of code:
+
+    ```java
+    HelloReply reply = stub.sayHello(request);
+    return reply.getMessage();
+    ```
+
+ 3. Add a call to `sayHelloAgain()` in the `return` statement expression like
+    this:
+
+    ```java
+    return reply.getMessage() + "\n" + stub.sayHelloAgain(request).getMessage();
+    ```
 
 ### Run the updated app
 
@@ -182,8 +194,19 @@ from the `examples` directory:
     $ (cd android/helloworld; ../../gradlew installDebug)
     ```
 
- 4. Launch the client app from your device. Enter the host and port for your
-    device -- details are given in the next section.
+ 4. Launch the client app from your device.
+
+ 5. In the client app, enter the server's **Host** and **Port** information. The
+    values you enter depend on the device kind (real or virtual)  &mdash; for
+    details, see [Connecting to the server](#connecting-to-the-server) below.
+
+ 6. Type "Alice" in the **Message** box and click **Send**. You'll see the
+    following response:
+
+    ```nocode
+    Hello Alice
+    Hello again Alice
+    ```
 
 ### Connecting to the server
 
