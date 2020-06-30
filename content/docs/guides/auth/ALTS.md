@@ -14,13 +14,9 @@ but has been designed and optimized to meet the needs of Google's production
 environments. For more information, take a look at the
 [ALTS whitepaper](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security).
 
-ALTS is now available to all gRPC users, if the application runs on
-[Google Compute Engine (GCE)](https://cloud.google.com/compute/) or
-[Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine). It
-has the following features:
+ALTS in gRPC has the following features:
 
 -   Create gRPC servers & clients with ALTS as the transport security protocol.
--   Transparent identity provisioning and key management of ALTS credentials.
 -   ALTS connections are end-to-end protected with privacy and integrity.
 -   Applications can access peer information such as the peer service account.
 -   Client authorization and server authorization support.
@@ -30,23 +26,10 @@ gRPC users can configure their applications to use ALTS as a transport security
 protocol with few lines of code. gRPC ALTS is supported in C++, Java, Go, and
 Python.
 
-### Identity and Key Management
-
-Using ALTS transport security protocol, the identity of the gRPC application is
-the primary service account associated with the GCE VM that the application runs
-on. In GKE, the identity is the underlying GKE node (GCE VM)'s primary service
-account. Supporting per-pod identity is still work in progress. The service
-account of a GCE VM can be set or changed using
-[gCloud command](https://cloud.google.com/sdk/gcloud/reference/compute/instances/set-service-account)
-or via
-[GCP console](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using).
-
-Google Cloud Platform issues an ALTS credential for each service account running
-on the GCE VM. The ALTS credentials are securely located in the hypervisor. The
-private key of an ALTS credential is not accessible to the VM and the
-application. The session keys used for end-to-end encryption are exposed to the
-gRPC stack. Google Cloud Platform fully manages the ALTS credentials, including
-certificate issuing, certificate rotation, and certification revocation.
+Note that ALTS is fully functional if the application runs on
+[Google Cloud Platform](https://cloud.google.com/). ALTS could be run on any
+platforms with a pluggable
+[ALTS handshaker service](https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/handshaker.proto#L233-L243).
 
 ### gRPC Client with ALTS Transport Security Protocol
 
@@ -150,7 +133,7 @@ import grpc
 
 server = grpc.server(futures.ThreadPoolExecutor())
 server_creds = grpc.alts_server_credentials()
-server.add_secure_port(SERVER_ADDRESS, server_creds)
+server.add_secure_port(server_address, server_creds)
 ```
 
 ### Server Authorization
