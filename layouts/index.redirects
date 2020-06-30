@@ -39,6 +39,7 @@
 /docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
 /docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
 /docs/reference                           /docs/languages
+/docs/samples                             /docs/languages
 /docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
 /docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
 

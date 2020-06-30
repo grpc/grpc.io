@@ -109,10 +109,6 @@ menu:
       identifier: guides
       weight: 4
       parent: docs
-    - name: Samples
-      url: /docs/samples/
-      weight: 5
-      parent: docs
     - name: Presentations
       url: /docs/talks/
       weight: 6
