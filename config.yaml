@@ -5,6 +5,7 @@ disableKinds: [taxonomy, taxonomyTerm]
 pygmentsCodeFences: true
 
 params:
+  repo: https://github.com/grpc/grpc.io
   locale: en_US
   grpc_release_tag: v1.30.0
   grpc_java_release_tag: v1.30.1
