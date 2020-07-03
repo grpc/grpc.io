@@ -29,7 +29,7 @@ Python.
 Note that ALTS is fully functional if the application runs on
 [Google Cloud Platform](https://cloud.google.com/). ALTS could be run on any
 platforms with a pluggable
-[ALTS handshaker service](https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/handshaker.proto#L233-L243).
+[ALTS handshaker service](https://github.com/grpc/grpc/blob/7e367da22a137e2e7caeae8342c239a91434ba50/src/proto/grpc/gcp/handshaker.proto#L224-L234).
 
 ### gRPC Client with ALTS Transport Security Protocol
 
