@@ -21,6 +21,9 @@
   {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!
 {{ end -}}
 
+# Handle /docs/tutorials/basic/c(.html)?
+/docs/tutorials/basic/c*  /docs/languages/cpp/basics
+
 # C# .NET
 /docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
 
@@ -34,16 +37,16 @@
 # Redirects of the site org prior to 2020/06:
 #
 
-/docs/guides/concepts                     /docs/what-is-grpc/core-concepts
+/docs/guides/concepts*                    /docs/what-is-grpc/core-concepts
 /docs/guides/contributing                 /community
 /docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
 /docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
 /docs/reference                           /docs/languages
 /docs/samples                             /docs/languages
-/docs/tutorials/async/helloasync-cpp      /docs/languages/cpp/async
+/docs/tutorials/async/helloasync-cpp*     /docs/languages/cpp/async
 /docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
 
-/docs/reference/:lang/generated-code  /docs/languages/:lang/generated-code
+/docs/reference/:lang/generated-code*     /docs/languages/:lang/generated-code
 
 {{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
 {{ range $lang_2020_05 }}
@@ -58,3 +61,13 @@
 
 /grpc/*  https://grpc.github.io/grpc/:splat
 /grpc-*  https://grpc.github.io/grpc-:splat
+
+#
+# Old URLs from https://grpc.github.io:
+#
+
+/2017/08/22/grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
+/blog/http2_smarter_at_scale /blog/http2-smarter-at-scale
+/blog/loadbalancing  /blog/grpc-load-balancing
+/blog/vendastagrpc   /blog/vendasta
+/docs/guides/wire*   https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
