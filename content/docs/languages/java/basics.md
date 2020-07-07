@@ -41,7 +41,7 @@ $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-
 Then change your current directory to `grpc-java/examples`:
 
 ```sh
-$ cd grpc-java/examples/routeguide
+$ cd grpc-java/examples
 ```
 
 ### Defining the service

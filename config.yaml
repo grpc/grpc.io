@@ -5,11 +5,15 @@ disableKinds: [taxonomy, taxonomyTerm]
 pygmentsCodeFences: true
 
 params:
+  repo: https://github.com/grpc/grpc.io
   locale: en_US
-  grpc_release_tag: v1.28.1
-  grpc_java_release_tag: v1.30.0
+  grpc_release_tag: v1.30.0
+  grpc_java_release_tag: v1.30.1
+  grpc_go_release_tag: v1.30.0
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
+
+  show_banner: true
 
   social:
     gitter: https://gitter.im/grpc/grpc
@@ -81,9 +85,6 @@ menu:
     - name: Community
       url: /community
       weight: 5
-    - name: Packages
-      url: https://packages.grpc.io
-      weight: 6
     - name: Overview
       url: /docs
       weight: 1
@@ -108,10 +109,6 @@ menu:
       url: /docs/guides
       identifier: guides
       weight: 4
-      parent: docs
-    - name: Samples
-      url: /docs/samples/
-      weight: 5
       parent: docs
     - name: Presentations
       url: /docs/talks/

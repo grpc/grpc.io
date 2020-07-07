@@ -8,7 +8,7 @@ The following pages cover the C# implementation of gRPC for .NET
 
 - [Introduction to gRPC on .NET Core](https://docs.microsoft.com/aspnet/core/grpc)
 - [Tutorial: Create a gRPC client and server in ASP.NET Core][tutorial]
-- [API reference](../api/grpc/csharp-dotnet/api/Grpc.Core)
+- [API reference](api)
 
 Several sample applications are available from the [examples][] folder in the
 [grpc-dotnet][] repository.

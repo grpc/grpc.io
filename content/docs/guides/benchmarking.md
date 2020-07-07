@@ -1,7 +1,9 @@
 ---
 title: Benchmarking
-description: |
-  gRPC is designed to support high-performance open-source RPCs in many languages. This document describes the performance benchmarking tools, the scenarios considered by the tests, and the testing infrastructure.
+description: >-
+  gRPC is designed to support high-performance open-source RPCs in many
+  languages. This page describes performance benchmarking tools, scenarios
+  considered by tests, and the testing infrastructure.
 ---
 
 ### Overview
@@ -16,6 +18,13 @@ visualization.
   * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528)
   * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
   * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
+
+{{< note >}}
+  Are you seeing "**no data available**" messages in the performance dashboard?
+  This is a known issue, see [grpc/grpc#23297][].
+
+  [grpc/grpc#23297]: https://github.com/grpc/grpc/issues/23297
+{{< /note >}}
 
 ### Performance testing design
 
@@ -93,5 +102,3 @@ Most test instances are 8-core systems, and these are used for both
 latency and QPS measurement. For C++ and Java, we additionally support
 QPS testing on 32-core systems. All QPS tests use 2 identical client machines
 for each server, to make sure that QPS measurement is not client-limited.
-
-

@@ -1,10 +1,11 @@
 ---
 title: Ruby
-api_path: rubydoc.info/gems/grpc?ext=1
+api_path: https://rubydoc.info/gems/grpc
 ---
 
 These language-specific pages are available:
 
 - [Quick start](quickstart)
 - [Basics tutorial](basics)
-- [API reference](api/{{< param api_path >}})
+- [API reference](api)
+- [Daily builds](daily-builds)

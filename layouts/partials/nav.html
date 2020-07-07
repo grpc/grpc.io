@@ -9,6 +9,8 @@
     {{ $children = false -}}
   {{ else if hasPrefix .Params.nav_children "section" -}}
     {{ $children = .Sections -}}
+  {{ else if hasPrefix .Params.nav_children "pages" -}}
+    {{ $children = .Pages -}}
   {{ end -}}
   {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink -}}
   <div class="nav-section" x-data="{ open: {{ $isThisSection }} }">
@@ -58,14 +60,10 @@
           <ul class="nav-section-links" x-show="open">
             {{ range $children -}}
               {{ $isActive := eq $here .RelPermalink -}}
-              {{ $isApi :=  findRE "^/docs/languages/.+?/api(/.*)?(\\?.*)?$" .RelPermalink -}}
-              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isApi -}}
-              {{ $href := .RelPermalink -}}
-              {{ if and $isApi .Parent.Params.api_path -}}
-                {{ $href = printf "%s%s" $href .Parent.Params.api_path -}}
-              {{ end -}}
+              {{ $isRedirected :=  findRE "^/docs/languages/.+?/(api|daily-builds)(/.*)?$" .RelPermalink -}}
+              {{ $isExternal := or (hasPrefix .RelPermalink "http") $isRedirected -}}
               <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
-                <a href="{{ $href }}"
+                <a href="{{ .RelPermalink }}"
                   {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
                 >
                   {{- .Params.short | default .Title -}}

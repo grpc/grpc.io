@@ -1,0 +1,17 @@
+{{ if site.Params.show_banner -}}
+<div class="hero-head">
+  <div class="notification is-warning has-text-centered">
+    <p>
+      <a href="https://events.linuxfoundation.org/grpc-conf/register/" target="_blank" rel="noopener">
+        Register now
+        {{- partial "external-link.html" -}}
+      </a>
+      for the all virtual
+      <a href="https://events.linuxfoundation.org/grpc-conf" target="_blank" rel="noopener">
+        <strong>gRPC Conf 2020</strong>
+        {{- partial "external-link.html" -}}
+      </a>, July 27-28!
+    </p>
+  </div>
+</div>
+{{ end -}}
