@@ -3,7 +3,7 @@ information about features on their route, create a summary of their route, and
 exchange route information such as traffic updates with the server and other
 clients.
 
-With gRPC we can define our service once in a `.proto` file and implement clients
+With gRPC we can define our service once in a `.proto` file and generate clients
 and servers in any of gRPC's supported languages, which in turn can be run in
 environments ranging from servers inside a large data center to your own tablet —
 all the complexity of communication between different languages and environments is
