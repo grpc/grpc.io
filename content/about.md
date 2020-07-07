@@ -35,16 +35,13 @@ Check out what people are saying below.
 
 ## The story behind gRPC
 
-Google has been using a single general-purpose RPC infrastructure called Stubby
-to connect the large number of microservices running within and across our data
-centers for over a decade. Our internal systems have long embraced the
-microservice architecture gaining popularity today. Stubby has powered all of
-Google’s microservices interconnect for over a decade and is the RPC backbone
-behind every Google service that you use today. In March 2015, we decided to
-build the next version of Stubby in the open so we can share our learnings with
-the industry and collaborate with them to build the next version of Stubby both
-for microservices inside and outside Google but also for last mile of computing
-(mobile, web and IOT).
+gRPC was initially created by Google, which has used a single general-purpose
+RPC infrastructure called **Stubby** to connect the large number of microservices
+running within and across its data centers for over a decade. In March 2015,
+Google decided to build the next version of Stubby and make it open source. The
+result was gRPC, which is now used in a great many organizations outside of
+Google to power use cases from microservices to the "last mile" of computing
+(mobile, web, and Internet of Things).
 
 For more background on why we created gRPC, see the [gRPC Motivation and Design
 Principles](/blog/principles) on the [gRPC blog](/blog).
