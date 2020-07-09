@@ -6,8 +6,21 @@ weight: 10
 
 ### Prerequisites
 
-- JDK version 7 or higher
+- [JDK][] version 7 or higher
 - Android SDK, API level 14 or higher
+
+   1. Install [Android Studio][] or the Android [command-line tools][].
+
+      [Android Studio]: https://developer.android.com/studio/index.html#downloads
+      [command-line tools]: https://developer.android.com/studio/index.html#command-tools
+
+   2. Let other tools and scripts know where to find your Android SDK by setting
+      the following environment variable:
+
+      ```sh
+      $ export ANDROID_HOME="<path-to-your-android-sdk>"
+      ```
+
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
@@ -248,4 +261,5 @@ values:
 [Basics Tutorial]: /docs/languages/android/basics
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
+[JDK]: https://jdk.java.net
 [pb]: https://developers.google.com/protocol-buffers
