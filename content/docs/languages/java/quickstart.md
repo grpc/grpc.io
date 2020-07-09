@@ -6,7 +6,7 @@ weight: 10
 
 ### Prerequisites
 
-- JDK version 7 or higher
+- [JDK][] version 7 or higher
 
 ### Get the example code
 
@@ -210,4 +210,5 @@ from the `examples` directory:
 [Basics Tutorial]: /docs/languages/java/basics
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
+[JDK]: https://jdk.java.net
 [pb]: https://developers.google.com/protocol-buffers
