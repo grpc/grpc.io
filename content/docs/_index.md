@@ -5,10 +5,6 @@ title: Documentation
 Learn about key gRPC concepts, try a quick start, find tutorials and reference
 material for all [supported languages](languages).
 
-<style>
-  div > ul > li { padding-top: 1em !important; }
-</style>
-
 - **New to gRPC?** Start with the following pages:
 
   - [Introduction to gRPC](what-is-grpc/introduction)
