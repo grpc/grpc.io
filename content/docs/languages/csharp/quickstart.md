@@ -241,5 +241,5 @@ Just like we did before, from the `examples/csharp/Helloworld` directory:
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: C#](/docs/tutorials/basic/csharp/).
+- Work through the [Basics Tutorial](../basics).
 - Explore the [API reference](../api).

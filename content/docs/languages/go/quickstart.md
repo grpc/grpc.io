@@ -213,7 +213,7 @@ from the `examples/helloworld` directory:
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Go](/docs/tutorials/basic/go/).
+- Work through the [Basics Tutorial](../basics).
 - Explore the [API reference](../api).
 
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip

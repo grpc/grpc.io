@@ -437,5 +437,5 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: PHP](/docs/tutorials/basic/php/).
+- Work through the [Basics Tutorial](../basics).
 - Explore the [API reference](../api).

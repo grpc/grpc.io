@@ -203,7 +203,7 @@ from the `examples` directory:
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Java](/docs/tutorials/basic/java/).
+- Work through the [Basics Tutorial](../basics).
 - Explore the [API reference](../api).
 
 [Basics Tutorial]: /docs/languages/java/basics

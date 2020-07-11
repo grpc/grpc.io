@@ -193,7 +193,7 @@ from the `examples` directory:
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin/).
+- Work through the [Basics Tutorial](../basics).
 - Explore the [API reference](../api).
 
 [Kotlin]: https://kotlinlang.org
