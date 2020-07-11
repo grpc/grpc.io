@@ -35,7 +35,7 @@ weight: 10
 
 The example code is part of the [grpc-go][] repo.
 
- 1. [Dowload the repo as a zip file][download] and unzip it, or clone
+ 1. [Download the repo as a zip file][download] and unzip it, or clone
     the repo:
 
     ```sh
@@ -96,7 +96,7 @@ message HelloReply {
 }
 ```
 
-Edit `helloworld/helloworld.proto` and add a new `SayHelloAgain()` method, with
+Open `helloworld/helloworld.proto` and add a new `SayHelloAgain()` method, with
 the same request and response types:
 
 ```protobuf

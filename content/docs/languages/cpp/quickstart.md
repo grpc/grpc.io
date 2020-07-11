@@ -196,7 +196,7 @@ message HelloReply {
 }
 ```
 
-Edit [examples/protos/helloworld.proto][] and add a new `SayHelloAgain()` method, with the
+Open [examples/protos/helloworld.proto][] and add a new `SayHelloAgain()` method, with the
 same request and response types:
 
 ```protobuf
