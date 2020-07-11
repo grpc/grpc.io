@@ -224,12 +224,12 @@ issue][issue] over the [grpc-dart][] repo.
 ### What's next
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
+  and [Core concepts](/docs/what-is-grpc/core-concepts).
+- Work through the [Basics Tutorial][].
 - Explore the [API reference](../api).
 
 [Dart]: https://dart.dev
-[Basics Tutorial]: https://grpc.io/docs/languages/dart/basics
+[Basics Tutorial]: ../basics
 [download]: https://github.com/grpc/grpc-dart/archive/master.zip
 [Flutter]: https://flutter.dev
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
