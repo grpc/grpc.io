@@ -6,66 +6,56 @@ weight: 10
 
 ### Prerequisites
 
-- Dart SDK version 2.2 or higher. For installation instructions, see [Install
-  Dart](https://dart.dev/install).
+- **[Dart][]** version 2.2 or higher, through the Dart or [Flutter][] SDKs
+
+  For installation instructions, see [Install Dart][] or [Install Flutter][].
+
+- **[Protocol buffer][pb] compiler**, `protoc`, [version 3][proto3]
+
+  For installation instructions, see [Protocol Buffer Compiler
+  Installation][pbc-install].
+
+- **Dart plugin** for the protocol compiler:
+
+   1. Install the protocol compiler plugin for Dart (`protoc-gen-dart`) using
+      the following command:
+
+      ```sh
+      $ pub global activate protoc_plugin
+      ```
+
+   2. Update your `PATH` so that the `protoc` compiler can find the plugin:
+
+      ```sh
+      $ export PATH="$PATH:$HOME/.pub-cache/bin"
+      ```
 
 {{< note >}}
   Dart gRPC supports the Flutter and Server platforms.
 {{< /note >}}
 
-#### Protocol Buffers v3
+### Get the example code
 
-While not mandatory, gRPC applications usually leverage [Protocol Buffers
-v3][pbv3] for service definitions and data serialization, and the example code
-uses Protocol Buffers.
+The example code is part of the [grpc-dart][] repo.
 
-- macOS:
+ 1. [Download the repo as a zip file][download] and unzip it, or clone
+    the repo:
 
-  ```sh
-  $ brew install protobuf
-  ```
+    ```sh
+    $ git clone https://github.com/grpc/grpc-dart
+    ```
 
-- Any OS:
+ 2. Change to the quick start example directory:
 
-   1. Download a zip file of the latest version of pre-compiled binaries for
-      your operating system from [github.com/google/protobuf/releases][]
-      (`protoc-<version>-<os>.zip`).
-   2. Unzip the file.
-   3. Update your environment's path variable to include the path to the
-      `protoc` executable.
+    ```sh
+    $ cd grpc-dart/examples/helloworld
+    ```
 
-Next, install the `protoc` plugin for Dart
-
-```sh
-$ pub global activate protoc_plugin
-```
-
-The compiler plugin, `protoc-gen-dart`, is installed in `$HOME/.pub-cache/bin`.
-It must be in your `PATH` for the protocol compiler, protoc, to find it.
-
-```sh
-$ export PATH=$PATH:$HOME/.pub-cache/bin
-```
-
-### Download the example
-
-You'll need a local copy of the example code to work through this quick start.
-Download the example code from our GitHub repository (the following command
-clones the entire repository, but you just need the examples for this quick start
-and other tutorials):
-
-```sh
-# Clone the repository at the latest release to get the example code:
-$ git clone https://github.com/grpc/grpc-dart
-# Navigate to the "Hello World" Dart example:
-$ cd grpc-dart/example/helloworld
-```
-
-### Run a gRPC application
+### Run the example
 
 From the `example/helloworld` directory:
 
- 1. Download package dependencies
+ 1. Download package dependencies:
 
     ```sh
     $ pub get
@@ -81,21 +71,20 @@ From the `example/helloworld` directory:
 
     ```sh
     $ dart bin/client.dart
+    Greeter client received: Hello, world!
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
 
-### Update a gRPC service
 
-In this section you'll update the application with an extra server method.
-The gRPC service is defined using protocol buffers.
-To learn more about how to define a service in a `.proto`
-file see [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
-For now, all you need to know is that both the
-server and the client "stub" have a `SayHello()` RPC method that takes a
-`HelloRequest` parameter from the client and returns a `HelloReply` from the
-server, and that this method is defined like this:
+### Update the app
 
+In this section you'll update the app to make use of an extra server method. The
+gRPC service is defined using [protocol buffers][pb]. To learn more about how to
+define a service in a `.proto` file, see [Basics Tutorial][]. For now, all you
+need to know is that both the server and the client stub have a `SayHello()` RPC
+method that takes a `HelloRequest` parameter from the client and returns a
+`HelloReply` from the server, and that the method is defined like this:
 
 ```protobuf
 // The greeting service definition.
@@ -115,7 +104,9 @@ message HelloReply {
 }
 ```
 
-Edit `protos/helloworld.proto` and add a new `SayHelloAgain()` method, with the
+#### Update the gRPC service
+
+Open `protos/helloworld.proto` and add a new `SayHelloAgain()` method, with the
 same request and response types:
 
 ```protobuf
@@ -140,12 +131,10 @@ message HelloReply {
 
 Remember to save the file!
 
-### Generate gRPC code
+#### Regenerate gRPC code
 
 Before you can use the new service method, you need to recompile the updated
-proto file.
-
-From the `example/helloworld` directory, run:
+proto file. From the `example/helloworld` directory, run the following command:
 
 ```sh
 $ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
@@ -154,15 +143,12 @@ $ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 You'll find the regenerated request and response classes, and client and server
 classes in the `lib/src/generated` directory.
 
-### Update and run the application
-
-You have new generated server and client code, but you still need to implement
-and call the new method in the human-written parts of our example application.
+Now implement and call the new RPC in the server and client code, respectively.
 
 #### Update the server
 
-In the same directory, open `bin/server.dart`. Add the following
-`sayHelloAgain()` method to the `GreeterService` class:
+Open `bin/server.dart` and add the following `sayHelloAgain()` method to the
+`GreeterService` class:
 
 ```dart
 class GreeterService extends GreeterServiceBase {
@@ -205,7 +191,7 @@ Future<void> main(List<String> args) async {
 }
 ```
 
-#### Run!
+### Run the updated app
 
 Run the client and server like you did before. Execute the following commands
 from the `example/helloworld` directory:
@@ -230,20 +216,27 @@ from the `example/helloworld` directory:
     Greeter client received: Hello again, Alice!
     ```
 
+### Contributing
+
+If you experience problems with Dart gRPC or have a feature request, [create an
+issue][issue] over the [grpc-dart][] repo.
+
 ### What's next
 
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Dart](/docs/tutorials/basic/dart/).
-- Explore the [Dart gRPC API reference][].
+- Explore the [API reference](../api).
 
-[Dart gRPC API reference]: https://pub.dev/documentation/grpc
-
-### Reporting issues
-
-If you find a problem with Dart gRPC, please [file an issue][new issue]
-in our issue tracker.
-
+[Dart]: https://dart.dev
+[Basics Tutorial]: https://grpc.io/docs/languages/dart/basics
+[download]: https://github.com/grpc/grpc-dart/archive/master.zip
+[Flutter]: https://flutter.dev
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
-[new issue]: https://github.com/grpc/grpc-dart/issues/new
-[pbv3]: https://developers.google.com/protocol-buffers/docs/proto3
+[grpc-dart]: https://github.com/grpc/grpc-dart
+[Install Dart]: https://dart.dev/install
+[Install Flutter]: https://flutter.dev/docs/get-started/install
+[issue]: https://github.com/grpc/grpc-dart/issues/new
+[pb]: https://developers.google.com/protocol-buffers
+[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[pbc-install]: /docs/protoc-installation
