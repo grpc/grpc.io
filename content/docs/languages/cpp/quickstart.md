@@ -354,8 +354,7 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts).
 - Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/cpp).
-- Explore the gRPC C++ core API in its [reference
-  documentation](/grpc/cpp).
+- Explore the [API reference](../api).
 
 [examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases

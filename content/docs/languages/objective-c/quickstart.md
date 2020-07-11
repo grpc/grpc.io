@@ -314,5 +314,4 @@ Cannot find `protoc` when building HelloWorld
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Objective-C](/docs/tutorials/basic/objective-c/).
-- Explore the Objective-C core API in its [reference
-  documentation](http://cocoadocs.org/docsets/gRPC/).
+- Explore the [API reference](../api).

@@ -255,8 +255,7 @@ values:
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Android Java](/docs/tutorials/basic/android/).
-- Explore the gRPC Java core API in its [reference
-  documentation](/grpc-java/javadoc/).
+- Explore the [API reference](../api).
 
 [Basics Tutorial]: /docs/languages/android/basics
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip

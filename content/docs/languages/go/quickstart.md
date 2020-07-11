@@ -214,8 +214,7 @@ from the `examples/helloworld` directory:
 - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [gRPC Concepts](/docs/guides/concepts/).
 - Work through a more detailed tutorial in [gRPC Basics: Go](/docs/tutorials/basic/go/).
-- Explore the gRPC Go core API in its [reference
-  documentation](https://godoc.org/google.golang.org/grpc).
+- Explore the [API reference](../api).
 
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
