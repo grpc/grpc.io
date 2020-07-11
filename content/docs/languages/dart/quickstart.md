@@ -223,7 +223,7 @@ issue][issue] over the [grpc-dart][] repo.
 
 ### What's next
 
-- Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
   and [Core concepts](/docs/what-is-grpc/core-concepts).
 - Work through the [Basics Tutorial][].
 - Explore the [API reference](../api).

@@ -161,8 +161,11 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 ### What's next
 
- - Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-   and [gRPC Concepts](/docs/guides/concepts/).
- - Work through the [Basics Tutorial](../basics).
- - Explore the [API reference](../api).
- - We do have more than one grpc implementation for nodejs. [Learn about the pros and cons of each here](https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
+  and [Core concepts](/docs/what-is-grpc/core-concepts).
+- Work through the [Basics Tutorial](../basics).
+- Explore the [API reference](../api).
+- We have more than one grpc implementation for Node. For the pros and cons of
+  each package, see this [package feature comparison][].
+
+[package feature comparison]: https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md
