@@ -211,11 +211,10 @@ from the `examples/helloworld` directory:
 
 ### What's next
 
-- Read a full explanation of how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [gRPC Concepts](/docs/guides/concepts/).
-- Work through a more detailed tutorial in [gRPC Basics: Go](/docs/tutorials/basic/go/).
-- Explore the gRPC Go core API in its [reference
-  documentation](https://godoc.org/google.golang.org/grpc).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
+  and [Core concepts](/docs/what-is-grpc/core-concepts).
+- Work through the [Basics Tutorial](../basics).
+- Explore the [API reference](../api).
 
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
