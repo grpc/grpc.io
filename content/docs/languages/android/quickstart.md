@@ -231,7 +231,7 @@ values:
 - **Host**: `10.0.2.2`
 - **Port**: 50051
 
-#### Connecting through USB
+#### Connecting from a physical device
 
 To run the app on a physical device via USB debugging, you must configure USB
 port forwarding using the `adb` command as follows:
@@ -244,8 +244,7 @@ This sets up port forwarding from port `8080` on the device to port `50051` on
 the connected computer, which is the port that the Hello World server is
 listening on.
 
-Run the Hello World app on your Android Virtual Device and use the following
-values:
+In the app, use the following values:
 
 - **Host**: `localhost`
 - **Port**: 8080
