@@ -2,6 +2,7 @@
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Node.
 weight: 50
+spelling: cSpell:ignore Protobuf oneofs COORD
 ---
 
 This tutorial provides a basic Node.js programmer's introduction
@@ -201,7 +202,7 @@ As you can see, our server has a `Server` constructor generated from the
 var Server = new grpc.Server();
 ```
 In this case we're implementing the *asynchronous* version of `RouteGuide`,
-which provides our default gRPC server behaviour.
+which provides our default gRPC server behavior.
 
 The functions in `route_guide_server.js` implement all our service methods.
 Let's look at the simplest type first, `getFeature`, which just gets a `Point`
@@ -431,7 +432,7 @@ get a `Readable` stream object back. The client can use the `Readable`'s
 callback will not cause the stream to be closed. The `'error'` event
 indicates that an error has occurred and the stream has been closed. The
 `'end'` event indicates that the server has finished sending and no errors
-occured. Only one of `'error'` or `'end'` will be emitted. Finally, the
+occurred. Only one of `'error'` or `'end'` will be emitted. Finally, the
 `'status'` event fires when the server sends the status.
 
 The client-side streaming method `RecordRoute` is similar, except there we pass
