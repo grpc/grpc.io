@@ -2,6 +2,7 @@
 title: Quick Start
 description: This guide gets you started with gRPC in Dart with a simple working example.
 weight: 10
+spelling: cSpell:ignore Iprotos
 ---
 
 ### Prerequisites
@@ -48,7 +49,7 @@ The example code is part of the [grpc-dart][] repo.
  2. Change to the quick start example directory:
 
     ```sh
-    $ cd grpc-dart/examples/helloworld
+    $ cd grpc-dart/example/helloworld
     ```
 
 ### Run the example

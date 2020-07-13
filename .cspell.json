@@ -1,17 +1,20 @@
 {
-  "version": "0.1",
-  "language": "en",
-  // Workspace dictionary:
-  "words": [
-    "protoc",
-    "RPCs"
-  ],
-  "flagWords": [],
-  "ignoreWords": [
-    "codegen",
-    "grpc",
-    "proto",
-    "protos",
-    "routeguide"
-  ]
+    "version": "0.1",
+    "language": "en",
+    // Workspace dictionary:
+    "words": [
+        "protoc",
+        "RPCs",
+        "SDKs"
+    ],
+    "flagWords": [],
+    "ignoreWords": [
+        "codegen",
+        "grpc",
+        "helloworld",
+        "proto",
+        "protobuf",
+        "protos",
+        "routeguide"
+    ]
 }
