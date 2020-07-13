@@ -507,7 +507,7 @@ write in any order — the streams operate completely independently.
 Work from the example directory:
 
 ```sh
-$ cd examples/route_guide
+$ cd example/route_guide
 ```
 
 Get packages:
