@@ -97,14 +97,6 @@ menu:
       url: /docs/languages
       weight: 2
       parent: docs
-    - name: Quick Start
-      url: /docs/quickstart/
-      weight: 2
-      parent: docs
-    - name: Tutorials
-      url: /docs/tutorials/
-      weight: 3
-      parent: docs
     - name: Guides
       url: /docs/guides
       identifier: guides
