@@ -1,8 +1,8 @@
-{{ define "title" }}
-The gRPC Blog &ndash; {{ .Title }}
-{{ end }}
+{{ define "title" -}}
+{{ .Title }} &ndash; {{ site.Title -}}
+{{ end -}}
 
-{{ define "main" }}
+{{ define "main" -}}
 {{ partial "blog/hero.html" . }}
-{{ partial "blog/article.html" . }}
-{{ end }}
+{{ partial "blog/article.html" . -}}
+{{ end -}}

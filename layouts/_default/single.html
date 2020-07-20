@@ -1,9 +1,9 @@
-{{ define "title" }}
-{{ site.Title }} &ndash; {{ .Title }}
-{{ end }}
+{{ define "title" -}}
+{{ .Title }} &ndash; {{ site.Title -}}
+{{ end -}}
 
-{{ define "main" }}
-{{ partial "hero.html" . }}
+{{ define "main" -}}
+{{ partial "hero.html" . -}}
 
 <section class="section">
   <div class="container">
@@ -18,4 +18,4 @@
     </div>
   </div>
 </section>
-{{ end }}
+{{ end -}}
