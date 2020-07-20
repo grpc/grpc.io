@@ -3,6 +3,7 @@
     "language": "en",
     // Workspace dictionary:
     "words": [
+        "printf",
         "protoc",
         "RPCs",
         "SDKs"

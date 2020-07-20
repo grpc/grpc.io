@@ -1,3 +1,3 @@
 ---
-title: The gRPC Blog
+title: gRPC Blog
 ---

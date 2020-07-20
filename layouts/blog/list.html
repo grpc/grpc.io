@@ -1,8 +1,8 @@
-{{ define "title" }}
-{{ site.Title }} &ndash; {{ .Title }}
-{{ end }}
+{{ define "title" -}}
+{{ .Title }} | {{ site.Title -}}
+{{ end -}}
 
-{{ define "main" }}
+{{ define "main" -}}
 {{ partial "blog/list-hero.html" . }}
-{{ partial "blog/posts.html" . }}
-{{ end }}
+{{ partial "blog/posts.html" . -}}
+{{ end -}}
