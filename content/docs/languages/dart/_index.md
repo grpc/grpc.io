@@ -1,4 +1,5 @@
 ---
+date: 2020-06-19
 title: Dart
 api_path: https://pub.dev/documentation/grpc
 ---

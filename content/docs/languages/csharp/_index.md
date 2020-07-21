@@ -1,4 +1,5 @@
 ---
+date: 2020-06-19
 title: C# / .NET
 api_path: grpc/LANG/api/Grpc.Core
 ---

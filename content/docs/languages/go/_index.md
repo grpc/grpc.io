@@ -1,4 +1,5 @@
 ---
+date: 2020-06-19
 title: Go
 api_path: https://pkg.go.dev/google.golang.org/grpc
 ---

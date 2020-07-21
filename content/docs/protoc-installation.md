@@ -1,4 +1,5 @@
 ---
+date: 2020-05-21
 title: Protocol Buffer Compiler Installation
 short: Protoc Installation
 description: How to install the protocol buffer compiler.

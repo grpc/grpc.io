@@ -1,4 +1,5 @@
 ---
+date: 2020-05-29
 title: Core concepts, architecture and lifecycle
 short: Core concepts
 description: >-

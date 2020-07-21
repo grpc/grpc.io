@@ -1,4 +1,5 @@
 ---
+date: 2020-06-11
 title: Go Generated-code Reference
 short: Generated Code
 weight: 80

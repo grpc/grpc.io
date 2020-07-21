@@ -1,4 +1,5 @@
 ---
+date: 2020-07-02
 title: Authentication
 description: >
   An overview of gRPC authentication, including built-in auth mechanisms, and

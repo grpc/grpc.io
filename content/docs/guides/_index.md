@@ -1,4 +1,5 @@
 ---
+date: 2020-06-23
 title: Guides
 description: Task-oriented walkthroughs of common use cases
 weight: 4

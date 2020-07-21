@@ -1,4 +1,5 @@
 ---
+date: 2020-07-07
 title: Benchmarking
 description: >-
   gRPC is designed to support high-performance open-source RPCs in many

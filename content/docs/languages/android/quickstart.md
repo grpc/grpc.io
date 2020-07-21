@@ -1,4 +1,5 @@
 ---
+date: 2020-07-13
 title: Quick Start
 description: This guide gets you started with gRPC in Android Java with a simple working example.
 weight: 10

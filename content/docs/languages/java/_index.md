@@ -1,4 +1,5 @@
 ---
+date: 2020-06-19
 title: Java
 api_path: grpc-java/javadoc
 ---
