@@ -7,7 +7,7 @@ weight: 10
 ### Prerequisites
 
 - [JDK][] version 7 or higher
-- Android SDK, API level 14 or higher
+- Android SDK, API level 16 or higher
 
    1. Install [Android Studio][] or the Android [command-line tools][].
 
