@@ -18,7 +18,7 @@
   compilers: [Go 1.12+]
 - language: Java
   platforms: [Windows, Linux, Mac]
-  compilers: [JDK 8 recommended (Gingerbread+ for Android)]
+  compilers: [JDK 8 recommended (Jelly Bean+ for Android)]
 - language: Kotlin/JVM
   platforms: [Windows, Linux, Mac]
   compilers: [Kotlin 1.3+]
