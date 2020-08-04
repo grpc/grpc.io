@@ -129,7 +129,7 @@ Before you can use the new service method, you need to recompile the updated
 While still in the `examples/helloworld` directory, run the following commands:
 
 ```sh
-$ ( cd ../../cmd/protoc-gen-go-grpc && go install . )
+$ ( cd ../../cmd/protoc-gen-go-grpc && go install . ) && cd -
 $ protoc \
   --go_out=Mgrpc/service_config/service_config.proto=/internal/proto/grpc_service_config:. \
   --go-grpc_out=Mgrpc/service_config/service_config.proto=/internal/proto/grpc_service_config:. \
