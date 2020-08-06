@@ -2,6 +2,7 @@
 title: Python Generated-code Reference
 short: Generated Code
 weight: 80
+spelling: cSpell:ignore docstrings
 ---
 
 ## Introduction
@@ -10,13 +11,13 @@ gRPC Python relies on the protocol buffers compiler (`protoc`) to generate
 code.  It uses a plugin to supplement the generated code by plain `protoc`
 with gRPC-specific code.  For a `.proto` service description containing
 gRPC services, the plain `protoc` generated code is synthesized in
-a `_pb2.py` file, and the gRPC-specifc code lands in a `_grpc_pb2.py` file.
-The latter python module imports the former.  In this guide, we focus
+a `_pb2.py` file, and the gRPC-specific code lands in a `_pb2_grpc.py` file.
+The latter python module imports the former.  The focus of this page is
 on the gRPC-specific subset of the generated code.
 
-## Illustrative Example
+## Example
 
-Let's look at the following `FortuneTeller` proto service:
+Consider the following `FortuneTeller` proto service:
 
 ```proto
 service FortuneTeller {
@@ -32,8 +33,8 @@ service FortuneTeller {
 }
 ```
 
-gRPC `protoc` plugin will synthesize code elements along the lines
-of what follows in the corresponding `_pb2_grpc.py` file:
+When compiled, the gRPC `protoc` plugin generates code similar to the following
+`_pb2_grpc.py` file:
 
 
 ```python
@@ -102,7 +103,7 @@ def add_FortuneTellerServicer_to_server(servicer, server):
 ## Code Elements
 
 The gRPC generated code starts by importing the `grpc` package and the plain
-`_pb2` module, synthesized by `protoc`, which defines non-gRPC-specifc code
+`_pb2` module, synthesized by `protoc`, which defines non-gRPC-specific code
 elements, like the classes corresponding to protocol buffers messages and
 descriptors used by reflection.
 
@@ -120,10 +121,10 @@ generated:
 ### Stub
 
 The generated `Stub` class is used by the gRPC clients.  It
-will have a constructor that takes a `grpc.Channel` object and initializes the
+has a constructor that takes a `grpc.Channel` object and initializes the
 stub.  For each method in the service, the initializer adds a corresponding
 attribute to the stub object with the same name.  Depending on the RPC type
-(*i.e.* unary or streaming), the value of that attribute will be callable
+(unary or streaming), the value of that attribute will be callable
 objects of type
 [UnaryUnaryMultiCallable](/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable),
 [UnaryStreamMultiCallable](/grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable),
@@ -133,21 +134,21 @@ or
 
 ### Servicer
 
-For each service, a `Servicer` class is generated.  This
-class is intended to serve as the superclass of a service implementation.  For
+For each service, a `Servicer` class is generated, which
+serves as the superclass of a service implementation.  For
 each method in the service, a corresponding function in the `Servicer` class
-will be synthesized which is intended to be overriden in the actual service
+is generated. Override this function with the service
 implementation.  Comments associated with code elements
-in the `.proto` file will be transferred over as docstrings in
+in the `.proto` file appear as docstrings in
 the generated python code.
 
 ### Registration Function
 
-For each service, a function will be
+For each service, a function is
 generated that registers a `Servicer` object implementing it on a `grpc.Server`
-object, so that the server would be able to appropriately route the queries to
+object, so that the server can route queries to
 the respective servicer.  This function takes an object that implements the
 `Servicer`, typically an instance of a subclass of the generated `Servicer`
 code element described above, and a
-[`grpc.Server`](/grpc/python/_modules/grpc.html#Server)
+[grpc.Server](/grpc/python/_modules/grpc.html#Server)
 object.
