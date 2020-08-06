@@ -33,8 +33,8 @@ service FortuneTeller {
 }
 ```
 
-When compiled, the gRPC `protoc` plugin generates code similar to the following
-`_pb2_grpc.py` file:
+When the service is compiled, the gRPC `protoc` plugin generates code similar to
+the following `_pb2_grpc.py` file:
 
 
 ```python
