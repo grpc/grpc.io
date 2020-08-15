@@ -1,6 +1,6 @@
 ---
 title: PHP
-api_path: grpc/LANG/namespace-Grpc
+api_path: grpc/LANG/namespace_grpc
 ---
 
 These language-specific pages are available:
