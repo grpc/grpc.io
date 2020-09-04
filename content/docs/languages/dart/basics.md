@@ -387,7 +387,7 @@ You can use `ChannelOptions` to set TLS options (e.g., trusted certificates) for
 the channel, if necessary.
 
 Once the gRPC *channel* is setup, we need a client *stub* to perform RPCs. We
-get by creating a new instance of the `RouteGuideClient` object provided in the
+get this by creating a new instance of the `RouteGuideClient` object provided in the
 package we generated from our .proto.
 
 ```dart
