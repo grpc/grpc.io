@@ -4,8 +4,11 @@
     // Workspace dictionary:
     "words": [
         "CNCF",
+        "flatbuffers",
+        "performant",
         "printf",
         "protoc",
+        "RPC's",
         "RPCs",
         "SDKs"
     ],

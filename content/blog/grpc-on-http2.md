@@ -1,6 +1,7 @@
 ---
 title: gRPC on HTTP/2 Engineering a Robust, High-performance Protocol
 date: 2018-08-20
+spelling: cSpell:ignore ELBs Klerk customizability
 author:
   name: Jean de Klerk
   link: https://github.com/jadekler

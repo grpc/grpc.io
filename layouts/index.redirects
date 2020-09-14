@@ -1,3 +1,4 @@
+# cSpell:ignore helloasync loadbalancing quickstart sapi vendasta vendastagrpc
 #
 # API reference docs
 #
@@ -67,7 +68,10 @@
 #
 
 /2017/08/22/grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
+/blog/flatbuffers    /blog/grpc-flatbuffers
+/blog/grpc_on_http2  /blog/grpc-on-http2
 /blog/http2_smarter_at_scale /blog/http2-smarter-at-scale
 /blog/loadbalancing  /blog/grpc-load-balancing
 /blog/vendastagrpc   /blog/vendasta
 /docs/guides/wire*   https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
+/posts/* /blog/:splat
