@@ -2,10 +2,11 @@
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Dart.
 weight: 50
+spelling: cSpell:ignore pbenum pbgrpc pbjson
 ---
 
-This tutorial provides a basic Dart programmer's introduction to
-working with gRPC.
+This tutorial provides a basic Dart programmer's introduction to working with
+gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -41,7 +42,8 @@ Then change your current directory to `grpc-dart/example/route_guide`:
 $ cd grpc-dart/example/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Dart quick start guide](/docs/quickstart/dart/).
+You should have already installed the tools needed to generate client and server
+interface code -- if you haven't, see [Quick start][] for setup instructions.
 
 ### Defining the service
 
@@ -129,10 +131,9 @@ message Point {
 
 ### Generating client and server code
 
-Next we need to generate the gRPC client and server interfaces from our .proto
+Next we need to generate the gRPC client and server interfaces from our `.proto`
 service definition. We do this using the protocol buffer compiler `protoc` with
-a special Dart plugin.
-This is similar to what we did in the [quickstart guide](/docs/quickstart/)
+a special Dart plugin. This is similar to what we did in the [Quick start][].
 
 From the `route_guide` example directory run:
 
@@ -367,8 +368,8 @@ To build and start a server, we:
 ### Creating the client {#client}
 
 In this section, we'll look at creating a Dart client for our `RouteGuide`
-service. You can see our complete example client code in
-[grpc-dart/example/route_guide/lib/src/client.dart](https://github.com/grpc/grpc-dart/tree/master/example/route_guide/lib/src/client.dart).
+service. The complete client code is available from
+[grpc-dart/example/route_guide/lib/src/client.dart][].
 
 #### Creating a stub
 
@@ -383,21 +384,21 @@ final channel = ClientChannel('127.0.0.1',
         credentials: ChannelCredentials.insecure()));
 ```
 
-You can use `ChannelOptions` to set TLS options (e.g., trusted certificates) for
-the channel, if necessary.
+You can use `ChannelOptions` to set TLS options (for example, trusted
+certificates) for the channel, if necessary.
 
 Once the gRPC *channel* is setup, we need a client *stub* to perform RPCs. We
-get this by creating a new instance of the `RouteGuideClient` object provided in the
-package we generated from our .proto.
+get it by instantiating `RouteGuideClient`, which is provided by the package
+generated from the example `.proto` file.
 
 ```dart
-final client = RouteGuideClient(channel,
+stub = RouteGuideClient(channel,
     options: CallOptions(timeout: Duration(seconds: 30)));
 ```
 
-You can use `CallOptions` to set the auth credentials (e.g., GCE credentials,
-JWT credentials) if the service you request requires that - however, we don't
-need to do this for our `RouteGuide` service.
+You can use `CallOptions` to set auth credentials (for example, GCE credentials
+or JWT credentials) when a service requires them. The `RouteGuide` service
+doesn't require any credentials.
 
 #### Calling service methods
 
@@ -420,7 +421,7 @@ final feature = await stub.getFeature(point));
 As you can see, we call the method on the stub we got earlier. In our method
 parameters we pass a request protocol buffer object (in our case `Point`).
 We can also pass an optional `CallOptions` object which lets us change our RPC's
-behaviour if necessary, such as time-out. If the call doesn't return an error,
+behavior if necessary, such as time-out. If the call doesn't return an error,
 the returned `Future` completes with the response information from the server.
 If there is an error, the `Future` will complete with the error.
 
@@ -533,4 +534,6 @@ $ dart bin/client.dart
 If you find a problem with Dart gRPC, please [file an issue][new issue]
 in our issue tracker.
 
+[grpc-dart/example/route_guide/lib/src/client.dart]: https://github.com/grpc/grpc-dart/tree/master/example/route_guide/lib/src/client.dart
 [new issue]: https://github.com/grpc/grpc-dart/issues/new
+[Quick start]: ../quickstart
