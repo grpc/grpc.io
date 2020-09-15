@@ -2,6 +2,7 @@
 title: Basics Tutorial
 description: A basic tutorial introduction to gRPC in Go.
 weight: 50
+spelling: cSpell:ignore Fatalf GOPATH Println Sprintf struct waitc
 ---
 
 This tutorial provides a basic Go programmer's introduction to
@@ -42,9 +43,8 @@ Then change your current directory to `grpc-go/examples/route_guide`:
 $ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and
-client interface code - if you don't already, follow the setup instructions in
-[the Go quick start guide](/docs/quickstart/go/).
+You should have already installed the tools needed to generate client and server
+interface code -- if you haven't, see [Quick start][] for setup instructions.
 
 ### Defining the service
 
@@ -134,8 +134,7 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
-a special gRPC Go plugin.
-This is similar to what we did in the [quickstart guide](/docs/quickstart/go/).
+a special gRPC Go plugin. This is similar to what we did in the [Quick start][].
 
 From the `route_guide` example directory, run:
 
@@ -396,13 +395,13 @@ if err != nil {
 defer conn.Close()
 ```
 
-You can use `DialOptions` to set the auth credentials (e.g., TLS, GCE
-credentials, JWT credentials) in `grpc.Dial` if the service you request requires
-that - however, we don't need to do this for our `RouteGuide` service.
+You can use `DialOptions` to set the auth credentials (for example, TLS, GCE
+credentials, or JWT credentials) in `grpc.Dial` when a service requires them.
+The `RouteGuide` service doesn't require any credentials.
 
 Once the gRPC *channel* is setup, we need a client *stub* to perform RPCs. We
-get this using the `NewRouteGuideClient` method provided in the `pb` package we
-generated from our .proto.
+get it using the `NewRouteGuideClient` method provided by the `pb` package
+generated from the example `.proto` file.
 
 ```go
 client := pb.NewRouteGuideClient(conn)
@@ -429,7 +428,7 @@ if err != nil {
 As you can see, we call the method on the stub we got earlier. In our method
 parameters we create and populate a request protocol buffer object (in our case
 `Point`). We also pass a `context.Context` object which lets us change our RPC's
-behaviour if necessary, such as time-out/cancel an RPC in flight. If the call
+behavior if necessary, such as time-out/cancel an RPC in flight. If the call
 doesn't return an error, then we can read the response information from the
 server from the first return value.
 
@@ -576,3 +575,5 @@ From a different terminal, run the client:
 ```sh
 $ go run client/client.go
 ```
+
+[Quick start]: ../quickstart
