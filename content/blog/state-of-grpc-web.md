@@ -1,6 +1,7 @@
 ---
 title: The state of gRPC in the browser
 date: 2019-01-08
+spelling: cSpell:ignore Brandhorst envoyproxy Fibyl grpcweb grpcwebproxy grpcwebtext Johan npmjs restjson ROADMAP
 author:
   name: Johan Brandhorst
   link: https://jbrandhorst.com
@@ -62,8 +63,8 @@ requests and responses to something the browser can use.
 
 The teams at Google and Improbable both went on to implement the spec in two
 different repositories<sup id="a5">[5](#f5),</sup><sup id="a6">[6](#f6)</sup>,
-and with slightly different implementations, such that neither was entirely
-conformant to the spec, and for a long time neither was compatible with the
+and with slightly different implementations, such that neither entirely
+conformed to the spec, and for a long time neither was compatible with the
 other's proxy<sup id="a7">[7](#f7),</sup><sup id="a8">[8](#f8)</sup>.
 
 The Improbable gRPC-Web client<sup id="a9">[9](#f9)</sup> is implemented in
@@ -121,7 +122,7 @@ either client with either proxy.
 # The Future
 
 The Google implementation announced version 1.0 and general availability in
-October 2018<sup id="a21">[21](#f21)</sup> and has published a roadmap of future
+October 2018<sup id="a21">[21](#f21)</sup> and has published a road map of future
 goals<sup id="a22">[22](#f22)</sup>, including:
 
 - An efficient JSON-like message encoding
@@ -168,29 +169,29 @@ browser, and marks an exciting time for frontend developers!
 
 ## References
 
-1. <div id="f1"></div> <a href="https://improbable.io/games/blog/grpc-web-moving-past-restjson-towards-type-safe-web-apis">https://improbable.io/games/blog/grpc-web-moving-past-restjson-towards-type-safe-web-apis</a> [↩](#a1)
-2. <div id="f2"></div> <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md</a> [↩](#a2)
-3. <div id="f3"></div> <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md</a> [↩](#a3)
-4. <div id="f4"></div> <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md#protocol-differences-vs-grpc-over-http2">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md#protocol-differences-vs-grpc-over-http2</a> [↩](#a4)
-5. <div id="f5"></div> <a href="https://github.com/improbable-eng/grpc-web">https://github.com/improbable-eng/grpc-web</a> [↩](#a5)
-6. <div id="f6"></div> <a href="https://github.com/grpc/grpc-web">https://github.com/grpc/grpc-web</a> [↩](#a6)
-7. <div id="f7"></div> <a href="https://github.com/improbable-eng/grpc-web/issues/162">https://github.com/improbable-eng/grpc-web/issues/162</a> [↩](#a7)
-8. <div id="f8"></div> <a href="https://github.com/grpc/grpc-web/issues/91">https://github.com/grpc/grpc-web/issues/91</a> [↩](#a8)
-9. <div id="f9"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/ts">https://github.com/improbable-eng/grpc-web/tree/master/ts</a> [↩](#a9)
-10. <div id="f10"></div> <a href="https://www.npmjs.com/package/@improbable-eng/grpc-web">https://www.npmjs.com/package/@improbable-eng/grpc-web</a> [↩](#a10)
-11. <div id="f11"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb">https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb</a> [↩](#a11)
-12. <div id="f12"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy">https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy</a> [↩](#a12)
-13. <div id="f13"></div> <a href="https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web">https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web</a> [↩](#a13)
-14. <div id="f14"></div> <a href="https://developers.google.com/closure/">https://developers.google.com/closure/</a> [↩](#a14)
-15. <div id="f15"></div> <a href="https://www.npmjs.com/package/grpc-web">https://www.npmjs.com/package/grpc-web</a> [↩](#a15)
-16. <div id="f16"></div> <a href="https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway">https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway</a> [↩](#a16)
-17. <div id="f17"></div> <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter</a> [↩](#a17)
-18. <div id="f18"></div> <a href="https://streams.spec.whatwg.org/">https://streams.spec.whatwg.org/</a> [↩](#a18)
-19. <div id="f19"></div>The Improbable client supports client-side and
+ 1. <a id="f1"></a> [improbable.io/games/blog/grpc-web-moving-past-restjson-towards-type-safe-web-apis](https://improbable.io/games/blog/grpc-web-moving-past-restjson-towards-type-safe-web-apis) [↩](#a1)
+ 2. <a id="f2"></a> [github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) [↩](#a2)
+ 3. <a id="f3"></a> [github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) [↩](#a3)
+ 4. <a id="f4"></a> [github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md#protocol-differences-vs-grpc-over-http2](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md#protocol-differences-vs-grpc-over-http2) [↩](#a4)
+ 5. <a id="f5"></a> [github.com/improbable-eng/grpc-web](https://github.com/improbable-eng/grpc-web) [↩](#a5)
+ 6. <a id="f6"></a> [github.com/grpc/grpc-web](https://github.com/grpc/grpc-web) [↩](#a6)
+ 7. <a id="f7"></a> [github.com/improbable-eng/grpc-web/issues/162](https://github.com/improbable-eng/grpc-web/issues/162) [↩](#a7)
+ 8. <a id="f8"></a> [github.com/grpc/grpc-web/issues/91](https://github.com/grpc/grpc-web/issues/91) [↩](#a8)
+ 9. <a id="f9"></a> [github.com/improbable-eng/grpc-web/tree/master/ts](https://github.com/improbable-eng/grpc-web/tree/master/ts) [↩](#a9)
+10. <a id="f10"></a> [www.npmjs.com/package/@improbable-eng/grpc-web](https://www.npmjs.com/package/@improbable-eng/grpc-web) [↩](#a10)
+11. <a id="f11"></a> [github.com/improbable-eng/grpc-web/tree/master/go/grpcweb](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb) [↩](#a11)
+12. <a id="f12"></a> [github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy) [↩](#a12)
+13. <a id="f13"></a> [github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web](https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web) [↩](#a13)
+14. <a id="f14"></a> [developers.google.com/closure](https://developers.google.com/closure) [↩](#a14)
+15. <a id="f15"></a> [www.npmjs.com/package/grpc-web](https://www.npmjs.com/package/grpc-web) [↩](#a15)
+16. <a id="f16"></a> [github.com/grpc/grpc-web/tree/master/net/grpc/gateway](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway) [↩](#a16)
+17. <a id="f17"></a> [www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter) [↩](#a17)
+18. <a id="f18"></a> [streams.spec.whatwg.org](https://streams.spec.whatwg.org) [↩](#a18)
+19. <a id="f19"></a> The Improbable client supports client-side and
     bi-directional streaming with an experimental websocket transport. This is
     not part of the gRPC-Web spec, and is not recommended for production use. [↩](#a19)
-20. <div id="f20"></div>`grpcweb` allows server streaming methods to be called, but
+20. <a id="f20"></a> `grpcweb` allows server streaming methods to be called, but
     it doesn't return data until the stream has closed. [↩](#a20)
-21. <div id="f21"></div> <a href="https://grpc.io/blog/grpc-web-ga">https://grpc.io/blog/grpc-web-ga</a> [↩](#a21)
-22. <div id="f22"></div> <a href="https://github.com/grpc/grpc-web/blob/master/ROADMAP.md">https://github.com/grpc/grpc-web/blob/master/ROADMAP.md</a> [↩](#a22)
-23. <div id="f23"></div> <a href="https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM">https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM</a> [↩](#a23)
+21. <a id="f21"></a> [grpc.io/blog/grpc-web-ga](https://grpc.io/blog/grpc-web-ga) [↩](#a21)
+22. <a id="f22"></a> [github.com/grpc/grpc-web/blob/master/ROADMAP.md](https://github.com/grpc/grpc-web/blob/master/ROADMAP.md) [↩](#a22)
+23. <a id="f23"></a> [docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM](https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM) [↩](#a23)
