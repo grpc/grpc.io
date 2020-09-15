@@ -18,7 +18,7 @@ weight: 10
       the following environment variable:
 
       ```sh
-      $ export ANDROID_HOME="<path-to-your-android-sdk>"
+      $ export ANDROID_SDK_ROOT="<path-to-your-android-sdk>"
       ```
 
 - An android device set up for [USB debugging][] or an
