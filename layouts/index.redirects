@@ -1,4 +1,4 @@
-# cSpell:ignore helloasync loadbalancing quickstart sapi vendasta vendastagrpc
+# cSpell:ignore channelz helloasync loadbalancing quickstart sapi vendasta vendastagrpc
 #
 # API reference docs
 #
@@ -45,7 +45,7 @@
 /docs/reference                           /docs/languages
 /docs/samples                             /docs/languages
 /docs/tutorials/async/helloasync-cpp*     /docs/languages/cpp/async
-/docs/tutorials/auth/oauth2-objective-c   /docs/languages/objective-c/oauth2
+/docs/tutorials/auth/oauth2-objective-c*  /docs/languages/objective-c/oauth2
 
 /docs/reference/:lang/generated-code*     /docs/languages/:lang/generated-code
 
@@ -68,6 +68,8 @@
 #
 
 /2017/08/22/grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
+/2018/01/22/grpc-go-engineering-practices*  /blog/grpc-go-engineering-practices
+/blog/a_short_introduction_to_channelz*  /blog/a-short-introduction-to-channelz
 /blog/flatbuffers    /blog/grpc-flatbuffers
 /blog/grpc_on_http2  /blog/grpc-on-http2
 /blog/http2_smarter_at_scale /blog/http2-smarter-at-scale
