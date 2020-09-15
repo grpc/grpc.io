@@ -1,7 +1,7 @@
 ---
 title: The state of gRPC in the browser
 date: 2019-01-08
-spelling: cSpell:ignore Brandhorst envoyproxy Fibyl grpcweb grpcwebproxy grpcwebtext Johan npmjs restjson ROADMAP
+spelling: cSpell:ignore Brandhorst envoyproxy Fibyl grpcweb grpcwebproxy grpcwebtext Johan npmjs restjson roadmap
 author:
   name: Johan Brandhorst
   link: https://jbrandhorst.com
@@ -177,15 +177,15 @@ browser, and marks an exciting time for frontend developers!
  6. <a id="f6"></a> [github.com/grpc/grpc-web](https://github.com/grpc/grpc-web) [↩](#a6)
  7. <a id="f7"></a> [github.com/improbable-eng/grpc-web/issues/162](https://github.com/improbable-eng/grpc-web/issues/162) [↩](#a7)
  8. <a id="f8"></a> [github.com/grpc/grpc-web/issues/91](https://github.com/grpc/grpc-web/issues/91) [↩](#a8)
- 9. <a id="f9"></a> [github.com/improbable-eng/grpc-web/tree/master/ts](https://github.com/improbable-eng/grpc-web/tree/master/ts) [↩](#a9)
-10. <a id="f10"></a> [www.npmjs.com/package/@improbable-eng/grpc-web](https://www.npmjs.com/package/@improbable-eng/grpc-web) [↩](#a10)
+ 9. <a id="f9"></a> [github.com/improbable-eng/grpc-web/tree/master/client/grpc-web](https://github.com/improbable-eng/grpc-web/tree/master/client/grpc-web) [↩](#a9)
+10. <a id="f10"></a> [npmjs.com/package/@improbable-eng/grpc-web](https://www.npmjs.com/package/@improbable-eng/grpc-web) [↩](#a10)
 11. <a id="f11"></a> [github.com/improbable-eng/grpc-web/tree/master/go/grpcweb](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb) [↩](#a11)
 12. <a id="f12"></a> [github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy) [↩](#a12)
 13. <a id="f13"></a> [github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web](https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web) [↩](#a13)
 14. <a id="f14"></a> [developers.google.com/closure](https://developers.google.com/closure) [↩](#a14)
-15. <a id="f15"></a> [www.npmjs.com/package/grpc-web](https://www.npmjs.com/package/grpc-web) [↩](#a15)
+15. <a id="f15"></a> [npmjs.com/package/grpc-web](https://www.npmjs.com/package/grpc-web) [↩](#a15)
 16. <a id="f16"></a> [github.com/grpc/grpc-web/tree/master/net/grpc/gateway](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway) [↩](#a16)
-17. <a id="f17"></a> [www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter) [↩](#a17)
+17. <a id="f17"></a> [envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter) [↩](#a17)
 18. <a id="f18"></a> [streams.spec.whatwg.org](https://streams.spec.whatwg.org) [↩](#a18)
 19. <a id="f19"></a> The Improbable client supports client-side and
     bi-directional streaming with an experimental websocket transport. This is
@@ -193,5 +193,5 @@ browser, and marks an exciting time for frontend developers!
 20. <a id="f20"></a> `grpcweb` allows server streaming methods to be called, but
     it doesn't return data until the stream has closed. [↩](#a20)
 21. <a id="f21"></a> [grpc.io/blog/grpc-web-ga](https://grpc.io/blog/grpc-web-ga) [↩](#a21)
-22. <a id="f22"></a> [github.com/grpc/grpc-web/blob/master/ROADMAP.md](https://github.com/grpc/grpc-web/blob/master/ROADMAP.md) [↩](#a22)
+22. <a id="f22"></a> [github.com/grpc/grpc-web/blob/master/doc/roadmap.md](https://github.com/grpc/grpc-web/blob/master/doc/roadmap.md) [↩](#a22)
 23. <a id="f23"></a> [docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM](https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM) [↩](#a23)
