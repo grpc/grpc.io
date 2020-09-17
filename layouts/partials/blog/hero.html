@@ -38,7 +38,7 @@
       {{ $numAuthors := len . }}
       <br />
 
-      <p class="subtitle is-size-4 is-size-5-mobile">
+      <p class="hero__author-info subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-user-friends"></i>
         </span>
@@ -52,7 +52,7 @@
         {{- else -}}
         {{- .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}, {{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}; {{ end }}
         {{ end }}
       </p>
       {{ end }}
@@ -60,7 +60,7 @@
       {{ with $author }}
       <br />
 
-      <p class="subtitle is-size-4 is-size-5-mobile">
+      <p class="hero__author-info subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right has-text-secondary">
           <i class="fas fa-user"></i>
         </span>
@@ -72,11 +72,7 @@
         {{- else -}}
         {{- .name -}}
         {{- end -}}
-        {{ with .position }},
-          <span class="hero__author--position">
-            {{ . | markdownify }}
-          </span>
-        {{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}
       </p>
 
       {{ with .guest }}
