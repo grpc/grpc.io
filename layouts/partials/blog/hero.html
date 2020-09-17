@@ -28,9 +28,7 @@
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-calendar-alt"></i>
         </span>
-        <span>
-          {{ . }}
-        </span>
+        {{- . -}}
       </p>
       {{ end }}
 
@@ -42,18 +40,17 @@
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-user-friends"></i>
         </span>
-
-        {{ range $idx, $author := . }}
-        {{ $notLast := ne $numAuthors (add $idx 1) }}
+        {{- range $idx, $author := . -}}
+        {{ $notLast := ne $numAuthors (add $idx 1) -}}
         {{- if .link -}}
         <a class="has-text-secondary has-text-weight-medium is-underlined" href="{{ .link }}" target="_blank">
           {{- .name -}}
         </a>
         {{- else -}}
-        {{- .name -}}
+        {{ .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}; {{ end }}
-        {{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}; {{ end -}}
+        {{- end -}}
       </p>
       {{ end }}
 
@@ -64,15 +61,14 @@
         <span class="icon has-margin-right has-text-secondary">
           <i class="fas fa-user"></i>
         </span>
-
         {{- if .link -}}
         <a class="has-text-secondary" href="{{ .link }}" target="_blank">
           {{- .name -}}
         </a>
         {{- else -}}
-        {{- .name -}}
+        {{ .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end -}}
       </p>
 
       {{ with .guest }}
