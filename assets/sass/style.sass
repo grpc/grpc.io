@@ -318,3 +318,8 @@ a > .fa-external-link-alt::before
   margin-left: 3px
   opacity: 0.8
   vertical-align: top
+
+// Fix for https://github.com/grpc/grpc.io/issues/376
+.hero__author--position, .hero__blurb
+  a
+    @extend .has-text-secondary

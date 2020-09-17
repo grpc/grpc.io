@@ -72,7 +72,11 @@
         {{- else -}}
         {{- .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}
+        {{ with .position }},
+          <span class="hero__author--position">
+            {{ . | markdownify }}
+          </span>
+        {{ end }}
       </p>
 
       {{ with .guest }}
@@ -89,7 +93,7 @@
       {{ end }}
 
       {{ with .blurb }}
-      <p class="is-size-5 is-size-6-mobile has-text-weight-light">
+      <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">
         {{ . | markdownify }}
       </p>
       {{ end }}
