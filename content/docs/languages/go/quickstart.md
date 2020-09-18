@@ -126,16 +126,25 @@ Remember to save the file!
 Before you can use the new service method, you need to recompile the updated
 `.proto` file.
 
+{{< note >}}
+  We are in the process of transitioning to a [new Go protoc plugin][#3453].
+  Until the transition is complete, you need to install
+  `grpc-go/cmd/protoc-gen-go-grpc` manually (using the command shown below)
+  before regenerating `.pb.go` files. To track progress on this issue, see
+  [Update Go quick start #298][#298].
+
+  [#298]: https://github.com/grpc/grpc.io/issues/298
+  [#3453]: https://github.com/grpc/grpc-go/pull/3453
+{{< /note >}}
+
 While still in the `examples/helloworld` directory, run the following commands:
 
 ```sh
 $ ( cd ../../cmd/protoc-gen-go-grpc && go install . )
-$ protoc \
-  --go_out=Mgrpc/service_config/service_config.proto=/internal/proto/grpc_service_config:. \
-  --go-grpc_out=Mgrpc/service_config/service_config.proto=/internal/proto/grpc_service_config:. \
-  --go_opt=paths=source_relative \
-  --go-grpc_opt=paths=source_relative \
-  helloworld/helloworld.proto
+$ protoc --go_out=. --go-grpc_out=. \
+    --go_opt=paths=source_relative \
+    --go-grpc_opt=paths=source_relative \
+    helloworld/helloworld.proto
 ```
 
 This will regenerate the `helloworld/helloworld.pb.go` and  `helloworld/helloworld_grpc.pb.go` files, which contain:
@@ -143,16 +152,6 @@ This will regenerate the `helloworld/helloworld.pb.go` and  `helloworld/hellowor
 - Code for populating, serializing, and retrieving `HelloRequest` and
   `HelloReply` message types.
 - Generated client and server code.
-
-{{< note >}}
-  We are in the process of transitioning to a [new Go protoc plugin][#3453].
-  Until the transition is complete, you need to install
-  `grpc-go/cmd/protoc-gen-go-grpc` manually before regenerating `.pb.go` files.
-  To track progress on this issue, see [Update Go quick start #298][#298].
-
-  [#298]: https://github.com/grpc/grpc.io/issues/298
-  [#3453]: https://github.com/grpc/grpc-go/pull/3453
-{{< /note >}}
 
 ### Update and run the application
 
