@@ -103,7 +103,7 @@ Here’s a table that summarizes the different features supported:
 
 | Client / Feature       | Transport    | Unary | Server-side streams              | Client-side & bi-directional streaming |
 | ---------------------- | ------------ | ----- | -------------------------------- | -------------------------------------- |
-| Improbable             | Fetc️h/XHR ️ | ✔️    | ✔️                               | ❌<sup id="a19">[19](#f19)</sup>       |
+| Improbable             | Fetch/XHR ️ | ✔️    | ✔️                               | ❌<sup id="a19">[19](#f19)</sup>       |
 | Google (`grpcwebtext`) | XHR ️        | ✔️    | ✔️                               | ❌                                     |
 | Google (`grpcweb`)     | XHR ️        | ✔️    | ❌<sup id="a20">[20](#f20)</sup> | ❌                                     |
 

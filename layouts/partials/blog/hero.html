@@ -84,12 +84,12 @@
       </span>
       {{ end }}
 
-      {{ with .blurb }}
+      {{ with .blurb -}}
       <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">
-        {{ . | markdownify }}
+        {{- . | markdownify -}}
       </p>
-      {{ end }}
-      {{ end }}
+      {{- end -}}
+      {{ end -}}
     </div>
   </div>
 </section>

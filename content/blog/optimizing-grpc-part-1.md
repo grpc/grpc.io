@@ -1,6 +1,7 @@
 ---
 title: So You Want to Optimize gRPC - Part 1
 date: 2018-03-06
+spelling: cSpell:ignore kvstore Mastrangelo MILLIS OOMs
 author:
   name: Carl Mastrangelo
   link: https://github.com/carl-mastrangelo
@@ -8,7 +9,7 @@ author:
 ---
 
 A common question with gRPC is how to make it fast.  The gRPC library offers users access to high
-performance RPCs, but it isn't always clear how to achieve this.  Because this question is common 
+performance RPCs, but it isn't always clear how to achieve this.  Because this question is common
 enough I thought I would try to show my thought process when tuning programs.
 
 <!--more-->
@@ -16,7 +17,7 @@ enough I thought I would try to show my thought process when tuning programs.
 ## Setup
 
 Consider a basic key-value service that is used by multiple other programs.  The service needs to
-be safe for concurrent access in case multiple updates happen at the same time.  It needs to be 
+be safe for concurrent access in case multiple updates happen at the same time.  It needs to be
 able to scale up to use the available hardware.   Lastly, it needs to be fast.  gRPC is a perfect
 fit for this type of service; let's look at the best way to implement it.
 
@@ -82,7 +83,7 @@ private void doCreate(KeyValueServiceBlockingStub stub) {
 ```
 
 A random key is created, along with a random value.  The request is sent to the server, and the
-client waits for the response.  When the response is returned, the code checks that it is as 
+client waits for the response.  When the response is returned, the code checks that it is as
 expected, and if not, throws an exception.  While the keys are chosen randomly, they need to be
 unique, so we need to make sure that each key isn't already in use.  To address this, the code
 keeps track of keys it has created, so as not to create the same key twice.  However, it's
@@ -189,7 +190,7 @@ efficiency, the most operations this code can do per second is about 20:
 Our code can do about 16 queries in a second, so that seems about right.  We can spot check this
 assumption by looking at the output of the `time` command used to run the code.  The server goes
 to sleep when running queries in the
-[`simulateWork`](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java#L88)
+[simulateWork](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java#L88)
 method. This implies that the program should be mostly idle while waiting for the RPCs to
 complete.
 
@@ -211,18 +212,18 @@ new RPCs without waiting for the old ones to complete.
 
 ### Experiment
 
-To test our hypothesis, let's modify the client code to use the listenable future API.  This 
+To test our hypothesis, let's modify the client code to use the listenable future API.  This
 means that we need to think more about concurrency in our code.  For example, when keeping track
-of known keys client-side, we need to safely read, modify, and write the keys.  We also need to 
+of known keys client-side, we need to safely read, modify, and write the keys.  We also need to
 make sure that in case of an error, we stop making new RPCs (proper error handling will be covered
-in a future post).  Lastly, we need to update the number of RPCs made concurrently, since the 
+in a future post).  Lastly, we need to update the number of RPCs made concurrently, since the
 update could happen in another thread.
 
 Making all these changes increases the complexity of the code.  This is a trade off you will need
 to consider when optimizing your code.  In general, code simplicity is at odds with optimization.
 Java is not known for being terse.  That said, the code below is still readable, and program flow
-is still roughly from top to bottom in the function.  Here is the 
-[`doCreate()`](https://github.com/carl-mastrangelo/kvstore/blob/f0113912c01ac4ea48a80bb7a4736ddcb3f21e24/src/main/java/io/grpc/examples/KvClient.java#L92)
+is still roughly from top to bottom in the function.  Here is the
+[doCreate()](https://github.com/carl-mastrangelo/kvstore/blob/f0113912c01ac4ea48a80bb7a4736ddcb3f21e24/src/main/java/io/grpc/examples/KvClient.java#L92)
 method revised:
 
 ```java
@@ -273,10 +274,10 @@ outside of the main loop, we increment it when the RPC completes.
 Next, we create a new object
 for each RPC which handles both the success and failure cases.  Because `doCreate()` will already
 be completed by the time RPC callback is invoked, we need a way to propagate errors other than
-by throwing.  Instead, we try to update an reference atomically.  The main loop will occasionally 
+by throwing.  Instead, we try to update an reference atomically.  The main loop will occasionally
 check if an error has occurred and stop if there is a problem.
 
-Lastly, the code is careful to only add a key to `knownKeys` when the RPC is actually complete, 
+Lastly, the code is careful to only add a key to `knownKeys` when the RPC is actually complete,
 and only remove it when known to have failed.  We synchronize on the variable to make sure two
 threads don't conflict.  Note: although the access to `knownKeys` is threadsafe, there are still
 [race conditions](https://en.wikipedia.org/wiki/Race_condition).  It is possible that one thread
@@ -297,26 +298,23 @@ java.lang.OutOfMemoryError: unable to create new native thread
 	...
 ```
 
-What?!  Why would I show you code that fails?  The reason is that in real life making a change often 
+What?!  Why would I show you code that fails?  The reason is that in real life making a change often
 doesn't work on the first try.  In this case, the program ran out of memory.  Odd things begin to
 happen when a program runs out of memory.  Often, the root cause is hard to find, and red herrings
-abound.  A confusing error message says
-
-> unable to create new native thread
-
-even though we didn't create any new threads in our code.  Experience is very helpful in fixing 
+abound.  A confusing error message says "unable to create new native thread"
+even though we didn't create any new threads in our code.  Experience is very helpful in fixing
 these problems rather than debugging.  Since I have debugged many OOMs, I happen to know Java tells
-us about the straw that broke the camel's back.  Our program started using way more memory, but the 
+us about the straw that broke the camel's back.  Our program started using way more memory, but the
 final allocation that failed happened, by chance, to be in thread creation.
 
-So what happened?  _There was no pushback to starting new RPCs._  In the blocking version, a new 
-RPC couldn't start until the last one completed.  While slow, it also prevented us from creating 
-tons of RPCs that we didn't have memory for.  We need to account for this in the listenable 
+So what happened?  _There was no pushback to starting new RPCs._  In the blocking version, a new
+RPC couldn't start until the last one completed.  While slow, it also prevented us from creating
+tons of RPCs that we didn't have memory for.  We need to account for this in the listenable
 future version.
 
-To solve this, we can apply a self-imposed limit on the number of active RPCs.  Before starting a 
+To solve this, we can apply a self-imposed limit on the number of active RPCs.  Before starting a
 new RPC, we will try to acquire a permit.  If we get one, the RPC can start.  If not, we will wait
-until one is available.  When an RPC completes (either in success or failure), we return the 
+until one is available.  When an RPC completes (either in success or failure), we return the
 permit.  To [accomplish](https://github.com/carl-mastrangelo/kvstore/blob/02-future-client/src/main/java/io/grpc/examples/KvClient.java#L94)
 this, we will using a `Semaphore`:
 
@@ -359,16 +357,16 @@ user	0m12.772s
 sys	0m1.572s
 ```
 
-Our code does **46%** more RPCs per second than previously.  We can also see that we used about 20% 
-more CPU than previously.  As we can see our hypothesis turned out to be correct and the fix 
-worked.  All this happened without making any changes to the server.  Also, we were able to 
+Our code does **46%** more RPCs per second than previously.  We can also see that we used about 20%
+more CPU than previously.  As we can see our hypothesis turned out to be correct and the fix
+worked.  All this happened without making any changes to the server.  Also, we were able to
 measure without using any special profilers or tracers.
 
-Do the numbers make sense?  We expect to issue mutation (create, update, and delete) RPCs each 
+Do the numbers make sense?  We expect to issue mutation (create, update, and delete) RPCs each
 about with 1/4 probability.  Reads are also issue 1/4 of the time, but don't take as long.  The
 mean RPC time should be about the weighted average RPC time:
 
-```
+```nocode
   .25 * 50ms (create)
   .25 * 10ms (retrieve)
   .25 * 50ms (update)
@@ -381,7 +379,7 @@ At 40ms on average per RPC, we would expect the number of RPCs per second to be:
 
 25 queries = 1000ms / (40 ms / query)
 
-That's approximately what we see with the new code.  The server is still serially handling 
+That's approximately what we see with the new code.  The server is still serially handling
 requests, so it seems like we have more work to do in the future.  But for now, our optimizations
 seem to have worked.
 
