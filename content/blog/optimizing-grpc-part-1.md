@@ -45,7 +45,7 @@ split into three main classes, and a protobuf file describing the API:
   of arbitrary bytes.  While they are somewhat REST like, we reserve the right to diverge and
   add more complex operations in the future.
 
-[Protocol buffers(protos)](https://developers.google.com/protocol-buffers/) aren't required to use
+[Protocol buffers](https://developers.google.com/protocol-buffers/) (protos) aren't required to use
 gRPC, they are a very convenient way to define service interfaces and generate client and server
 code. The generated code acts as glue code between the application logic and the core gRPC
 library. We refer to the code called by a gRPC client the _stub_.

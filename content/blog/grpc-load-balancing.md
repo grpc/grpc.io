@@ -15,9 +15,9 @@ A large scale gRPC deployment typically has a number of identical back-end insta
 
 ## Why gRPC?
 
-gRPC is a modern RPC protocol implemented on top of HTTP/2. HTTP/2 is a Layer 7 (Application layer) protocol, that runs on top of a TCP (Layer 4 - Transport layer) protocol, which runs on top of IP (Layer 3 - Network layer) protocol. gRPC has many [advantages](https://http2.github.io/faq/#why-is-http2-binary) over traditional HTTP/REST/JSON mechanism such as
+gRPC is a modern RPC protocol implemented on top of HTTP/2. HTTP/2 is a Layer 7 (Application layer) protocol, that runs on top of a TCP (Layer 4 - Transport layer) protocol, which runs on top of IP (Layer 3 - Network layer) protocol. gRPC has many advantages over traditional HTTP/REST/JSON mechanism such as
 
-1. Binary protocol (HTTP/2),
+1. [Binary protocol (HTTP/2)](https://http2.github.io/faq/#why-is-http2-binary)
 2. Multiplexing many requests on one connection (HTTP/2)
 3. Header compression (HTTP/2)
 4. Strongly typed service and message definition (Protobuf)

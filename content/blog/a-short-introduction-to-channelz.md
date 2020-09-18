@@ -131,7 +131,7 @@ On the right hand side, it shows the channel has no child **Channels**, 3
 <div align="center">
   <img src="/img/topChan3.png" style="max-width: 815px">
 </div>
-<p style="text-align: center"> Figure 6. Subchannels owned by the Channel  (id = 2)</p>
+<p style="text-align: center"> Figure 6. Subchannels owned by the Channel (id = 2)</p>
 
 A
 [Subchannel](https://github.com/grpc/grpc-proto/blob/9b13d199cc0d4703c7ea26c9c330ba695866eb23/grpc/channelz/v1/channelz.proto#L61)
