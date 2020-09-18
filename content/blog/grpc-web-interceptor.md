@@ -1,7 +1,8 @@
 ---
 title: Interceptors in gRPC-Web
 date: 2020-06-18
-authors: [{ name: Zhenli Jiang, position: Google }]
+spelling: cSpell:ignore creds Jiang Zhenli
+author: { name: Zhenli Jiang, position: Google }
 ---
 
 We're pleased to announce support for _interceptors_ in [gRPC-web][] as of
@@ -43,11 +44,11 @@ The `intercept()` method takes two parameters:
 - An `invoker`, which performs the actual RPC when invoked
 
 The `StreamInterceptor` interface declaration is similar, except that the
-`invoker` return type is `ClientReadablaStream` instead of `Promise`. For
+`invoker` return type is `ClientReadableStream` instead of `Promise`. For
 implementation details, see [interceptor.js][].
 
 {{< note >}}
-  A `StreamInteceptor` can be applied to any RPC with a `ClientReadableStream`
+  A `StreamInterceptor` can be applied to any RPC with a `ClientReadableStream`
   return type, whether it's a unary or a server-streaming RPC.
 {{< /note >}}
 
@@ -170,7 +171,7 @@ TestStreamInterceptor.prototype.intercept = function(request, invoker) {
 
 ## Binding interceptors
 
-By passing an array of inteceptor instances using an appropriate option key,
+By passing an array of interceptor instances using an appropriate option key,
 you can bind interceptors to a client when the client is instantiated:
 
 ```js
