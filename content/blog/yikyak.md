@@ -1,10 +1,10 @@
 ---
-title: "Migration to Google Cloud Platform — gRPC & grpc-gateway"
+title: Migration to Google Cloud Platform — gRPC & grpc-gateway
 date: 2017-04-12
 author:
   name: Miguel Mendez
   link: https://www.linkedin.com/in/miguel-mendez-008231
-  position: '[Yik Yak](https://yikyakapp.com)'
+  position: "[Yik Yak](https://yikyakapp.com)"
   blurb: |
     This post was originally a part of the [Yik Yak Engineering Blog](https://medium.com/yik-yak-eng) which focused on sharing the lessons learned as we evolved Yik Yak from early-stage startup code running in Amazon Web Services to an eventual incremental rewrite, re-architecture, and live-migration to Google Cloud Platform.
 thumbnail: https://cdn-images-1.medium.com/max/1600/0*qYehJ2DvPgFcG_nX.
@@ -59,7 +59,7 @@ switch ($fieldName) {
   // This is being added because iOS is passing the recipientID
   // incorrectly and we still want to capture these events
   // … expected fall through …
-  
+
   case “Recipientid”:
     $this->yakkerEvent->recipientID = $value;
     break;
@@ -136,7 +136,7 @@ message APIPost {
 // YYAPI service accessed by Android, iOS and Web clients.
 service YYAPI {
   // Other endpoints omitted…
-  
+
   // APIGetMessages returns the list of messages within a radius of
   // the user’s current location.
   rpc APIGetMessages (APIRequest) returns (APIFeedResponse) {
@@ -147,7 +147,7 @@ service YYAPI {
                               // endpoint.
     };
   }
-  
+
   // Other endpoints omitted…
 }
 ```
@@ -162,7 +162,7 @@ type YYAPIClient interface {
   APIGetMessages(ctx context.Context, in *APIRequest, opts ...grpc.CallOption) (*APIFeedResponse, error)
 }
 
-// NewYYAPIClient returns an implementation of the YYAPIClient interface  which 
+// NewYYAPIClient returns an implementation of the YYAPIClient interface  which
 // clients can use to call the gRPC service.
 func NewYYAPIClient(cc *grpc.ClientConn) YYAPIClient {
   // Code omitted for clarity..
@@ -227,6 +227,6 @@ REST APIs have their issues, but they are not going away anytime soon. If you ar
 
 Having discussed our use of Go, gRPC and Google Cloud Platform, we are ready to discuss how we built a new geo store on top of Google Bigtable and the Google S2 Library — the subject of our next post.
 
- 
+
 
 

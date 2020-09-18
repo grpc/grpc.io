@@ -28,9 +28,7 @@
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-calendar-alt"></i>
         </span>
-        <span>
-          {{ . }}
-        </span>
+        {{- . -}}
       </p>
       {{ end }}
 
@@ -38,41 +36,39 @@
       {{ $numAuthors := len . }}
       <br />
 
-      <p class="subtitle is-size-4 is-size-5-mobile">
+      <p class="hero__author subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-user-friends"></i>
         </span>
-
-        {{ range $idx, $author := . }}
-        {{ $notLast := ne $numAuthors (add $idx 1) }}
+        {{- range $idx, $author := . -}}
+        {{ $notLast := ne $numAuthors (add $idx 1) -}}
         {{- if .link -}}
         <a class="has-text-secondary has-text-weight-medium is-underlined" href="{{ .link }}" target="_blank">
           {{- .name -}}
         </a>
         {{- else -}}
-        {{- .name -}}
+        {{ .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}, {{ end }}
-        {{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}; {{ end -}}
+        {{- end -}}
       </p>
       {{ end }}
 
       {{ with $author }}
       <br />
 
-      <p class="subtitle is-size-4 is-size-5-mobile">
-        <span class="icon has-margin-right has-text-secondary">
+      <p class="hero__author subtitle is-size-4 is-size-5-mobile">
+        <span class="icon has-margin-right">
           <i class="fas fa-user"></i>
         </span>
-
         {{- if .link -}}
         <a class="has-text-secondary" href="{{ .link }}" target="_blank">
           {{- .name -}}
         </a>
         {{- else -}}
-        {{- .name -}}
+        {{ .name -}}
         {{- end -}}
-        {{ with .position }}, {{ . | markdownify }}{{ end }}
+        {{ with .position }}, {{ . | markdownify }}{{ end -}}
       </p>
 
       {{ with .guest }}
@@ -89,7 +85,7 @@
       {{ end }}
 
       {{ with .blurb }}
-      <p class="is-size-5 is-size-6-mobile has-text-weight-light">
+      <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">
         {{ . | markdownify }}
       </p>
       {{ end }}
