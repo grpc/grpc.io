@@ -3,6 +3,7 @@
     "language": "en",
     // Workspace dictionary:
     "words": [
+        "backends",
         "CNCF",
         "flatbuffers",
         "Gmail",
@@ -11,7 +12,9 @@
         "protoc",
         "RPC's",
         "RPCs",
-        "SDKs"
+        "SDKs",
+        "subchannel",
+        "subchannels"
     ],
     "flagWords": [],
     "ignoreWords": [

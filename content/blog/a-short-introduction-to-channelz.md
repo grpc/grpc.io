@@ -1,4 +1,5 @@
 ---
+spelling: cSpell:ignore channelz keepalives mainpage Yuxuan zpages
 title: A short introduction to Channelz
 date: 2018-09-05
 author:
@@ -30,38 +31,29 @@ find the full source code here:
 [client](https://gist.github.com/lyuxuan/515fa6da7e0924b030e29b8be56fd90a),
 [server](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef).
 
-********************************************************************************
-
 > **Client setup:**
-
 > The client will make 100 SayHello RPCs to a specified target and load balance
 > the workload with the round robin policy. Each call has a 150ms timeout. RPC
 > responses and errors are logged for debugging purposes.
 
-********************************************************************************
-
 Running the program, we notice in the log that there are intermittent errors
-with error code **DeadlineExceeded** (as shown in Figure 1).
+with error code **DeadlineExceeded**, as shown in Figure 1.
 
 However, there's no clue about what is causing the deadline exceeded error and
 there are many possibilities:
 
-*   network issue, e.g. connection lost
-*   proxy issue, e.g. dropped requests/responses in the middle
-*   server issue, e.g. lost requests or just slow to respond
+* Network issue, for example: connection lost
+* Proxy issue, for example: dropped requests/responses in the middle
+* Server issue, for example: lost requests or just slow to respond
 
 <img src="/img/log.png" style="max-width: 947px">
-
-<p style="text-align: center"> Figure 1. Program log
-screenshort</p>
+<p style="text-align: center"> Figure 1. Program log screenshot</p>
 
 Let's turn on grpc INFO logging for more debug info and see if we can find
 something helpful.
 
 <img src="/img/logWithInfo.png" style="max-width: 997px">
-
-<p style="text-align: center"> Figure 2.
-gRPC INFO log</p>
+<p style="text-align: center"> Figure 2. gRPC INFO log</p>
 
 As shown in Figure 2, the info log indicates that all three connections to the
 server are connected and ready for transmitting RPCs. No suspicious event shows
@@ -96,12 +88,10 @@ channelz service (see instructions from the previous link). Then, open the
 channelz web page in the browser. You should see a web page like Figure 3. Now
 we can start querying channelz!
 
-<p align="center">
+<div align="center">
   <img src="/img/mainpage.png" style="max-width: 935px">
-</p>
-
-<p style="text-align: center"> Figure 3.
-Channelz main page</p>
+</div>
+<p style="text-align: center"> Figure 3. Channelz main page</p>
 
 As the error is on the client side, let's first click on
 [TopChannels](https://github.com/grpc/proposal/blob/master/A14-channelz.md#gettopchannels).
@@ -115,12 +105,10 @@ for making RPC calls. Top channels are of
 type in channelz, which is an abstraction of a connection that an RPC can be
 issued to.
 
-<p align="center">
+<div align="center">
   <img src="/img/topChan1.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 4.
-TopChannels result</p>
+</div>
+<p style="text-align: center"> Figure 4. TopChannels result</p>
 
 So we click on the TopChannels, and a page like Figure 4 appears, which lists
 all the live top channel(s) with related info.
@@ -132,22 +120,18 @@ may vary across languages).
 Looking at the **Data** section, we can see there are 15 calls failed out of 100
 on this channel.
 
-<p align="center">
+<div align="center">
   <img src="/img/topChan2.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 5.
-Top Channel (id = 2)</p>
+</div>
+<p style="text-align: center"> Figure 5. Top Channel (id = 2)</p>
 
 On the right hand side, it shows the channel has no child **Channels**, 3
 **Subchannels** (as highlighted in Figure 6), and 0 **Sockets**.
 
-<p align="center">
+<div align="center">
   <img src="/img/topChan3.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 6.
-Subchannels owned by the Channel  (id = 2)</p>
+</div>
+<p style="text-align: center"> Figure 6. Subchannels owned by the Channel  (id = 2)</p>
 
 A
 [Subchannel](https://github.com/grpc/grpc-proto/blob/9b13d199cc0d4703c7ea26c9c330ba695866eb23/grpc/channelz/v1/channelz.proto#L61)
@@ -168,22 +152,18 @@ So we click on the first Subchannel ID (i.e. "4\[\]") listed, and a page like
 Figure 7 renders. We can see that all calls on this Subchannel have succeeded.
 Thus it's unlikely this Subchannel is related to the issue we are having.
 
-<p align="center">
+<div align="center">
   <img src="/img/subChan4.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 7.
-Subchannel (id = 4)</p>
+</div>
+<p style="text-align: center"> Figure 7. Subchannel (id = 4)</p>
 
 So we go back, and click on Subchannel 5 (i.e. "5\[\]"). Again, the web page
 indicates that Subchannel 5 also never had any failed calls.
 
-<p align="center">
+<div align="center">
   <img src="/img/subChan6_1.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 8.
-Subchannel (id = 6)</p>
+</div>
+<p style="text-align: center"> Figure 8. Subchannel (id = 6)</p>
 
 And finally, we click on Subchannel 6. This time, there's something different.
 As we can see in Figure 8, there are 15 out of 34 RPC calls failed on this
@@ -203,12 +183,10 @@ and
 correspond to Socket. Note that a network listener is also considered a Socket,
 and will show up in the channelz Server info.
 
-<p align="center">
+<div align="center">
   <img src="/img/subChan6_2.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 9.
-Subchannel (id = 6) owns Socket (id = 8)</p>
+</div>
+<p style="text-align: center"> Figure 9. Subchannel (id = 6) owns Socket (id = 8)</p>
 
 We click on Socket 8, which is at the bottom of the page (see Figure 9). And we
 now see a page like Figure 10.
@@ -233,12 +211,10 @@ stuck somehow and results in deadline exceeded. In summary, we can narrow down
 the issue to the server which serves on 127.0.0.1:10003. It may be that the
 server is slow to respond, or some proxy in front of it is dropping requests.
 
-<p align="center">
+<div align="center">
   <img src="/img/socket8.png" style="max-width: 815px">
-</p>
-
-<p style="text-align: center"> Figure 10. Socket
-(id = 8)</p>
+</div>
+<p style="text-align: center"> Figure 10. Socket (id = 8)</p>
 
 As you see, channelz has helped us pinpoint the potential root cause of the
 issue with just a few clicks. You can now concentrate on what's happening with
@@ -256,10 +232,10 @@ and normal connected socket(s)) as its children.
 
 Here are some hints for the readers:
 
-*   Look for the server with the address (127.0.0.1:10003).
-*   Look at the call counts.
-*   Go to the Socket(s) owned by the server.
-*   Look at the Socket stream counts and message counts.
+* Look for the server with the address (127.0.0.1:10003).
+* Look at the call counts.
+* Go to the Socket(s) owned by the server.
+* Look at the Socket stream counts and message counts.
 
 You should notice that the number of messages received by the server socket is
 the same as sent by the client socket (Socket 8), which rules out the case of
@@ -270,23 +246,17 @@ deadline. You may now look at the
 [server](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef) code
 to verify whether it is indeed the cause.
 
-********************************************************************************
-
 > **Server setup:**
-
 > The server side program starts up three GreeterServers, with two of them using
 > an implementation
-> ([server{}](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef#file-main-go-L42))
+> ([server](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef#file-main-go-L42))
 > that imposes no delay when responding to the client, and one using an
 > implementation
-> ([slowServer{}](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef#file-main-go-L50))
+> ([slowServer](https://gist.github.com/lyuxuan/81dd08ca649a6c78a61acc7ab05e0fef#file-main-go-L50))
 > which injects a variable delay of 100ms - 200ms before sending the response.
-
-********************************************************************************
 
 As you can see through this demo, channelz helped us quickly narrow down the
 possible causes of an issue and is easy to use. For more resources, see the
 detailed channelz
 [gRFC](https://github.com/grpc/proposal/blob/master/A14-channelz.md). Find us on
-github at [https://github.com/grpc/grpc-go](https://github.com/grpc/grpc-go).
-
+GitHub at [github.com/grpc/grpc-go](https://github.com/grpc/grpc-go).
