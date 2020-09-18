@@ -1,10 +1,10 @@
 ---
 title: gRPC and Deadlines
 date: 2018-02-26
+spelling: cSpell:ignore chrono gflags Gráinne Sheerin
 author:
   name: Gráinne Sheerin
   position: Google SRE
-  link: https://www.google.com
 ---
 
 **TL;DR: Always set a deadline**. This post explains why we recommend being deliberate about setting deadlines, with useful code snippets to show you how.
@@ -25,38 +25,33 @@ In gRPC, both the client and server make their own independent and local determi
 
 ## Setting a deadline
 
-As a client you should always set a deadline for how long you are willing to wait for a reply from the server. Here's an example using the greeting service from our [Quick Start Guides](/docs/quickstart/):
+As a client you should always set a deadline for how long you are willing to
+wait for a reply from the server. Here are examples using the Greeting service
+from the [Quick Start](/docs/quickstart/) pages:
 
 ### C++
 
-
 ```cpp
 ClientContext context;
-time_point deadline = std::chrono::system_clock::now() + 
+time_point deadline = std::chrono::system_clock::now() +
     std::chrono::milliseconds(100);
 context.set_deadline(deadline);
 ```
 
-
 ### Go
-
 
 ```go
 clientDeadline := time.Now().Add(time.Duration(*deadlineMs) * time.Millisecond)
 ctx, cancel := context.WithDeadline(ctx, clientDeadline)
 ```
 
-
 ### Java
-
 
 ```java
 response = blockingStub.withDeadlineAfter(deadlineMs, TimeUnit.MILLISECONDS).sayHello(request);
 ```
 
-
-This sets the deadline to 100ms from when the client RPC is set to when the response is picked up by the client. 
-
+This sets the deadline to 100ms from when the client RPC is set to when the response is picked up by the client.
 
 ## Checking deadlines
 
@@ -64,16 +59,13 @@ On the server side, the server can query to see if a particular RPC is no longer
 
 ### C++
 
-
 ```cpp
 if (context->IsCancelled()) {
   return Status(StatusCode::CANCELLED, "Deadline exceeded or Client cancelled, abandoning.");
 }
 ```
 
-
 ### Go
-
 
 ```go
 if ctx.Err() == context.Canceled {
@@ -81,9 +73,7 @@ if ctx.Err() == context.Canceled {
 }
 ```
 
-
 ### Java
-
 
 ```java
 if (Context.current().isCancelled()) {
@@ -92,9 +82,7 @@ if (Context.current().isCancelled()) {
 }
 ```
 
-
 Is it useful for a server to continue with the request, when you know your client has reached their deadline? It depends. If the response can be cached in the server, it can be worth processing and caching it; particularly if it's resource heavy, and costs you money for each request. This will make future requests faster as the result will already be available.
-
 
 ## Adjusting deadlines
 
@@ -102,20 +90,17 @@ What if you set a deadline but a new release or server version causes a bad regr
 
 ### C++
 
-
 ```cpp
 #include <gflags/gflags.h>
 DEFINE_int32(deadline_ms, 20*1000, "Deadline in milliseconds.");
 
 ClientContext context;
-time_point deadline = std::chrono::system_clock::now() + 
+time_point deadline = std::chrono::system_clock::now() +
     std::chrono::milliseconds(FLAGS_deadline_ms);
 context.set_deadline(deadline);
 ```
 
-
 ### Go
-
 
 ```go
 var deadlineMs = flag.Int("deadline_ms", 20*1000, "Default deadline in milliseconds.")
@@ -123,9 +108,7 @@ var deadlineMs = flag.Int("deadline_ms", 20*1000, "Default deadline in milliseco
 ctx, cancel := context.WithTimeout(ctx, time.Duration(*deadlineMs) * time.Millisecond)
 ```
 
-
 ### Java
-
 
 ```java
 @Option(name="--deadline_ms", usage="Deadline in milliseconds.")
@@ -133,6 +116,5 @@ private int deadlineMs = 20*1000;
 
 response = blockingStub.withDeadlineAfter(deadlineMs, TimeUnit.MILLISECONDS).sayHello(request);
 ```
-
 
 Now the deadline can be adjusted to wait longer to avoid failing, without the need to cherry-pick a release with a different hard coded deadline. This lets you mitigate the issue for users until the regression can be debugged and resolved.

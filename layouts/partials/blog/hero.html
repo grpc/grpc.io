@@ -12,13 +12,13 @@
       </p>
 
       {{ with $attr }}
-      <p class="subtitle is-size-3 is-size-4-mobule has-text-weight-light">
+      <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
         {{ . }}
       </p>
       {{ end }}
 
       {{ with $desc }}
-      <p class="subtitle is-size-3 is-size-4-mobule has-text-weight-light">
+      <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
         {{ . }}
       </p>
       {{ end }}
@@ -84,12 +84,12 @@
       </span>
       {{ end }}
 
-      {{ with .blurb }}
+      {{ with .blurb -}}
       <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">
-        {{ . | markdownify }}
+        {{- . | markdownify -}}
       </p>
-      {{ end }}
-      {{ end }}
+      {{- end -}}
+      {{ end -}}
     </div>
   </div>
 </section>

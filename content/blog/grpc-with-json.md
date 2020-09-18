@@ -1,6 +1,7 @@
 ---
 title: gRPC + JSON
 date: 2018-08-15
+spelling: cSpell:ignore Cap’n Gson kvstore Mastrangelo
 author:
   name: Carl Mastrangelo
   link: https://carlmastrangelo.com
@@ -29,7 +30,7 @@ Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/
 
 ## What is a Service Anyways?
 
-From the point of view of gRPC, a _Service_ is a collection of _Methods_.  In Java, a method is represented as a [`MethodDescriptor`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include additional detail, such as if the call is streaming or not.  For simplicity, we'll stick with unary RPCs which have a single request and single response.
+From the point of view of gRPC, a _Service_ is a collection of _Methods_.  In Java, a method is represented as a [MethodDescriptor](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include additional detail, such as if the call is streaming or not.  For simplicity, we'll stick with unary RPCs which have a single request and single response.
 
 Since we won't be generating any code, we'll need to write the message classes ourselves.  There are four methods, each which have a request and a response type.  This means we need to make eight messages:
 
@@ -68,7 +69,7 @@ Since we won't be generating any code, we'll need to write the message classes o
 
 Because GSON uses reflection to determine how the fields in our classes map to the serialized JSON, we don't need to annotate the messages.
 
-Our client and server logic will use the request and response types, but gRPC needs to know how to produce and consume these messages.  To do this, we need to implement a [`Marshaller`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.Marshaller.html).  A marshaller knows how to convert from an arbitrary type to an `InputStream`, which is then passed down into the gRPC core library.  It is also capable of doing the reverse transformation when decoding data from the network.  For GSON, here is what the marshaller looks like:
+Our client and server logic will use the request and response types, but gRPC needs to know how to produce and consume these messages.  To do this, we need to implement a [Marshaller](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.Marshaller.html).  A marshaller knows how to convert from an arbitrary type to an `InputStream`, which is then passed down into the gRPC core library.  It is also capable of doing the reverse transformation when decoding data from the network.  For GSON, here is what the marshaller looks like:
 
 ```java
   static <T> Marshaller<T> marshallerFor(Class<T> clz) {
@@ -100,14 +101,14 @@ Given a `Class` object for a some request or response, this function will produc
           .build();
 ```
 
-Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the 
+Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the
 [method descriptors](https://github.com/carl-mastrangelo/kvstore/blob/03-nonblocking-server/build/generated/source/proto/main/grpc/io/grpc/examples/proto/KeyValueServiceGrpc.java#L44)
 would be generated automatically.
 
 ## Sending RPCs
 
-Now that we can marshal JSON requests and responses, we need to update our 
-[`KvClient`](https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98), 
+Now that we can marshal JSON requests and responses, we need to update our
+[KvClient](https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98),
 the gRPC client used in the previous post, to use our MethodDescriptors.  Additionally, since we won't be using any Protobuf types, the code needs to use `ByteBuffer` rather than `ByteString`.  That said, we can still use the `grpc-stub` package on Maven to issue the RPC.  Using the _Create_ method again as an example, here's how to make an RPC:
 
 ```java
@@ -180,8 +181,8 @@ $ # no proto deps!
 While Gson is not as fast as Protobuf, there's no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:
 
 ```sh
-./gradlew installDist
-time ./build/install/kvstore/bin/kvstore
+$ ./gradlew installDist
+$ time ./build/install/kvstore/bin/kvstore
 
 INFO: Did 215.883 RPCs/s
 ```
@@ -212,8 +213,8 @@ That's not right!  Looking at a `RetrieveRequest`, we see that the key bytes are
 Using this in our marshallers, we can see a dramatic performance difference:
 
 ```sh
-./gradlew installDist
-time ./build/install/kvstore/bin/kvstore
+$ ./gradlew installDist
+$ time ./build/install/kvstore/bin/kvstore
 
 INFO: Did 2,202.2 RPCs/s
 ```
@@ -224,4 +225,4 @@ Almost **10x** faster than before!  We can still take advantage of gRPC's effici
 
 gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC lets you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility, type checking, and performance it gives you.)
 
-All the code is avaialable on [GitHub](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) if you would like to see a fully working implementation.
+All the code is available on [GitHub](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) if you would like to see a fully working implementation.
