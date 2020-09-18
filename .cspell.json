@@ -36,6 +36,7 @@
         "codegen",
         "grpc",
         "helloworld",
+        "markdownify",
         "proto",
         "protobuf",
         "protos",

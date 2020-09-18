@@ -7,33 +7,33 @@
 <section class="hero is-medium is-primary has-background-image">
   <div class="hero-body">
     <div class="container">
-      <p class="title is-size-1 is-size-2-mobile has-text-weight-bold{{ if or $desc $attr }} is-spaced{{ end }}">
-        {{ $title }}
+      <p class="title is-size-1 is-size-2-mobile{{ if or $desc $attr }} is-spaced{{ end }}">
+        {{- $title -}}
       </p>
 
-      {{ with $attr }}
+      {{- with $attr -}}
       <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
-        {{ . }}
+        {{- . -}}
       </p>
-      {{ end }}
+      {{- end -}}
 
-      {{ with $desc }}
+      {{- with $desc -}}
       <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
-        {{ . }}
+        {{- . -}}
       </p>
-      {{ end }}
+      {{- end -}}
 
-      {{ with $date }}
+      {{ with $date -}}
       <p class="is-size-4 is-size-mobile has-text-weight-bold">
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-calendar-alt"></i>
         </span>
         {{- . -}}
       </p>
-      {{ end }}
+      {{- end -}}
 
-      {{ with $authors }}
-      {{ $numAuthors := len . }}
+      {{ with $authors -}}
+      {{ $numAuthors := len . -}}
       <br />
 
       <p class="hero__author subtitle is-size-4 is-size-5-mobile">
@@ -52,9 +52,9 @@
         {{ with .position }}, {{ . | markdownify }}{{ end }}{{ if $notLast }}; {{ end -}}
         {{- end -}}
       </p>
-      {{ end }}
+      {{ end -}}
 
-      {{ with $author }}
+      {{ with $author -}}
       <br />
 
       <p class="hero__author subtitle is-size-4 is-size-5-mobile">
