@@ -1,6 +1,6 @@
 {{ $title  := .Title }}
 {{ $desc   := .Params.description }}
-{{ $source := printf "https://github.com/grpc/grpc.io/tree/master/content/%s" .File.Path }}
+{{ $source := printf "https://github.com/grpc/grpc.io/tree/%s/content/%s" $.Site.Params.branch .File.Path }}
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-8">
