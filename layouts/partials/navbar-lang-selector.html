@@ -1,0 +1,35 @@
+{{ $langPage := cond (gt (len .Translations) 0) . .Site.Home }}
+{{ if .Site.IsMultiLingual }}
+{{ $siteLanguages := .Site.Languages }}
+{{ $pageLang := .Page.Lang}}
+{{ $url := .URL | relLangURL }}
+<div class="navbar-item is-size-5 is-size-6-mobile has-dropdown is-hoverable">
+  {{ range .Page.AllTranslations }}
+    {{ $translation := .}}
+      {{ range $siteLanguages }}
+        {{ if eq $translation.Lang .Lang }}
+          {{ if eq $pageLang .Lang}}
+            <a class="navbar-link is-arrowless"{{ with $url }} href="{{ . }}"{{ end }}>
+              <span>
+                {{ .LanguageName }}
+              </span>
+            </a>
+            <span class="icon has-text-secondary">
+              <i class="fas fa-caret-down"></i>
+            </span>
+          {{ else }}
+            <div class="navbar-dropdown">
+              {{ range $langPage.Translations }}
+              <a class="navbar-item" href="{{ .RelPermalink }}">
+                <span>
+                  {{ .Site.Language.LanguageName }}
+                </span>
+              </a>
+              {{ end }}
+            </div>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

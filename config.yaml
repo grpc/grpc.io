@@ -4,6 +4,9 @@ title: gRPC
 disableKinds: [taxonomy, taxonomyTerm]
 pygmentsCodeFences: true
 
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
 params:
   repo: https://github.com/grpc/grpc.io
   branch: main
@@ -12,7 +15,6 @@ params:
   grpc_java_release_tag: v1.32.1
   grpc_go_release_tag: v1.31.0
   font_awesome_version: 5.12.1
-  description: A high-performance, open source universal RPC framework
 
   show_banner: true
 
@@ -70,44 +72,96 @@ outputs:
   home: [HTML, REDIRECTS, RSS, RELEASE]
 
 # Site menus
-
-menu:
-  main:
-    - name: About
-      url: /about
-      weight: 1
-    - name: Docs
-      url: /docs
-      identifier: docs
-      weight: 2
-    - name: Blog
-      url: /blog
-      weight: 4
-    - name: Community
-      url: /community
-      weight: 5
-    - name: Overview
-      url: /docs
-      weight: 1
-      parent: docs
-    - name: What is gRPC?
-      url: /docs/what-is-grpc
-      weight: 1
-      parent: docs
-    - name: Languages
-      url: /docs/languages
-      weight: 2
-      parent: docs
-    - name: Guides
-      url: /docs/guides
-      identifier: guides
-      weight: 4
-      parent: docs
-    - name: Presentations
-      url: /docs/talks/
-      weight: 6
-      parent: docs
-    - name: FAQ
-      url: /faq
-      weight: 7
-      parent: docs
+languages:
+  en:
+    name: "Home"
+    url: "/"
+    contentDir: "content"
+    languageName: "English"
+    weight: 1
+    menu:
+      main:
+        - name: About
+          url: /about
+          weight: 1
+        - name: Docs
+          url: /docs
+          identifier: docs
+          weight: 2
+        - name: Blog
+          url: /blog
+          weight: 4
+        - name: Community
+          url: /community
+          weight: 5
+        - name: Overview
+          url: /docs
+          weight: 1
+          parent: docs
+        - name: What is gRPC?
+          url: /docs/what-is-grpc
+          weight: 1
+          parent: docs
+        - name: Languages
+          url: /docs/languages
+          weight: 2
+          parent: docs
+        - name: Guides
+          url: /docs/guides
+          identifier: guides
+          weight: 4
+          parent: docs
+        - name: Presentations
+          url: /docs/talks/
+          weight: 6
+          parent: docs
+        - name: FAQ
+          url: /faq
+          weight: 7
+          parent: docs
+  ko:
+    name: "홈"
+    url: "/ko/"
+    contentDir: "content/ko"
+    languageName: "한국어"
+    weight: 2
+    menu:
+      main:
+        - name: 소개
+          url: /ko/about
+          weight: 1
+        - name: 문서
+          url: /ko/docs
+          identifier: docs
+          weight: 2
+        - name: 블로그
+          url: /ko/blog
+          weight: 4
+        - name: 커뮤니티
+          url: /ko/community
+          weight: 5
+        - name: 개요
+          url: /ko/docs
+          weight: 1
+          parent: docs
+        - name: gRPC란?
+          url: /ko/docs/what-is-grpc
+          weight: 1
+          parent: docs
+        - name: 언어
+          url: /ko/docs/languages
+          weight: 2
+          parent: docs
+        - name: 가이드
+          url: /ko/docs/guides
+          identifier: guides
+          weight: 4
+          parent: docs
+        - name: 발표
+          url: /ko/docs/talks/
+          weight: 6
+          parent: docs
+        - name: FAQ
+          url: /ko/faq
+          weight: 7
+          parent: docs

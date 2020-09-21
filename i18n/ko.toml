@@ -1,0 +1,15 @@
+# i18n strings for the Korean translation.
+# NOTE: Please keep the entries in alphabetical order when editing
+
+[main_description]
+other = "고성능의 오픈 소스 범용 RPC 프레임워크"
+
+[main_why_grpc]
+other = "왜 gRPC인가?"
+
+[main_get_started]
+other = "시작하자!"
+
+# UI elements
+[ui_search_placeholder]
+other = "검색하기"
