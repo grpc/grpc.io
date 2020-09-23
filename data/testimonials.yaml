@@ -1,5 +1,7 @@
+# cSpell:ignore coreos etcd juniperlogo
 - name: Square
-  link: https://www.youtube.com/watch?v=-2sWDr3Z0Wo
+  date: 2016-03-24
+  link: https://youtu.be/-2sWDr3Z0Wo
   image: square-icon.png
   quote: >
     At Square, we have been collaborating with Google so that we can replace all
@@ -11,6 +13,8 @@
     edges of the network for integration with mobile clients and third party
     APIs.
 - name: Netflix
+  date: 2016-04-16 # Date when mention of gRPC was added to the ribbon README
+  # via https://github.com/Netflix/ribbon/commit/ba0d2a10cb3712a017878a283865bf4e8bee6ea2
   link: https://github.com/Netflix/ribbon
   image: netflix-logo.png
   quote: >
@@ -21,6 +25,7 @@
     to developer productivity, and the ability to allow development in non-JVM
     languages as a result of adopting gRPC.
 - name: CoreOS
+  date: 2015-12-29
   link: https://blog.gopheracademy.com/advent-2015/etcd-distributed-key-value-store-with-grpc-http2
   image: coreos-1.png
   quote: >
@@ -30,57 +35,38 @@
     critical open source projects such as the etcd consensus database and the
     rkt container engine.
 - name: Cockroach Labs
-  link: https://github.com/cockroachdb/cockroach
+  date: 2016-05-11
+  link: https://www.cockroachlabs.com/blog/a-tale-of-two-ports/
   image: cockroach-1.png
   quote: >
     Our switch from a home-grown RPC system to gRPC was seamless. We quickly
     took advantage of the per-stream flow control to provide better scheduling
     of large RPCs over the same connection as small ones.
 - name: Cisco
+  date: 2016-02-04
   link: https://github.com/CiscoDevNet/grpc-getting-started
   image: cisco.svg
   quote: >
     With support for high performance bi-directional streaming, TLS based
     security, and a wide variety of programming languages, gRPC is an ideal
     unified transport protocol for model driven configuration and telemetry.
-- name: Carbon3D
-  link: https://www.carbon3d.com
-  image: carbon3d.svg
-  quote: >
-    Carbon3D uses gRPC to implement distributed processes both within and
-    outside our 3D printers. We actually switched from using Thrift early on for
-    a number of reasons including but not limited to robust support for multiple
-    languages like C++, Nodejs and Python. Features like bi-directional
-    streaming are a huge win in keeping our systems implementations simpler and
-    correct. Lastly the gRPC team/community is very active and responsive which
-    is also a key factor for us in selecting an open source technology for
-    mission critical projects.
-- name: University of Wisconsin
-  link: https://www.wisc.edu
-  image: wisc-mad.jpg
-  quote: >
-    We've been using gRPC for both classes and research at University of
-    Wisconsin. Students in our distributed systems class (CS 739) utilized many
-    of its powerful features when building their own distributed systems. In
-    addition, gRPC is a key component of our OpenLambda research project
-    (https://www.open-lambda.org/) which aims to provide an open-source,
-    low-latency, serverless computational framework.
 - name: Juniper Networks
-  link: https://github.com/Juniper/open-nti
+  date: 2017-11-29
+  link: https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Interface/ta-p/316090
   image: juniperlogo.png
   quote: >
     The fact that gRPC is built on HTTP/2 transport brings us native
     bi-directional streaming capabilities and flexible custom-metadata in
-    request headers. The first point is important for large payloadexchange and
-    network telemetry scenarios while the latter enables us to expand and
+    request headers. The first point is important for large payload-exchange and
+    network-telemetry scenarios, while the latter enables us to expand and
     include capabilities including but not limited to various network element
     authentication mechanisms.
 
-    In addition, the wide language binding support that gRPC/proto3
-    bringsenables us to provide a flexible and rapid development environment for
-    both internal and external consumers.
+    In addition, the wide language binding support that gRPC/proto3 brings,
+    enables us to provide a flexible and rapid development environment for both
+    internal and external consumers.
 
-    Last but not least, while there are a number of network
-    communicationprotocols for configuration, operational state retrieval and
-    network telemetry, gRPC provides us with a unified flexible protocol and
-    transport to ease client/server interaction.
+    Last but not least, while there are a number of network communication
+    protocols for configuration, operational state retrieval and network
+    telemetry, gRPC provides us with a unified flexible protocol and transport
+    to ease client/server interaction.
