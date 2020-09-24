@@ -1,22 +1,23 @@
 ---
-title: Asynchronous-API Tutorial
-short: Async-API Tutorial
+title: Asynchronous-API tutorial
+short: Async-API tutorial
 weight: 60
+spelling: cSpell:ignore classgrpc Impl's
 ---
 
 This tutorial shows you how to write a simple server and client in C++ using
 gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with
-writing simple synchronous gRPC code, as described in [gRPC Basics:
-C++](/docs/tutorials/basic/cpp/). The example used in this tutorial follows
+writing simple synchronous gRPC code, as described in [Basics
+tutorial](/docs/languages/android/basics/). The example used in this tutorial follows
 from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld) used in the
-[quick start](../quickstart). You'll find it along with installation
+[quick start](../quickstart/). You'll find it along with installation
 instructions in
 [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld).
 
 ### Overview
 
 gRPC uses the
-[CompletionQueue](/grpc/cpp/classgrpc__impl_1_1_completion_queue.html)
+[CompletionQueue](/grpc/cpp/classgrpc_1_1_completion_queue.html)
 API for asynchronous operations. The basic work flow
 is as follows:
 
