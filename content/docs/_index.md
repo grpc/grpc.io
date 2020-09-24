@@ -13,7 +13,7 @@ material for all [supported languages](languages).
 
 - **Eager to see gRPC in action?**
 
-  [Select a language](languages) and then choose its **Quick Start**.
+  [Select a language](languages) and then choose its **Quick start**.
 
 - Interested in **gRPC feature details?**
 

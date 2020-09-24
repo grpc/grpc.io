@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in Dart with a simple working example.
 weight: 10
 spelling: cSpell:ignore Iprotos

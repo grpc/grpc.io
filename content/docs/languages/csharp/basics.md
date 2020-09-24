@@ -465,7 +465,7 @@ Using `dotnet` command line tool
 
 : Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide`
   directory. For additional instructions on building the gRPC example with the
-  `dotnet` command line tool, see [Quick Start](../../../quickstart/csharp).
+  `dotnet` command line tool, see [Quick start](../../../quickstart/csharp/).
 
 Run the server:
 

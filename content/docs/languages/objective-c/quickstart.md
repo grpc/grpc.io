@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.
 weight: 10
 ---

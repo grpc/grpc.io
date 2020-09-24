@@ -3,13 +3,14 @@ title: Introduction to gRPC
 short: Introduction
 description: An introduction to gRPC and protocol buffers.
 weight: 10
+spelling: cSpell:ignore ponycopter
 ---
 
 This page introduces you to gRPC and protocol buffers. gRPC can use
 protocol buffers as both its Interface Definition Language (**IDL**) and as its underlying message
 interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
-see our [Quick Starts](/docs/quickstart).
+[select a language](/docs/languages/) and try its **Quick start**.
 
 ## Overview
 
@@ -24,7 +25,12 @@ languages) that provides the same methods as the server.
 
 ![Concept Diagram](/img/landing-2.svg)
 
-gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside Google to your own desktop - and can be written in any of gRPC's supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. In addition, the latest Google APIs will have gRPC versions of their interfaces, letting you easily build Google functionality into your applications.
+gRPC clients and servers can run and talk to each other in a variety of
+environments - from servers inside Google to your own desktop - and can be
+written in any of gRPC's supported languages. So, for example, you can easily
+create a gRPC server in Java with clients in Go, Python, or Ruby. In addition,
+the latest Google APIs will have gRPC versions of their interfaces, letting you
+easily build Google functionality into your applications.
 
 ### Working with Protocol Buffers
 

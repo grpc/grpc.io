@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in Java with a simple working example.
 weight: 10
 ---

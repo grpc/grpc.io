@@ -27,7 +27,7 @@ In gRPC, both the client and server make their own independent and local determi
 
 As a client you should always set a deadline for how long you are willing to
 wait for a reply from the server. Here are examples using the Greeting service
-from the [Quick Start](/docs/quickstart/) pages:
+from the [Quick start](/docs/quickstart/) pages:
 
 ### C++
 
