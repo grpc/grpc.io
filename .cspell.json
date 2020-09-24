@@ -7,6 +7,7 @@
         "boringssl",
         "charsets",
         "CNCF",
+        "deallocate",
         "deserialization",
         "Dockerfiles",
         "flatbuffers",
@@ -28,6 +29,7 @@
         "SDKs",
         "subchannel",
         "subchannels",
+        "submodules",
         "threadsafe",
         "unmarshalling"
     ],
