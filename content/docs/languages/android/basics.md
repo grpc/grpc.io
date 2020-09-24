@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in Android Java.
 weight: 50
 ---
@@ -12,8 +12,8 @@ By walking through this example you'll learn how to:
 - Generate client code using the protocol buffer compiler.
 - Use the Java gRPC API to write a simple mobile client for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
-This guide also does not cover anything on the server side. You can check the [Java guide](/docs/tutorials/basic/java/) for more information.
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+This guide also does not cover anything on the server side. You can check the [Java pages](/docs/languages/java/) for more information.
 
 ### Why use gRPC?
 
@@ -39,7 +39,7 @@ interface code - if you don't already, follow the setup instructions in the
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package` file option in our .proto:
 
@@ -204,7 +204,7 @@ As you can see, it's very similar to the simple RPC we just looked at, except in
 
 ##### Client-side streaming RPC
 
-Now for something a little more complicated: the client-side streaming method `RecordRoute`, where we send a stream of `Point`s to the server and get back a single `RouteSummary`. For this method we need to use the asynchronous stub. If you've already read [Creating the server](/docs/tutorials/basic/java/#server) some of this may look very familiar - asynchronous streaming RPCs are implemented in a similar way on both sides.
+Now for something a little more complicated: the client-side streaming method `RecordRoute`, where we send a stream of `Point`s to the server and get back a single `RouteSummary`. For this method we need to use the asynchronous stub. If you've already read [Creating the server](/docs/languages/java/basics/#server) some of this may look very familiar - asynchronous streaming RPCs are implemented in a similar way on both sides.
 
 ```java
 private String recordRoute(List<Point> points, int numPoints, RouteGuideStub asyncStub)

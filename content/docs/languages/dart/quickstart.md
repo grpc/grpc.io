@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in Dart with a simple working example.
 weight: 10
 spelling: cSpell:ignore Iprotos
@@ -82,7 +82,7 @@ Congratulations! You've just run a client-server application with gRPC.
 
 In this section you'll update the app to make use of an extra server method. The
 gRPC service is defined using [protocol buffers][pb]. To learn more about how to
-define a service in a `.proto` file, see [Basics Tutorial][]. For now, all you
+define a service in a `.proto` file, see [Basics tutorial][]. For now, all you
 need to know is that both the server and the client stub have a `SayHello()` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
 `HelloReply` from the server, and that the method is defined like this:
@@ -224,13 +224,13 @@ issue][issue] over the [grpc-dart][] repo.
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial][].
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
 [Dart]: https://dart.dev
-[Basics Tutorial]: ../basics
+[Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-dart/archive/master.zip
 [Flutter]: https://flutter.dev
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
@@ -240,4 +240,4 @@ issue][issue] over the [grpc-dart][] repo.
 [issue]: https://github.com/grpc/grpc-dart/issues/new
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
-[pbc-install]: /docs/protoc-installation
+[pbc-install]: /docs/protoc-installation/

@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.
 weight: 10
 ---
@@ -311,7 +311,7 @@ Cannot find `protoc` when building HelloWorld
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).

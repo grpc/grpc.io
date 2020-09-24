@@ -1,13 +1,13 @@
 ---
-title: Go Generated-code Reference
-short: Generated Code
+title: Go Generated-code reference
+short: Generated code
 weight: 80
 ---
 
 This page describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
 when compiling `.proto` files with `protoc`.
 
-You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](/docs/guides/concepts/#service-definition).
+You can find out how to define a gRPC service in a `.proto` file in [Service definition](/docs/what-is-grpc/core-concepts/#service-definition).
 
 <p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
 to be run on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
@@ -15,6 +15,7 @@ so e.g. <i>individual streams</i> do not support <i>concurrent reads</i> or <i>c
 </p>
 
 ## Methods on generated server interfaces
+
 On the server side, each `service Bar` in the `.proto` file results in the function:
 
 `func RegisterBarServer(s *grpc.Server, srv BarServer)`
@@ -23,6 +24,7 @@ The application can define a concrete implementation of the `BarServer` interfac
 (before starting the server instance) by using this function.
 
 ### Unary methods
+
 These methods have the following signature on the generated service interface:
 
 `Foo(context.Context, *MsgA) (*MsgB, error)`
@@ -30,6 +32,7 @@ These methods have the following signature on the generated service interface:
 In this context, `MsgA` is the protobuf message sent from the client, and `MsgB` is the protobuf message sent back from the server.
 
 ### Server-streaming methods
+
 These methods have the following signature on the generated service interface:
 
 `Foo(*MsgA, <ServiceName>_FooServer) error`
@@ -50,6 +53,7 @@ The server-side handler can send a stream of protobuf messages to the client thr
 stream is caused by the `return` of the handler method.
 
 ### Client-streaming methods
+
 These methods have the following signature on the generated service interface:
 
 `Foo(<ServiceName>_FooServer) error`
@@ -72,6 +76,7 @@ The single response message from the server is sent by calling the `SendAndClose
 Note that `SendAndClose` must be called once and only once.
 
 ### Bidi-streaming methods
+
 These methods have the following signature on the generated service interface:
 
 `Foo(<ServiceName>_FooServer) error`
@@ -93,10 +98,12 @@ The response server-to-client message stream is sent by repeatedly calling the `
 End-of-stream for the server-to-client stream is indicated by the `return` of the bidi method handler.
 
 ## Methods on generated client interfaces
+
 For client side usage, each `service Bar` in the `.proto` file also results in the function: `func BarClient(cc *grpc.ClientConn) BarClient`, which
 returns a concrete implementation of the `BarClient` interface (this concrete implementation also lives in the generated `.pb.go` file).
 
 ### Unary Methods
+
 These methods have the following signature on the generated client stub:
 
 `(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (*MsgB, error)`
@@ -104,6 +111,7 @@ These methods have the following signature on the generated client stub:
 In this context, `MsgA` is the single request from client to server, and `MsgB` contains the response sent back from the server.
 
 ### Server-Streaming methods
+
 These methods have the following signature on the generated client stub:
 
 `Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
@@ -124,6 +132,7 @@ The client can then repeatedly call the `Recv` method on the returned `<ServiceN
 This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
 
 ### Client-Streaming methods
+
 These methods have the following signature on the generated client stub:
 
 `Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
@@ -146,6 +155,7 @@ The `CloseAndRecv` method on this stream must be called once and only once, in o
 and receive the single response message from the server.
 
 ### Bidi-Streaming methods
+
 These methods have the following signature on the generated client stub:
 
 `Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
@@ -171,6 +181,7 @@ End-of-stream for the server-to-client stream is indicated by a return value of 
 End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ## Packages and Namespaces
+
 When the `protoc` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
 works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin.
 

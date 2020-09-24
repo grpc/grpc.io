@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in C#.
 weight: 50
 ---
@@ -12,7 +12,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the C# gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction) and are familiar
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
@@ -43,7 +43,7 @@ instructions](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/s
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction)) is to
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in
@@ -465,7 +465,7 @@ Using `dotnet` command line tool
 
 : Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide`
   directory. For additional instructions on building the gRPC example with the
-  `dotnet` command line tool, see [Quick Start](../../../quickstart/csharp).
+  `dotnet` command line tool, see [Quick start](../quickstart/).
 
 Run the server:
 

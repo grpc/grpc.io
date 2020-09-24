@@ -1,7 +1,8 @@
 ---
-title: Java Generated-code Reference
-short: Generated Code
+title: Java generated-code reference
+short: Generated code
 weight: 80
+spelling: cSpell:ignore buildscript classpath grpcexample motd srcs xolstice
 ---
 
 ## Packages
@@ -87,7 +88,7 @@ public StreamObserver<RequestType> bidirectionalStreamingExample(
 
 The signatures for client and bidirectional-streaming RPCs are the same. Since
 the client can send multiple messages to the service, the service implementation
-is reponsible for returning a `StreamObserver<RequestType>` instance. This
+is responsible for returning a `StreamObserver<RequestType>` instance. This
 `StreamObserver` is invoked whenever additional messages are received from the
 client.
 
@@ -309,7 +310,7 @@ java_grpc_library(
 )
 ```
 
-Android developers please see [this](/docs/tutorials/basic/android/#generating-client-code) for reference.
+Android developers, see [Generating client code](/docs/languages/android/basics/#generating-client-code) for reference.
 
 If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:

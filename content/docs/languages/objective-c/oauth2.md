@@ -15,9 +15,8 @@ By walking through it you'll also learn how to use the Objective-C gRPC API to:
   headers and trailers.
 
 It assumes you know the basics on how to make gRPC API calls using the
-Objective-C client library, as shown in [gRPC Basics:
-Objective-C](/docs/tutorials/basic/objective-c/) and the
-[Introduction to gRPC](/docs/what-is-grpc/introduction), and are familiar with OAuth2 concepts like _access
+Objective-C client library, as shown in [Basics tutorial](../basics/) and the
+[Introduction to gRPC](/docs/what-is-grpc/introduction/), and are familiar with OAuth2 concepts like _access
 token_.
 
 ### Example code and setup {#setup}
@@ -58,23 +57,23 @@ here](https://developers.google.com/identity/sign-in/ios/).
 {{< /note >}}
 
 As with the other Objective-C examples, you also should have
-[Cocoapods](https://cocoapods.org/#install) installed, as well as the relevant
+[CocoaPods](https://cocoapods.org/#install) installed, as well as the relevant
 tools to generate the client library code. You can obtain the latter by
 following [these setup instructions](https://github.com/grpc/homebrew-grpc).
 
 ### Try it out! {#try}
 
-To try the sample app, first have Cocoapods generate and install the client library for our .proto
+To try the sample app, first have CocoaPods generate and install the client library for our .proto
 files:
 
 ```sh
 $ pod install
 ```
 
-(This might have to compile OpenSSL, which takes around 15 minutes if Cocoapods
+(This might have to compile OpenSSL, which takes around 15 minutes if CocoaPods
 doesn't have it yet on your computer's cache).
 
-Finally, open the XCode workspace created by Cocoapods, and run the app.
+Finally, open the XCode workspace created by CocoaPods, and run the app.
 
 The first view, `SelectUserViewController.h/m`, asks you to sign in with your
 Google account, and to give the "gRPC-AuthSample" app the following permissions:

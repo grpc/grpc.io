@@ -1,7 +1,8 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in C++ with a simple working example.
 weight: 10
+spelling: cSpell:ignore autoconf automake cmake cout DCMAKE endl libtool mkdir popd pushd
 cmake-version: 3.17.0
 ---
 
@@ -172,8 +173,8 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [Introduction to gRPC](/docs/what-is-grpc/introduction) and [gRPC Basics:
-C++](/docs/tutorials/basic/cpp). For now all you need to know is that both the
+file in [Introduction to gRPC](/docs/what-is-grpc/introduction/) and [Basics
+tutorial][]. For now all you need to know is that both the
 server and the client stub have a `SayHello()` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from the
 server, and that this method is defined like this:
@@ -351,9 +352,9 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).
 
 [examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto

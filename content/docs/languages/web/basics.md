@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC-web.
 weight: 50
 ---

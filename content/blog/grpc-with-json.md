@@ -26,7 +26,7 @@ gRPC is actually a collection of technologies that have high cohesion, rather th
 
 Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  Gson allows us to bring our own types in our code, but provides a way of serializing those types into bytes.
 
-Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) store service.  We will be modifying the code used my previous [So You Want to Optimize gRPC](/blog/optimizing-grpc-part-2) post.
+Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) store service.  We will be modifying the code used my previous [So You Want to Optimize gRPC](/blog/optimizing-grpc-part-2/) post.
 
 ## What is a Service Anyways?
 
@@ -187,7 +187,7 @@ $ time ./build/install/kvstore/bin/kvstore
 INFO: Did 215.883 RPCs/s
 ```
 
-What happened?  In the previous [optimization](/blog/optimizing-grpc-part-2) post, we saw the Protobuf version do nearly _2,500 RPCs/s_.  JSON is slow, but not _that_ slow.  We can see what the problem is by printing out the JSON data as it goes through the marshaller:
+What happened?  In the previous [optimization](/blog/optimizing-grpc-part-2/) post, we saw the Protobuf version do nearly _2,500 RPCs/s_.  JSON is slow, but not _that_ slow.  We can see what the problem is by printing out the JSON data as it goes through the marshaller:
 
 ```json
 {"key":[4,-100,-48,22,-128,85,115,5,56,34,-48,-1,-119,60,17,-13,-118]}

@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in C++.
 weight: 50
 ---
@@ -12,7 +12,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the C++ gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction) and are familiar
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
@@ -45,12 +45,12 @@ $ cd examples/cpp/route_guide
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the C++ quick start guide](/docs/quickstart/cpp).
+[Quick start](/docs/languages/cpp/quickstart/).
 
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction)) is to
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in

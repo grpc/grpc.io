@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in Java with a simple working example.
 weight: 10
 ---
@@ -61,7 +61,7 @@ Congratulations! You've just run a client-server application with gRPC.
 
 In this section you'll update the application by adding an extra server method.
 The gRPC service is defined using [protocol buffers][pb]. To learn more about
-how to define a service in a `.proto` file see [Basics Tutorial][]. For now, all
+how to define a service in a `.proto` file see [Basics tutorial][]. For now, all
 you need to know is that both the server and the client stub have a `SayHello()`
 RPC method that takes a `HelloRequest` parameter from the client and returns a
 `HelloReply` from the server, and that the method is defined like this:
@@ -201,12 +201,12 @@ from the `examples` directory:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Basics Tutorial]: /docs/languages/java/basics
+[Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net

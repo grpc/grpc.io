@@ -6,7 +6,7 @@ gRPC has an active community of developers who are using, enhancing, and buildin
 
 ## Contribute on GitHub
 
-gRPC has an active community of developers who are using, enhancing and building valuable integrations with other software projects. We are always looking for active contributors in gRPC and gRPC Ecosystem. Here are a few areas where we would love community contribution in grpc project. Be sure to follow our [community addition guidelines](/contribute).
+gRPC has an active community of developers who are using, enhancing and building valuable integrations with other software projects. We are always looking for active contributors in gRPC and gRPC Ecosystem. Here are a few areas where we would love community contribution in grpc project. Be sure to follow our [community addition guidelines](/contribute/).
 
 ## [gRPC C-based](https://github.com/grpc/grpc/labels/disposition%2Fhelp%20wanted)
 
@@ -20,7 +20,7 @@ For Android Java and Java.
 
 For the Go implementation.
 
-[More on how to contribute to gRPC Documentation >](/contribute)
+[More on how to contribute to gRPC Documentation.](/contribute/)
 
 ## Mailing list
 
@@ -28,7 +28,7 @@ Any questions or suggestions? Just want to be in the loop of what is going on wi
 
 ## Join the gRPC Ecosystem
 
-We have an organization for all valuable projects around gRPC in the [gRPC Ecosystem](https://github.com/grpc-ecosystem). The goal is to have all projects around gRPC (showing integrations with other projects or building utilities on top of gRPC) to be showcased here. If you have a new project you would like to add to gRPC Ecosystem, please fill up the [gRPC Ecosystem Project Request](https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74/edit) form. Please read the [contribution guidelines](https://github.com/grpc/grpc-contrib/blob/master/CONTRIBUTING.md) for gRPC Ecosystem before submitting. 
+We have an organization for all valuable projects around gRPC in the [gRPC Ecosystem](https://github.com/grpc-ecosystem). The goal is to have all projects around gRPC (showing integrations with other projects or building utilities on top of gRPC) to be showcased here. If you have a new project you would like to add to gRPC Ecosystem, please fill up the [gRPC Ecosystem Project Request](https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74/edit) form. Please read the [contribution guidelines](https://github.com/grpc/grpc-contrib/blob/master/CONTRIBUTING.md) for gRPC Ecosystem before submitting.
 
 ## Gitter Channel
 

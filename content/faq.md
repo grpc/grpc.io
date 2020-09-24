@@ -8,7 +8,7 @@ Here are some frequently asked questions. Hope you find your answer here :-)
 
 gRPC is a modern, open source remote procedure call (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems.
 
-Read the longer [Motivation & Design Principles](/blog/principles) post for background on why we created gRPC.
+Read the longer [Motivation & Design Principles](/blog/principles/) post for background on why we created gRPC.
 
 ### What does gRPC stand for?
 
@@ -33,11 +33,11 @@ Google has been using a lot of the underlying technologies and concepts in gRPC 
 
 See [Officially supported languages and platforms][].
 
-[Officially supported languages and platforms]: /about#officially-supported-languages-and-platforms
+[Officially supported languages and platforms]: /about/#officially-supported-languages-and-platforms
 
 ### How do I get started using gRPC?
 
-You can start with installation of gRPC by following instructions [here](/docs/quickstart). Or head over to the [gRPC GitHub org page](https://github.com/grpc), pick the runtime or language you are interested in, and follow the README instructions.
+You can start with installation of gRPC by following instructions [here](/docs/quickstart/). Or head over to the [gRPC GitHub org page](https://github.com/grpc), pick the runtime or language you are interested in, and follow the README instructions.
 
 ### Which license is gRPC under?
 
@@ -49,9 +49,9 @@ All implementations are licensed under [Apache 2.0](https://github.com/grpc/grpc
 
 ### Where is the documentation?
 
-Check out the [documentation](/docs) right here on grpc.io.
+Check out the [documentation](/docs/) right here on grpc.io.
 
-### What is the roadmap?
+### What is the road map?
 
 The gRPC project has an RFC process, through which new features are designed and approved for implementation. They are tracked in [this repository](https://github.com/grpc/proposal).
 

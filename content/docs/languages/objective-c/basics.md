@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in Objective-C.
 weight: 50
 ---

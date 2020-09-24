@@ -1,12 +1,12 @@
 ---
-title: Quick Start
+title: Quick start
 description: This guide gets you started with gRPC in C# with a simple working example.
 weight: 10
 ---
 
 {{< note >}}
   This page uses the [gRPC C# core-library][core-library] implementation. For
-  documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet).
+  documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
 
   [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
 {{< /note >}}
@@ -85,7 +85,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: C#](/docs/tutorials/basic/csharp/). For now all you need to know is that both the
+file in [Basics tutorial](../basics/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from the
 server, and that this method is defined like this:
@@ -239,7 +239,7 @@ Just like we did before, from the `examples/csharp/Helloworld` directory:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial](../basics/)
 - Explore the [API reference](../api).

@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in PHP.
 weight: 50
 ---
@@ -18,9 +18,8 @@ buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto2 version of the protocol
 buffers language.
 
-Also note that currently you can only create clients in PHP for gRPC services -
-you can find out how to create gRPC servers in our other tutorials, e.g.
-[Node.js](/docs/tutorials/basic/node/).
+Also note that currently, you can only create clients in PHP for gRPC services.
+Use [another language](/docs/languages/) to create a gRPC server.
 
 ### Why use gRPC?
 
@@ -58,7 +57,7 @@ clients.
 You also should have the relevant tools installed to generate the client
 interface code (and a server in another language, for testing). You can obtain
 the latter by following [these setup
-instructions](/docs/tutorials/basic/node/).
+instructions](/docs/languages/node/basics/), for example.
 
 ### Try it out! {#try}
 
