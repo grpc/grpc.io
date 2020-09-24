@@ -1,6 +1,7 @@
 ---
 title: Kotlin, meet gRPC
 date: 2020-04-16
+spelling: cSpell:ignore Wasserman
 authors:
 - name: Louis Wasserman
   link: https://github.com/lowasser
@@ -23,16 +24,14 @@ For the full announcement, including how to deploy gRPC Kotlin services on
 [Cloud Run][], see the Google Cloud blog, [Kotlin, meet gRPC: a new open-source
 project for modern apps][blog].
 
-For more information, see the following pages:
+For more information, see the following [Kotlin/JVM pages][]:
 
-- [gRPC Kotlin/JVM Quick Start][]
-- [gRPC Basics - Kotlin/JVM][] tutorial
-- [API Reference][]
+- [Quick start](/docs/languages/kotlin/quickstart/)
+- [Basics tutorial](/docs/languages/kotlin/basics/)
+- [API reference](/docs/languages/kotlin/api)
 
-[API Reference]: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 [blog]: https://cloud.google.com/blog/products/application-development/use-grpc-with-kotlin
 [Cloud Run]: https://cloud.run
-[gRPC Basics - Kotlin/JVM]: https://grpc.io/docs/tutorials/basic/kotlin
 [gRPC Kotlin]: https://github.com/grpc/grpc-kotlin
-[gRPC Kotlin/JVM Quick Start]: https://grpc.io/docs/quickstart/kotlin
 [Kotlin]: https://kotlinlang.org
+[Kotlin/JVM pages]: /docs/languages/kotlin/
