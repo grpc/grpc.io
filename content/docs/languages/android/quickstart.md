@@ -159,7 +159,7 @@ hand-written parts of the example app.
 #### Update the server
 
 Follow the instructions given in [Update the
-server](/docs/quickstart/java/#update-the-server) of the Java quick start page.
+server](/docs/languages/java/quickstart/#update-the-server) of the Java quick start page.
 
 #### Update the client
 

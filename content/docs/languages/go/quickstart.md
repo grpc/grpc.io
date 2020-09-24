@@ -222,5 +222,5 @@ from the `examples/helloworld` directory:
 [grpc-go]: https://github.com/grpc/grpc-go
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
-[pbc-install]: /docs/protoc-installation
+[pbc-install]: /docs/protoc-installation/
 [releases of Go]: https://golang.org/doc/devel/release.html

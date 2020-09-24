@@ -192,6 +192,6 @@ browser, and marks an exciting time for frontend developers!
     not part of the gRPC-Web spec, and is not recommended for production use. [↩](#a19)
 20. <a id="f20"></a> `grpcweb` allows server streaming methods to be called, but
     it doesn't return data until the stream has closed. [↩](#a20)
-21. <a id="f21"></a> [gRPC-Web is Generally Available](/blog/grpc-web-ga) [↩](#a21)
+21. <a id="f21"></a> [gRPC-Web is Generally Available](/blog/grpc-web-ga/) [↩](#a21)
 22. <a id="f22"></a> [github.com/grpc/grpc-web/blob/master/doc/roadmap.md](https://github.com/grpc/grpc-web/blob/master/doc/roadmap.md) [↩](#a22)
 23. <a id="f23"></a> [docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM](https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM) [↩](#a23)

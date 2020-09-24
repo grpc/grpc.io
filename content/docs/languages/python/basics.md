@@ -44,7 +44,7 @@ $ cd grpc/examples/python/route_guide
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Python quick start guide](/docs/quickstart/python).
+[Quick start](../quickstart/).
 
 ### Defining the service
 

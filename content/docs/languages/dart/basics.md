@@ -536,4 +536,4 @@ in our issue tracker.
 
 [grpc-dart/example/route_guide/lib/src/client.dart]: https://github.com/grpc/grpc-dart/tree/master/example/route_guide/lib/src/client.dart
 [new issue]: https://github.com/grpc/grpc-dart/issues/new
-[Quick start]: ../quickstart
+[Quick start]: ../quickstart/

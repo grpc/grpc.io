@@ -576,4 +576,4 @@ From a different terminal, run the client:
 $ go run client/client.go
 ```
 
-[Quick start]: ../quickstart
+[Quick start]: ../quickstart/

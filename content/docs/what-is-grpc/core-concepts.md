@@ -6,7 +6,7 @@ description: >-
   and RPC life cycle.
 ---
 
-Not familiar with gRPC? First read [Introduction to gRPC](../introduction). For
+Not familiar with gRPC? First read [Introduction to gRPC](../introduction/). For
 language-specific details, see the quick start, tutorial, and reference
 documentation for your language of choice.
 
@@ -195,7 +195,7 @@ terminates the RPC immediately so that no further work is done.
 #### Metadata
 
 Metadata is information about a particular RPC call (such as [authentication
-details](/docs/guides/auth)) in the form of a list of key-value pairs, where the
+details](/docs/guides/auth/)) in the form of a list of key-value pairs, where the
 keys are strings and the values are typically strings, but can be binary data.
 Metadata is opaque to gRPC itself - it lets the client provide information
 associated with the call to the server and vice versa.
@@ -206,7 +206,7 @@ Access to metadata is language dependent.
 
 A gRPC channel provides a connection to a gRPC server on a specified host and
 port. It is used when creating a client stub. Clients can specify channel
-arguments to modify gRPC's default behaviour, such as switching message
+arguments to modify gRPC's default behavior, such as switching message
 compression on or off. A channel has state, including `connected` and `idle`.
 
 How gRPC deals with closing a channel is language dependent. Some languages also

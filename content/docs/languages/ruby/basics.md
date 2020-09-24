@@ -44,7 +44,7 @@ $ cd examples/ruby/route_guide
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Ruby quick start guide](/docs/quickstart/ruby/).
+[Quick start](../quickstart/).
 
 ### Defining the service
 

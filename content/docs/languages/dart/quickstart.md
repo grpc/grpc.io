@@ -230,7 +230,7 @@ issue][issue] over the [grpc-dart][] repo.
 - Explore the [API reference](../api).
 
 [Dart]: https://dart.dev
-[Basics tutorial]: ../basics
+[Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-dart/archive/master.zip
 [Flutter]: https://flutter.dev
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
@@ -240,4 +240,4 @@ issue][issue] over the [grpc-dart][] repo.
 [issue]: https://github.com/grpc/grpc-dart/issues/new
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
-[pbc-install]: /docs/protoc-installation
+[pbc-install]: /docs/protoc-installation/

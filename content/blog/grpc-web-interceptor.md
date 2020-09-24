@@ -197,7 +197,7 @@ consider posting to the [gRPC mailing list][] or sending us an email at
 [grpc-web-team@google.com][].
 
 [1.1.0]: https://github.com/grpc/grpc-web/releases/tag/1.1.0
-[gRPC languages]: /docs/languages
+[gRPC languages]: /docs/languages/
 [gRPC mailing list]: https://groups.google.com/forum/#!forum/grpc-io
 [grpc-web-team@google.com]: mailto:grpc-web-team@google.com
 [grpc-web]: https://github.com/grpc/grpc-web

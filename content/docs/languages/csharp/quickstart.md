@@ -6,7 +6,7 @@ weight: 10
 
 {{< note >}}
   This page uses the [gRPC C# core-library][core-library] implementation. For
-  documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet).
+  documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
 
   [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
 {{< /note >}}

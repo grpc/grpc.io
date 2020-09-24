@@ -45,7 +45,7 @@ $ cd examples/cpp/route_guide
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the C++ quick start guide](/docs/quickstart/cpp).
+[Quick start](/docs/languages/cpp/quickstart/).
 
 
 ### Defining the service
