@@ -215,7 +215,7 @@ from the `examples/helloworld` directory:
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Basics tutorial]: /docs/languages/go/basics/
+[Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org

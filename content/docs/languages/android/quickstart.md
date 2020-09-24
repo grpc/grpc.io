@@ -256,7 +256,7 @@ In the app, use the following values:
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Basics tutorial]: /docs/languages/android/basics/
+[Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net
