@@ -259,9 +259,8 @@ Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quick start
 and other tutorials):
 
-Note that currently you can only create clients in PHP for gRPC services -
-you can find out how to create gRPC servers in our other tutorials,
-e.g. [Node.js](/docs/tutorials/basic/node/).
+Note that currently, you can only create clients in PHP for gRPC services.
+Use [another language](/docs/languages/) to create a gRPC server.
 
 ```sh
 # Clone the repository to get the example code:
@@ -300,7 +299,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: PHP](/docs/tutorials/basic/php/). For now all you need to know is that both the
+file in [Basics tutorial](../basics/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from
 the server, and that this method is defined like this:
@@ -435,7 +434,7 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).

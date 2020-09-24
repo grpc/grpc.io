@@ -1,5 +1,5 @@
 ---
-title: Basics Tutorial
+title: Basics tutorial
 description: A basic tutorial introduction to gRPC in Python.
 weight: 50
 ---
@@ -13,7 +13,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Python gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction) and are familiar
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 find out more in the [proto3 language
@@ -48,7 +48,7 @@ client interface code - if you don't already, follow the setup instructions in
 
 ### Defining the service
 
-Your first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction)) is to
+Your first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can

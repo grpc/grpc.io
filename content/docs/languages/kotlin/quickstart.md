@@ -52,7 +52,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using [Protocol
 Buffers][pb]; you can find out lots more about how to define a service in a
-`.proto` file in [gRPC Basics: Kotlin](/docs/tutorials/basic/kotlin). For now
+`.proto` file in [Basics tutorial](../basics/). For now
 all you need to know is that both the server and the client "stub" have a
 `SayHello()` RPC method that takes a `HelloRequest` parameter from the client
 and returns a `HelloReply` from the server, and that this method is defined like
@@ -191,9 +191,9 @@ from the `examples` directory:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).
 
 [Kotlin]: https://kotlinlang.org

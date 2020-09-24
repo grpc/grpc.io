@@ -72,8 +72,8 @@ Congratulations! You've just run a client-server application with gRPC.
 
 In this section you'll update the application with an extra server method. The
 gRPC service is defined using [protocol buffers][pb]. To learn more about how to
-define a service in a `.proto` file see [gRPC Basics:
-Go](/docs/tutorials/basic/go). For now, all you need to know is that both the
+define a service in a `.proto` file see [Basics tutorial][].
+For now, all you need to know is that both the
 server and the client stub have a `SayHello()` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that the method is defined like this:
@@ -210,11 +210,12 @@ from the `examples/helloworld` directory:
 
 ### What's next
 
-- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction)
-  and [Core concepts](/docs/what-is-grpc/core-concepts).
-- Work through the [Basics Tutorial](../basics).
+- Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
+  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+- Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
+[Basics tutorial]: /docs/languages/go/basics/
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org

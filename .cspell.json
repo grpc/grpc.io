@@ -4,6 +4,7 @@
     // Workspace dictionary:
     "words": [
         "backends",
+        "Bazel",
         "boringssl",
         "charsets",
         "CNCF",
@@ -29,9 +30,12 @@
         "SDKs",
         "subchannel",
         "subchannels",
+        "submodule",
         "submodules",
         "threadsafe",
-        "unmarshalling"
+        "unencrypted",
+        "unmarshalling",
+        "Xcode"
     ],
     "flagWords": [],
     "ignoreWords": [

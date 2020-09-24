@@ -1,6 +1,6 @@
 ---
-title: Python Generated-code Reference
-short: Generated Code
+title: Python Generated-code reference
+short: Generated code
 weight: 80
 spelling: cSpell:ignore docstrings
 ---

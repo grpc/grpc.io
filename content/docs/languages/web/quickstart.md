@@ -89,8 +89,7 @@ This example app has three key components:
 
 ### What's next
 
-- Work through a more detailed tutorial in [gRPC Basics:
-  Web](/docs/tutorials/basic/web/).
+- Work through the [Basics tutorial](../basics/).
 
-[grpc-web]: https://github.com/grpc/grpc-web
 [download]: https://github.com/grpc/grpc-web/archive/master.zip
+[grpc-web]: https://github.com/grpc/grpc-web

@@ -1,5 +1,5 @@
 ---
-title: ALTS Authentication
+title: ALTS authentication
 description: >
   An overview of gRPC authentication using Application Layer Transport Security
   (ALTS).

@@ -1,6 +1,6 @@
 ---
-title: Go Generated-code Reference
-short: Generated Code
+title: Go Generated-code reference
+short: Generated code
 weight: 80
 ---
 

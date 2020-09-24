@@ -110,7 +110,7 @@ var getTodo = todoService.getTodoById(getTodoRequest, metadata, (err, response) 
 });
 ```
 
-Once you declare the data types and a service interface, gRPC-Web abstracts away all the boilerplate, leaving you with a clean and human-friendly API (essentially the same API as the current [Node.js](/docs/tutorials/basic/node/) for gRPC API, just transferred to the client).
+Once you declare the data types and a service interface, gRPC-Web abstracts away all the boilerplate, leaving you with a clean and human-friendly API (essentially the same API as the current [Node.js](/docs/languages/node/) for gRPC API, just transferred to the client).
 
 On the backend, the gRPC server can be written in any language that supports gRPC, such as Go, Java, C++, Ruby, Node.js, and many others. The last piece of the puzzle is the service proxy. From the get-go, gRPC-Web will support [Envoy](https://envoyproxy.io) as the default service proxy, which has a built-in [envoy.grpc_web filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter#config-http-filters-grpc-web) that you can apply with just a few lines of configuration.
 
