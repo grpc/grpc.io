@@ -144,6 +144,9 @@ $ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 You'll find the regenerated request and response classes, and client and server
 classes in the `lib/src/generated` directory.
 
+Note the `grpc:` part of the `--dart-out` command line option, that's what
+instructs `protoc` to generate gRPC related code.
+
 Now implement and call the new RPC in the server and client code, respectively.
 
 #### Update the server

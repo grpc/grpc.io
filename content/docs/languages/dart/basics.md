@@ -141,6 +141,9 @@ From the `route_guide` example directory run:
 protoc -I protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated
 ```
 
+Note the `grpc:` part of the `--dart-out` command line option, that's what
+instructs `protoc` to generate gRPC related code.
+
 Running this command generates the following files in the `lib/src/generated`
 directory under the `route_guide` example directory:
 
