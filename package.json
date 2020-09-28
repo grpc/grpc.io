@@ -2,7 +2,7 @@
   "devDependencies": {
     "autoprefixer": "^9.7.6",
     "bulma": "^0.8.0",
-    "netlify-cli": "^2.63.2",
+    "netlify-cli": "^2.64.1",
     "postcss-cli": "^7.1.0"
   }
 }
