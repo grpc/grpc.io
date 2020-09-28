@@ -158,7 +158,7 @@ than creates a new one. The generated code files are called
    - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
    - `RouteGuideServicer`, which defines the interface for implementations
      of the RouteGuide service
-- a function for the service defined in route_guide.proto
+- a function for the service defined in `route_guide_pb2_grpc.py`
    - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
      a `grpc.Server`
 
