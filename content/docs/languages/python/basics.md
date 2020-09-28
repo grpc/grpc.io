@@ -153,8 +153,8 @@ example directory, running this command regenerates the appropriate file rather
 than creates a new one. The generated code files are called
 `route_guide_pb2.py` and `route_guide_pb2_grpc.py` and contain:
 
-- classes for the messages defined in route_guide.proto
-- classes for the service defined in route_guide.proto
+- classes for the messages defined in `route_guide_pb2.py`
+- classes for the service defined in `route_guide_pb2_grpc.py`
    - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
    - `RouteGuideServicer`, which defines the interface for implementations
      of the RouteGuide service
