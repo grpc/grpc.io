@@ -23,7 +23,8 @@
 {{ end -}}
 
 # Handle /docs/tutorials/basic/c(.html)?
-/docs/tutorials/basic/c*  /docs/languages/cpp/basics
+/docs/tutorials/basic/c  /docs/languages/cpp/basics
+/docs/tutorials/basic/c.html  /docs/languages/cpp/basics
 
 # C# .NET
 /docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
