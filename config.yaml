@@ -80,6 +80,9 @@ menu:
       url: /docs/
       identifier: docs
       weight: 2
+    - name: Showcase
+      url: /showcase/
+      weight: 3
     - name: Blog
       url: /blog/
       weight: 4
