@@ -78,7 +78,7 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
 
 ---
 
-#### Developer stories and talks
+#### Developer stories and talks {#dev-stories}
 
 - **gRPC and Java Diamond Dependency Conflicts**
   <a href="https://youtu.be/4M5fC9XrtKs"><i class="fab fa-youtube"></i></a>

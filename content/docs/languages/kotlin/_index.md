@@ -76,7 +76,7 @@ src_repo_content: github.com/grpc/grpc-kotlin/blob/master
 
 ---
 
-#### Developer stories and talks
+#### Developer stories and talks {#dev-stories}
 
 - **Next Level gRPC With Kotlin and Coroutines**
   <a href="https://youtu.be/SfmdAA2kwWI"><i class="fab fa-youtube"></i></a>

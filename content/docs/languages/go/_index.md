@@ -79,7 +79,7 @@ src_repo_content: github.com/grpc/grpc-go/blob/master
 
 ---
 
-#### Developer stories and talks
+#### Developer stories and talks {#dev-stories}
 
 - **Talking to Go gRPC Services Via HTTP/1**
   <a href="https://youtu.be/Vbw8h0RCn2E"><i class="fab fa-youtube"></i></a>
