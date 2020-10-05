@@ -2,7 +2,7 @@
 title: Protocol Buffer Compiler Installation
 short: Protoc Installation
 description: How to install the protocol buffer compiler.
-protoc-version: 3.12.1
+protoc-version: 3.13.0
 ---
 
 While not mandatory, gRPC applications often leverage [Protocol Buffers][pb] for
