@@ -80,13 +80,4 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
 
 #### Developer stories and talks {#dev-stories}
 
-- **gRPC and Java Diamond Dependency Conflicts**
-  <a href="https://youtu.be/4M5fC9XrtKs"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/7a/gRPC%20and%20Java%20Diamond%20Dependency%20Conflicts.pdf"><i class="far fa-file"></i></a><br>
-  A [gRPC Conf 2020 presentation](https://sched.co/cRfT)
-  by Tomo Suzuki, Google.
-- **Service Interoperability With gRPC: gRPC in Action**
-  <a href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="far fa-file"></i></a><br>
-  A [gRPC Conf 2020 presentation](https://sched.co/cRfl)
-  by Varun Gupta & Tuhin Kanti Sharma, Salesforce.
+(_Content coming shortly_.)
