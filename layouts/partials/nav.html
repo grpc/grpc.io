@@ -73,11 +73,13 @@
                 </a>
               </li>
             {{ end -}}
+            {{ if .Params.language }}
             <li class="nav-section-link">
               <a href="{{ .RelPermalink }}">
                 More ...
               </a>
             </li>
+            {{ end -}}
           </ul>
         {{ end -}}
       </li>
