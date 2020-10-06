@@ -8,7 +8,7 @@
 
       <div class="column">
         {{ range site.Menus.main }}
-        {{ $name       := .Name | upper }}
+        {{ $name       := .Name }}
         {{ $isExternal := hasPrefix .URL "http" }}
         <a class="is-size-5 is-size-6-mobile has-text-light" href="{{ .URL }}"{{ if $isExternal }} target="_blank"{{ end }}>
           <span>

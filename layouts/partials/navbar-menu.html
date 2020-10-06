@@ -1,7 +1,7 @@
 {{ $menu  := site.Menus.main }}
 
 {{ range $menu }}
-{{ $name := .Name | upper }}
+{{ $name := .Name }}
 {{ if .HasChildren }}
 {{ $url := .URL | relLangURL }}
 <div class="navbar-item is-size-5 is-size-6-mobile has-dropdown is-hoverable">
@@ -33,7 +33,7 @@
   </div>
 </div>
 {{ else }}
-{{ $name       := .Name | upper }}
+{{ $name       := .Name }}
 {{ $url        := .URL }}
 {{ $isExternal := hasPrefix .URL "http" }}
 <a class="navbar-item is-size-5 is-size-6-mobile"{{ with $url }} href="{{ . }}"{{ end }}{{ if $isExternal }} target="_blank"{{ end }}>
