@@ -1,7 +1,7 @@
 ---
 title: Java generated-code reference
 short: Generated code
-weight: 80
+weight: 95
 spelling: cSpell:ignore buildscript classpath grpcexample motd srcs xolstice
 ---
 
