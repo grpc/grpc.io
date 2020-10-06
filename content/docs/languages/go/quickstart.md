@@ -2,6 +2,7 @@
 title: Quick start
 description: This guide gets you started with gRPC in Go with a simple working example.
 weight: 10
+spelling: cSpell:ignore Fatalf GOPATH
 ---
 
 ### Prerequisites
@@ -17,12 +18,12 @@ weight: 10
 
 - **Go plugin** for the protocol compiler:
 
-   1. Install the protocol compiler plugin for Go (`protoc-gen-go`) using the
-      following command:
+   1. Install the protocol compiler plugin for Go using the following commands:
 
       ```sh
       $ export GO111MODULE=on  # Enable module mode
       $ go get github.com/golang/protobuf/protoc-gen-go
+      $ go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.0
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugin:
@@ -39,7 +40,7 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_go_release_tag >}} https://github.com/grpc/grpc-go
+    $ git clone https://github.com/grpc/grpc-go
     ```
 
  2. Change to the quick start example directory:
@@ -126,24 +127,11 @@ Remember to save the file!
 Before you can use the new service method, you need to recompile the updated
 `.proto` file.
 
-{{< note >}}
-  We are in the process of transitioning to a [new Go protoc plugin][#3453].
-  Until the transition is complete, you need to install
-  `grpc-go/cmd/protoc-gen-go-grpc` manually (using the command shown below)
-  before regenerating `.pb.go` files. To track progress on this issue, see
-  [Update Go quick start #298][#298].
-
-  [#298]: https://github.com/grpc/grpc.io/issues/298
-  [#3453]: https://github.com/grpc/grpc-go/pull/3453
-{{< /note >}}
-
 While still in the `examples/helloworld` directory, run the following commands:
 
 ```sh
-$ ( cd ../../cmd/protoc-gen-go-grpc && go install . )
-$ protoc --go_out=. --go-grpc_out=. \
-    --go_opt=paths=source_relative \
-    --go-grpc_opt=paths=source_relative \
+$ protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
     helloworld/helloworld.proto
 ```
 
@@ -216,7 +204,7 @@ from the `examples/helloworld` directory:
 - Explore the [API reference](../api).
 
 [Basics tutorial]: ../basics/
-[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_go_release_tag >}}.zip
+[download]: https://github.com/grpc/grpc-go/archive/master.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org
 [grpc-go]: https://github.com/grpc/grpc-go
