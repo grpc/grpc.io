@@ -3,7 +3,7 @@ publish = "public"
 command = "make production-build"
 
 [build.environment]
-HUGO_VERSION = "0.70.0"
+HUGO_VERSION = "0.76.2"
 NODE_VERSION = "12"
 
 [context.deploy-preview]
