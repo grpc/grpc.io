@@ -2,7 +2,7 @@
 title: Basics tutorial
 description: A basic tutorial introduction to gRPC in Go.
 weight: 50
-spelling: cSpell:ignore Fatalf GOPATH Println Sprintf struct waitc
+spelling: cSpell:ignore Fatalf GOPATH Mendham Println Sprintf struct waitc
 ---
 
 This tutorial provides a basic Go programmer's introduction to
@@ -10,7 +10,7 @@ working with gRPC.
 
 By walking through this example you'll learn how to:
 
-- Define a service in a .proto file.
+- Define a service in a `.proto` file.
 - Generate server and client code using the protocol buffer compiler.
 - Use the Go gRPC API to write a simple client and server for your service.
 
@@ -26,33 +26,35 @@ guide](https://developers.google.com/protocol-buffers/docs/reference/go-generate
 
 {{< why-grpc >}}
 
-### Example code and setup
-
-The example code for our tutorial is in
-[grpc/grpc-go/examples/route_guide](https://github.com/grpc/grpc-go/tree/master/examples/route_guide).
-To download the example, clone the `grpc-go` repository by running the following
-command:
-
-```sh
-$ go get google.golang.org/grpc
-```
-
-Then change your current directory to `grpc-go/examples/route_guide`:
-
-```sh
-$ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
-```
+### Setup
 
 You should have already installed the tools needed to generate client and server
 interface code -- if you haven't, see [Quick start][] for setup instructions.
+
+### Get the example code
+
+The example code is part of the [grpc-go][] repo.
+
+ 1. [Download the repo as a zip file][download] and unzip it, or clone
+    the repo:
+
+    ```sh
+    $ git clone https://github.com/grpc/grpc-go
+    ```
+
+ 2. Change to the example directory:
+
+    ```sh
+    $ cd grpc-go/examples/route_guide
+    ```
 
 ### Defining the service
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
-You can see the complete .proto file in
-[`examples/route_guide/routeguide/route_guide.proto`](https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto).
+For the complete `.proto` file, see
+[routeguide/route_guide.proto](https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -132,29 +134,28 @@ message Point {
 
 ### Generating client and server code
 
-Next we need to generate the gRPC client and server interfaces from our .proto
+Next we need to generate the gRPC client and server interfaces from our `.proto`
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC Go plugin. This is similar to what we did in the [Quick start][].
 
-From the `route_guide` example directory, run:
+From the `examples/route_guide` directory, run the following command:
 
 ```sh
- protoc -I routeguide/ routeguide/route_guide.proto --go_out=plugins=grpc:routeguide
+$ protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+    routeguide/route_guide.proto
 ```
 
-Running this command generates the following file in the `routeguide` directory
-under the `route_guide` example directory:
+Running this command generates the following files in the
+[routeguide](https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide) directory:
 
-- `route_guide.pb.go`
-
-This contains:
-
-- All the protocol buffer code to populate, serialize, and retrieve our request
-  and response message types
-- An interface type (or *stub*) for clients to call with the methods defined in
-  the `RouteGuide` service.
-- An interface type for servers to implement, also with the methods defined in
-  the `RouteGuide` service.
+- `route_guide.pb.go`, which contains all the protocol buffer code to
+  populate, serialize, and retrieve request and response message types.
+- `route_guide_grpc.pb.go`, which contains the following:
+  - An interface type (or *stub*) for clients to call with the methods defined in
+    the `RouteGuide` service.
+  - An interface type for servers to implement, also with the methods defined in
+    the `RouteGuide` service.
 
 ### Creating the server {#server}
 
@@ -171,7 +172,7 @@ There are two parts to making our `RouteGuide` service do its job:
   the right service implementation.
 
 You can find our example `RouteGuide` server in
-[grpc-go/examples/route_guide/server/server.go](https://github.com/grpc/grpc-go/tree/master/examples/route_guide/server/server.go).
+[server/server.go](https://github.com/grpc/grpc-go/tree/master/examples/route_guide/server/server.go).
 Let's take a closer look at how it works.
 
 #### Implementing RouteGuide
@@ -207,7 +208,8 @@ func (s *routeGuideServer) RouteChat(stream pb.RouteGuide_RouteChatServer) error
 ```
 
 ##### Simple RPC
-`routeGuideServer` implements all our service methods. Let's look at the
+
+The `routeGuideServer` implements all our service methods. Let's look at the
 simplest type first, `GetFeature`, which just gets a `Point` from the client and
 returns the corresponding feature information from its database in a `Feature`.
 
@@ -219,7 +221,7 @@ func (s *routeGuideServer) GetFeature(ctx context.Context, point *pb.Point) (*pb
 		}
 	}
 	// No feature was found, return an unnamed feature
-	return &pb.Feature{"", point}, nil
+	return &pb.Feature{Location: point}, nil
 }
 ```
 
@@ -313,6 +315,7 @@ return the error "as is" so that it'll be translated to an RPC status by the
 gRPC layer.
 
 ##### Bidirectional streaming RPC
+
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```go
@@ -356,21 +359,22 @@ do this for our `RouteGuide` service:
 
 ```go
 flag.Parse()
-lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
 if err != nil {
-        log.Fatalf("failed to listen: %v", err)
+  log.Fatalf("failed to listen: %v", err)
 }
-grpcServer := grpc.NewServer()
-pb.RegisterRouteGuideServer(grpcServer, &routeGuideServer{})
-... // determine whether to use TLS
+var opts []grpc.ServerOption
+...
+grpcServer := grpc.NewServer(opts...)
+pb.RegisterRouteGuideServer(grpcServer, newServer())
 grpcServer.Serve(lis)
 ```
 
 To build and start a server, we:
 
-1. Specify the port we want to use to listen for client requests using `lis, err
-   := net.Listen("tcp", fmt.Sprintf(":%d", *port))`.
-2. Create an instance of the gRPC server using `grpc.NewServer()`.
+1. Specify the port we want to use to listen for client requests using:<br>
+   `lis, err := net.Listen(...)`.
+2. Create an instance of the gRPC server using `grpc.NewServer(...)`.
 3. Register our service implementation with the gRPC server.
 4. Call `Serve()` on the server with our port details to do a blocking wait
    until the process is killed or `Stop()` is called.
@@ -388,9 +392,11 @@ with the server. We create this by passing the server address and port number to
 `grpc.Dial()` as follows:
 
 ```go
-conn, err := grpc.Dial(*serverAddr)
+var opts []grpc.DialOption
+...
+conn, err := grpc.Dial(*serverAddr, opts...)
 if err != nil {
-    ...
+  ...
 }
 defer conn.Close()
 ```
@@ -421,7 +427,7 @@ local method.
 ```go
 feature, err := client.GetFeature(context.Background(), &pb.Point{409146138, -746188906})
 if err != nil {
-        ...
+  ...
 }
 ```
 
@@ -447,7 +453,7 @@ implemented in a similar way on both sides.
 rect := &pb.Rectangle{ ... }  // initialize a pb.Rectangle
 stream, err := client.ListFeatures(context.Background(), rect)
 if err != nil {
-    ...
+  ...
 }
 for {
     feature, err := stream.Recv()
@@ -486,24 +492,21 @@ r := rand.New(rand.NewSource(time.Now().UnixNano()))
 pointCount := int(r.Int31n(100)) + 2 // Traverse at least two points
 var points []*pb.Point
 for i := 0; i < pointCount; i++ {
-	points = append(points, randomPoint(r))
+  points = append(points, randomPoint(r))
 }
 log.Printf("Traversing %d points.", len(points))
 stream, err := client.RecordRoute(context.Background())
 if err != nil {
-	log.Fatalf("%v.RecordRoute(_) = _, %v", client, err)
+  log.Fatalf("%v.RecordRoute(_) = _, %v", client, err)
 }
 for _, point := range points {
-	if err := stream.Send(point); err != nil {
-		if err == io.EOF {
-			break
-		}
-		log.Fatalf("%v.Send(%v) = %v", stream, point, err)
-	}
+  if err := stream.Send(point); err != nil {
+    log.Fatalf("%v.Send(%v) = %v", stream, point, err)
+  }
 }
 reply, err := stream.CloseAndRecv()
 if err != nil {
-	log.Fatalf("%v.CloseAndRecv() got error %v, want %v", stream, err, nil)
+  log.Fatalf("%v.CloseAndRecv() got error %v, want %v", stream, err, nil)
 }
 log.Printf("Route summary: %v", reply)
 ```
@@ -528,23 +531,23 @@ to *their* message stream.
 stream, err := client.RouteChat(context.Background())
 waitc := make(chan struct{})
 go func() {
-	for {
-		in, err := stream.Recv()
-		if err == io.EOF {
-			// read done.
-			close(waitc)
-			return
-		}
-		if err != nil {
-			log.Fatalf("Failed to receive a note : %v", err)
-		}
-		log.Printf("Got message %s at point(%d, %d)", in.Message, in.Location.Latitude, in.Location.Longitude)
-	}
+  for {
+    in, err := stream.Recv()
+    if err == io.EOF {
+      // read done.
+      close(waitc)
+      return
+    }
+    if err != nil {
+      log.Fatalf("Failed to receive a note : %v", err)
+    }
+    log.Printf("Got message %s at point(%d, %d)", in.Message, in.Location.Latitude, in.Location.Longitude)
+  }
 }()
 for _, note := range notes {
-	if err := stream.Send(note); err != nil {
-		log.Fatalf("Failed to send a note: %v", err)
-	}
+  if err := stream.Send(note); err != nil {
+    log.Fatalf("Failed to send a note: %v", err)
+  }
 }
 stream.CloseSend()
 <-waitc
@@ -558,22 +561,49 @@ any order — the streams operate completely independently.
 
 ### Try it out!
 
-Work from the example directory:
+Execute the following commands from the `examples/route_guide` directory:
 
-```sh
-$ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
+ 1. Run the server:
+
+    ```sh
+    $ go run server/server.go
+    ```
+
+ 2. From another terminal, run the client:
+
+    ```sh
+    $ go run client/client.go
+    ```
+
+You'll see output like this:
+
+```nocode
+Getting feature for point (409146138, -746188906)
+name:"Berkshire Valley Management Area Trail, Jefferson, NJ, USA" location:<latitude:409146138 longitude:-746188906 >
+Getting feature for point (0, 0)
+location:<>
+Looking for features within lo:<latitude:400000000 longitude:-750000000 > hi:<latitude:420000000 longitude:-730000000 >
+name:"Patriots Path, Mendham, NJ 07945, USA" location:<latitude:407838351 longitude:-746143763 >
+...
+name:"3 Hasta Way, Newton, NJ 07860, USA" location:<latitude:410248224 longitude:-747127767 >
+Traversing 56 points.
+Route summary: point_count:56 distance:497013163
+Got message First message at point(0, 1)
+Got message Second message at point(0, 2)
+Got message Third message at point(0, 3)
+Got message First message at point(0, 1)
+Got message Fourth message at point(0, 1)
+Got message Second message at point(0, 2)
+Got message Fifth message at point(0, 2)
+Got message Third message at point(0, 3)
+Got message Sixth message at point(0, 3)
 ```
 
-Run the server:
+{{< note >}}
+  We've omitted timestamps from the client and server trace output shown in this
+  page.
+{{< /note >}}
 
-```sh
-$ go run server/server.go
-```
-
-From a different terminal, run the client:
-
-```sh
-$ go run client/client.go
-```
-
+[download]: https://github.com/grpc/grpc-go/archive/master.zip
+[grpc-go]: https://github.com/grpc/grpc-go
 [Quick start]: ../quickstart/
