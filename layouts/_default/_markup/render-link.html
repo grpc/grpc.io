@@ -1,4 +1,4 @@
-{{ $isRedirected := findRE "^(|../|/docs/languages/.+?/)(api|daily-builds)(/.*)?(\\?.*)?$" .Destination }}
+{{ $isRedirected := findRE "^(|../|/docs/languages/.+?/)(api|daily-builds)(/.*)?(\\?.*)?$" .Destination -}}
 {{ $isExternal := or (hasPrefix .Destination "http") $isRedirected -}}
 <a href="{{ .Destination | safeURL }}"
   {{- with .Title }} title="{{ . }}"{{ end -}}
