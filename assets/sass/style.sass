@@ -297,19 +297,14 @@ $colors: mergeColorMaps(("secondary": ($secondary, $white), "twitter-blue": ($tw
     & + li
       margin-top: 0.75rem
 
-.hashlink
-  @extend .icon
-  height: 1rem
-  width: 1rem
-  margin-left: 0.25rem
-
-.headline-hash
-  display: none
+.heading-self-link
+  @extend .is-hidden-desktop // On touch devices, always show self-link
+  margin-left: .3rem
 
 @for $i from 1 through 6
-  h#{$i}
-    &:hover > .headline-hash
-      display: inline
+  h#{$i}[id]
+    &:hover > .heading-self-link
+      display: initial !important
 
 // Currently (2020-05-29), the external-link character is used as an icon in the
 // top navbar. The "a >" prefix is used in the next rule only as a simple means
