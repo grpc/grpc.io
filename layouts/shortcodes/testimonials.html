@@ -1,19 +1,19 @@
-{{ $testimonials := site.Data.testimonials }}
+{{ $testimonials := site.Data.testimonials -}}
 <section class="section">
   <div class="container">
     <div class="columns is-multiline is-variable is-4">
       {{- range $testimonials -}}
-      {{- $img   := printf "img/users/%s" .image | relURL -}}
-      {{- $quote := .quote | markdownify -}}
+      {{ $img   := printf "img/users/%s" .image | relURL -}}
+      {{ $quote := .quote | markdownify -}}
       <div class="column is-one-third has-text-centered">
-        <a href="{{ .link }}" target="_blank">
+        <a href="{{ .link }}" target="_blank" rel="noopener">
           <img class="is-testimonial-logo" src="{{ $img }}" alt="{{ .name }} testimonial logo">
         </a>
         <div class="content is-italic">
           {{- $quote -}}
         </div>
       </div>
-      {{- end -}}
+      {{ end -}}
     </div>
   </div>
 </section>

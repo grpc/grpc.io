@@ -92,7 +92,7 @@ of CNCF technologies, see the [CNCF case studies][] page.
 ## Developer stories
 
 Developer stories cover a variety of technical subjects related to gRPC. You can
-find developer stories for your [preferred language](/docs/languages) on each
+find developer stories for your [preferred language](/docs/languages/) on each
 **language-specific landing page**.
 
 <div class="buttons are-medium is-centered mt-5 mb-5">
@@ -144,7 +144,6 @@ Other developer stories are provided next.
 
 
 [CNCF case studies]: https://www.cncf.io/case-studies/
-[gRPC YouTube channel]: ...
 [gRPC Conf 2020 presentation videos]: https://www.youtube.com/playlist?list=PLj6h78yzYM2NN72UX_fdmc5CZI-D5qfJL
 [schedule]: https://events.linuxfoundation.org/grpc-conf/program/schedule/
 [use-of-gRPC]: {{< param url_use_grpc >}}
