@@ -1,9 +1,9 @@
-{{ $title   := .Title }}
-{{ $desc    := .Params.description | markdownify }}
-{{ $attr    := .Params.attribution }}
-{{ $date    := dateFormat "January 2, 2006" .Date }}
-{{ $author  := .Params.author }}
-{{ $authors := .Params.authors }}
+{{ $title   := .Title -}}
+{{ $desc    := .Params.description | markdownify -}}
+{{ $attr    := .Params.attribution -}}
+{{ $date    := dateFormat "January 2, 2006" .Date -}}
+{{ $author  := .Params.author -}}
+{{ $authors := .Params.authors -}}
 <section class="hero is-medium is-primary has-background-image">
   <div class="hero-body">
     <div class="container">
@@ -34,7 +34,7 @@
 
       {{ with $authors -}}
       {{ $numAuthors := len . -}}
-      <br />
+      <br>
 
       <p class="hero__author subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right has-text-grey-lighter">
@@ -43,7 +43,7 @@
         {{- range $idx, $author := . -}}
         {{ $notLast := ne $numAuthors (add $idx 1) -}}
         {{- if .link -}}
-        <a class="has-text-secondary has-text-weight-medium is-underlined" href="{{ .link }}" target="_blank">
+        <a class="has-text-secondary has-text-weight-medium is-underlined" href="{{ .link }}" target="_blank" rel="noopener">
           {{- .name -}}
         </a>
         {{- else -}}
@@ -55,14 +55,14 @@
       {{ end -}}
 
       {{ with $author -}}
-      <br />
+      <br>
 
       <p class="hero__author subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right">
           <i class="fas fa-user"></i>
         </span>
         {{- if .link -}}
-        <a class="has-text-secondary" href="{{ .link }}" target="_blank">
+        <a class="has-text-secondary" href="{{ .link }}" target="_blank" rel="noopener">
           {{- .name -}}
         </a>
         {{- else -}}
@@ -71,18 +71,14 @@
         {{ with .position }}, {{ . | markdownify }}{{ end -}}
       </p>
 
-      {{ with .guest }}
-      <br />
+      {{- with .guest -}}
+      <br>
 
       <span class="tag is-medium is-success has-text-weight-bold">
-        <span class="icon">
-          <i class="fas fa-sm fa-pen"></i>
-        </span>
-        <span>
-          Guest post
-        </span>
+        <span class="icon"><i class="fas fa-sm fa-pen"></i></span>
+        <span>Guest post</span>
       </span>
-      {{ end }}
+      {{ end -}}
 
       {{ with .blurb -}}
       <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">

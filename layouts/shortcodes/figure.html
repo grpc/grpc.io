@@ -1,13 +1,13 @@
-{{ $src     := .Get "src" | relURL }}
-{{ $caption := .Get "caption" }}
+{{ $src     := .Get "src" | relURL -}}
+{{ $caption := .Get "caption" -}}
 <figure class="figure">
-  <a href="{{ $src }}" target="_blank">
+  <a href="{{ $src }}" target="_blank" rel="noopener">
     <img src="{{ $src }}">
-  </a> 
+  </a>
 
-  {{ with $caption }}
+  {{- with $caption -}}
   <figcaption>
-    {{ . | markdownify }}
+    {{- . | markdownify -}}
   </figcaption>
-  {{ end }}
+  {{- end }}
 </figure>
