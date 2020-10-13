@@ -1,6 +1,6 @@
 {{ $menu  := site.Menus.main -}}
 
-{{ range $menu -}}
+{{ range $menu }}
 {{ $name := .Name -}}
 {{ if .HasChildren -}}
 {{ $url := .URL | relLangURL -}}
@@ -11,9 +11,8 @@
       <i class="fas fa-caret-down"></i>
     </span>
   </a>
-
   <div class="navbar-dropdown">
-    {{ range .Children -}}
+    {{- range .Children }}
     {{ $name       := .Name -}}
     {{ $url        := .URL -}}
     {{ $isExternal := hasPrefix .URL "http" -}}
@@ -25,7 +24,7 @@
       <span class="icon has-text-secondary">
         <i class="fas fa-sm fa-external-link-alt"></i>
       </span>
-      {{- end }}
+      {{- end -}}
     </a>
     {{- end }}
   </div>
@@ -42,7 +41,7 @@
   <span class="icon has-text-secondary">
     <i class="fas fa-xs fa-external-link-alt"></i>
   </span>
-  {{- end }}
+  {{- end -}}
 </a>
 {{- end }}
 {{- end -}}
