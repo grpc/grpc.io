@@ -16,9 +16,9 @@ spelling: cSpell:ignore Fatalf GOPATH
   For installation instructions, see [Protocol Buffer Compiler
   Installation][pbc-install].
 
-- **Go plugin** for the protocol compiler:
+- **Go plugins** for the protocol compiler:
 
-   1. Install the protocol compiler plugin for Go using the following commands:
+   1. Install the protocol compiler plugins for Go using the following commands:
 
       ```sh
       $ export GO111MODULE=on  # Enable module mode
@@ -26,7 +26,7 @@ spelling: cSpell:ignore Fatalf GOPATH
                google.golang.org/grpc/cmd/protoc-gen-go-grpc
       ```
 
-   2. Update your `PATH` so that the `protoc` compiler can find the plugin:
+   2. Update your `PATH` so that the `protoc` compiler can find the plugins:
 
       ```sh
       $ export PATH="$PATH:$(go env GOPATH)/bin"
