@@ -1,8 +1,10 @@
 ---
 title: gRPC-Go Engineering Practices
 date: 2018-01-22
+spelling: cSpell:ignore Fawley godoc rebases SLOs untriaged
 author:
-  name: Doug Fawley, gRPC-Go TL
+  name: Doug Fawley
+  link: https://github.com/dfawley
   position: gRPC-Go Team Lead, Google
 ---
 
@@ -39,7 +41,7 @@ Our ongoing SLO for new issues and PRs is 1 week to triage and first response.
 
 We also revamped our [labels](https://github.com/grpc/grpc-go/labels) for issues
 and PRs to help with organization.  We typically apply a priority (P0-P3) and a
-type (e.g. Bug, Feature, or Performance) to every issue.  We also have a
+type (for example, Bug, Feature, or Performance) to every issue.  We also have a
 collection of status labels we apply in various situations.  The type labels are
 also applied to PRs to aid in generating our release notes.
 
@@ -119,8 +121,8 @@ catch problems before performing releases in Open Source.
 
 In 2018, we intend to do more of the same, and maintain our SLOs around
 addressing issues and accepting contributions to the project.  We also would
-like to more aggressively tag issues with the ["Help
-Wanted"](https://github.com/grpc/grpc-go/labels/Status%3A%20Help%20Wanted) label
+like to more aggressively tag issues with the [Help
+Wanted](https://github.com/grpc/grpc-go/labels/Status%3A%20Help%20Wanted) label
 for anyone looking to contribute to have a bigger selection of issues to choose
 from.
 
