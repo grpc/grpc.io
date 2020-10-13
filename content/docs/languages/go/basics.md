@@ -29,7 +29,8 @@ guide](https://developers.google.com/protocol-buffers/docs/reference/go-generate
 ### Setup
 
 You should have already installed the tools needed to generate client and server
-interface code -- if you haven't, see [Quick start][] for setup instructions.
+interface code -- if you haven't, see the [Prerequisites][] section of [Quick
+start][] for setup instructions.
 
 ### Get the example code
 
@@ -606,4 +607,5 @@ Got message Sixth message at point(0, 3)
 
 [download]: https://github.com/grpc/grpc-go/archive/master.zip
 [grpc-go]: https://github.com/grpc/grpc-go
+[Prerequisites]: ../quickstart/#prerequisites
 [Quick start]: ../quickstart/
