@@ -1,5 +1,4 @@
 {{ $size        := .size | default "normal" -}}
-{{ $constrained := .constrained | default false -}}
-<div class="content is-{{ $size }} has-bottom-padding{{ if $constrained }} is-constrained{{ end }}">
+<div class="content is-{{ $size }} has-bottom-padding is-constrained">
   {{ .content }}
 </div>
