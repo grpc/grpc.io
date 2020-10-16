@@ -6,8 +6,8 @@
       <div class="column is-one-quarter is-hidden-touch">
         {{ partial "nav.html" . }}
       </div>
-
-      <div class="column">
+      {{/* Why is-clipped? See https://github.com/grpc/grpc.io/issues/185 */}}
+      <div class="column is-clipped">
         <section class="hero is-small">
           <div class="hero-body">
             <div class="container">
