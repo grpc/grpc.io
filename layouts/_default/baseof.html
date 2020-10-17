@@ -4,7 +4,11 @@
     {{ partial "google-analytics.html" . }}
     {{ partial "meta.html" . }}
 
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <title>
+      {{- block "title" . -}}
+        {{ .Title }} &ndash; {{ site.Title -}}
+      {{ end -}}
+    </title>
 
     {{ partial "favicons.html" . }}
     {{ partial "css.html" . }}
@@ -13,8 +17,7 @@
     <main class="is-main">
       {{ partial "navbar.html" . }}
       {{ partial "banner.html" -}}
-      {{ block "main" . }}
-      {{ end }}
+      {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}
     {{ partial "javascript.html" . }}
