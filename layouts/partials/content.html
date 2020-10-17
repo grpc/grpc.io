@@ -1,7 +1,4 @@
-{{ $size := "normal" -}}
-{{ if isset . "size" -}}
-  {{ $size = .size -}}
-{{ end -}}
-<div class="content is-{{ $size }} has-bottom-padding is-constrained">
-  {{ .Page.Content }}
+{{ $class_extra := .Params.class_extra | default "is-normal" -}}
+<div class="content {{ $class_extra }} has-bottom-padding is-constrained">
+  {{ .Content }}
 </div>
