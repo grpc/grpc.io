@@ -1,4 +1,4 @@
-{{ $size := .size | default "normal" -}}
-<div class="content is-{{ $size }} has-bottom-padding is-constrained">
-  {{ .content }}
+{{ $class_extra := .Params.class_extra | default "is-normal" -}}
+<div class="content {{ $class_extra }} has-bottom-padding is-constrained">
+  {{ .Content }}
 </div>
