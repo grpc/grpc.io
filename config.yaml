@@ -9,7 +9,7 @@ params:
   branch: main
   locale: en_US
   grpc_release_tag: v1.33.1
-  grpc_java_release_tag: v1.32.1
+  grpc_java_release_tag: v1.33.0
   grpc_go_release_tag: v1.31.0
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
