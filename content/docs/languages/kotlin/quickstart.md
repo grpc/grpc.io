@@ -8,7 +8,7 @@ weight: 10
 ### Prerequisites
 
 - [Kotlin][] version 1.3 or higher
-- JDK version 7 or higher
+- [JDK][] version 7 or higher
 
 ### Get the example code
 
@@ -198,10 +198,11 @@ from the `examples` directory:
 - Explore the [API reference](../api).
 
 [Basics tutorial]: ../basics/
+[client-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/client/src/main/kotlin/io/grpc/examples
 [download]: https://github.com/grpc/grpc-kotlin/archive/master.zip
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
+[JDK]: https://jdk.java.net
 [Kotlin]: https://kotlinlang.org
 [pb]: https://developers.google.com/protocol-buffers
-[client-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/client/src/main/kotlin/io/grpc/examples
 [protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
 [server-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/server/src/main/kotlin/io/grpc/examples

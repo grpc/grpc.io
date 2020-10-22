@@ -57,7 +57,7 @@ Congratulations! You've just run a client-server application with gRPC.
   page.
 {{< /note >}}
 
-### Update a gRPC service
+### Update the gRPC service
 
 In this section you'll update the application by adding an extra server method.
 The gRPC service is defined using [protocol buffers][pb]. To learn more about
