@@ -113,7 +113,7 @@ string "Hello Objective-C" that is then output to the console.
 
 Congratulations! You've just run a client-server application with gRPC.
 
-### Update a gRPC service
+### Update the gRPC service
 
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using Protocol

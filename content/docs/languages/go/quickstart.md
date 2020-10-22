@@ -69,7 +69,7 @@ From the `examples/helloworld` directory:
 
 Congratulations! You've just run a client-server application with gRPC.
 
-### Update a gRPC service
+### Update the gRPC service
 
 In this section you'll update the application with an extra server method. The
 gRPC service is defined using [protocol buffers][pb]. To learn more about how to
