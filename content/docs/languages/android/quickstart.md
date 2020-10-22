@@ -24,9 +24,6 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
-[Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
-[USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
-
 {{< note >}}
   gRPC Java does not support running a server on an Android device. For this
   quick start, the Android client app will connect to a server running on your
@@ -91,7 +88,7 @@ Congratulations! You've just run a client-server application with gRPC.
   page.
 {{< /note >}}
 
-### Update a gRPC service
+### Update the gRPC service
 
 In this section you'll update the application by adding an extra server method.
 The gRPC service is defined using [protocol buffers][pb]. To learn more about
@@ -117,6 +114,8 @@ message HelloReply {
   string message = 1;
 }
 ```
+
+Make the following changes:
 
  1. Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()`
     method with the same request and response types as `SayHello()`:
@@ -256,8 +255,10 @@ In the app, use the following values:
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
+[Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
 [Basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net
 [pb]: https://developers.google.com/protocol-buffers
+[USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
