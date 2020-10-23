@@ -1,6 +1,7 @@
 ---
 title: Basics tutorial
 description: A basic tutorial introduction to gRPC in Kotlin/JVM.
+spelling: cSpell:ignore grpckt Mendham millis println
 weight: 50
 ---
 
@@ -9,59 +10,51 @@ working with gRPC.
 
 By walking through this example you'll learn how to:
 
-- Define a service in a .proto file.
+- Define a service in a `.proto` file.
 - Generate server and client code using the protocol buffer compiler.
 - Use the Kotlin gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
-with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
-example in this tutorial uses the proto3 version of the protocol buffers
-language: you can find out more in the
-[proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3).
+You should already be familiar gRPC and protocol buffers; if not, see
+[Introduction to gRPC][] and the proto3 [Language guide][proto3].
 
 ### Why use gRPC?
 
-Our example is a simple route mapping application that lets clients get
-information about features on their route, create a summary of their route, and
-exchange route information such as traffic updates with the server and other
-clients.
+{{< why-grpc >}}
 
-With gRPC we can define our service once in a .proto file and implement clients
-and servers in any of gRPC's supported languages, which in turn can be run in
-environments ranging from servers inside Google to your own tablet - all the
-complexity of communication between different languages and environments is
-handled for you by gRPC. We also get all the advantages of working with protocol
-buffers, including efficient serialization, a simple IDL, and easy interface
-updating.
+### Setup
 
-### Example code and setup
+This tutorial has the same [prerequisites][] as the [Quick start][]. Install the
+necessary SDKs and tools before proceeding.
 
-The example code for our tutorial is in
-[grpc/grpc-kotlin/examples/src/main/kotlin/io/grpc/examples/routeguide](https://github.com/grpc/grpc-kotlin/tree/master/examples/src/main/kotlin/io/grpc/examples/routeguide).
-To download the example, clone the latest release in `grpc-kotlin` repository by
-running the following command:
+### Get the example code
 
-```sh
-$ git clone https://github.com/grpc/grpc-kotlin.git
-```
+The example code is part of the [grpc-kotlin][] repo.
 
-Then change to the example's main source folder:
+ 1. [Download the repo as a zip file][download] and unzip it, or clone
+    the repo:
 
-```sh
-$ cd grpc-kotlin/examples/src/main/kotlin/io/grpc/examples/routeguide
-```
+    ```sh
+    $ git clone https://github.com/grpc/grpc-kotlin
+    ```
+
+ 2. Change to the examples directory:
+
+    ```sh
+    $ cd grpc-kotlin/examples
+    ```
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
-define the gRPC *service* and the method *request* and *response* types using
-[protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
-see the complete .proto file in
-[grpc-kotlin/examples/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-kotlin/blob/master/examples/src/main/proto/route_guide.proto).
+Your first step (as you'll know from the [Introduction to gRPC][]) is to define
+the gRPC _service_ and the method _request_ and _response_ types using [protocol
+buffers][proto3].
 
-To define a service, you specify a named `service` in the .proto file:
+If you'd like to follow along by looking at the complete `.proto` file, see
+`routeguide/route_guide.proto` from the
+[protos/src/main/proto/io/grpc/examples][protos-src] folder.
+
+To define a service, you specify a named `service` in the `.proto` file like
+this:
 
 ```proto
 service RouteGuide {
@@ -122,8 +115,8 @@ all of which are used in the `RouteGuide` service:
   rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
   ```
 
-Our `.proto` file also contains protocol buffer message type definitions for all
-the request and response types used in our service methods - for example, here's
+The `.proto` file also contains protocol buffer message type definitions for all
+the request and response types used by the service methods -- for example, here's
 the `Point` message type:
 
 ```proto
@@ -139,51 +132,54 @@ message Point {
 
 ### Generating client and server code
 
-Next we need to generate the gRPC client and server interfaces from our .proto
-service definition. We do this using the protocol buffer compiler `protoc` with
-a special gRPC Kotlin and Java plugins. You need to use the
-[proto3](https://github.com/google/protobuf/releases) compiler (which supports
-both proto2 and proto3 syntax) in order to generate gRPC services.
+Next, you need to generate the gRPC client and server interfaces from the `.proto`
+service definition. You do this using the protocol buffer compiler `protoc` with
+special gRPC Kotlin and Java plugins.
 
-When using Gradle or Maven, the protoc build plugin can generate the necessary
-code as part of the build. See the [grpc-kotlin README][] for details.
+When using Gradle or Maven, the `protoc` build plugin will generate the
+necessary code as part of the build process. For a Gradle example, see
+[stub/build.gradle.kts][].
 
-[grpc-kotlin README]: https://github.com/grpc/grpc-kotlin/blob/master/README.md
+If you run `./gradlew installDist` from the examples folder, the following files
+are generated from the service definition -- you'll find the generated files in
+subdirectories below `stub/build/generated/source/proto/main`:
 
-The following classes are generated from our service definition:
-
-- `Feature.java`, `Point.java`, `Rectangle.java`, and others which contain all
+- `Feature.java`, `Point.java`, `Rectangle.java`, and others, which contain all
   the protocol buffer code to populate, serialize, and retrieve our request and
   response message types.
-- `RouteGuideGrpcKt.kt`, which contains, among other things:
-  - A base class for `RouteGuide` servers to implement,
-    `RouteGuideGrpcKt.RouteGuideCoroutineImplBase`, with all the methods defined
-    in the `RouteGuide` service.
-  - The `RouteGuideCoroutineStub` class that clients use to talk to a
-    `RouteGuide` server.
+
+  You'll find these files in the `java/io/grpc/examples/routeguide`
+  subdirectory.
+- `RouteGuideOuterClassGrpcKt.kt`, which contains, among other things:
+  - `RouteGuideGrpcKt.RouteGuideCoroutineImplBase`, an abstract base class for
+    `RouteGuide` servers to implement, with all the methods defined in the
+    `RouteGuide` service.
+  - `RouteGuideGrpcKt.RouteGuideCoroutineStub`, a class that clients use to talk
+    to a `RouteGuide` server.
+
+  You'll find this Kotlin file under `grpckt/io/grpc/examples/routeguide`.
 
 ### Creating the server {#server}
 
-First let's look at how we create a `RouteGuide` server. If you're only
-interested in creating gRPC clients, you can skip this section and go straight
-to [Creating the client](#client) (though you might find it interesting
-anyway!).
+First consider how to create a `RouteGuide` server. If you're only interested in
+creating gRPC clients, skip ahead to [Creating the client](#client) -- though
+you might find this section interesting anyway!
 
-There are two parts to making our `RouteGuide` service do its job:
+There are two main things that you need to do when creating a `RouteGuide`
+server:
 
-- Overriding the service base class generated from our service definition: doing
-  the actual "work" of our service.
-- Running a gRPC server to listen for requests from clients and return the
-  service responses.
+- Extend the `RouteGuideCoroutineImplBase` service base class to do the actual
+  service work.
+- Create and run a gRPC server to listen for requests from clients and return
+  the service responses.
 
-You can find our example `RouteGuide` server in
-[grpc-kotlin/examples/src/main/kotlin/io/grpc/examples/routeguide/RouteGuideServer.kt](https://github.com/grpc/grpc-kotlin/blob/master/examples/src/main/kotlin/io/grpc/examples/routeguide/RouteGuideServer.kt).
-Let's take a closer look at how it works.
+Open the example `RouteGuide` server code in `routeguide/RouteGuideServer.kt`
+under the [server/src/main/kotlin/io/grpc/examples][server-src] folder.
 
 #### Implementing RouteGuide
 
-As you can see, our server has a `RouteGuideService` class that extends the
-generated `RouteGuideGrpcKt.RouteGuideCoroutineImplBase` abstract class:
+As you can see, the server has a `RouteGuideService` class that extends the
+generated service base class:
 
 ```kotlin
 class RouteGuideService(
@@ -196,10 +192,9 @@ class RouteGuideService(
 
 #### Simple RPC
 
-`RouteGuideService` implements all our service methods. Let's look at the
-simplest method first, `GetFeature()`, which just gets a `Point` from the client
-and returns the corresponding feature information from its database in a
-`Feature`.
+`RouteGuideService` implements all the service methods. Consider the simplest
+method first, `GetFeature()`, which gets a `Point` from the client and returns a
+`Feature` built from the corresponding feature information in the database.
 
 ```kotlin
 override suspend fun getFeature(request: Point): Feature =
@@ -209,32 +204,31 @@ override suspend fun getFeature(request: Point): Feature =
 ```
 
 The method accepts a client's `Point` message request as a parameter, and it
-returns a `Feature` message as a response. In the method we populate the
-`Feature` with the appropriate information, and then `return` it to the gRPC
-framework, which sends it back to the client.
+returns a `Feature` message as a response. The method populates the `Feature`
+with the appropriate information, and then returns it to the gRPC framework,
+which sends it back to the client.
 
 ##### Server-side streaming RPC
 
-Next let's look at one of our streaming RPCs. `ListFeatures` is a server-side
-streaming RPC, so we need to send back multiple `Feature`s to our client.
+Next, consider one of the streaming RPCs. `ListFeatures()` is a server-side
+streaming RPC, so the server gets to send back multiple `Feature` messages to
+the client.
 
 ```kotlin
 override fun listFeatures(request: Rectangle): Flow<Feature> =
   features.asFlow().filter { it.exists() && it.location in request }
 ```
 
-Like the simple RPC, this method gets a request object (the `Rectangle` in which
-our client wants to find `Feature`s).
-
-This time, we get as many `Feature` objects as we need to return to the client
--- in this case, we select them from the service's feature collection based on
-whether they're inside our request `Rectangle`.
+The request object is a `Rectangle`. The server collects, and returns to the
+client, all the `Feature` objects in its collection that are inside the given
+`Rectangle`.
 
 ##### Client-side streaming RPC
 
-Now let's look at something a little more complicated: the client-side streaming
-method `RecordRoute()`, where we get a stream of `Point`s from the client and
-return a single `RouteSummary` with information about their trip.
+Now consider something a little more complicated: the client-side streaming
+method `RecordRoute()`, where the server gets a stream of `Point` objects from
+the client, and returns a single `RouteSummary` with information about their
+trip through the given points.
 
 ```kotlin
 override suspend fun recordRoute(requests: Flow<Point>): RouteSummary {
@@ -267,11 +261,9 @@ The request parameter is a stream of client request messages represented as a
 Kotlin [Flow][]. The server returns a single response just like in the simple
 RPC case.
 
-[Flow]: https://kotlinlang.org/docs/reference/coroutines/flow.html#flows
-
 ##### Bidirectional streaming RPC
 
-Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
+Finally, consider the bidirectional streaming RPC `RouteChat()`.
 
 ```kotlin
 override fun routeChat(requests: Flow<RouteNote>): Flow<RouteNote> =
@@ -289,90 +281,69 @@ override fun routeChat(requests: Flow<RouteNote>): Flow<RouteNote> =
   }
 ```
 
-This time we get a stream of `RouteNote` objects that, as in our client-side
-streaming example, can be used to access messages.
-
-<!-- However, this time we return
-values via our method's returned stream, while the client is still writing
-messages to *their* message stream. -->
+Similar to the client-side streaming example, for this method, the server gets a
+stream of `RouteNote` objects as a `Flow`. However, this time the server returns
+`RouteNote` instances via the method's returned stream _while_ the client is still
+writing messages to _its_ message stream.
 
 #### Starting the server
 
-Once we've implemented all our methods, we also need to start up a gRPC server
-so that clients can actually use our service. The following snippet shows how we
-do this for our `RouteGuide` service:
+Once all the server's methods are implemented, you need code to create a gRPC
+server instance, something like this:
 
 ```kotlin
-class RouteGuideServer private constructor(
-  val port: Int,
-  val server: Server
+class RouteGuideServer(
+    val port: Int,
+    val features: Collection<Feature> = Database.features(),
+    val server: Server =
+      ServerBuilder.forPort(port)
+        .addService(RouteGuideService(features)).build()
 ) {
-  constructor(port: Int) : this(port, defaultFeatureSource())
-
-  constructor(port: Int, featureData: ByteSource) :
-  this(
-    serverBuilder = ServerBuilder.forPort(port),
-    port = port,
-    features = featureData.parseJsonFeatures()
-  )
-
-  constructor(
-    serverBuilder: ServerBuilder<*>,
-    port: Int,
-    features: Collection<Feature>
-  ) : this(
-    port = port,
-    server = serverBuilder.addService(RouteGuideService(features)).build()
-  )
 
   fun start() {
     server.start()
     println("Server started, listening on $port")
     /* ... */
   }
+  /* ... */
+}
 
-  companion object {
-    @JvmStatic
-    fun main(args: Array<String>) {
-      val port = 8980
-      val server = RouteGuideServer(port)
-      server.start()
-      /* ... */
-    }
-  }
-
+fun main(args: Array<String>) {
+  val port = 8980
+  val server = RouteGuideServer(port)
+  server.start()
   /* ... */
 }
 ```
-As you can see, we build and start our server using a `ServerBuilder`.
 
-To do this, we:
+A server instance is built and started using a `ServerBuilder` as follows:
 
-1. Specify the address and port we want to use to listen for client requests
-   using the builder's `forPort()` method.
-1. Create an instance of our service implementation class `RouteGuideService`
+1. Specify the port, that the server will listen for client requests on, using
+   `forPort()`.
+1. Create an instance of the service implementation class `RouteGuideService`
    and pass it to the builder's `addService()` method.
 1. Call `build()` and `start()` on the builder to create and start an RPC server
-   for our service.
+   for the route guide service.
 
 ### Creating the client {#client}
 
-In this section, we'll look at creating a client for our `RouteGuide`
-service. You can see our complete example client code in
-[grpc-kotlin/examples/src/main/kotlin/io/grpc/examples/routeguide/RouteGuideClient.kt](https://github.com/grpc/grpc-kotlin/blob/master/examples/src/main/kotlin/io/grpc/examples/routeguide/RouteGuideClient.kt).
+In this section, you'll look at a client for the `RouteGuide` service.
+
+For the complete client code, open `routeguide/RouteGuideClient.kt`
+under the [client/src/main/kotlin/io/grpc/examples][client-src] folder.
 
 #### Instantiating a stub
 
-To call service methods, we first need to create a gRPC *channel* to communicate
-with the server. We use a `ManagedChannelBuilder` to create the channel:
+To call service methods, you first need to create a gRPC _channel_ using a
+`ManagedChannelBuilder`. You'll use this channel to communicate with the server.
 
 ```kotlin
-val channel = ManagedChannelBuilder.forAddress("localhost", 8980).usePlaintext()
+val channel = ManagedChannelBuilder.forAddress("localhost", 8980).usePlaintext().build()
 ```
 
-Once the gRPC *channel* is setup, we need a client _stub_ to perform RPCs. We
-get it by instantiating `RouteGuideCoroutineStub`, which is available from the
-package that we generated from our .proto file.
+Once the gRPC channel is setup, you need a client _stub_ to perform RPCs. Get it
+by instantiating `RouteGuideCoroutineStub`, which is available from the package
+that was generated from the `.proto` file.
 
 ```kotlin
 val stub = RouteGuideCoroutineStub(channel)
@@ -380,12 +351,12 @@ val stub = RouteGuideCoroutineStub(channel)
 
 #### Calling service methods
 
-Now let's look at how we call our service methods.
+Now consider how you'll call service methods.
 
 ##### Simple RPC
 
 Calling the simple RPC `GetFeature()` is as straightforward as calling a local
-method.
+method:
 
 ```kotlin
 val request = point(latitude, longitude)
@@ -393,13 +364,10 @@ val feature = stub.getFeature(request)
 ```
 
 The stub method `getFeature()` executes the corresponding RPC, suspending until
-the RPC completes. We want the client to await (or block) until the RPC
-completes, so we make the stub method call inside a [runBlocking][] coroutine
-builder. We wrap the entire body of the client class's `getFeature()` helper
-method like this:
+the RPC completes:
 
 ```kotlin
-fun getFeature(latitude: Int, longitude: Int) = runBlocking {
+suspend fun getFeature(latitude: Int, longitude: Int) {
   val request = point(latitude, longitude)
   val feature = stub.getFeature(request)
   if (feature.exists()) { /* ... */ }
@@ -408,11 +376,11 @@ fun getFeature(latitude: Int, longitude: Int) = runBlocking {
 
 ##### Server-side streaming RPC
 
-Next, let's look at a server-side streaming `ListFeatures()` RPC, which returns
-a stream of geographical `Feature`s:
+Next, consider the server-side streaming `ListFeatures()` RPC, which returns a
+stream of geographical features:
 
 ```kotlin
-fun listFeatures(lowLat: Int, lowLon: Int, hiLat: Int, hiLon: Int) = runBlocking {
+suspend fun listFeatures(lowLat: Int, lowLon: Int, hiLat: Int, hiLon: Int) {
   val request = Rectangle.newBuilder()
     .setLo(point(lowLat, lowLon))
     .setHi(point(hiLat, hiLon))
@@ -425,16 +393,16 @@ fun listFeatures(lowLat: Int, lowLon: Int, hiLat: Int, hiLon: Int) = runBlocking
 ```
 
 The stub `listFeatures()` method returns a stream of features in the form of a
-`Flow<Feature>` instance. The flow `collect` method allows the client to
+`Flow<Feature>` instance. The flow `collect()` method allows the client to
 processes the server-provided features as they become available.
 
 ##### Client-side streaming RPC
 
-With the client-side streaming `RecordRoute()` RPC, we send a stream of
-`Point` messages to the server and get back a single `RouteSummary`.
+The client-side streaming `RecordRoute()` RPC sends a stream of `Point` messages
+to the server and gets back a single `RouteSummary`.
 
 ```kotlin
-fun recordRoute(points: Flow<Point>) = runBlocking {
+suspend fun recordRoute(points: Flow<Point>) {
   println("*** RecordRoute")
   val summary = stub.recordRoute(points)
   println("Finished trip with ${summary.pointCount} points.")
@@ -445,9 +413,9 @@ fun recordRoute(points: Flow<Point>) = runBlocking {
 }
 ```
 
-We generate the route points from the points associated with a randomly selected
-list of features. The random selection is taken from a previously loaded feature
-collection:
+The method generates the route points from the points associated with a randomly
+selected list of features. The random selection is taken from a previously
+loaded feature collection:
 
 ```kotlin
 fun generateRoutePoints(features: List<Feature>, numPoints: Int): Flow<Point> = flow {
@@ -466,16 +434,15 @@ until the server requests the next point.
 
 ##### Bidirectional streaming RPC
 
-Finally, let's look at our bidirectional streaming RPC `RouteChat()`. As in the
-case of `RecordRoute()`, we pass to the method a stream that we'll use to write
-the request messages to; like in `ListFeatures()`, we get back a stream that we
-can use to read response messages from. However, this time we'll send values via
-our method's stream while the server is also writing messages to _its_ message
-stream.
+Finally, consider the bidirectional streaming RPC `RouteChat()`. As in the case
+of `RecordRoute()`, you pass to the stub method a stream that you use to write
+the request messages to; like in `ListFeatures()`, you get back a stream that
+you can use to read response messages from. However, this time you send values
+via our method's stream while the server is also writing messages to _its_
+message stream.
 
 ```kotlin
-fun routeChat() = runBlocking {
-  println("*** RouteChat")
+suspend fun routeChat() {
   val requests = generateOutgoingNotes()
   stub.routeChat(requests).collect { note ->
     println("Got message \"${note.message}\" at ${note.location.toStr()}")
@@ -487,44 +454,41 @@ private fun generateOutgoingNotes(): Flow<RouteNote> = flow {
   val notes = listOf(/* ... */)
   for (note in notes) {
     println("Sending message \"${note.message}\" at ${note.location.toStr()}")
-    emit(note);
+    emit(note)
     delay(500)
   }
 }
 ```
 
-The syntax for reading and writing here is very similar to our client-side and
+The syntax for reading and writing here is very similar to the client-side and
 server-side streaming methods. Although each side will always get the other's
 messages in the order they were written, both the client and server can read and
 write in any order —- the streams operate completely independently.
 
 ### Try it out!
 
- 1. Work from the example directory:
+Run the following commands from the `grpc-kotlin/examples` directory:
 
-    ```sh
-    $ cd examples/route_guide
-    ```
-
- 2. Compile the client and server
+ 1. Compile the client and server
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 3. Run the server:
+ 2. Run the server:
 
     ```sh
-    $ ./build/install/examples/bin/route-guide-server
+    $ ./server/build/install/server/bin/route-guide-server
+    Server started, listening on 8980
     ```
 
- 4. From another terminal, run the client:
+ 3. From another terminal, run the client:
 
     ```sh
-    $ ./build/install/examples/bin/route-guide-client
+    $ ./client/build/install/client/bin/route-guide-client
     ```
 
-You'll see output like this:
+You'll see client output like this:
 
 ```nocode
 *** GetFeature: lat=409146138 lon=-746188906
@@ -563,3 +527,15 @@ Got message "First message" at 0.0, 0.0
 Got message "Second message" at 0.0, 0.0
 Finished RouteChat
 ```
+
+[client-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/client/src/main/kotlin/io/grpc/examples
+[download]: https://github.com/grpc/grpc-kotlin/archive/master.zip
+[Flow]: https://kotlinlang.org/docs/reference/coroutines/flow.html#flows
+[grpc-kotlin]: https://github.com/grpc/grpc-kotlin
+[Introduction to gRPC]: /docs/what-is-grpc/introduction/
+[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[Prerequisites]: ../quickstart/#prerequisites
+[protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
+[Quick start]: ../quickstart/
+[server-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/server/src/main/kotlin/io/grpc/examples
+[stub/build.gradle.kts]: https://github.com/grpc/grpc-kotlin/blob/master/examples/stub/build.gradle.kts
