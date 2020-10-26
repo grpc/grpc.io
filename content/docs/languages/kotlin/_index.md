@@ -4,20 +4,10 @@ language: *lang
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 src_repo: github.com/grpc/grpc-kotlin
 src_repo_content: github.com/grpc/grpc-kotlin/blob/master
+spelling: cSpell:ignore Ferrer youtube
 ---
 
-<style>
-  .card {
-    min-height: 100%;
-  }
-  .resource-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-</style>
-
-<div class="columns">
+<div class="columns c-deck-of-cards">
   <div class="column">
     <div class="card" href="#">
       <div class="card-content">
