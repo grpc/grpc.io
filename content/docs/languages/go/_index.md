@@ -4,20 +4,10 @@ language: *lang
 api_path: https://pkg.go.dev/google.golang.org/grpc
 src_repo: github.com/grpc/grpc-go
 src_repo_content: github.com/grpc/grpc-go/blob/master
+spelling: cSpell:ignore Isberner Malte youtube
 ---
 
-<style>
-  .card {
-    min-height: 100%;
-  }
-  .resource-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-</style>
-
-<div class="columns">
+<div class="columns c-deck-of-cards">
   <div class="column">
     <div class="card" href="#">
       <div class="card-content">

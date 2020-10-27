@@ -36,7 +36,7 @@
       {{ $numAuthors := len . -}}
       <br>
 
-      <p class="hero__author subtitle is-size-4 is-size-5-mobile">
+      <p class="hero--author subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right has-text-grey-lighter">
           <i class="fas fa-user-friends"></i>
         </span>
@@ -57,7 +57,7 @@
       {{ with $author -}}
       <br>
 
-      <p class="hero__author subtitle is-size-4 is-size-5-mobile">
+      <p class="hero--author subtitle is-size-4 is-size-5-mobile">
         <span class="icon has-margin-right">
           <i class="fas fa-user"></i>
         </span>
@@ -81,7 +81,7 @@
       {{ end -}}
 
       {{ with .blurb -}}
-      <p class="hero__blurb is-size-5 is-size-6-mobile has-text-weight-light">
+      <p class="hero--blurb is-size-5 is-size-6-mobile has-text-weight-light">
         {{- . | markdownify -}}
       </p>
       {{- end -}}

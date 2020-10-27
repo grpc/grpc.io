@@ -15,20 +15,12 @@ spelling: cSpell:ignore youtube Kubernetes Nulab Protop
     margin-top: 1rem !important;
     margin-bottom: 2rem !important;
   }
-  .card {
-    min-height: 100%;
-  }
-  .resource-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 </style>
 
 Here are a few of the customers who [successfully adopted **gRPC**][use-of-gRPC]
 and other [CNCF technologies](https://www.cncf.io/projects/) in the past year:
 
-<div class="columns mt-5">
+<div class="columns c-deck-of-cards mt-5">
 
   <div class="column">
     <div class="card">
