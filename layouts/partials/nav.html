@@ -73,7 +73,7 @@
                 </a>
               </li>
             {{ end -}}
-            {{ if .Params.language }}
+            {{ if hasPrefix .Parent.Dir "docs/languages/" }}
             <li class="nav-section-link">
               <a href="{{ .RelPermalink }}">
                 More ...
