@@ -3,7 +3,7 @@ title: Documentation
 ---
 
 Learn about key gRPC concepts, try a quick start, find tutorials and reference
-material for all [supported languages](languages/).
+material for all supported [languages][] and [platforms][]:
 
 - **New to gRPC?** Start with the following pages:
 
@@ -13,11 +13,22 @@ material for all [supported languages](languages/).
 
 - **Eager to see gRPC in action?**
 
-  [Select a language](languages/) and then choose its **Quick start**.
+  Select a [language][] or [platform][], then choose its **Quick start**.
 
 - Interested in **gRPC feature details?**
 
   Try one of the following:
 
-  - [Select a language](languages/) and then choose **Tutorial** or **API reference**
+  - Select a [language][] or [platform][], then choose **Tutorial** or **API reference**
   - [Guides](guides/)
+
+### Official support
+
+These are the officially supported gRPC language, platform and OS versions:
+
+{{< supported-platforms >}}
+
+[language]: {{< ref "languages" >}}
+[languages]: {{< ref "languages" >}}
+[platform]: {{< ref "platforms" >}}
+[platforms]: {{< ref "platforms" >}}

@@ -60,7 +60,7 @@
           <ul class="nav-section-links" x-show="open">
             {{ range $children -}}
               {{ $isActive := eq $here .RelPermalink -}}
-              {{ $isRedirected :=  findRE "^/docs/languages/.+?/(api|daily-builds)(/.*)?$" .RelPermalink -}}
+              {{ $isRedirected :=  findRE "^/docs/(languages|platforms)/.+?/(api|daily-builds)(/.*)?$" .RelPermalink -}}
               {{ $isExternal := or (hasPrefix .RelPermalink "http") $isRedirected -}}
               <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
                 <a href="{{ .RelPermalink }}"

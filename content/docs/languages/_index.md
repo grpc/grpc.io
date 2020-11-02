@@ -1,11 +1,11 @@
 ---
-title: Supported languages and platforms
+title: Supported languages
 short: Languages
 weight: 2
 nav_children: section
 ---
 
-Each gRPC language / platform has links to the following pages and more:
+Each gRPC language / [platform][] has links to the following pages and more:
 
 - Quick start
 - Tutorials
@@ -13,7 +13,6 @@ Each gRPC language / platform has links to the following pages and more:
 
 Select a language to get started:
 
-- [Android Java](android/)
 - [C# / .NET](csharp/)
 - [C++](cpp/)
 - [Dart](dart/)
@@ -25,10 +24,5 @@ Select a language to get started:
 - [PHP](php/)
 - [Python](python/)
 - [Ruby](ruby/)
-- [Web](web/)
 
-### Official support
-
-These are the officially supported gRPC language, platform and OS versions:
-
-{{< supported-platforms >}}
+[platform]: {{< relref "platforms" >}}

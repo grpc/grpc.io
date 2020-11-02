@@ -50,5 +50,5 @@ Principles](/blog/principles/) on the [gRPC blog](/blog/).
   <a name="officially-supported-languages-and-platforms"></a>
 
   Our table of **officially supported languages and platforms** has moved!
-  See [Supported languages and platforms](/docs/languages/#official-support).
+  See [Official support](/docs/#official-support).
 {{< /note >}}

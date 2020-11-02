@@ -101,6 +101,10 @@ menu:
       url: /docs/languages/
       weight: 2
       parent: docs
+    - name: Platforms
+      url: /docs/platforms/
+      weight: 2
+      parent: docs
     - name: Guides
       url: /docs/guides/
       identifier: guides

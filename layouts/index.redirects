@@ -1,5 +1,10 @@
 # cSpell:ignore channelz helloasync loadbalancing quickstart sapi vendasta vendastagrpc
-#
+
+# Languages -> platforms redirects
+
+/docs/languages/android/*  /docs/platforms/android/:splat
+/docs/languages/web/*  /docs/platforms/web/:splat
+
 # API reference docs
 #
 # Redirects are handled as if by the following rules (let $api_path be the
@@ -9,7 +14,9 @@
 #  /docs/languages/:lang/api  $api_path 301!                          # when $api_path starts with 'http'
 #  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
 
-{{ range (.Site.GetPage "/docs/languages").Sections -}}
+{{ $pages := (.Site.GetPage "/docs/platforms").Sections -}}
+{{ $pages := $pages | union (.Site.GetPage "/docs/languages").Sections -}}
+{{ range $pages -}}
   {{ $from_path := printf "/%sapi" .File.Dir -}}
 
   {{ $api_path := .Params.api_path | default "grpc/LANG" -}}
