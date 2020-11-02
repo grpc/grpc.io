@@ -22,10 +22,6 @@
   {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!
 {{ end -}}
 
-# Handle /docs/tutorials/basic/c(.html)?
-/docs/tutorials/basic/c  /docs/languages/cpp/basics
-/docs/tutorials/basic/c.html  /docs/languages/cpp/basics
-
 # C# .NET
 /docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
 
@@ -34,6 +30,8 @@
 #
 
 /docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
+
+/docs/talks  /showcase
 
 #
 # Redirects of the site org prior to 2020/06:
@@ -50,6 +48,8 @@
 
 /docs/reference/:lang/generated-code*     /docs/languages/:lang/generated-code
 
+# Redirects of quick start and tutorial pages
+
 {{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
 {{ range $lang_2020_05 }}
 /docs/quickstart/{{ . }}                /docs/languages/{{ . }}/quickstart
@@ -58,6 +58,11 @@
 /docs/quickstart/{{ . }}.html           /docs/languages/{{ . }}/quickstart
 /docs/tutorials/basic/{{ . }}.html      /docs/languages/{{ . }}/basics
 {{ end }}
+
+# Handle /docs/tutorials/basic/c(.html)?
+
+/docs/tutorials/basic/c  /docs/languages/cpp/basics
+/docs/tutorials/basic/c.html  /docs/languages/cpp/basics
 
 # API reference docs (prior to 2020/06)
 
