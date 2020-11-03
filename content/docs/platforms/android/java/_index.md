@@ -1,5 +1,6 @@
 ---
 title: Android Java
+short: Java
 api_path: grpc-java/javadoc
 ---
 

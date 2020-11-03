@@ -36,6 +36,11 @@
     <ul class="nav-section-links" x-show="open">
       {{ range . -}}
       {{ $children := .RegularPages -}}
+      {{ if hasPrefix .Params.nav_children "section" -}}
+        {{ $children = .Sections -}}
+      {{ else if hasPrefix .Params.nav_children "pages" -}}
+        {{ $children = .Pages -}}
+      {{ end -}}
       {{ $isThisSection := hasPrefix $currentSection.RelPermalink .CurrentSection.RelPermalink -}}
       {{ $isActive := eq $here .RelPermalink -}}
       {{ if $children -}}
@@ -59,7 +64,7 @@
         {{ if $children -}}
           <ul class="nav-section-links" x-show="open">
             {{ range $children -}}
-              {{ $isActive := eq $here .RelPermalink -}}
+              {{ $isActive := hasPrefix $here .RelPermalink -}}
               {{ $isRedirected :=  findRE "^/docs/(languages|platforms)/.+?/(api|daily-builds)(/.*)?$" .RelPermalink -}}
               {{ $isExternal := or (hasPrefix .RelPermalink "http") $isRedirected -}}
               <li class="nav-section-link{{ if $isActive }} is-active{{ end }}">
