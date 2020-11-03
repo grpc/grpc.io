@@ -13,8 +13,8 @@ Each gRPC [language][] / platform has links to the following pages and more:
 
 Select a platform to get started:
 
-- [Android Java](android/)
+- [Android]({{< relref "android">}})
 - iOS (coming soon)
-- [Web](web/)
+- [Web]({{< relref "web" >}})
 
 [language]: {{< ref "languages" >}}
