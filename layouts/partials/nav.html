@@ -1,3 +1,4 @@
+{{ $this := . -}}
 {{ $here           := .RelPermalink -}}
 {{ $currentSection := .CurrentSection -}}
 {{ $docSections := (index (where site.Sections "Section" "docs") 0).Sections -}}
@@ -78,7 +79,8 @@
                 </a>
               </li>
             {{ end -}}
-            {{ if hasPrefix .Parent.Dir "docs/languages/" }}
+            {{ $showMoreCandidate := eq .Params.layout "prog_lang_home" -}}
+            {{ if and $showMoreCandidate (ne $this .) -}}
             <li class="nav-section-link">
               <a href="{{ .RelPermalink }}">
                 More ...
