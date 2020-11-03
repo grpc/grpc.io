@@ -1,5 +1,6 @@
 ---
 title: Kotlin for Android
+short: Kotlin
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 ---
 
