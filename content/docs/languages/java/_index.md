@@ -1,67 +1,20 @@
 ---
-title: &lang Java
-language: *lang
+title: Java
+layout: prog_lang_home
 spelling: cSpell:ignore javadoc Nikos Katirtzis Tomo youtube Varun Tuhin Kanti Sharma
 api_path: grpc-java/javadoc
-src_repo: github.com/grpc/grpc-java
-src_repo_content: github.com/grpc/grpc-java/blob/master
----
-
-<div class="columns c-deck-of-cards">
-  <div class="column">
-    <div class="card" href="#">
-      <div class="card-content">
-        <h4>
-          <a class="" href="quickstart/">Quick start</a>
-        </h4>
-        <p>
-          Run your first {{< param language >}} gRPC app in minutes!
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <div class="card-content">
-        <h4>
-          <a class="" href="basics/">Basics tutorial</a>
-        </h4>
-        <p>
-          Learn about {{< param language >}} gRPC basics.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
----
-
-<div class="columns resource-list">
-<div class="column">
-
-#### Learn more
-
-- [Examples](https://{{< param src_repo_content >}}/examples/)
-- [Android example](https://{{< param src_repo_content >}}/examples/android/)
-- [Additional docs](https://{{< param src_repo_content >}}/documentation/)
-
-</div><div class="column">
-
-#### Reference
-
-- [API](api/)
-- [Generated code](generated-code/)
-
-</div><div class="column">
-
-#### Other
-
-- [grpc-{{< plower language >}} repo](https://{{< param src_repo >}})
-- [Download](https://{{< param src_repo >}}#download)
-</div>
-</div>
-
+content:
+  - learn_more:
+    - "[Examples]($src_repo_url/tree/master/examples)"
+    - "[Android example]($src_repo_url/tree/master/examples/android)"
+    - "[Additional docs]($src_repo_url/tree/master/documentation)"
+  - reference:
+    - "[API](api/)"
+    - "[Generated code](generated-code/)"
+  - other:
+    - $src_repo_link
+    - "[Download]($src_repo_url#download)"
+spelling: cSpell:ignore Ferrer youtube
 ---
 
 #### Developer stories and talks {#dev-stories}
