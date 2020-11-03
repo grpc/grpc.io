@@ -2,7 +2,7 @@
 
 # Languages -> platforms redirects
 
-/docs/languages/android/*  /docs/platforms/android/:splat
+/docs/languages/android/*  /docs/platforms/android/java/:splat
 /docs/languages/web/*  /docs/platforms/web/:splat
 
 # API reference docs
@@ -14,7 +14,7 @@
 #  /docs/languages/:lang/api  $api_path 301!                          # when $api_path starts with 'http'
 #  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
 
-{{ $pages := (.Site.GetPage "/docs/platforms").Sections -}}
+{{ $pages := (.Site.GetPage "/docs/platforms/android").Sections -}}
 {{ $pages := $pages | union (.Site.GetPage "/docs/languages").Sections -}}
 {{ range $pages -}}
   {{ $from_path := printf "/%sapi" .File.Dir -}}

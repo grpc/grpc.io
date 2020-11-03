@@ -1,10 +1,8 @@
 ---
-title: Android Java
-api_path: grpc-java/javadoc
+title: Android
 ---
 
-These language-specific pages are available:
+The following languages support client-side gRPC on Android:
 
-- [Quick start](quickstart/)
-- [Basics tutorial](basics/)
-- [API reference](api/)
+- [Java]({{<relref "java">}})
+- Kotlin (coming soon)
