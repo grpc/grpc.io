@@ -1,75 +1,27 @@
 ---
-title: &lang Go
-language: *lang
+title: Go
+layout: prog_lang_home
 api_path: https://pkg.go.dev/google.golang.org/grpc
-src_repo: github.com/grpc/grpc-go
-src_repo_content: github.com/grpc/grpc-go/blob/master
+content:
+  - learn_more:
+    - "[Examples]($src_repo_url/tree/master/examples)"
+    - "[Additional docs]($src_repo_url/tree/master/Documentation)"
+    - "[Installation]($src_repo_url#installation)"
+    - "[FAQ]($src_repo_url#faq)"
+  - reference:
+    - "[API](api/)"
+    - "[Generated code](generated-code/)"
+  - other:
+    - $src_repo_link
+    - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696)"
 spelling: cSpell:ignore Isberner Malte youtube
----
-
-<div class="columns c-deck-of-cards">
-  <div class="column">
-    <div class="card" href="#">
-      <div class="card-content">
-        <h4>
-          <a class="" href="quickstart/">Quick start</a>
-        </h4>
-        <p>
-          Run your first {{< param language >}} gRPC app in minutes!
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <div class="card-content">
-        <h4>
-          <a class="" href="basics/">Basics tutorial</a>
-        </h4>
-        <p>
-          Learn about {{< param language >}} gRPC basics.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
----
-
-<div class="columns resource-list">
-<div class="column">
-
-#### Learn more
-
-- [Examples](https://{{< param src_repo_content >}}/examples/)
-- [Additional docs](https://{{< param src_repo_content >}}/Documentation/)
-- [Installation](https://{{< param src_repo >}}#installation)
-- [FAQ](https://{{< param src_repo >}}#faq)
-
-</div><div class="column">
-
-#### Reference
-
-- [API](api/)
-- [Generated code](generated-code/)
-
-</div><div class="column">
-
-#### Other
-
-- [Performance benchmark][]
-- [grpc-{{< plower language >}} repo](https://{{< param src_repo >}})
-</div>
-</div>
-
 ---
 
 #### Developer stories and talks {#dev-stories}
 
 - **Talking to Go gRPC Services Via HTTP/1**
-  <a href="https://youtu.be/Vbw8h0RCn2E"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/c9/TalkingToGoGRPCviaHTTP1-gRPCConf2020-MalteIsberner.pdf"><i class="far fa-file"></i></a><br>
+  <a class="icon" href="https://youtu.be/Vbw8h0RCn2E"><i class="fab fa-youtube"></i></a>
+  <a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/c9/TalkingToGoGRPCviaHTTP1-gRPCConf2020-MalteIsberner.pdf"><i class="far fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfW)
   by Malte Isberner, StackRox.
 
