@@ -15,9 +15,7 @@ spelling: cSpell:ignore Isberner Malte youtube
           <a class="" href="quickstart/">Quick start</a>
         </h4>
         <p>
-          Run your first
-          {{< param language >}}
-          gRPC app in minutes!
+          Run your first {{< param language >}} gRPC app in minutes!
         </p>
       </div>
     </div>
@@ -30,9 +28,7 @@ spelling: cSpell:ignore Isberner Malte youtube
           <a class="" href="basics/">Basics tutorial</a>
         </h4>
         <p>
-          Learn about
-          {{< param language >}}
-          gRPC basics.
+          Learn about {{< param language >}} gRPC basics.
         </p>
       </div>
     </div>
@@ -41,8 +37,8 @@ spelling: cSpell:ignore Isberner Malte youtube
 
 ---
 
-<div class="columns">
-<div class="column resource-list">
+<div class="columns resource-list">
+<div class="column">
 
 #### Learn more
 
@@ -51,14 +47,14 @@ spelling: cSpell:ignore Isberner Malte youtube
 - [Installation](https://{{< param src_repo >}}#installation)
 - [FAQ](https://{{< param src_repo >}}#faq)
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Reference
 
 - [API](api/)
 - [Generated code](generated-code/)
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Other
 

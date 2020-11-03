@@ -49,19 +49,19 @@
 <div class="columns resource-list">
   {{ range $list_entry := . }}
   {{ range $heading, $items := $list_entry }}
-  {{ $hd := printf "#### %s" (humanize $heading) -}}
+  {{- $hd := printf "#### %s" (humanize $heading) -}}
   <div class="column">
     {{ $hd | $.Page.RenderString }}
     <ul>
-      {{ range $items }}
+      {{- range $items }}
       {{ $item := replace . "$src_repo_url" $src_repo_url -}}
       {{ $item = replace $item "$src_repo_link" $src_repo_link -}}
       <li>{{ $item | $.Page.RenderString }}</li>
-      {{ end }}
+      {{ end -}}
     </ul>
   </div>
-  {{ end }}
-  {{ end }}
+  {{- end -}}
+  {{- end -}}
 </div>
 {{ end -}}
 
