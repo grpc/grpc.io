@@ -15,9 +15,7 @@ spelling: cSpell:ignore Ferrer youtube
           <a class="" href="quickstart/">Quick start</a>
         </h4>
         <p>
-          Run your first
-          {{< param language >}}
-          gRPC app in minutes!
+          Run your first {{< param language >}} gRPC app in minutes!
         </p>
       </div>
     </div>
@@ -30,9 +28,7 @@ spelling: cSpell:ignore Ferrer youtube
           <a class="" href="basics/">Basics tutorial</a>
         </h4>
         <p>
-          Learn about
-          {{< param language >}}
-          gRPC basics.
+          Learn about {{< param language >}} gRPC basics.
         </p>
       </div>
     </div>
@@ -41,21 +37,21 @@ spelling: cSpell:ignore Ferrer youtube
 
 ---
 
-<div class="columns">
-<div class="column resource-list">
+<div class="columns resource-list">
+<div class="column">
 
 #### Learn more
 
 - [Examples](https://{{< param src_repo_content >}}/examples/),
   including for Android
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Reference
 
 - [API](api/)
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Other
 

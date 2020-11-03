@@ -15,9 +15,7 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
           <a class="" href="quickstart/">Quick start</a>
         </h4>
         <p>
-          Run your first
-          {{< param language >}}
-          gRPC app in minutes!
+          Run your first {{< param language >}} gRPC app in minutes!
         </p>
       </div>
     </div>
@@ -30,9 +28,7 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
           <a class="" href="basics/">Basics tutorial</a>
         </h4>
         <p>
-          Learn about
-          {{< param language >}}
-          gRPC basics.
+          Learn about {{< param language >}} gRPC basics.
         </p>
       </div>
     </div>
@@ -41,8 +37,8 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
 
 ---
 
-<div class="columns">
-<div class="column resource-list">
+<div class="columns resource-list">
+<div class="column">
 
 #### Learn more
 
@@ -50,14 +46,14 @@ src_repo_content: github.com/grpc/grpc-java/blob/master
 - [Android example](https://{{< param src_repo_content >}}/examples/android/)
 - [Additional docs](https://{{< param src_repo_content >}}/documentation/)
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Reference
 
 - [API](api/)
 - [Generated code](generated-code/)
 
-</div><div class="column resource-list">
+</div><div class="column">
 
 #### Other
 
