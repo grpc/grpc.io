@@ -1,8 +1,8 @@
 ---
 title: Kotlin for Android
+layout: prog_lang_home
 language: &lang Kotlin
 short: *lang
-layout: prog_lang_home
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 content:
   - learn_more:
