@@ -23,12 +23,13 @@
           <a class="" href="quickstart/">Quick start</a>
         </h4>
         <p>
-          Run your first {{ $Lang }} gRPC app in minutes!
+          Run your first {{ replace $Lang " " "-" }} gRPC app in minutes!
         </p>
       </div>
     </div>
   </div>
 
+  {{ if .GetPage "basics" -}}
   <div class="column">
     <div class="card">
       <div class="card-content">
@@ -36,11 +37,12 @@
           <a class="" href="basics/">Basics tutorial</a>
         </h4>
         <p>
-          Learn about {{ $Lang }} gRPC basics.
+          Learn about {{ replace $Lang " " "-" }} gRPC basics.
         </p>
       </div>
     </div>
   </div>
+  {{ end -}}
 </div>
 
 <hr>

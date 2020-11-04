@@ -5,12 +5,11 @@ language: Kotlin
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 content:
   - learn_more:
-    - >
-      [Examples]($src_repo_url/tree/master/examples),
-      including for Android
+    - "[Examples]($src_repo_url/tree/master/examples)"
   - reference:
     - "[API](api/)"
   - other:
+    - "[Kotlin for Android](/docs/platforms/android/kotlin)"
     - $src_repo_link
     - "[Download](https://search.maven.org/search?q=g:io.grpc%20AND%20grpc-kotlin)"
 spelling: cSpell:ignore Ferrer youtube
