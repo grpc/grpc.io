@@ -21,10 +21,10 @@ This guide also does not cover anything on the server side. You can check the [J
 
 ### Example code and setup
 
-The example code for our tutorial is in [grpc-java's examples/android](https://github.com/grpc/grpc-java/tree/{{< param grpc_java_release_tag >}}/examples/android). To download the example, clone the `grpc-java` repository by running the following command:
+The example code for our tutorial is in [grpc-java's examples/android](https://github.com/grpc/grpc-java/tree/{{< param grpc_vers.java >}}/examples/android). To download the example, clone the `grpc-java` repository by running the following command:
 
 ```sh
-$ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java.git
+$ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java.git
 ```
 
 Then change your current directory to `grpc-java/examples/android`:
@@ -39,7 +39,7 @@ interface code - if you don't already, follow the setup instructions in the
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package` file option in our .proto:
 
@@ -150,7 +150,7 @@ The following classes are generated from our service definition:
 
 ### Creating the client
 
-In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java](https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java).
+In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java](https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/routeguide/app/src/main/java/io/grpc/routeguideexample/RouteGuideActivity.java).
 
 #### Creating a stub
 
@@ -354,6 +354,6 @@ As with our client-side streaming example, we both get and return a `StreamObser
 Follow the instructions in the [example directory README][] to build and run the
 client and server.
 
-[build.gradle]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/routeguide/app/build.gradle#L26
-[example directory README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/examples/android/README.md
-[grpc-java README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_java_release_tag >}}/README.md
+[build.gradle]: https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/routeguide/app/build.gradle#L26
+[example directory README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/README.md
+[grpc-java README]: https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/README.md

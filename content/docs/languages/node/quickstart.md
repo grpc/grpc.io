@@ -18,7 +18,7 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 # Navigate to the dynamic codegen "hello, world" Node example:
 $ cd grpc/examples/node/dynamic_codegen
 # Install the example's dependencies

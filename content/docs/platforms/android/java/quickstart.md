@@ -38,7 +38,7 @@ The example code is part of the [grpc-java][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
+    $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
     ```
 
  2. Change to the examples directory:
@@ -257,7 +257,7 @@ In the app, use the following values:
 
 [Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
 [Basics tutorial]: ../basics/
-[download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
+[download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_vers.java >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net
 [pb]: https://developers.google.com/protocol-buffers

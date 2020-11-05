@@ -93,7 +93,7 @@ The following instructions will locally install gRPC and Protocol Buffers.
  2. Clone the `grpc` repo and its submodules:
 
     ```sh
-    $ git clone --recurse-submodules -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
+    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
     $ cd grpc
     ```
 
@@ -357,10 +357,10 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 - Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).
 
-[examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto
+[examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [Installing CMake]: https://cmake.org/install
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
-[repo]: https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}
+[repo]: https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c

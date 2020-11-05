@@ -16,7 +16,7 @@ The example code is part of the [grpc-java][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
+    $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
     ```
 
  2. Change to the examples directory:
@@ -207,7 +207,7 @@ from the `examples` directory:
 - Explore the [API reference](../api).
 
 [Basics tutorial]: ../basics/
-[download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_java_release_tag >}}.zip
+[download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_vers.java >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net
 [pb]: https://developers.google.com/protocol-buffers
