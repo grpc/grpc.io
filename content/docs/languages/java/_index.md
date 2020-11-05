@@ -1,20 +1,19 @@
 ---
 title: Java
 layout: prog_lang_home
-spelling: cSpell:ignore javadoc Nikos Katirtzis Tomo youtube Varun Tuhin Kanti Sharma
+spelling: cSpell:ignore javadoc Kanti Katirtzis Nikos Sharma Tomo Tuhin youtube Varun
 api_path: grpc-java/javadoc
 content:
   - learn_more:
     - "[Examples]($src_repo_url/tree/master/examples)"
-    - "[Android example]($src_repo_url/tree/master/examples/android)"
     - "[Additional docs]($src_repo_url/tree/master/documentation)"
   - reference:
     - "[API](api/)"
     - "[Generated code](generated-code/)"
   - other:
+    - "[Android Java](/docs/platforms/android/java)"
     - $src_repo_link
     - "[Download]($src_repo_url#download)"
-spelling: cSpell:ignore Ferrer youtube
 ---
 
 #### Developer stories and talks {#dev-stories}
