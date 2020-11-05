@@ -57,7 +57,7 @@ Python's gRPC tools include the protocol buffer compiler `protoc` and the
 special plugin for generating server and client code from `.proto` service
 definitions. For the first part of our quick-start example, we've already
 generated the server and client stubs from
-[helloworld.proto](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/protos/helloworld.proto),
+[helloworld.proto](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/protos/helloworld.proto),
 but you'll need the tools for the rest of our quick start, as well as later
 tutorials and your own projects.
 
@@ -76,7 +76,7 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code:
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 # Navigate to the "hello, world" Python example:
 $ cd grpc/examples/python/helloworld
 ```

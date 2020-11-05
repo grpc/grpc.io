@@ -9,10 +9,10 @@ This tutorial shows you how to write a simple server and client in C++ using
 gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with
 writing simple synchronous gRPC code, as described in [Basics
 tutorial](/docs/languages/android/basics/). The example used in this tutorial follows
-from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld) used in the
+from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/helloworld) used in the
 [quick start](../quickstart/). You'll find it along with installation
 instructions in
-[grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld).
+[grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/helloworld).
 
 ### Overview
 
@@ -30,7 +30,7 @@ is as follows:
 
 To use an asynchronous client to call a remote method, you first create a
 channel and stub, just as you do in a [synchronous
-client](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do
+client](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do
 the following to make an asynchronous call:
 
 - Initiate the RPC and create a handle for it. Bind the RPC to a
@@ -62,7 +62,7 @@ the following to make an asynchronous call:
     ```
 
 You can see the complete client example in
-[greeter_async_client.cc](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/cpp/helloworld/greeter_async_client.cc).
+[greeter_async_client.cc](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/helloworld/greeter_async_client.cc).
 
 ### Async server
 
@@ -213,4 +213,4 @@ What this means in our example is that `ServerImpl's` destructor looks like:
 ```
 
 You can see our complete server example in
-[greeter_async_server.cc](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/cpp/helloworld/greeter_async_server.cc).
+[greeter_async_server.cc](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/helloworld/greeter_async_server.cc).

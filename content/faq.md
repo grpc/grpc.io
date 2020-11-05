@@ -61,7 +61,7 @@ The gRPC project does not do LTS releases. Given the rolling release model above
 
 ### What is the latest gRPC Version?
 
-The latest release tag is {{< param grpc_release_tag >}}.
+The latest release tag is {{< param grpc_vers.core >}}.
 
 ### When do gRPC releases happen?
 

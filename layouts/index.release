@@ -1,1 +1,1 @@
-{{ $.Site.Params.grpc_release_tag }}
+{{ $.Site.Params.grpc_vers.core }}

@@ -28,10 +28,10 @@ buffers language. You can find out more in the
 ### Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/node/dynamic_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/node/dynamic_codegen/route_guide).
+[grpc/grpc/examples/node/dynamic_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide).
 As you'll see if you look at the repository, there's also a very similar-looking
 example in
-[grpc/grpc/examples/node/static_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/node/static_codegen/route_guide).
+[grpc/grpc/examples/node/static_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/node/static_codegen/route_guide).
 We have two versions of our route guide example because there are two ways to
 generate the code needed to work with protocol buffers in Node.js - one approach
 uses `Protobuf.js` to dynamically generate the code at runtime, the other uses
@@ -45,7 +45,7 @@ To download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 $ cd grpc
 ```
 
@@ -67,7 +67,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -190,7 +190,7 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/node/dynamic_codegen/route_guide/route_guide_server.js](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/node/dynamic_codegen/route_guide/route_guide_server.js).
+[examples/node/dynamic_codegen/route_guide/route_guide_server.js](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide/route_guide_server.js).
 Let's take a closer look at how it works.
 
 #### Implementing RouteGuide
@@ -354,7 +354,7 @@ As you can see, we build and start our server with the following steps:
 
 In this section, we'll look at creating a Node.js client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/node/dynamic_codegen/route_guide/route_guide_client.js](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/node/dynamic_codegen/route_guide/route_guide_client.js).
+[examples/node/dynamic_codegen/route_guide/route_guide_client.js](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide/route_guide_client.js).
 
 #### Creating a stub
 
