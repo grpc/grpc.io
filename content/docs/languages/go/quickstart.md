@@ -40,7 +40,7 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-go
+    $ git clone -b {{< param grpc_vers.go >}} https://github.com/grpc/grpc-go
     ```
 
  2. Change to the quick start example directory:
@@ -204,7 +204,7 @@ from the `examples/helloworld` directory:
 - Explore the [API reference](../api).
 
 [Basics tutorial]: ../basics/
-[download]: https://github.com/grpc/grpc-go/archive/master.zip
+[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_vers.go >}}.zip
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org
 [grpc-go]: https://github.com/grpc/grpc-go

@@ -40,7 +40,7 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-go
+    $ git clone -b {{< param grpc_vers.go >}} https://github.com/grpc/grpc-go
     ```
 
  2. Change to the example directory:
@@ -605,7 +605,7 @@ Got message Sixth message at point(0, 3)
   page.
 {{< /note >}}
 
-[download]: https://github.com/grpc/grpc-go/archive/master.zip
+[download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_vers.go >}}.zip
 [grpc-go]: https://github.com/grpc/grpc-go
 [Prerequisites]: ../quickstart/#prerequisites
 [Quick start]: ../quickstart/
