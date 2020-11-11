@@ -1,11 +1,15 @@
 ---
 title: Python
+layout: prog_lang_home
+src_repo: https://github.com/grpc/grpc
+content:
+  - learn_more:
+    - "[Additional docs]($src_repo_url/tree/master/doc/python)"
+    - "[Examples]($src_repo_url/tree/master/examples/python)"
+  - reference:
+    - "[API](api/)"
+    - "[Generated code](generated-code/)"
+  - other:
+    - "[grpc repo]($src_repo_url)"
+    - "[Daily builds](daily-builds)"
 ---
-
-These language-specific pages are available:
-
-- [Quick start](quickstart/)
-- [Basics tutorial](basics/)
-- [Generated-code reference](generated-code/)
-- [API reference](api)
-- [Daily builds](daily-builds)
