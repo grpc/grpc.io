@@ -4,6 +4,8 @@ title: gRPC
 disableKinds: [taxonomy, taxonomyTerm]
 pygmentsCodeFences: true
 
+theme: ["docsy"]
+
 params:
   repo: https://github.com/grpc/grpc.io
   branch: main
