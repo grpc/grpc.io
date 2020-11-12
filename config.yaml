@@ -9,7 +9,7 @@ params:
   branch: main
   locale: en_US
   grpc_vers:
-    core: v1.33.1
+    core: v1.33.2
     go: v1.33.1
     java: v1.33.1
   font_awesome_version: 5.12.1
