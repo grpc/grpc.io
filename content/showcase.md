@@ -110,6 +110,9 @@ find developer stories for your [preferred language](/docs/languages/) on each
 
 Other developer stories are provided next.
 
+- **[Road to gRPC](https://blog.cloudflare.com/road-to-grpc/)**
+  by [Junho Choi](https://blog.cloudflare.com/author/junho/) et al.,
+  [Cloudflare](https://www.cloudflare.com/). October 26, 2020.
 - [**How GIPHY’s Public API Integrates with gRPC Services**](https://engineering.giphy.com/how-giphys-public-api-integrates-with-grpc-services/)<br>
   by Serhii Kushch. August 13, 2020.
 - **A Simplified Service Mesh With gRPC**
