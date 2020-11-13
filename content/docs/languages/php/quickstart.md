@@ -2,29 +2,24 @@
 title: Quick start
 description: This guide gets you started with gRPC in PHP with a simple working example.
 weight: 10
+spelling: cSpell:ignore autogen chmod devel PECL phar phpize phpunit RHEL
 ---
 
 ### Prerequisites
 
-- PHP 5.5 or higher, 7.0 or higher
+- PHP 7.0 or higher
 - PECL
 - Composer
 - PHPUnit (optional)
 
 **Install PHP and PECL on Ubuntu/Debian:**
 
-For PHP5:
-
-```sh
-$ sudo apt-get install php5 php5-dev php-pear phpunit
-```
-
-For PHP7:
-
 ```sh
 $ sudo apt-get install php7.0 php7.0-dev php-pear phpunit
 ```
-or
+
+Or
+
 ```sh
 $ sudo apt-get install php php-dev php-pear phpunit
 ```
@@ -40,7 +35,7 @@ $ sudo yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
 **Install PHP and PECL on Mac:**
 
 ```sh
-$ brew install homebrew/php/php56-grpc
+$ brew install php
 $ curl -O http://pear.php.net/go-pear.phar
 $ sudo php -d detect_unicode=0 go-pear.phar
 ```
@@ -65,7 +60,7 @@ $ sudo mv phpunit-old.phar /usr/bin/phpunit
 There are two ways to install gRPC PHP extension:
 
 - `pecl`
-- `build from source`
+- Build from source
 
 #### Using PECL
 

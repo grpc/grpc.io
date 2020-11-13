@@ -28,9 +28,9 @@
 - language: Objective-C
   os: [Mac OS X 10.11+, iOS 7.0+]
   compilers: [Xcode 7.2+]
-- language: PHP (beta)
+- language: PHP
   os: [Linux, Mac]
-  compilers: [PHP 5.5+, PHP 7.0+]
+  compilers: [PHP 7.0+]
 - language: Python
   os: [Windows, Linux, Mac]
   compilers: [Python 2.7, Python 3.4+]
