@@ -77,6 +77,12 @@
 /grpc-*  https://grpc.github.io/grpc-:splat
 
 #
+# Blog: cleanup cross-posts (https://github.com/grpc/grpc.io/issues/518)
+#
+
+/blog/http2-smarter-at-scale  https://www.cncf.io/blog/2018/07/03/http-2-smarter-at-scale/
+
+#
 # Old URLs from https://grpc.github.io:
 #
 

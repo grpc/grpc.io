@@ -5,15 +5,16 @@ spelling: cSpell:ignore ELBs Klerk customizability
 author:
   name: Jean de Klerk
   link: https://github.com/jadekler
+  position: Google
 ---
 
-In a [previous article](/blog/http2-smarter-at-scale/), we explored how HTTP/2 dramatically increases network efficiency and enables real-time communication by providing a framework for long-lived connections. In this article, we’ll look at how gRPC builds on HTTP/2’s long-lived connections to create a performant, robust platform for inter-service communication. We will explore the relationship between gRPC and HTTP/2, how gRPC manages HTTP/2 connections, and how gRPC uses HTTP/2 to keep connections alive, healthy, and utilized.
+In a [previous article](https://www.cncf.io/blog/2018/07/03/http-2-smarter-at-scale/), we explored how HTTP/2 dramatically increases network efficiency and enables real-time communication by providing a framework for long-lived connections. In this article, we’ll look at how gRPC builds on HTTP/2’s long-lived connections to create a performant, robust platform for inter-service communication. We will explore the relationship between gRPC and HTTP/2, how gRPC manages HTTP/2 connections, and how gRPC uses HTTP/2 to keep connections alive, healthy, and utilized.
 
 <!--more-->
 
 ## gRPC Semantics
 
-To begin, let’s dive into how gRPC concepts relate to HTTP/2 concepts. gRPC introduces three new concepts: *channels* [1], *remote procedure calls* (RPCs), and *messages*. The relationship between the three is simple: each channel may have many RPCs while each RPC may have many messages.
+To begin, let’s dive into how gRPC concepts relate to HTTP/2 concepts. gRPC introduces three new concepts: *channels*<sup id="a1">[1](#f1)</sup>, *remote procedure calls* (RPCs), and *messages*. The relationship between the three is simple: each channel may have many RPCs while each RPC may have many messages.
 
 ![Channel mapping](/img/channels_mapping_2.png)
 
@@ -23,7 +24,7 @@ Let’s take a look at how gRPC semantics relate to HTTP/2:
 
 Channels are a key concept in gRPC. Streams in HTTP/2 enable multiple concurrent conversations on a single connection; channels extend this concept by enabling multiple streams over multiple concurrent connections. On the surface, channels provide an easy interface for users to send messages into; underneath the hood, though, an incredible amount of engineering goes into keeping these connections alive, healthy, and utilized.
 
-Channels represent virtual connections to an endpoint, which in reality may be backed by many HTTP/2 connections. RPCs are associated with a connection (this association is described further on). RPCs are in practice plain HTTP/2 streams. Messages are associated with RPCs and get sent as HTTP/2 data frames. To be more specific, messages are _layered_ on top of data frames. A data frame may have many gRPC messages, or if a gRPC message is quite large [2] it might span multiple data frames.
+Channels represent virtual connections to an endpoint, which in reality may be backed by many HTTP/2 connections. RPCs are associated with a connection (this association is described further on). RPCs are in practice plain HTTP/2 streams. Messages are associated with RPCs and get sent as HTTP/2 data frames. To be more specific, messages are _layered_ on top of data frames. A data frame may have many gRPC messages, or if a gRPC message is quite large<sup id="a2">[2](#f2)</sup> it might span multiple data frames.
 
 ## Resolvers and Load Balancers
 
@@ -41,7 +42,7 @@ Resolvers and load balancers solve small but crucial problems in a gRPC system. 
 
 Once configured, gRPC will keep the pool of connections - as defined by the resolver and balancer - healthy, alive, and utilized.
 
-When a connection fails, the load balancer will begin to reconnect using the last known list of addresses [3]. Meanwhile, the resolver will begin attempting to re-resolve the list of host names. This is useful in a number of scenarios. If the proxy is no longer reachable, for example, we’d want the resolver to update the list of addresses to not include that proxy’s address. To take another example: DNS entries might change over time, and so the list of addresses might need to be periodically updated. In this manner and others, gRPC is designed for long-term resiliency.
+When a connection fails, the load balancer will begin to reconnect using the last known list of addresses<sup id="a3">[3](#f3)</sup>. Meanwhile, the resolver will begin attempting to re-resolve the list of host names. This is useful in a number of scenarios. If the proxy is no longer reachable, for example, we’d want the resolver to update the list of addresses to not include that proxy’s address. To take another example: DNS entries might change over time, and so the list of addresses might need to be periodically updated. In this manner and others, gRPC is designed for long-term resiliency.
 
 Once resolution is finished, the load balancer is informed of the new addresses. If addresses have changed, the load balancer may spin down connections to addresses not present in the new list or create connections to addresses that weren’t previously there.
 
@@ -71,6 +72,6 @@ Developers choosing protocols must choose those that meet today’s demands as w
 
 ## Footnotes
 
-1. In Go, a gRPC channel is called ClientConn because the word “channel” has a language-specific meaning.
-2. gRPC uses the HTTP/2 default max size for a data frame of 16kb. A message over 16kb may span multiple data frames, whereas a message below that size may share a data frame with some number of other messages.
-3. This is the behavior of the RoundRobin balancer, but not every load balancer does or must behave this way.
+1. <a id="f1"></a> In Go, a gRPC channel is called ClientConn because the word “channel” has a language-specific meaning. [↩](#a1)
+2. <a id="f2"></a> gRPC uses the HTTP/2 default max size for a data frame of 16kb. A message over 16kb may span multiple data frames, whereas a message below that size may share a data frame with some number of other messages. [↩](#a2)
+3. <a id="f3"></a> This is the behavior of the RoundRobin balancer, but not every load balancer does or must behave this way. [↩](#a3)
