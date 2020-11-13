@@ -6,8 +6,13 @@ pygmentsCodeFences: true
 
 theme: ["docsy"]
 
+enableGitInfo: true
+
 params:
-  repo: https://github.com/grpc/grpc.io
+  copyright: 'The Linux Foundation'
+  repo: &repo 'https://github.com/grpc/grpc.io'
+  github_repo: *repo
+  github_project_repo: *repo
   branch: main
   locale: en_US
   grpc_vers:
@@ -16,6 +21,18 @@ params:
     java: v1.34.1
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
+  ui:
+    sidebar_menu_compact: true
+    navbar_logo: true
+
+    # If Algolia DocSearch is enabled, sidebar search is not supported
+    sidebar_search_disable: false
+
+    # Adds a reading time to the top of each doc.
+    # If you want this feature, but occasionally need to remove the Reading time from a single page,
+    # add "hide_readingtime: true" to the page's front matter
+    readingtime:
+      enable: false
 
   show_banner: false
 
@@ -23,7 +40,7 @@ params:
     gitter: https://gitter.im/grpc/grpc
     reddit: https://www.reddit.com/r/grpc
     twitter: https://twitter.com/grpcio
-    twitter_handle: '@grpcio'
+    twitter_handle: "@grpcio"
 
   features:
     - title: Simple service definition
@@ -40,7 +57,7 @@ params:
       icon: feature-4.svg
 
   fonts:
-    - name: 'Open Sans'
+    - name: "Open Sans"
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
@@ -49,16 +66,49 @@ params:
     hero: grpc-logo.png
     footer: grpc-horizontal-white.png
 
+  links:
+    user:
+      - name: "Twitter"
+        url: "https://twitter.com/grpcio"
+        icon: "fab fa-twitter"
+        desc: "Follow us on Twitter!"
+      - name: "Reddit"
+        url: "https://www.reddit.com/r/grpc"
+        icon: "fab fa-reddit"
+        desc: "Join our Reddit community"
+    developer:
+      - name: "GitHub"
+        url: "https://github.com/grpc"
+        icon: "fab fa-github"
+        desc: "Development takes place here!"
+      - name: "Gitter"
+        url: https://gitter.im/grpc/grpc
+        icon: "fab fa-gitter"
+        desc: "Where developers come to talk"
+
+  # Google Custom Search Engine ID. Remove or comment out to disable search.
+  gcs_engine_id: "011217106833237091527:la2vtv2emlw"
+
+  # Enable Algolia DocSearch
+  algolia_docsearch: false
+
+  #Enable offline search with Lunr.js
+  offlineSearch: false
+
 markup:
   goldmark:
-    renderer: {unsafe: true}
+    renderer: { unsafe: true }
   highlight:
     style: manni
+  tableOfContents:
+    startLevel: 2
+    endLevel: 5
+    ordered: false
 
 # Configuration required for auto-generating the Netlify _redirects file
 mediaTypes:
   text/netlify:
-    delimiter: ''
+    delimiter: ""
 
 outputFormats:
   REDIRECTS:
