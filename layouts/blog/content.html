@@ -1,0 +1,56 @@
+
+{{ $auth  := .Params.author }}
+{{ $auths := .Params.authors }}
+
+<div class="td-content">
+	<h1>{{ .Title }}</h1>
+	{{ with .Params.attribution }}
+		<p>{{ . }}</p>
+	{{ end }}
+	{{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+	<div class="td-byline mb-4">
+    {{ with $auth }}
+			{{ T "post_byline_by" }} 
+			{{ if .link }}
+				<a href="{{ .link }}"><b>{{ .name | markdownify }}</b></a>
+			{{ else }}
+				<b>{{ .name | markdownify }}</b>
+			{{ end }}
+			{{ with .position }} ({{ . | markdownify }}){{ end }} |
+			{{ with .blurb }}
+				<span> {{ . }}</span>
+				<br/>
+			{{ end }}
+			{{- with .guest -}}
+      <span class="badge badge-secondary font-weight-bold">
+        <span class="icon"><i class="fas fa-sm fa-pen"></i></span>
+        <span>Guest post</span>
+			</span>
+			<br/>
+      {{ end -}}
+    {{ end }}
+
+    {{ with $auths }}
+      {{ T "post_byline_by" }} 
+			{{ range $idx, $auth := $auths }}
+				{{ if .link }}
+					<a href="{{ .link }}"><b>{{ .name | markdownify }}</b></a>
+				{{ else }}
+					<b>{{ .name | markdownify }}</b>
+				{{ end }}
+			{{ with .position }} ({{ . | markdownify }}){{ end }}{{ if not (eq (len $auths) (add $idx 1)) }}, {{ end }}
+      {{ end }}
+       |
+    {{ end }}
+
+		<time datetime="{{  $.Date.Format "2006-01-02" }}" class="text-muted">{{ $.Date.Format $.Site.Params.time_format_blog  }}</time>
+	</div>
+	{{ .Content }}
+	{{ if (.Site.Params.DisqusShortname) }}
+		<br />
+		{{ partial "disqus-comment.html" . }}
+		<br />
+	{{ end }}
+
+	{{ partial "pager.html" . }}
+</div>
