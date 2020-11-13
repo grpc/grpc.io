@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>OS</th>
+      <th>Compilers / SDK</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range site.Data.officially_supported_lang_os -}}
+    <tr>
+      <td>
+        {{- .language -}}
+      </td>
+      <td>
+        {{- delimit .os ", " -}}
+      </td>
+      <td>
+        {{- delimit .compilers ", " -}}
+      </td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
