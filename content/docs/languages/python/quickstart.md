@@ -6,7 +6,7 @@ weight: 10
 
 ### Prerequisites
 
-- Python 2.7, or Python 3.4 or higher
+- Python 3.5 or higher
 - `pip` version 9.0.1 or higher
 
 If necessary, upgrade your version of `pip`:
