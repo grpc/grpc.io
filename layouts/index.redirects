@@ -3,6 +3,7 @@
 # Languages -> platforms redirects
 
 /docs/languages/android/*  /docs/platforms/android/java/:splat
+/docs/languages/csharp/dotnet  /docs/platforms/dotnet
 /docs/languages/web/*  /docs/platforms/web/:splat
 
 # API reference docs
