@@ -28,7 +28,7 @@ These are the officially supported gRPC language, platform and OS versions:
 
 {{< supported-lang-and-os >}}
 
-[language]: {{< ref "languages" >}}
-[languages]: {{< ref "languages" >}}
-[platform]: {{< ref "platforms" >}}
-[platforms]: {{< ref "platforms" >}}
+[language]: {{< relref  "languages" >}}
+[languages]: {{< relref  "languages" >}}
+[platform]: {{< relref  "platforms" >}}
+[platforms]: {{< relref  "platforms" >}}
