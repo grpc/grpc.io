@@ -17,4 +17,4 @@ Select a platform to get started:
 - iOS (coming soon)
 - [Web]({{< relref "web" >}})
 
-[language]: {{< ref "languages" >}}
+[language]: {{< relref  "languages" >}}
