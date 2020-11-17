@@ -1,20 +1,23 @@
 ---
 title: Supported platforms
+description: gRPC is supported across different software and hardware platforms.
 short: Platforms
 weight: 2
 nav_children: section
 ---
 
 Each gRPC [language][] / platform has links to the following pages and more:
+quick start, tutorials, API reference.
 
-- Quick start
-- Tutorials
-- API reference
+Select a target platform to get started:
 
-Select a platform to get started:
-
-- [Android]({{< relref "android">}})
-- iOS (coming soon)
+- Mobile:
+  - [Android]({{< relref "android">}})
+  - iOS -- coming soon
 - [Web]({{< relref "web" >}})
 
-[language]: {{< relref  "languages" >}}
+Or, explore the following cross-platform software development kit:
+
+- Flutter -- coming soon
+
+[language]: {{< relref "languages" >}}
