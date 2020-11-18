@@ -15,9 +15,7 @@ Select a target platform to get started:
   - [Android]({{< relref "android">}})
   - iOS -- coming soon
 - [Web]({{< relref "web" >}})
-
-Or, explore the following cross-platform software development kit:
-
-- Flutter -- coming soon
+- Flutter
+  - documentation coming soon
 
 [language]: {{< relref "languages" >}}
