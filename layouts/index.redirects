@@ -5,6 +5,9 @@
 /docs/languages/android/*  /docs/platforms/android/java/:splat
 /docs/languages/web/*  /docs/platforms/web/:splat
 
+/docs/platforms/android/basics  /docs/platforms/android/java/basics
+/docs/platforms/android/quickstart  /docs/platforms/android/java/quickstart
+
 # API reference docs
 #
 # Redirects are handled as if by the following rules (let $api_path be the
@@ -63,7 +66,7 @@
 /docs/tutorials/basic/{{ . }}           /docs/languages/{{ . }}/basics
 {{/* Handle links ending in .html (https://github.com/grpc/grpc.io/issues/286) */}}
 /docs/quickstart/{{ . }}.html           /docs/languages/{{ . }}/quickstart
-/docs/tutorials/basic/{{ . }}.html      /docs/languages/{{ . }}/basics
+/docs/tutorials/basic/{{ . }}.html*     /docs/languages/{{ . }}/basics
 {{ end }}
 
 # Handle /docs/tutorials/basic/c(.html)?
@@ -96,3 +99,11 @@
 /blog/vendastagrpc   /blog/vendasta
 /docs/guides/wire*   https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
 /posts/* /blog/:splat
+
+#
+# Varia
+#
+
+/docs/installation/go.html  /docs/languages/go
+/grpc.github.io/img/landing-2.svg  /img/landing-2.svg
+/release)  /release
