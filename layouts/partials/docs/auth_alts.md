@@ -9,11 +9,11 @@ environments. For more information, take a look at the
 
 ALTS in gRPC has the following features:
 
--   Create gRPC servers & clients with ALTS as the transport security protocol.
--   ALTS connections are end-to-end protected with privacy and integrity.
--   Applications can access peer information such as the peer service account.
--   Client authorization and server authorization support.
--   Minimal code changes to enable ALTS.
+- Create gRPC servers & clients with ALTS as the transport security protocol.
+- ALTS connections are end-to-end protected with privacy and integrity.
+- Applications can access peer information such as the peer service account.
+- Client authorization and server authorization support.
+- Minimal code changes to enable ALTS.
 
 gRPC users can configure their applications to use ALTS as a transport security
 protocol with few lines of code.
@@ -29,7 +29,7 @@ platforms with a pluggable
 gRPC clients can use ALTS credentials to connect to servers, as illustrated in
 the following code excerpt:
 
-{{ . | markdownify -}}
+{{ . | safeHTML }}
 {{ end }}
 
 {{ with .Params.code.server_credentials -}}
@@ -38,7 +38,7 @@ the following code excerpt:
 gRPC servers can use ALTS credentials to allow clients to connect to them, as
 illustrated next:
 
-{{ . | markdownify -}}
+{{ . | safeHTML }}
 {{ end }}
 
 {{ with .Params.code.server_authorization -}}
@@ -50,7 +50,7 @@ connection. Then, at the end of the handshake, server authorization guarantees
 that the server identity matches one of the service accounts specified
 by the client. Otherwise, the connection fails.
 
-{{ . | markdownify -}}
+{{ . | safeHTML }}
 {{ end }}
 
 {{ with .Params.code.client_authorization -}}
@@ -64,5 +64,5 @@ codes to authorize the incoming RPC.
 
 [AltsContext]: https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto
 
-{{ . | markdownify -}}
+{{ . | safeHTML }}
 {{ end }}
