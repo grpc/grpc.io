@@ -32,6 +32,7 @@ pages:
 - [ALTS in C++]({{< relref "docs/languages/cpp/alts" >}})
 - [ALTS in Go]({{< relref "docs/languages/go/alts" >}})
 - [ALTS in Java]({{< relref "docs/languages/java/alts" >}})
+- [ALTS in Python]({{< relref "docs/languages/python/alts" >}})
 
 Note that ALTS is fully functional if the application runs on
 [Google Cloud Platform](https://cloud.google.com). ALTS could be run on any
@@ -43,30 +44,11 @@ platforms with a pluggable
 gRPC clients can use ALTS credentials to connect to servers. The following
 provides examples of how to set up such clients in all supported gRPC languages.
 
-#### Python
-
-```python
-import grpc
-
-channel_creds = grpc.alts_channel_credentials()
-channel = grpc.secure_channel(address, channel_creds)
-```
-
 ### gRPC Server with ALTS Transport Security Protocol
 
 gRPC servers can use ALTS credentials to allow clients to connect to them. The
 following provides examples of how to set up such servers in all supported gRPC
 languages.
-
-#### Python
-
-```python
-import grpc
-
-server = grpc.server(futures.ThreadPoolExecutor())
-server_creds = grpc.alts_server_credentials()
-server.add_secure_port(server_address, server_creds)
-```
 
 ### Server Authorization
 
