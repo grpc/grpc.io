@@ -21,6 +21,7 @@
         "microservices",
         "multicore",
         "performant",
+        "pluggable",
         "printf",
         "protoc",
         "pushback",
