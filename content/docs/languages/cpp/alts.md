@@ -1,10 +1,11 @@
 ---
-title: ALTS authentication
+title: ALTS authentication in C++
 short: ALTS
 layout: auth_alts
 description: >
   An overview of gRPC authentication in C++ using Application Layer Transport
   Security (ALTS).
+weight: 75
 spelling: cSpell:ignore Authz creds grpcpp
 code:
   client_credentials: |

@@ -4,9 +4,9 @@ layout: prog_lang_home
 api_path: https://pkg.go.dev/google.golang.org/grpc
 content:
   - learn_more:
-    - "[Examples]($src_repo_url/tree/master/examples)"
+    - "[ALTS authentication](alts/)"
     - "[Additional docs]($src_repo_url/tree/master/Documentation)"
-    - "[Installation]($src_repo_url#installation)"
+    - "[Examples]($src_repo_url/tree/master/examples)"
     - "[FAQ]($src_repo_url#faq)"
   - reference:
     - "[API](api/)"
@@ -14,6 +14,7 @@ content:
   - other:
     - $src_repo_link
     - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696)"
+    - "[Installation]($src_repo_url#installation)"
 spelling: cSpell:ignore Isberner Klerk Malte youtube
 ---
 

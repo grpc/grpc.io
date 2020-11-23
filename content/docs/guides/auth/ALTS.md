@@ -27,7 +27,10 @@ protocol with few lines of code. gRPC ALTS is supported in C++, Java, Go, and
 Python.
 
 Details are covered in this page, or in the following language-specific
-page: [C++ ALTS]({{< relref "docs/languages/cpp/alts" >}}).
+pages:
+
+- [ALTS in C++]({{< relref "docs/languages/cpp/alts" >}})
+- [ALTS in Go]({{< relref "docs/languages/go/alts" >}})
 
 Note that ALTS is fully functional if the application runs on
 [Google Cloud Platform](https://cloud.google.com). ALTS could be run on any
@@ -47,18 +50,6 @@ import io.grpc.ManagedChannel;
 
 ManagedChannel managedChannel =
     AltsChannelBuilder.forTarget(serverAddress).build();
-```
-
-#### Go
-
-```go
-import (
-  "google.golang.org/grpc"
-  "google.golang.org/grpc/credentials/alts"
-)
-
-altsTC := alts.NewClientCreds(alts.DefaultClientOptions())
-conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
 ```
 
 #### Python
@@ -85,18 +76,6 @@ import io.grpc.Server;
 Server server = AltsServerBuilder.forPort(<port>)
     .addService(new MyServiceImpl()).build().start();
 
-```
-
-#### Go
-
-```go
-import (
-  "google.golang.org/grpc"
-  "google.golang.org/grpc/credentials/alts"
-)
-
-altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
-server := grpc.NewServer(grpc.Creds(altsTC))
 ```
 
 #### Python
@@ -130,20 +109,6 @@ ManagedChannel channel =
          .build();
 ```
 
-#### Go
-
-```go
-import (
-  "google.golang.org/grpc"
-  "google.golang.org/grpc/credentials/alts"
-)
-
-clientOpts := alts.DefaultClientOptions()
-clientOpts.TargetServiceAccounts = []string{expectedServerSA}
-altsTC := alts.NewClientCreds(clientOpts)
-conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
-```
-
 ### Client Authorization
 
 On a successful connection, the peer information (e.g., client’s service
@@ -164,15 +129,4 @@ import io.grpc.Status;
 ServerCall<?, ?> call;
 Status status = AuthorizationUtil.clientAuthorizationCheck(
     call, Lists.newArrayList("foo@iam.gserviceaccount.com"));
-```
-
-#### Go
-
-```go
-import (
-  "google.golang.org/grpc"
-  "google.golang.org/grpc/credentials/alts"
-)
-
-err := alts.ClientAuthorizationCheck(ctx, []string{"foo@iam.gserviceaccount.com"})
 ```
