@@ -27,8 +27,9 @@ The following authentication mechanisms are built-in to gRPC:
 - **ALTS**: gRPC supports
   [ALTS](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security)
   as a transport security mechanism, if the application is running on
-  [Google Cloud Platform (GCP)](https://cloud.google.com/). See
-  [ALTS authentication](alts/) for details.
+  [Google Cloud Platform (GCP)](https://cloud.google.com).
+  For details, see [ALTS authentication](alts/) or the following
+  language-specific page: [C++ ALTS]({{< relref "docs/languages/cpp/alts" >}}).
 - **Token-based authentication with Google**: gRPC provides a generic
   mechanism (described below) to attach metadata based credentials to requests
   and responses. Additional support for acquiring access tokens
