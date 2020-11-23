@@ -1,5 +1,8 @@
 # cSpell:ignore channelz helloasync loadbalancing quickstart sapi vendasta vendastagrpc
 
+# ALTS page is now language-specific (#527); redirect to base auth page for now
+/docs/guides/auth/alts  /docs/guides/auth
+
 # Languages -> platforms redirects
 
 /docs/languages/android/*  /docs/platforms/android/java/:splat
