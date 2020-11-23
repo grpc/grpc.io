@@ -5,8 +5,9 @@ spelling: cSpell:ignore javadoc Kanti Katirtzis Nikos Sharma Tomo Tuhin youtube 
 api_path: grpc-java/javadoc
 content:
   - learn_more:
-    - "[Examples]($src_repo_url/tree/master/examples)"
+    - "[ALTS authentication](alts/)"
     - "[Additional docs]($src_repo_url/tree/master/documentation)"
+    - "[Examples]($src_repo_url/tree/master/examples)"
   - reference:
     - "[API](api/)"
     - "[Generated code](generated-code/)"
