@@ -1,0 +1,21 @@
+{{ define "main" -}}
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-one-quarter is-hidden-touch">
+        {{ partial "nav.html" . }}
+      </div>
+      {{/* Why is-clipped? See https://github.com/grpc/grpc.io/issues/185 */}}
+      <div class="column is-clipped">
+        {{ partial "docs/hero.html" . }}
+        <section class="section">
+          <div class="container">
+            {{ $content := partial "docs/auth_alts.md" . | $.Page.RenderString -}}
+            {{ partial "content.html" (dict "Page" . "content" $content) }}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end -}}
