@@ -64,11 +64,9 @@ outputFormats:
     baseName: _redirects
   RSS:
     baseName: feed
-  RELEASE:
-    baseName: release
 
 outputs:
-  home: [HTML, REDIRECTS, RSS, RELEASE]
+  home: [HTML, REDIRECTS, RSS]
 
 # Site menus
 
