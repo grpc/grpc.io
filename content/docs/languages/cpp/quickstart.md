@@ -38,7 +38,7 @@ $ export PATH="$PATH:$MY_INSTALL_DIR/bin"
 
 Version 3.13 or later of `cmake` is required to install gRPC locally.
 
-- Linux
+- Ubuntu/Debian
 
   ```sh
   $ sudo apt install -y cmake
@@ -78,7 +78,7 @@ The following instructions will locally install gRPC and Protocol Buffers.
 
  1. Install the basic tools required to build gRPC:
 
-    - Linux
+    - Ubuntu/Debian
 
       ```sh
       $ sudo apt install -y build-essential autoconf libtool pkg-config
