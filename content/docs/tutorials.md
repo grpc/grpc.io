@@ -1,6 +1,9 @@
 ---
 title: Tutorials
+robots: noindex, nofollow
 ---
 
-Each language / platform has **tutorial** pages. Select a
-[language](/docs/languages) to view available tutorials.
+Select a [language][] or [platform][] to view available tutorials.
+
+[language]: {{< relref "languages" >}}
+[platform]: {{< relref "platforms" >}}

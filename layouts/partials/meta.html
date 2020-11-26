@@ -1,9 +1,9 @@
-{{ $url     := .Permalink }}
-{{ $title   := cond .IsHome site.Title .Title }}
-{{ $type    := cond .IsHome "website" "article" }}
-{{ $desc    := .Param "description" }}
-{{ $twitter := site.Params.social.twitter_handle }}
-{{ $img     := "img/logos/grpc-icon-color.png" | absURL }}
+{{ $url     := .Permalink -}}
+{{ $title   := cond .IsHome site.Title .Title -}}
+{{ $type    := cond .IsHome "website" "article" -}}
+{{ $desc    := .Param "description" -}}
+{{ $twitter := site.Params.social.twitter_handle -}}
+{{ $img     := "img/logos/grpc-icon-color.png" | absURL -}}
 {{ $imgAlt  := printf "%s color logo" site.Title }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,20 +13,21 @@
 {{ end -}}
 
 <link rel="canonical" href="{{ $url }}">
-
+{{ with $.Params.Robots -}}
+<meta name="robots" content="{{ . }}">
+{{ end -}}
 {{/* Twitter Card metadata */}}
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="{{ $twitter }}">
 <meta name="twitter:creator" content="{{ $twitter }}">
 <meta name="twitter:image" content="{{ $img }}">
 <meta name="twitter:image:alt" content="{{ $imgAlt }}">
-
 {{/* OpenGraph metadata */}}
 <meta property="og:url" content="{{ $url }}">
 <meta property="og:title" content="{{ $title }}">
-{{ with $desc }}
+{{ with $desc -}}
 <meta property="og:description" content="{{ $desc }}">
-{{ end }}
+{{ end -}}
 <meta property="og:type" content="{{ $type }}">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:image" content="{{ $img }}">
