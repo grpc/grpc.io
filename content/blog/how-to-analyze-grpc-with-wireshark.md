@@ -1,13 +1,13 @@
 ---
 title: How to analyze gRPC with Wireshark
-date: 2020-10-20
+date: 2020-11-27
 spelling: cSpell:ignore Huang Qiangxiong
 author:
   name: Huang Qiangxiong
   link: https://github.com/huangqiangxiong
 ---
 
-[Wireshark](https://www.wireshark.org/) is the most famous open source network protocol analyzer, which is widely used in network troubleshooting, analysis, software and communications protocol development, and education. With Wireshark, people can analyze the messages of gRPC protocol that transferred over the wire (network), or learning the binary wire format of these protocols. This tutorial will show you how to configure and use Wireshark gRPC dissector to analyze gRPC with *.proto files. Note that the gRPC dissector actually relies on the Protocol Buffers (Protobuf) dissector, and some functions (including setting *.proto files paths) are accomplished through the Protobuf dissector. Wireshark started to support parsing gRPC (and Protobuf) in version 2.6.0, and some new features (including supporting *.proto* files) have been added in later versions. You can refer to section [History of Wireshark gRPC and Protobuf Dissectors](#History of Wireshark gRPC and Protobuf Dissectors) for details. Wireshark 3.4.0 is the latest stable version, is also the version we used to introduce examples later.
+[Wireshark](https://www.wireshark.org/) is the most famous open source network protocol analyzer, which is widely used in network troubleshooting, analysis, software and communications protocol development, and education. With Wireshark, people can analyze the messages of gRPC protocol that transferred over the wire (network), or learning the binary wire format of these protocols. This tutorial will show you how to configure and use Wireshark gRPC dissector to analyze gRPC with *.proto files. Note that the gRPC dissector actually relies on the Protocol Buffers (Protobuf) dissector, and some functions (including setting *.proto files paths) are accomplished through the Protobuf dissector. Wireshark started to support parsing gRPC (and Protobuf) in version 2.6.0, and some new features (including supporting *.proto* files) have been added in later versions. You can refer to section [History of Wireshark gRPC and Protobuf Dissectors](#history-of-wireshark-grpc-and-protobuf-dissectors) for details. Wireshark 3.4.0 is the latest stable version, is also the version we used to introduce examples later.
 
 ## Features of Wireshark Protobuf and gRPC dissectors
 
@@ -35,7 +35,7 @@ There are many ways to capture the network traffic of a gRPC conversation:
 
 - Linux/UNIX: Use Tcpdump.
 
-Please refer to [Wireshark User's Guide]https://www.wireshark.org/docs/wsug_html_chunked/ for how to capture network packets files that can be recognized by Wireshark.
+Please refer to [Wireshark User's Guide](https://www.wireshark.org/docs/wsug_html_chunked/) for how to capture network packets files that can be recognized by Wireshark.
 
 Note that now only the capture files that sending gRPC messages in plaintext mode can be parsed by Wireshark. For example, you have to setup a gRPC client channel using plaintext mode in java like:
 ```java
