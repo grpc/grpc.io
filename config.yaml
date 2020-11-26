@@ -87,7 +87,7 @@ params:
         desc: "Where developers come to talk"
 
   # Google Custom Search Engine ID. Remove or comment out to disable search.
-  gcs_engine_id: "011217106833237091527:la2vtv2emlw"
+  gcs_engine_id: "788f3b1ec3a111a2f"
 
   # Enable Algolia DocSearch
   algolia_docsearch: false
