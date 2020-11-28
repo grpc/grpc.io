@@ -27,7 +27,7 @@ introduce examples later.
 
 The main features about Wireshark Protobuf and gRPC dissectors includes:
 
-- Supports dissecting gRPC messages serialized in Protobuf or JSON format.
+- Supports dissecting the gRPC messages serialized in Protobuf or JSON format.
 
 - Supports dissecting the gRPC messages of unary, server streaming, client
   streaming, and bidirectional streaming RPC calls.
@@ -38,7 +38,7 @@ The main features about Wireshark Protobuf and gRPC dissectors includes:
 
 - Protobuf fields can be dissected as Wireshark fields that allows user to input
   the full name of a Protobuf field or message in the filter toolbar to search
-  packages containing the field or message.
+  packets containing the field or message.
 
 - You can register your own subdissectors in the 'protobuf_field' dissector
   table, which is keyed with the full names of the fields, for further parsing
@@ -62,7 +62,8 @@ There are many ways to capture the network traffic of a gRPC conversation:
 
 Please refer to [Wireshark User's
 Guide](https://www.wireshark.org/docs/wsug_html_chunked/) for how to capture
-network packets files that can be recognized by Wireshark.
+the network traffic, and store the packets into files that can be recognized
+by Wireshark.
 
 Note that now only the capture files that sending gRPC messages in plaintext
 mode can be parsed by Wireshark. For example, you have to setup a gRPC client
@@ -85,7 +86,7 @@ There are some examples to show how to use the Wireshark Protobuf and gRPC
 dissectors. You can get more details about these examples from [Wireshark
 Protobuf wiki page](https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf) and
 [Wireshark gRPC wiki page](https://gitlab.com/wireshark/wireshark/-/wikis/gRPC)
-pages from Wireshark official website.
+on Wireshark official website.
 
 ### Sample .proto files
 
@@ -148,7 +149,7 @@ service PersonSearchService {
 }
 ```
 
-The file `person_search_service.proto` which relies on file `addressbook.proto`.
+The file `person_search_service.proto` relies on file `addressbook.proto`.
 
 ### Protobuf Search Paths Settings
 
@@ -192,7 +193,7 @@ Since the `Search` operation is defined as the server streaming RPC mode, the
 Person objects can be return back to client one after another:
 ![wireshark_grpc_protobuf_search_response](/img/wireshark_grpc_protobuf_search_response.png)
 
-You may have noticed that the `portrait_image` of bytes type is parsed into a
+You may have noticed that the `portrait_image` of bytes type is parsed as a
 PNG data. It's because we register the PNG dissector in the `"protobuf_field"`
 dissector table for parsing the value of field `portrait_image` as picture by
 putting following Lua script `'protobuf_portrait_field.lua'` into the 'plugins'
