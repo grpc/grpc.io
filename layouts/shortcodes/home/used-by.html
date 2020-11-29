@@ -1,0 +1,11 @@
+{{ $usedBy := site.Data.testimonials -}}
+<div class="d-flex flex-column flex-md-row flex-wrap justify-content-md-between align-items-center align-self-stretch">
+  {{ range $usedBy -}}
+  {{ $img := printf "img/users/%s" .image | relURL -}}
+    <div class="pr-2 mb-5 mx-auto">
+      <a href="{{ .link }}" target="_blank" rel="noopener">
+        <img src="{{ $img }}" alt="{{ .name }} user logo">
+      </a>
+    </div>
+  {{- end }}
+</div>
