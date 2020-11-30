@@ -23,7 +23,8 @@ Note that ALTS is fully functional if the application runs on
 platforms with a pluggable
 [ALTS handshaker service](https://github.com/grpc/grpc/blob/7e367da22a137e2e7caeae8342c239a91434ba50/src/proto/grpc/gcp/handshaker.proto#L224-L234).
 
-{{ with .Params.code.client_credentials -}}
+{{ with .Page.Params.code.client_credentials -}}
+
 ### gRPC Client with ALTS Transport Security Protocol
 
 gRPC clients can use ALTS credentials to connect to servers, as illustrated in
@@ -32,7 +33,8 @@ the following code excerpt:
 {{ . | safeHTML }}
 {{ end }}
 
-{{ with .Params.code.server_credentials -}}
+{{ with .Page.Params.code.server_credentials -}}
+
 ### gRPC Server with ALTS Transport Security Protocol
 
 gRPC servers can use ALTS credentials to allow clients to connect to them, as
@@ -41,7 +43,8 @@ illustrated next:
 {{ . | safeHTML }}
 {{ end }}
 
-{{ with .Params.code.server_authorization -}}
+{{ with .Page.Params.code.server_authorization -}}
+
 ### Server Authorization
 
 gRPC has built-in server authorization support using ALTS. A gRPC client using
@@ -53,7 +56,8 @@ by the client. Otherwise, the connection fails.
 {{ . | safeHTML }}
 {{ end }}
 
-{{ with .Params.code.client_authorization -}}
+{{ with .Page.Params.code.client_authorization -}}
+
 ### Client Authorization
 
 On a successful connection, the peer information (e.g., client’s service
@@ -62,7 +66,7 @@ client authorization check. Assuming that the server knows the expected client
 identity (e.g., `foo@iam.gserviceaccount.com`), it can run the following example
 codes to authorize the incoming RPC.
 
-[AltsContext]: https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto
+[altscontext]: https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto
 
 {{ . | safeHTML }}
 {{ end }}

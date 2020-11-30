@@ -1,7 +1,6 @@
 ---
 title: ALTS authentication in Java
 short: ALTS
-layout: auth_alts
 description: >
   An overview of gRPC authentication in Java using Application Layer Transport
   Security (ALTS).
@@ -45,3 +44,5 @@ code:
         call, Lists.newArrayList("foo@iam.gserviceaccount.com"));
     ```
 ---
+
+{{% docs/auth_alts %}}

@@ -1,7 +1,6 @@
 ---
 title: ALTS authentication in C++
 short: ALTS
-layout: auth_alts
 description: >
   An overview of gRPC authentication in C++ using Application Layer Transport
   Security (ALTS).
@@ -58,3 +57,5 @@ code:
         context->auth_context(), {"foo@iam.gserviceaccount.com"});
     ```
 ---
+
+{{% docs/auth_alts %}}

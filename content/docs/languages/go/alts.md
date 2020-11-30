@@ -1,7 +1,6 @@
 ---
 title: ALTS authentication in Go
 short: ALTS
-layout: auth_alts
 description: >
   An overview of gRPC authentication in Go using Application Layer Transport
   Security (ALTS).
@@ -50,3 +49,5 @@ code:
     err := alts.ClientAuthorizationCheck(ctx, []string{"foo@iam.gserviceaccount.com"})
     ```
 ---
+
+{{% docs/auth_alts %}}

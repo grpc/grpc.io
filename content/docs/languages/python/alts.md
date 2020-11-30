@@ -1,7 +1,6 @@
 ---
 title: ALTS authentication in Python
 short: ALTS
-layout: auth_alts
 description: >
   An overview of gRPC authentication in Python using Application Layer Transport
   Security (ALTS).
@@ -26,3 +25,5 @@ code:
   # server_authorization:
   # client_authorization:
 ---
+
+{{% docs/auth_alts %}}
