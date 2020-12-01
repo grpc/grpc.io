@@ -421,6 +421,77 @@ channel = google_auth_transport_grpc.secure_authorized_channel(
 stub = helloworld_pb2.GreeterStub(channel)
 ```
 
+##### With server authentication SSL/TLS and a custom header with token
+
+Client:
+
+```python
+import grpc
+import helloworld_pb2
+
+class GrpcAuth(grpc.AuthMetadataPlugin):
+    def __init__(self, key):
+        self._key = key
+
+    def __call__(self, context, callback):
+        callback((('rpc-auth-header', self._key),), None)
+
+with open('path/to/root-cert', 'rb') as fh:
+    root_cert = fh.read()
+
+channel = grpc.secure_channel(
+    'myservice.example.com:443',
+    grpc.composite_channel_credentials(
+        grpc.ssl_channel_credentials(root_cert),
+        grpc.metadata_call_credentials(
+            GrpcAuth('access_key')
+        )
+    )
+)
+
+stub = helloworld_pb2.GreeterStub(channel)
+```
+
+Server:
+
+```python
+from concurrent import futures
+
+import grpc
+import helloworld_pb2
+
+class AuthInterceptor(grpc.ServerInterceptor):
+    def __init__(self, key):
+        self._valid_metadata = ('rpc-auth-header', key)
+
+        def deny(_, context):
+            context.abort(grpc.StatusCode.UNAUTHENTICATED, 'Invalid key')
+
+        self._deny = grpc.unary_unary_rpc_method_handler(deny)
+
+    def intercept_service(self, continuation, handler_call_details):
+        meta = handler_call_details.invocation_metadata
+
+        if meta and meta[0] == self._valid_metadata:
+            return continuation(handler_call_details)
+        else:
+            return self._deny
+
+server = grpc.server(
+    futures.ThreadPoolExecutor(max_workers=10),
+    interceptors=(AuthInterceptor('access_key'),)
+)
+with open('key.pem', 'rb') as f:
+    private_key = f.read()
+with open('chain.pem', 'rb') as f:
+    certificate_chain = f.read()
+server_credentials = grpc.ssl_server_credentials( ( (private_key, certificate_chain), ) )
+# Adding GreeterServicer to server omitted
+server.add_secure_port('myservice.example.com:443', server_credentials)
+server.start()
+# Server sleep omitted
+```
+
 #### Java
 
 ##### Base case - no encryption or authentication
@@ -505,8 +576,9 @@ var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInse
 ##### With server authentication SSL/TLS
 
 ```js
-var ssl_creds = grpc.credentials.createSsl(root_certs);
-var stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
+const root_cert = fs.readFileSync('path/to/root-cert');
+const ssl_creds = grpc.credentials.createSsl(root_cert);
+const stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
 ```
 
 ##### Authenticate with Google
@@ -538,6 +610,21 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
   var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
+```
+
+##### With server authentication SSL/TLS and a custom header with token
+
+```js
+const rootCert = fs.readFileSync('path/to/root-cert');
+const channelCreds = grpc.credentials.createSsl(rootCert);
+const metaCallback = (_params, callback) => {
+    const meta = new grpc.Metadata();
+    meta.add('custom-auth-header', 'token');
+    callback(null, meta);
+}
+const callCreds = grpc.credentials.createFromMetadataGenerator(metaCallback);
+const combCreds = grpc.credentials.combineChannelCredentials(channelCreds, callCreds);
+const stub = new helloworld.Greeter('myservice.example.com', combCreds);
 ```
 
 #### PHP
