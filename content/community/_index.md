@@ -2,21 +2,35 @@
 title: Community
 ---
 
+{{< blocks/cover color="primary" height="sm" >}}
+{{< page/header >}}
+{{< /blocks/cover >}}
+
+<div class="container">
+<div class="row my-5">
+
+{{< page/toc collapsed=true placement="inline" >}}
+
+<div class="col-12 col-lg-9">
+<div>
+
 gRPC has an active community of developers who are using, enhancing, and building valuable integrations with other software projects. We'd love your help to improve and extend the project. You can reach us via the [Mailing List](https://groups.google.com/forum/#!forum/grpc-io), [Gitter channel](https://gitter.im/grpc/grpc), or [Twitter](https://twitter.com/grpcio) to start engaging with the project and its members.
+
+</div>
 
 ## Contribute on GitHub
 
 gRPC has an active community of developers who are using, enhancing and building valuable integrations with other software projects. We are always looking for active contributors in gRPC and gRPC Ecosystem. Here are a few areas where we would love community contribution in grpc project. Be sure to follow our [community addition guidelines](/contribute/).
 
-## [gRPC C-based](https://github.com/grpc/grpc/labels/disposition%2Fhelp%20wanted)
+### [gRPC C-based](https://github.com/grpc/grpc/labels/disposition%2Fhelp%20wanted)
 
 Or shortcut to [C](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%2Fcore+label%3A%22disposition%2Fhelp+wanted%22), [C++](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fc%2B%2B), [Node.js](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fnode), [Python](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2FPython), [Ruby](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fruby), [Objective-C](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2FObjC), [PHP](https://github.com/grpc/grpc/issues?q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fphp), and [C#](https://github.com/grpc/grpc/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3A%22disposition%2Fhelp+wanted%22+label%3Alang%2Fc%23+).
 
-## [gRPC Java](https://github.com/grpc/grpc-java/labels/help%20wanted)
+### [gRPC Java](https://github.com/grpc/grpc-java/labels/help%20wanted)
 
 For Android Java and Java.
 
-## [gRPC Go](https://github.com/grpc/grpc-go/labels/Status:%20help%20wanted)
+### [gRPC Go](https://github.com/grpc/grpc-go/labels/Status:%20help%20wanted)
 
 For the Go implementation.
 
@@ -41,3 +55,10 @@ Join the [subreddit](https://www.reddit.com/r/grpc/).
 ## Community meetings
 
 We hold a community video conference every other week. It's a way to discuss the status of work and show off things the community is working on. Meeting information and notes can be found at [bit.ly/grpcmeetings](https://bit.ly/grpcmeetings).
+
+</div>
+
+{{< page/toc placement="sidebar" >}}
+
+</div>
+</div>
