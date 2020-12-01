@@ -1,3 +1,13 @@
+// GLOBAL
+a:not(.td-sidebar-link) > .fa-external-link-alt::before {
+  margin-left: 3px;
+}
+a > .fa-external-link-alt::before {
+  font-size: 50%;
+  opacity: 0.8;
+  vertical-align: top;
+}
+
 // Navbar
 .navbar-brand span:last-child {
   display: none;
