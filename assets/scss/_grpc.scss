@@ -1,0 +1,15 @@
+// Navbar
+.navbar-brand span:last-child {
+  display: none;
+}
+
+// Pages
+.td-cover-block {
+  background-image: url("/img/graphic-04.svg");
+}
+
+@media screen and (min-width: 992px) {
+  .homepage__logo {
+    width: 50%;
+  }
+}

@@ -15,13 +15,3 @@ $grpc-blue: #5ac5c5;
 $twitter-blue: rgb(29, 161, 242);
 $reddit-orange: rgba(255, 86, 0, 1);
 $gitter-magenta: rgb(237, 25, 101);
-
-// Navbar
-.navbar-brand span:last-child {
-  display: none;
-}
-
-// Overrides for Docsy block/cover
-.td-cover-block {
-  background-image: url("/img/graphic-04.svg");
-}
