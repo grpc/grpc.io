@@ -3,6 +3,7 @@ title: Protocol Buffer Compiler Installation
 short: Protoc Installation
 description: How to install the protocol buffer compiler.
 protoc-version: 3.13.0
+toc_hide: true
 ---
 
 While not mandatory, gRPC applications often leverage [Protocol Buffers][pb] for
@@ -19,13 +20,13 @@ You can install the protocol compiler, `protoc`, with a package manager under
 Linux or macOS using the following commands.
 
 {{< warning >}}
-  **Check the version of `protoc`** (as indicated below) after installation to
-  ensure that it is sufficiently recent. The versions of `protoc` installed by
-  some package managers can be quite dated.
+**Check the version of `protoc`** (as indicated below) after installation to
+ensure that it is sufficiently recent. The versions of `protoc` installed by
+some package managers can be quite dated.
 
-  Installing from pre-compiled binaries, as indicated in the [next
-  section](#binary-install), is the best way to ensure that you're using the
-  latest release of `protoc`.
+Installing from pre-compiled binaries, as indicated in the [next
+section](#binary-install), is the best way to ensure that you're using the
+latest release of `protoc`.
 {{< /warning >}}
 
 - Linux, using `apt` or `apt-get`, for example:
@@ -49,7 +50,7 @@ Linux or macOS using the following commands.
 To install the [latest release][] of the protocol compiler from pre-compiled
 binaries, follow these instructions:
 
- 1. Manually download from [github.com/google/protobuf/releases][] the zip file
+1.  Manually download from [github.com/google/protobuf/releases][] the zip file
     corresponding to your operating system and computer architecture
     (`protoc-<version>-<os><arch>.zip`), or fetch the file using commands such
     as the following:
@@ -59,14 +60,14 @@ binaries, follow these instructions:
     $ curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
     ```
 
- 2. Unzip the file under `$HOME/.local` or a directory of your choice. For
+2.  Unzip the file under `$HOME/.local` or a directory of your choice. For
     example:
 
     ```sh
     $ unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/.local
     ```
 
- 3. Update your environment's path variable to include the path to the
+3.  Update your environment's path variable to include the path to the
     `protoc` executable. For example:
 
     ```sh
@@ -81,7 +82,7 @@ Buffers][download].
 
 [download]: https://developers.google.com/protocol-buffers/docs/downloads
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
-[Homebrew]: https://brew.sh
+[homebrew]: https://brew.sh
 [latest release]: https://developers.google.com/protocol-buffers/docs/downloads#release-packages
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
