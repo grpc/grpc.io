@@ -10,7 +10,7 @@ params:
   locale: en_US
   grpc_vers:
     core: v1.33.2
-    go: v1.33.1
+    go: v1.34.0
     java: v1.34.0
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
