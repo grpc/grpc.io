@@ -1,6 +1,7 @@
 ---
 title: Quick start
 description: This guide gets you started with gRPC in Python with a simple working example.
+spelling: cSpell:ignore grpcio venv virtualenv
 weight: 10
 ---
 
@@ -37,18 +38,6 @@ Or, to install it system wide:
 
 ```sh
 $ sudo python -m pip install grpcio
-```
-
-On El Capitan OSX, you may get the following error:
-
-```sh
-$ OSError: [Errno 1] Operation not permitted: '/tmp/pip-qwTLbI-uninstall/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six-1.4.1-py2.7.egg-info'
-```
-
-You can work around this using:
-
-```sh
-$ python -m pip install grpcio --ignore-installed
 ```
 
 #### gRPC tools
