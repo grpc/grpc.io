@@ -1,4 +1,4 @@
-HUGO_VERSION =  0.76.2
+HUGO_VERSION =  0.79.0
 
 clean:
 	rm -rf public resources
