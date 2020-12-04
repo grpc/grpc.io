@@ -1,6 +1,4 @@
 HUGO_VERSION =  0.76.2
-DOCKER_IMG   := klakegg/hugo:$(HUGO_VERSION)-ext
-SERVE_CMD    =  server --buildDrafts --buildFuture --disableFastRender --ignoreCache
 
 clean:
 	rm -rf public resources
@@ -11,9 +9,6 @@ serve:
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender
-
-docker-serve:
-	docker run --rm -it -v $(CURDIR):/src -p 1313:1313 $(DOCKER_IMG) $(SERVE_CMD)
 
 production-build: clean
 	@./check_hugo.sh

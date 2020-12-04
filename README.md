@@ -31,12 +31,6 @@ commands:
   $ npx netlify dev
   ```
 
-- Alternatively, you can run the site using a [Docker](https://docker.com) container:
-
-  ```console
-  $ make docker-serve
-  ```
-
 ## Publishing the site
 
 The gRPC website is _automatically_ published by [Netlify][]. Any time changes
