@@ -1,27 +1,33 @@
 HUGO_VERSION =  0.79.0
 
+DRAFT_ARGS = --buildDrafts --buildFuture
+BUILD_ARGS = --minify
+ifeq (draft, $(or $(findstring draft,$(HEAD)),$(findstring draft,$(BRANCH))))
+BUILD_ARGS += $(DRAFT_ARGS)
+endif
+
 clean:
-	rm -rf public resources
+	rm -rf public/* resources
 
 serve:
 	@./check_hugo.sh
-	hugo server \
-		--buildDrafts \
-		--buildFuture \
-		--disableFastRender
+	hugo server
+
+serve-drafts:
+	@./check_hugo.sh
+	hugo server $(DRAFT_ARGS)
+
+serve-production: clean
+	@./check_hugo.sh
+	hugo server --minify
 
 production-build: clean
 	@./check_hugo.sh
-	hugo \
-		--minify
+	hugo --minify
 
 preview-build: clean
 	@./check_hugo.sh
-	hugo \
-		--baseURL $(DEPLOY_PRIME_URL) \
-		--buildDrafts \
-		--buildFuture \
-		--minify
+	hugo --baseURL $(DEPLOY_PRIME_URL) $(BUILD_ARGS)
 
 link-checker-setup:
 	curl https://raw.githubusercontent.com/wjdp/htmltest/master/godownloader.sh | bash
