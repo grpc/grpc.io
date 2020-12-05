@@ -1,87 +1,56 @@
 ---
 draft: true
 spelling: cSpell:ignore addressbook Huang pcapng Qiangxiong subdissectors tcpdump Wireshark
-title: How to analyze gRPC with Wireshark
-date: 2020-11-27
+title: Analyzing gRPC messages using Wireshark
+date: 2020-12-04
 author:
   name: Huang Qiangxiong
   link: https://github.com/huangqiangxiong
 ---
 
-[Wireshark](https://www.wireshark.org/) is the most famous open source network
-protocol analyzer, which is widely used in network troubleshooting, analysis,
-software and communications protocol development, and education. With Wireshark,
-people can analyze the messages of gRPC protocol that transferred over the wire
-(network), or learning the binary wire format of these protocols. This tutorial
-will show you how to configure and use Wireshark gRPC dissector to analyze gRPC
-with *.proto files. Note that the gRPC dissector actually relies on the Protocol
-Buffers (Protobuf) dissector, and some functions (including setting *.proto
-files paths) are accomplished through the Protobuf dissector. Wireshark started
-to support parsing gRPC (and Protobuf) in version 2.6.0, and some new features
-(including supporting *.proto* files) have been added in later versions. You can
-refer to section [History of Wireshark gRPC and Protobuf
-Dissectors](#history-of-wireshark-grpc-and-protobuf-dissectors) for details.
-Wireshark 3.4.0 is the latest stable version, is also the version we used to
-introduce examples later.
+[Wireshark](https://www.wireshark.org) is an open source network protocol
+analyzer, which can be used for protocol development, network troubleshooting,
+and education. Wireshark lets you analyze gRPC messages that are transferred
+over the wire (network), and learn about the binary wire format of these
+messages.
 
-## Features of Wireshark Protobuf and gRPC dissectors
+In this post you'll learn how to configure and use the Wireshark [gRPC
+dissector][] and the [Protocol Buffers (Protobuf) dissector][], which are
+protocol-specific components that allow you to analyze gRPC messages with
+Wireshark.
 
-The main features about Wireshark Protobuf and gRPC dissectors includes:
+## Features
 
-- Supports dissecting the gRPC messages serialized in Protobuf or JSON format.
+The main features of the gRPC and Protobuf dissectors are the following:
 
-- Supports dissecting the gRPC messages of unary, server streaming, client
-  streaming, and bidirectional streaming RPC calls.
+- Support dissecting (decoding) gRPC messages serialized in the
+  protocol buffer wire format or as JSON
 
-- Message and service definition language files (*.proto) can be configured to
-  enable more precise parsing of the serialized data in Protobuf format for
-  protocols such as gRPC.
+- Support dissecting gRPC messages of unary, server streaming, client streaming,
+  and bidirectional streaming RPC calls
 
-- Protobuf fields can be dissected as Wireshark fields that allows user to input
-  the full name of a Protobuf field or message in the filter toolbar to search
-  packets containing the field or message.
+- Enhanced dissection of serialized protocol buffers data by allowing
+  you do the following:
+  - Load relevant `.proto` files
+  - Register your own subdissectors for protocol buffer fields of type `byte` or
+    `string`
 
-- You can register your own subdissectors in the 'protobuf_field' dissector
-  table, which is keyed with the full names of the fields, for further parsing
-  Protobuf fields of BYTES or STRING type.
+## Capturing gRPC traffic
 
-- You can add the mapping record between UDP port and Protobuf message type in
-  the Protobuf protocol preferences dialog, so that the Wireshark can decode the
-  traffic on that UDP port as this Protobuf message.
+This post focuses on the analysis of captured gRPC messages. To learn how to
+store network traffic in _capture files_, see the [Capturing Live Network
+Data][] section of the [Wireshark User’s Guide][].
 
-- You can create your own dissectors to parsing the protocols based on Protobuf
-  over UDP or TCP.
+{{<note>}}
+  Currently, only **plain text** gRPC messages can be parsed by Wireshark. While
+  [Wireshark supports TLS dissection][], it requires per-session secret keys. As
+  of the time of writing, gRPC libraries do not support the exporting of such
+  keys.
 
-## Capture gRPC traffic
+  [Wireshark supports TLS dissection]: https://gitlab.com/wireshark/wireshark/-/wikis/tls
+{{</note>}}
 
-There are many ways to capture the network traffic of a gRPC conversation:
-
-- Windows: Use Wireshark to capture traffic from many different network media
-  types, including Ethernet, Wireless LAN, and more.
-
-- Linux/UNIX: Use Tcpdump.
-
-Please refer to [Wireshark User's
-Guide](https://www.wireshark.org/docs/wsug_html_chunked/) for how to capture
-the network traffic, and store the packets into files that can be recognized
-by Wireshark.
-
-Note that now only the capture files that sending gRPC messages in plaintext
-mode can be parsed by Wireshark. For example, you have to setup a gRPC client
-channel using plaintext mode in java like:
-
-```java
-NettyChannelBuilder.forAddress(host, port).negotiationType(NegotiationType.PLAINTEXT).build();
-```
-
-In theory, as long as the session secret keys of TLS can be exported in format
-of Wireshark [key log file](https://gitlab.com/wireshark/wireshark/-/wikis/tls)
-from client or server side, the gRPC traffic encrypted in TLS can also be parsed
-by Wireshark. But as I know, gRPC stub libraries do not support exporting
-session secret keys of TLS now or not support directly. Hope this feature might
-be supported in the future.
-
-## Examples about using Protobuf and gRPC dissectors
+## Examples
 
 There are some examples to show how to use the Wireshark Protobuf and gRPC
 dissectors. You can get more details about these examples from [Wireshark
@@ -91,7 +60,7 @@ on Wireshark official website.
 
 ### Sample .proto files
 
-These .proto files will be used in the following examples.
+These `.proto` files will be used in the following examples.
 
 The content of `addressbook.proto`:
 
@@ -208,29 +177,28 @@ do
 end
 ```
 
-## Read more about Protobuf Dissector
+## History of gRPC and Protocol Buffers support
 
-Since Protobuf is not only used by gRPC, user can parse their own Protobuf based
-protocols with Wireshark Protobuf dissector. But this is not a gRPC related
-topic. If you are interested in how to write your own Protobuf UDP or TCP
-dissectors, you can refer to [Wireshark Protobuf wiki
-page](https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf).
+Here is a brief annotated list of Wireshark versions as they relate to the
+support of gRPC and Protocol Buffers:
 
-## History of Wireshark gRPC and Protobuf Dissectors
+- v2.6.0: first release of gRPC and Protobuf dissectors, without
+  support for `.proto` files or streaming RPCs.
+- v3.2.0: improved dissection of serialized protocol buffers data based on
+  `.proto` files, and support of streaming RPCs.
+- v3.3.0: improved and enhanced `.proto` file support, such as capture-file
+  search on protocol buffer field values.
+- v3.4.0: Protocol Buffers [Timestamp][] time is displayed as locale date-time
+  string.
 
-- Wireshark 2.6.0 - adds the initial version of Protobuf and gRPC dissectors.
-  (Note that this version does not support *.proto files)
-- Wireshark 3.2.0 - supports dissecting serialized Protobuf data (such as gRPC)
-  more precisely according to *.proto files, and supports dissecting gRPC
-  messages of streaming calls.
-- Wireshark 3.3.0 - fixes some bugs about parsing *.proto files and supports
-  some new features about Protobuf dissector. (You can search message in capture
-  file by the value of Protobuf field since this version)
-- Wireshark 3.4.0 - supports displaying the Protobuf well known type Timestamp
-  as locale date-time string.
+## Learn more
 
-## References
+- [Wireshark User’s Guide][]
+- [gRPC dissector][]
+- [Protocol Buffers (Protobuf) dissector][]
 
-- Wireshark gRPC wiki page - https://gitlab.com/wireshark/wireshark/-/wikis/gRPC
-- Wireshark gRPC sample captures - https://gitlab.com/wireshark/wireshark/-/wikis/SampleCaptures#grpc
-- Wireshark Protobuf wiki page - https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf
+[Capturing Live Network Data]: https://www.wireshark.org/docs/wsug_html_chunked/ChapterCapture.html
+[gRPC dissector]: https://gitlab.com/wireshark/wireshark/-/wikis/gRPC
+[Protocol Buffers (Protobuf) dissector]: https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf
+[Timestamp]: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp
+[Wireshark User’s Guide]: https://www.wireshark.org/docs/wsug_html_chunked/
