@@ -1,0 +1,33 @@
+{{ if not .Params.notoc }}
+  {{ with .TableOfContents }}
+    {{ if ge (len .) 200 }}
+      {{ $tocEntries := ( . | findRE "<li><a.*?>(.|\n)*?</a></li>") }}
+      {{ $firstEntries := (first 3 $tocEntries) }}
+      {{ $remainingEntries := (after 3 $tocEntries) }}
+      <a id="td-content__toc-link" href="#td-inline-toc__expand" class="lead font-weight-light" data-toggle="collapse" aria-controls="td-docs-toc" aria-expanded="false" aria-label="Toggle toc navigation">
+        <span>Contents<i class="fas fa-chevron-down ml-2"></i></span>
+      </a>
+      <div id="td-inline-toc">
+        <div class="d-none d-md-block">
+          {{ partial "page-meta-links.html" $ }}
+        </div>
+        <nav id="TableOfContents">
+          <ul>
+            <li>
+              <ul>
+                {{ range $firstEntries }}
+                  {{ . | safeHTML }}
+                {{ end }}
+                <div id="td-inline-toc__expand" class="collapse">
+                  {{ range $remainingEntries }}
+                    {{ . | safeHTML }}
+                  {{ end }}
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

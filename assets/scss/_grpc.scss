@@ -27,3 +27,42 @@ a > .fa-external-link-alt::before {
     width: 50%;
   }
 }
+
+// DOCS
+
+// In-page toc fixes.
+
+//Apply this class as a modifier to the Docsy-provided .td-toc
+.td-toc--inline {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left: none;
+  position: static;
+  height: auto;
+}
+
+#td-content__toc-link span i.fa-chevron-down {
+  transition: transform 250ms ease-in-out;
+}
+
+#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-down {
+  transform: rotate(-180deg);
+}
+
+/* To ensure that the top page header and description are rendered
+above the inline ToC, this hides them from displaying in the main
+content block */
+body:not(.td-blog) .td-content:not(.list-page) {
+  & h1:first-child {
+    display: none;
+  }
+
+  & div.lead {
+    display: none;
+  }
+}
+
+// Spacing fix for page-meta-links. Whitespace in template is stripped in production.
+.td-page-meta a i {
+  margin-right: 0.25rem;
+}
