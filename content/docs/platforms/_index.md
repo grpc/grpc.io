@@ -9,13 +9,13 @@ nav_children: section
 Each gRPC [language][] / platform has links to the following pages and more:
 quick start, tutorials, API reference.
 
-Select a development or target platform to get started:
+New sections coming soon:
 
 - Flutter
   - Docs coming soon
 - Mobile:
-  - [Android]({{< relref "android">}})
   - iOS -- docs coming soon
-- [Web]({{< relref "web" >}})
+
+Select a development or target platform to get started:
 
 [language]: {{< relref "languages" >}}

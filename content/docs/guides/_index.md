@@ -6,7 +6,3 @@ nav_children: pages
 ---
 
 The documentation covers the following techniques:
-
-- [Authentication](auth/)
-- [Benchmarking](benchmarking/)
-- [Error handling](error/)
