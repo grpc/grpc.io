@@ -19,7 +19,7 @@ to install `protoc`.
 You can install the protocol compiler, `protoc`, with a package manager under
 Linux or macOS using the following commands.
 
-{{< warning >}}
+{{< alert title="Warning" color="warning" >}}
 **Check the version of `protoc`** (as indicated below) after installation to
 ensure that it is sufficiently recent. The versions of `protoc` installed by
 some package managers can be quite dated.
@@ -27,7 +27,7 @@ some package managers can be quite dated.
 Installing from pre-compiled binaries, as indicated in the [next
 section](#binary-install), is the best way to ensure that you're using the
 latest release of `protoc`.
-{{< /warning >}}
+{{< /alert >}}
 
 - Linux, using `apt` or `apt-get`, for example:
 

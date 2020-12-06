@@ -39,16 +39,16 @@ The following authentication mechanisms are built-in to gRPC:
   and responses. Additional support for acquiring access tokens
   (typically OAuth2 tokens) while accessing Google APIs through gRPC is
   provided for certain auth flows: you can see how this works in our code
-  examples below. In general this mechanism must be used *as well as* SSL/TLS
+  examples below. In general this mechanism must be used _as well as_ SSL/TLS
   on the channel - Google will not allow connections without SSL/TLS, and
   most gRPC language implementations will not let you send credentials on an
   unencrypted channel.
 
-{{< warning >}}
-  Google credentials should only be used to connect to Google services. Sending
-  a Google issued OAuth2 token to a non-Google service could result in this
-  token being stolen and used to impersonate the client to Google services.
-{{< /warning >}}
+{{< alert title="Warning" color="warning" >}}
+Google credentials should only be used to connect to Google services. Sending
+a Google issued OAuth2 token to a non-Google service could result in this
+token being stolen and used to impersonate the client to Google services.
+{{< /alert >}}
 
 ### Authentication API
 
@@ -81,7 +81,6 @@ Individual `CallCredentials` can also be composed using
 will trigger the sending of the authentication data associated with the two
 `CallCredentials`.
 
-
 #### Using client-side SSL/TLS
 
 Now let's look at how `Credentials` work with one of our supported auth
@@ -105,7 +104,6 @@ For advanced use cases such as modifying the root CA or using client certs,
 the corresponding options can be set in the `SslCredentialsOptions` parameter
 passed to the factory method.
 
-
 #### Using Google token-based authentication
 
 gRPC applications can use a simple API to create a credential that works for
@@ -122,7 +120,7 @@ grpc::Status s = stub->sayHello(&context, *request, response);
 
 This channel credentials object works for applications using Service Accounts as
 well as for applications running in [Google Compute Engine
-(GCE)](https://cloud.google.com/compute/).  In the former case, the service
+(GCE)](https://cloud.google.com/compute/). In the former case, the service
 account’s private keys are loaded from the file named in the environment
 variable `GOOGLE_APPLICATION_CREDENTIALS`. The keys are used to generate bearer
 tokens that are attached to each outgoing RPC on the corresponding channel.
@@ -131,7 +129,6 @@ For applications running in GCE, a default service account and corresponding
 OAuth2 scopes can be configured during VM setup. At run-time, this credential
 handles communication with the authentication systems to obtain OAuth2 access
 tokens and attaches them to each outgoing RPC on the corresponding channel.
-
 
 #### Extending gRPC to support other authentication mechanisms
 
@@ -186,7 +183,7 @@ are coming soon.
 
 Client:
 
-``` go
+```go
 conn, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
 // error handling omitted
 client := pb.NewGreeterClient(conn)
@@ -195,7 +192,7 @@ client := pb.NewGreeterClient(conn)
 
 Server:
 
-``` go
+```go
 s := grpc.NewServer()
 lis, _ := net.Listen("tcp", "localhost:50051")
 // error handling omitted
@@ -206,7 +203,7 @@ s.Serve(lis)
 
 Client:
 
-``` go
+```go
 creds, _ := credentials.NewClientTLSFromFile(certFile, "")
 conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
 // error handling omitted
@@ -216,7 +213,7 @@ client := pb.NewGreeterClient(conn)
 
 Server:
 
-``` go
+```go
 creds, _ := credentials.NewServerTLSFromFile(certFile, keyFile)
 s := grpc.NewServer(grpc.Creds(creds))
 lis, _ := net.Listen("tcp", "localhost:50051")
@@ -226,7 +223,7 @@ s.Serve(lis)
 
 ##### Authenticate with Google
 
-``` go
+```go
 pool, _ := x509.SystemCertPool()
 // error handling omitted
 creds := credentials.NewClientTLSFromCert(pool, "")
@@ -273,6 +270,7 @@ stub = Helloworld::Greeter::Stub.new('greeter.googleapis.com', combined_creds)
 #### C++
 
 ##### Base case - no encryption or authentication
+
 ```cpp
 auto channel = grpc::CreateChannel("localhost:50051", InsecureChannelCredentials());
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
@@ -316,7 +314,6 @@ var client = new Greeter.GreeterClient(channel);
 ```
 
 ##### Authenticate with Google
-
 
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
@@ -570,15 +567,18 @@ GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel)
 ##### Base case - No encryption/authentication
 
 ```js
-var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInsecure());
+var stub = new helloworld.Greeter(
+  "localhost:50051",
+  grpc.credentials.createInsecure()
+);
 ```
 
 ##### With server authentication SSL/TLS
 
 ```js
-const root_cert = fs.readFileSync('path/to/root-cert');
+const root_cert = fs.readFileSync("path/to/root-cert");
 const ssl_creds = grpc.credentials.createSsl(root_cert);
-const stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
+const stub = new helloworld.Greeter("myservice.example.com", ssl_creds);
 ```
 
 ##### Authenticate with Google
@@ -615,16 +615,19 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 ##### With server authentication SSL/TLS and a custom header with token
 
 ```js
-const rootCert = fs.readFileSync('path/to/root-cert');
+const rootCert = fs.readFileSync("path/to/root-cert");
 const channelCreds = grpc.credentials.createSsl(rootCert);
 const metaCallback = (_params, callback) => {
-    const meta = new grpc.Metadata();
-    meta.add('custom-auth-header', 'token');
-    callback(null, meta);
-}
+  const meta = new grpc.Metadata();
+  meta.add("custom-auth-header", "token");
+  callback(null, meta);
+};
 const callCreds = grpc.credentials.createFromMetadataGenerator(metaCallback);
-const combCreds = grpc.credentials.combineChannelCredentials(channelCreds, callCreds);
-const stub = new helloworld.Greeter('myservice.example.com', combCreds);
+const combCreds = grpc.credentials.combineChannelCredentials(
+  channelCreds,
+  callCreds
+);
+const stub = new helloworld.Greeter("myservice.example.com", combCreds);
 ```
 
 #### PHP

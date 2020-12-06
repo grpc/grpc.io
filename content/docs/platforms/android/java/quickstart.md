@@ -9,12 +9,12 @@ weight: 10
 - [JDK][] version 7 or higher
 - Android SDK, API level 16 or higher
 
-   1. Install [Android Studio][] or the Android [command-line tools][].
+  1.  Install [Android Studio][] or the Android [command-line tools][].
 
-      [Android Studio]: https://developer.android.com/studio/index.html#downloads
+      [android studio]: https://developer.android.com/studio/index.html#downloads
       [command-line tools]: https://developer.android.com/studio/index.html#command-tools
 
-   2. Let other tools and scripts know where to find your Android SDK by setting
+  2.  Let other tools and scripts know where to find your Android SDK by setting
       the following environment variable:
 
       ```sh
@@ -24,24 +24,24 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
-{{< note >}}
-  gRPC Java does not support running a server on an Android device. For this
-  quick start, the Android client app will connect to a server running on your
-  local (non-Android) computer.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+gRPC Java does not support running a server on an Android device. For this
+quick start, the Android client app will connect to a server running on your
+local (non-Android) computer.
+{{< /alert >}}
 
 ### Get the example code
 
 The example code is part of the [grpc-java][] repo.
 
- 1. [Download the repo as a zip file][download] and unzip it, or clone
+1.  [Download the repo as a zip file][download] and unzip it, or clone
     the repo:
 
     ```sh
     $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
     ```
 
- 2. Change to the examples directory:
+2.  Change to the examples directory:
 
     ```sh
     $ cd grpc-java/examples
@@ -49,32 +49,32 @@ The example code is part of the [grpc-java][] repo.
 
 ### Run the example
 
- 1. Compile the server:
+1.  Compile the server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, build the client and install it on your device:
+3.  From another terminal, build the client and install it on your device:
 
     ```sh
     $ (cd android/helloworld; ../../gradlew installDebug)
     ```
 
- 4. Launch the client app from your device.
+4.  Launch the client app from your device.
 
- 5. In the client app, enter the server's **Host** and **Port** information. The
+5.  In the client app, enter the server's **Host** and **Port** information. The
     values you enter depend on the device kind (real or virtual) &mdash; for
     details, see [Connecting to the server](#connecting-to-the-server) below.
 
- 6. Type "Alice" in the **Message** box and click **Send**. You'll see the
+6.  Type "Alice" in the **Message** box and click **Send**. You'll see the
     following response:
 
     ```nocode
@@ -83,10 +83,10 @@ The example code is part of the [grpc-java][] repo.
 
 Congratulations! You've just run a client-server application with gRPC.
 
-{{< note >}}
-  We've omitted timestamps from the client and server trace output shown in this
-  page.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+We've omitted timestamps from the client and server trace output shown in this
+page.
+{{< /alert >}}
 
 ### Update the gRPC service
 
@@ -117,7 +117,7 @@ message HelloReply {
 
 Make the following changes:
 
- 1. Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()`
+1.  Open `src/main/proto/helloworld.proto` and add a new `SayHelloAgain()`
     method with the same request and response types as `SayHello()`:
 
     ```protobuf
@@ -140,7 +140,7 @@ Make the following changes:
     }
     ```
 
- 2. Make the same change to
+2.  Make the same change to
     `android/helloworld/app/src/main/proto/helloworld.proto`.
 
 Remember to save the files!
@@ -164,10 +164,10 @@ server](/docs/languages/java/quickstart/#update-the-server) of the Java quick st
 
 Follow these steps:
 
- 1. Open `HelloworldActivity.java` from the
+1.  Open `HelloworldActivity.java` from the
     `android/helloworld/app/src/main/java/io/grpc/helloworldexample` folder.
 
- 2. Locate the method containing the call to `sayHello()`. You'll see these
+2.  Locate the method containing the call to `sayHello()`. You'll see these
     lines of code:
 
     ```java
@@ -175,7 +175,7 @@ Follow these steps:
     return reply.getMessage();
     ```
 
- 3. Add a call to `sayHelloAgain()` in the `return` statement expression like
+3.  Add a call to `sayHelloAgain()` in the `return` statement expression like
     this:
 
     ```java
@@ -187,32 +187,32 @@ Follow these steps:
 Run the client and server like you did before. Execute the following commands
 from the `examples` directory:
 
- 1. Compile the server:
+1.  Compile the server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, build the client and install it on your device:
+3.  From another terminal, build the client and install it on your device:
 
     ```sh
     $ (cd android/helloworld; ../../gradlew installDebug)
     ```
 
- 4. Launch the client app from your device.
+4.  Launch the client app from your device.
 
- 5. In the client app, enter the server's **Host** and **Port** information. The
-    values you enter depend on the device kind (real or virtual)  &mdash; for
+5.  In the client app, enter the server's **Host** and **Port** information. The
+    values you enter depend on the device kind (real or virtual) &mdash; for
     details, see [Connecting to the server](#connecting-to-the-server) below.
 
- 6. Type "Alice" in the **Message** box and click **Send**. You'll see the
+6.  Type "Alice" in the **Message** box and click **Send**. You'll see the
     following response:
 
     ```nocode
@@ -255,8 +255,9 @@ In the app, use the following values:
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
-[Basics tutorial]: ../basics/
+[android virtual device]: https://developer.android.com/studio/run/managing-avds.html
+[basics tutorial]: ../basics/
+
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_vers.java >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net

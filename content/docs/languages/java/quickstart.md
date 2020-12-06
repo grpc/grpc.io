@@ -12,14 +12,14 @@ weight: 10
 
 The example code is part of the [grpc-java][] repo.
 
- 1. [Download the repo as a zip file][download] and unzip it, or clone
+1.  [Download the repo as a zip file][download] and unzip it, or clone
     the repo:
 
     ```sh
     $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
     ```
 
- 2. Change to the examples directory:
+2.  Change to the examples directory:
 
     ```sh
     $ cd grpc-java/examples
@@ -29,20 +29,20 @@ The example code is part of the [grpc-java][] repo.
 
 From the `examples` directory:
 
- 1. Compile the client and server
+1.  Compile the client and server
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, run the client:
+3.  From another terminal, run the client:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-client
@@ -52,10 +52,10 @@ From the `examples` directory:
 
 Congratulations! You've just run a client-server application with gRPC.
 
-{{< note >}}
-  We've omitted timestamps from the client and server trace output shown in this
-  page.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+We've omitted timestamps from the client and server trace output shown in this
+page.
+{{< /alert >}}
 
 ### Update the gRPC service
 
@@ -177,20 +177,20 @@ public void greet(String name) {
 Run the client and server like you did before. Execute the following commands
 from the `examples` directory:
 
- 1. Compile the client and server:
+1.  Compile the client and server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
- 3. From another terminal, run the client:
+3.  From another terminal, run the client:
 
     ```sh
     $ ./build/install/examples/bin/hello-world-client
@@ -206,7 +206,8 @@ from the `examples` directory:
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Basics tutorial]: ../basics/
+[basics tutorial]: ../basics/
+
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_vers.java >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net

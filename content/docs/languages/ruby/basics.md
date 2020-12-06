@@ -49,7 +49,7 @@ client interface code - if you don't already, follow the setup instructions in
 ### Defining the service
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
-define the gRPC *service* and the method *request* and *response* types using
+define the gRPC _service_ and the method _request_ and _response_ types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
@@ -67,7 +67,7 @@ Then you define `rpc` methods inside your service definition, specifying their
 request and response types. gRPC lets you define four kinds of service method,
 all of which are used in the `RouteGuide` service:
 
-- A *simple RPC* where the client sends a request to the server using the stub
+- A _simple RPC_ where the client sends a request to the server using the stub
   and waits for a response to come back, just like a normal function call.
 
   ```protobuf
@@ -75,11 +75,11 @@ all of which are used in the `RouteGuide` service:
   rpc GetFeature(Point) returns (Feature) {}
   ```
 
-- A *server-side streaming RPC* where the client sends a request to the server
+- A _server-side streaming RPC_ where the client sends a request to the server
   and gets a stream to read a sequence of messages back. The client reads from
   the returned stream until there are no more messages. As you can see in our
   example, you specify a server-side streaming method by placing the `stream`
-  keyword before the *response* type.
+  keyword before the _response_ type.
 
   ```protobuf
   // Obtains the Features available within the given Rectangle.  Results are
@@ -89,11 +89,11 @@ all of which are used in the `RouteGuide` service:
   rpc ListFeatures(Rectangle) returns (stream Feature) {}
   ```
 
-- A *client-side streaming RPC* where the client writes a sequence of messages
+- A _client-side streaming RPC_ where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
   has finished writing the messages, it waits for the server to read them all
   and return its response. You specify a client-side streaming method by placing
-  the `stream` keyword before the *request* type.
+  the `stream` keyword before the _request_ type.
 
   ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
@@ -101,7 +101,7 @@ all of which are used in the `RouteGuide` service:
   rpc RecordRoute(stream Point) returns (RouteSummary) {}
   ```
 
-- A *bidirectional streaming RPC* where both sides send a sequence of messages
+- A _bidirectional streaming RPC_ where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
   and servers can read and write in whatever order they like: for example, the
   server could wait to receive all the client messages before writing its
@@ -154,9 +154,9 @@ Running this command regenerates the following files in the lib directory:
     retrieve our request and response message types
 - `lib/route_guide_services.pb`, extends `Examples::RouteGuide` with stub and
   service classes
-   - a class `Service` for use as a base class when defining RouteGuide service
-     implementations
-   - a class `Stub` that can be used to access remote RouteGuide instances
+  - a class `Service` for use as a base class when defining RouteGuide service
+    implementations
+  - a class `Stub` that can be used to access remote RouteGuide instances
 
 ### Creating the server {#server}
 
@@ -166,6 +166,7 @@ to [Creating the client](#client) (though you might find it interesting
 anyway!).
 
 There are two parts to making our `RouteGuide` service do its job:
+
 - Implementing the service interface generated from our service definition:
   doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the
@@ -198,7 +199,7 @@ def get_feature(point, _call)
 end
 ```
 
-The method is passed a _call for the RPC, the client's `Point` protocol buffer
+The method is passed a \_call for the RPC, the client's `Point` protocol buffer
 request, and returns a `Feature` protocol buffer. In the method we create the
 `Feature` with the appropriate information, and then `return` it.
 
@@ -230,6 +231,7 @@ call.each_remote_read do |point|
   ...
 end
 ```
+
 Finally, let's look at our bidirectional streaming RPC `route_chat`.
 
 ```ruby
@@ -262,6 +264,7 @@ s.handle(ServerImpl.new(feature_db))
 # User could also choose to run server via call to run_till_terminated
 s.run_till_terminated_or_interrupted([1, 'int', 'SIGQUIT'])
 ```
+
 As you can see, we build and start our server using a `GRPC::RpcServer`. To do
 this, we:
 
@@ -280,7 +283,7 @@ service. You can see our complete example client code in
 
 #### Creating a stub
 
-To call service methods, we first need to create a *stub*.
+To call service methods, we first need to create a _stub_.
 
 We use the `Stub` class of the `RouteGuide` module generated from our .proto.
 
@@ -291,7 +294,7 @@ stub = RouteGuide::Stub.new('localhost:50051')
 #### Calling service methods
 
 Now let's look at how we call our service methods. Note that the gRPC Ruby only
-provides  *blocking/synchronous* versions of each method: this means that the
+provides _blocking/synchronous_ versions of each method: this means that the
 RPC call waits for the server to respond, and will either return a response or
 raise an exception.
 
@@ -315,10 +318,9 @@ GET_FEATURE_POINTS = [
 
 As you can see, we create and populate a request protocol buffer object (in our
 case `Point`), and create a response protocol buffer object for the server to
-fill in.  Finally, we call the method on the stub, passing it the context,
+fill in. Finally, we call the method on the stub, passing it the context,
 request, and response. If the method returns `OK`, then we can read the response
 information from the server from our response object.
-
 
 ##### Streaming RPCs
 
@@ -376,9 +378,9 @@ Run the server:
 $ bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
 ```
 
-{{< note >}}
+{{< alert title="Note" color="info" >}}
 The `route_guide_db.json` file is actually language-agnostic, it happens to be located in the `python` folder.
-{{< /note >}}
+{{< /alert >}}
 
 From a different terminal, run the client:
 

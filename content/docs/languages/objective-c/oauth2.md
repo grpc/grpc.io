@@ -46,7 +46,7 @@ expects Google account credentials, but neither gRPC nor the Objective-C client
 library is tied to any specific OAuth2 provider). The second view makes a gRPC
 request to the test server, using the access token obtained by the first view.
 
-{{< note >}}
+{{< alert title="Note" color="info" >}}
 OAuth2 libraries need the application to register and obtain an ID from
 the identity provider (in the case of this example app, Google). The app's XCode
 project is configured using that ID, so you shouldn't copy this project "as is"
@@ -54,7 +54,7 @@ for your own app: it would result in your app being identified in the consent
 screen as "gRPC-AuthSample", and not having access to real Google services.
 Instead, configure your own XCode project following the [instructions
 here](https://developers.google.com/identity/sign-in/ios/).
-{{< /note >}}
+{{< /alert >}}
 
 As with the other Objective-C examples, you also should have
 [CocoaPods](https://cocoapods.org/#install) installed, as well as the relevant

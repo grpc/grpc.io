@@ -13,10 +13,10 @@ The following pages cover the C# implementation of gRPC for .NET
 Several sample applications are available from the [examples][] folder in the
 [grpc-dotnet][] repository.
 
-{{< note >}}
-  Looking for gRPC C# core-library documentation?
-  See the [gRPC C# main page](..).
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+Looking for gRPC C# core-library documentation?
+See the [gRPC C# main page](..).
+{{< /alert >}}
 
 [examples]: https://github.com/grpc/grpc-dotnet/tree/master/examples
 [grpc-dotnet]: https://github.com/grpc/grpc-dotnet

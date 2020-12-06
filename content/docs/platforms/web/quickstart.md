@@ -39,14 +39,14 @@ From the `grpc-web` directory:
     $ docker-compose pull
     ```
 
-    {{< note >}}
+    {{< alert title="Note" color="info" >}}
 Getting the following warning? You can ignore it for the purpose of running the
 example app:
 
 ```nocode
 WARNING: Some service image(s) must be built from source
 ```
-    {{< /note >}}
+    {{< /alert >}}
 
  2. Launch services as background processes:
 

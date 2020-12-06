@@ -67,7 +67,6 @@ $ sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
 $ rm cmake-linux.sh
 ```
 
-
 #### gRPC and Protocol Buffers
 
 While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
@@ -76,7 +75,7 @@ for service definitions and data serialization, and the example code uses
 
 The following instructions will locally install gRPC and Protocol Buffers.
 
- 1. Install the basic tools required to build gRPC:
+1.  Install the basic tools required to build gRPC:
 
     - Linux
 
@@ -90,14 +89,14 @@ The following instructions will locally install gRPC and Protocol Buffers.
       $ brew install autoconf automake libtool pkg-config
       ```
 
- 2. Clone the `grpc` repo and its submodules:
+2.  Clone the `grpc` repo and its submodules:
 
     ```sh
     $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
     $ cd grpc
     ```
 
- 3. Build and locally install gRPC and all requisite tools:
+3.  Build and locally install gRPC and all requisite tools:
 
     ```sh
     $ mkdir -p cmake/build
@@ -121,18 +120,18 @@ More information:
 [from-source]: https://github.com/grpc/grpc/blob/master/BUILDING.md
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
 
-###  Build the example
+### Build the example
 
 The example code is part of the `grpc` repo source, which you cloned as part of
 the steps of the previous section.
 
- 1. Change to the example's directory:
+1.  Change to the example's directory:
 
     ```sh
     $ cd examples/cpp/helloworld
     ```
 
- 2. Build the example using `cmake`:
+2.  Build the example using `cmake`:
 
     ```sh
     $ mkdir -p cmake/build
@@ -141,25 +140,24 @@ the steps of the previous section.
     $ make -j
     ```
 
-    {{< note >}}
-  **Getting build failures?** Most issues, at this point, are a result of a
-  faulty installation. Ensure that the have the right versions of `cmake`, and
-  carefully recheck your installation.
-    {{< /note >}}
-
+    {{< alert title="Note" color="info" >}}
+    **Getting build failures?** Most issues, at this point, are a result of a
+    faulty installation. Ensure that the have the right versions of `cmake`, and
+    carefully recheck your installation.
+    {{< /alert >}}
 
 ### Try it!
 
 Run the example from the example **build** directory
 `examples/cpp/helloworld/cmake/build`:
 
- 1. Run the server:
+1.  Run the server:
 
     ```sh
     $ ./greeter_server
     ```
 
- 1. From a different terminal, run the client and see the client output:
+1.  From a different terminal, run the client and see the client output:
 
     ```sh
     $ ./greeter_client
@@ -317,19 +315,19 @@ int main(int argc, char** argv) {
 Run the client and server like you did before. Execute the following commands
 from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 
- 1. Build the client and server after having made changes:
+1.  Build the client and server after having made changes:
 
     ```sh
     $ make -j
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./greeter_server
     ```
 
- 3. On a different terminal, run the client:
+3.  On a different terminal, run the client:
 
     ```sh
     $ ./greeter_client
@@ -342,13 +340,14 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
     Greeter received: Hello again world
     ```
 
-{{< note >}}
-  Interested in an **asynchronous** version of the client and server?
-  You'll find the `greeter_async_{client,server}.cc` files in the
-  [example's source directory][src].
+{{< alert title="Note" color="info" >}}
+Interested in an **asynchronous** version of the client and server?
+You'll find the `greeter_async_{client,server}.cc` files in the
+[example's source directory][src].
 
-  [src]: https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
-{{< /note >}}
+[src]: https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
+
+{{< /alert >}}
 
 ### What's next
 

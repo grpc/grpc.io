@@ -4,12 +4,13 @@ description: This guide gets you started with gRPC in C# with a simple working e
 weight: 10
 ---
 
-{{< note >}}
-  This page uses the [gRPC C# core-library][core-library] implementation. For
-  documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
+{{< alert title="Note" color="info" >}}
+This page uses the [gRPC C# core-library][core-library] implementation. For
+documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
 
-  [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
-{{< /note >}}
+[core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
+
+{{< /alert >}}
 
 ### Prerequisites
 
@@ -44,8 +45,8 @@ dependencies for you (`Grpc`, `Grpc.Tools` and `Google.Protobuf` NuGet packages)
 
 #### Using Visual Studio (or Visual Studio for Mac)
 
-* Open the solution `Greeter.sln` with Visual Studio
-* Build the solution
+- Open the solution `Greeter.sln` with Visual Studio
+- Build the solution
 
 #### Using .NET Core SDK from the command line
 
@@ -55,23 +56,23 @@ From the `examples/csharp/Helloworld` directory:
 > dotnet build Greeter.sln
 ```
 
-{{< note >}}
+{{< alert title="Note" color="info" >}}
 If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
 [Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.
-{{< /note >}}
+{{< /alert >}}
 
 ### Run a gRPC application
 
 From the `examples/csharp/Helloworld` directory:
 
-* Run the server:
+- Run the server:
 
   ```sh
   > cd GreeterServer
   > dotnet run -f netcoreapp2.1
   ```
 
-* From another terminal, run the client:
+- From another terminal, run the client:
 
   ```sh
   > cd GreeterClient
@@ -89,7 +90,6 @@ file in [Basics tutorial](../basics/). For now all you need to know is that both
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from the
 server, and that this method is defined like this:
-
 
 ```proto
 // The greeting service definition.
@@ -153,14 +153,14 @@ example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual S
 The build regenerates the following files
 under the `Greeter/obj/Debug/TARGET_FRAMEWORK` directory:
 
-* `Helloworld.cs` contains all the protocol buffer code to populate,
+- `Helloworld.cs` contains all the protocol buffer code to populate,
   serialize, and retrieve our request and response message types
-* `HelloworldGrpc.cs` provides generated client and server classes,
+- `HelloworldGrpc.cs` provides generated client and server classes,
   including:
-    * an abstract class `Greeter.GreeterBase` to inherit from when defining
-      Greeter service implementations
-    * a class `Greeter.GreeterClient` that can be used to access remote Greeter
-      instances
+  - an abstract class `Greeter.GreeterBase` to inherit from when defining
+    Greeter service implementations
+  - a class `Greeter.GreeterClient` that can be used to access remote Greeter
+    instances
 
 ### Update and run the application
 
@@ -225,17 +225,17 @@ Just like we did before, from the `examples/csharp/Helloworld` directory:
 
 1. Run the server:
 
-    ```sh
-    > cd GreeterServer
-    > dotnet run -f netcoreapp2.1
-    ```
+   ```sh
+   > cd GreeterServer
+   > dotnet run -f netcoreapp2.1
+   ```
 
 2. From another terminal, run the client:
 
-    ```sh
-    > cd GreeterClient
-    > dotnet run -f netcoreapp2.1
-    ```
+   ```sh
+   > cd GreeterClient
+   > dotnet run -f netcoreapp2.1
+   ```
 
 ### What's next
 

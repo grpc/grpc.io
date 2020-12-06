@@ -18,35 +18,35 @@ spelling: cSpell:ignore Iprotos
 
 - **Dart plugin** for the protocol compiler:
 
-   1. Install the protocol compiler plugin for Dart (`protoc-gen-dart`) using
+  1.  Install the protocol compiler plugin for Dart (`protoc-gen-dart`) using
       the following command:
 
       ```sh
       $ pub global activate protoc_plugin
       ```
 
-   2. Update your `PATH` so that the `protoc` compiler can find the plugin:
+  2.  Update your `PATH` so that the `protoc` compiler can find the plugin:
 
       ```sh
       $ export PATH="$PATH:$HOME/.pub-cache/bin"
       ```
 
-{{< note >}}
-  Dart gRPC supports the Flutter and Server platforms.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+Dart gRPC supports the Flutter and Server platforms.
+{{< /alert >}}
 
 ### Get the example code
 
 The example code is part of the [grpc-dart][] repo.
 
- 1. [Download the repo as a zip file][download] and unzip it, or clone
+1.  [Download the repo as a zip file][download] and unzip it, or clone
     the repo:
 
     ```sh
     $ git clone https://github.com/grpc/grpc-dart
     ```
 
- 2. Change to the quick start example directory:
+2.  Change to the quick start example directory:
 
     ```sh
     $ cd grpc-dart/example/helloworld
@@ -56,19 +56,19 @@ The example code is part of the [grpc-dart][] repo.
 
 From the `example/helloworld` directory:
 
- 1. Download package dependencies:
+1.  Download package dependencies:
 
     ```sh
     $ pub get
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ dart bin/server.dart
     ```
 
- 3. From another terminal, run the client:
+3.  From another terminal, run the client:
 
     ```sh
     $ dart bin/client.dart
@@ -76,7 +76,6 @@ From the `example/helloworld` directory:
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
-
 
 ### Update the app
 
@@ -197,13 +196,13 @@ Future<void> main(List<String> args) async {
 Run the client and server like you did before. Execute the following commands
 from the `example/helloworld` directory:
 
- 1. Run the server:
+1.  Run the server:
 
     ```sh
     $ dart bin/server.dart
     ```
 
- 2. From another terminal, run the client. This time, add a name as a command-line
+2.  From another terminal, run the client. This time, add a name as a command-line
     argument:
 
     ```sh
@@ -229,14 +228,14 @@ issue][issue] over the [grpc-dart][] repo.
 - Work through the [Basics tutorial][].
 - Explore the [API reference](../api).
 
-[Dart]: https://dart.dev
-[Basics tutorial]: ../basics/
+[dart]: https://dart.dev
+[basics tutorial]: ../basics/
 [download]: https://github.com/grpc/grpc-dart/archive/master.zip
-[Flutter]: https://flutter.dev
+[flutter]: https://flutter.dev
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [grpc-dart]: https://github.com/grpc/grpc-dart
-[Install Dart]: https://dart.dev/install
-[Install Flutter]: https://flutter.dev/docs/get-started/install
+[install dart]: https://dart.dev/install
+[install flutter]: https://flutter.dev/docs/get-started/install
 [issue]: https://github.com/grpc/grpc-dart/issues/new
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3

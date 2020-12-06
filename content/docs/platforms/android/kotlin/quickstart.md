@@ -11,12 +11,12 @@ weight: 10
 - [JDK][] version 7 or higher
 - Android SDK, API level 16 or higher
 
-   1. Install [Android Studio][] or the Android [command-line tools][].
+  1.  Install [Android Studio][] or the Android [command-line tools][].
 
-      [Android Studio]: https://developer.android.com/studio/index.html#downloads
+      [android studio]: https://developer.android.com/studio/index.html#downloads
       [command-line tools]: https://developer.android.com/studio/index.html#command-tools
 
-   2. Let other tools and scripts know where to find your Android SDK by setting
+  2.  Let other tools and scripts know where to find your Android SDK by setting
       the following environment variable:
 
       ```sh
@@ -26,24 +26,24 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
-{{< note >}}
-  gRPC Kotlin does not support running a server on an Android device. For this
-  quick start, the Android client app will connect to a server running on your
-  local (non-Android) computer.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+gRPC Kotlin does not support running a server on an Android device. For this
+quick start, the Android client app will connect to a server running on your
+local (non-Android) computer.
+{{< /alert >}}
 
 ### Get the example code
 
 The example code is part of the [grpc-kotlin][] repo.
 
- 1. [Download the repo as a zip file][download] and unzip it, or clone
+1.  [Download the repo as a zip file][download] and unzip it, or clone
     the repo:
 
     ```sh
     $ git clone https://github.com/grpc/grpc-kotlin
     ```
 
- 2. Change to the examples directory:
+2.  Change to the examples directory:
 
     ```sh
     $ cd grpc-kotlin/examples
@@ -51,28 +51,28 @@ The example code is part of the [grpc-kotlin][] repo.
 
 ### Run the example
 
- 1. Compile the server:
+1.  Compile the server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
- 3. From another terminal, build the client and install it on your device:
+3.  From another terminal, build the client and install it on your device:
 
     ```sh
     $ ./gradlew :android:installDebug
     ```
 
- 4. Launch the client app from your device.
+4.  Launch the client app from your device.
 
- 5. Type "Alice" in the **Name** box and click **Send**. You'll see the
+5.  Type "Alice" in the **Name** box and click **Send**. You'll see the
     following response:
 
     ```nocode
@@ -154,10 +154,10 @@ quick start page.
 
 Follow these steps:
 
- 1. Open `helloworld/MainActivity.kt` from the
+1.  Open `helloworld/MainActivity.kt` from the
     [client/src/main/kotlin/io/grpc/examples][client-src] folder.
 
- 2. Locate the function containing the call to `sayHello()`. You'll see these
+2.  Locate the function containing the call to `sayHello()`. You'll see these
     lines of code:
 
     ```kotlin
@@ -165,7 +165,7 @@ Follow these steps:
     responseText.text = response.message
     ```
 
- 3. Add a call to `sayHelloAgain()` and change how the response message is
+3.  Add a call to `sayHelloAgain()` and change how the response message is
     created. Replace the lines of code above with the following:
 
     ```kotlin
@@ -180,28 +180,28 @@ Follow these steps:
 Run the client and server like you did before. Execute the following commands
 from the `examples` directory:
 
- 1. Compile the server:
+1.  Compile the server:
 
     ```sh
     $ ./gradlew installDist
     ```
 
- 2. Run the server:
+2.  Run the server:
 
     ```sh
     $ ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
- 3. From another terminal, build the client and install it on your device:
+3.  From another terminal, build the client and install it on your device:
 
     ```sh
     $ ./gradlew :android:installDebug
     ```
 
- 4. Launch the client app from your device.
+4.  Launch the client app from your device.
 
- 5. Type "Alice" in the **Message** box and click **Send**. You'll see the
+5.  Type "Alice" in the **Message** box and click **Send**. You'll see the
     following response:
 
     ```nocode
@@ -212,19 +212,19 @@ from the `examples` directory:
 ### What's next
 
 - Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
-  and [Core concepts](/docs/what-is-grpc/core-concepts/).
+and [Core concepts](/docs/what-is-grpc/core-concepts/).
 <!--
 - Work through the [Basics tutorial][].
--->
+  -->
 - Explore the [API reference](../api).
 
-[Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
-[Basics tutorial]: ../basics/
+[android virtual device]: https://developer.android.com/studio/run/managing-avds.html
+[basics tutorial]: ../basics/
 [client-src]: https://github.com/grpc/grpc-kotlin/blob/master/examples/android/src/main/kotlin/io/grpc/examples
 [download]: https://github.com/grpc/grpc-kotlin/archive/master.zip
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
-[JDK]: https://jdk.java.net
-[Kotlin]: https://kotlinlang.org
+[jdk]: https://jdk.java.net
+[kotlin]: https://kotlinlang.org
 [pb]: https://developers.google.com/protocol-buffers
 [protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
-[USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling
+[usb debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling

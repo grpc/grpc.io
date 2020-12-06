@@ -49,7 +49,7 @@ client interface code - if you don't already, follow the setup instructions in
 ### Defining the service
 
 Your first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
-define the gRPC *service* and the method *request* and *response* types using
+define the gRPC _service_ and the method _request_ and _response_ types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
@@ -67,7 +67,7 @@ Then you define `rpc` methods inside your service definition, specifying their
 request and response types. gRPC lets you define four kinds of service method,
 all of which are used in the `RouteGuide` service:
 
-- A *simple RPC* where the client sends a request to the server using the stub
+- A _simple RPC_ where the client sends a request to the server using the stub
   and waits for a response to come back, just like a normal function call.
 
   ```protobuf
@@ -75,11 +75,11 @@ all of which are used in the `RouteGuide` service:
   rpc GetFeature(Point) returns (Feature) {}
   ```
 
-- A *response-streaming RPC* where the client sends a request to the server and
+- A _response-streaming RPC_ where the client sends a request to the server and
   gets a stream to read a sequence of messages back. The client reads from the
   returned stream until there are no more messages. As you can see in the
   example, you specify a response-streaming method by placing the `stream`
-  keyword before the *response* type.
+  keyword before the _response_ type.
 
   ```protobuf
   // Obtains the Features available within the given Rectangle.  Results are
@@ -89,11 +89,11 @@ all of which are used in the `RouteGuide` service:
   rpc ListFeatures(Rectangle) returns (stream Feature) {}
   ```
 
-- A *request-streaming RPC* where the client writes a sequence of messages and
+- A _request-streaming RPC_ where the client writes a sequence of messages and
   sends them to the server, again using a provided stream. Once the client has
   finished writing the messages, it waits for the server to read them all and
   return its response. You specify a request-streaming method by placing the
-  `stream` keyword before the *request* type.
+  `stream` keyword before the _request_ type.
 
   ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
@@ -101,7 +101,7 @@ all of which are used in the `RouteGuide` service:
   rpc RecordRoute(stream Point) returns (RouteSummary) {}
   ```
 
-- A *bidirectionally-streaming RPC* where both sides send a sequence of messages
+- A _bidirectionally-streaming RPC_ where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
   and servers can read and write in whatever order they like: for example, the
   server could wait to receive all the client messages before writing its
@@ -155,16 +155,16 @@ than creates a new one. The generated code files are called
 
 - classes for the messages defined in route_guide.proto
 - classes for the service defined in route_guide.proto
-   - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
-   - `RouteGuideServicer`, which defines the interface for implementations
-     of the RouteGuide service
+  - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
+  - `RouteGuideServicer`, which defines the interface for implementations
+    of the RouteGuide service
 - a function for the service defined in route_guide.proto
-   - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
-     a `grpc.Server`
+  - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
+    a `grpc.Server`
 
-{{< note >}}
+{{< alert title="Note" color="info" >}}
 The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a .proto file.
-{{< /note >}}
+{{< /alert >}}
 
 ### Creating the server {#server}
 
@@ -174,6 +174,7 @@ to [Creating the client](#client) (though you might find it interesting
 anyway!).
 
 Creating and running a `RouteGuide` server breaks down into two work items:
+
 - Implementing the servicer interface generated from our service definition with
   functions that perform the actual "work" of the service.
 - Running a gRPC server to listen for requests from clients and transmit
@@ -311,7 +312,7 @@ You can see the complete example client code in
 
 #### Creating a stub
 
-To call service methods, we first need to create a *stub*.
+To call service methods, we first need to create a _stub_.
 
 We instantiate the `RouteGuideStub` class of the `route_guide_pb2_grpc`
 module, generated from our .proto.
@@ -394,4 +395,3 @@ From a different terminal, run the client:
 ```sh
 $ python route_guide_client.py
 ```
-

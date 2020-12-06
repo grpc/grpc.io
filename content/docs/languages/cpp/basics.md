@@ -47,11 +47,10 @@ You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
 [Quick start](/docs/languages/cpp/quickstart/).
 
-
 ### Defining the service
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
-define the gRPC *service* and the method *request* and *response* types using
+define the gRPC _service_ and the method _request_ and _response_ types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
@@ -68,7 +67,7 @@ Then you define `rpc` methods inside your service definition, specifying their
 request and response types. gRPC lets you define four kinds of service method,
 all of which are used in the `RouteGuide` service:
 
-- A *simple RPC* where the client sends a request to the server using the stub
+- A _simple RPC_ where the client sends a request to the server using the stub
   and waits for a response to come back, just like a normal function call.
 
   ```protobuf
@@ -76,11 +75,11 @@ all of which are used in the `RouteGuide` service:
   rpc GetFeature(Point) returns (Feature) {}
   ```
 
-- A *server-side streaming RPC* where the client sends a request to the server
+- A _server-side streaming RPC_ where the client sends a request to the server
   and gets a stream to read a sequence of messages back. The client reads from
   the returned stream until there are no more messages. As you can see in our
   example, you specify a server-side streaming method by placing the `stream`
-  keyword before the *response* type.
+  keyword before the _response_ type.
 
   ```protobuf
   // Obtains the Features available within the given Rectangle.  Results are
@@ -90,11 +89,11 @@ all of which are used in the `RouteGuide` service:
   rpc ListFeatures(Rectangle) returns (stream Feature) {}
   ```
 
-- A *client-side streaming RPC* where the client writes a sequence of messages
+- A _client-side streaming RPC_ where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
   has finished writing the messages, it waits for the server to read them all
   and return its response. You specify a client-side streaming method by placing
-  the `stream` keyword before the *request* type.
+  the `stream` keyword before the _request_ type.
 
   ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
@@ -102,7 +101,7 @@ all of which are used in the `RouteGuide` service:
   rpc RecordRoute(stream Point) returns (RouteSummary) {}
   ```
 
-- A *bidirectional streaming RPC* where both sides send a sequence of messages
+- A _bidirectional streaming RPC_ where both sides send a sequence of messages
   using a read-write stream. The two streams operate independently, so clients
   and servers can read and write in whatever order they like: for example, the
   server could wait to receive all the client messages before writing its
@@ -169,11 +168,10 @@ These contain:
   and response message types
 - A class called `RouteGuide` that contains
 
-   - a remote interface type (or *stub*) for clients to call with the methods
-     defined in the `RouteGuide` service.
-   - two abstract interfaces for servers to implement, also with the methods
-     defined in the `RouteGuide` service.
-
+  - a remote interface type (or _stub_) for clients to call with the methods
+    defined in the `RouteGuide` service.
+  - two abstract interfaces for servers to implement, also with the methods
+    defined in the `RouteGuide` service.
 
 ### Creating the server {#server}
 
@@ -204,7 +202,7 @@ class RouteGuideImpl final : public RouteGuide::Service {
 }
 ```
 
-In this case we're implementing the *synchronous* version of `RouteGuide`, which
+In this case we're implementing the _synchronous_ version of `RouteGuide`, which
 provides our default gRPC server behaviour. It's also possible to implement an
 asynchronous interface, `RouteGuide::AsyncService`, which allows you to further
 customize your server's threading behaviour, though we won't look at this in
@@ -281,6 +279,7 @@ while (stream->Read(&point)) {
   ...//process client input
 }
 ```
+
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```cpp
@@ -302,7 +301,7 @@ Status RouteChat(ServerContext* context,
 }
 ```
 
-This time we get a `ServerReaderWriter` that can be used to read *and* write
+This time we get a `ServerReaderWriter` that can be used to read _and_ write
 messages. The syntax for reading and writing here is exactly the same as for our
 client-streaming and server-streaming methods. Although each side will always
 get the other's messages in the order they were written, both the client and
@@ -328,6 +327,7 @@ void RunServer(const std::string& db_path) {
   server->Wait();
 }
 ```
+
 As you can see, we build and start our server using a `ServerBuilder`. To do this, we:
 
 1. Create an instance of our service implementation class `RouteGuideImpl`.
@@ -348,18 +348,18 @@ service. You can see our complete example client code in
 
 #### Creating a stub
 
-To call service methods, we first need to create a *stub*.
+To call service methods, we first need to create a _stub_.
 
-First we need to create a gRPC *channel* for our stub, specifying the server
+First we need to create a gRPC _channel_ for our stub, specifying the server
 address and port we want to connect to - in our case we'll use no SSL:
 
 ```cpp
 grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
 
-{{< note >}}
-In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`.
-{{< /note >}}
+{{< alert title="Note" color="info" >}}
+In order to set additional options for the _channel_, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`.
+{{< /alert >}}
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 
@@ -375,7 +375,7 @@ public:
 #### Calling service methods
 
 Now let's look at how we call our service methods. Note that in this tutorial
-we're calling the *blocking/synchronous* versions of each method: this means
+we're calling the _blocking/synchronous_ versions of each method: this means
 that the RPC call waits for the server to respond, and will either return a
 response or raise an exception.
 

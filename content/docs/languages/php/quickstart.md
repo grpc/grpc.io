@@ -74,9 +74,9 @@ or specific version
 sudo pecl install grpc-1.7.0
 ```
 
-{{< warning >}}
+{{< alert title="Warning" color="warning" >}}
 This step unfortunately won’t work on CentOS/RHEL 6. Please follow the instructions below to compile the PECL extension from source.
-{{< /warning >}}
+{{< /alert >}}
 
 ##### Install on Windows
 
@@ -116,7 +116,6 @@ This will compile and install the gRPC PHP extension into the
 standard PHP extension directory. You should be able to run
 the unit tests with the PHP extension installed.
 
-
 #### Update php.ini
 
 After installing the gRPC extension, make sure you add this line
@@ -141,7 +140,6 @@ You need to add this to your project's `composer.json` file.
 To run tests with generated stub code from `.proto` files, you will also
 need the `composer` and `protoc` binaries. You can find out how to get these below.
 
-
 ### Install other prerequisites for both Mac OS X and Linux
 
 - `protoc: protobuf compiler`
@@ -158,17 +156,17 @@ the version of grpc inside package.xml file.
 
 The compatibility between the grpc and protobuf version is listed as table below:
 
-grpc | protobuf
---- | ---
-v1.0.0 | 3.0.0(GA)
-v1.0.1 | 3.0.2
-v1.1.0 | 3.1.0
-v1.2.0 | 3.2.0
-v1.2.0 | 3.2.0
-v1.3.4 | 3.3.0
-v1.3.5 | 3.2.0
-v1.4.0 | 3.3.0
-v1.6.0 | 3.4.0
+| grpc   | protobuf  |
+| ------ | --------- |
+| v1.0.0 | 3.0.0(GA) |
+| v1.0.1 | 3.0.2     |
+| v1.1.0 | 3.1.0     |
+| v1.2.0 | 3.2.0     |
+| v1.2.0 | 3.2.0     |
+| v1.3.4 | 3.3.0     |
+| v1.3.5 | 3.2.0     |
+| v1.4.0 | 3.3.0     |
+| v1.6.0 | 3.4.0     |
 
 If `protoc` hasn't been installed, you can download the `protoc` binaries from
 [the protocol buffers GitHub repository](https://github.com/google/protobuf/releases).
@@ -196,12 +194,13 @@ protobuf version works with grpc version.
 
 ##### C implementation (for better performance)
 
-``` sh
+```sh
 $ sudo pecl install protobuf
 ```
+
 or specific version
 
-``` sh
+```sh
 $ sudo pecl install protobuf-3.4.0
 ```
 
@@ -272,7 +271,7 @@ $ composer install
 
 From the `examples/node` directory:
 
- 1. Run the server:
+1.  Run the server:
 
     ```sh
     $ npm install
@@ -280,7 +279,7 @@ From the `examples/node` directory:
     $ node greeter_server.js
     ```
 
- 2. From another terminal, from the `examples/php` directory,
+2.  From another terminal, from the `examples/php` directory,
     run the client:
 
     ```sh
@@ -298,7 +297,6 @@ file in [Basics tutorial](../basics/). For now all you need to know is that both
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from
 the server, and that this method is defined like this:
-
 
 ```protobuf
 // The greeting service definition.
@@ -414,13 +412,13 @@ $message = $reply->getMessage();
 
 Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
- 1. Run the server:
+1.  Run the server:
 
     ```sh
     $ node greeter_server.js
     ```
 
- 2. From another terminal, from the `examples/php` directory,
+2.  From another terminal, from the `examples/php` directory,
     run the client:
 
     ```sh

@@ -15,16 +15,17 @@ workflow. Multi-language performance tests run hourly against
 the master branch, and these numbers are reported to a dashboard for
 visualization.
 
-  * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528)
-  * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
-  * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
+- [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528)
+- [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
+- [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
-{{< note >}}
-  Are you seeing "**no data available**" messages in the performance dashboard?
-  This is a known issue, see [grpc/grpc#23297][].
+{{< alert title="Note" color="info" >}}
+Are you seeing "**no data available**" messages in the performance dashboard?
+This is a known issue, see [grpc/grpc#23297][].
 
-  [grpc/grpc#23297]: https://github.com/grpc/grpc/issues/23297
-{{< /note >}}
+[grpc/grpc#23297]: https://github.com/grpc/grpc/issues/23297
+
+{{< /alert >}}
 
 ### Performance testing design
 
@@ -36,8 +37,8 @@ the actual benchmark test, represented as
 [BenchmarkService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/benchmark_service.proto). That
 service has two methods:
 
-  * UnaryCall - a unary RPC of a simple request that specifies the number of bytes to return in the response
-  * StreamingCall - a streaming RPC that allows repeated ping-pongs of request and response messages akin to the UnaryCall
+- UnaryCall - a unary RPC of a simple request that specifies the number of bytes to return in the response
+- StreamingCall - a streaming RPC that allows repeated ping-pongs of request and response messages akin to the UnaryCall
 
 ![gRPC performance testing worker diagram](/img/testing_framework.png)
 
@@ -51,13 +52,13 @@ environment variable specifying the host:port of each worker process.
 The following languages have continuous performance testing as both
 clients and servers at master:
 
-  * C++
-  * Java
-  * Go
-  * C#
-  * node.js
-  * Python
-  * Ruby
+- C++
+- Java
+- Go
+- C#
+- node.js
+- Python
+- Ruby
 
 Additionally, all languages derived from C core have limited
 performance testing (smoke testing) conducted at every pull request.
@@ -79,9 +80,9 @@ continuous testing mode.
 There are several important scenarios under test and displayed in the dashboards
 above, including the following:
 
-   * Contentionless latency - the median and tail response latencies seen with only 1 client sending a single message at a time using StreamingCall
-   * QPS - the messages/second rate when there are 2 clients and a total of 64 channels, each of which has 100 outstanding messages at a time sent using StreamingCall
-   * Scalability (for selected languages) - the number of messages/second per server core
+- Contentionless latency - the median and tail response latencies seen with only 1 client sending a single message at a time using StreamingCall
+- QPS - the messages/second rate when there are 2 clients and a total of 64 channels, each of which has 100 outstanding messages at a time sent using StreamingCall
+- Scalability (for selected languages) - the number of messages/second per server core
 
 Most performance testing is using secure communication and
 protobufs. Some C++ tests additionally use insecure communication and
