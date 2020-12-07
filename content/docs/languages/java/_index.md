@@ -1,20 +1,20 @@
 ---
 title: Java
-layout: prog_lang_home
+prog_lang_home: true
 spelling: cSpell:ignore javadoc Kanti Katirtzis Nikos Sharma Tomo Tuhin youtube Varun
 api_path: grpc-java/javadoc
 content:
   - learn_more:
-    - "[ALTS authentication](alts/)"
-    - "[Additional docs]($src_repo_url/tree/master/documentation)"
-    - "[Examples]($src_repo_url/tree/master/examples)"
+      - "[ALTS authentication](alts/)"
+      - "[Additional docs]($src_repo_url/tree/master/documentation)"
+      - "[Examples]($src_repo_url/tree/master/examples)"
   - reference:
-    - "[API](api/)"
-    - "[Generated code](generated-code/)"
+      - "[API](api/)"
+      - "[Generated code](generated-code/)"
   - other:
-    - "[Android Java](/docs/platforms/android/java)"
-    - $src_repo_link
-    - "[Download]($src_repo_url#download)"
+      - "[Android Java](/docs/platforms/android/java)"
+      - $src_repo_link
+      - "[Download]($src_repo_url#download)"
 ---
 
 #### Developer stories and talks {#dev-stories}

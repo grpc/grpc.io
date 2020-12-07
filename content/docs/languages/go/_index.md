@@ -1,20 +1,20 @@
 ---
 title: Go
-layout: prog_lang_home
+prog_lang_home: true
 api_path: https://pkg.go.dev/google.golang.org/grpc
 content:
   - learn_more:
-    - "[ALTS authentication](alts/)"
-    - "[Additional docs]($src_repo_url/tree/master/Documentation)"
-    - "[Examples]($src_repo_url/tree/master/examples)"
-    - "[FAQ]($src_repo_url#faq)"
+      - "[ALTS authentication](alts/)"
+      - "[Additional docs]($src_repo_url/tree/master/Documentation)"
+      - "[Examples]($src_repo_url/tree/master/examples)"
+      - "[FAQ]($src_repo_url#faq)"
   - reference:
-    - "[API](api/)"
-    - "[Generated code](generated-code/)"
+      - "[API](api/)"
+      - "[Generated code](generated-code/)"
   - other:
-    - $src_repo_link
-    - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696)"
-    - "[Installation]($src_repo_url#installation)"
+      - $src_repo_link
+      - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696)"
+      - "[Installation]($src_repo_url#installation)"
 spelling: cSpell:ignore Isberner Klerk Malte youtube
 ---
 
@@ -28,4 +28,4 @@ spelling: cSpell:ignore Isberner Klerk Malte youtube
   A [gRPC Conf 2020 presentation](https://sched.co/cRfW)
   by Malte Isberner, StackRox.
 
-[Performance benchmark]: https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696
+[performance benchmark]: https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696

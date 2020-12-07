@@ -1,17 +1,17 @@
 ---
 title: Kotlin/JVM
-layout: prog_lang_home
+prog_lang_home: true
 language: Kotlin
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 content:
   - learn_more:
-    - "[Examples]($src_repo_url/tree/master/examples)"
+      - "[Examples]($src_repo_url/tree/master/examples)"
   - reference:
-    - "[API](api/)"
+      - "[API](api/)"
   - other:
-    - "[Kotlin for Android](/docs/platforms/android/kotlin)"
-    - $src_repo_link
-    - "[Download](https://search.maven.org/search?q=g:io.grpc%20AND%20grpc-kotlin)"
+      - "[Kotlin for Android](/docs/platforms/android/kotlin)"
+      - $src_repo_link
+      - "[Download](https://search.maven.org/search?q=g:io.grpc%20AND%20grpc-kotlin)"
 spelling: cSpell:ignore Ferrer youtube
 ---
 
