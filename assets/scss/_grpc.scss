@@ -8,12 +8,14 @@ a > .fa-external-link-alt::before {
   vertical-align: top;
 }
 
-// Navbar
+// NAVBAR
+// Docsy includes the site name by default. This is in place
+// to hide the span text, leaving only the logo svg
 .navbar-brand span:last-child {
   display: none;
 }
 
-// Pages
+// PAGES
 .homepage__logo {
   width: 100%;
 }
@@ -29,10 +31,7 @@ a > .fa-external-link-alt::before {
 }
 
 // DOCS
-
-// In-page toc fixes.
-
-//Apply this class as a modifier to the Docsy-provided .td-toc
+// In-page toc. Apply this class as a modifier to the Docsy-provided .td-toc
 .td-toc--inline {
   padding-top: 0;
   padding-bottom: 0;
