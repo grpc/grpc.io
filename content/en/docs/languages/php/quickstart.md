@@ -36,7 +36,7 @@ $ sudo yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
 
 ```sh
 $ brew install php
-$ curl -O http://pear.php.net/go-pear.phar
+$ curl -O https://pear.php.net/go-pear.phar
 $ sudo php -d detect_unicode=0 go-pear.phar
 ```
 
