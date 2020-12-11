@@ -1,9 +1,0 @@
-<div class="navbar-item" x-data="{ active: false, toggle() { this.active = !this.active; } }">
-  <span class="icon has-text-light" @click="toggle()" x-show="!active">
-    <i class="fas fa-lg fa-search"></i>
-  </span>
-
-  <div @click.away="toggle()" @keydown.escape="toggle()" x-show="active" x-transition:enter="transition transform origin-top-right ease-out duration-200" x-transition:leave="transition transform origin-top-right ease-out duration-1000">
-    <input class="input is-rounded" type="search" id="search-bar" placeholder="Search">
-  </div>
-</div>
