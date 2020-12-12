@@ -1,6 +1,7 @@
 ---
 title: Java
 prog_lang_home: true
+notoc: true
 spelling: cSpell:ignore javadoc Kanti Katirtzis Nikos Sharma Tomo Tuhin youtube Varun
 api_path: grpc-java/javadoc
 content:

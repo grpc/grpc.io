@@ -3,6 +3,7 @@ title: Supported languages
 short: Languages
 weight: 2
 nav_children: section
+notoc: true
 ---
 
 Each gRPC language / [platform][] has links to the following pages and more:

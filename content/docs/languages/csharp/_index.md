@@ -3,6 +3,7 @@ title: C#
 description: The original core-library implementation of gRPC for C#
 api_path: grpc/LANG/api/Grpc.Core
 prog_lang_home: true
+notoc: true
 src_repo: https://github.com/grpc/grpc
 content:
   - learn_more:

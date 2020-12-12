@@ -1,6 +1,7 @@
 ---
 title: Objective-C
 api_path: grpc/objc
+notoc: true
 ---
 
 These language-specific pages are available:

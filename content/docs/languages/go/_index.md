@@ -1,6 +1,7 @@
 ---
 title: Go
 prog_lang_home: true
+notoc: true
 api_path: https://pkg.go.dev/google.golang.org/grpc
 content:
   - learn_more:

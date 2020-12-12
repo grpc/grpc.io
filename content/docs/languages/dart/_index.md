@@ -1,6 +1,7 @@
 ---
 title: Dart
 prog_lang_home: true
+notoc: true
 api_path: https://pub.dev/documentation/grpc
 content:
   - learn_more:

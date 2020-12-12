@@ -1,5 +1,6 @@
 ---
 title: Node
+notoc: true
 ---
 
 These language-specific pages are available:

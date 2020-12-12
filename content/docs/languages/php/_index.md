@@ -1,6 +1,7 @@
 ---
 title: PHP
 api_path: grpc/LANG/namespace_grpc
+notoc: true
 ---
 
 These language-specific pages are available:
