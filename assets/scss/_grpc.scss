@@ -1,4 +1,29 @@
 // GLOBAL
+
+.constrained-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+}
+
+.banner {
+  width: 100%;
+  position: fixed;
+  margin-left: -15px;
+  z-index: 32;
+  top: 4rem;
+  background: $gray-100;
+  text-align: center;
+
+  & p {
+    padding: 0.5rem;
+  }
+}
+
+.image--modal-trigger {
+  cursor: pointer;
+}
+
 a:not(.td-sidebar-link) > .fa-external-link-alt::before {
   margin-left: 3px;
 }
@@ -70,5 +95,11 @@ body:not(.td-blog) .td-content:not(.list-page) {
 .prog-lang-home__list {
   ul {
     padding-left: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .td-content figure {
+    max-width: 80%;
   }
 }
