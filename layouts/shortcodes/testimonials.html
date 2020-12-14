@@ -4,7 +4,7 @@
 {{ $quote := .quote | markdownify -}}
 <div class="mb-3 col-12 col-sm-6 col-lg-4 text-center align-items-start">
   <a class="d-block mb-4" href="{{ .link }}" target="_blank" rel="noopener">
-    <img class="user-logo" src="{{ $img }}" alt="{{ .name }} testimonial logo">
+    <img class="about__user-logo" src="{{ $img }}" alt="{{ .name }} testimonial logo">
   </a>
   <p class="font-italic">
     {{- $quote -}}

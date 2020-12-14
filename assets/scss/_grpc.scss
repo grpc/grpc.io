@@ -49,6 +49,10 @@ a > .fa-external-link-alt::before {
   background-image: url("/img/graphic-04.svg");
 }
 
+.about__user-logo {
+  max-height: 5rem;
+}
+
 @media screen and (min-width: 992px) {
   .homepage__logo {
     width: 50%;
