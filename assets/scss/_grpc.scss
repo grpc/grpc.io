@@ -33,7 +33,17 @@ a > .fa-external-link-alt::before {
   vertical-align: top;
 }
 
+/*
+Docsy's 'cover/block' option for setting background images does
+not currrently support svg's. This sets the background on hero
+sections site wide to the original site's background svg.
+*/
+.td-cover-block {
+  background-image: url("/img/graphic-04.svg");
+}
+
 // NAVBAR
+
 // Docsy includes the site name by default. This is in place
 // to hide the span text, leaving only the logo svg
 .navbar-brand span:last-child {
@@ -41,21 +51,48 @@ a > .fa-external-link-alt::before {
 }
 
 // PAGES
+
 .homepage__logo {
   width: 100%;
 }
 
-.td-cover-block {
-  background-image: url("/img/graphic-04.svg");
+.homepage-features {
+  background-color: $gray-100;
+}
+
+.homepage-features__icon {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.homepage-cncf__logo {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
 }
 
 .about__user-logo {
   max-height: 5rem;
 }
 
+@media screen and (min-width: 540px) {
+  .homepage-features {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
 @media screen and (min-width: 992px) {
-  .homepage__logo {
+  .homepage__logo,
+  .homepage-cncf__logo {
     width: 50%;
+  }
+
+  .homepage-features__icon {
+    margin-right: 1rem;
+    max-width: 172px;
   }
 }
 
