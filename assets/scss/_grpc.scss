@@ -73,6 +73,11 @@ a > .fa-external-link-alt::before {
   transform: rotate(-180deg);
 }
 
+// Prevent overflow on mobile devices in case of very long inline-block elements.
+.td-content {
+  word-break: break-word;
+}
+
 /* To ensure that the top page header and description are rendered
 above the inline ToC, this hides them from displaying in the main
 content block */
