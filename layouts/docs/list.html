@@ -7,65 +7,7 @@
 		{{ end }}
 
     {{ if .Params.prog_lang_home }}
-    {{ $lang := lower ($.Params.language | default $.Params.title) -}}
-    {{ $Lang := .Params.title | default .Params.language -}}
-    {{ $src_repo_url := $.Params.src_repo | default (printf "https://github.com/grpc/grpc-%s" $lang) -}}
-    {{ $src_repo_link := printf "[grpc-%s repo](%s)" $lang $src_repo_url -}}
-
-      <div class="row">
-        <div class="col-sm col-md-6 mb-4 mb-md-0">
-          <div class="h-100 card shadow" href="#">
-            <div class="card-body">
-              <h4 class="card-title">
-                <a class="" href="quickstart/">Quick start</a>
-              </h4>
-              <p>
-                Run your first {{ replace $Lang " " "-" }} gRPC app in minutes!
-              </p>
-            </div>
-          </div>
-        </div>
-      
-        {{ if .GetPage "basics" -}}
-        <div class="col-sm col-md-6 mb-4 mb-md-0">
-          <div class="h-100 card shadow">
-            <div class="card-body">
-              <h4 class="card-title">
-                <a class="" href="basics/">Basics tutorial</a>
-              </h4>
-              <p>
-                Learn about {{ replace $Lang " " "-" }} gRPC basics.
-              </p>
-            </div>
-          </div>
-        </div>
-        {{ end -}}
-      </div>
-      
-      <hr/>
-      {{ with .Params.content -}}
-				<div class="row flex-col flex-md-row prog-lang-home__list">
-					{{ range $list_entry := . }}
-						{{ range $heading, $items := $list_entry }}
-							{{- $hd := printf "#### %s" (humanize $heading) -}}
-							<div class="col-4">
-								{{ $hd | $.Page.RenderString }}
-								<ul>
-									{{- range $items }}
-                    {{ $item := replace . "$src_repo_url" $src_repo_url -}}
-                    {{ $item = replace $item "$src_repo_link" $src_repo_link -}}
-										<li>{{ $item | $.Page.RenderString }}</li>
-									{{ end -}}
-								</ul>
-							</div>
-						{{- end -}}
-					{{- end -}}
-				</div>
-      {{ end -}}
-      {{ with .Content -}}
-        <hr/>
-        {{ . }}
-      {{ end -}}
+      {{ partial "docs/prog-lang-home.html" . }}
 		{{ else }}
 			{{ .Content }}
 			{{ partial "section-index.html" . }}
