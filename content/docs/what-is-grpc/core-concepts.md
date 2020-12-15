@@ -1,6 +1,6 @@
 ---
 title: Core concepts, architecture and lifecycle
-short: Core concepts
+short_title: Core concepts
 description: >-
   An introduction to key gRPC concepts, with an overview of gRPC architecture
   and RPC life cycle.
@@ -57,7 +57,7 @@ gRPC lets you define four kinds of service method:
 - Client streaming RPCs where the client writes a sequence of messages and sends
   them to the server, again using a provided stream. Once the client has
   finished writing the messages, it waits for the server to read them and return
-  its response.  Again gRPC guarantees message ordering within an individual RPC
+  its response. Again gRPC guarantees message ordering within an individual RPC
   call.
 
   ```proto
@@ -89,8 +89,8 @@ on the server side.
 - On the server side, the server implements the methods declared by the service
   and runs a gRPC server to handle client calls. The gRPC infrastructure decodes
   incoming requests, executes service methods, and encodes service responses.
-- On the client side, the client has a local object known as *stub* (for some
-  languages, the preferred term is *client*) that implements the same methods as
+- On the client side, the client has a local object known as _stub_ (for some
+  languages, the preferred term is _client_) that implements the same methods as
   the service. The client can then just call those methods on the local object,
   wrapping the parameters for the call in the appropriate protocol buffer
   message type - gRPC looks after sending the request(s) to the server and
@@ -119,18 +119,18 @@ language-specific pages.
 First consider the simplest type of RPC where the client sends a single request
 and gets back a single response.
 
- 1. Once the client calls a stub method, the server is
+1.  Once the client calls a stub method, the server is
     notified that the RPC has been invoked with the client's [metadata](#metadata)
     for this call, the method name, and the specified [deadline](#deadlines) if
     applicable.
- 2. The server can then either send back its own initial metadata (which must be
+2.  The server can then either send back its own initial metadata (which must be
     sent before any response) straight away, or wait for the client's request
     message. Which happens first, is application-specific.
- 3. Once the server has the client's request message, it does whatever work is
+3.  Once the server has the client's request message, it does whatever work is
     necessary to create and populate a response. The response is then returned
     (if successful) to the client together with status details (status code and
     optional status message) and optional trailing metadata.
- 4. If the response status is OK, then the client gets the response, which
+4.  If the response status is OK, then the client gets the response, which
     completes the call on the client side.
 
 #### Server streaming RPC
@@ -189,7 +189,7 @@ Either the client or the server can cancel an RPC at any time. A cancellation
 terminates the RPC immediately so that no further work is done.
 
 {{< alert title="Warning" color="warning" >}}
-  Changes made before a cancellation are not rolled back.
+Changes made before a cancellation are not rolled back.
 {{< /alert >}}
 
 #### Metadata

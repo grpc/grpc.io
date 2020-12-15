@@ -1,6 +1,6 @@
 ---
 title: Python Generated-code reference
-short: Generated code
+short_title: Generated code
 weight: 80
 spelling: cSpell:ignore docstrings
 ---
@@ -8,11 +8,11 @@ spelling: cSpell:ignore docstrings
 ## Introduction
 
 gRPC Python relies on the protocol buffers compiler (`protoc`) to generate
-code.  It uses a plugin to supplement the generated code by plain `protoc`
-with gRPC-specific code.  For a `.proto` service description containing
+code. It uses a plugin to supplement the generated code by plain `protoc`
+with gRPC-specific code. For a `.proto` service description containing
 gRPC services, the plain `protoc` generated code is synthesized in
 a `_pb2.py` file, and the gRPC-specific code lands in a `_pb2_grpc.py` file.
-The latter python module imports the former.  The focus of this page is
+The latter python module imports the former. The focus of this page is
 on the gRPC-specific subset of the generated code.
 
 ## Example
@@ -35,7 +35,6 @@ service FortuneTeller {
 
 When the service is compiled, the gRPC `protoc` plugin generates code similar to
 the following `_pb2_grpc.py` file:
-
 
 ```python
 import grpc
@@ -117,13 +116,12 @@ generated:
   `add_FooServicer_to_server` function used to register a servicer with a
   `grpc.Server` object.
 
-
 ### Stub
 
-The generated `Stub` class is used by the gRPC clients.  It
+The generated `Stub` class is used by the gRPC clients. It
 has a constructor that takes a `grpc.Channel` object and initializes the
-stub.  For each method in the service, the initializer adds a corresponding
-attribute to the stub object with the same name.  Depending on the RPC type
+stub. For each method in the service, the initializer adds a corresponding
+attribute to the stub object with the same name. Depending on the RPC type
 (unary or streaming), the value of that attribute will be callable
 objects of type
 [UnaryUnaryMultiCallable](/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable),
@@ -135,10 +133,10 @@ or
 ### Servicer
 
 For each service, a `Servicer` class is generated, which
-serves as the superclass of a service implementation.  For
+serves as the superclass of a service implementation. For
 each method in the service, a corresponding function in the `Servicer` class
 is generated. Override this function with the service
-implementation.  Comments associated with code elements
+implementation. Comments associated with code elements
 in the `.proto` file appear as docstrings in
 the generated python code.
 
@@ -147,7 +145,7 @@ the generated python code.
 For each service, a function is
 generated that registers a `Servicer` object implementing it on a `grpc.Server`
 object, so that the server can route queries to
-the respective servicer.  This function takes an object that implements the
+the respective servicer. This function takes an object that implements the
 `Servicer`, typically an instance of a subclass of the generated `Servicer`
 code element described above, and a
 [grpc.Server](/grpc/python/_modules/grpc.html#Server)

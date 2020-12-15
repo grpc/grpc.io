@@ -1,6 +1,6 @@
 ---
 title: Supported languages
-short: Languages
+short_title: Languages
 weight: 2
 nav_children: section
 notoc: true

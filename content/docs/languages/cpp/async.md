@@ -1,6 +1,6 @@
 ---
 title: Asynchronous-API tutorial
-short: Async-API tutorial
+short_title: Async-API tutorial
 weight: 60
 spelling: cSpell:ignore classgrpc Impl's
 ---
@@ -36,30 +36,30 @@ the following to make an asynchronous call:
 - Initiate the RPC and create a handle for it. Bind the RPC to a
   `CompletionQueue`.
 
-    ```c
-    CompletionQueue cq;
-    std::unique_ptr<ClientAsyncResponseReader<HelloReply> > rpc(
-        stub_->AsyncSayHello(&context, request, &cq));
-    ```
+  ```c
+  CompletionQueue cq;
+  std::unique_ptr<ClientAsyncResponseReader<HelloReply> > rpc(
+      stub_->AsyncSayHello(&context, request, &cq));
+  ```
 
 - Ask for the reply and final status, with a unique tag
 
-    ```c
-    Status status;
-    rpc->Finish(&reply, &status, (void*)1);
-    ```
+  ```c
+  Status status;
+  rpc->Finish(&reply, &status, (void*)1);
+  ```
 
 - Wait for the completion queue to return the next tag. The reply and status are
   ready once the tag passed into the corresponding `Finish()` call is returned.
 
-    ```c
-    void* got_tag;
-    bool ok = false;
-    cq.Next(&got_tag, &ok);
-    if (ok && got_tag == (void*)1) {
-      // check reply and status
-    }
-    ```
+  ```c
+  void* got_tag;
+  bool ok = false;
+  cq.Next(&got_tag, &ok);
+  if (ok && got_tag == (void*)1) {
+    // check reply and status
+  }
+  ```
 
 You can see the complete client example in
 [greeter_async_client.cc](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/helloworld/greeter_async_client.cc).
@@ -72,50 +72,50 @@ asynchronously is:
 
 - Build a server exporting the async service
 
-    ```c
-    helloworld::Greeter::AsyncService service;
-    ServerBuilder builder;
-    builder.AddListeningPort("0.0.0.0:50051", InsecureServerCredentials());
-    builder.RegisterAsyncService(&service);
-    auto cq = builder.AddCompletionQueue();
-    auto server = builder.BuildAndStart();
-    ```
+  ```c
+  helloworld::Greeter::AsyncService service;
+  ServerBuilder builder;
+  builder.AddListeningPort("0.0.0.0:50051", InsecureServerCredentials());
+  builder.RegisterAsyncService(&service);
+  auto cq = builder.AddCompletionQueue();
+  auto server = builder.BuildAndStart();
+  ```
 
 - Request one RPC, providing a unique tag
 
-    ```c
-    ServerContext context;
-    HelloRequest request;
-    ServerAsyncResponseWriter<HelloReply> responder;
-    service.RequestSayHello(&context, &request, &responder, &cq, &cq, (void*)1);
-    ```
+  ```c
+  ServerContext context;
+  HelloRequest request;
+  ServerAsyncResponseWriter<HelloReply> responder;
+  service.RequestSayHello(&context, &request, &responder, &cq, &cq, (void*)1);
+  ```
 
 - Wait for the completion queue to return the tag. The context, request and
   responder are ready once the tag is retrieved.
 
-    ```c
-    HelloReply reply;
-    Status status;
-    void* got_tag;
-    bool ok = false;
-    cq.Next(&got_tag, &ok);
-    if (ok && got_tag == (void*)1) {
-      // set reply and status
-      responder.Finish(reply, status, (void*)2);
-    }
-    ```
+  ```c
+  HelloReply reply;
+  Status status;
+  void* got_tag;
+  bool ok = false;
+  cq.Next(&got_tag, &ok);
+  if (ok && got_tag == (void*)1) {
+    // set reply and status
+    responder.Finish(reply, status, (void*)2);
+  }
+  ```
 
 - Wait for the completion queue to return the tag. The RPC is finished when the
   tag is back.
 
-    ```c
-    void* got_tag;
-    bool ok = false;
-    cq.Next(&got_tag, &ok);
-    if (ok && got_tag == (void*)2) {
-      // clean up
-    }
-    ```
+  ```c
+  void* got_tag;
+  bool ok = false;
+  cq.Next(&got_tag, &ok);
+  if (ok && got_tag == (void*)2) {
+    // clean up
+  }
+  ```
 
 This basic flow, however, doesn't take into account the server handling multiple
 requests concurrently. To deal with this, our complete async server example uses
@@ -192,7 +192,7 @@ void HandleRpcs() {
 #### Shutting Down the Server
 
 We've been using a completion queue to get the async notifications. Care must be
-taken to shut it down *after* the server has also been shut down.
+taken to shut it down _after_ the server has also been shut down.
 
 Remember we got our completion queue instance `cq_` in `ServerImpl::Run()` by
 running `cq_ = builder.AddCompletionQueue()`. Looking at
