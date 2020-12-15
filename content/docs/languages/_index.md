@@ -4,6 +4,7 @@ short_title: Languages
 weight: 2
 nav_children: section
 notoc: true
+simple_list: true
 ---
 
 Each gRPC language / [platform][] has links to the following pages and more:
