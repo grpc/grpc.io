@@ -504,7 +504,7 @@ Rectangle request =
 Iterator<Feature> features;
 try {
   features = blockingStub.listFeatures(request);
-} catch (StatusRuntimeException ex) {
+} catch (StatusRuntimeException e) {
   logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
   return;
 }
