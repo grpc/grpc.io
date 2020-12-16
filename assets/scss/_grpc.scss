@@ -140,8 +140,18 @@ body:not(.td-blog) .td-content:not(.list-page) {
 
 // Language Home Pages
 .prog-lang-home__list {
-  ul {
-    padding-left: 1.25rem;
+  & h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  & ul {
+    padding-left: 0.25rem;
+    padding-bottom: 0.5rem;
+    list-style: none;
+  }
+
+  & li {
+    padding-bottom: 0.25rem;
   }
 }
 
