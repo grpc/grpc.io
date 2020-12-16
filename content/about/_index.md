@@ -25,16 +25,16 @@ connect devices, mobile applications and browsers to backend services.
 
 ### The main usage scenarios
 
-- Efficiently connecting polyglot services in microservices style architecture
-- Connecting mobile devices, browser clients to backend services
-- Generating efficient client libraries
+* Efficiently connecting polyglot services in microservices style architecture
+* Connecting mobile devices, browser clients to backend services
+* Generating efficient client libraries
 
 ### Core features that make it awesome
 
-- Idiomatic client libraries in 10 languages
-- Highly efficient on wire and with a simple service definition framework
-- Bi-directional streaming with http/2 based transport
-- Pluggable auth, tracing, load balancing and health checking
+* Idiomatic client libraries in 10 languages
+* Highly efficient on wire and with a simple service definition framework
+* Bi-directional streaming with http/2 based transport
+* Pluggable auth, tracing, load balancing and health checking
 
 ## Who’s using gRPC and why?
 

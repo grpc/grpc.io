@@ -66,7 +66,7 @@ client authorization check. Assuming that the server knows the expected client
 identity (e.g., `foo@iam.gserviceaccount.com`), it can run the following example
 codes to authorize the incoming RPC.
 
-[altscontext]: https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto
+[AltsContext]: https://github.com/grpc/grpc/blob/master/src/proto/grpc/gcp/altscontext.proto
 
 {{ . | safeHTML }}
 {{ end }}

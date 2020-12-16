@@ -63,7 +63,8 @@ public void serverStreamingExample(
 
 Notice that the signatures for unary and server-streaming RPCs are the same. A
 single `RequestType` is received from the client, and the service implementation
-sends its response(s) by invoking `responseObserver.onNext(ResponseType response)`.
+sends its response(s) by invoking `responseObserver.onNext(ResponseType
+response)`.
 
 ### Client-streaming
 
@@ -109,7 +110,8 @@ RPCs made via an asynchronous stub operate entirely through callbacks on
 The asynchronous stub contains one Java method for each method from the service
 definition.
 
-A new asynchronous stub is instantiated via the `ServiceNameGrpc.newStub(Channel channel)` static method.
+A new asynchronous stub is instantiated via the `ServiceNameGrpc.newStub(Channel
+channel)` static method.
 
 #### Unary
 
@@ -190,7 +192,8 @@ RPCs made via a future stub wrap the return value of the asynchronous stub in a
 The future stub contains one Java method for each unary method in the service
 definition. Future stubs do not support streaming calls.
 
-A new future stub is instantiated via the `ServiceNameGrpc.newFutureStub(Channel channel)` static method.
+A new future stub is instantiated via the `ServiceNameGrpc.newFutureStub(Channel
+channel)` static method.
 
 #### Unary
 

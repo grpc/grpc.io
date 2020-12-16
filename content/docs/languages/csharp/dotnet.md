@@ -14,8 +14,8 @@ Several sample applications are available from the [examples][] folder in the
 [grpc-dotnet][] repository.
 
 {{< alert title="Note" color="info" >}}
-Looking for gRPC C# core-library documentation?
-See the [gRPC C# main page](..).
+  Looking for gRPC C# core-library documentation?
+  See the [gRPC C# main page](..).
 {{< /alert >}}
 
 [examples]: https://github.com/grpc/grpc-dotnet/tree/master/examples

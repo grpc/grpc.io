@@ -41,10 +41,10 @@ it works. If you're already familiar with protocol buffers, feel free to skip
 ahead to the next section.
 
 The first step when working with protocol buffers is to define the structure
-for the data you want to serialize in a _proto file_: this is an ordinary text
+for the data you want to serialize in a *proto file*: this is an ordinary text
 file with a `.proto` extension. Protocol buffer data is structured as
-_messages_, where each message is a small logical record of information
-containing a series of name-value pairs called _fields_. Here's a simple
+*messages*, where each message is a small logical record of information
+containing a series of name-value pairs called *fields*. Here's a simple
 example:
 
 ```proto
@@ -114,8 +114,8 @@ full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
 
 [formal specification]: https://developers.google.com/protocol-buffers/docs/reference/proto3-spec
-[golang/protobuf github repo]: https://github.com/golang/protobuf
+[golang/protobuf GitHub repo]: https://github.com/golang/protobuf
 [proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
-[protocol buffers github repo]: https://github.com/google/protobuf/releases
+[protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
 [protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
 [reference documentation]: https://developers.google.com/protocol-buffers/docs/reference/overview

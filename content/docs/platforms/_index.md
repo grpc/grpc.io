@@ -4,6 +4,7 @@ description: gRPC is supported across different software and hardware platforms.
 short_title: Platforms
 weight: 2
 nav_children: section
+simple_list: true
 ---
 
 Each gRPC [language][] / platform has links to the following pages and more:

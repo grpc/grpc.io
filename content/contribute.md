@@ -25,9 +25,9 @@ To contribute to gRPC documentation, please fork the [gRPC repository on GitHub]
 
 We welcome contributions to any of our three core repositories:
 
-- [gRPC](https://github.com/grpc/grpc)
-- [gRPC Java](https://github.com/grpc/grpc-java)
-- [gRPC Go](https://github.com/grpc/grpc-go)
+* [gRPC](https://github.com/grpc/grpc)
+* [gRPC Java](https://github.com/grpc/grpc-java)
+* [gRPC Go](https://github.com/grpc/grpc-go)
 
 {{< button text="View guidelines" url="https://github.com/grpc/grpc/blob/master/CONTRIBUTING.md" >}}
 
