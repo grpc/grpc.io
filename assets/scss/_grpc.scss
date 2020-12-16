@@ -1,3 +1,9 @@
+/* 
+NOTE: Alterations to Docsy typically use a "td" namespace,
+styles which utilize this should be commented to make it clear
+what the workaround is for
+*/
+
 // GLOBAL
 
 .constrained-width {
@@ -24,6 +30,7 @@
   cursor: pointer;
 }
 
+// Workarounds for external link icons
 a:not(.td-sidebar-link) > .fa-external-link-alt::before {
   margin-left: 3px;
 }
@@ -97,21 +104,55 @@ sections site wide to the original site's background svg.
 }
 
 // DOCS
-// In-page toc. Apply this class as a modifier to the Docsy-provided .td-toc
+
+// Extend the sidebar to the end of the visible page.
+.td-toc {
+  height: calc(100vh - 5rem);
+}
+
+// Custom in-page toc. Apply this class as a modifier on top of the Docsy-provided .td-toc
 .td-toc--inline {
   padding-top: 0;
   padding-bottom: 0;
   border-left: none;
   position: static;
   height: auto;
+
+  & + .td-content {
+    margin-top: 1.5rem;
+  }
+
+  // Workaround to prevent the first three entries from being hidden
+  & #td-content__toc.collapse:not(.show) {
+    display: block;
+    overflow: hidden;
+    min-height: 5rem;
+    height: 5rem;
+
+    & + #td-content__toc-link--expanded::before {
+      content: "…";
+    }
+  }
+
+  & #td-content__toc.collapsing {
+    height: 5rem;
+  }
+
+  & #td-content__toc.collapse.show + #td-content__toc-link--expanded::before {
+    content: "\2303";
+  }
 }
 
-#td-content__toc-link span i.fa-chevron-down {
+#td-content__toc-link span i.fa-chevron-up {
   transition: transform 250ms ease-in-out;
 }
 
-#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-down {
+#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-up {
   transform: rotate(-180deg);
+}
+
+#td-content__toc-link--expanded {
+  background-color: $gray-200;
 }
 
 // Prevent overflow on mobile devices in case of very long inline-block elements.
@@ -138,6 +179,13 @@ body:not(.td-blog) .td-content:not(.list-page) {
   margin-right: 0.25rem;
 }
 
+// Fix to give rendered images width to match Docsy 
+@media screen and (min-width: 992px) {
+  .td-content figure {
+    max-width: 80%;
+  }
+}
+
 // Language Home Pages
 .prog-lang-home__list {
   & h4 {
@@ -152,11 +200,5 @@ body:not(.td-blog) .td-content:not(.list-page) {
 
   & li {
     padding-bottom: 0.25rem;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .td-content figure {
-    max-width: 80%;
   }
 }
