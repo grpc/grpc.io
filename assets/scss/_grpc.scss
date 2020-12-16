@@ -117,6 +117,7 @@ sections site wide to the original site's background svg.
 // Prevent overflow on mobile devices in case of very long inline-block elements.
 .td-content {
   word-break: break-word;
+  max-width: 1140px;
 }
 
 /* To ensure that the top page header and description are rendered
