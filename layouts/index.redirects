@@ -1,5 +1,8 @@
 # cSpell:ignore channelz helloasync loadbalancing quickstart sapi vendasta vendastagrpc
 
+# FAQ is now within the /docs/what-is-grpc section - redirect to maintain existing links
+/faq  /docs/what-is-grpc/faq
+
 # ALTS page is now language-specific (#527); redirect to base auth page for now
 /docs/guides/auth/alts  /docs/guides/auth
 
