@@ -1,0 +1,162 @@
+// GLOBAL
+
+.constrained-width {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+}
+
+.banner {
+  width: 100%;
+  position: fixed;
+  margin-left: -15px;
+  z-index: 32;
+  top: 4rem;
+  background: $gray-100;
+  text-align: center;
+
+  & p {
+    padding: 0.5rem;
+  }
+}
+
+.image--modal-trigger {
+  cursor: pointer;
+}
+
+a:not(.td-sidebar-link) > .fa-external-link-alt::before {
+  margin-left: 3px;
+}
+a > .fa-external-link-alt::before {
+  font-size: 50%;
+  opacity: 0.8;
+  vertical-align: top;
+}
+
+/*
+Docsy's 'cover/block' option for setting background images does
+not currrently support svg's. This sets the background on hero
+sections site wide to the original site's background svg.
+*/
+.td-cover-block {
+  background-image: url("/img/graphic-04.svg");
+}
+
+// NAVBAR
+
+// Docsy includes the site name by default. This is in place
+// to hide the span text, leaving only the logo svg
+.navbar-brand span:last-child {
+  display: none;
+}
+
+// PAGES
+
+.homepage__logo {
+  width: 100%;
+}
+
+.homepage-features {
+  background-color: $gray-100;
+}
+
+.homepage-features__icon {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.homepage-cncf__logo {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.about__user-logo {
+  max-height: 5rem;
+}
+
+@media screen and (min-width: 540px) {
+  .homepage-features {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .homepage__logo,
+  .homepage-cncf__logo {
+    width: 50%;
+  }
+
+  .homepage-features__icon {
+    margin-right: 1rem;
+    max-width: 172px;
+  }
+}
+
+// DOCS
+// In-page toc. Apply this class as a modifier to the Docsy-provided .td-toc
+.td-toc--inline {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left: none;
+  position: static;
+  height: auto;
+}
+
+#td-content__toc-link span i.fa-chevron-down {
+  transition: transform 250ms ease-in-out;
+}
+
+#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-down {
+  transform: rotate(-180deg);
+}
+
+// Prevent overflow on mobile devices in case of very long inline-block elements.
+.td-content {
+  word-break: break-word;
+  max-width: 1140px;
+}
+
+/* To ensure that the top page header and description are rendered
+above the inline ToC, this hides them from displaying in the main
+content block */
+body:not(.td-blog) .td-content:not(.list-page) {
+  & h1:first-child {
+    display: none;
+  }
+
+  & div.lead {
+    display: none;
+  }
+}
+
+// Spacing fix for page-meta-links. Whitespace in template is stripped in production.
+.td-page-meta a i {
+  margin-right: 0.25rem;
+}
+
+// Language Home Pages
+.prog-lang-home__list {
+  & h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  & ul {
+    padding-left: 0.25rem;
+    padding-bottom: 0.5rem;
+    list-style: none;
+  }
+
+  & li {
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .td-content figure {
+    max-width: 80%;
+  }
+}

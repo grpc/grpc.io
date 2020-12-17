@@ -7,22 +7,22 @@
 {{ $newIssuePath := "issues/new?title=Unexpected%20page-not-found%20error&body=URL%3A%20%0AExpected%20page%3A%20" -}}
 {{ $newIssueUrl := printf "%s/%s" site.Params.repo $newIssuePath -}}
 
-<section class="hero is-primary has-background-image">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title is-size-1 is-size-2-mobile">
+<section class="row td-cover-block td-cover-block--height-sm js-td-cover td-overlay td-overlay--dark -bg-primary">
+  <div class="container td-overlay__inner">
+    <div class="text-center">
+      <h1 class="display-1 text-white pb-4">
         Page not found
-      </p>
-      <p class="subtitle is-size-3 is-size-4-mobile has-text-grey-lighter has-text-weight-medium">
+      </h1>
+      <h2 class="text-white font-weight-medium">
         404
-      </p>
+      </h2>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container has-text-centered">
-    <div class="content">
+  <div class="container text-center">
+    <div>
       <p>
         The page that you requested doesn't exist.
       </p>
@@ -34,7 +34,7 @@
         <a href="{{ $newIssueUrl }}" target="_blank" rel="noopener">create an issue.</a>
       </p>
       <p>
-        <a class="button is-primary" href="/">
+        <a class="btn btn-lg btn-primary" href="/">
           Homepage
         </a>
       </p>

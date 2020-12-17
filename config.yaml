@@ -4,8 +4,20 @@ title: gRPC
 disableKinds: [taxonomy, taxonomyTerm]
 pygmentsCodeFences: true
 
+theme: ['docsy']
+
+enableGitInfo: true
+
+contentDir: 'content/en'
+defaultContentLanguage: 'en'
+defaultContentLanguageInSubdir: false
+
 params:
-  repo: https://github.com/grpc/grpc.io
+  copyright: 'The Linux Foundation'
+  repo: &repo 'https://github.com/grpc/grpc.io'
+  github_repo: *repo
+  github_project_repo: *repo
+  github_branch: 'main'
   branch: main
   locale: en_US
   grpc_vers:
@@ -14,6 +26,18 @@ params:
     java: v1.34.1
   font_awesome_version: 5.12.1
   description: A high-performance, open source universal RPC framework
+  ui:
+    sidebar_menu_compact: true
+    navbar_logo: true
+
+    # If Algolia DocSearch is enabled, sidebar search is not supported
+    sidebar_search_disable: false
+
+    # Adds a reading time to the top of each doc.
+    # If you want this feature, but occasionally need to remove the Reading time from a single page,
+    # add "hide_readingtime: true" to the page's front matter
+    readingtime:
+      enable: false
 
   show_banner: false
 
@@ -47,11 +71,44 @@ params:
     hero: grpc-logo.png
     footer: grpc-horizontal-white.png
 
+  links:
+    user:
+      - name: 'Twitter'
+        url: 'https://twitter.com/grpcio'
+        icon: 'fab fa-twitter'
+        desc: 'Follow us on Twitter!'
+      - name: 'Google Groups'
+        url: 'https://groups.google.com/g/grpc-io'
+        icon: 'fab fa-google'
+        desc: 'Join our Google community'
+    developer:
+      - name: 'GitHub'
+        url: 'https://github.com/grpc'
+        icon: 'fab fa-github'
+        desc: 'Development takes place here!'
+      - name: 'Gitter'
+        url: https://gitter.im/grpc/grpc
+        icon: 'fab fa-gitter'
+        desc: 'Where developers come to talk'
+
+  # Google Custom Search Engine ID. Remove or comment out to disable search.
+  gcs_engine_id: '788f3b1ec3a111a2f'
+
+  # Enable Algolia DocSearch
+  algolia_docsearch: false
+
+  #Enable offline search with Lunr.js
+  offlineSearch: false
+
 markup:
   goldmark:
     renderer: {unsafe: true}
   highlight:
     style: manni
+  tableOfContents:
+    startLevel: 2
+    endLevel: 5
+    ordered: false
 
 # Configuration required for auto-generating the Netlify _redirects file
 mediaTypes:
@@ -113,3 +170,11 @@ menu:
       url: /faq/
       weight: 7
       parent: docs
+
+languages:
+  en:
+    title: gRPC
+    description: A high-performance, open source universal RPC framework
+    weight: 1
+    languageName: 'English'
+    languageDirection: 'ltr'
