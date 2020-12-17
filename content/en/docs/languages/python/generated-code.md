@@ -5,8 +5,6 @@ weight: 80
 spelling: cSpell:ignore docstrings
 ---
 
-## Introduction
-
 gRPC Python relies on the protocol buffers compiler (`protoc`) to generate
 code.  It uses a plugin to supplement the generated code by plain `protoc`
 with gRPC-specific code.  For a `.proto` service description containing
