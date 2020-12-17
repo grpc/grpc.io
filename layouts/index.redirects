@@ -5,6 +5,7 @@
 
 # ALTS page is now language-specific (#527); redirect to base auth page for now
 /docs/guides/auth/alts  /docs/guides/auth
+/docs/guides/auth/ALTS  /docs/guides/auth # https://github.com/grpc/grpc.io/issues/574
 
 # Languages -> platforms redirects
 
