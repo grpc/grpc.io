@@ -1,6 +1,5 @@
 ---
-title: Quick start - Kotlin for Android
-short_title: Quick start
+title: Quick start
 description: This guide gets you started with Kotlin gRPC on Android with a simple working example.
 weight: 10
 ---

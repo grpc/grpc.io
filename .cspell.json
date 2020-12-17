@@ -1,7 +1,6 @@
 {
     "version": "0.1",
     "language": "en",
-    // Workspace dictionary:
     "words": [
         "backends",
         "Bazel",
@@ -11,7 +10,10 @@
         "deallocate",
         "deserialization",
         "Dockerfiles",
+        "Docsy",
+        "favicons",
         "flatbuffers",
+        "getenv",
         "Gmail",
         "gradlew",
         "Istio",
@@ -20,6 +22,7 @@
         "microservice",
         "microservices",
         "multicore",
+        "opengraph",
         "performant",
         "pluggable",
         "printf",
