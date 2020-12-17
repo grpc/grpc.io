@@ -8,6 +8,10 @@ theme: ['docsy']
 
 enableGitInfo: true
 
+contentDir: 'content/en'
+defaultContentLanguage: 'en'
+defaultContentLanguageInSubdir: false
+
 params:
   copyright: 'The Linux Foundation'
   repo: &repo 'https://github.com/grpc/grpc.io'
@@ -166,3 +170,11 @@ menu:
       url: /faq/
       weight: 7
       parent: docs
+
+languages:
+  en:
+    title: gRPC
+    description: A high-performance, open source universal RPC framework
+    weight: 1
+    languageName: 'English'
+    languageDirection: 'ltr'

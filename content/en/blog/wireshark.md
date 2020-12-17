@@ -41,14 +41,14 @@ This post focuses on the analysis of captured gRPC messages. To learn how to
 store network traffic in _capture files_, see the [Capturing Live Network
 Data][] section of the [Wireshark User’s Guide][].
 
-{{<note>}}
+{{< alert title="Note" color="info" >}}
   Currently, only **plain text** gRPC messages can be parsed by Wireshark. While
   [Wireshark supports TLS dissection][], it requires per-session secret keys. As
   of the time of writing, gRPC libraries do not support the exporting of such
   keys.
 
   [Wireshark supports TLS dissection]: https://gitlab.com/wireshark/wireshark/-/wikis/tls
-{{</note>}}
+{{</alert>}}
 
 ## Examples
 
