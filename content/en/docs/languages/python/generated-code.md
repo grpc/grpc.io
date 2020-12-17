@@ -1,5 +1,5 @@
 ---
-title: Python Generated-code reference
+title: Generated-code reference
 short_title: Generated code
 weight: 80
 spelling: cSpell:ignore docstrings
