@@ -1,5 +1,5 @@
 ---
-title: ALTS authentication in Java
+title: ALTS authentication
 short_title: ALTS
 description: >
   An overview of gRPC authentication in Java using Application Layer Transport

@@ -1,5 +1,4 @@
 {{/* This file is in place as an override to the Docsy theme */}}
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {{ hugo.Generator }}
@@ -12,7 +11,15 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end */}}
 {{ partialCached "favicons.html" . }}
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ if in .File.Dir "docs/languages/" }}{{ .Parent.Title }} - {{ .Title }} | {{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}{{ end }}</title>
+<title>
+  {{- if not .IsHome -}}
+    {{ with .Title }}{{ . }} | {{ end -}}
+    {{ if findRE "^docs/(languages|platforms)/.+?/[^_]" .File.Path -}}
+      {{ with .Parent.Title }}{{ . }} | {{ end -}}
+    {{ end -}}
+  {{ end -}}
+  {{ .Site.Title -}}
+</title>
 {{- template "_internal/opengraph.html" . -}}
 {{- template "_internal/google_news.html" . -}}
 {{- template "_internal/schema.html" . -}}
