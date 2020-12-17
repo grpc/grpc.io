@@ -46,13 +46,13 @@ there are many possibilities:
 * Proxy issue, for example: dropped requests/responses in the middle
 * Server issue, for example: lost requests or just slow to respond
 
-<img src="/img/log.png" style="max-width: 947px">
+![](/img/log.png)
 <p style="text-align: center"> Figure 1. Program log screenshot</p>
 
 Let's turn on grpc INFO logging for more debug info and see if we can find
 something helpful.
 
-<img src="/img/logWithInfo.png" style="max-width: 997px">
+![](/img/logWithInfo.png)
 <p style="text-align: center"> Figure 2. gRPC INFO log</p>
 
 As shown in Figure 2, the info log indicates that all three connections to the
@@ -88,9 +88,7 @@ channelz service (see instructions from the previous link). Then, open the
 channelz web page in the browser. You should see a web page like Figure 3. Now
 we can start querying channelz!
 
-<div align="center">
-  <img src="/img/mainpage.png" style="max-width: 935px">
-</div>
+![](/img/mainpage.png)
 <p style="text-align: center"> Figure 3. Channelz main page</p>
 
 As the error is on the client side, let's first click on
@@ -105,9 +103,7 @@ for making RPC calls. Top channels are of
 type in channelz, which is an abstraction of a connection that an RPC can be
 issued to.
 
-<div align="center">
-  <img src="/img/topChan1.png" style="max-width: 815px">
-</div>
+![](/img/topChan1.png)
 <p style="text-align: center"> Figure 4. TopChannels result</p>
 
 So we click on the TopChannels, and a page like Figure 4 appears, which lists
@@ -120,17 +116,13 @@ may vary across languages).
 Looking at the **Data** section, we can see there are 15 calls failed out of 100
 on this channel.
 
-<div align="center">
-  <img src="/img/topChan2.png" style="max-width: 815px">
-</div>
+![](/img/topChan2.png)
 <p style="text-align: center"> Figure 5. Top Channel (id = 2)</p>
 
 On the right hand side, it shows the channel has no child **Channels**, 3
 **Subchannels** (as highlighted in Figure 6), and 0 **Sockets**.
 
-<div align="center">
-  <img src="/img/topChan3.png" style="max-width: 815px">
-</div>
+![](/img/topChan3.png)
 <p style="text-align: center"> Figure 6. Subchannels owned by the Channel (id = 2)</p>
 
 A
@@ -152,17 +144,14 @@ So we click on the first Subchannel ID (i.e. "4\[\]") listed, and a page like
 Figure 7 renders. We can see that all calls on this Subchannel have succeeded.
 Thus it's unlikely this Subchannel is related to the issue we are having.
 
-<div align="center">
-  <img src="/img/subChan4.png" style="max-width: 815px">
-</div>
+![](/img/subChan4.png)
+
 <p style="text-align: center"> Figure 7. Subchannel (id = 4)</p>
 
 So we go back, and click on Subchannel 5 (i.e. "5\[\]"). Again, the web page
 indicates that Subchannel 5 also never had any failed calls.
 
-<div align="center">
-  <img src="/img/subChan6_1.png" style="max-width: 815px">
-</div>
+![](/img/subChan6_1.png)
 <p style="text-align: center"> Figure 8. Subchannel (id = 6)</p>
 
 And finally, we click on Subchannel 6. This time, there's something different.
@@ -183,9 +172,7 @@ and
 correspond to Socket. Note that a network listener is also considered a Socket,
 and will show up in the channelz Server info.
 
-<div align="center">
-  <img src="/img/subChan6_2.png" style="max-width: 815px">
-</div>
+![](/img/subChan6_2.png)
 <p style="text-align: center"> Figure 9. Subchannel (id = 6) owns Socket (id = 8)</p>
 
 We click on Socket 8, which is at the bottom of the page (see Figure 9). And we
@@ -211,9 +198,7 @@ stuck somehow and results in deadline exceeded. In summary, we can narrow down
 the issue to the server which serves on 127.0.0.1:10003. It may be that the
 server is slow to respond, or some proxy in front of it is dropping requests.
 
-<div align="center">
-  <img src="/img/socket8.png" style="max-width: 815px">
-</div>
+![](/img/socket8.png)
 <p style="text-align: center"> Figure 10. Socket (id = 8)</p>
 
 As you see, channelz has helped us pinpoint the potential root cause of the

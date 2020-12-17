@@ -39,7 +39,7 @@ custom JSON serialization and deserialization logic, wrangling HTTP status codes
 
 From a broader architectural perspective, gRPC-Web enables end-to-end gRPC. The diagram below illustrates this:
 
-<img src="/img/grpc-web-arch.png" style="max-width: 947px">
+![](/img/grpc-web-arch.png)
 <p style="text-align: center"> Figure 1. gRPC with gRPC-Web (left) and gRPC with REST (right)</p>
 
 In the gRPC-Web universe on the left, a client application speaks Protocol Buffers to a gRPC backend server that speaks Protocol Buffers to other gRPC backend services. In the REST universe on the right, the web app speaks HTTP to a backend REST API server that then speaks Protocol Buffers to backend services.

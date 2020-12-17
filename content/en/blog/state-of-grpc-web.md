@@ -56,8 +56,7 @@ The basic idea is to have the browser send normal HTTP requests (with Fetch or
 XHR) and have a small proxy in front of the gRPC server to translate the
 requests and responses to something the browser can use.
 
-<p><img src="/img/grpc-web-proxy.png"
-  alt="The role of the gRPC-Web proxy" style="max-width: 800px" /></p>
+![](/img/grpc-web-proxy.png)
 
 # The Two Implementations
 

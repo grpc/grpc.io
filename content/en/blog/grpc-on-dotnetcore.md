@@ -41,7 +41,7 @@ The implementations coexist side-by-side and each has its own advantages in term
 
 Unlike the existing C-Core based implementation ([Grpc.Core](https://github.com/grpc/grpc/tree/master/src/csharp)), the new libraries ([grpc-dotnet](https://github.com/grpc/grpc-dotnet)) make use of the existing networking primitives in the .NET Core Base Class Libraries (BCL). The diagram below highlights the difference between the existing **Grpc.Core** library and the new **grpc-dotnet** libraries.
 
-<p><img src="/img/grpc-dotnet.svg" alt="gRPC .NET Stack" style="max-width: 800px" /></p>
+<p><img src="/img/grpc-dotnet.svg" alt="gRPC .NET Stack" /></p>
 
 On the server side, the `Grpc.AspNetCore.Server` package integrates into ASP.NET Core, allowing developers to benefit from ecosystem of common cross-cutting concerns of logging, configuration, dependency injection, authentication, authorization etc. which have already been solved by ASP.NET Core. Popular libraries in the ASP.NET ecosystem such as [Entity Framework Core (ORM)](https://github.com/aspnet/EntityFrameworkCore), [Serilog (Logging library)](https://github.com/serilog/serilog), and [Identity Server](https://github.com/IdentityServer/IdentityServer4) among others now work seamlessly with gRPC.
 
@@ -49,7 +49,7 @@ On the client side, the `Grpc.Net.Client` package builds upon the familiar `Http
 
 The diagram below captures the exhaustive list of all new .NET packages for gRPC and their relationship with the existing packages.
 
-<p><img src="/img/grpc-dotnet-packages.svg" alt="grpc-dotnet packages" style="max-width: 800px" /></p>
+<p><img src="/img/grpc-dotnet-packages.svg" alt="grpc-dotnet packages" /></p>
 
 In addition to the newly published packages that ship as part of **grpc-dotnet**, we've also made improvements that benefit both stacks. Visual Studio 2019 ships with language grammar support for protobuf files and automatic generation of gRPC server/client code upon saving a protobuf file without requiring full project rebuilds due to design-time builds.
 
