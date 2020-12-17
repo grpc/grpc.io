@@ -141,15 +141,14 @@ Other developer stories are provided next.
   presentation's entry in the [schedule][] page. If the author provided slides,
   you'll find them below the author's bio.
 
-[cncf case studies]: https://www.cncf.io/case-studies/
-[grpc conf 2020 presentation videos]: https://www.youtube.com/playlist?list=PLj6h78yzYM2NN72UX_fdmc5CZI-D5qfJL
-[schedule]: https://events.linuxfoundation.org/grpc-conf/program/schedule/
-
-[use-of-gRPC]: {{< param url_use_grpc >}}
-
 </div>
 
 {{< page/toc placement="sidebar" >}}
 
 </div>
 </div>
+
+[CNCF case studies]: https://www.cncf.io/case-studies/
+[gRPC Conf 2020 presentation videos]: https://www.youtube.com/playlist?list=PLj6h78yzYM2NN72UX_fdmc5CZI-D5qfJL
+[schedule]: https://events.linuxfoundation.org/grpc-conf/program/schedule/
+[use-of-gRPC]: {{< param url_use_grpc >}}

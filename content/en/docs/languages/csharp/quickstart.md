@@ -9,7 +9,6 @@ weight: 10
   documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
 
   [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
-
 {{< /alert >}}
 
 ### Prerequisites
