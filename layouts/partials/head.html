@@ -12,7 +12,7 @@
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
 {{ end */}}
 {{ partialCached "favicons.html" . }}
-<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ if in .Dir "docs/languages/" }}{{ .Parent.Title }} - {{ .Title }} | {{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ if in .File.Dir "docs/languages/" }}{{ .Parent.Title }} - {{ .Title }} | {{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}{{ end }}</title>
 {{- template "_internal/opengraph.html" . -}}
 {{- template "_internal/google_news.html" . -}}
 {{- template "_internal/schema.html" . -}}
