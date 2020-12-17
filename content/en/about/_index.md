@@ -46,7 +46,7 @@ Below are details and quotes from some of our early adopters.
 Check out what people are saying below.
 
 <div class="row my-4">
-{{< testimonials >}}
+{{< about/testimonials >}}
 </div>
 
 ## The story behind gRPC

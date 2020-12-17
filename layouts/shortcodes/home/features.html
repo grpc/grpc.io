@@ -1,16 +1,17 @@
 {{ $features := site.Params.features }}
+<section class="grpc-homepage ">
+  <div class="d-flex flex-column flex-md-row flex-wrap justify-content-center">
+    {{ range $features }}
+      {{ $icon  := printf "img/icons/%s" .icon | relURL }}
+      {{ $desc := .description | markdownify }}
 
-<div class="d-flex flex-column flex-md-row flex-wrap justify-content-center">
-  {{ range $features }}
-    {{ $icon  := printf "img/icons/%s" .icon | relURL }}
-    {{ $desc := .description | markdownify }}
-
-    <div class="d-inline-flex flex-column flex-lg-row justify-content-lg-between col-md-6 mb-4">
-      <img class="homepage-features__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
-      <div>
-        <h3 class="display-3 font-weight-light mb-4">{{ .title }}</h3>
-        <p class="lead">{{ $desc }}</p>
+      <div class="d-inline-flex flex-column flex-lg-row justify-content-lg-between col-md-6 mb-4">
+        <img class="grpc-homepage__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
+        <div>
+          <h3 class="display-3 font-weight-light mb-4">{{ .title }}</h3>
+          <p class="lead">{{ $desc }}</p>
+        </div>
       </div>
-    </div>
-  {{ end }}
-</div>
+    {{ end }}
+  </div>
+</section>
