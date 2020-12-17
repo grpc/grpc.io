@@ -1,5 +1,5 @@
 ---
-title: ALTS authentication in C++
+title: ALTS authentication
 short_title: ALTS
 description: >
   An overview of gRPC authentication in C++ using Application Layer Transport
