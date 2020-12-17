@@ -13,6 +13,7 @@ params:
   repo: &repo 'https://github.com/grpc/grpc.io'
   github_repo: *repo
   github_project_repo: *repo
+  github_branch: 'main'
   branch: main
   locale: en_US
   grpc_vers:
