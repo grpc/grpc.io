@@ -9,12 +9,12 @@ spelling: cSpell:ignore youtube Kubernetes Nulab Protop
 {{< page/header >}}
 {{< /blocks/cover >}}
 
-<div class="container">
-<div class="row my-5">
+<div class="container l-container--padded">
+<div class="row">
 
 {{< page/toc collapsed=true placement="inline" >}}
 
-<div class="col-12 col-lg-9">
+<div class="col-12 col-lg-8">
 
 ## Customer success stories
 
@@ -91,23 +91,23 @@ Developer stories cover a variety of technical subjects related to gRPC. You can
 find developer stories for your [preferred language](/docs/languages/) on each
 **language-specific landing page**.
 
-<div class="d-flex flex-wrap justify-content-center my-5">
-  <a class="mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/go/#dev-stories">
+<div class="l-buttons">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/go/#dev-stories">
     Go
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/cpp/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/cpp/#dev-stories">
     C++
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/java/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/java/#dev-stories">
     Java
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/python/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/python/#dev-stories">
     Python
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/csharp/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/csharp/#dev-stories">
     C#
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/">
     <i class="fas fa-ellipsis-h"></i>
   </a>
 </div>

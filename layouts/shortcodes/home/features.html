@@ -1,14 +1,14 @@
 {{ $features := site.Params.features }}
-<section class="grpc-homepage ">
-  <div class="d-flex flex-column flex-md-row flex-wrap justify-content-center">
+<section class="bg-gray-100">
+  <div class="c-features">
     {{ range $features }}
       {{ $icon  := printf "img/icons/%s" .icon | relURL }}
       {{ $desc := .description | markdownify }}
 
-      <div class="d-inline-flex flex-column flex-lg-row justify-content-lg-between col-md-6 mb-4">
-        <img class="grpc-homepage__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
+      <div class="col-md-6 o-features__feature">
+        <img class="o-feature__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
         <div>
-          <h3 class="display-3 font-weight-light mb-4">{{ .title }}</h3>
+          <h3 class="display-3 font-weight-light">{{ .title }}</h3>
           <p class="lead">{{ $desc }}</p>
         </div>
       </div>

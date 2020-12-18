@@ -1,7 +1,7 @@
 {{ $src := .Destination | safeURL }}
 {{ $id  := index (last 1 (split .Destination "/")) 0 | replaceRE ".png" "" }}
 <figure class="text-center">
-  <img class="modal--trigger" src="{{ $src }}" {{ with .Text }}alt="{{ . }}"{{ end }} id="{{ $id }}" data-toggle="modal" data-target="#modal-{{ $id }}"/>
+  <img class="modal-trigger" src="{{ $src }}" {{ with .Text }}alt="{{ . }}"{{ end }} id="{{ $id }}" data-toggle="modal" data-target="#modal-{{ $id }}"/>
 
   <div class="modal" id="modal-{{ $id }}">
     <div class="modal-dialog modal-lg modal-dialog-centered">

@@ -3,22 +3,19 @@
 
 {{ with .Page.TableOfContents }}
   {{ if (eq $placement "sidebar") }}
-    <div class="d-none d-lg-block col-3">
-      <div class="td-toc td-toc--inline ml-5">
+    <div class="d-none d-lg-block col-3 offset-md-1">
+      <div class="td-toc td-toc--inline">
   {{ else if (eq $placement "inline") }}
     <div class="d-lg-none col-12">
-      <div class="td-toc td-toc--inline mb-5">
+      <div class="td-toc td-toc--inline">
   {{ end }}
       {{ if $collapsed }}
-        <a id="page__toc-link" class="d-inline-flex align-items-center collapsed" href="#page__toc--expand" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
+        <a id="td-content__toc-link" class="d-inline-flex collapsed" href="#toc--expand" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
             <h5 class="lead"><i class="fas fa-list mr-2"></i>Page Contents</h5>
-            <i class="fas fa-chevron-down ml-2 mb-2"></i>
+            <span><i class="fas fa-chevron-up ml-2"></i></span>
         </a>
-        {{ partial "page-meta-links.html" $.Page }}
-        <div id="page__toc--expand" class="collapse">
-          <div class="text-left">
-            {{ . }}
-          </div>
+        <div id="toc--expand" class="collapse">
+          {{ . }}
         </div>
       {{ else }}
         <h5 class="lead"><i class="fas fa-list mr-2"></i>Page Contents</h5>

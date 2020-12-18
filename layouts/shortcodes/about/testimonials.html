@@ -1,13 +1,15 @@
 {{ $testimonials := site.Data.testimonials -}}
+<div class="row c-testimonials">
 {{- range $testimonials -}}
-{{ $img   := printf "img/users/%s" .image | relURL -}}
-{{ $quote := .quote | markdownify -}}
-<div class="mb-3 col-12 col-sm-6 col-lg-4 text-center align-items-start">
-  <a class="d-block mb-4" href="{{ .link }}" target="_blank" rel="noopener">
-    <img class="grpc-about__user-logo" src="{{ $img }}" alt="{{ .name }} testimonial logo">
-  </a>
-  <p class="font-italic">
-    {{- $quote -}}
-  </p>
-</div>
+  {{ $img   := printf "img/users/%s" .image | relURL -}}
+  {{ $quote := .quote | markdownify -}}
+  <div class="col-12 col-sm-6 col-lg-4 c-testimonials__testimonial">
+    <a href="{{ .link }}" target="_blank" rel="noopener">
+      <img class="o-user-logo-sm" src="{{ $img }}" alt="{{ .name }} testimonial logo">
+    </a>
+    <p class="font-italic">
+      {{- $quote -}}
+    </p>
+  </div>
 {{ end -}}
+</div>
