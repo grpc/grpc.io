@@ -26,7 +26,7 @@ spelling: cSpell:ignore Isberner Klerk Malte youtube
   by [Jean de Klerk](https://github.com/jadekler), Google. October 8, 2020.
 - **Talking to Go gRPC Services Via HTTP/1**
   <a class="icon" href="https://youtu.be/Vbw8h0RCn2E"><i class="fab fa-youtube"></i></a>
-  <a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/c9/TalkingToGoGRPCviaHTTP1-gRPCConf2020-MalteIsberner.pdf"><i class="far fa-file"></i></a><br>
+  <a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/c9/TalkingToGoGRPCviaHTTP1-gRPCConf2020-MalteIsberner.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfW)
   by Malte Isberner, StackRox.
 
