@@ -9,12 +9,12 @@ spelling: cSpell:ignore youtube Kubernetes Nulab Protop
 {{< page/header >}}
 {{< /blocks/cover >}}
 
-<div class="container">
-<div class="row my-5">
+<div class="container l-container--padded">
+<div class="row">
 
 {{< page/toc collapsed=true placement="inline" >}}
 
-<div class="col-12 col-lg-9">
+<div class="col-12 col-lg-8">
 
 ## Customer success stories
 
@@ -91,23 +91,23 @@ Developer stories cover a variety of technical subjects related to gRPC. You can
 find developer stories for your [preferred language](/docs/languages/) on each
 **language-specific landing page**.
 
-<div class="d-flex flex-wrap justify-content-center my-5">
-  <a class="mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/go/#dev-stories">
+<div class="l-buttons">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/go/#dev-stories">
     Go
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/cpp/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/cpp/#dev-stories">
     C++
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/java/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/java/#dev-stories">
     Java
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/python/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/python/#dev-stories">
     Python
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/csharp/#dev-stories">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/csharp/#dev-stories">
     C#
   </a>
-  <a class="ml-2 mb-2 btn btn-light btn-lg font-weight-light" href="/docs/languages/">
+  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/">
     <i class="fas fa-ellipsis-h"></i>
   </a>
 </div>
@@ -121,17 +121,17 @@ Other developer stories are provided next.
   by Serhii Kushch. August 13, 2020.
 - **A Simplified Service Mesh With gRPC**
   <a href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/ae/A%20Simplified%20Service%20Mesh%20with%20gRPC.pdf"><i class="far fa-file"></i></a><br>
+  <a href="https://static.sched.com/hosted_files/grpcconf20/ae/A%20Simplified%20Service%20Mesh%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfZ)
   by Srini Polavarapu, Engineering Manager, Google
 - **Protop: A Package Manager for gRPC and Protocol Buffers**
   <a href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/6b/protop%20-%20a%20package%20manager%20for%20protobufs.pdf"><i class="far fa-file"></i></a><br>
+  <a href="https://static.sched.com/hosted_files/grpcconf20/6b/protop%20-%20a%20package%20manager%20for%20protobufs.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfo)
   by Jeffery Shivers, Toast, Inc
 - **Service Interoperability With gRPC: gRPC in Action**
   <a href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="far fa-file"></i></a><br>
+  <a href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfl)
   by Varun Gupta & Tuhin Kanti Sharma, Salesforce.
 

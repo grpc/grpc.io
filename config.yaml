@@ -81,15 +81,15 @@ params:
         url: 'https://groups.google.com/g/grpc-io'
         icon: 'fab fa-google'
         desc: 'Join our Google community'
+      - name: 'Gitter'
+        url: https://gitter.im/grpc/grpc
+        icon: 'fab fa-gitter'
+        desc: 'Where developers come to talk'
     developer:
       - name: 'GitHub'
         url: 'https://github.com/grpc'
         icon: 'fab fa-github'
         desc: 'Development takes place here!'
-      - name: 'Gitter'
-        url: https://gitter.im/grpc/grpc
-        icon: 'fab fa-gitter'
-        desc: 'Where developers come to talk'
 
   # Google Custom Search Engine ID. Remove or comment out to disable search.
   gcs_engine_id: '788f3b1ec3a111a2f'

@@ -35,7 +35,7 @@
   
   <hr/>
   {{ with .Params.content -}}
-    <div class="row flex-col flex-md-row prog-lang-home__list">
+    <div class="row o-lang-home__list">
       {{ range $list_entry := . }}
         {{ range $heading, $items := $list_entry }}
           {{ $hd := printf "#### %s" (humanize $heading) -}}

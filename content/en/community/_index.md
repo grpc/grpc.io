@@ -6,12 +6,12 @@ title: Community
 {{< page/header >}}
 {{< /blocks/cover >}}
 
-<div class="container">
-<div class="row my-5">
+<div class="container l-container--padded">
+<div class="row">
 
 {{< page/toc collapsed=true placement="inline" >}}
 
-<div class="col-12 col-lg-9">
+<div class="col-12 col-lg-8">
 <div>
 
 gRPC has an active community of developers who are using, enhancing, and building valuable integrations with other software projects. We'd love your help to improve and extend the project. You can reach us via the [Mailing List](https://groups.google.com/forum/#!forum/grpc-io), [Gitter channel](https://gitter.im/grpc/grpc), or [Twitter](https://twitter.com/grpcio) to start engaging with the project and its members.

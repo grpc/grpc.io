@@ -7,13 +7,12 @@ description: Who is using gRPC and why
 {{< page/header >}}
 {{< /blocks/cover >}}
 
-<div class="container">
-<div class="row my-5">
+<div class="container l-container--padded">
+<div class="row">
 
 {{< page/toc collapsed=true placement="inline" >}}
 
-<div class="col-12 col-lg-9">
-<div>
+<div class="col-12 col-lg-8">
 
 gRPC is a modern open source high performance RPC framework that can run in any
 environment. It can efficiently connect services in and across data centers with
@@ -21,7 +20,6 @@ pluggable support for load balancing, tracing, health checking and
 authentication. It is also applicable in last mile of distributed computing to
 connect devices, mobile applications and browsers to backend services.
 
-</div>
 
 ### The main usage scenarios
 
@@ -45,9 +43,7 @@ Below are details and quotes from some of our early adopters.
 
 Check out what people are saying below.
 
-<div class="row my-4">
-{{< testimonials >}}
-</div>
+{{< about/testimonials >}}
 
 ## The story behind gRPC
 

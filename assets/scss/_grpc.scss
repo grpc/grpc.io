@@ -1,29 +1,15 @@
-// GLOBAL
+/* 
+NOTE: Alterations to Docsy typically use a "td" namespace,
+styles which utilize this should be commented to make it clear
+what the workaround is for
+*/
 
-.constrained-width {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1140px;
-}
-
-.banner {
-  width: 100%;
-  position: fixed;
-  margin-left: -15px;
-  z-index: 32;
-  top: 4rem;
-  background: $gray-100;
-  text-align: center;
-
-  & p {
-    padding: 0.5rem;
-  }
-}
-
-.image--modal-trigger {
+// Make it clear that that clickable images open a Bootstrap modal
+.modal-trigger {
   cursor: pointer;
 }
 
+// Workarounds for external link icons
 a:not(.td-sidebar-link) > .fa-external-link-alt::before {
   margin-left: 3px;
 }
@@ -46,72 +32,61 @@ sections site wide to the original site's background svg.
 
 // Docsy includes the site name by default. This is in place
 // to hide the span text, leaving only the logo svg
-.navbar-brand span:last-child {
+.td-navbar .navbar-brand span:last-child {
   display: none;
 }
 
-// PAGES
-
-.homepage__logo {
-  width: 100%;
-}
-
-.homepage-features {
-  background-color: $gray-100;
-}
-
-.homepage-features__icon {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-}
-
-.homepage-cncf__logo {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
-}
-
-.about__user-logo {
-  max-height: 5rem;
-}
-
-@media screen and (min-width: 540px) {
-  .homepage-features {
-    padding-right: 3rem;
-    padding-left: 3rem;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .homepage__logo,
-  .homepage-cncf__logo {
-    width: 50%;
-  }
-
-  .homepage-features__icon {
-    margin-right: 1rem;
-    max-width: 172px;
-  }
-}
-
 // DOCS
-// In-page toc. Apply this class as a modifier to the Docsy-provided .td-toc
+
+// Extend the sidebar to the end of the visible page.
+.td-toc {
+  height: initial;
+  padding-top: 4.75rem;
+}
+
+// Custom in-page toc. Apply this class as a modifier on top of the Docsy-provided .td-toc
 .td-toc--inline {
   padding-top: 0;
   padding-bottom: 0;
   border-left: none;
   position: static;
   height: auto;
+
+  & + .td-content {
+    margin-top: 1.5rem;
+  }
+
+  // Workaround to prevent the first three entries from being hidden
+  & #td-content__toc.collapse:not(.show) {
+    display: block;
+    overflow: hidden;
+    min-height: 5rem;
+    height: 5rem;
+
+    & + #td-content__toc-link--expanded::before {
+      content: "…";
+    }
+  }
+
+  & #td-content__toc.collapsing {
+    height: 5rem;
+  }
+
+  & #td-content__toc.collapse.show + #td-content__toc-link--expanded::before {
+    content: "\2303";
+  }
 }
 
-#td-content__toc-link span i.fa-chevron-down {
+#td-content__toc-link span i.fa-chevron-up {
   transition: transform 250ms ease-in-out;
 }
 
-#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-down {
+#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-up {
   transform: rotate(-180deg);
+}
+
+#td-content__toc-link--expanded {
+  background-color: $gray-200;
 }
 
 // Prevent overflow on mobile devices in case of very long inline-block elements.
@@ -138,8 +113,120 @@ body:not(.td-blog) .td-content:not(.list-page) {
   margin-right: 0.25rem;
 }
 
-// Language Home Pages
-.prog-lang-home__list {
+// Fix to give rendered images width to match Docsy 
+@include media-breakpoint-up(lg) {
+  .td-content figure {
+    max-width: 80%;
+  }
+}
+
+/*
+The following contains some styles in use on the top-level pages
+(About, Community...). Bootstrap provides many responsive utilites
+which are in use as well - these classes are meant to extract some
+common concerns from sections of content, and provide styling where
+Bootstrap falls short.
+
+The following namespaces are in use:
+o - Object (Element(s) - not tied to semantic HTML)
+l - Layout (Spacing/Positioning)
+c - Component (Aware of its content/context...)
+*/
+
+// Utilities
+.bg-gray-100 {
+  background-color: $gray-100;
+}
+
+// Layout
+.l-constrained-width-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+}
+
+.l-container--padded {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.l-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  & .btn {
+    margin: 0.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// Object
+.o-banner {
+  width: 100%;
+  position: fixed;
+  margin-left: -15px;
+  z-index: 32;
+  top: 4rem;
+  background: $gray-100;
+  text-align: center;
+
+  & p {
+    padding: 0.5rem;
+  }
+}
+
+.o-logo {
+  width: 80%;
+}
+
+.o-user-logo {
+  max-height: 7rem;
+}
+
+.o-user-logo-sm {
+  max-height: 5rem;
+}
+
+.o-heading {
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  text-align: center
+}
+
+.o-logo--constrained {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+}
+
+.o-features__feature {
+  display: inline-flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+  padding-left: 1rem; 
+  padding-right: 1rem;
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.o-feature__icon {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.o-lang-home__list {
   & h4 {
     margin-bottom: 0.75rem;
   }
@@ -155,8 +242,96 @@ body:not(.td-blog) .td-content:not(.list-page) {
   }
 }
 
-@media screen and (min-width: 992px) {
-  .td-content figure {
-    max-width: 80%;
+@include media-breakpoint-up(md) {
+  .o-user-logo {
+    max-height: 7rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .o-features__feature {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .o-logo {
+    width: 50%;
+  }
+
+  .o-feature__icon {
+    margin-right: 1rem;
+    max-width: 172px;
+  }
+}
+
+// Component
+.c-used-by {
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.c-features {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.c-used-by__users {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.c-used-by__user {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.c-testimonials {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.c-testimonials__testimonial {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  a {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .c-features {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .c-features {
+    flex-direction: row;
+  }
+
+  .c-used-by {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  .c-used-by__users {
+    flex-direction: row;
+    justify-content: between;
+  }
+
+  .c-used-by__user {
+    padding-bottom: 1.5rem;
   }
 }
