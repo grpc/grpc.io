@@ -36,6 +36,12 @@ sections site wide to the original site's background svg.
   display: none;
 }
 
+// This adds rounded corners to the search inputs, since a Docsy
+// flag affecting these and other elements has been disabled.
+.td-search-input {
+  border-radius: 1rem;
+}
+
 // DOCS
 
 // Extend the sidebar to the end of the visible page.
