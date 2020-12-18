@@ -1,7 +1,6 @@
 ---
 title: C++
 prog_lang_home: true
-notoc: true
 src_repo: https://github.com/grpc/grpc
 content:
   - learn_more:
@@ -14,3 +13,5 @@ content:
   - other:
     - "[grpc repo]($src_repo_url)"
 ---
+
+{{% docs/prog-lang-home-content %}}

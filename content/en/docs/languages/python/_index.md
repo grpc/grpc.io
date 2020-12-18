@@ -1,7 +1,6 @@
 ---
 title: Python
 prog_lang_home: true
-notoc: true
 src_repo: https://github.com/grpc/grpc
 content:
   - learn_more:
@@ -15,3 +14,5 @@ content:
     - "[grpc repo]($src_repo_url)"
     - "[Daily builds](daily-builds)"
 ---
+
+{{% docs/prog-lang-home-content %}}

@@ -1,7 +1,6 @@
 ---
 title: Go
 prog_lang_home: true
-notoc: true
 api_path: https://pkg.go.dev/google.golang.org/grpc
 content:
   - learn_more:
@@ -19,7 +18,9 @@ content:
 spelling: cSpell:ignore Isberner Klerk Malte youtube
 ---
 
-#### Developer stories and talks {#dev-stories}
+{{% docs/prog-lang-home-content %}}
+
+### Developer stories and talks {#dev-stories}
 
 - **[Stubbing gRPC in Go](https://jadekler.github.io/2020/10/08/stubbing-grpc.html)**,
   by [Jean de Klerk](https://github.com/jadekler), Google. October 8, 2020.

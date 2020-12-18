@@ -1,7 +1,6 @@
 ---
 title: Kotlin/JVM
 prog_lang_home: true
-notoc: true
 language: Kotlin
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 content:
@@ -16,7 +15,9 @@ content:
 spelling: cSpell:ignore Ferrer youtube
 ---
 
-#### Developer stories and talks {#dev-stories}
+{{% docs/prog-lang-home-content %}}
+
+### Developer stories and talks {#dev-stories}
 
 - **Next Level gRPC With Kotlin and Coroutines**
   <a class="icon" href="https://youtu.be/SfmdAA2kwWI"><i class="fab fa-youtube"></i></a>

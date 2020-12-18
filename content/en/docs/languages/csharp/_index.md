@@ -15,3 +15,5 @@ content:
     - "[grpc repo]($src_repo_url)"
     - "[Daily builds](daily-builds)"
 ---
+
+{{% docs/prog-lang-home-content %}}

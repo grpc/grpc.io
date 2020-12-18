@@ -1,7 +1,6 @@
 ---
 title: Dart
 prog_lang_home: true
-notoc: true
 api_path: https://pub.dev/documentation/grpc
 content:
   - learn_more:
@@ -12,3 +11,5 @@ content:
     - $src_repo_link
     - "[pub package](https://pub.dev/packages/grpc)"
 ---
+
+{{% docs/prog-lang-home-content %}}
