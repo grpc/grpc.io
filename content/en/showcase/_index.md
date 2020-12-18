@@ -10,13 +10,18 @@ spelling: cSpell:ignore youtube Kubernetes Nulab Protop
 {{< /blocks/cover >}}
 
 <div class="container l-container--padded">
+
 <div class="row">
-
 {{< page/toc collapsed=true placement="inline" >}}
+</div>
 
+<div class="row">
 <div class="col-12 col-lg-8">
 
+<div class="row">
+
 ## Customer success stories
+</div>
 
 Here are a few of the customers who [successfully adopted **gRPC**][use-of-grpc]
 and other [CNCF technologies](https://www.cncf.io/projects/) in the past year

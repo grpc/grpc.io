@@ -8,10 +8,12 @@ description: Who is using gRPC and why
 {{< /blocks/cover >}}
 
 <div class="container l-container--padded">
+
 <div class="row">
-
 {{< page/toc collapsed=true placement="inline" >}}
+</div>
 
+<div class="row">
 <div class="col-12 col-lg-8">
 
 gRPC is a modern open source high performance RPC framework that can run in any

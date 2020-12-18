@@ -7,10 +7,12 @@ title: Community
 {{< /blocks/cover >}}
 
 <div class="container l-container--padded">
+
 <div class="row">
-
 {{< page/toc collapsed=true placement="inline" >}}
+</div>
 
+<div class="row">
 <div class="col-12 col-lg-8">
 <div>
 
