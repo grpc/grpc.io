@@ -146,6 +146,9 @@ Other developer stories are provided next.
 {{< page/toc placement="sidebar" >}}
 
 </div>
+
+{{< page/page-meta-links >}}
+
 </div>
 
 [CNCF case studies]: https://www.cncf.io/case-studies/

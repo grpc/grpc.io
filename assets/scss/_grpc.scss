@@ -148,6 +148,7 @@ c - Component (Aware of its content/context...)
 .l-constrained-width-content {
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 1rem;
   max-width: 1140px;
 }
 
@@ -285,6 +286,22 @@ c - Component (Aware of its content/context...)
   justify-content: center;
 }
 
+.c-global-meta-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  .td-page-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0 !important;
+    text-align: center;
+
+    & a i {
+      display: none;
+    }
+  }
+}
+
 .c-used-by__users {
   display: flex;
   flex-direction: column;
@@ -333,6 +350,12 @@ c - Component (Aware of its content/context...)
     }
   }
 
+  .c-global-meta-links {
+    & .td-page-meta a i {
+      display: inline-block;
+    }
+  }
+
   .c-used-by__users {
     flex-direction: row;
     justify-content: between;
@@ -340,5 +363,17 @@ c - Component (Aware of its content/context...)
 
   .c-used-by__user {
     padding-bottom: 1.5rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .c-global-meta-links {
+    max-width: 80%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .c-global-meta-links {
+    display: none;
   }
 }

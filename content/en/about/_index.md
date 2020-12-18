@@ -70,4 +70,7 @@ See [Official support](/docs/#official-support).
 {{< page/toc placement="sidebar" >}}
 
 </div>
+
+{{< page/page-meta-links >}}
+
 </div>

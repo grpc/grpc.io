@@ -61,4 +61,7 @@ We hold a community video conference every other week. It's a way to discuss the
 {{< page/toc placement="sidebar" >}}
 
 </div>
+
+{{< page/page-meta-links >}}
+
 </div>
