@@ -10,12 +10,14 @@
       <div class="td-toc td-toc--inline">
   {{ end }}
       {{ if $collapsed }}
-        <a id="td-content__toc-link" class="collapsed" href="#toc-contents" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
+        <a id="td-content__toc-link" class="collapsed" href="#td-content__toc" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
           <span class="lead">Contents<i class="fas fa-chevron-right ml-2"></i></span>
         </a>
-        <div id="toc-contents" class="collapse">
+        <div id="td-content__toc" class="collapse">
           {{ . }}
         </div>
+        <button id="td-content__toc-link-expanded" href="#td-content__toc" class="btn btn-small ml-1 my-2 py-0 px-3" data-toggle="collapse" aria-controls="td-docs-toc" aria-expanded="true" aria-label="Toggle toc navigation">
+        </button>
       {{ else }}
         <h5 class="lead"><i class="fas fa-list mr-2"></i>Contents</h5>
         {{ partial "page-meta-links.html" $.Page }}
