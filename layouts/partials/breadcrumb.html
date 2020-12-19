@@ -1,10 +1,15 @@
 {{/* This file is in place as an override to Docsy */}}
 
+{{ if not .Parent.IsHome }}
 <nav aria-label="breadcrumb" class="d-print-none">
 	<ol class="breadcrumb spb-1">
 		{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
 	</ol>
 </nav	>
+{{ else }}
+<div class="l-no-breadcrumb"></div>
+{{ end }}
+
 {{ define "breadcrumbnav" }}
 {{ if .p1.Parent }}
 {{ if not .p1.Parent.IsHome }}
