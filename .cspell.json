@@ -9,6 +9,7 @@
         "CNCF",
         "deallocate",
         "deserialization",
+        "Disqus",
         "Dockerfiles",
         "Docsy",
         "favicons",
@@ -40,6 +41,7 @@
         "threadsafe",
         "unencrypted",
         "unmarshalling",
+        "URL's",
         "Xcode"
     ],
     "flagWords": [],

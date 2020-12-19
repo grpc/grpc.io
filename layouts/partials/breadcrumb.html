@@ -1,14 +1,14 @@
-{{/* This file is in place as an override to Docsy */}}
+{{/* This file is in place as an override to Docsy */ -}}
 
-{{ if not .Parent.IsHome }}
+{{ if not .Parent.IsHome -}}
 <nav aria-label="breadcrumb" class="d-print-none">
 	<ol class="breadcrumb spb-1">
 		{{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
 	</ol>
 </nav	>
-{{ else }}
+{{ else -}}
 <div class="l-no-breadcrumb"></div>
-{{ end }}
+{{ end -}}
 
 {{ define "breadcrumbnav" }}
 {{ if .p1.Parent }}
@@ -28,4 +28,4 @@
 		{{ end }}
 	</a>
 </li>
-{{ end }}
+{{ end -}}
