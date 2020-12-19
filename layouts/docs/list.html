@@ -1,6 +1,6 @@
 {{/* This file is in place as an override to Docsy */}}
 
-{{ define "main" }}
+{{ define "main" -}}
 	<div class="td-content list-page">
 		<h1>{{ .Title }}</h1>
 		{{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}

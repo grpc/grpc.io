@@ -1,48 +1,48 @@
-{{/* This file is in place as an override to Docsy */}}
+{{/* This file is in place as an override to Docsy */ -}}
 
-{{ $auth  := .Params.author }}
-{{ $auths := .Params.authors }}
+{{ $auth  := .Params.author -}}
+{{ $authors := .Params.authors -}}
 
 <div class="td-content">
 	<h1>{{ .Title }}</h1>
-	{{ with .Params.attribution }}
+	{{ with .Params.attribution -}}
 		<p>{{ . }}</p>
-	{{ end }}
+	{{ end -}}
 	{{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
 	<div class="td-byline mb-4">
-    {{ with $auth }}
-			{{ T "post_byline_by" }} 
-			{{ if .link }}
+    {{ with $auth -}}
+			{{ T "post_byline_by" }}
+			{{ if .link -}}
 				<a href="{{ .link }}"><b>{{ .name | markdownify }}</b></a>
-			{{ else }}
+			{{ else -}}
 				<b>{{ .name | markdownify }}</b>
-			{{ end }}
+			{{ end -}}
 			{{ with .position }} ({{ . | markdownify }}){{ end }} |
-			{{ with .blurb }}
+			{{ with .blurb -}}
 				<span> {{ . }}</span>
 				<br/>
-			{{ end }}
-			{{- with .guest -}}
+			{{ end -}}
+			{{ with .guest -}}
       <span class="badge badge-secondary font-weight-bold">
         <span class="icon"><i class="fas fa-sm fa-pen"></i></span>
         <span>Guest post</span>
 			</span>
 			<br/>
       {{ end -}}
-    {{ end }}
+    {{ end -}}
 
-    {{ with $auths }}
-      {{ T "post_byline_by" }} 
-			{{ range $idx, $auth := $auths }}
-				{{ if .link }}
+    {{ with $authors -}}
+      {{ T "post_byline_by" }}
+			{{ range $idx, $auth := $authors }}
+				{{ if .link -}}
 					<a href="{{ .link }}"><b>{{ .name | markdownify }}</b></a>
-				{{ else }}
+				{{ else -}}
 					<b>{{ .name | markdownify }}</b>
-				{{ end }}
-			{{ with .position }} ({{ . | markdownify }}){{ end }}{{ if not (eq (len $auths) (add $idx 1)) }}, {{ end }}
+				{{ end -}}
+			{{ with .position }} ({{ . | markdownify }}){{ end }}{{ if not (eq (len $authors) (add $idx 1)) }}, {{ end -}}
       {{ end }}
        |
-    {{ end }}
+    {{ end -}}
 
 		<time datetime="{{  $.Date.Format "2006-01-02" }}" class="text-muted">{{ $.Date.Format $.Site.Params.time_format_blog  }}</time>
 	</div>

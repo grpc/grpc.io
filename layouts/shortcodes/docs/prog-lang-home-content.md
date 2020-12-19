@@ -1,6 +1,6 @@
-{{ $lang := lower ($.Page.Params.language | default $.Page.Params.title) }}
-{{ $src_repo_url := $.Page.Params.src_repo | default (printf "https://github.com/grpc/grpc-%s" $lang) }}
-{{ $src_repo_link := printf "[grpc-%s repo](%s)" $lang $src_repo_url }}
+{{ $lang := lower ($.Page.Params.language | default $.Page.Params.title) -}}
+{{ $src_repo_url := $.Page.Params.src_repo | default (printf "https://github.com/grpc/grpc-%s" $lang) -}}
+{{ $src_repo_link := printf "[grpc-%s repo](%s)" $lang $src_repo_url -}}
 
 {{ with .Page.Params.content -}}
 <div class="row flex-col flex-md-row o-lang-home__list">
@@ -22,4 +22,4 @@
 {{ end }}
 {{ end }}
 </div>
-{{ end }}
+{{ end -}}
