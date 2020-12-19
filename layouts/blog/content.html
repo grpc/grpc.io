@@ -46,6 +46,9 @@
 
 		<time datetime="{{  $.Date.Format "2006-01-02" }}" class="text-muted">{{ $.Date.Format $.Site.Params.time_format_blog  }}</time>
 	</div>
+	<div class="d-xl-none td-toc td-toc--inline d-print-none">
+		{{ partial "docs/toc-inline.html" . }}
+	</div>
 	{{ .Content }}
 	{{ if (.Site.Params.DisqusShortname) }}
 		<br />
