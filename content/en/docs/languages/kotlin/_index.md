@@ -20,7 +20,7 @@ spelling: cSpell:ignore Ferrer youtube
 ### Developer stories and talks {#dev-stories}
 
 - **Next Level gRPC With Kotlin and Coroutines**
-  <a class="icon" href="https://youtu.be/SfmdAA2kwWI"><i class="fab fa-youtube"></i></a>
-  <a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/e6/grpc-session.pdf"><i class="fas fa-file"></i></a><br>
+  <a class="o-icon" href="https://youtu.be/SfmdAA2kwWI"><i class="fab fa-youtube"></i></a>
+  <a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/e6/grpc-session.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfc)
   by Marco Ferrer, OfferUp.

@@ -125,18 +125,18 @@ Other developer stories are provided next.
 - [**How GIPHY’s Public API Integrates with gRPC Services**](https://engineering.giphy.com/how-giphys-public-api-integrates-with-grpc-services/)<br>
   by Serhii Kushch. August 13, 2020.
 - **A Simplified Service Mesh With gRPC**
-  <a href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
+  <a class="o-icon" href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
   <a href="https://static.sched.com/hosted_files/grpcconf20/ae/A%20Simplified%20Service%20Mesh%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfZ)
   by Srini Polavarapu, Engineering Manager, Google
 - **Protop: A Package Manager for gRPC and Protocol Buffers**
-  <a href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
+  <a class="o-icon" href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
   <a href="https://static.sched.com/hosted_files/grpcconf20/6b/protop%20-%20a%20package%20manager%20for%20protobufs.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfo)
   by Jeffery Shivers, Toast, Inc
 - **Service Interoperability With gRPC: gRPC in Action**
-  <a href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i></a>
-  <a href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
+  <a class="o-icon" href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i></a>
+  <a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfl)
   by Varun Gupta & Tuhin Kanti Sharma, Salesforce.
 
