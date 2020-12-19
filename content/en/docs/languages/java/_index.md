@@ -28,14 +28,14 @@ content:
   by Nikos Katirtzis, Software Engineer, [Hotels.com][],
   <span title="2020-03-05">March 2020</span>.
 - Service Interoperability With gRPC: gRPC in Action
-  <a class="icon" href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i>
-  </a><a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="far fa-file"></i></a><br>
+  <a class="o-icon" href="https://youtu.be/MLS7TFHrn_c"><i class="fab fa-youtube"></i>
+  </a><a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/d3/Service%20Interoperability%20with%20gRPC.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfl)
   by Varun Gupta & Tuhin Kanti Sharma, Salesforce.
 - gRPC and Java Diamond Dependency Conflicts
-  <a class="icon" href="https://youtu.be/4M5fC9XrtKs">
+  <a class="o-icon" href="https://youtu.be/4M5fC9XrtKs">
     <i class="fab fa-youtube"></i>
-  </a><a class="icon" href="https://static.sched.com/hosted_files/grpcconf20/7a/gRPC%20and%20Java%20Diamond%20Dependency%20Conflicts.pdf"><i class="far fa-file"></i></a><br>
+  </a><a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/7a/gRPC%20and%20Java%20Diamond%20Dependency%20Conflicts.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfT)
   by Tomo Suzuki, Google.
 

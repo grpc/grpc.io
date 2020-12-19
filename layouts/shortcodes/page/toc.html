@@ -10,11 +10,11 @@
       <div class="td-toc td-toc--inline">
   {{ end }}
       {{ if $collapsed }}
-        <a id="td-content__toc-link" class="d-inline-flex collapsed" href="#toc--expand" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
+        <a id="td-content__toc-link" class="d-inline-flex collapsed" href="#toc-contents" data-toggle="collapse" aria-controls="td-page-toc" aria-expanded="false" aria-label="Toggle toc navigation">
             <h5 class="lead"><i class="fas fa-list mr-2"></i>Page Contents</h5>
             <span><i class="fas fa-chevron-up ml-2"></i></span>
         </a>
-        <div id="toc--expand" class="collapse">
+        <div id="toc-contents" class="collapse">
           {{ . }}
         </div>
       {{ else }}

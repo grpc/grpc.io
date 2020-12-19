@@ -23,5 +23,8 @@
 			{{ partial "disqus-comment.html" . }}
 		{{ end }}
 		<div class="text-muted mt-5 pt-3 border-top">{{ partial "page-meta-lastmod.html" . }}</div>
+		<div class="c-global-meta-links">
+			{{ partial "page-meta-links" .}}
+		</div>
 	</div>
 {{ end }}
