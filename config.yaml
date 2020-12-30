@@ -8,7 +8,7 @@ theme: ['docsy']
 
 enableGitInfo: true
 
-contentDir: 'content/en'
+contentDir: 'content'
 defaultContentLanguage: 'en'
 defaultContentLanguageInSubdir: false
 
@@ -125,56 +125,105 @@ outputFormats:
 outputs:
   home: [HTML, REDIRECTS, RSS]
 
-# Site menus
-
-menu:
-  main:
-    - name: About
-      url: /about/
-      weight: 1
-    - name: Docs
-      url: /docs/
-      identifier: docs
-      weight: 2
-    - name: Showcase
-      url: /showcase/
-      weight: 3
-    - name: Blog
-      url: /blog/
-      weight: 4
-    - name: Community
-      url: /community/
-      weight: 5
-    - name: Overview
-      url: /docs/
-      weight: 1
-      parent: docs
-    - name: What is gRPC?
-      url: /docs/what-is-grpc/
-      weight: 1
-      parent: docs
-    - name: Languages
-      url: /docs/languages/
-      weight: 2
-      parent: docs
-    - name: Platforms
-      url: /docs/platforms/
-      weight: 2
-      parent: docs
-    - name: Guides
-      url: /docs/guides/
-      identifier: guides
-      weight: 4
-      parent: docs
-    - name: FAQ
-      url: /faq/
-      weight: 7
-      parent: docs
-
 languages:
   en:
     title: gRPC
     description: A high-performance, open source universal RPC framework
     weight: 1
     languageName: 'English'
+    contentDir: 'content/en'
     languageDirection: 'ltr'
+    menu:
+      main:
+        - name: About
+          url: /about/
+          weight: 1
+        - name: Docs
+          url: /docs/
+          identifier: docs
+          weight: 2
+        - name: Showcase
+          url: /showcase/
+          weight: 3
+        - name: Blog
+          url: /blog/
+          weight: 4
+        - name: Community
+          url: /community/
+          weight: 5
+        - name: Overview
+          url: /docs/
+          weight: 1
+          parent: docs
+        - name: What is gRPC?
+          url: /docs/what-is-grpc/
+          weight: 1
+          parent: docs
+        - name: Languages
+          url: /docs/languages/
+          weight: 2
+          parent: docs
+        - name: Platforms
+          url: /docs/platforms/
+          weight: 2
+          parent: docs
+        - name: Guides
+          url: /docs/guides/
+          identifier: guides
+          weight: 4
+          parent: docs
+        - name: FAQ
+          url: /faq/
+          weight: 7
+          parent: docs
+  ko:
+    languageAlternatives: ['en']
+    title: gRPC
+    description: 고성능의 오픈 소스 범용 RPC 프레임워크
+    weight: 2
+    languageName: '한국어'
+    contentDir: 'content/ko'
+    languageDirection: 'ltr'
+    menu:
+      main:
+        - name: gRPC
+          url: /about/
+          weight: 1
+        - name: 문서
+          url: /docs/
+          identifier: docs
+          weight: 2
+        - name: 사례
+          url: /showcase/
+          weight: 3
+        - name: 블로그
+          url: /blog/
+          weight: 4
+        - name: 커뮤니티
+          url: /community/
+          weight: 5
+        - name: 개요
+          url: /docs/
+          weight: 1
+          parent: docs
+        - name: gRPC란?
+          url: /docs/what-is-grpc/
+          weight: 1
+          parent: docs
+        - name: 언어
+          url: /docs/languages/
+          weight: 2
+          parent: docs
+        - name: 플랫폼
+          url: /docs/platforms/
+          weight: 2
+          parent: docs
+        - name: 가이드
+          url: /docs/guides/
+          identifier: guides
+          weight: 4
+          parent: docs
+        - name: 자주 묻는 질문
+          url: /faq/
+          weight: 7
+          parent: docs
