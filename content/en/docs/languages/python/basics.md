@@ -153,13 +153,13 @@ example directory, running this command regenerates the appropriate file rather
 than creates a new one. The generated code files are called
 `route_guide_pb2.py` and `route_guide_pb2_grpc.py` and contain:
 
-- classes for the messages defined in route_guide.proto
-- classes for the service defined in route_guide.proto
-   - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
-   - `RouteGuideServicer`, which defines the interface for implementations
+- classes for the messages defined in route_guide_pb2.py
+- classes for the service defined in route_guide_pb2_grpc.py
+  - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
+  - `RouteGuideServicer`, which defines the interface for implementations
      of the RouteGuide service
-- a function for the service defined in route_guide.proto
-   - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
+- a function for the service defined in route_guide_pb2_grpc.py
+  - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
      a `grpc.Server`
 
 {{< alert title="Note" color="info" >}}
@@ -174,6 +174,7 @@ to [Creating the client](#client) (though you might find it interesting
 anyway!).
 
 Creating and running a `RouteGuide` server breaks down into two work items:
+
 - Implementing the servicer interface generated from our service definition with
   functions that perform the actual "work" of the service.
 - Running a gRPC server to listen for requests from clients and transmit
@@ -394,4 +395,3 @@ From a different terminal, run the client:
 ```sh
 $ python route_guide_client.py
 ```
-
