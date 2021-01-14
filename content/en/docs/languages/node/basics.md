@@ -155,7 +155,7 @@ To load a `.proto` file, simply `require` the gRPC proto loader library and use 
 
 ```js
 var PROTO_PATH = __dirname + '/../../../protos/route_guide.proto';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var protoLoader = require('@grpc/proto-loader');
 // Suggested options for similarity to existing grpc.load behavior
 var packageDefinition = protoLoader.loadSync(
@@ -336,8 +336,9 @@ function getServer() {
   return server;
 }
 var routeServer = getServer();
-routeServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
-routeServer.start();
+routeServer.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
+  routeServer.start();
+});
 ```
 
 As you can see, we build and start our server with the following steps:
