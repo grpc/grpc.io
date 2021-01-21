@@ -143,7 +143,8 @@ directories_ like this:
 ![Protobuf-search-paths dialog](/img/wireshark_protobuf_search_paths.png)
 
 By selecting the **Load all files** option for the app's protocol directory you
-enable preloading of message definitions from the `addressbook.proto` file.
+enable preloading of message definitions from the `addressbook.proto` and
+`person_search_service.proto` files.
 
 ### Loading a capture file
 
