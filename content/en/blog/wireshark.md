@@ -152,33 +152,43 @@ From the Wireshark [SampleCaptures page][], download the following sample gRPC
 capture file created by running the app and issuing a search request:
 [grpc_person_search_protobuf_with_image.pcapng][].
 
-Load this file in Wireshark by selecting **Open** from the **File** menu.
+Select **Open** from the **File** menu to load the capture file in Wireshark.
+Wireshark displays, in order, all of the network traffic from the capture file
+in the **Packet-list pane** at the top of the window.
+
+Select an entry from the packet-list pane and Wireshark will decode it and show
+its details in the lower pane like this:
+
+![Packet-list and packet-detail panes](/img/wireshark_after_file_load.png)
+
+Select an entry from the details pane to see the byte sequence corresponding to
+that entry:
+
+![Packet bytes](/img/wireshark_packet_bytes.png)
 
 ### Setting port traffic type
 
 The app's gRPC traffic was captured on port 50051. Before you can decode the
 port's messages, you need to register the port as carrying HTTP2 traffic; do
 this through the **Decode As** dialog, which you access from the **Analyze**
-menu:
+menu (or right-click on an entry from the packet-list pane):
 
 ![Decode-as dialog](/img/wireshark_decode_as_dialog.png)
 
+Look at the packet-list pane and you'll see that Wireshark is now decoding HTTP2
+and gRPC messages:
+
+![Packets are decoded as HTTP2 and gRPC messages](/img/wireshark_http2_grpc.png)
+
+
 ### Decoding the search request message
 
-<!--
-TODO: What are the steps that the user needs to follow before the user can see
-      the decoded message as shown in the screenshot?
--->
 Select the first gRPC message sent to port 50051, it corresponds to the sample's
 service request message. This is how Wireshark dissects the gRPC request:
 
-<!--
-TODO: I suggest reverting to the layout of the previous image, which didn't
-      show the bytes pane. Also collapsing the "Stream: DATA" would be a good idea.
--->
 ![Decoded search request](/img/wireshark_grpc_protobuf_search_request.png)
 
-By examining the HTTP2 message header `path` field, you'll notice the URL to the
+By examining the HTTP2 message header `path` field, you'll see the URL to the
 app's service (`/tutorial.PersonSearchService`), followed by the name of the
 invoked RPC (`Search`).
 
@@ -189,19 +199,12 @@ is for the names "Jason" and "Lily".
 
 ### Decoding the server-streamed response
 
-<!--
-TODO: What are the steps that the user needs to follow before the user can see
-      the decoded message as shown in the screenshot? Is the text given below correct?
-
-TODO: How many Person objects are returned as a response? It looks like two
-      from the screenshot, and the second is selected, right?
--->
 Since the `Search` RPC response is server-streaming, `Person` objects can be
 returned to the client one after another.
 
 The response port, which can differ for each RPC call, is 51035 in the sample
-capture file. Select the second `Person` returned in the response stream and
-Wireshark decodes it as follows:
+capture file. Select the second `Person` message returned in the response stream
+to see its details:
 
 ![Decoded search response](/img/wireshark_grpc_protobuf_search_response.png)
 
