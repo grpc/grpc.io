@@ -2,7 +2,7 @@
 draft: true
 spelling: cSpell:ignore addressbook Chalin Huang pcapng Qiangxiong subdissectors tcpdump Wireshark
 title: Analyzing gRPC messages using Wireshark
-date: 2021-01-20
+date: 2021-01-21
 authors:
 - name: Huang Qiangxiong
   link: https://github.com/huangqiangxiong
@@ -168,10 +168,13 @@ that entry:
 
 ### Setting port traffic type
 
-The app's gRPC traffic was captured on port 50051. Before you can decode the
-port's messages, you need to register the port as carrying HTTP2 traffic; do
-this through the **Decode As** dialog, which you access from the **Analyze**
-menu (or right-click on an entry from the packet-list pane):
+The app's server-side port is 50051. The client-side port, which is different
+for each RPC call, is 51035 in the sample capture file.
+
+You need to tell Wireshark that these ports are carrying HTTP2 traffic. Do this
+through the **Decode As** dialog, which you access from the **Analyze** menu (or
+right-click on an entry from the packet-list pane). You only need to register
+the server-side port:
 
 ![Decode-as dialog](/img/wireshark_decode_as_dialog.png)
 
@@ -202,8 +205,7 @@ is for the names "Jason" and "Lily".
 Since the `Search` RPC response is server-streaming, `Person` objects can be
 returned to the client one after another.
 
-The response port, which can differ for each RPC call, is 51035 in the sample
-capture file. Select the second `Person` message returned in the response stream
+Select the second `Person` message returned in the response stream
 to see its details:
 
 ![Decoded search response](/img/wireshark_grpc_protobuf_search_response.png)
