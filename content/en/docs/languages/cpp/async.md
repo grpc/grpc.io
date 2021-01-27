@@ -8,9 +8,9 @@ spelling: cSpell:ignore classgrpc Impl's
 This tutorial shows you how to write a simple server and client in C++ using
 gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with
 writing simple synchronous gRPC code, as described in [Basics
-tutorial](/docs/languages/android/basics/). The example used in this tutorial follows
+tutorial]({{< relref "basics" >}}). The example used in this tutorial follows
 from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/helloworld) used in the
-[quick start](../quickstart/). You'll find it along with installation
+[quick start]({{< relref "quickstart" >}}). You'll find it along with installation
 instructions in
 [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/helloworld).
 
