@@ -6,18 +6,15 @@ title: Contributing to gRPC
 {{< page/header >}}
 {{< /blocks/cover >}}
 
-<div class="container">
-<div class="row my-5">
+<div class="container l-container--padded">
 
-<div class="d-lg-none col-9">
-<div class="td-toc td-toc--inline">
-{{< page/toc collapsed=true >}}
-</div>
+<div class="row">
+{{< page/toc collapsed=true placement="inline" >}}
 </div>
 
-<div class="col-12 col-lg-9">
-
-<div class="mb-5">
+<div class="row">
+<div class="col-12 col-lg-8">
+<div class="mb-4">
 
 To contribute to gRPC documentation, please fork the [gRPC repository on GitHub](https://github.com/grpc/grpc.io) and start submitting pull requests.
 
@@ -32,7 +29,7 @@ We welcome contributions to any of our three core repositories:
 {{< button text="View guidelines" url="https://github.com/grpc/grpc/blob/master/CONTRIBUTING.md" >}}
 
 </div>
-<div class="mb-5">
+<div class="mb-4">
 
 ## Contribution guidelines for the gRPC Ecosystem
 
@@ -41,7 +38,7 @@ The [gRPC Ecosystem](https://github.com/grpc-ecosystem/) is a different organiza
 {{< button text="View guidelines" url="https://github.com/grpc/grpc-contrib/blob/master/CONTRIBUTING.md" >}}
 
 </div>
-<div class="mb-5">
+<div class="mb-4">
 
 ## Edit our site on GitHub
 
@@ -50,7 +47,7 @@ Click the below button to visit the repo for our site. You can then click the "F
 {{< button text="Browse this site's source code" url="https://github.com/grpc/grpc.io" >}}
 
 </div>
-<div class="mb-5">
+<div class="mb-4">
 
 ## Being a member of the gRPC organization on github
 
@@ -58,10 +55,11 @@ Being an organization member is not required for the vast majority of the contri
 
 </div>
 </div>
-<div class="d-none d-lg-block col-3">
-<div class="td-toc td-toc--inline ml-5">
-{{< page/toc >}}
+
+{{< page/toc placement="sidebar" >}}
+
 </div>
-</div>
-</div>
+
+{{< page/page-meta-links >}}
+
 </div>
