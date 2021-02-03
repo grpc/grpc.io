@@ -30,6 +30,7 @@
         "protoc",
         "pushback",
         "relref",
+        "repo's",
         "RPC's",
         "RPCs",
         "runtimes",
@@ -41,6 +42,7 @@
         "threadsafe",
         "unencrypted",
         "unmarshalling",
+        "unminified",
         "URL's",
         "Xcode"
     ],
