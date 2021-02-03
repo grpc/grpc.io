@@ -1,45 +1,124 @@
-# The gRPC website and documentation
+# gRPC website
 
-This repository houses the assets used to build and deploy the gRPC website, available at https://grpc.io. The site is built using the [Hugo](https://gohugo.io) static site generator. Check out the [Hugo quick start](https://gohugo.io/getting-started/quick-start/) for a quick intro.
+The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
 
-## Prerequisites
+## Build prerequisites
+
+### 1. Install the following tools
 
 - **[Hugo, extended version][hugo-install]**
 - **[nvm][]**, the Node Version Manager
 
-## Serving the site locally
+### 2. Clone this repo _and_ its submodules
 
-First install NPM packages:
+> IMPORTANT: This repo has **recursive git _submodules_**, which affects how you
+> clone it.
+
+The _simplest_ way to get a full copy of this repo is to clone the repo _and_
+its submodules _at the same time_ by running this command from a command shell /
+window:
+
+```console
+$ git clone --recurse-submodules https://github.com/grpc/grpc.io.git
+```
+### 3. Change directories
+
+From this point on you'll be working from the `grpc.io` directory:
+
+```console
+$ cd grpc.io
+```
+### 4. Did you get the submodules?
+
+Forgetting to clone the submodules is a common error.
+
+If you forgot the `--recurse-submodules` option when you ran the `clone` command
+given in step 2 above or, if you cloned the repo using another method, as
+described in [Cloning a repository][], then you'll need to fetch the repo's
+submodules.
+
+To (recursively) fetch the submodules, run the following command from the
+`grpc.io` directory:
+
+```console
+$ git submodule update --init --recursive --depth 1
+```
+
+> NOTE: Unsure if you've fetched the submodules? The Git command above is
+> idempotent, so you can safely (re-)run it -- if you already have the
+> submodules, it will have no effect.
+
+### 5. Run installation scripts
+
+Install NPM packages:
 
 ```console
 $ npm install
 ```
 
-To build and locally serve this site, you can use **any one** of the following
-commands:
+## Build the site
 
-- Build and serve using [Hugo][], via `make`:
+Run the following command to have Hugo generate the site files:
 
-  ```console
-  $ make serve
-  ```
+```console
+$ hugo
+```
 
-- Build and serve using [Netlify dev][], which allows you to exercise features
-  such as site redirects:
+The `public` folder contains the generated site.
 
-  ```console
-  $ npx netlify dev
-  ```
+## Serve the site locally
 
-## Publishing the site
+To locally serve this site, use **one** of the following commands.
 
-The gRPC website is _automatically_ published by [Netlify][]. Any time changes
-are committed to the default branch, the site is rebuilt and redeployed.
+> **Note**: Hugo serves pages from memory by default, so if you want to
+> (re-)generate the website files to disk, use the build command above.
 
-## Site content
+### a) Serve using [Hugo][] via `make`
 
-All of the [Markdown](https://www.markdownguide.org) content used to build the
-site's documentation, blog, etc. is in the [content](content) directory.
+```console
+$ make serve
+hugo server
+Start building sites …
+...
+Environment: "development"
+Serving pages from memory
+...
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+```
+
+This generates _unminified_ site pages. Other [Makefile](Makefile) targets
+include the following:
+
+- `serve-drafts` to also serve draft and future pages
+- `serve-production` to server files exactly as they'll appear in production
+
+### b) Serve using Netlify dev
+
+[Netlify dev][] uses Hugo under the hood to serve the site, but it also creates
+a proxy (at port 8888 by default), to handle [site redirects][]:
+
+```console
+$ npx netlify dev
+```
+
+If you also want to serve draft and future pages use this command:
+
+```console
+$ npx netlify dev -c "hugo serve -DFw"
+```
+
+## Site deploys and PR previews
+
+Commits to the `main` branch are _automatically_ published by [Netlify][]. You
+can see deploy logs and more from the [Netlify gRPC Team dashboard][], provided
+you have the necessary permissions.
+
+_PR previews_ are automatically built by [Netlify][] as well. By default, a PR
+preview is identical to a production build.
+
+If you want draft and future pages to also appear in a PR preview, then make
+sure that the word "draft" appears in the branch name used to create the PR.
 
 ## Checking links
 
@@ -55,8 +134,12 @@ internal links prefixed with `/grpc` do not work in your local environment
 (there are redirects applied by [Netlify](https://netlify.com)). Any errors
 returned from `/grpc` links are false negatives that you can ignore.
 
+[Cloning a repository]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+[grpc.io]: https://grpc.io
 [Hugo]: https://gohugo.io
 [hugo-install]: https://gohugo.io/getting-started/installing
 [Netlify]: https://netlify.com
 [Netlify dev]: https://www.netlify.com/products/dev
+[Netlify gRPC Team dashboard]: https://app.netlify.com/teams/grpc/overview
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[site redirects]: layouts/index.redirects
