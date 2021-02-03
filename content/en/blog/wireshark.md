@@ -1,8 +1,7 @@
 ---
-draft: true
 spelling: cSpell:ignore addressbook Chalin Huang pcapng Qiangxiong subdissectors tcpdump Wireshark
 title: Analyzing gRPC messages using Wireshark
-date: 2021-01-21
+date: 2021-02-03
 authors:
 - name: Huang Qiangxiong
   link: https://github.com/huangqiangxiong
@@ -42,19 +41,18 @@ This post focuses on the analysis of captured gRPC messages. To learn how to
 store network traffic in _capture files_, see [Capturing Live Network Data][]
 from the [Wireshark User’s Guide][].
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   Currently, Wireshark can only parse **plain text** gRPC messages. While
   [Wireshark supports TLS dissection][], it requires per-session secret keys. As
   of the time of writing, the only [Go gRPC][] supports the exporting such keys.
   To learn how to export keys using Go gRPC -- and other languages as support
   becomes available -- see [How to Export TLS Master keys of gRPC][].
 
-
   [Go gRPC]: /docs/languages/go
   [How to Export TLS Master keys of gRPC]: https://gitlab.com/wireshark/wireshark/-/wikis/How-to-Export-TLS-Master-keys-of-gRPC
   [languages]: /docs/languages
   [Wireshark supports TLS dissection]: https://gitlab.com/wireshark/wireshark/-/wikis/tls
-{{</alert>}}
+{{%/alert%}}
 
 ## Example
 
@@ -140,7 +138,7 @@ and the official Protobuf library directory is
 `d:/protos/protobuf-3.4.1/include`, then add these two paths as _source
 directories_ like this:
 
-![Protobuf-search-paths dialog](/img/wireshark_protobuf_search_paths.png)
+![Protobuf-search-paths dialog](/img/blog/wireshark/protobuf_search_paths.png)
 
 By selecting the **Load all files** option for the app's protocol directory you
 enable preloading of message definitions from the `addressbook.proto` and
@@ -159,12 +157,12 @@ in the **Packet-list pane** at the top of the window.
 Select an entry from the packet-list pane and Wireshark will decode it and show
 its details in the lower pane like this:
 
-![Packet-list and packet-detail panes](/img/wireshark_after_file_load.png)
+![Packet-list and packet-detail panes](/img/blog/wireshark/after_file_load.png)
 
 Select an entry from the details pane to see the byte sequence corresponding to
 that entry:
 
-![Packet bytes](/img/wireshark_packet_bytes.png)
+![Packet bytes](/img/blog/wireshark/packet_bytes.png)
 
 ### Setting port traffic type
 
@@ -176,12 +174,12 @@ through the **Decode As** dialog, which you access from the **Analyze** menu (or
 right-click on an entry from the packet-list pane). You only need to register
 the server-side port:
 
-![Decode-as dialog](/img/wireshark_decode_as_dialog.png)
+![Decode-as dialog](/img/blog/wireshark/decode_as_dialog.png)
 
 Look at the packet-list pane and you'll see that Wireshark is now decoding HTTP2
 and gRPC messages:
 
-![Packets are decoded as HTTP2 and gRPC messages](/img/wireshark_http2_grpc.png)
+![Packets are decoded as HTTP2 and gRPC messages](/img/blog/wireshark/http2_grpc.png)
 
 
 ### Decoding the search request message
@@ -189,7 +187,7 @@ and gRPC messages:
 Select the first gRPC message sent to port 50051, it corresponds to the sample's
 service request message. This is how Wireshark dissects the gRPC request:
 
-![Decoded search request](/img/wireshark_grpc_protobuf_search_request.png)
+![Decoded search request](/img/blog/wireshark/grpc_protobuf_search_request.png)
 
 By examining the HTTP2 message header `path` field, you'll see the URL to the
 app's service (`/tutorial.PersonSearchService`), followed by the name of the
@@ -208,7 +206,7 @@ returned to the client one after another.
 Select the second `Person` message returned in the response stream
 to see its details:
 
-![Decoded search response](/img/wireshark_grpc_protobuf_search_response.png)
+![Decoded search response](/img/blog/wireshark/grpc_protobuf_search_response.png)
 
 By registering subdissectors, you can have Wireshark further decode fields of
 type `byte` or `string`. For example, to learn how to register a PNG decoder for
