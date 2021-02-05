@@ -1,5 +1,3 @@
-HUGO_VERSION =  0.79.0
-
 DRAFT_ARGS = --buildDrafts --buildFuture
 BUILD_ARGS = --minify
 ifeq (draft, $(or $(findstring draft,$(HEAD)),$(findstring draft,$(BRANCH))))

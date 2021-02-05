@@ -6,8 +6,14 @@ The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
 
 ### 1. Install the following tools
 
-- **[Hugo, extended version][hugo-install]**
-- **[nvm][]**, the Node Version Manager
+- **[Hugo, extended edition][hugo-install]**; match the version specified in
+  [netlify.toml](netlify.toml)
+- **Node**, the latest [LTS release][]. Like Netlify, we use **[nvm][]**, the
+  Node Version, to install and manage Node versions:
+  ```console
+  $ nvm install --lts
+  $ nvm use --lts
+  ```
 
 ### 2. Clone this repo _and_ its submodules
 
@@ -138,6 +144,7 @@ returned from `/grpc` links are false negatives that you can ignore.
 [grpc.io]: https://grpc.io
 [Hugo]: https://gohugo.io
 [hugo-install]: https://gohugo.io/getting-started/installing
+[LTS release]: https://nodejs.org/en/about/releases/
 [Netlify]: https://netlify.com
 [Netlify dev]: https://www.netlify.com/products/dev
 [Netlify gRPC Team dashboard]: https://app.netlify.com/teams/grpc/overview
