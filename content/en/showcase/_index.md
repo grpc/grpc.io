@@ -3,6 +3,18 @@ title: Showcase
 description: Customer success stories, developers stories, and more
 url_use_grpc: https://www.cncf.io/case-studies/?_sft_lf-project=grpc
 spelling: cSpell:ignore youtube Kubernetes Nulab Protop
+customer_success_stories:
+  - title: >
+      [Salesforce](https://www.cncf.io/case-studies/salesforce/)
+    desc: How gRPC is enabling Salesforce’s unified interoperability strategy.
+  - title: >
+      [Mux](https://www.cncf.io/case-studies/mux/)
+    desc: How cloud native technology helps Mux simplify online video streaming.
+  - title: >
+      [Nulab](https://www.cncf.io/case-studies/nulab/)
+    desc: >
+      How the productivity software company Nulab boosted its own productivity
+      with microservices and Kubernetes.
 ---
 
 {{< blocks/cover height="sm" color="primary" >}}
@@ -18,65 +30,12 @@ spelling: cSpell:ignore youtube Kubernetes Nulab Protop
 <div class="row">
 <div class="col-12 col-lg-8">
 
-<div class="row">
-
 ## Customer success stories
-</div>
 
 Here are a few of the customers who [successfully adopted **gRPC**][use-of-grpc]
 and other [CNCF technologies](https://www.cncf.io/projects/) in the past year
 
-<div class="mt-5 row justify-content-center">
-
-<div class="col-9 col-lg-4 pb-4 pb-lg-0">
-<div class="h-100 card shadow">
-<div class="card-body">
-<h4>
-          <!-- <a href="https://www.cncf.io/case-studies/salesforce/">Salesforce</a> -->
-
-[Salesforce](https://www.cncf.io/case-studies/salesforce/)
-
-</h4>
-<p>
-How gRPC is enabling Salesforce’s unified interoperability strategy.
-</p>
-</div>
-</div>
-</div>
-
-<div class="col-9 col-lg-4 pb-4 pb-lg-0">
-<div class="h-100 card shadow" href="#">
-<div class="card-body">
-<h4>
-          <!-- <a href="https://www.cncf.io/case-studies/mux/">Mux</a> -->
-
-[Mux](https://www.cncf.io/case-studies/mux/)
-
-</h4>
-<p>
-How cloud native technology helps Mux simplify online video streaming.
-</p>
-</div>
-</div>
-</div>
-
-<div class="col-9 col-lg-4 pb-4 pb-lg-0">
-<div class="h-100 card shadow">
-<div class="card-body">
-<h4>
-          <!-- <a href="https://www.cncf.io/case-studies/nulab/">Nulab</a> -->
-
-[Nulab](https://www.cncf.io/case-studies/nulab/)
-
-</h4>
-<p>
-How the productivity software company Nulab boosted its own productivity with microservices and Kubernetes.
-</p>
-</div>
-</div>
-</div>
-
-</div>
+{{% cards "customer_success_stories" %}}
 
 <div class="text-center my-5">
 <a class="btn btn-secondary"
