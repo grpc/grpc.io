@@ -1,4 +1,4 @@
-/* 
+/*
 NOTE: Alterations to Docsy typically use a "td" namespace,
 styles which utilize this should be commented to make it clear
 what the workaround is for
@@ -125,7 +125,7 @@ body:not(.td-blog) .td-content:not(.list-page) {
   margin-right: 0.25rem;
 }
 
-// Fix to give rendered images width to match Docsy 
+// Fix to give rendered images width to match Docsy
 @include media-breakpoint-up(lg) {
   .td-content figure {
     max-width: 80%;
@@ -177,6 +177,25 @@ c - Component (Aware of its content/context...)
   h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
+  }
+}
+
+.l-dev-story-buttons {
+  @extend .l-buttons;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      a {
+        @extend .btn;
+        @extend .btn-secondary;
+        margin: 0.25rem;
+      }
+    }
   }
 }
 
@@ -233,7 +252,7 @@ c - Component (Aware of its content/context...)
   flex-direction: column;
 
   margin-bottom: 1.5rem;
-  padding-left: 1rem; 
+  padding-left: 1rem;
   padding-right: 1rem;
 
   h3 {
