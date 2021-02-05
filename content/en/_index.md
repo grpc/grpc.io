@@ -14,13 +14,15 @@
 Learn more
 </a>
 <h3>Get started!</h3>
-<div class="l-buttons">
-<a class="btn btn-lg btn-primary" href="/docs/languages/go/quickstart/">Go</a>
-<a class="btn btn-lg btn-primary" href="/docs/languages/cpp/quickstart/">C++</a>
-<a class="btn btn-lg btn-primary" href="/docs/languages/java/quickstart/">Java</a>
-<a class="btn btn-lg btn-primary" href="/docs/languages/python/quickstart/">Python</a>
-<a class="btn btn-lg btn-primary" href="/docs/languages/csharp/quickstart/">C#</a>
-<a class="btn btn-lg btn-primary" href="/docs/languages/">…</a>
+<div class="l-get-started-buttons">
+
+- [Go]({{< relref "/docs/languages/go/quickstart" >}})
+- [C++]({{< relref "/docs/languages/cpp/quickstart" >}})
+- [Java]({{< relref "/docs/languages/java/quickstart" >}})
+- [Python]({{< relref "/docs/languages/python/quickstart" >}})
+- [C#]({{< relref "/docs/languages/csharp/quickstart" >}})
+- [<i class="fas fa-ellipsis-h"></i>]({{< relref "languages" >}})
+</div>
 {{< /blocks/cover >}}
 
 <div class="l-constrained-width-content">
