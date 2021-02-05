@@ -55,25 +55,14 @@ Developer stories cover a variety of technical subjects related to gRPC. You can
 find developer stories for your [preferred language](/docs/languages/) on each
 **language-specific landing page**.
 
-<div class="l-buttons">
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/go/#dev-stories">
-    Go
-  </a>
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/cpp/#dev-stories">
-    C++
-  </a>
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/java/#dev-stories">
-    Java
-  </a>
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/python/#dev-stories">
-    Python
-  </a>
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/csharp/#dev-stories">
-    C#
-  </a>
-  <a class="btn btn-light btn-lg font-weight-light" href="/docs/languages/">
-    <i class="fas fa-ellipsis-h"></i>
-  </a>
+<div class="l-dev-story-buttons">
+
+  [Go]({{< relref "go#dev-stories" >}})
+  [C++]({{< relref "cpp#dev-stories" >}})
+  [Java]({{< relref "/docs/languages/java#dev-stories" >}})
+  [Python]({{< relref "csharp#dev-stories" >}})
+  [C#]({{< relref "python#dev-stories" >}})
+  [<i class="fas fa-ellipsis-h"></i>]({{< relref "languages" >}})
 </div>
 
 Other developer stories are provided next.
