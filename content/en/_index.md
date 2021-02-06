@@ -13,7 +13,7 @@
 >
 Learn more
 </a>
-<h3>Get started!</h3>
+<h3 class="mt-2">Get started!</h3>
 <div class="l-get-started-buttons">
 
 - [Go]({{< relref "/docs/languages/go/quickstart" >}})
