@@ -55,7 +55,7 @@ Developer stories cover a variety of technical subjects related to gRPC. You can
 find developer stories for your [preferred language](/docs/languages/) on each
 **language-specific landing page**.
 
-<div class="l-dev-story-buttons">
+<div class="l-dev-story-buttons text-center">
 
 - [Go]({{< relref "go#dev-stories" >}})
 - [C++]({{< relref "cpp#dev-stories" >}})
