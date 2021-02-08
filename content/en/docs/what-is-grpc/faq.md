@@ -85,7 +85,7 @@ Yes. gRPC is designed to be extensible to support multiple content types. The in
 
 ### Can I use gRPC in a service mesh?
 
-Yes. gRPC applications can be deployed in a service mesh like any other application. gRPC supports [xDS APIs](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol) which enables deploying gRPC applications in a service mesh without sidecar proxies. The proxyless service mesh features supported in gRPC are listed [here](https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md). 
+Yes. gRPC applications can be deployed in a service mesh like any other application. gRPC also supports [xDS APIs](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol) which enables deploying gRPC applications in a service mesh without sidecar proxies. The proxyless service mesh features supported in gRPC are listed [here](https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md). 
 
 ### How does gRPC help in mobile application development?
 
