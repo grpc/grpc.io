@@ -59,6 +59,10 @@ The gRPC project has an RFC process, through which new features are designed and
 
 The gRPC project does not do LTS releases. Given the rolling release model above, we support the current, latest release and the release prior to that. Support here means bug fixes and security fixes.
 
+### What is the gRPC versioning policy?
+
+See the gRPC versioning policy [here](https://github.com/grpc/grpc/blob/master/doc/versioning.md).
+
 ### What is the latest gRPC Version?
 
 The latest release tag is {{< param grpc_vers.core >}}.
@@ -67,6 +71,10 @@ The latest release tag is {{< param grpc_vers.core >}}.
 
 The gRPC project works in a model where the tip of the master branch is stable at all times. The project (across the various runtimes) targets to ship checkpoint releases every 6 weeks on a best effort basis. See the release schedule [here](https://github.com/grpc/grpc/blob/master/doc/grpc_release_schedule.md).
 
+### How can I report a security vulnerability in gRPC?
+
+To report a security vulnerability in gRPC, please follow the process documented [here](https://github.com/grpc/proposal/blob/master/P4-grpc-cve-process.md).
+
 ### Can I use it in the browser?
 
 The [gRPC-Web](https://github.com/grpc/grpc-web) project is Generally Available.
@@ -74,6 +82,10 @@ The [gRPC-Web](https://github.com/grpc/grpc-web) project is Generally Available.
 ### Can I use gRPC with my favorite data format (JSON, Protobuf, Thrift, XML) ?
 
 Yes. gRPC is designed to be extensible to support multiple content types. The initial release contains support for Protobuf and with external support for other content types such as FlatBuffers and Thrift, at varying levels of maturity.
+
+### Can I use gRPC in a service mesh?
+
+Yes. gRPC applications can be deployed in a service mesh like any other application. gRPC also supports [xDS APIs](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol) which enables deploying gRPC applications in a service mesh without sidecar proxies. The proxyless service mesh features supported in gRPC are listed [here](https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md). 
 
 ### How does gRPC help in mobile application development?
 
