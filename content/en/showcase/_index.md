@@ -37,7 +37,7 @@ and other [CNCF technologies](https://www.cncf.io/projects/) in the past year
 
 {{% cards "customer_success_stories" %}}
 
-<div class="text-center my-5">
+<div class="text-center my-4">
 <a class="btn btn-secondary"
     href="{{< param url_use_grpc >}}"
     target="_blank"

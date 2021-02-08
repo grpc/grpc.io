@@ -8,8 +8,9 @@
 
 */ -}}
 {{ $card_info := index .Page.Params (.Get 0) -}}
+{{ $styling := (.Get 1) | default "mt-4 mb-4" -}}
 
-<div class="mt-5 row justify-content-center">
+<div class="row justify-content-center {{ $styling }}">
 
 {{ range $card_info -}}
 <div class="col-9 col-lg-4 pb-4 pb-lg-0">
@@ -19,11 +20,11 @@
 <div class="h4 card-title">
 
   {{/* The blank line above ensures the following is processed as markdown */}}
-  {{ .title }}
+  {{ .title | safeHTML }}
 </div>
 
 {{/* The blank line above ensures the following is processed as markdown */}}
-{{ .desc }}
+{{ .desc | safeHTML }}
 
 </div>
 </div>
