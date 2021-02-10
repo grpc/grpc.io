@@ -47,10 +47,10 @@ The `StreamInterceptor` interface declaration is similar, except that the
 `invoker` return type is `ClientReadableStream` instead of `Promise`. For
 implementation details, see [interceptor.js][].
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   A `StreamInterceptor` can be applied to any RPC with a `ClientReadableStream`
   return type, whether it's a unary or a server-streaming RPC.
-{{< /alert >}}
+{{% /alert %}}
 
 ## What can I do with an interceptor?
 
@@ -182,12 +182,11 @@ const client = new MyServiceClient(
     host, creds, {'streamInterceptors': [interceptor1, interceptor2, interceptor3]});
 ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   Interceptors are executed in reverse order for request processing, and in
   order for response processing, as illustrated here:
-
   ![Interceptor processing order](/img/grpc-web-interceptors.png)
-{{< /alert >}}
+{{% /alert %}}
 
 ## Feedback
 

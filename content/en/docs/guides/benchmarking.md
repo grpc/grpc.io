@@ -19,13 +19,13 @@ visualization.
   * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
   * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   Are you seeing "**no data available**" messages in the performance dashboard?
   This is a known issue, see [grpc/grpc#23297][].
 
   [grpc/grpc#23297]: https://github.com/grpc/grpc/issues/23297
 
-{{< /alert >}}
+{{% /alert %}}
 
 ### Performance testing design
 

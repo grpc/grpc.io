@@ -74,9 +74,9 @@ or specific version
 sudo pecl install grpc-1.7.0
 ```
 
-{{< alert title="Warning" color="warning" >}}
+{{% alert title="Warning" color="warning" %}}
 This step unfortunately won’t work on CentOS/RHEL 6. Please follow the instructions below to compile the PECL extension from source.
-{{< /alert >}}
+{{% /alert %}}
 
 ##### Install on Windows
 

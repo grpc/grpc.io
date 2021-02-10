@@ -52,10 +52,10 @@ From the `examples` directory:
 
 Congratulations! You've just run a client-server application with gRPC.
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   We've omitted timestamps from the client and server trace output shown in this
   page.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Update the gRPC service
 

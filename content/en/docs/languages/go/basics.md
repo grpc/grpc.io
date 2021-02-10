@@ -600,10 +600,10 @@ Got message Third message at point(0, 3)
 Got message Sixth message at point(0, 3)
 ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   We've omitted timestamps from the client and server trace output shown in this
   page.
-{{< /alert >}}
+{{% /alert %}}
 
 [download]: https://github.com/grpc/grpc-go/archive/{{< param grpc_vers.go >}}.zip
 [grpc-go]: https://github.com/grpc/grpc-go

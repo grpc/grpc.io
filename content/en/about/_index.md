@@ -60,12 +60,12 @@ Google to power use cases from microservices to the "last mile" of computing
 For more background on why we created gRPC, see the [gRPC Motivation and Design
 Principles](/blog/principles/) on the [gRPC blog](/blog/).
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
 <a name="officially-supported-languages-and-platforms"></a>
 
 Our table of **officially supported languages and platforms** has moved!
-See [Official support](/docs/#official-support).
-{{< /alert >}}
+See [Official support]({{<relref "docs#official-support">}}).
+{{% /alert %}}
 
 </div>
 

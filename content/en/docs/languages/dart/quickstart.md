@@ -31,9 +31,9 @@ spelling: cSpell:ignore Iprotos
       $ export PATH="$PATH:$HOME/.pub-cache/bin"
       ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   Dart gRPC supports the Flutter and Server platforms.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Get the example code
 

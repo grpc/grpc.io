@@ -357,9 +357,9 @@ address and port we want to connect to - in our case we'll use no SSL:
 grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
 In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`.
-{{< /alert >}}
+{{% /alert %}}
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 

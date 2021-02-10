@@ -188,9 +188,9 @@ complete before a client has sent all its requests.
 Either the client or the server can cancel an RPC at any time. A cancellation
 terminates the RPC immediately so that no further work is done.
 
-{{< alert title="Warning" color="warning" >}}
+{{% alert title="Warning" color="warning" %}}
   Changes made before a cancellation are not rolled back.
-{{< /alert >}}
+{{% /alert %}}
 
 #### Metadata
 

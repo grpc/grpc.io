@@ -376,9 +376,9 @@ Run the server:
 $ bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
 ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
 The `route_guide_db.json` file is actually language-agnostic, it happens to be located in the `python` folder.
-{{< /alert >}}
+{{% /alert %}}
 
 From a different terminal, run the client:
 

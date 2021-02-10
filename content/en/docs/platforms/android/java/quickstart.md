@@ -24,11 +24,11 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   gRPC Java does not support running a server on an Android device. For this
   quick start, the Android client app will connect to a server running on your
   local (non-Android) computer.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Get the example code
 
@@ -83,10 +83,10 @@ The example code is part of the [grpc-java][] repo.
 
 Congratulations! You've just run a client-server application with gRPC.
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   We've omitted timestamps from the client and server trace output shown in this
   page.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Update the gRPC service
 

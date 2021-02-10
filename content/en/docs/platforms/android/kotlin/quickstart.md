@@ -25,11 +25,11 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   gRPC Kotlin does not support running a server on an Android device. For this
   quick start, the Android client app will connect to a server running on your
   local (non-Android) computer.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Get the example code
 
