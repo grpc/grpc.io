@@ -162,9 +162,9 @@ than creates a new one. The generated code files are called
    - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
      a `grpc.Server`
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
 The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a .proto file.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Creating the server {#server}
 

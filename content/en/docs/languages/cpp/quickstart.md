@@ -141,11 +141,11 @@ the steps of the previous section.
     $ make -j
     ```
 
-    {{< alert title="Note" color="info" >}}
+    {{% alert title="Note" color="info" %}}
   **Getting build failures?** Most issues, at this point, are a result of a
   faulty installation. Ensure that the have the right versions of `cmake`, and
   carefully recheck your installation.
-    {{< /alert >}}
+    {{% /alert %}}
 
 ### Try it!
 
@@ -341,14 +341,14 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
     Greeter received: Hello again world
     ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   Interested in an **asynchronous** version of the client and server?
   You'll find the `greeter_async_{client,server}.cc` files in the
   [example's source directory][src].
 
   [src]: https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld
 
-{{< /alert >}}
+{{% /alert %}}
 
 ### What's next
 

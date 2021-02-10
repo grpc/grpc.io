@@ -4,12 +4,12 @@ description: This guide gets you started with gRPC in C# with a simple working e
 weight: 10
 ---
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
   This page uses the [gRPC C# core-library][core-library] implementation. For
   documentation covering gRPC for .NET, see [gRPC for .NET](../dotnet/).
 
   [core-library]: https://github.com/grpc/grpc/tree/master/src/csharp
-{{< /alert >}}
+{{% /alert %}}
 
 ### Prerequisites
 
@@ -55,10 +55,10 @@ From the `examples/csharp/Helloworld` directory:
 > dotnet build Greeter.sln
 ```
 
-{{< alert title="Note" color="info" >}}
+{{% alert title="Note" color="info" %}}
 If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
 [Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Run a gRPC application
 

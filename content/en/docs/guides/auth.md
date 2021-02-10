@@ -44,11 +44,11 @@ The following authentication mechanisms are built-in to gRPC:
   most gRPC language implementations will not let you send credentials on an
   unencrypted channel.
 
-{{< alert title="Warning" color="warning" >}}
+{{% alert title="Warning" color="warning" %}}
   Google credentials should only be used to connect to Google services. Sending
   a Google issued OAuth2 token to a non-Google service could result in this
   token being stolen and used to impersonate the client to Google services.
-{{< /alert >}}
+{{% /alert %}}
 
 ### Authentication API
 
