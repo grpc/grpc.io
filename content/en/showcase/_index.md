@@ -60,8 +60,8 @@ find developer stories for your [preferred language](/docs/languages/) on each
 - [Go]({{< relref "go#dev-stories" >}})
 - [C++]({{< relref "cpp#dev-stories" >}})
 - [Java]({{< relref "/docs/languages/java#dev-stories" >}})
-- [Python]({{< relref "csharp#dev-stories" >}})
-- [C#]({{< relref "python#dev-stories" >}})
+- [Python]({{< relref "python#dev-stories" >}})
+- [C#]({{< relref "csharp#dev-stories" >}})
 - [<i class="fas fa-ellipsis-h"></i>]({{< relref "languages" >}})
 </div>
 
