@@ -1,6 +1,6 @@
 ---
 title: Community
-spelling: cSpell:ignore grpcio grpcmeetings subreddit
+spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
       <a href="https://twitter.com/grpcio" target="_blank" rel="noopener"><i class="fab
@@ -37,11 +37,25 @@ other_channels:
       discussions related to gRPC.
 meetup:
   - title: >
-      <a href="https://www.reddit.com/r/grpc/"
+      <a href="https://www.meetup.com/gRPCio/"
         target="_blank" rel="noopener"><i class="fab
         fa-meetup"></i>&nbsp;Meetup</a>
     desc: >
-      Join us [online][gRPCio] for project updates, live demos and more.
+      Join us [online][gRPCio] for project updates, live demos, and more.
+  - title: >
+      <a href="https://bit.ly/grpcmeetings"
+        target="_blank" rel="noopener"><i class="fas
+        fa-file-alt"></i>&nbsp;Meeting doc</a>
+    desc: >
+      Consult the [gRPC Community Meeting Working Doc][meeting-doc] for meeting
+      details.
+  - title: >
+      <a href="https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg"
+        target="_blank" rel="noopener"><i class="fab
+        fa-youtube"></i>&nbsp;YouTube</a>
+    desc: >
+      Missed a meeting? No problem. Visit the [gRPC channel][grpc-youtube] for
+      meeting videos.
 ---
 
 <style>
@@ -69,7 +83,7 @@ and building valuable integrations of gRPC with other software systems.
   The gRPC community values respect and inclusiveness. We enforce our [Code of
   Conduct][] in all interactions.
 
-  [Code of Conduct]: https://github.com/grpc/grpc.io/blob/main/CODE-OF-CONDUCT.md
+  [Code of Conduct]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
 {{% /alert %}}
 
 
@@ -96,9 +110,6 @@ Get fresh news, and come talk with gRPC developers and other community members
 at one of our regular online community meetings.
 
 {{% cards "meetup" %}}
-
-For meeting information and notes, see [gRPC Community Meeting Working
-Doc][grpcmeetings] ([bit.ly/grpcmeetings][grpcmeetings]).
 
 ## Contribute
 
@@ -135,8 +146,9 @@ Ecosystem Project Request][].
 [grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
 [gRPCio]: https://www.meetup.com/gRPCio/
-[grpcmeetings]: https://bit.ly/grpcmeetings
+[meeting-doc]: https://bit.ly/grpcmeetings
 [language]: {{< relref "languages" >}}
 [mailing list]: https://groups.google.com/forum/#!forum/grpc-io
 [platform]: {{< relref "platforms" >}}
 [protoc-tag]: https://stackoverflow.com/questions/tagged/protoc
+[grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
