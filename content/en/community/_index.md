@@ -35,7 +35,7 @@ other_channels:
     desc: >
       Consult the [`r/grpc`](https://www.reddit.com/r/grpc/) subreddit for
       discussions related to gRPC.
-meetup:
+community_resources:
   - title: >
       <a href="https://www.meetup.com/gRPCio/"
         target="_blank" rel="noopener"><i class="fab
@@ -57,11 +57,6 @@ meetup:
       Missed a meeting? No problem. Visit the [gRPC channel][grpc-youtube] for
       meeting videos.
 ---
-
-<style>
-h2 { padding: 1rem 0 !important; }
-h3 { padding: 0.5rem 0 !important; }
-</style>
 
 {{< blocks/cover color="primary" height="sm" >}}
 {{< page/header >}}
@@ -86,8 +81,6 @@ and building valuable integrations of gRPC with other software systems.
   [Code of Conduct]: https://github.com/cncf/foundation/blob/master/code-of-conduct.md
 {{% /alert %}}
 
-
-
 ## Stay informed
 
 Be the first to know! Follow these active channels for the gRPC announcements:
@@ -109,7 +102,7 @@ exchange with developers and find answers to your gRPC questions:
 Get fresh news, and come talk with gRPC developers and other community members
 at one of our regular online community meetings.
 
-{{% cards "meetup" %}}
+{{% cards "community_resources" %}}
 
 ## Contribute
 
@@ -145,10 +138,10 @@ Ecosystem Project Request][].
 [grpc-ecosystem-how-to]: https://github.com/grpc/grpc-community/blob/master/grpc_ecosystem.md
 [grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
+[grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
 [gRPCio]: https://www.meetup.com/gRPCio/
-[meeting-doc]: https://bit.ly/grpcmeetings
 [language]: {{< relref "languages" >}}
 [mailing list]: https://groups.google.com/forum/#!forum/grpc-io
+[meeting-doc]: https://bit.ly/grpcmeetings
 [platform]: {{< relref "platforms" >}}
 [protoc-tag]: https://stackoverflow.com/questions/tagged/protoc
-[grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg

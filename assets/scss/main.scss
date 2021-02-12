@@ -1,4 +1,4 @@
-// Import any new stylesheets here
+// This file is in place as an override to Docsy
 
 @import "support/functions";
 @import "variables";
@@ -51,10 +51,7 @@ footer {
     visibility: hidden;
   }
 
-  h2[id]:before,
-  h3[id]:before,
-  h4[id]:before,
-  h5[id]:before {
+  h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before {
     display: block;
     content: " ";
     margin-top: -5rem;
