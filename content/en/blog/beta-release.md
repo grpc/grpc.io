@@ -3,7 +3,6 @@ title: gRPC releases Beta, opening door for use in production environments
 date: 2015-10-26
 author:
   name: Mugur Marculescu
-aliases: ["blog/beta_release"]
 ---
 
 The gRPC team is excited to announce the immediate availability of gRPC Beta. This release marks an important point in API stability and going forward most API changes are expected to be additive in nature. This milestone opens the door for gRPC use in production environments.

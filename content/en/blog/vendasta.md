@@ -7,7 +7,6 @@ author:
   guest: true
   blurb: Originally written by Dale Hopkins with additional content by Lisa Carey and others at Google
 thumbnail: /img/vend-icon.png?raw=true
-aliases: ["blog/vendastagrpc"]
 ---
 
 
