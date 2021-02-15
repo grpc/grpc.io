@@ -7,6 +7,7 @@ pygmentsCodeFences: true
 theme: ['docsy']
 
 enableGitInfo: true
+enableRobotsTXT: true
 
 contentDir: 'content/en'
 defaultContentLanguage: 'en'
