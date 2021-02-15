@@ -128,7 +128,7 @@ goals<sup id="a22">[22](#f22)</sup>, including:
 - In-process proxies for Node, Python, Java and more
 - Integration with popular frameworks (React, Angular, Vue)
 - Fetch API transport for memory efficient streaming
-- Bi-directional steaming support
+- Bi-directional streaming support
 
 Google is looking for feedback on what features are important to the community,
 so if you think any of these are particularly valuable to you, then please fill
