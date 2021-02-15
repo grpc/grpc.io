@@ -7,7 +7,6 @@ author:
   link: https://cloud.google.com
   blurb: Originally written by Varun Talwar with additional content by Kailash Sethuraman and others at Google.
 thumbnail: ../img/gcp-icon.png?raw=true
-aliases: ["blog/gablogpost"]
 ---
 
 Today, the gRPC project has reached a significant milestone with its [1.0 release](https://github.com/grpc/grpc/releases).

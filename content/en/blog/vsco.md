@@ -9,10 +9,9 @@ authors:
 blurb: |
   Thanks to the VSCO engineers that worked on this migration: Steven Tang, Sam Bobra, Daniel Song, Lucas Kacher, and many others.
 thumbnail: ../img/vsco-logo.png?raw=true
-aliases: ["blog/vscogrpc"]
 ---
 
-Our guest post today comes from Robert Sayre and Melinda Lu of VSCO. 
+Our guest post today comes from Robert Sayre and Melinda Lu of VSCO.
 
 Founded in 2011, [VSCO](https://vsco.co) is a community for expression—empowering people to create, discover and connect through images and words. VSCO is in the process of migrating their stack to gRPC.
 
@@ -30,12 +29,12 @@ As a first step in bringing gRPC to our mobile clients, we’ve shipped telemetr
 
 One slight roadblock we ran into was the need for our clients to maintain compatibility with our JSON implementation as we ramp up, and for integration with vendor SDKs. This required a little bit of key-value coding on iOS, but it got more difficult on Android. We ended up having to write a protobuf compiler plugin to get the reflection features we needed while maintaining adequate performance. Drawing from that experience, we’ve made a concise [example protoc plugin](https://github.com/vsco/protoc-demo) built with [Bazel](https://bazel.io/) available on GitHub.
 
-As more and more of our data becomes available in protocol buffer form, we plan to build upon this unified schema to expand our machine-learning and analytics systems. For example, we write our Kafka database replication streams to Amazon S3 as [Apache Parquet](https://parquet.apache.org/), an efficient columnar disk-storage format. Parquet has low-level support for protocol buffers, so we can use our existing data definitions to write optimized tables and do partial deserializations where desired. 
+As more and more of our data becomes available in protocol buffer form, we plan to build upon this unified schema to expand our machine-learning and analytics systems. For example, we write our Kafka database replication streams to Amazon S3 as [Apache Parquet](https://parquet.apache.org/), an efficient columnar disk-storage format. Parquet has low-level support for protocol buffers, so we can use our existing data definitions to write optimized tables and do partial deserializations where desired.
 
 From S3, we run computations on our data using Apache Spark, which can use our protocol buffer definitions to define types. We’re also building new machine-learning applications with [TensorFlow](https://www.tensorflow.org/). It uses protocol buffers natively and allows us to serve our models as gRPC services with [TensorFlow Serving](https://tensorflow.github.io/serving/).
 
 So far, we’ve had good luck with gRPC and Protocol Buffers. They don’t eliminate every integration headache. However it’s easy to see how they help our engineers avoid writing a lot of boilerplate RPC code, while side-stepping the endless data-quality papercuts that come with looser serialization formats.
 
- 
+
 
 

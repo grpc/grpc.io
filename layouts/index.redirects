@@ -100,6 +100,7 @@
 /2018/01/22/grpc-go-engineering-practices*  /blog/grpc-go-engineering-practices
 /blog/2017-08-22-grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
 /blog/a_short_introduction_to_channelz*  /blog/a-short-introduction-to-channelz
+/blog/beta_release*  /blog/beta-release
 /blog/bazel_rules_protobuf*  /blog/bazel-rules-protobuf
 /blog/flatbuffers    /blog/grpc-flatbuffers
 /blog/gablogpost*  /blog/ga-announcement
