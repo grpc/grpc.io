@@ -36,12 +36,6 @@ params:
 
   show_banner: false
 
-  social:
-    gitter: https://gitter.im/grpc/grpc
-    reddit: https://www.reddit.com/r/grpc
-    twitter: https://twitter.com/grpcio
-    twitter_handle: '@grpcio'
-
   fonts:
     - name: Open Sans
       sizes: [300, 400, 600, 700]
