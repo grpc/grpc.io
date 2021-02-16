@@ -53,7 +53,7 @@ gRPC was initially created by Google, which has used a single general-purpose
 RPC infrastructure called **Stubby** to connect the large number of microservices
 running within and across its data centers for over a decade. In March 2015,
 Google decided to build the next version of Stubby and make it open source. The
-result was gRPC, which is now used in a great many organizations outside of
+result was gRPC, which is now used in many organizations outside of
 Google to power use cases from microservices to the "last mile" of computing
 (mobile, web, and Internet of Things).
 
