@@ -16,17 +16,15 @@ title: Contributing to gRPC
 <div class="col-12 col-lg-8">
 <div class="mb-4">
 
-To contribute to gRPC documentation, please fork the [gRPC repository on GitHub](https://github.com/grpc/grpc.io) and start submitting pull requests.
+To contribute to gRPC documentation, please fork the [grpc.io repository on GitHub](https://github.com/grpc/grpc.io) and start submitting pull requests.
 
 ## Contribute guidelines for gRPC
 
-We welcome contributions to any of our three core repositories:
+We welcome contributions to any of our repositories in the [gRPC Github organization](https://github.com/grpc/).
+The general guidelines for contributing are [here](https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md). Please read the additional instructions in CONTRIBUTING.md file of the concerned repository.
 
-* [gRPC](https://github.com/grpc/grpc)
-* [gRPC Java](https://github.com/grpc/grpc-java)
-* [gRPC Go](https://github.com/grpc/grpc-go)
 
-{{< button text="View guidelines" url="https://github.com/grpc/grpc/blob/master/CONTRIBUTING.md" >}}
+{{< button text="View guidelines" url="https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md" >}}
 
 </div>
 <div class="mb-4">
