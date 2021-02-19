@@ -83,7 +83,8 @@ and building valuable integrations of gRPC with other software systems.
 
 ## Stay informed
 
-Be the first to know! Follow these active channels for the gRPC announcements:
+Be the first to know! Follow these active channels for timely gRPC
+announcements:
 
 {{% cards "main_channels" %}}
 
@@ -106,20 +107,21 @@ at one of our regular online community meetings.
 
 ## Contribute
 
-Interested in contributing to gRPC code or documentation? To learn how, see
-[Contributing]({{< relref "contribute" >}}) and
-[grpc-community/CONTRIBUTING.md][].
+### gRPC code and documentation
 
-[grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md
+Interested in contributing to gRPC code or documentation found under the
+[grpc][grpc-org] GitHub organization? To learn how, read
+[grpc-community/CONTRIBUTING.md][] and the `CONTRIBUTING.md` page of the repo
+that you'd like to contribute to.
 
 ### gRPC Ecosystem
 
 The [gRPC Ecosystem][] GitHub organization hosts selected gRPC community
 projects.
 
-Know of a gRPC project that's a good candidate for the ecosystem? Read the
-organization's [How to contribute][grpc-ecosystem-how-to], and submit a [gRPC
-Ecosystem Project Request][].
+Do you know of a gRPC project that's a good candidate for the ecosystem? Read
+the organization's [How to contribute][grpc-ecosystem-how-to], and submit a
+[gRPC Ecosystem Project Request][].
 
 </div>
 
@@ -135,8 +137,10 @@ Ecosystem Project Request][].
 [gRFCs]: https://github.com/grpc/proposal
 [gRPC Ecosystem Project Request]: https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74
 [gRPC Ecosystem]: https://github.com/grpc-ecosystem
+[grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md
 [grpc-ecosystem-how-to]: https://github.com/grpc/grpc-community/blob/master/grpc_ecosystem.md
 [grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
+[grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
 [grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
 [gRPCio]: https://www.meetup.com/gRPCio/
