@@ -17,7 +17,7 @@ enableGitInfo: true
 enableRobotsTXT: true
 
 params:
-  copyright: The Linux Foundation
+  copyright: The gRPC Authors & The Linux Foundation® | Documentation CC BY 4.0.
   repo: &repo https://github.com/grpc/grpc.io
   github_repo: *repo
   github_project_repo: *repo
@@ -31,6 +31,7 @@ params:
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
   ui:
+    footer_about_disable: true
     sidebar_menu_compact: true
     navbar_logo: true
 
