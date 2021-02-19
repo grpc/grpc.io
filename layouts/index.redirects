@@ -1,5 +1,7 @@
 # cSpell:ignore channelz helloasync gablogpost loadbalancing quickstart sapi vendasta vendastagrpc vsco vscogrpc yygrpc yikyak
 
+/contribute  /community
+
 # FAQ is now within the /docs/what-is-grpc section - redirect to maintain existing links
 /faq  /docs/what-is-grpc/faq
 
