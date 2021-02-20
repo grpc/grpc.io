@@ -116,12 +116,14 @@ that you'd like to contribute to.
 
 ### gRPC Ecosystem
 
-The [gRPC Ecosystem][] GitHub organization hosts selected gRPC community
-projects.
+The [gRPC Ecosystem][] is a GitHub organization that hosts community projects
+related to gRPC &mdash; projects include, but are not limited to, gRPC
+extensions or integrations, as well as examples that demonstrate how to use gRPC
+for common or technically challenging use cases.
 
-Do you know of a gRPC project that's a good candidate for the ecosystem? Read
-the organization's [How to contribute][grpc-ecosystem-how-to], and submit a
-[gRPC Ecosystem Project Request][].
+Do you have of a gRPC-related project that's a good candidate for the ecosystem?
+Submit a request to have your project added; for details, see [gRPC Ecosystem -
+New projects are welcome!][grpc-ecosystem-request].
 
 </div>
 
@@ -138,7 +140,7 @@ the organization's [How to contribute][grpc-ecosystem-how-to], and submit a
 [gRPC Ecosystem Project Request]: https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74
 [gRPC Ecosystem]: https://github.com/grpc-ecosystem
 [grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md
-[grpc-ecosystem-how-to]: https://github.com/grpc/grpc-community/blob/master/grpc_ecosystem.md
+[grpc-ecosystem-request]: https://github.com/grpc/grpc-community/blob/master/grpc_ecosystem.md
 [grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
 [grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
