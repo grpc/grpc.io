@@ -121,7 +121,7 @@ related to gRPC &mdash; projects include, but are not limited to, gRPC
 extensions or integrations, as well as examples that demonstrate how to use gRPC
 for common or technically challenging use cases.
 
-Do you have of a gRPC-related project that's a good candidate for the ecosystem?
+Do you have a gRPC-related project that's a good candidate for the ecosystem?
 Submit a request to have your project added; for details, see [gRPC Ecosystem -
 New projects are welcome!][grpc-ecosystem-request].
 
