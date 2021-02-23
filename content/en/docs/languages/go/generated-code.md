@@ -144,7 +144,7 @@ In this context, `<ServiceName>_FooClient` represents the client-to-server `stre
 ```go
 type <ServiceName>_FooClient interface {
 	Send(*MsgA) error
-	CloseAndRecv() (*MsgA, error)
+	CloseAndRecv() (*MsgB, error)
 	grpc.ClientStream
 }
 ```
