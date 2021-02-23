@@ -10,6 +10,3 @@ command = "git submodule update --init --recursive --depth 1 && make preview-bui
 
 [context.deploy-preview]
 command = "git submodule update --init --recursive --depth 1 && make preview-build"
-
-[context.production.environment]
-HUGO_ENV = "production"
