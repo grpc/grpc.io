@@ -29,20 +29,25 @@ Use [another language](/docs/languages/) to create a gRPC server.
 
 The example code for our tutorial is in
 [grpc/grpc/examples/php/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/php/route_guide).
-To download the example, clone the `grpc` repository by running the following
+To download the example, clone the `grpc` repository and its submodules by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
+$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 ```
 
-You need grpc-php-plugin to help you generate proto files. You can build it from source:
+You need the `grpc-php-plugin` to help you compile `.proto` files. Build it from source as follows:
 
 ```sh
-$ cd grpc && git submodule update --init && make grpc_php_plugin
+$ cd grpc
+$ mkdir -p cmake/build
+$ pushd cmake/build
+$ cmake ../..
+$ make protoc grpc_php_plugin
+$ popd
 ```
 
-Then change your current directory to `examples/php/route_guide` and generate proto files:
+Then change to route guide directory and compile the example's `.proto` files:
 
 ```sh
 $ cd examples/php/route_guide
