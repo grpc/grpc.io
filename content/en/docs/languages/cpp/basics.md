@@ -28,25 +28,16 @@ guide](https://developers.google.com/protocol-buffers/docs/reference/cpp-generat
 
 ### Example code and setup
 
-The example code for our tutorial is in
-[grpc/grpc/examples/cpp/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/route_guide). To
-download the example, clone the `grpc` repository by running the following
-command:
+The example code is part of the `grpc` repo under [examples/cpp/route_guide][].
+Get the example code and build gRPC:
 
-```sh
-$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
-```
+ 1. Follow the Quick start instructions to [build and locally install gRPC from
+    source][].
+ 2. From the repo folder, change to the route guide example directory:
 
-Then change your current directory to `examples/cpp/route_guide`:
-
-```sh
-$ cd examples/cpp/route_guide
-```
-
-You also should have the relevant tools installed to generate the server and
-client interface code - if you don't already, follow the setup instructions in
-[Quick start](/docs/languages/cpp/quickstart/).
-
+    ```sh
+    $ cd examples/cpp/route_guide
+    ```
 
 ### Defining the service
 
@@ -515,3 +506,6 @@ From a different terminal, run the client:
 ```sh
 $ ./route_guide_client
 ```
+
+[build and locally install gRPC from source]: {{< relref "quickstart#install-grpc" >}}
+[examples/cpp/route_guide]: https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/cpp/route_guide
