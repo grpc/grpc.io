@@ -104,7 +104,7 @@ While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
 for service definitions and data serialization, and the example code uses
 [proto3][].
 
-The following commands will build and locally install gRPC and Protocol Buffers.
+The following commands build and locally install gRPC and Protocol Buffers:
 
 ```sh
 $ cd grpc
@@ -118,6 +118,12 @@ $ make -j
 $ make install
 $ popd
 ```
+
+{{% alert title="Important" color="warning" %}}
+  We **strongly** encourage you to install gRPC _locally_ &mdash; using an
+  appropriately set `CMAKE_INSTALL_PREFIX` &mdash; because there is no easy way
+  to uninstall gRPC after you've installed it globally.
+{{% /alert %}}
 
 More information:
 
