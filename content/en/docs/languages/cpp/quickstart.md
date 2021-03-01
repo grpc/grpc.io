@@ -3,14 +3,21 @@ title: Quick start
 description: This guide gets you started with gRPC in C++ with a simple working example.
 weight: 10
 spelling: cSpell:ignore autoconf automake cmake cout DCMAKE endl libtool mkdir popd pushd
-cmake-version: 3.17.0
+cmake-min-version: 3.13
+cmake-version: 3.19.6
 ---
 
 In the C++ world, there's no universally accepted standard for managing project
-dependencies. In this quick start, you'll follow steps to build and locally
-install gRPC before building and running this quick start's Hello World example.
+dependencies. You need to build and install gRPC before building and running
+this quick start's Hello World example.
 
-### Setup
+### Build and locally install gRPC and Protocol Buffers {#install-grpc}
+
+The steps in the section explain now to build and locally install gRPC and
+Protocol Buffers using `cmake`. If you'd rather use [bazel][], see [Building
+from source][building].
+
+#### Setup
 
 Choose a directory to hold locally installed packages. This page assumes that
 the environment variable `MY_INSTALL_DIR` holds this directory path. For
@@ -32,11 +39,10 @@ Add the local `bin` folder to your path variable, for example:
 $ export PATH="$PATH:$MY_INSTALL_DIR/bin"
 ```
 
-### Prerequisites
+#### Install cmake
 
-#### cmake
-
-Version 3.13 or later of `cmake` is required to install gRPC locally.
+You need version {{< param cmake-min-version >}} or later of `cmake`. Install it by
+following these instructions:
 
 - Linux
 
@@ -56,10 +62,12 @@ Check the version of `cmake`:
 
 ```sh
 $ cmake --version
+cmake version {{< param cmake-version >}}
 ```
 
-Under Linux, the version of the system-wide `cmake` can be too low. You can
-install a more recent version into your local installation directory as follows:
+Under Linux, the version of the system-wide `cmake` can often be too old. You
+can install a more recent version into your local installation directory as
+follows:
 
 ```sh
 $ wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-Linux-x86_64.sh
@@ -67,59 +75,56 @@ $ sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
 $ rm cmake-linux.sh
 ```
 
+#### Install other required tools
 
-#### gRPC and Protocol Buffers
+Install the basic tools required to build gRPC:
+
+- Linux
+
+  ```sh
+  $ sudo apt install -y build-essential autoconf libtool pkg-config
+  ```
+
+- macOS:
+
+  ```sh
+  $ brew install autoconf automake libtool pkg-config
+  ```
+
+#### Clone the `grpc` repo
+
+Clone the `grpc` repo and its submodules:
+
+```sh
+$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
+```
+#### Build and install gRPC and Protocol Buffers
 
 While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
 for service definitions and data serialization, and the example code uses
 [proto3][].
 
-The following instructions will locally install gRPC and Protocol Buffers.
+The following commands will build and locally install gRPC and Protocol Buffers.
 
- 1. Install the basic tools required to build gRPC:
-
-    - Linux
-
-      ```sh
-      $ sudo apt install -y build-essential autoconf libtool pkg-config
-      ```
-
-    - macOS:
-
-      ```sh
-      $ brew install autoconf automake libtool pkg-config
-      ```
-
- 2. Clone the `grpc` repo and its submodules:
-
-    ```sh
-    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
-    $ cd grpc
-    ```
-
- 3. Build and locally install gRPC and all requisite tools:
-
-    ```sh
-    $ mkdir -p cmake/build
-    $ pushd cmake/build
-    $ cmake -DgRPC_INSTALL=ON \
-          -DgRPC_BUILD_TESTS=OFF \
-          -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
-          ../..
-    $ make -j
-    $ make install
-    $ popd
-    ```
+```sh
+$ cd grpc
+$ mkdir -p cmake/build
+$ pushd cmake/build
+$ cmake -DgRPC_INSTALL=ON \
+      -DgRPC_BUILD_TESTS=OFF \
+      -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+      ../..
+$ make -j
+$ make install
+$ popd
+```
 
 More information:
 
 - You can find a complete set of instructions for building gRPC C++ in [Building
-  from source][from-source].
+  from source][building].
 - For general instructions on how to add gRPC as a dependency to your C++
   project, see [Start using gRPC C++][using-grpc].
-
-[from-source]: https://github.com/grpc/grpc/blob/master/BUILDING.md
-[using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
 
 ###  Build the example
 
@@ -357,6 +362,8 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 - Work through the [Basics tutorial](../basics/).
 - Explore the [API reference](../api).
 
+[bazel]: https://www.bazel.build
+[building]: https://github.com/grpc/grpc/blob/master/BUILDING.md#build-from-source
 [examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [Installing CMake]: https://cmake.org/install
