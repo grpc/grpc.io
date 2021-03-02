@@ -295,9 +295,10 @@ c - Component (Aware of its content/context...)
   }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-down(md) {
   .o-user-logo {
-    max-height: 7rem;
+    max-height: 5rem;
+    max-width: 100%;
   }
 }
 
