@@ -4,8 +4,11 @@ $secondary: #5ac5c5;
 $info: #379c9c;
 $gray-100: #fafafa;
 
-$display1-weight: 300;
-$display2-weight: 300;
+// Display styles: prefer Bootstrap defaults to docsy's overrides
+$display1-weight: $font-weight-light;
+$display2-weight: $font-weight-light;
+$display3-weight: $font-weight-light;
+$display4-weight: $font-weight-light;
 
 $link-color: #379c9c;
 

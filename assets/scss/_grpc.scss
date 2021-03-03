@@ -21,7 +21,7 @@ a > .fa-external-link-alt::before {
 
 /*
 Docsy's 'cover/block' option for setting background images does
-not currrently support svg's. This sets the background on hero
+not currently support svg's. This sets the background on hero
 sections site wide to the original site's background svg.
 */
 .td-cover-block {
@@ -134,7 +134,7 @@ body:not(.td-blog) .td-content:not(.list-page) {
 
 /*
 The following contains some styles in use on the top-level pages
-(About, Community...). Bootstrap provides many responsive utilites
+(About, Community...). Bootstrap provides many responsive utilities
 which are in use as well - these classes are meant to extract some
 common concerns from sections of content, and provide styling where
 Bootstrap falls short.
@@ -151,13 +151,6 @@ c - Component (Aware of its content/context...)
 }
 
 // Layout
-.l-constrained-width-content {
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 1rem;
-  max-width: 1140px;
-}
-
 .l-container--padded {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -235,28 +228,63 @@ c - Component (Aware of its content/context...)
   margin-right: 0.25rem;
 }
 
-.o-logo {
-  width: 80%;
+.grpc-logo {
+  max-height: 8rem;
+  max-width: 65%;
 }
 
-.o-user-logo {
-  max-height: 7rem;
+.used-by-logo {
+  max-height: 4rem;
+  max-width: 100%;
 }
 
-.o-user-logo-sm {
-  max-height: 5rem;
-}
+.td-home {
+  h1 {
+    @extend .display-1;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
 
-.o-heading {
-  margin-bottom: 1.5rem;
-  font-weight: 300;
-  text-align: center
-}
+  h2 {
+    @extend .display-2;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
 
-.o-logo--constrained {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
+  h3 {
+    @extend .display-3;
+  }
+
+  h4 {
+    @extend .display-4;
+    margin-bottom: 1rem;
+  }
+
+  .home--top-section {
+    text-align: center;
+  }
+
+  .cncf-logo {
+    width: 20rem;
+    max-width: 80%;
+  }
+
+  .used-by-logo {
+    @include media-breakpoint-up(md) { max-height: 6rem; }
+  }
+
+  .why-grpc {
+    @include media-breakpoint-up(lg) {
+      padding-right: 5rem;
+      padding-left: 5rem;
+    }
+
+    p {
+      font-size: $lead-font-size;
+      font-weight: $lead-font-weight;
+      text-align: left;
+    }
+  }
 }
 
 .o-features__feature {
@@ -277,6 +305,7 @@ c - Component (Aware of its content/context...)
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1rem;
+  max-width: 10rem;
 }
 
 .o-lang-home__list {
@@ -295,36 +324,18 @@ c - Component (Aware of its content/context...)
   }
 }
 
-@include media-breakpoint-down(md) {
-  .o-user-logo {
-    max-height: 5rem;
-    max-width: 100%;
-  }
-}
-
 @include media-breakpoint-up(lg) {
   .o-features__feature {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  .o-logo {
-    width: 50%;
-  }
-
   .o-feature__icon {
     margin-right: 1rem;
-    max-width: 172px;
   }
 }
 
 // Component
-.c-used-by {
-  h1 {
-    font-size: 4rem;
-    margin-bottom: 2.5rem;
-  }
-}
 
 .c-features {
   display: flex;
@@ -354,6 +365,7 @@ c - Component (Aware of its content/context...)
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: -3rem;
 }
 
 .c-used-by__user {
@@ -389,12 +401,6 @@ c - Component (Aware of its content/context...)
 @include media-breakpoint-up(md) {
   .c-features {
     flex-direction: row;
-  }
-
-  .c-used-by {
-    h1 {
-      font-size: 3rem;
-    }
   }
 
   .c-global-meta-links {
