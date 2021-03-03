@@ -269,10 +269,6 @@ c - Component (Aware of its content/context...)
     max-width: 80%;
   }
 
-  .used-by-logo {
-    @include media-breakpoint-up(md) { max-height: 6rem; }
-  }
-
   .why-grpc {
     @include media-breakpoint-up(lg) {
       padding-right: 5rem;
