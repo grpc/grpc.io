@@ -82,7 +82,7 @@ message HelloRequest {
 
 // The response message containing the greetings
 message HelloReply {
-  string message = 1;
+  string greeting = 1;
 }
 ```
 
