@@ -1,17 +1,15 @@
 {{ $usedBy := site.Data.testimonials -}}
 
-<section class="c-used-by">
-  <h1 class="o-heading">
-    Used by
-  </h1>
-  <div class="c-used-by__users">
-    {{ range $usedBy -}}
-    {{ $img := printf "img/users/%s" .image | relURL -}}
-      <div class="c-used-by__user">
-        <a href="{{ .link }}" target="_blank" rel="noopener">
-          <img class="o-user-logo" src="{{ $img }}" alt="{{ .name }} user logo">
-        </a>
-      </div>
-    {{- end }}
-  </div>
+<section class="home--top-section">
+<h2>Used by</h2>
+<div class="c-used-by__users">
+  {{ range $usedBy -}}
+  {{ $img := printf "img/users/%s" .image | relURL -}}
+    <div class="c-used-by__user">
+      <a href="{{ .link }}" target="_blank" rel="noopener">
+        <img class="used-by-logo" src="{{ $img }}" alt="{{ .name }} logo">
+      </a>
+    </div>
+  {{- end }}
+</div>
 </section>
