@@ -42,7 +42,7 @@ Learn more
 <section class="home--top-section why-grpc">
 <h2>Why gRPC?</h2>
 
-gRPC is a modern open source high performance RPC framework that can
+gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can
 run in any environment. It can efficiently connect services in and
 across data centers with pluggable support for load balancing,
 tracing, health checking and authentication. It is also applicable
