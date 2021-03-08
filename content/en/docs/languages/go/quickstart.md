@@ -25,6 +25,15 @@ spelling: cSpell:ignore Fatalf GOPATH
       $ go get google.golang.org/protobuf/cmd/protoc-gen-go \
                google.golang.org/grpc/cmd/protoc-gen-go-grpc
       ```
+      
+      If you're using Go v1.16 or later:
+ 
+      ```sh
+      $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+      $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+      ```
+
+      
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugins:
 
