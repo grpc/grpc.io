@@ -24,7 +24,7 @@ For the full announcement, including how to deploy gRPC Kotlin services on
 [Cloud Run][], see the Google Cloud blog, [Kotlin, meet gRPC: a new open-source
 project for modern apps][blog].
 
-For more information, see the following [Kotlin/JVM pages][]:
+For more information, see the following [Kotlin pages][]:
 
 - [Quick start](/docs/languages/kotlin/quickstart/)
 - [Basics tutorial](/docs/languages/kotlin/basics/)
@@ -34,4 +34,4 @@ For more information, see the following [Kotlin/JVM pages][]:
 [Cloud Run]: https://cloud.run
 [gRPC Kotlin]: https://github.com/grpc/grpc-kotlin
 [Kotlin]: https://kotlinlang.org
-[Kotlin/JVM pages]: /docs/languages/kotlin/
+[Kotlin pages]: /docs/languages/kotlin/
