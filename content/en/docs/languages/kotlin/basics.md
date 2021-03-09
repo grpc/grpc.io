@@ -1,6 +1,6 @@
 ---
 title: Basics tutorial
-description: A basic tutorial introduction to gRPC in Kotlin/JVM.
+description: A basic tutorial introduction to gRPC in Kotlin.
 spelling: cSpell:ignore grpckt Mendham millis println
 weight: 50
 ---

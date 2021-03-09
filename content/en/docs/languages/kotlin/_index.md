@@ -1,7 +1,6 @@
 ---
-title: Kotlin/JVM
+title: Kotlin
 prog_lang_home: true
-language: Kotlin
 api_path: https://javadocs.dev/io.grpc/grpc-kotlin-stub/latest
 content:
   - learn_more:

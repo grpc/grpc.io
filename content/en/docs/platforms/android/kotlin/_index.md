@@ -10,7 +10,7 @@ content:
   - reference:
     - "[API](api/)"
   - other:
-    - "[Kotlin/JVM](/docs/languages/kotlin/)"
+    - "[Kotlin](/docs/languages/kotlin/)"
     - $src_repo_link
     - "[Download](https://search.maven.org/search?q=g:io.grpc%20AND%20grpc-kotlin)"
 ---
