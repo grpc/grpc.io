@@ -17,7 +17,7 @@ enableGitInfo: true
 enableRobotsTXT: true
 
 params:
-  copyright: gRPC Authors & The Linux Foundation®
+  copyright: gRPC Authors
   repo: &repo https://github.com/grpc/grpc.io
   github_repo: *repo
   github_project_repo: *repo
