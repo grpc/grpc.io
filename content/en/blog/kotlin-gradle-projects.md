@@ -9,13 +9,16 @@ author:
 
 Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? [Kotlin](https://kotlinlang.org/) is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. To improve this experience further, we have added support to the [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
 
-<!--more-->
+{{% alert title="Native Kotlin support" color="success" %}}
+Looking for native Kotlin support of gRPC? See [Kotlin, meet gRPC]({{<relref "kotlin-meet-grpc">}}).
+{{% /alert %}}
+
 
 The following examples show you how to configure a project for a JVM application and an Android application using Kotlin.
 
 ### Kotlin gRPC client and server
 
-The full example can be found [here](https://github.com/grpc/grpc-java/tree/master/examples/example-kotlin).
+The full example can be found [here](https://github.com/grpc/grpc-java/tree/3bd141bf184a82a2cc92c98c906141d5b32ee88e/examples/example-kotlin).
 
 Configuring gRPC for a Kotlin project is the same as configuring it for a Java project.
 
@@ -66,7 +69,7 @@ You can read more about configuring Kotlin [here](https://kotlinlang.org/docs/re
 
 ###  Kotlin Android gRPC application
 
-The full example can be found [here](https://github.com/grpc/grpc-java/tree/master/examples/example-kotlin/android/helloworld).
+The full example can be found [here](https://github.com/grpc/grpc-java/tree/3bd141bf184a82a2cc92c98c906141d5b32ee88e/examples/example-kotlin/android/helloworld).
 
 Configuring gRPC for a Kotlin Android project is the same as configuring it for a normal Android project.
 
@@ -130,4 +133,4 @@ Finally, test out the Android app by opening the project in Android Studio and s
 
 ![Kotlin Android app example](/img/kotlin-project-android-app.png)
 
-We are excited about improving the gRPC experience for Kotlin developers. Please add enhancement ideas or bugs to the [protobuf-gradle-plugin issue tracker](https://github.com/google/protobuf-gradle-plugin/issues) or the [grpc-java issue tracker](https://github.com/grpc/grpc-java/issues). 
+We are excited about improving the gRPC experience for Kotlin developers. Please add enhancement ideas or bugs to the [protobuf-gradle-plugin issue tracker](https://github.com/google/protobuf-gradle-plugin/issues) or the [grpc-java issue tracker](https://github.com/grpc/grpc-java/issues).
