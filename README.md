@@ -9,7 +9,7 @@ The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
 - **[Hugo, extended edition][hugo-install]**; match the version specified in
   [netlify.toml](netlify.toml)
 - **Node**, the latest [LTS release][]. Like Netlify, we use **[nvm][]**, the
-  Node Version, to install and manage Node versions:
+  Node Version Manager, to install and manage Node versions:
   ```console
   $ nvm install --lts
   $ nvm use --lts
