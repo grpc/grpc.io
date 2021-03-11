@@ -28,6 +28,14 @@ community][] pages.
 
 ### Developer stories and talks {#dev-stories}
 
+- **[Expedia Group Case Study: Bootiful APIs With GraphQL and Kotlin][Expedia]**,
+  by [Anton Arhipov](https://blog.jetbrains.com/author/antonarhipov),
+  [JetBrains](https://www.jetbrains.com/),
+  <span title="2020-12-13">December 2020</span>.
+- **[DoorDash Case Study: Building Scalable Backend Services with Kotlin][DoorDash]**,
+  by [Alina Dolgikh](https://blog.jetbrains.com/author/alinadolgikh),
+  [JetBrains](https://www.jetbrains.com/),
+  <span title="2020-12-06">December 2020</span>.
 - **Next Level gRPC With Kotlin and Coroutines**
   <a class="o-icon" href="https://youtu.be/SfmdAA2kwWI"><i class="fab fa-youtube"></i></a>
   <a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/e6/grpc-session.pdf"><i class="fas fa-file"></i></a><br>
@@ -35,6 +43,8 @@ community][] pages.
   by Marco Ferrer, OfferUp.
 
 [Community]: {{<relref "Community">}}
+[DoorDash]: https://blog.jetbrains.com/kotlin/2020/12/doordash-building-scalable-backend-services-with-kotlin/
+[Expedia]: https://blog.jetbrains.com/kotlin/2020/12/expedia-group-bootiful-apis-with-graphql-and-kotlin/
 [Kotlin community]: https://kotlinlang.org/community/
-[Kotlin Slack]: https://kotlinlang.slack.com
 [Kotlin Slack Sign-up]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
+[Kotlin Slack]: https://kotlinlang.slack.com
