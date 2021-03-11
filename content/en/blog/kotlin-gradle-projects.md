@@ -18,7 +18,7 @@ The following examples show you how to configure a project for a JVM application
 
 ### Kotlin gRPC client and server
 
-The full example can be found [here](https://github.com/grpc/grpc-java/tree/3bd141bf184a82a2cc92c98c906141d5b32ee88e/examples/example-kotlin).
+The full example can be found [here](https://github.com/grpc/grpc-java/tree/v1.29.0/examples/example-kotlin).
 
 Configuring gRPC for a Kotlin project is the same as configuring it for a Java project.
 
@@ -69,7 +69,7 @@ You can read more about configuring Kotlin [here](https://kotlinlang.org/docs/re
 
 ###  Kotlin Android gRPC application
 
-The full example can be found [here](https://github.com/grpc/grpc-java/tree/3bd141bf184a82a2cc92c98c906141d5b32ee88e/examples/example-kotlin/android/helloworld).
+The full example can be found [here](https://github.com/grpc/grpc-java/tree/v1.29.0/examples/example-kotlin/android/helloworld).
 
 Configuring gRPC for a Kotlin Android project is the same as configuring it for a normal Android project.
 
