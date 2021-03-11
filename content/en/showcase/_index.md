@@ -67,6 +67,14 @@ find developer stories for your [preferred language](/docs/languages/) on each
 
 Other developer stories are provided next.
 
+- **[Expedia Group Case Study: Bootiful APIs With GraphQL and Kotlin][Expedia]**,
+  by [Anton Arhipov](https://blog.jetbrains.com/author/antonarhipov),
+  [JetBrains](https://www.jetbrains.com/),
+  <span title="2020-12-13">December 2020</span>.
+- **[DoorDash Case Study: Building Scalable Backend Services with Kotlin][DoorDash]**,
+  by [Alina Dolgikh](https://blog.jetbrains.com/author/alinadolgikh),
+  [JetBrains](https://www.jetbrains.com/),
+  <span title="2020-12-06">December 2020</span>.
 - **[Road to gRPC](https://blog.cloudflare.com/road-to-grpc/)**
   by [Junho Choi](https://blog.cloudflare.com/author/junho/) et al.,
   [Cloudflare](https://www.cloudflare.com/). October 26, 2020.
@@ -105,6 +113,8 @@ Other developer stories are provided next.
 </div>
 
 [CNCF case studies]: https://www.cncf.io/case-studies/
+[DoorDash]: https://blog.jetbrains.com/kotlin/2020/12/doordash-building-scalable-backend-services-with-kotlin/
+[Expedia]: https://blog.jetbrains.com/kotlin/2020/12/expedia-group-bootiful-apis-with-graphql-and-kotlin/
 [gRPC Conf 2020 presentation videos]: https://www.youtube.com/playlist?list=PLj6h78yzYM2NN72UX_fdmc5CZI-D5qfJL
 [schedule]: https://events.linuxfoundation.org/grpc-conf/program/schedule/
 [use-of-gRPC]: {{< param url_use_grpc >}}
