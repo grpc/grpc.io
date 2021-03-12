@@ -20,5 +20,5 @@ The emeritus maintainers of this repository (in alphabetical order) are:
 - If you were a maintainer and would like to add your name to the emeritus list,
   submit a PR.
 
-[grpc/grpc-community/governance.md]: https://github.com/grpc/grpc-community/blob/master/governance.md
-[grpc/grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md
+[grpc/grpc-community/governance.md]: https://github.com/grpc/grpc-community/blob/main/governance.md
+[grpc/grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/main/CONTRIBUTING.md
