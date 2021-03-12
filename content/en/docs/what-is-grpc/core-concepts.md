@@ -172,7 +172,7 @@ or how much time is left to complete the RPC.
 
 Specifying a deadline or timeout is language specific: some language APIs work
 in terms of timeouts (durations of time), and some language APIs work in terms
-of a deadline (a fixed point in time) and may or maynot have a default deadline.
+of a deadline (a fixed point in time) and may or may not have a default deadline.
 
 #### RPC termination
 
