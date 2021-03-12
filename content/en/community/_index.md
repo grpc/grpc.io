@@ -139,8 +139,8 @@ New projects are welcome!][grpc-ecosystem-request].
 [gRFCs]: https://github.com/grpc/proposal
 [gRPC Ecosystem Project Request]: https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74
 [gRPC Ecosystem]: https://github.com/grpc-ecosystem
-[grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/master/CONTRIBUTING.md
-[grpc-ecosystem-request]: https://github.com/grpc/grpc-community/blob/master/grpc_ecosystem.md
+[grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/main/CONTRIBUTING.md
+[grpc-ecosystem-request]: https://github.com/grpc/grpc-community/blob/main/grpc_ecosystem.md
 [grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
 [grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
