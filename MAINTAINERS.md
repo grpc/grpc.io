@@ -2,14 +2,15 @@
 
 The active maintainers of this repository (in alphabetical order) are:
 
-- [chalin](https://github.com/chalin) (lead)
-- [lucperkins](https://github.com/lucperkins), Linux Foundation
+- [srini100](https://github.com/srini100), Google
+- [thisisnotapril](https://github.com/thisisnotapril), Google
 
 # Emeritus maintainers
 
 The emeritus maintainers of this repository (in alphabetical order) are:
 
-- None currently listed.
+- [chalin](https://github.com/chalin), Linux Foundation
+- [lucperkins](https://github.com/lucperkins), Linux Foundation
 
 # Notes
 
