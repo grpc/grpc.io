@@ -1,12 +1,17 @@
 ---
 title: PHP
 api_path: grpc/LANG/namespace_grpc
-notoc: true
+prog_lang_home: true
+src_repo: https://github.com/grpc/grpc
+content:
+  - learn_more:
+    - "[Examples]($src_repo_url/tree/master/examples/php)"
+  - reference:
+    - "[API](api/)"
+  - other:
+    - "[grpc repo]($src_repo_url)"
+    - "[Daily builds](daily-builds)"
 ---
 
-These language-specific pages are available:
+{{% docs/prog-lang-home-content %}}
 
-- [Quick start](quickstart/)
-- [Basics tutorial](basics/)
-- [API reference](api)
-- [Daily builds](daily-builds)
