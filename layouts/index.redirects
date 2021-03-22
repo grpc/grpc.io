@@ -48,7 +48,7 @@
 # Daily-build pages:
 #
 
-/docs/languages/:_/daily-builds/*  https://packages.grpc.io 301!
+/docs/languages/:_/daily-builds/*  https://packages.grpc.io
 
 /docs/talks  /showcase
 
