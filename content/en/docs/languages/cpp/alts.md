@@ -13,7 +13,7 @@ code:
     #include <grpcpp/security/credentials.h>
 
     using grpc::experimental::AltsCredentials;
-    using grpc_impl::experimental::AltsCredentialsOptions;
+    using grpc::experimental::AltsCredentialsOptions;
 
     auto creds = AltsCredentials(AltsCredentialsOptions());
     std::shared_ptr<grpc::Channel> channel = CreateChannel(server_address, creds);
@@ -25,7 +25,7 @@ code:
     #include <grpcpp/server_builder.h>
 
     using grpc::experimental::AltsServerCredentials;
-    using grpc_impl::experimental::AltsServerCredentialsOptions;
+    using grpc::experimental::AltsServerCredentialsOptions;
 
     grpc::ServerBuilder builder;
     builder.RegisterService(&service);
@@ -39,7 +39,7 @@ code:
     #include <grpcpp/security/credentials.h>
 
     using grpc::experimental::AltsCredentials;
-    using grpc_impl::experimental::AltsCredentialsOptions;
+    using grpc::experimental::AltsCredentialsOptions;
 
     AltsCredentialsOptions opts;
     opts.target_service_accounts.push_back("expected_server_service_account1");
