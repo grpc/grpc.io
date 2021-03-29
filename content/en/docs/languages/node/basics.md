@@ -44,6 +44,14 @@ example too.
 To download the example, clone the `grpc` repository by running the following
 command:
 
+Not sure what version should be here, but I got the following error running the Node RouteGuide example with v1.35.0:
+```sh
+node ./dynamic_codegen/route_guide/route_guide_server.js --db_path=./dynamic_codegen/route_guide/route_guide_db.json
+/home/dan/Sandbox/grpc/examples/node/node_modules/@grpc/grpc-js/build/src/server.js:72
+        throw new Error('Not implemented. Use addService() instead');
+        ^
+```
+
 ```sh
 $ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 $ cd grpc
