@@ -13,7 +13,7 @@ this quick start's Hello World example.
 
 ### Build and locally install gRPC and Protocol Buffers {#install-grpc}
 
-The steps in the section explain now to build and locally install gRPC and
+The steps in the section explain how to build and locally install gRPC and
 Protocol Buffers using `cmake`. If you'd rather use [bazel][], see [Building
 from source][building].
 
