@@ -104,7 +104,7 @@ While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
 for service definitions and data serialization, and the example code uses
 [proto3][].
 
-gRPC uses [Abseil C++ library][abseil] so it needs to be installed as well.
+gRPC uses the [Abseil C++ library][abseil], so it needs to be installed as well.
 
 The following commands build and locally install gRPC, Protocol Buffers, and Abseil:
 
