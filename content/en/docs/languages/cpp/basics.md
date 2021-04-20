@@ -38,6 +38,13 @@ Get the example code and build gRPC:
     ```sh
     $ cd examples/cpp/route_guide
     ```
+ 3. Prepare the cmake environment so that you can build it easily.
+
+    ```sh
+    $ mkdir -p cmake/build
+    $ pushd cmake/build
+    $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+    ```
 
 ### Defining the service
 
@@ -129,13 +136,13 @@ Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC C++ plugin.
 
-For simplicity, we've provided a [Makefile](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/route_guide/Makefile)
+For simplicity, we've provided a [CMakeLists.txt](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/cpp/route_guide/CMakeLists.txt)
 that runs `protoc` for you with the appropriate plugin, input, and output (if
 you want to run this yourself, make sure you've installed protoc and followed
 the gRPC code [installation instructions](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/src/cpp/README.md#make) first):
 
 ```sh
-$ make route_guide.grpc.pb.cc route_guide.pb.cc
+$ make route_guide.grpc.pb.o
 ```
 
 which actually runs:
