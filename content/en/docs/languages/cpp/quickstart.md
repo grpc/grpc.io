@@ -98,13 +98,15 @@ Clone the `grpc` repo and its submodules:
 ```sh
 $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
 ```
-#### Build and install gRPC and Protocol Buffers
+#### Build and install gRPC, Protocol Buffers, and Abseil
 
 While not mandatory, gRPC applications usually leverage [Protocol Buffers][pb]
 for service definitions and data serialization, and the example code uses
 [proto3][].
 
-The following commands build and locally install gRPC and Protocol Buffers:
+gRPC uses [Abseil C++ library][abseil] so it needs to be installed as well.
+
+The following commands build and locally install gRPC, Protocol Buffers, and Abseil:
 
 ```sh
 $ cd grpc
@@ -113,6 +115,14 @@ $ pushd cmake/build
 $ cmake -DgRPC_INSTALL=ON \
       -DgRPC_BUILD_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+      ../..
+$ make -j
+$ make install
+$ popd
+$ mkdir -p third_party/abseil-cpp/cmake/build
+$ pushd third_party/abseil-cpp/cmake/build
+$ cmake -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+      -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
       ../..
 $ make -j
 $ make install
@@ -377,3 +387,4 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 [proto3]: https://developers.google.com/protocol-buffers/docs/proto3
 [repo]: https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c
+[abseil]: https://github.com/abseil/abseil-cpp
