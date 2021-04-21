@@ -36,7 +36,7 @@ $ mkdir -p $MY_INSTALL_DIR
 Add the local `bin` folder to your path variable, for example:
 
 ```sh
-$ export PATH="$PATH:$MY_INSTALL_DIR/bin"
+$ export PATH="$MY_INSTALL_DIR/bin:$PATH"
 ```
 
 #### Install cmake
