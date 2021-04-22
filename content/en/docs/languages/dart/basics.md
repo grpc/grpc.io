@@ -514,7 +514,7 @@ $ cd example/route_guide
 Get packages:
 
 ```sh
-$ pub get
+$ dart pub get
 ```
 
 Run the server:
