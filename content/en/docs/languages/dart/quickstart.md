@@ -7,7 +7,7 @@ spelling: cSpell:ignore Iprotos
 
 ### Prerequisites
 
-- **[Dart][]** version 2.2 or higher, through the Dart or [Flutter][] SDKs
+- **[Dart][]** version 2.12 or higher, through the Dart or [Flutter][] SDKs
 
   For installation instructions, see [Install Dart][] or [Install Flutter][].
 

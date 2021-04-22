@@ -12,7 +12,7 @@
   compilers: [.NET Core, NET 4.5+]
 - language: Dart
   os: [Windows, Linux, Mac]
-  compilers: [Dart 2.2+]
+  compilers: [Dart 2.12+]
 - language: Go
   os: [Windows, Linux, Mac]
   compilers: [Go 1.13+]
