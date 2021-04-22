@@ -22,7 +22,7 @@ spelling: cSpell:ignore Iprotos
       the following command:
 
       ```sh
-      $ pub global activate protoc_plugin
+      $ dart pub global activate protoc_plugin
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugin:
@@ -59,7 +59,7 @@ From the `example/helloworld` directory:
  1. Download package dependencies:
 
     ```sh
-    $ pub get
+    $ dart pub get
     ```
 
  2. Run the server:
