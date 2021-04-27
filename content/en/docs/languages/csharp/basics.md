@@ -305,7 +305,7 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```csharp
- var features = RouteGuideUtil.LoadFeatures();
+var features = RouteGuideUtil.LoadFeatures();
 
 Server server = new Server
 {
