@@ -305,7 +305,7 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```csharp
-var features = RouteGuideUtil.ParseFeatures(RouteGuideUtil.DefaultFeaturesFile);
+ var features = RouteGuideUtil.LoadFeatures();
 
 Server server = new Server
 {
@@ -344,7 +344,7 @@ To call service methods, we first need to create a client object (also referred
 to as *stub* for other gRPC languages).
 
 First, we need to create a gRPC client channel that will connect to gRPC server.
-Then, we create an instance of the `RouteGuite.RouteGuideClient` class generated
+Then, we create an instance of the `RouteGuide.RouteGuideClient` class generated
 from our .proto, passing the channel as an argument.
 
 ```csharp
