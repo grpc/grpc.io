@@ -105,6 +105,11 @@ For advanced use cases such as modifying the root CA or using client certs,
 the corresponding options can be set in the `SslCredentialsOptions` parameter
 passed to the factory method.
 
+{{% alert title="Note" color="info" %}}
+  Non-POSIX-compliant systems (such as Windows) need to specify the root
+  certificates in `SslCredentialsOptions`, since the defaults are only
+  configured for POSIX filesystems.
+{{% /alert %}}
 
 #### Using Google token-based authentication
 
