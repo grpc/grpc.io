@@ -106,9 +106,9 @@ the corresponding options can be set in the `SslCredentialsOptions` parameter
 passed to the factory method.
 
 {{% alert title="Note" color="info" %}}
-  Non-Posix-compliant systems such as Windows need to specify the root
-  certificates in `SslCredentialsOptions` since the defaults are only configured
-  for Posix filesystems.
+  Non-POSIX-compliant systems (such as Windows) need to specify the root
+  certificates in `SslCredentialsOptions`, since the defaults are only
+  configured for POSIX filesystems.
 {{% /alert %}}
 
 #### Using Google token-based authentication
