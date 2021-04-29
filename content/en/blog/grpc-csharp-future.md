@@ -8,7 +8,7 @@ author:
   link: https://github.com/jtattermusch
 ---
 
-_TL;DR  grpc-dotnet (the
+**TL;DR** grpc-dotnet (the
 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client/) and
 [Grpc.AspNetCore.Server](https://www.nuget.org/packages/Grpc.AspNetCore.Server/)
 nuget packages) is now the recommended gRPC implementation for .NET/C#. The
@@ -17,7 +17,7 @@ maintenance mode and won't be getting any new features and will only receive
 important bug fixes and security fixes going forward. The ultimate plan is to
 phase out Grpc.Core completely at some point in the future. This announcement
 describes the reasons why we have decided to do so and lays out the plan in more
-detail._
+detail.
 
 In September 2019 we [announced][ga]
 general availability of a new [gRPC C#
@@ -98,7 +98,7 @@ reasons why we believe grpc-dotnet will serve the users' needs better:
   missing today and make it a superior choice for the users -- that is,
   lowering the barrier to
   contribute and fix/improve stuff translates into more stuff being fixed and
-  better user experience after some time).
+  better user experience after some time.
 - Having a library that is implemented in pure C# is something that's generally
   favored by the .NET community, compared to an implementation that depends on a
   native component. While C# has good support for interoperating with native
