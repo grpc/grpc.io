@@ -1,24 +1,25 @@
 ---
 draft: true
 title: The future of gRPC in C# belongs to grpc-dotnet
-date: 2021-04-26
+date: 2021-05-01
+spelling: cSpell:ignore dotnetcore nuget Tattermusch
 author:
   name: Jan Tattermusch
   link: https://github.com/jtattermusch
 ---
 
-_TL;DR  grpc-dotnet (i.e. the
+_TL;DR  grpc-dotnet (the
 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client/) and
 [Grpc.AspNetCore.Server](https://www.nuget.org/packages/Grpc.AspNetCore.Server/)
 nuget packages) is now the recommended gRPC implementation for .NET/C#. The
-original gRPC C# implementation (= the Grpc.Core nuget package) will enter
+original gRPC C# implementation (the Grpc.Core nuget package) will enter
 maintenance mode and won't be getting any new features and will only receive
 important bug fixes and security fixes going forward. The ultimate plan is to
 phase out Grpc.Core completely at some point in the future. This announcement
 describes the reasons why we have decided to do so and lays out the plan in more
 detail._
 
-In September 2019 we [announced](https://grpc.io/blog/grpc-on-dotnetcore/)
+In September 2019 we [announced][ga]
 general availability of a new [gRPC C#
 implementation](https://github.com/grpc/grpc-dotnet) that is no longer based on
 the gRPC C core native library and that's using the HTTP/2 protocol
@@ -94,7 +95,8 @@ reasons why we believe grpc-dotnet will serve the users' needs better:
   grpc-dotnet codebase is relatively small, it takes seconds to build, running
   the tests is easy and quick. In the long run, easier development and
   contribution friendliness should make up for some of the features that are
-  missing today and make it a superior choice for the users (= lower barrier to
+  missing today and make it a superior choice for the users -- that is,
+  lowering the barrier to
   contribute and fix/improve stuff translates into more stuff being fixed and
   better user experience after some time).
 - Having a library that is implemented in pure C# is something that's generally
@@ -107,7 +109,8 @@ reasons why we believe grpc-dotnet will serve the users' needs better:
   to provide support for multiple platforms). With Grpc.Core we were able to
   overcome most of these challenges (so things work these days), but it has been
   a lot of effort, the solutions are sometimes complex and fragile and
-  maintaining it is costly and requires a lot of expertise. \
+  maintaining it is costly and requires a lot of expertise.
+
   NOTE: the Google.Protobuf library for C# is already written purely in C# (no
   native components), so having a pure C# implementation of gRPC gets rid of
   native components from developers' microservice stack completely
@@ -172,14 +175,14 @@ speaking not part of Grpc.Core and they are also used by grpc-dotnet.
 
 - the Grpc.Tools nuget package which provides the codegen build integration for
   C# projects will continue to be supported (and will potentially get
-  improvements) - as it's used by both Grpc.Core and grpc-dotnet. This package
+  improvements) -- as it's used by both Grpc.Core and grpc-dotnet. This package
   is independent of C core.
 - Grpc.Core.Api package is a prerequisite for grpc-dotnet so it will potentially
   evolve over time as well (but it's a pure C# API only package and since it
   only contains the public API surface, changes are very infrequent)
 
 
-### Q/A
+### Q & A
 
 **I'm a current Grpc.Core user, what does this mean for me?**
 
@@ -197,14 +200,14 @@ minimal. For many applications you'll simply need to change the way you
 configure your gRPC channels and servers; that is usually only a small portion
 of your app's implementation and tends to be separate from the business logic.
 
-See [Migrating gRPC services from C-core to ASP.NET
-Core](https://docs.microsoft.com/en-us/aspnet/core/grpc/migration) for more tips
-on how to migrate from Grpc.Core to grpc-dotnet.
+For more tips on how to migrate from Grpc.Core to grpc-dotnet, see [Migrating
+gRPC services from C-core to ASP.NET
+Core](https://docs.microsoft.com/en-us/aspnet/core/grpc/migration).
 
 We plan to publish a more detailed migration guide in the future to facilitate
 the migration from Grpc.Core to grpc-dotnet.
 
-**I'm planning to use gRPC in C# in my future project. Which implementation should I choose?**
+**I'd like to use gRPC in C# for a new project. Which implementation should I choose?**
 
 We strongly recommend only using grpc-dotnet for new projects. We are going to
 stop supporting Grpc.Core in the future.
@@ -243,8 +246,8 @@ has a comparison of supported features.
 
 **I have an important Grpc.Core use case that is not covered by this document.**
 
-Feel free to ask a question on the e-mail forum
+We welcome your feedback! Write to us through the [grpc-io][] Google Group, or
+any other of the main [gRPC community channels]({{<relref community >}}).
 
-Jan Tattermusch
-
-on behalf of the gRPC team
+[ga]: {{< relref grpc-on-dotnetcore >}}
+[grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
