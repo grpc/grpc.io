@@ -1,5 +1,4 @@
 ---
-draft: true
 title: The future of gRPC in C# belongs to grpc-dotnet
 date: 2021-05-01
 spelling: cSpell:ignore dotnetcore nuget Tattermusch
