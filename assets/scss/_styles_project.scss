@@ -1,3 +1,7 @@
 /* grpc-docsy full file override: we're not tracking changes to the docsy file of the same name. */
 
 @import "grpc";
+
+.pageinfo {
+  margin: 2rem 0;
+}

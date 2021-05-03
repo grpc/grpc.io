@@ -14,6 +14,8 @@ content:
     - "[gRPC for .NET](dotnet/)"
     - "[grpc repo]($src_repo_url)"
     - "[Daily builds](daily-builds)"
+cascade:
+  - show_banner: true
 ---
 
 {{% docs/prog-lang-home-content %}}
