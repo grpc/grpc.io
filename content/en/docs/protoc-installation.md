@@ -2,7 +2,7 @@
 title: Protocol Buffer Compiler Installation
 short_title: Protoc Installation
 description: How to install the protocol buffer compiler.
-protoc-version: 3.15.5
+protoc-version: 3.15.8
 toc_hide: true
 ---
 
