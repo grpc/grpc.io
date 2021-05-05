@@ -142,7 +142,7 @@ a special gRPC Go plugin. This is similar to what we did in the [Quick start][].
 From the `examples/route_guide` directory, run the following command:
 
 ```sh
-$ protoc --go_out=. --go_opt=paths=source_relative \
+$ protoc --go_out=. --go_out=paths=source_relative \
     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
     routeguide/route_guide.proto
 ```
