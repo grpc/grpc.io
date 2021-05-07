@@ -38,7 +38,7 @@ other_channels:
 community_resources:
   - title: >
       <a href="https://calendar.google.com/calendar/embed?src=c_c6g7cap1fuvdu8m9a3i83lpd7o%40group.calendar.google.com&ctz=America%2FMexico_City"
-        target="_blank" rel="noopener"><i class="fab
+        target="_blank" rel="noopener"><i class="fas
         fa-calendar"></i>&nbsp;Google Calendar</a>
     desc: >
       Add this calendar to stay up to date on community meetups.
