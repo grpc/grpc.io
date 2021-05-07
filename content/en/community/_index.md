@@ -36,7 +36,7 @@ other_channels:
       Consult the [`r/grpc`](https://www.reddit.com/r/grpc/) subreddit for
       discussions related to gRPC.
 community_resources:
- - title: >
+  - title: >
       <a href="https://calendar.google.com/calendar/embed?src=c_c6g7cap1fuvdu8m9a3i83lpd7o%40group.calendar.google.com&ctz=America%2FMexico_City"
         target="_blank" rel="noopener"><i class="fab
         fa-calendar"></i>&nbsp;Google Calendar</a>
