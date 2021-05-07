@@ -41,7 +41,7 @@ community_resources:
         target="_blank" rel="noopener"><i class="fab
         fa-calendar"></i>&nbsp;Google Calendar</a>
     desc: >
-      Add this calendar to stay up to date on community meetusp.
+      Add this calendar to stay up to date on community meetups.
   - title: >
       <a href="https://www.meetup.com/gRPCio/"
         target="_blank" rel="noopener"><i class="fab
