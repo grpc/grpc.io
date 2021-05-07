@@ -116,7 +116,7 @@ On the backend, the gRPC server can be written in any language that supports gRP
 
 ## Next Steps
 
-Going GA means that the core building blocks are firmly in place and ready for usage in production web applications. But there’s still much more to come for gRPC-Web. Check out the [official road map](https://github.com/grpc/grpc-web/blob/master/ROADMAP.md) to see what the core team envisions for the near future.
+Going GA means that the core building blocks are firmly in place and ready for usage in production web applications. But there’s still much more to come for gRPC-Web. Check out the [official road map](https://github.com/grpc/grpc-web/blob/master/doc/roadmap.md) to see what the core team envisions for the near future.
 
 If you’re interested in contributing to gRPC-Web, there are a few things we would love community help with:
 
