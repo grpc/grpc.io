@@ -21,9 +21,8 @@ spelling: cSpell:ignore Fatalf GOPATH
    1. Install the protocol compiler plugins for Go using the following commands:
 
       ```sh
-      $ export GO111MODULE=on  # Enable module mode
-      $ go get google.golang.org/protobuf/cmd/protoc-gen-go \
-               google.golang.org/grpc/cmd/protoc-gen-go-grpc
+      $ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+      $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugins:
