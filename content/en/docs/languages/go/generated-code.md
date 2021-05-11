@@ -56,14 +56,14 @@ stream is caused by the `return` of the handler method.
 
 These methods have the following signature on the generated service interface:
 
-`Foo(<ServiceName>_FooServer) error`
+`Foo(<ServiceName>_FooClient) error`
 
-In this context, `<ServiceName>_FooServer` can be used both to read the client-to-server message stream and to send the single server response message.
+In this context, `<ServiceName>_FooClient` can be used both to read the client-to-server message stream and to send the single server response message.
 
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+`<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
 
 ```go
-type <ServiceName>_FooServer interface {
+type <ServiceName>_FooClient interface {
 	SendAndClose(*MsgA) error
 	Recv() (*MsgB, error)
 	grpc.ServerStream
@@ -72,7 +72,7 @@ type <ServiceName>_FooServer interface {
 
 The server-side handler can repeatedly call `Recv` on this parameter in order to receive the full stream of
 messages from the client. `Recv` returns `(nil, io.EOF)` once it has reached the end of the stream.
-The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter.
+The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooClient` parameter.
 Note that `SendAndClose` must be called once and only once.
 
 ### Bidi-streaming methods
