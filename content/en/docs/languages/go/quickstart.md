@@ -155,6 +155,15 @@ func (s *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.He
 }
 ```
 
+Also you need to fix imports in order to use the local package which you created earlier:
+
+```diff
++ pb "helloworld/helloworld"
++
+  "google.golang.org/grpc"
+- pb "google.golang.org/grpc/examples/helloworld/helloworld"
+```
+
 #### Update the client
 
 Open `greeter_client/main.go` to add the following code to the end of the
@@ -168,7 +177,7 @@ if err != nil {
 log.Printf("Greeting: %s", r.GetMessage())
 ```
 
-Remember to save your changes.
+Remember to update the imports as before and save your changes.
 
 #### Run!
 
