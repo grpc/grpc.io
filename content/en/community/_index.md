@@ -26,7 +26,7 @@ other_channels:
         target="_blank" rel="noopener"><i class="fab
         fa-stack-overflow"></i>&nbsp;Stack Overflow</a>
     desc: >
-      Ask technical questions about [gRPC][grpc-tag] & [protoc][protoc-tag], and
+      Ask technical questions about [gRPC][grpc-tag] & [protoc,][protoc-tag] and
       find answers.
   - title: >
       <a href="https://www.reddit.com/r/grpc/"
@@ -41,7 +41,8 @@ community_resources:
         target="_blank" rel="noopener"><i class="fab
         fa-meetup"></i>&nbsp;Meetup</a>
     desc: >
-      Join us [online][gRPCio] for project updates, live demos, and more.
+      Mark your [calendars][calendar] and
+      join us [online][gRPCio] for project updates, live demos, and more.
   - title: >
       <a href="https://bit.ly/grpcmeetings"
         target="_blank" rel="noopener"><i class="fas
@@ -136,6 +137,7 @@ New projects are welcome!][grpc-ecosystem-request].
 </div>
 
 [@grpcio]: https://twitter.com/grpcio
+[calendar]: https://calendar.google.com/calendar/embed?src=c_c6g7cap1fuvdu8m9a3i83lpd7o%40group.calendar.google.com
 [gRFCs]: https://github.com/grpc/proposal
 [gRPC Ecosystem Project Request]: https://docs.google.com/a/google.com/forms/d/119zb79XRovQYafE9XKjz9sstwynCWcMpoJwHgZJvK74
 [gRPC Ecosystem]: https://github.com/grpc-ecosystem
