@@ -11,21 +11,11 @@ description: >-
 gRPC is designed for both high-performance and high-productivity
 design of distributed applications. Continuous performance
 benchmarking is a critical part of the gRPC development
-workflow. Multi-language performance tests run hourly against
+workflow. Multi-language performance tests run every few hours against
 the master branch, and these numbers are reported to a dashboard for
 visualization.
 
-  * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528)
-  * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
-  * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
-
-{{% alert title="Note" color="info" %}}
-  Are you seeing "**no data available**" messages in the performance dashboard?
-  This is a known issue, see [grpc/grpc#23297][].
-
-  [grpc/grpc#23297]: https://github.com/grpc/grpc/issues/23297
-
-{{% /alert %}}
+  * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608)
 
 ### Performance testing design
 
@@ -60,9 +50,6 @@ clients and servers at master:
   * Python
   * Ruby
 
-Additionally, all languages derived from C core have limited
-performance testing (smoke testing) conducted at every pull request.
-
 In addition to running as both the client-side and server-side of
 performance tests, all languages are tested as clients against a C++
 server, and as servers against a C++ client. This test aims to provide
@@ -91,13 +78,11 @@ scenarios may be added in the future.
 
 ### Testing infrastructure
 
-All performance benchmarks are run as instances in GCE through our
-Jenkins testing infrastructure. In addition to the gRPC performance
-scenarios described above, we also run baseline [netperf
-TCP_RR](http://www.netperf.org) latency numbers in order to understand
-the underlying network characteristics. These numbers are present on
-our dashboard and sometimes vary depending on where our instances
-happen to be allocated within GCE.
+All performance benchmarks are run in our dedicated GKE cluster,
+where each benchmark worker (a client or a server) gets scheduled to different
+GKE node (and each GKE node is a separate GCE VM) in one of our worker pools.
+The source code for the benchmarking framework we use is publicly
+available in the [test-infra github repository](https://github.com/grpc/test-infra).
 
 Most test instances are 8-core systems, and these are used for both
 latency and QPS measurement. For C++ and Java, we additionally support
