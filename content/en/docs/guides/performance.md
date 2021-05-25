@@ -91,7 +91,7 @@ description: A user guide of both general and language-specific best practices t
     messages, which makes **streaming RPCs much slower than unary RPCs** in
     Python.
 
-*   **Using asyncio** could improve performance: https://grpc.github.io/grpc/python/grpc_asyncio.html.
+*   **Using [asyncio](https://grpc.github.io/grpc/python/grpc_asyncio.html)** could improve performance.
 
 *   Using the future API in the sync stack results in the creation of an extra
     thread. **Avoid the future API** if possible.
