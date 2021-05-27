@@ -33,13 +33,14 @@ description: A user guide of both general and language-specific best practices t
     1.  **Create a separate channel for each area of high load** in the
         application, or
 
-    2.  **Use a pool of gRPC channels** to randomly distribute RPCs over
+    2.  **Use a pool of gRPC channels** to distribute RPCs over
         multiple connections (channels must have different channel args to
         prevent re-use so define a use-specific channel arg such as channel
         number). \
-        ***Side note:*** *The gRPC team has plans to add a feature to fix these
-        performance issues, so any solution involving creating multiple channels
-        is a temporary workaround that should eventually not be needed.*
+
+    ***Side note:*** *The gRPC team has plans to add a feature to fix these
+    performance issues, so any solution involving creating multiple channels
+    is a temporary workaround that should eventually not be needed.*
 
 ### C++
 
@@ -59,16 +60,10 @@ description: A user guide of both general and language-specific best practices t
     continuously getting stuck in a slow path that results in essentially serial
     request processing. 
 
-*   **Enable write batching in streams** if message k + 1 does not rely on
+*   *(Special topic)* **Enable write batching in streams** if message k + 1 does not rely on
     responses from message k by passing a WriteOptions argument to Write with
     buffer_hint set - `stream_writer->Write(message,
     WriteOptions().set_buffer_hint());`
-
-*   *(Special topic)* In the case that your application has unary or server-side
-    streaming methods where there will be exactly one request message from the
-    client, the **synchronous-with-deferred-read interface** could reduce memory
-    usage on busy servers. Read more about the interface
-    [here](https://g3doc.corp.google.com/net/grpc/g3doc/cpp/codegen.md#synchronous-with-deferred-read-interface).
 
 *   *(Special topic)*
     [gRPC::GenericStub](https://grpc.github.io/grpc/cpp/grpcpp_2generic_2generic__stub_8h.html)
@@ -83,13 +78,13 @@ description: A user guide of both general and language-specific best practices t
 
 *   **Use non-blocking stubs** to parallelize RPCs.
 
-*   **Provide a custom executor based on the workload** (cached (default), fixed, forkjoin, etc).
+*   **Provide a custom executor that limits the number of threads, based on your workload** (cached (default), fixed, forkjoin, etc).
 
 ### Python
 
 *   Streaming RPCs create extra threads for receiving and possibly sending the
     messages, which makes **streaming RPCs much slower than unary RPCs** in
-    Python.
+    gRPC Python, unlike the other languages supported by gRPC.
 
 *   **Using [asyncio](https://grpc.github.io/grpc/python/grpc_asyncio.html)** could improve performance.
 
