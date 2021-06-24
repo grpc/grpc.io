@@ -1,6 +1,6 @@
 ---
 title: Running gRPC and Protobuf on ARM64 (on Linux)
-date: 2021-06-20
+date: 2021-06-23
 spelling: Tattermusch
 author:
   name: Jan Tattermusch
@@ -23,16 +23,62 @@ The current state of things is best described by a list of general areas we comp
 
 In the following table you can see the detailed status broken down by language. Each entry summarizes the support level for both gRPC and Protobuf on ARM64 Linux.
 
-| Language        | continuously tested | distribution/packages | additional info |
-|-----------------|---------------------|-----------------------|-----------------|
-| C++             | ✔️                   | build from source using cmake or bazel (same approach as on x86)                                                                                  |                                                                                                                                                                                                          |
-| C#              | ✔️                   | Grpc.Core nuget packages now have aarch64 Linux support (starting from `v2.38.1`)                                                          | Grpc.Tools nuget package has now support for codegen on aarch64 linux.                                                                                                                                   |
-| Go              | ✔️ <sup>1</sup>                   | Use the standard way of installing libraries in golang (same experience as on x86)                                                                |                                                                                                                                                                                                          |
-| Java            | ✔️                   | Maven artifacts published with each release work well on aarch64 Linux                                                                            | aarch64 protoc and grpc-java protoc plugin are published with each release                                                                                                                               |
-| Node/Javascript | ✔️                   | use existing npm packages (they are platform-independent)                                                                                         |                                                                                                                                                                                                          |
-| PHP             | ✔️                  | Existing PECL and composer packages work well on Linux aarch64.                                                                                   |                                                                                                                                                                                                          |
-| Python          | ✔️                   | pre-built wheels published with each release (aarch64 Linux) (starting from `v1.38.1`)             | grpcio-tools package has now support for codegen on aarch64 Linux.                                                                                                                                       |
-| Ruby            | ✔️                   | Pre-built native gems for aarch64 Linux not available yet. In order to use grpc-ruby and protobuf-ruby, users need to build the gems from source. | Continuous tests are in place and they are passing consistently, but we don't yet provide pre-build packages. gRPC and protobuf in ruby are safe to use, but the installation experience is suboptimal.  |
+<table>
+<tr>
+  <td>Language</td>
+  <td>continuously tested</td>
+  <td>distribution/packages</td>
+  <td>additional info</td>
+</tr>
+<tr>
+  <td>C++</td>
+  <td style="background: green;">✔️</td>
+  <td>build from source using cmake or bazel (same approach as on x86)</td>
+  <td></td>
+</tr>
+<tr>
+  <td>C#</td>
+  <td>✔️</td>
+  <td>Grpc.Core nuget packages now have aarch64 Linux support (starting from `v2.38.1`)</td>
+  <td>Grpc.Tools nuget package has now support for codegen on aarch64 linux.</td>
+</tr>
+<tr>
+  <td>Go</td>
+  <td>✔️ <sup>1</sup></td>
+  <td>Use the standard way of installing libraries in golang (same experience as on x86)</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Java</td>
+  <td>✔️</td>
+  <td>Maven artifacts published with each release work well on aarch64 Linux</td>
+  <td>aarch64 protoc and grpc-java protoc plugin are published with each release</td>
+</tr>
+<tr>
+  <td>Node/Javascript</td>
+  <td>✔️</td>
+  <td>use existing npm packages (they are platform-independent)</td>
+  <td></td>
+</tr>
+<tr>
+  <td>PHP</td>
+  <td>✔️</td>
+  <td>Existing PECL and composer packages work well on Linux aarch64.</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Python</td>
+  <td>✔️</td>
+  <td>pre-built wheels published with each release (aarch64 Linux) (starting from `v1.38.1`)</td>
+  <td>grpcio-tools package has now support for codegen on aarch64 Linux.</td>
+</tr>
+<tr>
+  <td>Ruby</td>
+  <td>✔️</td>
+  <td>Pre-built native gems for aarch64 Linux not available yet. In order to use grpc-ruby and protobuf-ruby, users need to build the gems from source.</td>
+  <td>Continuous tests are in place and they are passing consistently, but we don't yet provide pre-built packages. gRPC and protobuf in ruby are safe to use, but the installation experience is suboptimal.</td>
+</tr>
+</table>
 
 *<sup>1</sup> continuous testing is in place for grpc-go and in-progress for protobuf-go. protobuf-go has been tested on aarch64 manually and has been found to work reliably.*
 
