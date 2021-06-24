@@ -25,57 +25,57 @@ In the following table you can see the detailed status broken down by language. 
 
 <table>
 <tr>
-  <td>Language</td>
-  <td>continuously tested</td>
+  <td style="white-space: nowrap">Language</td>
+  <td style="white-space: nowrap">continuously tested</td>
   <td>distribution/packages</td>
   <td>additional info</td>
 </tr>
 <tr>
   <td>C++</td>
-  <td style="background: green;">✔️</td>
-  <td>build from source using cmake or bazel (same approach as on x86)</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">build from source using cmake or bazel (same approach as on x86)</td>
   <td></td>
 </tr>
 <tr>
   <td>C#</td>
-  <td>✔️</td>
-  <td>Grpc.Core nuget packages now have aarch64 Linux support (starting from `v2.38.1`)</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">Grpc.Core nuget packages now have aarch64 Linux support (starting from `v2.38.1`)</td>
   <td>Grpc.Tools nuget package has now support for codegen on aarch64 linux.</td>
 </tr>
 <tr>
   <td>Go</td>
-  <td>✔️ <sup>1</sup></td>
-  <td>Use the standard way of installing libraries in golang (same experience as on x86)</td>
+  <td style="background: #90ee90;">✔️ <sup>1</sup></td>
+  <td style="background: #90ee90;">Use the standard way of installing libraries in golang (same experience as on x86)</td>
   <td></td>
 </tr>
 <tr>
   <td>Java</td>
-  <td>✔️</td>
-  <td>Maven artifacts published with each release work well on aarch64 Linux</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">Maven artifacts published with each release work well on aarch64 Linux</td>
   <td>aarch64 protoc and grpc-java protoc plugin are published with each release</td>
 </tr>
 <tr>
   <td>Node/Javascript</td>
-  <td>✔️</td>
-  <td>use existing npm packages (they are platform-independent)</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">use existing npm packages (they are platform-independent)</td>
   <td></td>
 </tr>
 <tr>
   <td>PHP</td>
-  <td>✔️</td>
-  <td>Existing PECL and composer packages work well on Linux aarch64.</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">Existing PECL and composer packages work well on Linux aarch64.</td>
   <td></td>
 </tr>
 <tr>
   <td>Python</td>
-  <td>✔️</td>
-  <td>pre-built wheels published with each release (aarch64 Linux) (starting from `v1.38.1`)</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #90ee90;">pre-built wheels published with each release (aarch64 Linux) (starting from `v1.38.1`)</td>
   <td>grpcio-tools package has now support for codegen on aarch64 Linux.</td>
 </tr>
 <tr>
   <td>Ruby</td>
-  <td>✔️</td>
-  <td>Pre-built native gems for aarch64 Linux not available yet. In order to use grpc-ruby and protobuf-ruby, users need to build the gems from source.</td>
+  <td style="background: #90ee90;">✔️</td>
+  <td style="background: #ffcccb;">Pre-built native gems for aarch64 Linux not available yet. In order to use grpc-ruby and protobuf-ruby, users need to build the gems from source.</td>
   <td>Continuous tests are in place and they are passing consistently, but we don't yet provide pre-built packages. gRPC and protobuf in ruby are safe to use, but the installation experience is suboptimal.</td>
 </tr>
 </table>
