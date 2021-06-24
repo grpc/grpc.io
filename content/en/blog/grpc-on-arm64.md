@@ -39,7 +39,7 @@ In the following table you can see the detailed status broken down by language. 
 <tr>
   <td>C#</td>
   <td style="background: #90ee90;">✔️</td>
-  <td style="background: #90ee90;">Grpc.Core nuget packages now have aarch64 Linux support (starting from <pre>v2.38.1</pre>)</td>
+  <td style="background: #90ee90;">Grpc.Core nuget packages now have aarch64 Linux support (starting from <code>v2.38.1</code>)</td>
   <td>Grpc.Tools nuget package has now support for codegen on aarch64 Linux</td>
 </tr>
 <tr>
@@ -69,7 +69,7 @@ In the following table you can see the detailed status broken down by language. 
 <tr>
   <td>Python</td>
   <td style="background: #90ee90;">✔️</td>
-  <td style="background: #90ee90;">Pre-built wheels for aarch64 Linux are published with each release (starting from <pre>v1.38.1</pre>)</td>
+  <td style="background: #90ee90;">Pre-built wheels for aarch64 Linux are published with each release (starting from <code>v1.38.1</code>)</td>
   <td>grpcio-tools package has now support for codegen on aarch64 Linux</td>
 </tr>
 <tr>
