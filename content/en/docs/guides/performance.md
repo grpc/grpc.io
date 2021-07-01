@@ -11,18 +11,20 @@ description: A user guide of both general and language-specific best practices t
     inactivity to allow initial RPCs to be made quickly without a delay (i.e.
     C++ channel arg GRPC_ARG_KEEPALIVE_TIME_MS). 
 
-*   **Use streaming RPCs** when wanting to avoid continuous RPC initiation,
+*   **Use streaming RPCs** when handling
+    a long-lived logical flow of data from the client-to-server,
+    server-to-client, or in both directions. Streams can avoid continuous RPC initiation,
     which includes connection load balancing at the client-side, starting a new
     HTTP/2 request at the transport layer, and invoking a user-defined method
-    handler on the server side. Streams are particularly well-suited to handling
-    a long-lived logical flow of data from the client-to-server,
-    server-to-client, or in both directions. Streams, however, cannot be load
+    handler on the server side. Streams, however, cannot be load
     balanced once they have started and can be hard to debug for stream
-    failures. \
+    failures. They also might increase performance at a small scale but can reduce 
+    scalability due to load balancing and complexity, so they should only be used 
+    when the intent is a long-lived flow of data.  \
     ***Side note:*** *This does not apply to Python (see Python section for
     details).*
 
-*   Each gRPC channel uses 0 or more HTTP/2 connections and each connection
+*   *(Special topic)* Each gRPC channel uses 0 or more HTTP/2 connections and each connection
     usually has a limit on the number of concurrent streams. When the number of
     active RPCs on the connection reaches this limit, additional RPCs are queued
     in the client and must wait for active RPCs to finish before they are sent.
@@ -36,10 +38,11 @@ description: A user guide of both general and language-specific best practices t
     2.  **Use a pool of gRPC channels** to distribute RPCs over
         multiple connections (channels must have different channel args to
         prevent re-use so define a use-specific channel arg such as channel
-        number). \
+        number).
 
     ***Side note:*** *The gRPC team has plans to add a feature to fix these
-    performance issues, so any solution involving creating multiple channels
+    performance issues (see [grpc/grpc#21386](https://github.com/grpc/grpc/issues/21386) 
+    for more info), so any solution involving creating multiple channels
     is a temporary workaround that should eventually not be needed.*
 
 ### C++
@@ -48,9 +51,10 @@ description: A user guide of both general and language-specific best practices t
     and/or resource consumption are not concerns, use the Sync API as it is the
     simplest to implement for low-QPS services.
 
-*   **Favor callback API over other APIs for all RPCs**, given that the
+*   **Favor callback API over other APIs for most RPCs**, given that the
     application can avoid all blocking operations or blocking operations can be
-    moved to a separate thread.
+    moved to a separate thread. The callback API is easier to use than the 
+    completion-queue async API but is currently slower for truly high-QPS workloads.
 
 *   If having to use the async completion-queue API, the **best scalability
     trade-off is having numcpu’s threads and one completion queue per thread**.
