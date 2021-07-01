@@ -103,7 +103,7 @@ a slightly simplified syntax, some useful new features, and supports more
 languages. Proto3 is currently available in Java, C++, Dart, Python,
 Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the
 [protocol buffers GitHub repo][], as well as a Go language generator from the
-[golang/protobuf GitHub repo][], with more languages in development. You can
+[golang/protobuf official package][], with more languages in development. You can
 find out more in the [proto3 language guide][] and the [reference
 documentation][] available for each language. The reference documentation also
 includes a [formal specification][] for the `.proto` file format.
@@ -114,7 +114,7 @@ full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
 
 [formal specification]: https://developers.google.com/protocol-buffers/docs/reference/proto3-spec
-[golang/protobuf GitHub repo]: https://github.com/golang/protobuf
+[golang/protobuf official package]: https://pkg.go.dev/google.golang.org/protobuf
 [proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
 [protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
 [protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
