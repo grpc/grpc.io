@@ -16,11 +16,14 @@ description: A user guide of both general and language-specific best practices t
     server-to-client, or in both directions. Streams can avoid continuous RPC initiation,
     which includes connection load balancing at the client-side, starting a new
     HTTP/2 request at the transport layer, and invoking a user-defined method
-    handler on the server side. Streams, however, cannot be load
-    balanced once they have started and can be hard to debug for stream
-    failures. They also might increase performance at a small scale but can reduce 
-    scalability due to load balancing and complexity, so they should only be used 
-    when the intent is a long-lived flow of data.  \
+    handler on the server side. 
+
+    Streams, however, cannot be load balanced once they have started and can be hard 
+    to debug for stream failures. They also might increase performance at a small scale 
+    but can reduce scalability due to load balancing and complexity, so they should 
+    only be used when they provide substantial performance or simplicity benefit to 
+    application logic. Use streams to optimize the application, not gRPC.  
+
     ***Side note:*** *This does not apply to Python (see Python section for
     details).*
 
@@ -33,7 +36,7 @@ description: A user guide of both general and language-specific best practices t
     solutions:
 
     1.  **Create a separate channel for each area of high load** in the
-        application, or
+        application.
 
     2.  **Use a pool of gRPC channels** to distribute RPCs over
         multiple connections (channels must have different channel args to
@@ -66,8 +69,8 @@ description: A user guide of both general and language-specific best practices t
 
 *   *(Special topic)* **Enable write batching in streams** if message k + 1 does not rely on
     responses from message k by passing a WriteOptions argument to Write with
-    buffer_hint set - `stream_writer->Write(message,
-    WriteOptions().set_buffer_hint());`
+    buffer_hint set: \
+    `stream_writer->Write(message, WriteOptions().set_buffer_hint());`
 
 *   *(Special topic)*
     [gRPC::GenericStub](https://grpc.github.io/grpc/cpp/grpcpp_2generic_2generic__stub_8h.html)
