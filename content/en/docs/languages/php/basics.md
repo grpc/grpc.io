@@ -321,7 +321,13 @@ To write messages from the client:
 
 ```php
 foreach ($notes as $n) {
+  $point = new Routeguide\Point();
+  $point->setLatitude($lat = $n[0]);
+  $point->setLongitude($long = $n[1]);
+
   $route_note = new Routeguide\RouteNote();
+  $route_note->setLocation($point);
+  $route_note->setMessage($message = $n[2]);
   $call->write($route_note);
 }
 $call->writesDone();
