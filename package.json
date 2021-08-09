@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "get-submodules": "git submodule update --init --recursive --depth 1",
+    "preinstall": "npm run get-submodules"
+  },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "netlify-cli": "^3.39.4",
