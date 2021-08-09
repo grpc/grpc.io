@@ -12,7 +12,6 @@ The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
   Node Version Manager, to install and manage Node versions:
   ```console
   $ nvm install --lts
-  $ nvm use --lts
   ```
 
 ### 2. Clone this repo _and_ its submodules
