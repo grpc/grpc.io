@@ -1,7 +1,7 @@
 ---
 title: ALTS authentication
 linkTitle: ALTS
-description: >
+description: >-
   An overview of gRPC authentication in C++ using Application Layer Transport
   Security (ALTS).
 weight: 75
