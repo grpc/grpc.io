@@ -1,7 +1,7 @@
 ---
 title: Ruby
 api_path: https://rubydoc.info/gems/grpc
-notoc: true
+no_list: true
 ---
 
 These language-specific pages are available:

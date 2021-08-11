@@ -1,6 +1,6 @@
 ---
 title: Android
-nav_children: section
+no_list: true
 ---
 
 The following languages support client-side gRPC on Android:
