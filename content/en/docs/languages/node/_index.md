@@ -1,6 +1,6 @@
 ---
 title: Node
-notoc: true
+no_list: true
 ---
 
 These language-specific pages are available:
