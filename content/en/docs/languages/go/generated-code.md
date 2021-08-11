@@ -1,6 +1,6 @@
 ---
 title: Generated-code reference
-short_title: Generated code
+linkTitle: Generated code
 weight: 95
 ---
 

@@ -2,7 +2,7 @@
 title: Android Java
 layout: prog_lang_home
 language: &lang Java
-short_title: *lang
+linkTitle: *lang
 spelling: cSpell:ignore javadoc
 api_path: grpc-java/javadoc
 content:

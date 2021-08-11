@@ -1,6 +1,6 @@
 ---
 title: ALTS authentication
-short_title: ALTS
+linkTitle: ALTS
 description: >
   An overview of gRPC authentication in Go using Application Layer Transport
   Security (ALTS).

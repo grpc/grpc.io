@@ -1,6 +1,6 @@
 ---
 title: Core concepts, architecture and lifecycle
-short_title: Core concepts
+linkTitle: Core concepts
 description: >-
   An introduction to key gRPC concepts, with an overview of gRPC architecture
   and RPC life cycle.
