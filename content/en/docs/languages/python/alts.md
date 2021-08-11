@@ -1,6 +1,6 @@
 ---
 title: ALTS authentication
-short_title: ALTS
+linkTitle: ALTS
 description: >
   An overview of gRPC authentication in Python using Application Layer Transport
   Security (ALTS).

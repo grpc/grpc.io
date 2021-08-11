@@ -1,6 +1,6 @@
 ---
 title: Generated-code reference
-short_title: Generated code
+linkTitle: Generated code
 weight: 95
 spelling: cSpell:ignore buildscript classpath grpcexample motd srcs xolstice
 ---

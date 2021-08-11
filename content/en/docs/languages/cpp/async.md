@@ -1,6 +1,6 @@
 ---
 title: Asynchronous-API tutorial
-short_title: Async-API tutorial
+linkTitle: Async-API tutorial
 weight: 60
 spelling: cSpell:ignore classgrpc Impl's
 ---

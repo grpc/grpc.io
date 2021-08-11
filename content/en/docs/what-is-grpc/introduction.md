@@ -1,6 +1,6 @@
 ---
 title: Introduction to gRPC
-short_title: Introduction
+linkTitle: Introduction
 description: An introduction to gRPC and protocol buffers.
 weight: 10
 spelling: cSpell:ignore ponycopter
