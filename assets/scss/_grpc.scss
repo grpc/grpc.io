@@ -9,12 +9,9 @@ what the workaround is for
   cursor: pointer;
 }
 
-// Workarounds for external link icons
-a:not(.td-sidebar-link) > .fa-external-link-alt::before {
-  margin-left: 3px;
-}
 a > .fa-external-link-alt::before {
   font-size: 50%;
+  margin-left: 3px;
   opacity: 0.8;
   vertical-align: top;
 }
