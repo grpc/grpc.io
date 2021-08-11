@@ -86,7 +86,7 @@ Other developer stories are provided next.
   A [gRPC Conf 2020 presentation](https://sched.co/cRfZ)
   by Srini Polavarapu, Engineering Manager, Google
 - **Protop: A Package Manager for gRPC and Protocol Buffers**
-  <a class="o-icon" href="https://youtu.be/9alMEeTxsMA"><i class="fab fa-youtube"></i></a>
+  <a class="o-icon" href="https://youtu.be/q1KWl-vPi6w"><i class="fab fa-youtube"></i></a>
   <a href="https://static.sched.com/hosted_files/grpcconf20/6b/protop%20-%20a%20package%20manager%20for%20protobufs.pdf"><i class="fas fa-file"></i></a><br>
   A [gRPC Conf 2020 presentation](https://sched.co/cRfo)
   by Jeffery Shivers, Toast, Inc
