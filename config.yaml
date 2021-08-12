@@ -73,17 +73,16 @@ markup:
     endLevel: 5
     ordered: false
 
-# Configuration required for auto-generating the Netlify _redirects file
+# Netlify _redirects file
+
 mediaTypes:
-  text/netlify:
-    delimiter: ''
+  text/netlify: {}
 
 outputFormats:
   REDIRECTS:
     mediaType: text/netlify
     baseName: _redirects
-  RSS:
-    baseName: feed
+    notAlternative: true
 
 outputs:
   home: [HTML, REDIRECTS, RSS]
