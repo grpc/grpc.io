@@ -17,12 +17,13 @@ check-links: $(GET_LINK_CHECKER_IF_NEEDED)
 get-link-checker:
 	rm -Rf $(HTMLTEST_DIR)
 	mkdir -p $(HTMLTEST_DIR)/bin && \
-	pushd $(HTMLTEST_DIR) && \
+	cd $(HTMLTEST_DIR) && \
 	git clone --depth=1 https://github.com/wjdp/htmltest.git && \
-	cd htmltest && \
-	./build.sh && \
-	cp bin/htmltest ../bin && \
-	popd
+	( \
+		cd htmltest && \
+		./build.sh && \
+		cp bin/htmltest ../bin \
+	)
 
 # Once htmltext >0.14.x is released, replace the get-and-build code above with this:
 # get-link-checker:
