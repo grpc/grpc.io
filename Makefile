@@ -1,40 +1,20 @@
-DRAFT_ARGS = --buildDrafts --buildFuture
-BUILD_ARGS = --minify
-ifeq (draft, $(or $(findstring draft,$(HEAD)),$(findstring draft,$(BRANCH))))
-BUILD_ARGS += $(DRAFT_ARGS)
+HTMLTEST_DIR=tmp
+HTMLTEST?=htmltest # Specify as make arg if different
+# Use $(HTMLTEST) in PATH, if available; otherwise, we'll get a copy
+ifeq (, $(shell which $(HTMLTEST)))
+GET_LINK_CHECKER_IF_NEEDED=get-link-checker
+override HTMLTEST=$(HTMLTEST_DIR)/bin/htmltest
 endif
 
-clean:
-	rm -rf public/* resources
+check-internal-links: $(GET_LINK_CHECKER_IF_NEEDED)
+	$(HTMLTEST)
 
-serve:
-	@./check_hugo.sh
-	hugo serve
+check-all-links: $(GET_LINK_CHECKER_IF_NEEDED)
+	$(HTMLTEST) --conf .htmltest.external.yml
 
-serve-drafts:
-	@./check_hugo.sh
-	hugo serve $(DRAFT_ARGS)
+clean-htmltest-dir:
+	rm -Rf $(HTMLTEST_DIR)
 
-serve-production: clean
-	@./check_hugo.sh
-	hugo serve -e production --minify
-
-production-build: clean
-	@./check_hugo.sh
-	hugo --minify
-
-preview-build: clean
-	@./check_hugo.sh
-	hugo --baseURL $(DEPLOY_PRIME_URL) \
-		-e development $(BUILD_ARGS)
-
-link-checker-setup:
-	curl https://raw.githubusercontent.com/wjdp/htmltest/master/godownloader.sh | bash
-
-run-link-checker:
-	bin/htmltest
-
-check-internal-links: production-build link-checker-setup run-link-checker
-
-check-all-links: production-build link-checker-setup
-	bin/htmltest --conf .htmltest.external.yml
+get-link-checker:
+	rm -Rf $(HTMLTEST_DIR)/bin
+	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
