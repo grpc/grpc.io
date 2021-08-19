@@ -2,6 +2,8 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 CheckDoctype: false # Sadly, this is false only because of `google*.html`
+IgnoreURLs:
+  - "^https?://localhost.*"
 IgnoreInternalURLs:
   - /docs/languages/csharp/daily-builds/
   - /docs/languages/php/daily-builds/
