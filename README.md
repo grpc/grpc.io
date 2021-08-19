@@ -51,6 +51,21 @@ deploys to the production site [grpc.io][].
 You can see deploy logs and more from the [Netlify gRPC Team dashboard][],
 provided you have the necessary permissions.
 
+## Check links
+
+If you have [htmltest][] in your path, then
+you can check the site's **internal** links by running this command:
+
+```console
+$ npm run check-links
+```
+
+You can check all links (internal and external) as well:
+
+```console
+$ npm run check-links:all
+```
+
 ## Contribute
 
 We welcome issues and PRs! For details, see [Contribute][].
@@ -60,6 +75,7 @@ We welcome issues and PRs! For details, see [Contribute][].
 [Docsy]: https://www.docsy.dev
 [grpc.io]: https://grpc.io
 [Hugo]: https://gohugo.io
+[htmltest]: https://github.com/wjdp/htmltest
 [localhost:8888]: http://localhost:8888
 [LTS release]: https://nodejs.org/en/about/releases/
 [Netlify gRPC Team dashboard]: https://app.netlify.com/teams/grpc/overview
