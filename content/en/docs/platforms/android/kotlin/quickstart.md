@@ -212,13 +212,11 @@ from the `examples` directory:
 
 - Learn how gRPC works in [Introduction to gRPC](/docs/what-is-grpc/introduction/)
   and [Core concepts](/docs/what-is-grpc/core-concepts/).
-<!--
-- Work through the [Basics tutorial][].
--->
+- Work through the [Basics tutorial][] for Kotlin/JVM.
 - Explore the [API reference](../api).
 
 [Android Virtual Device]: https://developer.android.com/studio/run/managing-avds.html
-[Basics tutorial]: ../basics/
+[Basics tutorial]: /docs/languages/kotlin/basics/
 [client-src]: https://github.com/grpc/grpc-kotlin/blob/master/examples/android/src/main/kotlin/io/grpc/examples
 [download]: https://github.com/grpc/grpc-kotlin/archive/master.zip
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
