@@ -10,7 +10,7 @@ material for all supported [languages][] and [platforms][]:
 
   - [Introduction to gRPC](what-is-grpc/introduction/)
   - [Core concepts, architecture and lifecycle](what-is-grpc/core-concepts/)
-  - [FAQ](/faq/)
+  - [FAQ][]
 
 - **Eager to see gRPC in action?**
 
@@ -29,7 +29,8 @@ These are the officially supported gRPC language, platform and OS versions:
 
 {{< supported-lang-and-os >}}
 
-[language]: {{< relref "languages" >}}
-[languages]: {{< relref "languages" >}}
-[platform]: {{< relref "platforms" >}}
-[platforms]: {{< relref "platforms" >}}
+[FAQ]: {{< relref faq >}}
+[language]: {{< relref languages >}}
+[languages]: {{< relref languages >}}
+[platform]: {{< relref platforms >}}
+[platforms]: {{< relref platforms >}}
