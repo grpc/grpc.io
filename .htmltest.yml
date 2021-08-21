@@ -3,7 +3,9 @@ IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 CheckDoctype: false # Sadly, this is false only because of `google*.html`
 IgnoreURLs:
-  - "^https?://localhost.*"
+  - ^https?://localhost
+  - http://bit\.ly/gRPC18survey # survey is closed and DNE
+  - https://(www.)?envoyproxy.io # valid link but flakey (https://github.com/envoyproxy/envoyproxy.github.io/issues/193)
 IgnoreInternalURLs:
   - /docs/languages/csharp/daily-builds/
   - /docs/languages/php/daily-builds/
