@@ -310,12 +310,12 @@ java_grpc_library(
 )
 ```
 
-Android developers, see [Generating client code](/docs/languages/android/basics/#generating-client-code) for reference.
+Android developers, see [Generating client code](/docs/platforms/android/java/basics/#generating-client-code) for reference.
 
 If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:
 
 ```sh
 $ protoc --plugin=protoc-gen-grpc-java \
-  --grpc-java_out="$OUTPUT_FILE" --proto_path="$DIR_OF_PROTO_FILE" "$PROTO_FILE"
+    --grpc-java_out="$OUTPUT_FILE" --proto_path="$DIR_OF_PROTO_FILE" "$PROTO_FILE"
 ```
