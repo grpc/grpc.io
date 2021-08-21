@@ -58,10 +58,11 @@ find developer stories for your [preferred language](/docs/languages/) on each
 <div class="l-dev-story-buttons text-center">
 
 - [Go]({{< relref "go#dev-stories" >}})
-- [C++]({{< relref "cpp#dev-stories" >}})
-- [Java]({{< relref "/docs/languages/java#dev-stories" >}})
-- [Python]({{< relref "python#dev-stories" >}})
-- [C#]({{< relref "csharp#dev-stories" >}})
+<!-- TODO: add once section has dev stories: [C++]({{< relref "cpp#dev-stories" >}}) -->
+- [Java](/docs/languages/java#dev-stories)
+<!-- TODO: add once section has dev stories: - [Python]({{< relref "python#dev-stories" >}}) -->
+<!-- TODO: add once section has dev stories: - [C#]({{< relref "csharp#dev-stories" >}}) -->
+- [Kotlin](/docs/languages/kotlin#dev-stories)
 - [<i class="fas fa-ellipsis-h"></i>]({{< relref "languages" >}})
 </div>
 
