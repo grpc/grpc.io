@@ -642,6 +642,14 @@ $client = new helloworld\GreeterClient('localhost:50051', [
 ]);
 ```
 
+##### With server authentication SSL/TLS
+
+```php
+$client = new helloworld\GreeterClient('myservice.example.com', [
+    'credentials' => Grpc\ChannelCredentials::createSsl(file_get_contents('roots.pem')),
+]);
+```
+
 ##### Authenticate with Google
 
 ```php
