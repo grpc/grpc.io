@@ -3,57 +3,42 @@ title: Community
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
-      <a href="https://twitter.com/grpcio" target="_blank" rel="noopener"><i class="fab
-      fa-twitter"></i>&nbsp;Twitter</a>
+      [<i class="fab fa-twitter hk-no-external-icon"></i>Twitter][@grpcio]
     desc: >
       Follow us at [@grpcio][] for real-time news on blogs posts, events, and
       more.
   - title: >
-      <a href="https://groups.google.com/g/grpc-io" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
+      [<i class="fab fa-google hk-no-external-icon"></i>Google Group][grpc-io]
     desc: >
       Join the [grpc-io][] forum to ask questions and get the latest
       developer news, including [gRFCs][].
 other_channels:
   - title: >
-      <a href="https://gitter.im/grpc/grpc"
-        target="_blank" rel="noopener"><i class="fab
-        fa-gitter"></i>&nbsp;Gitter</a>
+      [<i class="fab fa-gitter hk-no-external-icon"></i>Gitter][grpc/grpc]
     desc: >
-      Chat with other gRPC developers in the
-      [`grpc/grpc`](https://gitter.im/grpc/grpc) community.
+      Chat with other gRPC developers in the [grpc/grpc][] community.
   - title: >
-      <a href="https://stackoverflow.com/questions/tagged/grpc+protoc"
-        target="_blank" rel="noopener"><i class="fab
-        fa-stack-overflow"></i>&nbsp;Stack Overflow</a>
+      [<i class="fab fa-stack-overflow hk-no-external-icon"></i>Stack Overflow][grpc-tag]
     desc: >
       Ask technical questions about [gRPC][grpc-tag] & [protoc,][protoc-tag] and
       find answers.
   - title: >
-      <a href="https://www.reddit.com/r/grpc/"
-        target="_blank" rel="noopener"><i class="fab
-        fa-reddit"></i>&nbsp;Reddit</a>
+      [<i class="fab fa-reddit hk-no-external-icon"></i>Reddit][r/grpc]
     desc: >
-      Consult the [`r/grpc`](https://www.reddit.com/r/grpc/) subreddit for
-      discussions related to gRPC.
+      Consult the [r/grpc][] subreddit for discussions related to gRPC.
 community_resources:
   - title: >
-      <a href="https://www.meetup.com/gRPCio/"
-        target="_blank" rel="noopener"><i class="fab
-        fa-meetup"></i>&nbsp;Meetup</a>
+      [<i class="fab fa-meetup hk-no-external-icon"></i>Meetup][gRPCio]
     desc: >
       Mark your [calendars][calendar] and
       join us [online][gRPCio] for project updates, live demos, and more.
   - title: >
-      <a href="https://bit.ly/grpcmeetings"
-        target="_blank" rel="noopener"><i class="fas
-        fa-file-alt"></i>&nbsp;Meeting doc</a>
+      [<i class="fas fa-file-alt hk-no-external-icon"></i>Meeting doc][meeting-doc]
     desc: >
       Consult the [gRPC Community Meeting Working Doc][meeting-doc] for meeting
       details.
   - title: >
-      <a href="https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg"
-        target="_blank" rel="noopener"><i class="fab
-        fa-youtube"></i>&nbsp;YouTube</a>
+      [<i class="fab fa-youtube hk-no-external-icon"></i>YouTube][grpc-youtube]
     desc: >
       Missed a meeting? No problem. Visit the [gRPC channel][grpc-youtube] for
       meeting videos.
@@ -147,9 +132,11 @@ New projects are welcome!][grpc-ecosystem-request].
 [grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
 [grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
+[grpc/grpc]: https://gitter.im/grpc/grpc
 [gRPCio]: https://www.meetup.com/gRPCio/
 [language]: {{< relref "languages" >}}
 [mailing list]: https://groups.google.com/g/grpc-io
 [meeting-doc]: https://bit.ly/grpcmeetings
 [platform]: {{< relref "platforms" >}}
 [protoc-tag]: https://stackoverflow.com/questions/tagged/protoc
+[r/grpc]: https://www.reddit.com/r/grpc/
