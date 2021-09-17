@@ -249,4 +249,4 @@ We welcome your feedback! Write to us through the [grpc-io][] Google Group, or
 any other of the main [gRPC community channels]({{<relref community >}}).
 
 [ga]: {{< relref grpc-on-dotnetcore >}}
-[grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
+[grpc-io]: https://groups.google.com/g/grpc-io

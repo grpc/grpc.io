@@ -9,7 +9,7 @@ main_channels:
       Follow us at [@grpcio][] for real-time news on blogs posts, events, and
       more.
   - title: >
-      <a href="https://groups.google.com/forum/#!forum/grpc-io" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
+      <a href="https://groups.google.com/g/grpc-io" target="_blank" rel="noopener"><i class="fab fa-google"></i>&nbsp;Google Group</a>
     desc: >
       Join the [grpc-io][] forum to ask questions and get the latest
       developer news, including [gRFCs][].
@@ -143,13 +143,13 @@ New projects are welcome!][grpc-ecosystem-request].
 [gRPC Ecosystem]: https://github.com/grpc-ecosystem
 [grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/main/CONTRIBUTING.md
 [grpc-ecosystem-request]: https://github.com/grpc/grpc-community/blob/main/grpc_ecosystem.md
-[grpc-io]: https://groups.google.com/forum/#!forum/grpc-io
+[grpc-io]: https://groups.google.com/g/grpc-io
 [grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
 [grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
 [gRPCio]: https://www.meetup.com/gRPCio/
 [language]: {{< relref "languages" >}}
-[mailing list]: https://groups.google.com/forum/#!forum/grpc-io
+[mailing list]: https://groups.google.com/g/grpc-io
 [meeting-doc]: https://bit.ly/grpcmeetings
 [platform]: {{< relref "platforms" >}}
 [protoc-tag]: https://stackoverflow.com/questions/tagged/protoc

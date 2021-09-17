@@ -35,5 +35,5 @@ C# | Windows | Install [gRPC NuGet package](https://www.nuget.org/packages/Grpc/
 Java | Linux, Mac, Windows | Use our [Maven and Gradle plugins](https://github.com/grpc/grpc-java/blob/master/README.md) that provide gRPC with [statically linked `boringssl`](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#openssl-statically-linked-netty-tcnative-boringssl-static)
 C++ | Linux, Mac, Windows | Currently requires [manual build and install](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/src/cpp/README.md)
 
-You can find out more about installation in our [quick start pages](/docs/languages/) and GitHub repositories. Do send us your feedback on our [mailing list](https://groups.google.com/forum/#!forum/grpc-io) or file issues on our issue tracker if you run into any problems.
+You can find out more about installation in our [quick start pages](/docs/languages/) and GitHub repositories. Do send us your feedback on our [mailing list](https://groups.google.com/g/grpc-io) or file issues on our issue tracker if you run into any problems.
 

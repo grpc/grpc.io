@@ -62,7 +62,7 @@ The [gRPC proposal repo](https://github.com/grpc/proposal) contains proposals
 for substantial feature changes for gRPC that need to be designed upfront,
 called gRFCs.  The purpose of this process is to provide visibility and solicit
 feedback from the community.  Each change is discussed on our [mailing
-list](https://groups.google.com/forum/#!forum/grpc-io) and debated before the
+list](https://groups.google.com/g/grpc-io) and debated before the
 change is made.  We leveraged this before making the
 backward-compatibility-breaking metadata change ([gRFC
 L7](https://github.com/grpc/proposal/blob/master/L7-go-metadata-api.md)), and
