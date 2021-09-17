@@ -1,11 +1,14 @@
 {{ $isRedirected := findRE "^(|../|/docs/(languages|platforms)/.+?/)(api|daily-builds)(/.*)?(\\?.*)?$" .Destination -}}
 {{ $isExternal := or (hasPrefix .Destination "http") $isRedirected -}}
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
+{{ $noExternalIcon := in .Text "hk-no-external-icon" -}}
 <a href="{{ .Destination | safeURL }}"
   {{- with .Title }} title="{{ . }}"{{ end -}}
   {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
 >
   {{- .Text | safeHTML -}}
-  {{ if $isExternal -}}
+  {{ if and $isExternal (not $noExternalIcon) -}}
   <i class="fas fa-external-link-alt"></i>
   {{- end -}}
 </a>
+{{- /* This directive ensures that all trailing whitespace is trimmed. */ -}}
