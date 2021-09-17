@@ -5,3 +5,7 @@
 .pageinfo {
   margin: 2rem 0;
 }
+
+.card-title {
+  .fab::before, .fas::before { margin-right: .5rem; }
+}
