@@ -9,7 +9,8 @@ what the workaround is for
   cursor: pointer;
 }
 
-a > .fa-external-link-alt::before {
+a > .fa-external-link-alt::before,
+a > span > .fa-external-link-alt::before {
   font-size: 50%;
   margin-left: 3px;
   opacity: 0.8;
