@@ -42,14 +42,18 @@ sections site wide to the original site's background svg.
 
 // DOCS
 
-// Extend the sidebar to the end of the visible page.
 .td-toc {
+  padding-top: 1rem;
+}
+
+// Extend the sidebar to the end of the visible page.
+.td-sidebar-toc {
   height: initial;
   padding-top: 4.75rem;
+}
 
-  & ul {
-    margin-bottom: 0;
-  }
+.td-sidebar-nav__section .ul-1 ul {
+  padding-left: 1rem;
 }
 
 // Custom in-page toc. Apply this class as a modifier on top of the Docsy-provided .td-toc
