@@ -9,12 +9,22 @@ what the workaround is for
   cursor: pointer;
 }
 
+// External link icon
 a > .fa-external-link-alt::before,
 a > span > .fa-external-link-alt::before {
   font-size: 50%;
   margin-left: 3px;
   opacity: 0.8;
   vertical-align: top;
+}
+
+.td-sidebar-nav a[target="_blank"]:after {
+  @extend .fas;
+  font-size: 50%;
+  margin-left: 3px;
+  opacity: 0.8;
+  vertical-align: text-top;
+  content: fa-content($fa-var-external-link-alt);
 }
 
 /*
