@@ -31,7 +31,7 @@ backend services.
 
 ### Core features that make it awesome
 
-* Idiomatic client libraries in 10 languages
+* Idiomatic client libraries in 11 languages
 * Highly efficient on wire and with a simple service definition framework
 * Bi-directional streaming with http/2 based transport
 * Pluggable auth, tracing, load balancing and health checking
