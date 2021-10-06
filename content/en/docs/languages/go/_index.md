@@ -13,7 +13,7 @@ content:
     - "[Generated code](generated-code/)"
   - other:
     - $src_repo_link
-    - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696)"
+    - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608&widget=1274284569&container=695104531)"
     - "[Installation]($src_repo_url#installation)"
 spelling: cSpell:ignore Isberner Klerk Malte youtube
 ---
@@ -30,4 +30,4 @@ spelling: cSpell:ignore Isberner Klerk Malte youtube
   A [gRPC Conf 2020 presentation](https://sched.co/cRfW)
   by Malte Isberner, StackRox.
 
-[Performance benchmark]: https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584&widget=490377658&container=1286539696
+[Performance benchmark]: https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608&widget=1274284569&container=695104531
