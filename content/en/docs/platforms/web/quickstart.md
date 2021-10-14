@@ -36,7 +36,7 @@ From the `grpc-web` directory:
  1. Fetch required packages and tools:
 
     ```sh
-    $ docker-compose pull node-server envoy commonjs-client
+    $ docker-compose pull prereqs node-server envoy commonjs-client
     ```
 
     {{% alert title="Note" color="info" %}}
