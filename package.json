@@ -11,7 +11,7 @@
     "precheck-links:all": "npm run build",
     "precheck-links": "npm run build",
     "preinstall": "npm run submodule:get",
-    "serve": "netlify dev -c \"hugo serve --minify -DFE -w\"",
+    "serve": "netlify dev -c \"hugo serve -DFE --minify\"",
     "submodule:get": "git submodule update --init --recursive --depth 1",
     "submodule:update": "git submodule update --remote --recursive --depth 1"
   },
