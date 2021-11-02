@@ -60,7 +60,10 @@ description: A user guide of both general and language-specific best practices t
     completion-queue async API but is currently slower for truly high-QPS workloads.
 
 *   If having to use the async completion-queue API, the **best scalability
-    trade-off is having numcpu’s threads and one completion queue per thread**.
+    trade-off is having `numcpu`’s threads.** The ideal number of completion queues
+    in relation to the number of threads can change over time (as gRPC C++ evolves),
+    but as of gRPC 1.41 (Sept 2021), using 2 threads per completion queue seems
+    to give the best performance.
 
 *   For the async completion-queue API, make sure to **register enough server
     requests for the desired level of concurrency** to avoid the server
