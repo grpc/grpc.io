@@ -1,6 +1,7 @@
 DirectoryPath: public
-IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreInternalEmptyHash: true # At least until the following is fixed: https://github.com/gohugoio/hugo/issues/9149
 CheckDoctype: false # Sadly, this is false only because of `google*.html`
 IgnoreURLs:
   - ^https?://localhost
