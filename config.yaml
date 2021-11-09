@@ -96,9 +96,6 @@ menu:
       url: /docs/
       identifier: docs
       weight: 2
-    - name: Blog
-      url: /blog/
-      weight: 4
     - name: Overview
       url: /docs/
       weight: 1
