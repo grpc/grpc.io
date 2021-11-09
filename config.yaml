@@ -87,37 +87,3 @@ outputFormats:
 
 outputs:
   home: [HTML, REDIRECTS, RSS]
-
-# Site menus
-
-menu:
-  main:
-    - name: Docs
-      url: /docs/
-      identifier: docs
-      weight: 2
-    - name: Overview
-      url: /docs/
-      weight: 1
-      parent: docs
-    - name: What is gRPC?
-      url: /docs/what-is-grpc/
-      weight: 1
-      parent: docs
-    - name: Languages
-      url: /docs/languages/
-      weight: 2
-      parent: docs
-    - name: Platforms
-      url: /docs/platforms/
-      weight: 2
-      parent: docs
-    - name: Guides
-      url: /docs/guides/
-      identifier: guides
-      weight: 4
-      parent: docs
-    - name: FAQ
-      url: /faq/
-      weight: 7
-      parent: docs
