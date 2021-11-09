@@ -42,6 +42,8 @@ community_resources:
     desc: >
       Missed a meeting? No problem. Visit the [gRPC channel][grpc-youtube] for
       meeting videos.
+menu:
+  main: {weight: 5}
 ---
 
 {{< blocks/cover color="primary" height="sm" >}}
