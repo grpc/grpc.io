@@ -1,6 +1,9 @@
 ---
 title: About gRPC
+linkTitle: About
 description: Who is using gRPC and why
+menu:
+  main: {weight: 1}
 ---
 
 {{< blocks/cover image_anchor="top" height="sm" color="primary" >}}

@@ -15,6 +15,8 @@ customer_success_stories:
     desc: >
       How the productivity software company Nulab boosted its own productivity
       with microservices and Kubernetes.
+menu:
+  main: {weight: 3}
 ---
 
 {{< blocks/cover height="sm" color="primary" >}}
