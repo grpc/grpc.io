@@ -1,6 +1,9 @@
 ---
 title: Documentation
+linkTitle: Docs
 no_list: true
+menu:
+  main: {weight: 2}
 ---
 
 Learn about key gRPC concepts, try a quick start, find tutorials and reference
