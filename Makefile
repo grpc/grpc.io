@@ -13,19 +13,6 @@ endif
 check-links: $(GET_LINK_CHECKER_IF_NEEDED)
 	$(HTMLTEST) $(HTMLTEST_ARGS)
 
-# Until htmltext >0.14.x is released, get and build our own from source:
 get-link-checker:
-	rm -Rf $(HTMLTEST_DIR)
-	mkdir -p $(HTMLTEST_DIR)/bin && \
-	cd $(HTMLTEST_DIR) && \
-	git clone --depth=1 https://github.com/wjdp/htmltest.git && \
-	( \
-		cd htmltest && \
-		./build.sh && \
-		cp bin/htmltest ../bin \
-	)
-
-# Once htmltext >0.14.x is released, replace the get-and-build code above with this:
-# get-link-checker:
-# 	rm -Rf $(HTMLTEST_DIR)/bin
-# 	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
+	rm -Rf $(HTMLTEST_DIR)/bin
+	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
