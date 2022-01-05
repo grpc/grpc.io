@@ -83,6 +83,10 @@
 /docs/tutorials/basic/c  /docs/languages/cpp/basics
 /docs/tutorials/basic/c.html  /docs/languages/cpp/basics
 
+# Handle /docs/guides/auth/
+
+/docs/guides/auth/ /docs/guides/security/auth/
+
 # API reference docs (prior to 2020/06)
 
 /grpc/*  https://grpc.github.io/grpc/:splat
