@@ -186,7 +186,7 @@ buffers; you can find out lots more about how to define a service in a `.proto`
 file in [Introduction to gRPC](/docs/what-is-grpc/introduction/) and [Basics
 tutorial](../basics/). For now all you need to know is that both the
 server and the client stub have a `SayHello()` RPC method that takes a
-`HelloRequest` parameter from the client and returns a `HelloResponse` from the
+`HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that this method is defined like this:
 
 ```protobuf
