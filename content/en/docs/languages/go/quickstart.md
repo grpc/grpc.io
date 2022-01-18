@@ -185,7 +185,7 @@ from the `examples/helloworld` directory:
     command-line argument:
 
     ```sh
-    $ go run greeter_client/main.go Alice
+    $ go run greeter_client/main.go --name=Alice
     ```
 
     You'll see the following output:
