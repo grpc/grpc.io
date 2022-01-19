@@ -161,7 +161,7 @@ Open `greeter_client/main.go` to add the following code to the end of the
 `main()` function body:
 
 ```go
-r, err = c.SayHelloAgain(ctx, &pb.HelloRequest{Name: name})
+r, err = c.SayHelloAgain(ctx, &pb.HelloRequest{Name: *name})
 if err != nil {
         log.Fatalf("could not greet: %v", err)
 }
