@@ -502,8 +502,8 @@ server.start()
 ##### Base case - no encryption or authentication
 
 ```java
-ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
-    .usePlaintext(true)
+ManagedChannel channel = Grpc.newChannelBuilder(
+        "localhost:50051", InsecureChannelCredentials.create())
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
@@ -511,9 +511,9 @@ GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
 ##### With server authentication SSL/TLS
 
-In Java we recommend that you use OpenSSL when using gRPC over TLS. You can find
-details about installing and using OpenSSL and other required libraries for both
-Android and non-Android Java in the gRPC Java
+In Java we recommend that you use netty-tcnative with BoringSSL when using gRPC
+over TLS. You can find details about installing and using netty-tcnative and
+other required libraries for both Android and non-Android Java in the gRPC Java
 [Security](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#transport-security-tls)
 documentation.
 
@@ -525,29 +525,30 @@ has to be the root CA. The standard TLS port is 443, but we use 8443 below to
 avoid needing extra permissions from the OS.
 
 ```java
-Server server = ServerBuilder.forPort(8443)
-    // Enable TLS
-    .useTransportSecurity(certChainFile, privateKeyFile)
+ServerCredentials creds = TlsServerCredentials.create(certChainFile, privateKeyFile);
+Server server = Grpc.newServerBuilderForPort(8443, creds)
     .addService(TestServiceGrpc.bindService(serviceImplementation))
     .build();
 server.start();
 ```
 
-If the issuing certificate authority is not known to the client then a properly
-configured `SslContext` or `SSLSocketFactory` should be provided to the
-`NettyChannelBuilder` or `OkHttpChannelBuilder`, respectively.
+If the issuing certificate authority is not known to the client then
+it can be configured using `TlsChannelCredentials.newBuilder()`.
 
 On the client side, server authentication with SSL/TLS looks like this:
 
 ```java
 // With server authentication SSL/TLS
-ManagedChannel channel = ManagedChannelBuilder.forAddress("myservice.example.com", 443)
+ManagedChannel channel = Grpc.newChannelBuilder(
+        "myservice.example.com:443", TlsChannelCredentials.create())
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
-// With server authentication SSL/TLS; custom CA root certificates; not on Android
-ManagedChannel channel = NettyChannelBuilder.forAddress("myservice.example.com", 443)
-    .sslContext(GrpcSslContexts.forClient().trustManager(new File("roots.pem")).build())
+// With server authentication SSL/TLS; custom CA root certificates
+ChannelCredentials creds = TlsChannelCredentials.newBuilder()
+    .trustManager(new File("roots.pem"))
+    .build();
+ManagedChannel channel = Grpc.newChannelBuilder("myservice.example.com:443", creds)
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 ```
@@ -563,11 +564,12 @@ specific to Google and its services, similar patterns can be followed for other
 service providers.
 
 ```java
-GoogleCredentials creds = GoogleCredentials.getApplicationDefault();
-ManagedChannel channel = ManagedChannelBuilder.forTarget("greeter.googleapis.com")
+ChannelCredentials creds = CompositeChannelCredentials.create(
+    TlsChannelCredentials.create(),
+    MoreCallCredentials.from(GoogleCredentials.getApplicationDefault()));
+ManagedChannel channel = ManagedChannelBuilder.forTarget("greeter.googleapis.com", creds)
     .build();
-GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel)
-    .withCallCredentials(MoreCallCredentials.from(creds));
+GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 ```
 
 #### Node.js
