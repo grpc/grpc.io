@@ -14,7 +14,8 @@ of the gRPC development workflow. Multi-language performance tests run every few
 hours against the master branch, and these numbers are reported to a dashboard
 for visualization.
 
-- [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608)
+- [Multi-language performance dashboard @master (latest dev version)](https://grafana-dot-grpc-testing.appspot.com/)
+- [Legacy dashboard (same data as above)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608)
 
 ### Performance testing design
 
