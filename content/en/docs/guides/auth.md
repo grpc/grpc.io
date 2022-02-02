@@ -192,7 +192,7 @@ are coming soon.
 Client:
 
 ``` go
-conn, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
+conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 // error handling omitted
 client := pb.NewGreeterClient(conn)
 // ...
