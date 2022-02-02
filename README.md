@@ -5,8 +5,7 @@ The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
 ## Build prerequisites
 
 To build and serve the site, you'll need the latest [LTS release][] of **Node**.
-Like Netlify, we use **[nvm][]**, the Node Version Manager, to install and
-manage Node versions:
+Install it using **[nvm][]**, for example:
 
 ```console
 $ nvm install --lts
@@ -42,14 +41,14 @@ $ npm run serve
 
 ## Site deploys and PR previews
 
-If you submit a PR, Netlify will automatically create a [deploy preview][] so
-that you can review your changes. Once your PR is merged, Netlify automcatically
-deploys to the production site [grpc.io][].
+If you submit a PR, Netlify will create a [deploy preview][] so that you can
+review your changes. Once your PR is merged, Netlify deploys the updated site to
+the production server.
 
 > **Note**: PR previews include _draft pages_, but production builds do not.
 
-You can see deploy logs and more from the [Netlify gRPC Team dashboard][],
-provided you have the necessary permissions.
+To see deploy logs and more, visit project's [dashboard][] -- Netlify login
+required.
 
 ## Check links
 
@@ -71,13 +70,13 @@ $ npm run check-links:all
 We welcome issues and PRs! For details, see [Contribute][].
 
 [Contribute]: https://grpc.io/community/#contribute
+[dashboard]: https://app.netlify.com/teams/grpc/overview
 [deploy preview]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
 [Docsy]: https://www.docsy.dev
 [grpc.io]: https://grpc.io
-[Hugo]: https://gohugo.io
 [htmltest]: https://github.com/wjdp/htmltest
+[Hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
 [LTS release]: https://nodejs.org/en/about/releases/
-[Netlify gRPC Team dashboard]: https://app.netlify.com/teams/grpc/overview
 [Netlify]: https://netlify.com
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating

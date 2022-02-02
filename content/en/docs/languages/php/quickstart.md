@@ -41,7 +41,7 @@ The example code is part of the [grpc][] repo.
 
 ### Run the example
 
- 1. Launch the a quick start server: for example, follow the instructions given
+ 1. Launch the quick start server: for example, follow the instructions given
     in the [Quick start for Node][].
 
  2. From the `examples/php` directory, run the PHP client:
