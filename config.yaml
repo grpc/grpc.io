@@ -27,7 +27,7 @@ params:
   grpc_vers:
     core: v1.42.0
     go: v1.41.0
-    java: v1.43.1
+    java: v1.44.0
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
   ui:
