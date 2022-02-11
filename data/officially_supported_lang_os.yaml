@@ -1,6 +1,6 @@
 - language: C/C++
   os: [Linux, Mac]
-  compilers: [GCC 4.9+, Clang 3.4+]
+  compilers: [GCC 5.1+, Clang 4+]
 - language: C/C++
   os: [Windows 7+]
   compilers: [Visual Studio 2015+]
