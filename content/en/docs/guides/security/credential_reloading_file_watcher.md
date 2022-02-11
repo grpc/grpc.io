@@ -23,12 +23,13 @@ client. This will create some problems if we want a long-lived server, or we
 want to start a long-lived connection from the client, because the certificates 
 can expire and certificate rotations are required.
 
-To solve this problem, we introduced a new set of API to reload credentials from 
-disk. To use it, users just need to specify the absolute file paths for the 
+To solve this problem, we introduced a new set of APIs to reload credentials 
+from disk. To use it, users just need to specify the file paths for the 
 credentials when creating their client/server. gRPC will monitor the changes of 
 those files, and update them when necessary. When there is a need to use new 
-credentials, simply just change the file contents on disk, while the gRPC 
-server/client is running. gRPC will make sure the operation is thread-safe.
+credentials, simply change the file contents on disk, while the gRPC 
+server/client is running. When gRPC notices the files are changed, it will 
+reload the credentials and use them on future connections.
 
 This feature is already supported in C++, Java and Go, in an API consistent way. 
 This document talks about how to enable these features in each language.
@@ -103,41 +104,73 @@ std::unique_ptr<Server> server(builder.BuildAndStart());
 On the client side,
 
 ``` java
+AdvancedTlsX509KeyManager clientKeyManager = new AdvancedTlsX509KeyManager();
+Closeable clientKeyShutdownclientKeyManager.updateIdentityCredentialsFromFile(
+        CLIENT_KEY_PATH,
+        CLIENT_CERT_PATH,100, TimeUnit.MILLISECONDS, executor);
+AdvancedTlsX509TrustManager clientTrustManager = AdvancedTlsX509TrustManager
+        .newBuilder()
+        .setVerification(Verification.CERTIFICATE_AND_HOST_NAME_VERIFICATION)
+        .build();
+Closeable clientTrustShutdown = clientTrustManager
+        .updateTrustCredentialsFromFile(CA_CERT_PATH,
+        100, TimeUnit.MILLISECONDS, executor);
 ChannelCredentials channelCredentials = TlsChannelCredentials.newBuilder()
-        .keyManager(CLIENT_CERT_PATH,CLIENT_KEY_PATH)
-        .trustManager(CA_CERT_PATH).build();
+        .keyManager(clientKeyManager).trustManager(clientTrustManager).build();
 ManagedChannel channel = Grpc.newChannelBuilderForAddress("localhost", 50051,   
         channelCredentials).build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
+// ...
+// Clean up.
+clientKeyShutdown.close();
+clientTrustShutdown.close();
 ```
 On the server side,
 
 ``` java
+AdvancedTlsX509KeyManager serverKeyManager = new AdvancedTlsX509KeyManager();
+Closeable serverKeyShutdown = serverKeyManager.updateIdentityCredentialsFromFile(
+        SERVER_KEY_PATH, SERVER_CERT_PATH, 100, TimeUnit.MILLISECONDS, executor);
+AdvancedTlsX509TrustManager serverTrustManager = AdvancedTlsX509TrustManager
+        .newBuilder()
+        .setVerification(Verification.CERTIFICATE_ONLY_VERIFICATION)
+        .build();
+Closeable serverTrustShutdown = serverTrustManager.updateTrustCredentialsFromFile(
+        CA_CERT_PATH,
+        100, TimeUnit.MILLISECONDS, executor);
 ServerCredentials serverCredentials = TlsServerCredentials.newBuilder()
-        .keyManager(SERVER_CERT_PATH, SERVER_KEY_PATH).trustManager(CA_CERT_PATH)
+        .keyManager(serverKeyManager).trustManager(serverTrustManager)
         .clientAuth(ClientAuth.REQUIRE).build();
 Server server = Grpc.newServerBuilderForPort(0, serverCredentials)
         .addService(new SimpleServiceImpl()).build()
         .start();
+// ...
+// Clean up.
+serverKeyShutdown.close();
+serverTrustShutdown.close();
 ```
 
 ### Go
 
-On the client side(error handling omitted),
+On the client side,
 
 ``` go
+import "google.golang.org/grpc/security/advancedtls"
+
 identityOptions := pemfile.Options{
     CertFile:        CLIENT_CERT_PATH,
     KeyFile:         CLIENT_KEY_PATH,
     RefreshDuration: 500 * time.Millisecond,
 }
-identityProvider, _ := pemfile.NewProvider(identityOptions)
+identityProvider, err := pemfile.NewProvider(identityOptions)
+// Confirm err is nil
 defer identityProvider.Close()
 rootOptions := pemfile.Options{
     RootFile:        CA_CERT_PATH,
     RefreshDuration: 500 * time.Millisecond,
 }
-rootProvider, _ := pemfile.NewProvider(rootOptions)
+rootProvider, err := pemfile.NewProvider(rootOptions)
+// Confirm err is nil
 defer rootProvider.Close()
 options := &advancedtls.ClientOptions{
         IdentityOptions: advancedtls.IdentityCertificateOptions{
@@ -154,21 +187,25 @@ conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(clientCred
 client := pb.NewGreeterClient(conn)
 // ....
 ```
-On the server side(error handling omitted),
+On the server side,
 
 ``` go
+import "google.golang.org/grpc/security/advancedtls"
+
 identityOptions := pemfile.Options{
     CertFile:        SERVER_CERT_PATH,
     KeyFile:         SERVER_KEY_PATH,
     RefreshDuration: 500 * time.Millisecond,
 }
-identityProvider, _ := pemfile.NewProvider(identityOptions)
+identityProvider, err := pemfile.NewProvider(identityOptions)
+// Confirm err is nil
 defer identityProvider.Close()
 rootOptions := pemfile.Options{
     RootFile:        CA_CERT_PATH,
     RefreshDuration: 500 * time.Millisecond,
 }
-rootProvider, _ := pemfile.NewProvider(rootOptions)
+rootProvider, err := pemfile.NewProvider(rootOptions)
+// Confirm err is nil
 defer rootProvider.Close()
 options := &advancedtls.ClientOptions{
         IdentityOptions: advancedtls.IdentityCertificateOptions{
@@ -185,7 +222,8 @@ s := grpc.NewServer(grpc.Creds(serverTLSCreds), grpc.KeepaliveParams(keepalive.S
         // the connection, and hence re-invoke the verification callback.
         MaxConnectionAge: 500 * time.Millisecond,
 }))
-lis, _ := net.Listen("tcp", port)
+lis, err := net.Listen("tcp", port)
+// Confirm err is nil
 pb.RegisterGreeterServer(s, greeterServer{})
 if err := s.Serve(lis); err != nil {
         log.Fatalf("failed to serve: %v", err)
