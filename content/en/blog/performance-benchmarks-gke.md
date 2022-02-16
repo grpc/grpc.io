@@ -46,9 +46,8 @@ If multiple configurations are applied to the cluster, the controller will
 create pods as long as there are resources available, allowing tests to run in
 parallel.
 
-[Example configurations] include basic configurations that can be applied
-directly, and templates that require additional steps and parameter
-substitution.
+[Examples] include basic configurations that can be applied directly, and
+templates that require additional steps and parameter substitution.
 
 - The basic configurations for each supported language rely on a default worker
   image that is bundled with each release of the controller, and build the gRPC
