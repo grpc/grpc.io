@@ -1,6 +1,6 @@
 ---
 title: gRPC performance benchmarks on GKE
-date: 2022-02-21
+date: 2022-02-16
 authors:
   - name: Paulo Castello da Costa
     link: https://github.com/paulosjca
