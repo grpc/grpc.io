@@ -297,7 +297,7 @@ Dashboard snapshot:
 [bigquery]: https://cloud.google.com/bigquery
 [dashboard implementation]:
   https://github.com/grpc/test-infra/tree/master/dashboard/README.md
-[dashboard snapshot]: /img/blog/performance-dashboard-gke/dashboard.png
+[dashboard snapshot]: /img/blog/performance-benchmarks-gke/dashboard.png
 
 ## Results
 
