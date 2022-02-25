@@ -50,13 +50,16 @@ parallel.
 [Examples][examples] include basic configurations that can be applied directly,
 and templates that require additional steps and parameter substitution.
 
-- The basic configurations for each supported language rely on a default worker
-  image that is bundled with each release of the controller, and build the gRPC
-  binaries from scratch. These configurations are suitable as examples and for
-  one-off testing.
+- Basic configurations rely on **clone**, **build** and **runtime** worker
+  images that are bundled with each release of the controller. The clone and
+  build images are used to build gRPC binaries that are passed to the runtime
+  container. These configurations are suitable as examples and for one-off
+  testing.
 
-- The template configurations rely on prebuilt worker images (built before
-  starting the tests). Prebuilt images include the gRPC binary, and are suitable
+- Template configurations rely on worker images that are built before starting
+  the tests. These **prebuilt images** include the gRPC binary, eliminating the
+  need to clone and build before each test. Template substitution is used to
+  point to the location of the worker images. These configurations are suitable
   for running a batch of tests on the same gRPC version, or for running the same
   test repeatedly.
 
@@ -66,9 +69,9 @@ worker images, as well as a [dashboard](#dashboard) implementation.
 
 The tools related to prebuilt workers use `gcloud` internally and are dependent
 on GKE. Other than that, all components of the framework are built on Kubernetes
-itself and independent of GKE (i.e., it should be possible to deploy the
+itself and independent of GKE. That is, it should be possible to deploy the
 controller and run tests on a custom Kubernetes cluster or on another cloud
-provider's Kubernetes offering).
+provider's Kubernetes offering.
 
 [custom controller]:
   https://github.com/grpc/test-infra/blob/master/cmd/controller/main.go
@@ -132,9 +135,8 @@ The steps for building and deploying a controller are described in the
 
 Our continuous integration setup is described in the [gRPC OSS benchmarks
 README][] in the [gRPC Core] repository. The main continuous integration job
-executes the script [grpc_e2e_performance_gke.sh][] to generate the data
-presented on the dashboard linked to the [gRPC performance
-benchmarks][benchmarking] page.
+uses the script [grpc_e2e_performance_gke.sh][] to generate the data presented
+on the dashboard linked to the [gRPC performance benchmarks][benchmarking] page.
 
 Each continuous integration run has three phases:
 
@@ -329,25 +331,26 @@ Examples of best practices and insights derived from experimentation:
    the observed latency and its variance and also for the measured throughput).
 
 1. For Java under Docker, one must make sure to set CPU limits (this might also
-   be important for other languages, but for java the impact was the most
+   be important for other languages, but for Java the impact was the most
    visible).
 
 1. GKE pod-to-pod networking only has a very small overhead over raw GCE
-   networking. You can get raw gce networking performance with setting
+   networking. You can get raw GCE networking performance by setting
    `hostnetworking:true` for the benchmark pods.
 
 ## Running your own
 
 The code in the [Test Infra][testinfra] repository allows any user to create a
 cluster, deploy a controller, run gRPC benchmarks, and display results on their
-own dashboards. We would like to know about the experience of users running
-their own benchmarks. If you are interested in performance, please give it a try
-and [let us know!][g/grpc-io]
+own dashboards. If you are interested in performance, and run your own
+benchmarks, please [let us know!][g/grpc-io]
 
 [benchmarking]: /docs/guides/benchmarking
-[examples]: https://github.com/grpc/test-infra/blob/master/config/samples/README.md
+[examples]:
+  https://github.com/grpc/test-infra/blob/master/config/samples/README.md
 [g/grpc-io]: https://groups.google.com/g/grpc-io
 [grpc core]: https://github.com/grpc/grpc
-[grpc oss benchmarks readme]: https://github.com/grpc/grpc/blob/master/tools/run_tests/performance/README.md#grpc-oss-benchmarks
+[grpc oss benchmarks readme]:
+  https://github.com/grpc/grpc/blob/master/tools/run_tests/performance/README.md#grpc-oss-benchmarks
 [testinfra]: https://github.com/grpc/test-infra
 [tools]: https://github.com/grpc/test-infra/blob/master/tools/README.md
