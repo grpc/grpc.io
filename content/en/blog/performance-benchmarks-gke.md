@@ -1,6 +1,6 @@
 ---
 title: gRPC performance benchmarks on GKE
-date: 2022-02-17
+date: 2022-02-28
 authors:
   - name: Paulo Castello da Costa
     link: https://github.com/paulosjca
@@ -8,17 +8,17 @@ authors:
     link: https://github.com/jtattermusch
 ---
 
-[gRPC performance benchmarks] have now been transitioned to run on GKE, with
-similar results but much increased flexibility.
+[gRPC performance benchmarks][benchmarking] have now been transitioned to run on
+GKE, with similar results but much increased flexibility.
 
 ## Background
 
 gRPC performance testing requires a test driver and workers (one or more clients
-and a server), as described in [gRPC performance benchmarks]. Each test may have
-a different configuration, or _scenario_, that is passed to the driver and
-specified as a JSON file. Previously, the driver was run by the continuous
-integration process, and the workers were run on long-lived GCE VMs. This gave
-rise to several limitations:
+and a server), as described in [gRPC performance benchmarks][benchmarking]. Each
+test may have a different configuration, or _scenario_, that is passed to the
+driver and specified as a JSON file. Previously, the driver was run by the
+continuous integration process, and the workers were run on long-lived GCE VMs.
+This gave rise to several limitations:
 
 1. Tests ran sequentially and were difficult to parallelize, since they ran on
    (the same) fixed VMs.
@@ -32,12 +32,13 @@ rise to several limitations:
 
 ## Benchmarking on Kubernetes
 
-The core of the current framework is a [custom controller] for managing
-Kubernetes resources of kind [LoadTest]. This controller must be deployed to a
-Kubernetes cluster before load tests can be run on it. The controller is
-implemented with [kubebuilder]. The code for the controller is stored in the
-[Test Infra] repository. For further documentation on individual LoadTest
-fields, see the [LoadTest implementation].
+The core of the current framework is a [custom controller][] for managing
+Kubernetes resources of kind [LoadTest][loadtest]. This controller must be
+deployed to a Kubernetes cluster before load tests can be run on it. The
+controller is implemented with [kubebuilder][]. The code for the controller is
+stored in the [Test Infra][testinfra] repository. For further documentation on
+individual LoadTest fields, see the [LoadTest
+implementation][loadtestimplementation].
 
 LoadTest configurations specify driver, client and server pods to be created for
 the test. Once the configuration is applied to the cluster (for instance, with
@@ -46,8 +47,8 @@ If multiple configurations are applied to the cluster, the controller will
 create pods as long as there are resources available, allowing tests to run in
 parallel.
 
-[Examples] include basic configurations that can be applied directly, and
-templates that require additional steps and parameter substitution.
+[Examples][examples] include basic configurations that can be applied directly,
+and templates that require additional steps and parameter substitution.
 
 - The basic configurations for each supported language rely on a default worker
   image that is bundled with each release of the controller, and build the gRPC
@@ -59,9 +60,9 @@ templates that require additional steps and parameter substitution.
   for running a batch of tests on the same gRPC version, or for running the same
   test repeatedly.
 
-In addition to the controller, the [Test Infra] repository contains a set of
-[tools], including a test runner and tools to build and delete prebuilt worker
-images, as well as a [dashboard] implementation.
+In addition to the controller, the [Test Infra][testinfra] repository contains a
+set of [tools][], including a test runner and tools to build and delete prebuilt
+worker images, as well as a [dashboard](#dashboard) implementation.
 
 The tools related to prebuilt workers use `gcloud` internally and are dependent
 on GKE. Other than that, all components of the framework are built on Kubernetes
@@ -74,7 +75,7 @@ provider's Kubernetes offering).
 [kubebuilder]: https://kubebuilder.io
 [loadtest]:
   https://github.com/grpc/test-infra/blob/master/config/crd/bases/e2etest.grpc.io_loadtests.yaml
-[loadtest implementation]:
+[loadtestimplementation]:
   https://github.com/grpc/test-infra/blob/master/api/v1/loadtest_types.go
 
 ## Cluster setup
@@ -114,15 +115,15 @@ additional node pools that can be used for ad hoc testing:
 Some pools are labeled with `default-*-pool` labels. These labels specify which
 pool to use if it is not specified in the LoadTest configuration. With the
 configuration above, these tests (for instance, the tests specified in the
-[examples]) will use the `drivers` and `workers-8core` pools, and not interfere
-with continuous integration jobs. The default labels are defined as part of the
-controller build: if they are not set, the controller will only run tests where
-the `pool` labels are specified explicitly.
+[examples][]) will use the `drivers` and `workers-8core` pools, and not
+interfere with continuous integration jobs. The default labels are defined as
+part of the controller build: if they are not set, the controller will only run
+tests where the `pool` labels are specified explicitly.
 
 ## Controller deployment
 
 The steps for building and deploying a controller are described in the
-[deployment documentation].
+[deployment documentation][].
 
 [deployment documentation]:
   https://github.com/grpc/test-infra/blob/master/doc/deployment.md
@@ -130,9 +131,10 @@ The steps for building and deploying a controller are described in the
 ## Continuous integration
 
 Our continuous integration setup is described in the [gRPC OSS benchmarks
-README] in the [gRPC Core] repository. The main continuous integration job
-executes the script [grpc_e2e_performance_gke.sh] to generate the data presented
-on the dashboard linked to the [gRPC performance benchmarks] page.
+README][] in the [gRPC Core] repository. The main continuous integration job
+executes the script [grpc_e2e_performance_gke.sh][] to generate the data
+presented on the dashboard linked to the [gRPC performance
+benchmarks][benchmarking] page.
 
 Each continuous integration run has three phases:
 
@@ -175,8 +177,8 @@ differ only in the scenario being tested. In addition, each configuration must
 have a unique name, since that is a requirement for resources applied to a
 Kubernetes cluster.
 
-We handle these issues by [generating load test configurations] with a tool. The
-tool is stored in the [gRPC Core] repository, where test scenarios are also
+We handle these issues by [generating load test configurations][] with a tool.
+The tool is stored in the [gRPC Core] repository, where test scenarios are also
 defined.
 
 [generating load test configurations]:
@@ -189,14 +191,14 @@ images. These images are built and pushed to an image repository before running
 tests. The images are deleted at the end of each test run.
 
 For details on the tools used to prepare and delete images, see [Using prebuilt
-images with gRPC OSS benchmarks].
+images with gRPC OSS benchmarks][prebuilt].
 
-[using prebuilt images with grpc oss benchmarks]:
+[prebuilt]:
   https://github.com/grpc/test-infra/blob/master/tools/README.md#using-prebuilt-images-with-grpc-oss-benchmarks
 
 ### Test runner
 
-The [test runner] takes the test configurations generated previously, applies
+The [test runner][] takes the test configurations generated previously, applies
 each configuration to the cluster, polls each LoadTest resource for completion,
 collects artifacts such as results and pod logs, and (optionally) deletes
 resources once each test completes successfully.
@@ -209,7 +211,7 @@ integration tests run in two queues (corresponding to 8-core and 30-core worker
 nodes). The concurrency level of each queue is set to two.
 
 Once a configuration is applied to the cluster, the controller creates client,
-driver and server pods to run the test, monitors test execution, and udpates the
+driver and server pods to run the test, monitors test execution, and updates the
 status of the LoadTest resource.
 
 The design of the test runner can be explained as follows:
@@ -270,13 +272,13 @@ The design of the test runner can be explained as follows:
 
 ### Dashboard
 
-Test results from continuous integration are saved to [BigQuery]. The data
-stored in BigQuery is then replicated to a Postgres database for visualization
-on a dashboard.
+Test results from continuous integration are saved to [BigQuery][bigquery]. The
+data stored in BigQuery is then replicated to a Postgres database for
+visualization on a dashboard.
 
 The code for the dashboard, as well as the configuration of the main continuous
-integration dashboard, are stored in the [Test Infra] repository. This brings
-the following benefits:
+integration dashboard, are stored in the [Test Infra][testinfra] repository.
+This brings the following benefits:
 
 1. The main dashboard is maintained by updating the stored configuration,
    instead of updating it directly in the UI.
@@ -287,16 +289,14 @@ This contrasts with the dashboard for the previous benchmarks, built using
 Perfkit Explorer, which was maintained by updating it directly in the UI, and
 could not be easily replicated by users.
 
-For details, see [dashboard implementation].
+For details, see [dashboard implementation][].
 
-Dashboard snapshot:
-
-[![Dashboard snapshot]](https://grafana-dot-grpc-testing.appspot.com)
+[![Dashboard snapshot][snapshot]<span class="hk-no-external-icon"></span>](https://grafana-dot-grpc-testing.appspot.com)
 
 [bigquery]: https://cloud.google.com/bigquery
 [dashboard implementation]:
   https://github.com/grpc/test-infra/tree/master/dashboard/README.md
-[dashboard snapshot]: /img/blog/performance-benchmarks-gke/dashboard.png
+[snapshot]: /img/blog/performance-benchmarks-gke/dashboard.png
 
 ## Results
 
@@ -338,17 +338,16 @@ Examples of best practices and insights derived from experimentation:
 
 ## Running your own
 
-The code in the [Test Infra] repository allows any user to create a cluster,
-deploy a controller, run gRPC benchmarks, and display results on their own
-dashboards. We would like to know about the experience of users running their
-own benchmarks. If you are interested in performance, please give it a try and
-let us know!
+The code in the [Test Infra][testinfra] repository allows any user to create a
+cluster, deploy a controller, run gRPC benchmarks, and display results on their
+own dashboards. We would like to know about the experience of users running
+their own benchmarks. If you are interested in performance, please give it a try
+and [let us know!][g/grpc-io]
 
-[examples]:
-  https://github.com/grpc/test-infra/blob/master/config/samples/README.md
+[benchmarking]: /docs/guides/benchmarking
+[examples]: https://github.com/grpc/test-infra/blob/master/config/samples/README.md
+[g/grpc-io]: https://groups.google.com/g/grpc-io
 [grpc core]: https://github.com/grpc/grpc
-[grpc oss benchmarks readme]:
-  https://github.com/grpc/grpc/blob/master/tools/run_tests/performance/README.md#grpc-oss-benchmarks
-[grpc performance benchmarks]: https://grpc.io/docs/guides/benchmarking
-[test infra]: https://github.com/grpc/test-infra
+[grpc oss benchmarks readme]: https://github.com/grpc/grpc/blob/master/tools/run_tests/performance/README.md#grpc-oss-benchmarks
+[testinfra]: https://github.com/grpc/test-infra
 [tools]: https://github.com/grpc/test-infra/blob/master/tools/README.md
