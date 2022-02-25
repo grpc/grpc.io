@@ -330,13 +330,16 @@ Examples of best practices and insights derived from experimentation:
 1. Use `c2` instances for clients and servers (instance types matter a lot for
    the observed latency and its variance and also for the measured throughput).
 
-1. For Java under Docker, one must make sure to set CPU limits (this might also
-   be important for other languages, but for Java the impact was the most
-   visible).
-
 1. GKE pod-to-pod networking only has a very small overhead over raw GCE
    networking. You can get raw GCE networking performance by setting
    `hostnetworking:true` for the benchmark pods.
+
+1. For Java under Docker, the JVM may not be able to detect the number of
+   available processors automatically. This can lead to very pessimistic
+   results, since gRPC uses the detected number of processors for sizing thread
+   pools for processing events. A workaround is to set the number of processors
+   explicitly. This workaround is implemented in
+   <https://github.com/grpc/test-infra/pull/231>.
 
 ## Running your own
 
