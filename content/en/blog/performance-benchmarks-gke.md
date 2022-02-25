@@ -338,15 +338,15 @@ Examples of best practices and insights derived from experimentation:
    available processors automatically. This can lead to very pessimistic
    results, since gRPC uses the detected number of processors for sizing thread
    pools for processing events. A workaround is to set the number of processors
-   explicitly. This workaround is implemented in
-   <https://github.com/grpc/test-infra/pull/231>.
+   explicitly. This workaround is implemented
+   [here](https://github.com/grpc/test-infra/pull/231).
 
 ## Running your own
 
 The code in the [Test Infra][testinfra] repository allows any user to create a
 cluster, deploy a controller, run gRPC benchmarks, and display results on their
 own dashboards. If you are interested in performance, and run your own
-benchmarks, please [let us know!][g/grpc-io]
+benchmarks, [let us know!][g/grpc-io]
 
 [benchmarking]: /docs/guides/benchmarking
 [examples]:
