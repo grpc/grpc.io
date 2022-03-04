@@ -325,7 +325,7 @@ information from the server from our response object.
 Now let's look at our streaming methods. If you've already read [Creating the
 server](#server) some of this may look very familiar - streaming RPCs are
 implemented in a similar way on both sides. Here's where we call the server-side
-streaming method `list_features`, which returns an `Enumerable` of `Features`
+streaming method `list_features`, which returns an `Enumerable` of `Features`.
 
 ```ruby
 resps = stub.list_features(LIST_FEATURES_RECT)
@@ -333,6 +333,31 @@ resps.each do |r|
   p "- found '#{r.name}' at #{r.location.inspect}"
 end
 ```
+
+Streaming RPCs block until the server closes the connection. For non-blocking
+operation, multiple threads must be utilizes as well as the `return_op: true`
+flag. The flag changes the response of the call from a blocking enumerable to a
+`Operation` which gives some control over the connection. The blocking enumerable
+may be processed in a separate thread. This is useful for connecting to persistent
+RPC sessions that keeps the connection open indefinitely.
+
+```ruby
+op = stub.list_features(LIST_FEATURES_RECT, return_op: true)
+Thread.new do 
+  resps = op.execute
+  resps.each do |r|
+    p "- found '#{r.name}' at #{r.location.inspect}"
+  end
+rescue GRPC::Cancelled => e
+  p "operation cancel called - #{e}"
+end
+
+# controls for the operation
+op.status
+op.cancelled?
+op.cancel # terminates connection and raises GRPC::Cancelled in the thread.
+```
+
 
 The client-side streaming method `record_route` is similar, except there we pass
 the server an `Enumerable`.
