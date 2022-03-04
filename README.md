@@ -76,7 +76,7 @@ We welcome issues and PRs! For details, see [Contribute][].
 [grpc.io]: https://grpc.io
 [htmltest]: https://github.com/wjdp/htmltest
 [Hugo]: https://gohugo.io
-[localhost:8888]: http://localhost:8888
+[localhost:1313]: http://localhost:1313
 [LTS release]: https://nodejs.org/en/about/releases/
 [Netlify]: https://netlify.com
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
