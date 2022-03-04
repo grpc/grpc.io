@@ -33,7 +33,7 @@ You'll find the generated site files in the `public` folder.
 ## Serve the site locally
 
 
-To locally serve the site at [localhost:8888][], run the following command:
+To locally serve the site at [localhost:1313][], run the following command:
 
 ```console
 $ npm run serve
