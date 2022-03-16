@@ -55,11 +55,6 @@ From the `examples/csharp/Helloworld` directory:
 > dotnet build Greeter.sln
 ```
 
-{{% alert title="Note" color="info" %}}
-If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
-[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.
-{{% /alert %}}
-
 ### Run a gRPC application
 
 From the `examples/csharp/Helloworld` directory:
