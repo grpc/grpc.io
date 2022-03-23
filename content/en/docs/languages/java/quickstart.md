@@ -16,7 +16,7 @@ The example code is part of the [grpc-java][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
+    $ git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java
     ```
 
  2. Change to the examples directory:

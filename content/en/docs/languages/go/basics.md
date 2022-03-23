@@ -40,7 +40,7 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.go >}} https://github.com/grpc/grpc-go
+    $ git clone -b {{< param grpc_vers.go >}} --depth 1 https://github.com/grpc/grpc-go
     ```
 
  2. Change to the example directory:

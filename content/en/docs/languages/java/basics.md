@@ -35,7 +35,7 @@ To download the example, clone the latest release in `grpc-java` repository by
 running the following command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java.git
+$ git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java.git
 ```
 
 Then change your current directory to `grpc-java/examples`:

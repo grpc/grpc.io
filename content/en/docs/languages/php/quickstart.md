@@ -23,7 +23,7 @@ The example code is part of the [grpc][] repo.
  1. Clone the [grpc][] repo and its submodules:
 
     ```sh
-    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
+    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
     ```
 
  2. Change to the quick start example directory:
