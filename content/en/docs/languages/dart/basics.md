@@ -33,7 +33,7 @@ To download the example, clone the `grpc-dart` repository by running the followi
 command:
 
 ```sh
-$ git clone --depth 1 https://github.com/grpc/grpc-dart.git
+$ git clone --depth 1 https://github.com/grpc/grpc-dart
 ```
 
 Then change your current directory to `grpc-dart/example/route_guide`:
