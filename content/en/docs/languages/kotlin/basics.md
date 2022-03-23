@@ -34,7 +34,7 @@ The example code is part of the [grpc-kotlin][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-kotlin
+    $ git clone --depth 1 https://github.com/grpc/grpc-kotlin
     ```
 
  2. Change to the examples directory:

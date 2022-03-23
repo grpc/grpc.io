@@ -31,7 +31,7 @@ download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
 $ cd grpc
 ```
 

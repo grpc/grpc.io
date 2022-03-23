@@ -50,7 +50,7 @@ Quickstart. Copy the source code from GitHub
 [repository](https://github.com/grpc/grpc):
 
 ```sh
-$ git clone --recursive -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc.git
+$ git clone --recursive -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc.git
 ```
 
 ### Install gRPC plugins and libraries

@@ -65,7 +65,7 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code:
-$ git clone -b {{< param grpc_vers.core >}} https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
 # Navigate to the "hello, world" Python example:
 $ cd grpc/examples/python/helloworld
 ```
