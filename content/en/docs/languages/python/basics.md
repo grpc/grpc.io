@@ -33,7 +33,7 @@ To download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 ```
 
 Then change your current directory to `examples/python/route_guide` in the repository:

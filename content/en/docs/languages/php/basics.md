@@ -33,7 +33,7 @@ To download the example, clone the `grpc` repository and its submodules by runni
 command:
 
 ```sh
-$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
+$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 ```
 
 You need the `grpc-php-plugin` to help you compile `.proto` files. Build it from source as follows:

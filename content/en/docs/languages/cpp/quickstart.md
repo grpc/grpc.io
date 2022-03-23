@@ -96,7 +96,7 @@ Install the basic tools required to build gRPC:
 Clone the `grpc` repo and its submodules:
 
 ```sh
-$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 https://github.com/grpc/grpc
+$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 ```
 #### Build and install gRPC and Protocol Buffers
 
