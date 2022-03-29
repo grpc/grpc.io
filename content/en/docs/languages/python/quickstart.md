@@ -185,12 +185,12 @@ In the same directory, open `greeter_client.py`. Call the new method like this:
 
 ```py
 def run():
-  channel = grpc.insecure_channel('localhost:50051')
-  stub = helloworld_pb2_grpc.GreeterStub(channel)
-  response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
-  print("Greeter client received: " + response.message)
-  response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
-  print("Greeter client received: " + response.message)
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = helloworld_pb2_grpc.GreeterStub(channel)
+        response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
+        print("Greeter client received: " + response.message)
+        response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
+        print("Greeter client received: " + response.message)
 ```
 
 #### Run!
