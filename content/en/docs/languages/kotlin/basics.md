@@ -313,8 +313,7 @@ fun main(args: Array<String>) {
   val server = RouteGuideServer(port)
   server.start()
   server.blockUntilShutdown()
-  /* ... */
-}
+ }
 ```
 
 A server instance is built and started using a `ServerBuilder` as follows:
@@ -325,6 +324,8 @@ A server instance is built and started using a `ServerBuilder` as follows:
    and pass it to the builder's `addService()` method.
 1. Call `build()` and `start()` on the builder to create and start an RPC server
    for the route guide service.
+1. Call `blockUntilShutdown()` on the server to block the main function until 
+   the application receives a signal to terminate.
 
 ### Creating the client {#client}
 
