@@ -20,7 +20,7 @@ menu:
 
 Dear gRPC users,
 
-Here are the gRPC maintainers. We're trying to better understand the needs of
+We, the gRPC maintainers, are trying to better understand the needs of
 gRPC users to help plan and prioritize future efforts. We are hoping you'd be
 willing to do a short call to tell us about your developer experience with gRPC,
 with observability, and with microservices – about what we're getting right, but
