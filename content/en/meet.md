@@ -26,7 +26,7 @@ willing to do a short call to tell us about your developer experience with gRPC,
 with observability, and with microservices – about what we're getting right, but
 more importantly about where things could be better.
 
-To schedule a 30 minute session, please fill out <a name="this-survey" href="https://docs.google.com/forms/d/e/1FAIpQLSe1klQIom5SnpL7czmNFI9MZHy_eNwOCHghV0e61hTzY93qWw/viewform?usp=sf_link">this survey</a>.
+To schedule a 30 minute session, please fill out <a name="this-short-form" href="https://docs.google.com/forms/d/e/1FAIpQLSe1klQIom5SnpL7czmNFI9MZHy_eNwOCHghV0e61hTzY93qWw/viewform?usp=sf_link">this short form</a>.
 
 </div>
 
