@@ -60,7 +60,7 @@ Servers must be allowed to gracefully shut-down by rejecting new requests while 
 
 ### Flow Control
 
-Computing power and network capacity are often unbalanced between client ands server. Flow control allows for better buffer management as well as providing protection from DOS by an overly active peer.
+Computing power and network capacity are often unbalanced between client and server. Flow control allows for better buffer management as well as providing protection from DOS by an overly active peer.
 
 ### Pluggable
 
