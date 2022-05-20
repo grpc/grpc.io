@@ -1,14 +1,14 @@
 - language: C/C++
   os: [Linux, Mac]
-  compilers: [GCC 5.1+, Clang 4+]
+  compilers: [GCC 6.3+, Clang 6+]
 - language: C/C++
-  os: [Windows 7+]
-  compilers: [Visual Studio 2015+]
+  os: [Windows 10+]
+  compilers: [Visual Studio 2017+]
 - language: C#
   os: [Linux, Mac]
   compilers: [.NET Core, Mono 4+]
 - language: C#
-  os: [Windows 7+]
+  os: [Windows 10+]
   compilers: [.NET Core, NET 4.5+]
 - language: Dart
   os: [Windows, Linux, Mac]
@@ -27,7 +27,7 @@
   compilers: [Node v8+]
 - language: Objective-C
   os: [macOS 10.10+, iOS 9.0+]
-  compilers: [Xcode 7.2+]
+  compilers: [Xcode 12+]
 - language: PHP
   os: [Linux, Mac]
   compilers: [PHP 7.0+]
