@@ -1,6 +1,6 @@
 ---
 title: Ruby
-api_path: grpc/LANG/namespace_grpc
+api_path: https://rubydoc.info/gems/grpc
 prog_lang_home: true
 src_repo: https://github.com/grpc/grpc
 content:
