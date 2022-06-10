@@ -334,12 +334,14 @@ resps.each do |r|
 end
 ```
 
-Streaming RPCs block until the server closes the connection. For non-blocking
-operation, multiple threads must be utilizes as well as the `return_op: true`
-flag. The flag changes the response of the call from a blocking enumerable to a
-`Operation` which gives some control over the connection. The blocking enumerable
-may be processed in a separate thread. This is useful for connecting to persistent
-RPC sessions that keeps the connection open indefinitely.
+Non-blocking usage of the RPC stream can be achieved with multiple threads and 
+the `return_op: true` flag. When passing the `return_op: true` flag, the 
+execution of the RPC is deferred and an `Operation` object is returned. The RPC 
+can then be executed in another thread by calling the operation `execute` 
+function. The main thread can utilize contextual methods and getters such as 
+`status`, `cancelled?`, and `cancel` to manage the connection. This can be 
+useful for managing persistent RPC sessions that may keep the connection open 
+indefinitely.
 
 ```ruby
 op = stub.list_features(LIST_FEATURES_RECT, return_op: true)
@@ -355,7 +357,7 @@ end
 # controls for the operation
 op.status
 op.cancelled?
-op.cancel # terminates connection and raises GRPC::Cancelled in the thread.
+op.cancel # terminates the connection and raises GRPC::Cancelled in the blocking thread if successful.
 ```
 
 
