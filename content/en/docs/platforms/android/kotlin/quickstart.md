@@ -135,7 +135,7 @@ Remember to save the file!
 
 ### Update the app
 
-When you build the example, the build process regenerates `HelloWorldGrpcKt.kt`,
+When you build the example, the build process regenerates `HelloWorldProtoGrpcKt.kt`,
 which contains the generated gRPC client and server classes. This also
 regenerates classes for populating, serializing, and retrieving our request and
 response types.
