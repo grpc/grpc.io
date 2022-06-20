@@ -153,8 +153,8 @@ the steps of the previous section.
     ```
 
     {{% alert title="Note" color="info" %}}
-  **Getting build failures?** Most issues, at this point, are a result of a
-  faulty installation. Ensure that the have the right versions of `cmake`, and
+  **Getting build failures?** Most issues, at this point, are the result of a
+  faulty installation. Make sure you have the right version of `cmake`, and
   carefully recheck your installation.
     {{% /alert %}}
 
