@@ -7,7 +7,7 @@ author:
   link: https://github.com/jtattermusch
 ---
 
-**Update 2021-05-03: The maintenance period for `Grpc.Core` has been extended until May 2023. See [announcement][updates] for more info on the future of `Grpc.Core`.**
+**Update 2022-05-03: The maintenance period for `Grpc.Core` has been extended until May 2023. See [announcement][updates] for more info on the future of `Grpc.Core`.**
 
 **TL;DR** grpc-dotnet (the
 [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client/) and
