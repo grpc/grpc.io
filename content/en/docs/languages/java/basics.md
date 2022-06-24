@@ -195,7 +195,7 @@ private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase
 }
 ```
 
-#### Simple RPC
+##### Simple RPC
 
 `RouteGuideService` implements all our service methods. Let's
 look at the simplest method first, `GetFeature()`, which just gets a `Point` from
