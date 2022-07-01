@@ -197,6 +197,12 @@ terminates the RPC immediately so that no further work is done.
 Metadata is information about a particular RPC call (such as [authentication
 details](/docs/guides/auth/)) in the form of a list of key-value pairs, where the
 keys are strings and the values are typically strings, but can be binary data.
+
+Keys must consist of lowercase letters, digits, and special characters `-`, `_`,
+`.` and must not be start with `grpc-` (which are reserved for gRPC itself).
+If the value is binary data, the key must end with suffix `-bin` and otherwise 
+keys must not end with `-bin`.
+
 Metadata is opaque to gRPC itself - it lets the client provide information
 associated with the call to the server and vice versa.
 
