@@ -1,5 +1,5 @@
-{{/* Use this file to include anything you wish to append to the end of the body tag */}}
-
-{{ partial "google-analytics.html" . }}
-{{ partial "meta.html" . }}
-{{ partial "favicons.html" . }}
+{{ if hugo.IsProduction -}}
+  {{ partial "google-analytics.html" . -}}
+{{ end -}}
+{{ partial "meta.html" . -}}
+{{ partial "favicons.html" . -}}
