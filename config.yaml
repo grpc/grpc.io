@@ -1,5 +1,6 @@
 baseURL: https://grpc.io/
 disableKinds: [taxonomy, term]
+googleAnalytics: G-8H17ZWYV40
 
 theme: [docsy]
 
