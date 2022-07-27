@@ -4,7 +4,7 @@ linkTitle: Generated code
 weight: 95
 ---
 
-This page describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
+This page describes the code generated with the [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc), `protoc-gen-go-grpc`,
 when compiling `.proto` files with `protoc`.
 
 You can find out how to define a gRPC service in a `.proto` file in [Service definition](/docs/what-is-grpc/core-concepts/#service-definition).
