@@ -339,9 +339,10 @@ the `return_op: true` flag. When passing the `return_op: true` flag, the
 execution of the RPC is deferred and an `Operation` object is returned. The RPC 
 can then be executed in another thread by calling the operation `execute` 
 function. The main thread can utilize contextual methods and getters such as 
-`status`, `cancelled?`, and `cancel` to manage the connection. This can be 
-useful for managing persistent RPC sessions that may keep the connection open 
-indefinitely.
+`status`, `cancelled?`, and `cancel` to manage the RPC. This can be useful for 
+persistent or long running RPC sessions that would block the main thread for an
+unacceptable period of time.
+
 
 ```ruby
 op = stub.list_features(LIST_FEATURES_RECT, return_op: true)
