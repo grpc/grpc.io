@@ -93,8 +93,8 @@ on the server side.
   languages, the preferred term is *client*) that implements the same methods as
   the service. The client can then just call those methods on the local object,
   wrapping the parameters for the call in the appropriate protocol buffer
-  message type - gRPC looks after sending the request(s) to the server and
-  returning the server's protocol buffer response(s).
+  message type, send the request(s) to the server, and return the server's 
+  protocol buffer response(s).
 
 #### Synchronous vs. asynchronous
 
