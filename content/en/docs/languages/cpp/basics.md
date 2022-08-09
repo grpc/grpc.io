@@ -308,7 +308,7 @@ server can read and write in any order — the streams operate completely
 independently.
 
 Note that since `received_notes_` is an instance variable and is accessed by
-multiple threads. We use a mutex lock here to guarantee exclusive access.
+multiple threads, we use a mutex lock here to guarantee exclusive access.
 
 #### Starting the server
 
