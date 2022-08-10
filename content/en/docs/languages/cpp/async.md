@@ -38,8 +38,8 @@ the following to make an asynchronous call:
 
     ```c
     CompletionQueue cq;
-    std::unique_ptr<ClientAsyncResponseReader<HelloReply> > rpc(
-        stub_->AsyncSayHello(&context, request, &cq));
+    std::unique_ptr<ClientAsyncResponseReader<HelloReply>> rpc(
+        stub_->PrepareAsyncSayHello(&context, req, &cq));
     ```
 
 - Ask for the reply and final status, with a unique tag
