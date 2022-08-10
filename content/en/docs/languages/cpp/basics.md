@@ -307,7 +307,7 @@ get the other's messages in the order they were written, both the client and
 server can read and write in any order — the streams operate completely
 independently.
 
-Note that since `received_notes_` is an instance variable and is accessed by
+Note that since `received_notes_` is an instance variable and can be accessed by
 multiple threads, we use a mutex lock here to guarantee exclusive access.
 
 #### Starting the server
