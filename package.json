@@ -27,13 +27,15 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve": "npm run _serve",
     "test": "npm run check-links",
+    "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
+    "update:pkg:hugo+": "npm install --save-dev autoprefixer@latest postcss@latest postcss-cli@latest",
     "update:submodule": "set -x && git submodule update --remote --recursive ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "hugo-extended": "0.93.2",
+    "autoprefixer": "^10.4.8",
+    "hugo-extended": "0.95.0",
     "netlify-cli": "^9.12.3",
-    "postcss": "^8.4.7",
-    "postcss-cli": "^9.1.0"
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0"
   }
 }
