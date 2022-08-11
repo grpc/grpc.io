@@ -4,8 +4,9 @@
     "_build": "hugo --cleanDestinationDir -e dev -DFE",
     "_check-links": "make check-links",
     "_get:no": "echo SKIPPING get operation",
-    "_get:submodule": "set -x && git submodule update --init --recursive ${DEPTH:- --depth 1}",
+    "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
     "_prebuild": "npm run get:submodule",
+    "_prepare:docsy": "cd themes/docsy && npm install",
     "_serve:hugo": "hugo serve -DFE --minify",
     "_serve": "netlify dev -c \"npm run _serve:hugo\"",
     "build:preview": "set -x && npm run _build -- --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
@@ -22,6 +23,7 @@
     "precheck-links:all": "npm run build",
     "precheck-links": "npm run build",
     "preinstall": "npm run get:submodule",
+    "prepare": "npm run get:submodule && npm run _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
     "preserve": "npm run _prebuild",
     "serve:hugo": "npm run _serve:hugo",
@@ -29,7 +31,7 @@
     "test": "npm run check-links",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:pkg:hugo+": "npm install --save-dev autoprefixer@latest postcss@latest postcss-cli@latest",
-    "update:submodule": "set -x && git submodule update --remote --recursive ${DEPTH:- --depth 1}"
+    "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
