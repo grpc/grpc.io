@@ -507,7 +507,8 @@ Run the server:
 ```sh
 $ ./route_guide_server
 ```
-
+Note
+The route_guide_db.json file is actually language-agnostic, it happens to be located in the python folder.
 From a different terminal, run the client:
 
 ```sh
