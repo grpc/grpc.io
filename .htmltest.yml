@@ -1,36 +1,16 @@
 DirectoryPath: public
 IgnoreAltMissing: true
 IgnoreDirectoryMissingTrailingSlash: true
-CheckDoctype: false # Sadly, this is false only because of `google*.html`
+CheckDoctype: false # Sadly, this is false only because of `static/google*.html`
 IgnoreURLs:
+  - ^(\.\./)?api/?$
+  - ^/docs/(languages|platforms/android)/[-\w]+/(api|daily-builds)/$
+  - ^/grpc/python/grpc\.html\?#grpc\.(Stream|Unary)+MultiCallable
   - ^https?://localhost
-  - http://bit\.ly/gRPC18survey # survey is closed and DNE
-  - https://(www.)?envoyproxy.io # valid link but flakey (https://github.com/envoyproxy/envoyproxy.github.io/issues/193)
+  - ^http://bit\.ly/gRPC18survey # survey is closed and DNE
+  - ^https://(www\.)?envoyproxy.io$ # valid link but flakey (https://github.com/envoyproxy/envoyproxy.github.io/issues/193)
+  - ^https://twitter.com/grpcio$ # valid and unlikely to change
 IgnoreInternalURLs:
-  - ../api
-  - /docs/languages/cpp/api/
-  - /docs/languages/csharp/api/
-  - /docs/languages/csharp/daily-builds/
-  - /docs/languages/dart/api/
-  - /docs/languages/go/api/
-  - /docs/languages/java/api/
-  - /docs/languages/kotlin/api
-  - /docs/languages/kotlin/api/
-  - /docs/languages/node/api/
-  - /docs/languages/objective-c/api/
-  - /docs/languages/php/api/
-  - /docs/languages/php/daily-builds/
-  - /docs/languages/python/api/
-  - /docs/languages/python/daily-builds/
-  - /docs/languages/ruby/api/
-  - /docs/languages/ruby/daily-builds/
-  - /docs/platforms/android/java/api/
-  - /docs/platforms/android/kotlin/api/
   - /grpc/cpp/classgrpc_1_1_completion_queue.html
   - /grpc/python/_modules/grpc.html#Server
-  - /grpc/python/grpc.html?#grpc.StreamStreamMultiCallable
-  - /grpc/python/grpc.html?#grpc.StreamUnaryMultiCallable
-  - /grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable
-  - /grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable
-  - api/
   - daily-builds
