@@ -1,4 +1,5 @@
 ---
+title: gRPC
 features:
   - title: Simple service definition
     description: Define your service using Protocol Buffers, a powerful binary serialization toolset and language
