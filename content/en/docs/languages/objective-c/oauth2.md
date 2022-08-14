@@ -21,9 +21,7 @@ token_.
 
 ### Example code and setup {#setup}
 
-The example code for our tutorial is in
-[gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/
-{{< param grpc_vers.core >}}/examples/objective-c/auth_sample). To
+For the example source, see [gprc/examples/objective-c/auth_sample][]. To
 download the example, clone this repository by running the following commands:
 
 ```sh
@@ -177,3 +175,5 @@ GRPCUnaryProtoCall *rpc = [client unaryCallWithMessage:myRequestMessage
 When the call starts, it will call the `TokenProvider` instance's `getTokenWithHandler:` method with
 a callback `handler` and waits for the callback. The `TokenProvider` instance may call the handler
 at any time to provide the token for this call and resume the call process.
+
+[gprc/examples/objective-c/auth_sample]: https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/objective-c/auth_sample
