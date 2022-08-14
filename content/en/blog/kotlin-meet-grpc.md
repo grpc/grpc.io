@@ -28,7 +28,7 @@ For more information, see the following [Kotlin pages][]:
 
 - [Quick start](/docs/languages/kotlin/quickstart/)
 - [Basics tutorial](/docs/languages/kotlin/basics/)
-- [API reference](/docs/languages/kotlin/api)
+- [API reference](/docs/languages/kotlin/api/)
 
 [blog]: https://cloud.google.com/blog/products/application-development/use-grpc-with-kotlin
 [Cloud Run]: https://cloud.run
