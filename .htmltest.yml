@@ -1,4 +1,5 @@
 DirectoryPath: public
+ExternalTimeout: 5
 IgnoreAltMissing: true
 IgnoreDirectoryMissingTrailingSlash: true
 CheckDoctype: false # Sadly, this is false only because of `static/google*.html`
@@ -8,8 +9,11 @@ IgnoreURLs:
   - ^/grpc/python/grpc\.html\?#grpc\.(Stream|Unary)+MultiCallable
   - ^https?://localhost
   - ^http://bit\.ly/gRPC18survey # survey is closed and DNE
-  - ^https://(www\.)?envoyproxy.io$ # valid link but flakey (https://github.com/envoyproxy/envoyproxy.github.io/issues/193)
-  - ^https://twitter.com/grpcio$ # valid and unlikely to change
+  - ^https://(www\.)?envoyproxy.io/?$ # valid link but flakey (https://github.com/envoyproxy/envoyproxy.github.io/issues/193)
+  - ^https://code.jquery.com
+  - ^https://cdn.jsdelivr.net
+  - ^https://pubref.org # no longer exists
+  - ^https://coreos.com # Redirects to https://www.redhat.com/en/technologies/cloud-computing/openshift
 IgnoreInternalURLs:
   - /grpc/cpp/classgrpc_1_1_completion_queue.html
   - /grpc/python/_modules/grpc.html#Server
