@@ -6,7 +6,7 @@
   {{ range $usedBy -}}
   {{ $img := printf "img/users/%s" .image | relURL -}}
     <div class="c-used-by__user">
-      <a href="{{ .link }}" target="_blank" rel="noopener">
+      <a href="{{ .link }}" aria-label="{{ .name }}" target="_blank" rel="noopener">
         <img class="used-by-logo" src="{{ $img }}" alt="{{ .name }} logo">
       </a>
     </div>
