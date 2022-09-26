@@ -4,3 +4,8 @@ command = "npm run build:preview"
 
 [context.production]
 command = "npm run build:production"
+
+[[redirects]]
+from = "https://www.grpc.io/*"
+to = "https://grpc.io/:splat"
+force = true
