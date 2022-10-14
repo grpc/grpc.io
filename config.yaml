@@ -26,8 +26,8 @@ params:
   branch: main
   locale: en_US
   grpc_vers:
-    core: v1.49.1
-    go: v1.49.0
+    core: v1.50.0
+    go: v1.50.0
     java: v1.50.0
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
