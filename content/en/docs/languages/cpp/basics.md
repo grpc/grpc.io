@@ -283,17 +283,17 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```cpp
 Status RouteChat(ServerContext* context,
-                 ServerReaderWriter<RouteNote, RouteNote>* stream) override {
-  std::vector<RouteNote> received_notes;
+                  ServerReaderWriter<RouteNote, RouteNote>* stream) override {
   RouteNote note;
   while (stream->Read(&note)) {
-    for (const RouteNote& n : received_notes) {
+    std::unique_lock<std::mutex> lock(mu_);
+    for (const RouteNote& n : received_notes_) {
       if (n.location().latitude() == note.location().latitude() &&
           n.location().longitude() == note.location().longitude()) {
         stream->Write(n);
       }
     }
-    received_notes.push_back(note);
+    received_notes_.push_back(note);
   }
 
   return Status::OK;
@@ -306,6 +306,9 @@ client-streaming and server-streaming methods. Although each side will always
 get the other's messages in the order they were written, both the client and
 server can read and write in any order — the streams operate completely
 independently.
+
+Note that since `received_notes_` is an instance variable and can be accessed by
+multiple threads, we use a mutex lock here to guarantee exclusive access.
 
 #### Starting the server
 
