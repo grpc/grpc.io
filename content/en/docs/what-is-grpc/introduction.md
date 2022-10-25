@@ -89,10 +89,7 @@ message HelloReply {
 gRPC uses `protoc` with a special gRPC plugin to
 generate code from your proto file: you get
 generated gRPC client and server code, as well as the regular protocol buffer
-code for populating, serializing, and retrieving your message types. You'll
-see an example of this below.
-
-To learn more about protocol buffers, including how to install `protoc` with the
+code for populating, serializing, and retrieving your message types. To learn more about protocol buffers, including how to install `protoc` with the
 gRPC plugin in your chosen language, see the [protocol buffers documentation][protocol buffers].
 
 ## Protocol buffer versions
