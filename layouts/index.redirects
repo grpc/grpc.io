@@ -69,7 +69,7 @@
 
 # Redirects of quick start and tutorial pages
 
-{{ $lang_2020_05 := slice "android" "cpp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
+{{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
 {{ range $lang_2020_05 }}
 /docs/quickstart/{{ . }}                /docs/languages/{{ . }}/quickstart
 /docs/tutorials/basic/{{ . }}           /docs/languages/{{ . }}/basics
