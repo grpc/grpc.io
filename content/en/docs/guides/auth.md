@@ -302,50 +302,6 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
 
-#### C# {#csharp}
-
-##### Base case - no encryption or authentication
-
-```csharp
-var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
-var client = new Greeter.GreeterClient(channel);
-...
-```
-
-##### With server authentication SSL/TLS
-
-```csharp
-var channelCredentials = new SslCredentials(File.ReadAllText("roots.pem"));  // Load a custom roots file.
-var channel = new Channel("myservice.example.com", channelCredentials);
-var client = new Greeter.GreeterClient(channel);
-```
-
-##### Authenticate with Google
-
-
-```csharp
-using Grpc.Auth;  // from Grpc.Auth NuGet package
-...
-// Loads Google Application Default Credentials with publicly trusted roots.
-var channelCredentials = await GoogleGrpcCredentials.GetApplicationDefaultAsync();
-
-var channel = new Channel("greeter.googleapis.com", channelCredentials);
-var client = new Greeter.GreeterClient(channel);
-...
-```
-
-##### Authenticate a single RPC call
-
-```csharp
-var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
-var client = new Greeter.GreeterClient(channel);
-...
-var googleCredential = await GoogleCredential.GetApplicationDefaultAsync();
-var result = client.SayHello(request, new CallOptions(credentials: googleCredential.ToCallCredentials()));
-...
-
-```
-
 #### Python
 
 ##### Base case - No encryption or authentication
