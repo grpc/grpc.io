@@ -12,7 +12,7 @@ content:
 *This page used to contain the documentation for the original C# implementation
 of gRPC based on the native gRPC Core library (i.e. `Grpc.Core` nuget package).
 The implementation is currently in maintenance mode and its source code has
-been moved (see [details][move-details]). We plan to deprecate
+been [moved][move-details]. We plan to deprecate
 the implementation in the future (see [blogpost][]) and we recommend that
 all users use the [grpc-dotnet][] implementation instead.*
 
