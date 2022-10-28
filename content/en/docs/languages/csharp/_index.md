@@ -4,9 +4,9 @@ api_path: grpc/LANG/api/Grpc.Core
 src_repo: https://github.com/grpc/grpc-dotnet
 content:
   - reference:
-    - "[API (for legacy Grpc.Core implementation only)](api/)"
+    - "[API](api/)"
   - other:
-    - "[Daily builds (for the Grpc.Tools nuget only)](daily-builds)"
+    - "[Daily builds](daily-builds)"
 ---
 
 *This page used to contain the documentation for the original C# implementation
