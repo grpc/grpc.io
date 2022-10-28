@@ -33,7 +33,7 @@ Learn more
 - [C++]({{< relref "/docs/languages/cpp/quickstart" >}})
 - [Java]({{< relref "/docs/languages/java/quickstart" >}})
 - [Python]({{< relref "/docs/languages/python/quickstart" >}})
-- [C#]({{< relref "/docs/languages/csharp/quickstart" >}})
+- [C#]({{< relref "/docs/languages/csharp" >}})
 - [<i class="fas fa-ellipsis-h" aria-label="Supported languages"></i>]({{< relref "languages" >}})
 </div>
 {{< /blocks/cover >}}
