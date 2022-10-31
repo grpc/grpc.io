@@ -114,7 +114,7 @@ $ cmake -DgRPC_INSTALL=ON \
       -DgRPC_BUILD_TESTS=OFF \
       -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
       ../..
-$ make -j
+$ make -j 4
 $ make install
 $ popd
 ```
@@ -149,7 +149,7 @@ the steps of the previous section.
     $ mkdir -p cmake/build
     $ pushd cmake/build
     $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
-    $ make -j
+    $ make -j 4
     ```
 
     {{% alert title="Note" color="info" %}}
@@ -240,7 +240,7 @@ proto file.
 From the example **build** directory `examples/cpp/helloworld/cmake/build`, run:
 
 ```sh
-$ make -j
+$ make -j 4
 ```
 
 This regenerates `helloworld.pb.{h,cc}` and `helloworld.grpc.pb.{h,cc}`, which
@@ -330,7 +330,7 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
  1. Build the client and server after having made changes:
 
     ```sh
-    $ make -j
+    $ make -j 4
     ```
 
  2. Run the server:
