@@ -43,6 +43,9 @@
 
 # C# .NET
 /docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
+/docs/languages/csharp/quickstart  /docs/languages/csharp
+/docs/languages/csharp/basics  /docs/languages/csharp
+/docs/languages/csharp/dotnet  /docs/languages/csharp
 
 #
 # Daily-build pages:
@@ -58,8 +61,8 @@
 
 /docs/guides/concepts*                    /docs/what-is-grpc/core-concepts
 /docs/guides/contributing                 /community
-/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp/dotnet
-/docs/quickstart/csharp-dotnet            /docs/languages/csharp/dotnet
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp
 /docs/reference                           /docs/languages
 /docs/samples                             /docs/languages
 /docs/tutorials/async/helloasync-cpp*     /docs/languages/cpp/async
