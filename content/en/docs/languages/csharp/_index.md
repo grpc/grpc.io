@@ -3,12 +3,14 @@ title: C# / .NET
 api_path: grpc/LANG/api/Grpc.Core
 ---
 
-*This page used to contain the documentation for the original C# implementation
+{{% alert color="info" %}}
+This page used to contain the documentation for the original C# implementation
 of gRPC based on the native gRPC Core library (i.e. `Grpc.Core` nuget package).
 The implementation is currently in maintenance mode and its source code has
 been [moved][move-details]. We plan to deprecate
 the implementation in the future (see [blogpost][]) and we recommend that
-all users use the [grpc-dotnet][] implementation instead.*
+all users use the [grpc-dotnet][] implementation instead.
+{{% /alert %}}
 
 The following pages cover the C# implementation of gRPC for .NET
 ([grpc-dotnet][]):
