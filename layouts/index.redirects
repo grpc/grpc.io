@@ -43,6 +43,9 @@
 
 # C# .NET
 /docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
+/docs/languages/csharp/quickstart  /docs/languages/csharp
+/docs/languages/csharp/basics  /docs/languages/csharp
+/docs/languages/csharp/dotnet  /docs/languages/csharp
 
 #
 # Daily-build pages:
