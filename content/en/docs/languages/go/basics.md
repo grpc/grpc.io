@@ -229,7 +229,7 @@ func (s *routeGuideServer) GetFeature(ctx context.Context, point *pb.Point) (*pb
 The method is passed a context object for the RPC and the client's `Point`
 protocol buffer request. It returns a `Feature` protocol buffer object with the
 response information and an `error`. In the method we populate the `Feature`
-with the appropriate information, and then `return` it along with an `nil` error
+with the appropriate information, and then `return` it along with a `nil` error
 to tell gRPC that we've finished dealing with the RPC and that the `Feature` can
 be returned to the client.
 
