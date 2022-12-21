@@ -52,7 +52,7 @@ binaries, follow these instructions:
 
  1. Manually download from [github.com/google/protobuf/releases][] the zip file
     corresponding to your operating system and computer architecture
-    (`protoc-<version>-<os><arch>.zip`), or fetch the file using commands such
+    (`protoc-<version>-<os>-<arch>.zip`), or fetch the file using commands such
     as the following:
 
     ```sh
