@@ -202,7 +202,7 @@ Keys are case insensitive and consist of ASCII letters, digits, and special char
 `.` and must not start with `grpc-` (which is reserved for gRPC itself).
 Binary-valued keys end in `-bin` while ASCII-valued keys do not.
 
-Metadata is opaque to gRPC itself - it lets the client provide information
+User-defined metadata is not used by gRPC, which allows the client to provide information
 associated with the call to the server and vice versa.
 
 Access to metadata is language dependent.
