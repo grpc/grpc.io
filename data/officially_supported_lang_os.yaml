@@ -33,7 +33,7 @@
   compilers: [PHP 7.0+]
 - language: Python
   os: [Windows, Linux, Mac]
-  compilers: [Python 3.5+]
+  compilers: [Python 3.7+]
 - language: Ruby
   os: [Windows, Linux, Mac]
   compilers: [Ruby 2.3+]
