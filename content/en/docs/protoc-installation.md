@@ -80,9 +80,9 @@ If you'd like to build the protocol compiler from sources, or access older
 versions of the pre-compiled binaries, see [Download Protocol
 Buffers][download].
 
-[download]: https://developers.google.com/protocol-buffers/docs/downloads
+[download]: https://protobuf.dev/downloads
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [Homebrew]: https://brew.sh
-[latest release]: https://developers.google.com/protocol-buffers/docs/downloads#release-packages
+[latest release]: https://protobuf.dev/downloads#release-packages
 [pb]: https://developers.google.com/protocol-buffers
-[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[proto3]: https://protobuf.dev/programming-guides/proto3

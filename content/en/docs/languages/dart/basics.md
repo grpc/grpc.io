@@ -15,11 +15,11 @@ By walking through this example you'll learn how to:
 - Use the Dart gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
-with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
+with [protocol buffers](https://protobuf.dev/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
 [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3).
+guide](https://protobuf.dev/programming-guides/proto3).
 
 ### Why use gRPC?
 
@@ -49,7 +49,7 @@ interface code -- if you haven't, see [Quick start][] for setup instructions.
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the
+[protocol buffers](https://protobuf.dev/overview). You can see the
 complete .proto file in
 [`example/route_guide/protos/route_guide.proto`](https://github.com/grpc/grpc-dart/blob/master/example/route_guide/protos/route_guide.proto).
 

@@ -12,7 +12,7 @@ By walking through this example you'll learn how to:
 - Generate client code using the protocol buffer compiler.
 - Use the Java gRPC API to write a simple mobile client for your service.
 
-It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar with [protocol buffers](https://protobuf.dev/overview).
 This guide also does not cover anything on the server side. You can check the [Java pages](/docs/languages/java/) for more information.
 
 ### Why use gRPC?
@@ -39,7 +39,7 @@ interface code - if you don't already, follow the setup instructions in the
 
 ### Defining the service
 
-Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
+Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://protobuf.dev/overview). You can see the complete .proto file in [routeguide/app/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/{{< param grpc_vers.java >}}/examples/android/routeguide/app/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package` file option in our .proto:
 

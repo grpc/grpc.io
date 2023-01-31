@@ -15,13 +15,13 @@ By walking through this example you'll learn how to:
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
+buffers](https://protobuf.dev/overview). Note
 that the example in this tutorial uses the
 [proto3](https://github.com/google/protobuf/releases) version of the protocol
 buffers language: you can find out more in the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java
+guide](https://protobuf.dev/programming-guides/proto3) and [Java
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated).
+guide](https://protobuf.dev/reference/java/java-generated).
 
 ### Why use gRPC?
 
@@ -49,7 +49,7 @@ $ cd grpc-java/examples
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+buffers](https://protobuf.dev/overview). You can
 see the complete .proto file in
 [grpc-java/examples/src/main/proto/route_guide.proto](https://github.com/grpc/grpc-java/blob/master/examples/src/main/proto/route_guide.proto).
 

@@ -239,5 +239,5 @@ issue][issue] over the [grpc-dart][] repo.
 [Install Flutter]: https://flutter.dev/docs/get-started/install
 [issue]: https://github.com/grpc/grpc-dart/issues/new
 [pb]: https://developers.google.com/protocol-buffers
-[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[proto3]: https://protobuf.dev/programming-guides/proto3
 [pbc-install]: /docs/protoc-installation/
