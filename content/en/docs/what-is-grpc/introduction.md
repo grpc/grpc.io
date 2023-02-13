@@ -97,8 +97,8 @@ gRPC plugin in your chosen language, see the [protocol buffers documentation][pr
 While [protocol buffers][] have been available to open source users for some time,
 most examples from this site use protocol buffers version 3 (proto3), which has
 a slightly simplified syntax, some useful new features, and supports more
-languages. Proto3 is currently available in Java, C++, Dart, Python,
-Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the
+languages. Proto3 is currently available in Java (both normal and lite-runtime for Android Java), C++, Dart, Python,
+Objective-C, C#, Ruby, and JavaScript from the
 [protocol buffers GitHub repo][], as well as a Go language generator from the
 [golang/protobuf official package][], with more languages in development. You can
 find out more in the [proto3 language guide][] and the [reference
