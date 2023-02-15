@@ -119,7 +119,7 @@ Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using Protocol
 Buffers; you can find out lots more about how to define a service in a `.proto`
 file in Protocol Buffers
-[website](https://developers.google.com/protocol-buffers/). For now all you
+[website](https://protobuf.dev/). For now all you
 need to know is that both the server and the client "stub" have a `SayHello`
 RPC method that takes a `HelloRequest` parameter from the client and returns a
 `HelloResponse` from the server, and that this method is defined like this:

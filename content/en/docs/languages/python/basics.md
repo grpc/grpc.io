@@ -15,11 +15,11 @@ By walking through this example you'll learn how to:
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+buffers](https://protobuf.dev/overview). You can
 find out more in the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Python
+guide](https://protobuf.dev/programming-guides/proto3) and [Python
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated).
+guide](https://protobuf.dev/reference/python/python-generated).
 
 ### Why use gRPC?
 
@@ -51,7 +51,7 @@ client interface code - if you don't already, follow the setup instructions in
 Your first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+buffers](https://protobuf.dev/overview). You can
 see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 

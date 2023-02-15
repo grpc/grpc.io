@@ -14,13 +14,13 @@ By walking through this example you'll learn how to:
 - Use the Objective-C gRPC API to write a simple client for your service.
 
 It assumes a passing familiarity with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
+buffers](https://protobuf.dev/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
 buffers language: you can find out more in
 the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
+guide](https://protobuf.dev/programming-guides/proto3) and the
 [Objective-C generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated).
+guide](https://protobuf.dev/reference/objective-c/objective-c-generated).
 
 ### Why use gRPC?
 
@@ -88,7 +88,7 @@ uses that library.
 
 First let's look at how the service we're using is defined. A gRPC *service* and
 its method *request* and *response* types using [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+buffers](https://protobuf.dev/overview). You can
 see the complete .proto file for our example in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 

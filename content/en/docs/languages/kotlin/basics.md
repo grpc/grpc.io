@@ -535,7 +535,7 @@ Finished RouteChat
 [Flow]: https://kotlinlang.org/docs/reference/coroutines/flow.html#flows
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
 [Introduction to gRPC]: /docs/what-is-grpc/introduction/
-[proto3]: https://developers.google.com/protocol-buffers/docs/proto3
+[proto3]: https://protobuf.dev/programming-guides/proto3
 [Prerequisites]: ../quickstart/#prerequisites
 [protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
 [Quick start]: ../quickstart/

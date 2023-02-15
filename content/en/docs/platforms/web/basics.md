@@ -15,7 +15,7 @@ By walking through this example you'll learn how to:
 - Use the gRPC-Web API to write a simple client for your service.
 
 It assumes a passing familiarity with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview).
+buffers](https://protobuf.dev/overview).
 
 ### Why use gRPC and gRPC-Web? {#why-grpc}
 
@@ -198,5 +198,5 @@ $ npx webpack client.js
 
 Now embed `dist/main.js` into your project and see it in action!
 
-[protobuf documentation]:https://developers.google.com/protocol-buffers/
+[protobuf documentation]:https://protobuf.dev/
 [main page]:/docs/

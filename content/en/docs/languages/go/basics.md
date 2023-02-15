@@ -15,12 +15,12 @@ By walking through this example you'll learn how to:
 - Use the Go gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar with
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+[protocol buffers](https://protobuf.dev/overview).
 Note that the example in this tutorial uses the proto3 version of the protocol
 buffers language: you can find out more in the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
+guide](https://protobuf.dev/programming-guides/proto3) and the
 [Go generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/go-generated).
+guide](https://protobuf.dev/reference/go/go-generated).
 
 ### Why use gRPC?
 
@@ -53,7 +53,7 @@ The example code is part of the [grpc-go][] repo.
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+[protocol buffers](https://protobuf.dev/overview).
 For the complete `.proto` file, see
 [routeguide/route_guide.proto](https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto).
 

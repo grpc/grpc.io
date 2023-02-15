@@ -110,9 +110,9 @@ version), we recommend that you use proto3 with gRPC as it lets you use the
 full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
 
-[formal specification]: https://developers.google.com/protocol-buffers/docs/reference/proto3-spec
+[formal specification]: https://protobuf.dev/reference/protobuf/proto3-spec
 [golang/protobuf official package]: https://pkg.go.dev/google.golang.org/protobuf
-[proto3 language guide]: https://developers.google.com/protocol-buffers/docs/proto3
+[proto3 language guide]: https://protobuf.dev/programming-guides/proto3
 [protocol buffers GitHub repo]: https://github.com/google/protobuf/releases
-[protocol buffers]: https://developers.google.com/protocol-buffers/docs/overview
-[reference documentation]: https://developers.google.com/protocol-buffers/docs/reference/overview
+[protocol buffers]: https://protobuf.dev/overview
+[reference documentation]: https://protobuf.dev/reference

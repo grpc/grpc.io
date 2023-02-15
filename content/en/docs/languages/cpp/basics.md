@@ -14,13 +14,13 @@ By walking through this example you'll learn how to:
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
 with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
+buffers](https://protobuf.dev/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
 buffers language: you can find out more in
 the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C++
+guide](https://protobuf.dev/programming-guides/proto3) and [C++
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/cpp-generated).
+guide](https://protobuf.dev/reference/cpp/cpp-generated).
 
 ### Why use gRPC?
 
@@ -50,7 +50,7 @@ Get the example code and build gRPC:
 
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+[protocol buffers](https://protobuf.dev/overview).
 You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 
