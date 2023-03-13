@@ -1,9 +1,9 @@
 - language: C/C++
   os: [Linux, Mac]
-  compilers: [GCC 6.3+, Clang 6+]
+  compilers: [GCC 7.3.1+, Clang 6+]
 - language: C/C++
   os: [Windows 10+]
-  compilers: [Visual Studio 2017+]
+  compilers: [Visual Studio 2019+]
 - language: C#
   os: [Linux, Mac]
   compilers: [.NET Core, Mono 4+]
