@@ -508,13 +508,13 @@ $ make
 Run the server:
 
 ```sh
-$ ./route_guide_server
+$ ./route_guide_server --db_path=path/to/route_guide_db.json
 ```
 
 From a different terminal, run the client:
 
 ```sh
-$ ./route_guide_client
+$ ./route_guide_client --db_path=path/to/route_guide_db.json
 ```
 
 [build and locally install gRPC from source]: {{< relref "quickstart#install-grpc" >}}
