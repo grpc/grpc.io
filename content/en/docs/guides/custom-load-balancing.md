@@ -33,9 +33,10 @@ be referred to from the service config
 - Define the JSON configuration object of your implementation. This allows your
 load balancer to be configured in the service config with any arbitrary JSON
 you choose to support
-- Implement the actual load balancing logic where you manage the subchannels
-to the backends and provide a `picker` that will choose with subchannel to use
-for an RPC
+- Manage what backends to maintain a connection with
+- Implement a `picker` that will choose which backend to connect to when an
+RPC is made. Note that this needs to be a fast operation as it is on the RPC
+call path
 - To enable your load balancer, configure it in your service config
 
 The exact steps vary by language, see the language support section for some
