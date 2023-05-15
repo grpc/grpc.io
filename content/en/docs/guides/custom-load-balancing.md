@@ -66,13 +66,10 @@ For more details, please see gRPC [proposal A52]
 
 ### Language Support
 
-#### Java
-  - Fully supported
-  - [Example](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance)
+| Language | Example | Notes |
+| -------- | ------- | ----- |
+| Java | [link](java-example) | |
+| Go | | Example and xDS support upcoming |
+| C++ | | Not yet supported |
 
-#### Go
-  - Custom load balancing policies supported, xDS support in an upcoming release
-
-#### C++
-  - The load balancer interface is still private in C++, but there are plans
-  to make them public in the future 
+  [java-example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
