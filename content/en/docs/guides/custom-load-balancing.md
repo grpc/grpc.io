@@ -1,7 +1,7 @@
 ---
 title: Custom Load Balancing Policies
 description: >-
-  Explains custom load balancing policies can help optimize load balancing
+  Explains how custom load balancing policies can help optimize load balancing
   under unique circumstances.
 ---
 
@@ -19,18 +19,20 @@ to the servers and picking a connection to use when an RPC is sent.
 ### Implementing Your Own Policy
 
 By default the `pick_first` policy will be used. This policy actually does no
-load balancing but just uses the first address it gets from the name resolver.
-By updating the gRPC service config you can also switch to using `round_robin`
-that rotates through all the addresses it gets. But if the built-in load
-balancing policies do not meet your needs (the exact set available vary 
-between languages) you can also implement you own custom policy.
+load balancing but just tries each address it gets from the name resolver and
+uses the first one it can connect to. By updating the gRPC service config you
+can also switch to using `round_robin` that connects to every address it gets
+and rotates through the connected backends for each RPC. There are also some
+other load balancing policies available, but the exact set varies by language.
+If the built-in policies do not meet your needs you can also implement you own
+custom policy.
 
 This involves implementing a load balancer interface in the language you are
 using. At a high level, you will have to:
 
 - Register your implementation in the load balancer registry so that it can
 be referred to from the service config
-- Define the JSON configuration object of your implementation. This allows your
+- Parse the JSON configuration object of your implementation. This allows your
 load balancer to be configured in the service config with any arbitrary JSON
 you choose to support
 - Manage what backends to maintain a connection with
@@ -41,6 +43,16 @@ call path
 
 The exact steps vary by language, see the language support section for some
 concrete examples in your language.
+
+```mermaid
+flowchart TD
+NR(Name Resolver) -->|Provides addresses &\nLB config| LB(Load Balancer)
+LB --> |Provides a picker| C(Channel)
+C -->|Picks\na subchannel| P(Picker)
+LB --> |Manages subchannels\nto backends| SC(Subchannel 1..n)
+LB -. Creates .-> P
+P --> |Picks one| SC
+```
 
 ### Backend Metrics
 
@@ -59,17 +71,18 @@ If you have a service mesh setup where a central control plane is coordinating
 the configuration of your microservices, you cannot configure your custom load
 balancer directly via the service config. But support is provided to do this
 with the xDS protocol that your control plane uses to communicate with your
-gRPC clients.
+gRPC clients. Please refer to your control plane documentation to determine how
+custom load balancing configuration is supported.
 
-For more details, please see gRPC [proposal A52]
-(https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md).
+For more details, please see gRPC [proposal A52].
 
 ### Language Support
 
-| Language | Example | Notes |
-| -------- | ------- | ----- |
-| Java | [link](java-example) | |
-| Go | | Example and xDS support upcoming |
-| C++ | | Not yet supported |
+| Language | Example        | Notes                            |
+|----------|----------------|----------------------------------|
+| Java     | [Java example] |                                  |
+| Go       |                | Example and xDS support upcoming |
+| C++      |                | Not yet supported                |
 
-  [java-example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
+[proposal A52]:https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md
+[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
