@@ -65,6 +65,10 @@ params:
         url: https://github.com/grpc
         icon: fab fa-github
 
+  mermaid:
+    enable: true
+    theme: "neutral"
+
 markup:
   goldmark:
     renderer: {unsafe: true}
