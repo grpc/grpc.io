@@ -48,7 +48,7 @@ concrete examples in your language.
 flowchart TD
 NR(Name Resolver) -->|Provides addresses &\nLB config| LB(Load Balancer)
 LB --> |Provides a picker| C(Channel)
-C -->|Picks\na subchannel| P(Picker)
+C -->|Requests\na subchannel| P(Picker)
 LB --> |Manages subchannels\nto backends| SC(Subchannel 1..n)
 LB -. Creates .-> P
 P --> |Picks one| SC
