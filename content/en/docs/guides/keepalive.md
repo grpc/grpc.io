@@ -75,7 +75,7 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
 
 | Language | Example          | Documentation          |
 |----------|------------------|------------------------|
-| C++      | N/A              | [C++ Documentation]    |
+| C++      | [C++ Example]    | [C++ Documentation]    |
 | Go       | [Go Example]     | [Go Documentation]     |
 | Java     | [Java Example]   | N/A                    |
 | Python   | [Python Example] | [Python Documentation] |
@@ -90,6 +90,7 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
 [Health Checking]: https://github.com/grpc/grpc/blob/master/doc/health-checking.md
 [TCP keepalive]: https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive
 [PING]: https://httpwg.org/specs/rfc7540.html#PING
+[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/keepalive
 [C++ Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 [Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive
 [Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md
