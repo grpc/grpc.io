@@ -1,6 +1,7 @@
 ---
 title: Compression
-description: How to use compression to reduce the bandwidth used by gRPC
+description: >-
+    How to use compression to reduce the bandwidth used by gRPC
 ---
 
 ### Overview
@@ -40,17 +41,28 @@ The inheritance of the compression configuration by child RPCs is hanlded differ
 
 ### Language guaides and examples
 
-| Language | Example | Documentation |
-|---|---|---|
-| C++ | [Link](https://github.com/grpc/grpc/tree/master/examples/cpp/compression) | [Link](https://github.com/grpc/grpc/tree/master/examples/cpp/compression) |
-| Go | [Link](https://github.com/grpc/grpc-go/tree/master/examples/features/compression) | [Link](https://github.com/grpc/grpc-go/blob/master/Documentation/compression.md) |
-| Java | [Link](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/experimental) | N/A |
-| Python | [Link](https://github.com/grpc/grpc/tree/master/examples/python/compression) | [Link](https://github.com/grpc/grpc/tree/master/examples/python/compression) |
-| Node | N/A | N/A |
+
+| Language | Example          | Documentation          |
+|----------|------------------|------------------------|
+| C++      | [C++ Example]    | [C++ Documentation]    |
+| Go       | [Go Example]     | [Go Documentation]     |
+| Java     | [Java Example]   | N/A                    |
+| Python   | [Python Example] | [Python Documentation] |
 
 
 ### Additional Resources
 
-* [gRPC Compression](https://github.com/grpc/grpc/blob/master/doc/compression.md)
-* [gRPC (Core) Compression Cookbook](https://github.com/grpc/grpc/blob/master/doc/compression_cookbook.md#per-call-settings)
-* [gRFC for Python Compression API](https://github.com/grpc/proposal/blob/master/L46-python-compression-api.md)
+* [gRPC Compression]
+* [gRPC (Core) Compression Cookbook]
+* [gRFC for Python Compression API]
+
+[C++ Example]: (https://github.com/grpc/grpc/tree/master/examples/cpp/compression)
+[C++ Documentation]: (https://github.com/grpc/grpc/tree/master/examples/cpp/compression)
+[Go Example]: (https://github.com/grpc/grpc-go/tree/master/examples/features/compression)
+[Go Documentation]: (https://github.com/grpc/grpc-go/blob/master/Documentation/compression.md)
+[Java Example]: (https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/experimental)
+[Python Example]: (https://github.com/grpc/grpc/tree/master/examples/python/compression)
+[Python Documentation]: (https://github.com/grpc/grpc/tree/master/examples/python/compression)
+[gRPC Compression]: (https://github.com/grpc/grpc/blob/master/doc/compression.md)
+[gRPC (Core) Compression Cookbook]: (https://github.com/grpc/grpc/blob/master/doc/compression_cookbook.md#per-call-settings)
+[gRFC for Python Compression API]: (https://github.com/grpc/proposal/blob/master/L46-python-compression-api.md)

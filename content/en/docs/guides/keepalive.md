@@ -1,6 +1,7 @@
 ---
 title: Keepalive
-description: How to use HTTP/2 PING-based keepalives in gRPC
+description: >-
+  How to use HTTP/2 PING-based keepalives in gRPC
 ---
 
 ### Overview
@@ -8,12 +9,12 @@ description: How to use HTTP/2 PING-based keepalives in gRPC
 HTTP/2 PING-based keepalives are a way to keep a HTTP/2 connection alive even when there is no data being transferred. This is done by periodically sending a PING frame to the other end of the connection. HTTP/2 keepalives can improve performance and reliability of HTTP/2 connections, but it is important to configure the keepalive interval carefully.
 
 {{% alert title="Note" color="info" %}}
-  There is a related but separate concern called [Health Checking](https://github.com/grpc/grpc/blob/master/doc/health-checking.md). Health checking allows server to signal whether a *service* is healthy while keepalive is only about the *connection*.
+  There is a related but separate concern called [Health Checking]. Health checking allows server to signal whether a *service* is healthy while keepalive is only about the *connection*.
 {{% /alert %}}
 
 #### Background
 
-[TCP keepalive](https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive) is a well-known method of maintaining connections and detecting broken connections. When enabled, either side of the connection can send redundant packets, once ACKed by the other side, the connection will be consiered as good. If no ACK after repeated attempts, the connection is deemed broken. Configuration of its variables is provided by the OS on a per-socket level, but is commonly not exposed to higher-level APIs.
+[TCP keepalive] is a well-known method of maintaining connections and detecting broken connections. When enabled, either side of the connection can send redundant packets, once ACKed by the other side, the connection will be consiered as good. If no ACK after repeated attempts, the connection is deemed broken. Configuration of its variables is provided by the OS on a per-socket level, but is commonly not exposed to higher-level APIs.
 
 TCP keepalive has three parameters to tune:
 
@@ -21,7 +22,7 @@ TCP keepalive has three parameters to tune:
 2. Interval (interval between keepalives when not receiving reply).
 3. Retry (number of times to retry sending keepalives).
 
-gRPC uses HTTP/2 which provides a mandatory [PING](https://httpwg.org/specs/rfc7540.html#PING) frame which can be used to estimate round-trip time, bandwidth-delay product, or test the connection. The interval and retry in TPC keepalive don't quite apply to PING because the transport is reliable, so they're replaced with timeout (equivalent to interval * retry) in gRPC PING-based keepalive implementation.
+gRPC uses HTTP/2 which provides a mandatory [PING] frame which can be used to estimate round-trip time, bandwidth-delay product, or test the connection. The interval and retry in TPC keepalive don't quite apply to PING because the transport is reliable, so they're replaced with timeout (equivalent to interval * retry) in gRPC PING-based keepalive implementation.
 
 {{% alert title="Note" color="info" %}}
   It's not required for service owners to support kepalive. **Client authors must coordinate with service owners** for whether a particular client-side setting is acceptable. Service owners decide what they are willing to support, including whether they are willing to receive keepalives at all.
@@ -74,16 +75,28 @@ In general, keepalives can be used to improve the performance and reliability of
 
 ### Language guaides and examples
 
-| Language | Example | Documentation |
-|---|---|---|
-| C++ | N/A | [Link](https://github.com/grpc/grpc/blob/master/doc/keepalive.md) |
-| Go | [Link](https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive) | [Link](https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md) |
-| Java | [Link](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive) | N/A |
-| Python | [Link](https://github.com/grpc/grpc/tree/master/examples/python/keep_alive) | [Link](https://github.com/grpc/grpc/blob/master/doc/keepalive.md) |
-| Node | N/A | N/A |
+| Language | Example          | Documentation          |
+|----------|------------------|------------------------|
+| C++      | N/A              | [C++ Documentation]    |
+| Go       | [Go Example]     | [Go Documentation]     |
+| Java     | [Java Example]   | N/A                    |
+| Python   | [Python Example] | [Python Documentation] |
 
 
 ### Additional Resources
 
-* [gRFC for Client-side Keepalive](https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md)
-* [gRFC for Server-side Connection Management](https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md)
+* [gRFC for Client-side Keepalive]
+* [gRFC for Server-side Connection Management]
+
+
+[Health Checking]: (https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
+[TCP keepalive]: (https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive)
+[PING]: (https://httpwg.org/specs/rfc7540.html#PING)
+[C++ Documentation]: (https://github.com/grpc/grpc/blob/master/doc/keepalive.md)
+[Go Example]: (https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive)
+[Go Documentation]: (https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md)
+[Java Example]: (https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive)
+[Python Example]: (https://github.com/grpc/grpc/tree/master/examples/python/keep_alive)
+[Python Documentation]: (https://github.com/grpc/grpc/blob/master/doc/keepalive.md)
+[gRFC for Client-side Keepalive]: (https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md)
+[gRFC for Server-side Connection Management]: (https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md)
