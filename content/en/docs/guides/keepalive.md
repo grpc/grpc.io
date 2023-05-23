@@ -12,7 +12,7 @@ HTTP/2 PING-based keepalives are a way to keep a HTTP/2 connection alive even wh
   There is a related but separate concern called [Health Checking]. Health checking allows server to signal whether a *service* is healthy while keepalive is only about the *connection*.
 {{% /alert %}}
 
-#### Background
+### Background
 
 [TCP keepalive] is a well-known method of maintaining connections and detecting broken connections. When enabled, either side of the connection can send redundant packets, once ACKed by the other side, the connection will be consiered as good. If no ACK after repeated attempts, the connection is deemed broken. Configuration of its variables is provided by the OS on a per-socket level, but is commonly not exposed to higher-level APIs.
 
@@ -53,20 +53,18 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
 * When connections are expected to be short-lived.
 * When network is less reliable (For exmaple, mobile applications).
 
-In general, keepalives can be used to improve the performance and reliability of gRPC connections. However, it is important to configure the keepalive interval carefully to avoid adding unnecessary overhead or increasing the risk of connection timeouts.
-
 ### Keepalive configuration specification
 
 | Options | Availability | Description | Client Default | Server Default |
 |---|---|---|---|---|
-| KEEPALIVE_TIME | Client and Server | The interval in milliseconds between PING frames. | INT_MAX(Disabled) | 27200000 (2 hours) |
+| KEEPALIVE_TIME | Client and Server | The interval in milliseconds between PING frames. | INT_MAX (Disabled) | 27200000 (2 hours) |
 | KEEPALIVE_TIMEOUT | Client and Server | The timeout in milliseconds for a PING frame to be acknowledged. If sender does not receive an acknowledgment within this time, it will close the connection. | 20000 (20 seconds) | 20000 (20 seconds) |
 | KEEPALIVE_WITHOUT_CALLS | Client | Is it permissible to send keepalive pings from the client without any outstanding streams. | 0 (false) | N/A |
 | PERMIT_KEEPALIVE_WITHOUT_CALLS | Server | Is it permissible to send keepalive pings from the client without any outstanding streams. | N/A | 0 (false) |
 | PERMIT_KEEPALIVE_TIME | Server | Minimum allowed time between a server receiving successive ping frames without sending any data/header frame. | N/A | 300000 (5 minutes) |
-| MAX_CONNECTION_IDLE | Server | Maximum time that a channel may have no outstanding rpcs, after which the server will close the connection. | N/A | INT_MAX(Infinite) |
-| MAX_CONNECTION_AGE | Server | Maximum time that a channel may exist. | N/A | INT_MAX(Infinite) |
-| MAX_CONNECTION_AGE_GRACE | Server | Grace period after the channel reaches its max age. | N/A | INT_MAX(Infinite) |
+| MAX_CONNECTION_IDLE | Server | Maximum time that a channel may have no outstanding rpcs, after which the server will close the connection. | N/A | INT_MAX (Infinite) |
+| MAX_CONNECTION_AGE | Server | Maximum time that a channel may exist. | N/A | INT_MAX (Infinite) |
+| MAX_CONNECTION_AGE_GRACE | Server | Grace period after the channel reaches its max age. | N/A | INT_MAX (Infinite) |
 
 
 {{% alert title="Note" color="info" %}}
@@ -89,14 +87,14 @@ In general, keepalives can be used to improve the performance and reliability of
 * [gRFC for Server-side Connection Management]
 
 
-[Health Checking]: (https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
-[TCP keepalive]: (https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive)
-[PING]: (https://httpwg.org/specs/rfc7540.html#PING)
-[C++ Documentation]: (https://github.com/grpc/grpc/blob/master/doc/keepalive.md)
-[Go Example]: (https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive)
-[Go Documentation]: (https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md)
-[Java Example]: (https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive)
-[Python Example]: (https://github.com/grpc/grpc/tree/master/examples/python/keep_alive)
-[Python Documentation]: (https://github.com/grpc/grpc/blob/master/doc/keepalive.md)
-[gRFC for Client-side Keepalive]: (https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md)
-[gRFC for Server-side Connection Management]: (https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md)
+[Health Checking]: https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+[TCP keepalive]: https://en.wikipedia.org/wiki/Keepalive#TCP_keepalive
+[PING]: https://httpwg.org/specs/rfc7540.html#PING
+[C++ Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
+[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/keepalive
+[Go Documentation]: https://github.com/grpc/grpc-go/blob/master/Documentation/keepalive.md
+[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/keepalive
+[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/keep_alive
+[Python Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
+[gRFC for Client-side Keepalive]: https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md
+[gRFC for Server-side Connection Management]: https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md
