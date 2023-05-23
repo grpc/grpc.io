@@ -52,10 +52,10 @@ gRPC
 OS
 end
 
-SW[Stream Write] --> BF{Buffer Space available}
+SW(Stream Write) --> BF{Buffer Space available}
   BF --> | Yes| gRPC
   BF --> |No\nBlock| BF
-  gRPC[gRPC Framework] --> |Send Msg \nto OS| OS
+  gRPC(gRPC Framework) --> |Send Msg \nto OS| OS
   OS --> |Send Msg| N[Network]
   N -->|Msg| C(Receiver)
   C--> |Buffer| RQ(Wait for\nRequest > 0)
@@ -65,7 +65,7 @@ SW[Stream Write] --> BF{Buffer Space available}
   OS-.->|Propagate\nAck| gRPC
   onNext --> M{Manual\nFlow Control}
   M --> |Auto FC| RQ
-  M --> |Manual FC| MR(Manual Request)
+  M --> |Manual FC| MR(Make Manual Request\nWhen Ready)
   MR --> RQ
   
 ```
