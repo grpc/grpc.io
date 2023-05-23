@@ -29,16 +29,17 @@ ready, so you must still implement error handling.
 
 ```mermaid
 flowchart TD
-F(Failure Status)
-CH(Channel) -->|Create stub &\n set waitForReady| S(Stub)
-S --> |create RPC| RPC
-RPC -->|Initiates Communication| CH
-CH --> ST{Channel State}
-ST --> | READY| SENT(RPC Sent to server)
-ST -->|TRANSIENT_FAILURE / IDLE| BUR(Block on channel becoming READY or a permanent failure)
-BUR --> |Channel becomes READY| SENT
-BUR --> |Permanent Failure / \nSHUTDOWN| F
-ST --> |Permanent Failure / \nSHUTDOWN| F
+  F(Failure Status)
+  SENT(RPC Sent to server)
+  CH(Channel) -->|Create stub &\n set waitForReady| S(Stub)
+  S --> |create RPC| RPC
+  RPC -->|Initiates Communication| CH
+  CH --> ST{Channel State}
+  ST --> | READY| SENT
+  ST -->|TRANSIENT_FAILURE / IDLE| BUR(Block on channel becoming READY or a permanent failure)
+  BUR --> |Channel becomes READY| SENT
+  BUR --> |Permanent Failure / \nSHUTDOWN| F
+  ST --> |Permanent Failure / \nSHUTDOWN| F
 ```
 
 ### Alternatives
