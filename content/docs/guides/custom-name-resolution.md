@@ -24,7 +24,7 @@ used. However, various other name resolution mechanisms may be used:
 |DNS|`grpc.io:50051`|By default, DNS is assumed.|
 |DNS|`dns:///grpc.io:50051`|The extra slash is used to provide an authority|
 |Unix Domain Socket|`uds:///var/run/docker.sock`|
-|xDS|`xds:///wallet.grpcwallet.io`|**TODO: Link to xDS doc.**|
+|xDS|`xds:///wallet.grpcwallet.io`||
 |IPv4|`ipv4:198.51.100.123:50051`|Only supported in some languages|
 
 The triple slashes above (`///`) may look unfamiliar if you are used to the
@@ -45,8 +45,6 @@ registered, a name resolver with the _scheme_ `my-resolver` will be picked up
 when a target string begins with `my-resolver:`. For example, requests to
 `my-resolver:///my-service` would now use the `my-resolver` name resolver
 implementation.
-
-**TODO: Add italicized terms to glossary**
 
 ### Custom Name Resolvers
 
@@ -74,10 +72,6 @@ balancing policy vs. pick first. However, when a custom name resolver is used
 in conjunction with arbitrary service config and a [_custom load balancing
 policy_](custom-load-balancing.md), very complex traffic management systems
 such as xDS may be constructed.
-
-**TODO: Link to custom LB policy docs**
-
-**TODO: Mention that we should have a doc about service config**
 
 #### Life of a Target String
 
