@@ -76,52 +76,39 @@ processing, the default approach is to always have a request for 1 value
 outstanding so that as
 requests come in they are automatically handled one at a time. You can override
 this behavior with
-manual flow control. The most common use case it to avoid having your
-asynchronous onNext method have to
-block when processing of the read message is being done somewhere else.
+manual flow control. The most common use case for manual flow control is to
+avoid requiring your asynchronous onNext method to block when processing of
+the read message is being done somewhere else.
 
 ### Incoming Manual Flow Control
 
-If you may have a buffer where your onNext places values from the stream, then
-you will want to do
-flow control to avoid buffer overflows. You could use a blocking buffer, but you
-may not want to
-have the thread being used by onNext to block. Another way of handling this is
-to use manual flow
-control.
+For example, if you have a buffer where your onNext places values from the stream, then
+you may want to do manual flow control to avoid buffer overflows. You could use a
+blocking buffer, but you may not want to have the thread being used by onNext block.
+Another way of handling this is to use manual flow control.
 
 By default, gRPC will configure a stream to request one value at startup and
-then at the completion
-of each "onNext" invocation requests one more message. You can take control of
-this in a language
-specific manner by disabling AutoRequest on the request stream. If you do so,
-then you are
-responsible for asynchronously telling the stream each time that you would like
-a new message to be
+then at the completion of each "onNext" invocation requests one more message. You can
+take control of this in a language specific manner by disabling AutoRequest on the
+request stream. If you do so, then you are responsible for asynchronously telling the
+stream each time that you would like a new message to be
 asynchronously sent to onNext when one is available. This is done by calling a
-method on the
-request stream requesting messages (while this has a count, generally you
-request 1). Putting this
-request at the end of your onNext method essentially duplicates the default
-behavior.
+method on the request stream to request messages (while this has a count, generally
+you request 1). Putting this request at the end of your onNext method essentially
+duplicates the default behavior.
 
 Note: there is the potential for a deadlock if both the client and server are
-using manual flow
-control and both try to do a lot of writing without doing any reads.
+using manual flow control and both try to do a lot of writing without doing any reads.
 
 ### Outgoing Flow Control
 
 The underlying layer (such as netty) will apply backpressure when there is no
-space to write the
-next message chunk. This causes the request stream to go into a not ready state
-and the outgoing
-onNext method invocation blocks. You can explicitly check that the stream is
-ready for writing
-before calling onNext to avoid blocking. You can utilize this to start doing
-reads which may allow
-the other side of the channel to complete a write and then to do its own reads
-thereby avoiding
-deadlock.
+space to write the next message chunk. This causes the request stream to go into
+a not ready state and the outgoing onNext method invocation blocks. You can
+explicitly check that the stream is ready for writing before calling onNext to avoid
+blocking. You can utilize this to start doing reads, which may allow
+the other side of the channel to complete a write and then to do its own reads,
+thereby avoiding deadlock.
 
 ### Language Support
 
@@ -155,7 +142,7 @@ value.
 
 ##### <u>Server side (client or bidi streaming)</u>
 
-In your stub methods supporting streaming add at the top
+In your stub methods supporting streaming, add the following at the top
 
 1. cast `StreamObserver<> responseObserver`
    to `ServerCallStreamObserver<> serverCallStreamObserver`
@@ -188,7 +175,6 @@ No special processing is required.
 
 
 [Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/manualflowcontrol
-
 [bdp]: https://en.wikipedia.org/wiki/Bandwidth-delay_product
 
 
