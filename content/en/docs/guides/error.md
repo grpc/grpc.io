@@ -1,6 +1,7 @@
 ---
 title: Error handling
 description: How gRPC deals with errors, and gRPC error codes.
+weight: 20
 ---
 
 ### Standard error model

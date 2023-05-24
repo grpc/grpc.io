@@ -4,6 +4,7 @@ description: >-
   gRPC is designed to support high-performance open-source RPCs in many
   languages. This page describes performance benchmarking tools, scenarios
   considered by tests, and the testing infrastructure.
+weight: 100
 ---
 
 ### Overview

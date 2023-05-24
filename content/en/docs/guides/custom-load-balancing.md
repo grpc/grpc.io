@@ -3,6 +3,7 @@ title: Custom Load Balancing Policies
 description: >-
   Explains how custom load balancing policies can help optimize load balancing
   under unique circumstances.
+weight: 40
 ---
 
 ### Overview

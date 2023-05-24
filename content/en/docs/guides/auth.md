@@ -3,6 +3,7 @@ title: Authentication
 description: >-
   An overview of gRPC authentication, including built-in auth mechanisms, and
   how to plug in your own authentication systems.
+weight: 10
 ---
 
 ### Overview
