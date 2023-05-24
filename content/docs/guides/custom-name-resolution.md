@@ -70,9 +70,10 @@ _service config_. A service config is essentially a JSON object that defines
 arbitrary configuration specifying how traffic should be routed to and load
 balanced across a particular service. At its most basic, this can be used to
 specify things like that a particular service should use the round robin load
-balancing policy vs. pick first. However, when a custom name resolver is used in
-conjunction with arbitrary service config and a _custom load balancing policy_,
-very complex traffic management systems such as xDS may be constructed.
+balancing policy vs. pick first. However, when a custom name resolver is used
+in conjunction with arbitrary service config and a [_custom load balancing
+policy_](custom-load-balancing.md), very complex traffic management systems
+such as xDS may be constructed.
 
 **TODO: Link to custom LB policy docs**
 
