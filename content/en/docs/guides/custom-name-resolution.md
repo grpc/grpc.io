@@ -70,7 +70,7 @@ balanced across a particular service. At its most basic, this can be used to
 specify things like that a particular service should use the round robin load
 balancing policy vs. pick first. However, when a custom name resolver is used
 in conjunction with arbitrary service config and a [_custom load balancing
-policy_](custom-load-balancing.md), very complex traffic management systems
+policy_](/docs/guides/custom-load-balancing), very complex traffic management systems
 such as xDS may be constructed.
 
 #### Life of a Target String
