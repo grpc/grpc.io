@@ -45,29 +45,38 @@ writes to a Server
 
 ```mermaid
 flowchart TD
-subgraph Sender
-SW
-BF
-gRPC
-OS
+subgraph Receiver
+ N[Network]
+ M{Manual\nFlow Control}
+ onNext
+ RQ(Wait for\nRequest > 0)
+ RC(Receiver)
+ MR(Make Manual Request\nWhen Ready)
 end
 
-SW(Stream Write) --> BF{Buffer Space available}
-  BF --> | Yes| gRPC
+subgraph Sender
+ SW(Stream Write)
+ BF{Buffer Space available}
+ gRPC(gRPC Framework)
+ OS
+end
+
+  SW --> BF
+  BF --> |Yes| gRPC
   BF --> |No\nBlock| BF
-  gRPC(gRPC Framework) --> |Send Msg \nto OS| OS
-  OS --> |Send Msg| N[Network]
-  N -->|Msg| C(Receiver)
-  C--> |Buffer| RQ(Wait for\nRequest > 0)
-  RQ -->onNext 
+  gRPC --> |Send Msg \nto OS| OS
+  OS --> |Send Msg| N
+  N -->  |Msg| RC
+  RC --> |Buffer| RQ
+  RQ --> onNext 
   RQ -.-> |Send Ack| N
-  N -.-> |Propagate\nAck| OS
-  OS-.->|Propagate\nAck| gRPC
-  onNext --> M{Manual\nFlow Control}
+  N -.->  |Propagate\nAck| OS
+  OS -.-> |Propagate\nAck| gRPC
+  onNext --> M
   M --> |Auto FC| RQ
-  M --> |Manual FC| MR(Make Manual Request\nWhen Ready)
+  M --> |Manual FC| MR
   MR --> RQ
-  
+ 
 ```
 
 In languages where the gRPC implementation uses asynchronous callbacks for
