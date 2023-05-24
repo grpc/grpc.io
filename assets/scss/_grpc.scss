@@ -1,0 +1,441 @@
+/*
+NOTE: Alterations to Docsy typically use a "td" namespace,
+styles which utilize this should be commented to make it clear
+what the workaround is for
+*/
+
+// Make it clear that that clickable images open a Bootstrap modal
+.modal-trigger {
+  cursor: pointer;
+}
+
+// External link icon
+a > .fa-external-link-alt::before,
+a > span > .fa-external-link-alt::before {
+  font-size: 50%;
+  margin-left: 3px;
+  opacity: 0.8;
+  vertical-align: top;
+}
+
+.td-sidebar-nav a[target="_blank"]:after {
+  @extend .fas;
+  font-size: 50%;
+  margin-left: 3px;
+  opacity: 0.8;
+  vertical-align: text-top;
+  content: fa-content($fa-var-external-link-alt);
+}
+
+/*
+Docsy's 'cover/block' option for setting background images does
+not currently support svg's. This sets the background on hero
+sections site wide to the original site's background svg.
+*/
+.td-cover-block {
+  background-image: url("/img/graphic-04.svg");
+}
+
+// NAVBAR
+
+// Docsy includes the site name by default. This is in place
+// to hide the span text, leaving only the logo svg
+.td-navbar .navbar-brand span:last-child {
+  display: none;
+}
+
+// This adds rounded corners to the search inputs, since a Docsy
+// flag affecting these and other elements has been disabled.
+.td-search-input {
+  border-radius: 1rem;
+}
+
+// DOCS
+
+.td-toc {
+  padding-top: 1rem;
+}
+
+// Extend the sidebar to the end of the visible page.
+.td-sidebar-toc {
+  height: initial;
+  padding-top: 4.75rem;
+}
+
+.td-sidebar-nav__section .ul-1 ul {
+  padding-left: 1rem;
+}
+
+// Custom in-page toc. Apply this class as a modifier on top of the Docsy-provided .td-toc
+.td-toc--inline {
+  padding-top: 0;
+  padding-bottom: 1rem;
+  border-left: none;
+  position: static;
+  height: auto;
+
+  & + .td-content {
+    margin-top: 1.5rem;
+  }
+
+  // Workaround to prevent the first three entries from being hidden
+  & #td-content__toc.collapse:not(.show) {
+    display: block;
+    overflow: hidden;
+    min-height: 5.5rem;
+    height: 5.5rem;
+  }
+
+  & #td-content__toc.collapsing {
+    height: 5rem;
+  }
+
+  & #td-content__toc.collapse:not(.show) + #td-content__toc-link-expanded::before,
+  & #toc-contents.collapse:not(.show) + #td-content__toc-link-expanded::before {
+    content: "…";
+  }
+
+  & #td-content__toc.collapse.show + #td-content__toc-link-expanded::before,
+  & #toc-contents + #td-content__toc-link-expanded::before {
+    content: "\2303";
+  }
+}
+
+#td-content__toc-link span i.fa-chevron-right {
+  transition: transform 250ms ease-in-out;
+}
+
+#td-content__toc-link[aria-expanded="true"] span i.fa-chevron-right {
+  transform: rotate(-90deg);
+}
+
+#td-content__toc-link-expanded {
+  background-color: $gray-200;
+}
+
+// Prevent overflow on mobile devices in case of very long inline-block elements.
+.td-content {
+  word-break: break-word;
+  max-width: 1140px;
+}
+
+/* To ensure that the top page header and description are rendered
+above the inline ToC, this hides them from displaying in the main
+content block */
+body:not(.td-blog) .td-content:not(.list-page) {
+  & h1:first-child {
+    display: none;
+  }
+
+  & div.lead {
+    display: none;
+  }
+}
+
+// Spacing fix for page-meta-links. Whitespace in template is stripped in production.
+.td-page-meta a i {
+  margin-right: 0.25rem;
+}
+
+// Fix to give rendered images width to match Docsy
+@include media-breakpoint-up(lg) {
+  .td-content figure {
+    max-width: 80%;
+  }
+}
+
+/*
+The following contains some styles in use on the top-level pages
+(About, Community...). Bootstrap provides many responsive utilities
+which are in use as well - these classes are meant to extract some
+common concerns from sections of content, and provide styling where
+Bootstrap falls short.
+
+The following namespaces are in use:
+o - Object (Element(s) - not tied to semantic HTML)
+l - Layout (Spacing/Positioning)
+c - Component (Aware of its content/context...)
+*/
+
+// Utilities
+.bg-gray-100 {
+  background-color: $gray-100;
+}
+
+// Layout
+.l-container--padded {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.l-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  // > p {
+  //   margin: 0;
+  //   > a {
+  //     @extend .btn;
+  //     margin: 0.25rem 0.15rem;
+  //   }
+  // }
+
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: inline;
+      > a {
+        @extend .btn;
+        margin: 0.25rem;
+      }
+    }
+  }
+
+}
+
+.l-get-started-buttons {
+  @extend .l-buttons;
+
+  > ul > li > a /*, > p > a*/ {
+    @extend .btn-lg;
+    @extend .btn-primary;
+  }
+}
+
+.l-dev-story-buttons {
+  @extend .l-buttons;
+
+  > ul > li > a /*, > p > a*/ {
+    @extend .btn-secondary;
+  }
+}
+
+.l-no-breadcrumb {
+  display: block;
+  margin-bottom: 3.25rem;
+}
+
+// Object
+.o-banner {
+  width: 100%;
+  position: fixed;
+  margin-left: -15px;
+  z-index: 32;
+  top: 4rem;
+  background: $gray-100;
+  text-align: center;
+
+  & p {
+    padding: 0.5rem;
+  }
+}
+
+.o-icon {
+  margin-right: 0.25rem;
+}
+
+.grpc-logo {
+  max-height: 8rem;
+  max-width: 65%;
+  margin-bottom: 1rem;
+}
+
+.used-by-logo {
+  max-height: 4rem;
+  max-width: 100%;
+}
+
+.td-home {
+  h1 {
+    @extend .display-1;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  h2 {
+    @extend .display-2;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  h3 {
+    @extend .display-3;
+  }
+
+  h4 {
+    @extend .display-4;
+    margin-bottom: 1rem;
+  }
+
+  .home--top-section {
+    text-align: center;
+  }
+
+  .cncf-logo {
+    width: 20rem;
+    max-width: 80%;
+  }
+
+  .why-grpc {
+    @include media-breakpoint-up(lg) {
+      padding-right: 5rem;
+      padding-left: 5rem;
+    }
+
+    p {
+      font-size: $lead-font-size;
+      font-weight: $lead-font-weight;
+      text-align: left;
+    }
+  }
+}
+
+.o-features__feature {
+  display: inline-flex;
+  flex-direction: column;
+
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  h3 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.o-feature__icon {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  max-width: 10rem;
+}
+
+.o-lang-home__list {
+  & h4 {
+    margin-bottom: 0.75rem;
+  }
+
+  & ul {
+    padding-left: 0.25rem;
+    padding-bottom: 0.5rem;
+    list-style: none;
+  }
+
+  & li {
+    padding-bottom: 0.25rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .o-features__feature {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .o-feature__icon {
+    margin-right: 1rem;
+  }
+}
+
+// Component
+
+.c-features {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.c-global-meta-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+
+  .td-page-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0 !important;
+    text-align: center;
+
+    & a i {
+      display: none;
+    }
+  }
+}
+
+.c-used-by__users {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: -3rem;
+}
+
+.c-used-by__user {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.c-testimonials {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.c-testimonials__testimonial {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  a {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .c-features {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .c-features {
+    flex-direction: row;
+  }
+
+  .c-global-meta-links {
+    & .td-page-meta a i {
+      display: inline-block;
+    }
+  }
+
+  .c-used-by__users {
+    flex-direction: row;
+    justify-content: between;
+  }
+
+  .c-used-by__user {
+    padding-bottom: 1.5rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .c-global-meta-links {
+    max-width: 80%;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .c-global-meta-links {
+    display: none;
+  }
+}

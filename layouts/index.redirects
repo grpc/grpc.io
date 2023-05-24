@@ -1,6 +1,126 @@
-{{- $splatRedirects := site.Data.redirects.splat -}}
-{{- range $splatRedirects -}}
-/grpc-{{ . }}/*     https://grpc.github.io/grpc-{{ . }}/:splat
+# cSpell:ignore channelz helloasync gablogpost loadbalancing quickstart sapi vendasta vendastagrpc vsco vscogrpc yygrpc yikyak
+
+/contribute  /community
+
+# FAQ is now within the /docs/what-is-grpc section - redirect to maintain existing links
+/faq  /docs/what-is-grpc/faq
+
+# ALTS page is now language-specific (#527); redirect to base auth page for now
+/docs/guides/auth/alts  /docs/guides/auth
+/docs/guides/auth/ALTS  /docs/guides/auth # https://github.com/grpc/grpc.io/issues/574
+
+# Languages -> platforms redirects
+
+/docs/languages/android/*  /docs/platforms/android/java/:splat
+/docs/languages/web/*  /docs/platforms/web/:splat
+
+/docs/platforms/android/basics  /docs/platforms/android/java/basics
+/docs/platforms/android/quickstart  /docs/platforms/android/java/quickstart
+
+# API reference docs
+#
+# Redirects are handled as if by the following rules (let $api_path be the
+# language page `api_path` param):
+#
+#  /docs/languages/:lang/api  https://grpc.github.io/grpc/:lang 301!  # when $api_path isn't given
+#  /docs/languages/:lang/api  $api_path 301!                          # when $api_path starts with 'http'
+#  /docs/languages/:lang/api  https://grpc.github.io/$api_path 301!   # otherwise; 'LANG' in $api_path is replaced by :lang
+
+{{ $pages := (.Site.GetPage "/docs/platforms/android").Sections -}}
+{{ $pages := $pages | union (.Site.GetPage "/docs/languages").Sections -}}
+{{ range $pages -}}
+  {{ $from_path := printf "/%sapi" .File.Dir -}}
+
+  {{ $api_path := .Params.api_path | default "grpc/LANG" -}}
+  {{ $to_url := $api_path -}}
+  {{ if not (hasPrefix $api_path "http") -}}
+    {{ $api_path = replace $api_path "LANG" (path.Base .File.Dir) -}}
+    {{ $to_url = printf "https://grpc.github.io/%s" $api_path -}}
+  {{ end -}}
+
+  {{ printf "%-33s" $from_path }}  {{ $to_url }} 301!
 {{ end -}}
-/grpc/*     https://grpc.github.io/grpc/:splat
-/release     https://grpc.github.io/release     200
+
+# C# .NET
+/docs/languages/csharp/dotnet/api  https://grpc.github.io/grpc/csharp-dotnet/api/Grpc.Core
+/docs/languages/csharp/quickstart  /docs/languages/csharp
+/docs/languages/csharp/basics  /docs/languages/csharp
+/docs/languages/csharp/dotnet  /docs/languages/csharp
+
+#
+# Daily-build pages:
+#
+
+/docs/languages/:_/daily-builds/*  https://packages.grpc.io
+
+/docs/talks  /showcase
+
+#
+# Redirects of the site org prior to 2020/06:
+#
+
+/docs/guides/concepts*                    /docs/what-is-grpc/core-concepts
+/docs/guides/contributing                 /community
+/docs/languages/csharp/quickstart-dotnet  /docs/languages/csharp
+/docs/quickstart/csharp-dotnet            /docs/languages/csharp
+/docs/reference                           /docs/languages
+/docs/samples                             /docs/languages
+/docs/tutorials/async/helloasync-cpp*     /docs/languages/cpp/async
+/docs/tutorials/auth/oauth2-objective-c*  /docs/languages/objective-c/oauth2
+
+/docs/reference/:lang/generated-code*     /docs/languages/:lang/generated-code
+
+# Redirects of quick start and tutorial pages
+
+{{ $lang_2020_05 := slice "android" "cpp" "csharp" "dart" "go" "java" "kotlin" "node" "objective-c" "php" "python" "ruby" "web"  -}}
+{{ range $lang_2020_05 }}
+/docs/quickstart/{{ . }}                /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}           /docs/languages/{{ . }}/basics
+{{/* Handle links ending in .html (https://github.com/grpc/grpc.io/issues/286) */}}
+/docs/quickstart/{{ . }}.html           /docs/languages/{{ . }}/quickstart
+/docs/tutorials/basic/{{ . }}.html*     /docs/languages/{{ . }}/basics
+{{ end }}
+
+# Handle /docs/tutorials/basic/c(.html)?
+
+/docs/tutorials/basic/c  /docs/languages/cpp/basics
+/docs/tutorials/basic/c.html  /docs/languages/cpp/basics
+
+# API reference docs (prior to 2020/06)
+
+/grpc/*  https://grpc.github.io/grpc/:splat
+/grpc-*  https://grpc.github.io/grpc-:splat
+
+#
+# Blog: cleanup cross-posts (https://github.com/grpc/grpc.io/issues/518)
+#
+
+/blog/http2-smarter-at-scale  https://www.cncf.io/blog/2018/07/03/http-2-smarter-at-scale/
+
+#
+# Old URLs from https://grpc.github.io:
+#
+
+/2017/08/22/grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
+/2018/01/22/grpc-go-engineering-practices*  /blog/grpc-go-engineering-practices
+/blog/2017-08-22-grpc-go-perf-improvements*  /blog/grpc-go-perf-improvements
+/blog/a_short_introduction_to_channelz*  /blog/a-short-introduction-to-channelz
+/blog/beta_release*  /blog/beta-release
+/blog/bazel_rules_protobuf*  /blog/bazel-rules-protobuf
+/blog/flatbuffers    /blog/grpc-flatbuffers
+/blog/gablogpost*  /blog/ga-announcement
+/blog/grpc_on_http2  /blog/grpc-on-http2
+/blog/http2_smarter_at_scale /blog/http2-smarter-at-scale
+/blog/loadbalancing  /blog/grpc-load-balancing
+/blog/vendastagrpc   /blog/vendasta
+/blog/vscogrpc*  /blog/vsco/
+/blog/yygrpc*  /blog/yikyak/
+/docs/guides/wire*   https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
+/posts/* /blog/:splat
+
+#
+# Varia
+#
+
+/docs/installation/go.html  /docs/languages/go
+/grpc.github.io/img/landing-2.svg  /img/landing-2.svg

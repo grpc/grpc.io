@@ -1,23 +1,20 @@
-HUGO_VERSION =  0.55.0
-DOCKER_IMG   := klakegg/hugo:$(HUGO_VERSION)
-SERVE_CMD    =  server --buildDrafts --buildFuture --disableFastRender --ignoreCache
+HTMLTEST?=htmltest # Specify as make arg if different
+HTMLTEST_ARGS?=--skip-external
+HTMLTEST_DIR=tmp
 
-serve:
-	hugo server \
-		--buildDrafts \
-		--buildFuture \
-		--disableFastRender
+# Use $(HTMLTEST) in PATH, if available; otherwise, get a copy
+ifeq (, $(shell which $(HTMLTEST)))
+override HTMLTEST=$(HTMLTEST_DIR)/bin/htmltest
+ifeq (, $(shell which $(HTMLTEST)))
+GET_LINK_CHECKER_IF_NEEDED=get-link-checker
+endif
+endif
 
-docker-serve:
-	docker run --rm -it -v $(CURDIR):/src -p 1313:1313 $(DOCKER_IMG) $(SERVE_CMD)
+check-links: $(GET_LINK_CHECKER_IF_NEEDED) htmltest
 
-production-build:
-	hugo \
-		--minify
+htmltest:
+	$(HTMLTEST) $(HTMLTEST_ARGS)
 
-preview-build:
-	hugo \
-		--baseURL $(DEPLOY_PRIME_URL) \
-		--buildDrafts \
-		--buildFuture \
-		--minify
+get-link-checker:
+	rm -Rf $(HTMLTEST_DIR)/bin
+	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin

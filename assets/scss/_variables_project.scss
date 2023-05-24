@@ -1,0 +1,19 @@
+/* grpc-docsy full file override: we're not tracking changes to the docsy base file. */
+$primary: #244c5a;
+$secondary: #5ac5c5;
+$info: #379c9c;
+
+// Forward definitions of Bootstrap and Docsy variables
+// TODO: add value checks later in the import chain
+
+$_font-weight-light: 300;
+
+// Display styles: prefer Bootstrap defaults to Docsy's overrides
+$display1-weight: $_font-weight-light;
+$display2-weight: $_font-weight-light;
+$display3-weight: $_font-weight-light;
+$display4-weight: $_font-weight-light;
+
+$link-color: #379c9c;
+
+$enable-rounded: false;

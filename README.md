@@ -1,25 +1,82 @@
-# The gRPC website and documentation
+# gRPC website
 
-This repository houses the assets used to build and deploy the gRPC website, available at https://grpc.io. The site is built using the [Hugo](https://gohugo.io) static site generator. Check out the [Hugo Quick Start](https://gohugo.io/getting-started/quick-start/) for a quick intro.
+The [grpc.io][] site, built using [Hugo][] and hosted on [Netlify][].
 
-## Running the site locally
+## Build prerequisites
 
-To run the site locally, you need to [install Hugo](https://gohugo.io/getting-started/installing). Once Hugo is installed:
+To build and serve the site, you'll need the latest [LTS release][] of **Node**.
+Install it using **[nvm][]**, for example:
 
-```bash
-make serve
+```console
+$ nvm install --lts
 ```
 
-Alternatively, you can run the site using a [Docker](https://docker.com) container:
+## Setup
 
-```bash
-make docker-serve
+ 1. Clone this repo.
+ 2. From a terminal window, change to the cloned repo directory.
+ 3. Get NPM packages and git submodules, including the the [Docsy][] theme:
+    ```console
+    $ npm install 
+    ```
+
+## Build the site
+
+Run the following command to have Hugo generate the site files:
+
+```console
+$ npm run build
 ```
 
-## Publishing the site
+You'll find the generated site files in the `public` folder.
 
-The gRPC website is automatically published by [Netlify](https://netlify.com). Any time changes are pushed to the `master` branch, the site is re-built and re-deployed. This process does not require manual management.
+## Serve the site locally
 
-## Site content
 
-All of the [Markdown](https://www.markdownguide.org/) content used to build the site's documentation, blog, etc. is in the [`content`](./content) directory.
+To locally serve the site at [localhost:8888][], run the following command:
+
+```console
+$ npm run serve
+```
+
+## Site deploys and PR previews
+
+If you submit a PR, Netlify will create a [deploy preview][] so that you can
+review your changes. Once your PR is merged, Netlify deploys the updated site to
+the production server.
+
+> **Note**: PR previews include _draft pages_, but production builds do not.
+
+To see deploy logs and more, visit project's [dashboard][] -- Netlify login
+required.
+
+## Check links
+
+If you have [htmltest][] in your path, then
+you can check the site's **internal** links by running this command:
+
+```console
+$ npm run check-links
+```
+
+You can check all links (internal and external) as well:
+
+```console
+$ npm run check-links:all
+```
+
+## Contribute
+
+We welcome issues and PRs! For details, see [Contribute][].
+
+[Contribute]: https://grpc.io/community/#contribute
+[dashboard]: https://app.netlify.com/teams/grpc/overview
+[deploy preview]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[Docsy]: https://www.docsy.dev
+[grpc.io]: https://grpc.io
+[htmltest]: https://github.com/wjdp/htmltest
+[Hugo]: https://gohugo.io
+[localhost:8888]: http://localhost:8888
+[LTS release]: https://nodejs.org/en/about/releases/
+[Netlify]: https://netlify.com
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating

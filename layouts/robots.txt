@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /get_grpcurl
+{{ range .Pages -}}
+{{ if in (lower .Params.robots) "noindex" -}}
+Disallow: {{ .RelPermalink }}$
+{{ end -}}
+{{ end -}}

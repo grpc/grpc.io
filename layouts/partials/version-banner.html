@@ -1,0 +1,16 @@
+{{/* grpc-docsy file override.
+  TODO: move into theme/docsy folder.
+*/ -}}
+{{ if .Params.show_banner -}}
+  {{ $color := "warning" -}}
+  <div class="pageinfo pageinfo-{{ $color }}">
+    <p>
+      <span class="font-weight-bold">IMPORTANT</span>: the Grpc.Core
+      implementation of gRPC for C# is in <span class="font-italic">maintenance
+      mode</span>, and will be replaced by
+      <a href="/docs/languages/csharp/dotnet/">grpc-dotnet</a> in the future.
+      For details, see our
+      <a href="/blog/grpc-csharp-future/">blog post</a>.
+    </p>
+  </div>
+{{ end -}}

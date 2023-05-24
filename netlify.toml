@@ -1,12 +1,11 @@
 [build]
 publish = "public"
-command = "make production-build"
+command = "npm run build:preview"
 
-[build.environment]
-HUGO_VERSION = "0.55.0"
+[context.production]
+command = "npm run build:production"
 
-[context.deploy-preview]
-command = "make preview-build"
-
-[context.branch-deploy]
-command = "make preview-build"
+[[redirects]]
+from = "https://www.grpc.io/*"
+to = "https://grpc.io/:splat"
+force = true

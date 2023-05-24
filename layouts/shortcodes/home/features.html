@@ -1,0 +1,17 @@
+{{ $features := $.Page.Params.features -}}
+<section class="bg-gray-100">
+<div class="c-features">
+  {{ range $features -}}
+    {{ $icon  := printf "img/icons/%s" .icon | relURL -}}
+    {{ $desc := .description | markdownify -}}
+
+    <div class="col-md-6 o-features__feature">
+      <img class="o-feature__icon" src="{{ $icon }}" alt="{{ .title }} feature icon">
+      <div>
+        <h3>{{ .title }}</h3>
+        <p class="lead">{{ $desc }}</p>
+      </div>
+    </div>
+  {{ end }}
+</div>
+</section>
