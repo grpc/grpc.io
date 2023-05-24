@@ -1,8 +1,8 @@
 ---
 title: Deadlines
 description: >-
-Explains how deadlines can be used to effectively deal with unreliable
-backends.
+  Explains how deadlines can be used to effectively deal with unreliable
+  backends.
 ---
 
 ### Overview
