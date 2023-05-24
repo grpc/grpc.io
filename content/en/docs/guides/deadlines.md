@@ -1,8 +1,8 @@
 ---
 title: Deadlines
 description: >-
-  Explains how deadlines can be used to effectively deal with unreliable
-  backends.
+Explains how deadlines can be used to effectively deal with unreliable
+backends.
 ---
 
 ### Overview
@@ -23,22 +23,21 @@ to deadline in this document.
 
 The default deadline for a gRPC client is some very large number that would not
 be appropriate to use in any real world scenario. This means you should always
-set a realistic deadline in your clients. To determine the appropriate deadline
-you would ideally start with an educated guess based on what you know about your
-system (network latency, server processing time, etc.), validated by some load
-testing.
+explicitly set a realistic deadline in your clients. To determine the
+appropriate deadline you would ideally start with an educated guess based on
+what you know about your system (network latency, server processing time, etc.),
+validated by some load testing.
 
 If a server has gone past the deadline when processing a request, the client
 will give up and fail the RPC with the `DEADLINE_EXCEEDED` status. Note that the
-client giving up on a particular RPC does not automatically mean the server will
-stop processing the request. The server needs to take precautions to prevent
-this from happening.
+client giving up on a particular RPC does not mean that the server will
+stop processing the request.
 
 ### Deadlines on the Server
 
 A gRPC server might receive RPCs from a client with an unrealistically short
 deadline that would not give the server enough time to ever respond in time.
-This would result in the server just wasting valuable resources and in a worse
+This would result in the server just wasting valuable resources and in a worst
 case scenario, crash the server. To avoid situations like these, the server
 should always check the deadline provided in the request and stop processing a
 request once it knows the client has stopped waiting for the response.
@@ -50,11 +49,11 @@ was using to process the request and respond with a `CANCELLED` status.
 
 Your server might need to call another server to produce a response. In these
 cases where your server also acts as a client you would want to honor the
-deadline set by the original client. Instead of manually calculating how long
-your server has taken and deducting that from the second request deadline, you
-can let gRPC handle this for you. When making the outgoing request, gRPC is
-aware of the context of the incoming request and sets the deadline
-automatically.
+deadline set by the original client. Automatically propagating the deadline from
+an incoming request to an outgoing is supported by gRPC. In some languages you
+will need to specify this behavior (e.g. C++) and in other it is enabled by
+default (e.g. Java and Go). This lets you avoid the error-prone approach of
+manually including the deadline to each outgoing RPC.
 
 ### Language Support
 
@@ -66,9 +65,10 @@ automatically.
 | Python   | [Python example] |
 
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/deadline
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/deadline
-[Python example]: https://github.com/grpc/grpc/tree/master/examples/python/timeout
 
+[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/deadline
+
+[Python example]: https://github.com/grpc/grpc/tree/master/examples/python/timeout
 
 ### Other Resources
 
