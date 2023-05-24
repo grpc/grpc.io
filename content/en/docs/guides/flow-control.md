@@ -164,8 +164,6 @@ In your stub methods supporting streaming add at the top
 When you are ready to begin processing the next value from the stream call
 `serverCallStreamObserver.request(1)`
 
-#### Go
-
 #### C++
 
 The following classes are used for flow control in gRPC:
@@ -179,8 +177,6 @@ The following classes are used for flow control in gRPC:
 * **FlowController**: This class represents the flow controller for a gRPC call.
   The flow controller is used to manage the flow of data between the client and
   the server.
-
-#### Node
 
 #### Python
 
