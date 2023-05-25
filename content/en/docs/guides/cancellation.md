@@ -7,11 +7,13 @@ description: >-
 ### Overview
 
 When a gRPC client is no longer interested in the result of an RPC call, it may
-_cancel_ to signal this discontinuation of interest to the server.  After that
-point, the server should stop any ongoing computation and end its side of the
-stream. Often, servers are also clients to upstream servers, so that
-cancellation operation should ideally propagate to all ongoing computation in
-the system that was initiated due to the original client RPC call.
+_cancel_ to signal this discontinuation of interest to the server.
+[Deadline](https://grpc.io/docs/guides/deadlines/) expiration and I/O errors
+also trigger cancellation.  When an RPC is cancelled, the server should stop
+any ongoing computation and end its side of the stream. Often, servers are also
+clients to upstream servers, so that cancellation operation should ideally
+propagate to all ongoing computation in the system that was initiated due to
+the original client RPC call.
 
 A client may cancel an RPC for several reasons. The data it requested may have
 been made irrelevant or the author of the client may want to be a good citizen
@@ -23,8 +25,6 @@ sequenceDiagram
   Server 1 ->> Server 2: Cancel
 ```
 
-[Deadline](https://grpc.io/docs/guides/deadlines/) expiration and I/O errors
-also trigger cancellation.
 
 ### Cancelling an RPC Call on the Client Side
 
@@ -39,7 +39,7 @@ does not have a mechanism to interrupt the application-provided server handler,
 so the server handler must coordinate with the gRPC library to ensure that
 local processing of the request ceases.  Therefore, if an RPC is long-lived,
 its server handler must periodically check if the RPC it is servicing has been
-cancelled and if it has, cease processing.  Some languages also will also
+cancelled and if it has, cease processing.  Some languages will also
 support automatic cancellation of anyoutgoing RPCs, while in others, the author
 of the server handler is responsible for this.
 
