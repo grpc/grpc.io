@@ -32,17 +32,17 @@ A client cancels an RPC call by calling a method on the call object or, in some
 languages, on the accompanying context object. While gRPC clients do not
 provide additional details to the server about the reason for the cancellation,
 the cancel API call takes a string describing the reason, which will result in
-a client-side exception and/or log containing the provided reason. When the
-server receives this frame, the application-provided server handler may be busy
-processing the request. The gRPC library in general does not have a mechanism
-to interrupt the application-provided server handler, so the server handler
-must coordinate with the gRPC library to ensure that local processing of the
-request ceases. Some languages also will also support cancellation of outgoing
-any outgoing RPCs, while in others, the author of the server handler is
-responsible for this.
+a client-side exception and/or log containing the provided reason. When a
+server is notified of the cancellation of an RPC, the application-provided
+server handler may be busy processing the request. The gRPC library in general
+does not have a mechanism to interrupt the application-provided server handler,
+so the server handler must coordinate with the gRPC library to ensure that
+local processing of the request ceases.  Therefore, if an RPC is long-lived,
+its server handler must periodically check if the RPC it is servicing has been
+cancelled and if it has, cease processing.  Some languages also will also
+support automatic cancellation of anyoutgoing RPCs, while in others, the author
+of the server handler is responsible for this.
 
-If an RPC is long-lived, its server handler must periodically check if the RPC
-it is servicing has been cancelled and if it has, cease processing.
 
 ```mermaid
 flowchart LR
