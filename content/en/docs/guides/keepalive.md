@@ -29,7 +29,7 @@ Keepalive is less likely to be triggered for unary RPCs with quick replies. Keep
 For streaming RPCs, if the connection is closed, any in-progress RPCs will fail. If a call is streaming data, the stream will also be closed and any data that has not yet been sent will be lost.
 
 {{% alert title="Warning" color="warning" %}}
-  To avoid DDoSing, it's important to take caution when setting the keepalive cofigurations. Thus, it is recommended to avoid enabling keepalive without calls and for clients to avoid configuring their keepalive much below one minute.
+  To avoid DDoSing, it's important to take caution when setting the keepalive configurations. Thus, it is recommended to avoid enabling keepalive without calls and for clients to avoid configuring their keepalive much below one minute.
 {{% /alert %}}
 
 ### Common situations where keepalives can be useful
@@ -37,7 +37,7 @@ For streaming RPCs, if the connection is closed, any in-progress RPCs will fail.
 gRPC HTTP/2 keepalives can be useful in a variety of situations, including but not limited to:
 
 * When sending data over a long-lived connection which might be considered as idle by proxy or load balancers.
-* When network is less reliable (For exmaple, mobile applications).
+* When the network is less reliable (For example, mobile applications).
 * When using a connection after a long period of inactivity.
 
 ### Keepalive configuration specification
@@ -58,7 +58,7 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
   Some languages may provide additional options, please refer to language examples and additional resource for more details.
 {{% /alert %}}
 
-### Language guaides and examples
+### Language guides and examples
 
 | Language | Example          | Documentation          |
 |----------|------------------|------------------------|

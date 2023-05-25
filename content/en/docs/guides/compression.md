@@ -6,7 +6,7 @@ description: >-
 
 ### Overview
 
-Compression is used to reduce the amount of bandwidth used when communicating between peers and can be enabled or disabledbased on call or message level for all languages. For some languages, it is also possible to control compression settings at the channel level. Different languages also support different compression algorithms, including a customized compressor.
+Compression is used to reduce the amount of bandwidth used when communicating between peers and can be enabled or disabled based on call or message level for all languages. For some languages, it is also possible to control compression settings at the channel level. Different languages also support different compression algorithms, including a customized compressor.
 
 ### Compression Method Asymmetry Between Peers
 
