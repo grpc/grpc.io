@@ -40,7 +40,7 @@ sequenceDiagram
     SG--)SG: Wait
   end
   alt allowed to send
-    SG-->>-SA: Write call returns
+    SG--)-SA: Write call returns
     SG->>RG:Send Msg
   end
   RA->>RG: Request message
