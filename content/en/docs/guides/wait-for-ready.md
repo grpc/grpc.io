@@ -7,9 +7,10 @@ description: >-
 ### Overview
 
 This is a feature which can be used on a stub which will cause the RPCs to wait
-(until an optional deadline is exceeded) for the server to become available
-before sending the request.  This allows for robust batch workflows as transient server problems
-(including startup) won't cause failures.
+for the server to become available before sending the request.  This allows
+for robust batch workflows since transient server problems won't cause failures.
+The deadline still applies, so the wait will be interrupted if the deadline is
+passed.
 
 When an RPC is created while the channel is not in a READY state, without
 waitForReady it will immediately return a failure; with waitForReady it will
@@ -42,7 +43,7 @@ A->>RPC: Create RPC using stub
 RPC->>CH: Initiate Communication
 alt channel state: READY
   CH->>S: Send message
-else Channel state: IDLE
+else Channel state: IDLE or CONNECTING
   CH-->>CH: Wait for state change
 else Channel state: TRANSIENT_FAILURE
   alt with Wait-for-Ready
@@ -55,6 +56,7 @@ else Channel state is a Permanent Failure
     CH->>A: Failure
 end
 ```
+The following is a state based view
 ```mermaid
 stateDiagram-v2
    state "Initiating Communication" as IC
@@ -63,25 +65,25 @@ stateDiagram-v2
    state CS {
       state "Permanent Failure" as PF
       state "TRANSIENT_FAILURE" as TF
-      IDLE-->READY
-      IDLE-->TF
+      IDLE --> CONNECTING
+      CONNECTING --> READY
       READY-->[*]
-      IDLE-->PF
+      CONNECTING-->TF
+      CONNECTING-->PF
       TF-->READY
-      READY-->TF
+      TF -->[*]: without\n wait-for-ready
       TF-->PF
       PF-->[*]
    }
   state "MSG sent" as MS
   state "RPC Failed" as RF
-  CS-->WAIT:From IDLE
-  CS-->WAIT:from Transient\nFailure with\nWait-for-Ready
+  CS-->WAIT:From IDLE /\nCONNECTING
+  CS-->WAIT:From Transient\nFailure with\nWait-for-Ready
   WAIT-->CS:State Change 
   CS-->MS: From READY
   CS-->RF: From Permanent failure or\nTransient Failure without\nWait-for-Ready
   MS-->[*]
   RF-->[*]
-
 ```
 
 ### Alternatives
