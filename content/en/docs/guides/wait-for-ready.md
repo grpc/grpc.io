@@ -1,22 +1,22 @@
 ---
 title: Wait-for-Ready
 description: >-
-  Explains how and why to configure the Wait-for-Ready feature.
+  Explains how to configure RPCs to wait for the server to be ready before sending the request.
 ---
 
 ### Overview
 
-This is a feature which can be used on a stub which will cause the rpcs to wait
+This is a feature which can be used on a stub which will cause the RPCs to wait
 (until an optional deadline is exceeded) for the server to become available
-before sending the request.  This allows for robust batch workflows as transient server problems (including
-startup) won't cause job failures.
+before sending the request.  This allows for robust batch workflows as transient server problems
+(including startup) won't cause failures.
 
 When an RPC is created while the channel is not in a READY state, without
 waitForReady it will immediately return a failure; with waitForReady it will
 simply block until the connection becomes ready.  The default is **without**
 Wait-for-Ready.
 
-For detailed semantics see: [grpc/doc/wait-for-ready.md][grpc doc]
+For detailed semantics see [this][grpc doc].
 
 ### How to use Wait-for-Ready
 
@@ -24,7 +24,7 @@ You can specify for a stub whether or not it should use Wait-for-Ready which
 will automatically be passed along, when an RPC is created, to the associated
 stream.
 
-{{% alert title="Warning" color="warning" %}}
+{{% alert title="Note" color="info" %}}
  The RPC can still fail for other reasons besides the server not being
 ready, so error handling is still necessary.
 {{% /alert %}}
@@ -87,7 +87,7 @@ stateDiagram-v2
 ### Alternatives
 
 - Loop until RPC stops returning transient failures.
-- Implement an onReady Handler and handle your own blocking _(for languages that
+- Implement an `onReady` Handler and handle your own blocking _(for languages that
   support this)_
 
 ### Language Support
