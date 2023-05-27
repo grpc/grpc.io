@@ -12,25 +12,24 @@ for robust batch workflows since transient server problems won't cause failures.
 The deadline still applies, so the wait will be interrupted if the deadline is
 passed.
 
-When an RPC is created while the channel is not in a READY state, without
-waitForReady it will immediately return a failure; with waitForReady it will
-simply block until the connection becomes ready.  The default is **without**
-Wait-for-Ready.
+When an RPC is created when the channel has failed to connect to the server,
+without Wait-for-Ready it will immediately return a failure; with wait-for-Ready
+it will simply be queued until the connection becomes ready.  The default is
+**without** Wait-for-Ready.
 
 For detailed semantics see [this][grpc doc].
 
 ### How to use Wait-for-Ready
 
 You can specify for a stub whether or not it should use Wait-for-Ready which
-will automatically be passed along, when an RPC is created, to the associated
-stream.
+will automatically be passed along when an RPC is created.
 
 {{% alert title="Note" color="info" %}}
  The RPC can still fail for other reasons besides the server not being
 ready, so error handling is still necessary.
 {{% /alert %}}
 
-The following shows the sequence of events the occur, when a client sends a
+The following shows the sequence of events that occur, when a client sends a
 message to a server, based upon channel state and whether or not Wait-for-Ready
 is set.
 ```mermaid
@@ -88,9 +87,11 @@ stateDiagram-v2
 
 ### Alternatives
 
-- Loop until RPC stops returning transient failures.
-- Implement an `onReady` Handler and handle your own blocking _(for languages that
-  support this)_
+- Loop (with exponential backoff) until the RPC stops returning transient failures.
+  - This could be combined, for efficiency, with implementing an `onReady` Handler
+  _(for languages that support this)_.
+- Accept failures that might have been avoided by waiting because you want to
+  fail fast  
 
 ### Language Support
 
