@@ -13,7 +13,7 @@ The deadline still applies, so the wait will be interrupted if the deadline is
 passed.
 
 When an RPC is created when the channel has failed to connect to the server,
-without Wait-for-Ready it will immediately return a failure; with wait-for-Ready
+without Wait-for-Ready it will immediately return a failure; with Wait-for-Ready
 it will simply be queued until the connection becomes ready.  The default is
 **without** Wait-for-Ready.
 
@@ -21,7 +21,7 @@ For detailed semantics see [this][grpc doc].
 
 ### How to use Wait-for-Ready
 
-You can specify for a stub whether or not it should use Wait-for-Ready which
+You can specify for a stub whether or not it should use Wait-for-Ready, which
 will automatically be passed along when an RPC is created.
 
 {{% alert title="Note" color="info" %}}
