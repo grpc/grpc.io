@@ -68,7 +68,7 @@ sequenceDiagram
   participant c as Client
   participant us as User Server
   participant bs as Billing Server
-  note right of c: Request initiated at 13:00:00<br>Call should complete in 2s
+  note right of c: Request at 13:00:00<br>Should complete in 2s
   activate c
   c ->> us: GetUserProfile<br>(deadline: 13:00:02)
   activate us
@@ -76,13 +76,12 @@ sequenceDiagram
   us ->> bs: GetTransactionHistory<br>(timeout: 1.5s)
   activate bs
   bs ->> bs: Retrieve transactions
-  note right of bs: It's 13:00:02<br>Time's up!
+  note left of bs: It's 13:00:02<br>Time's up!
   note right of c: Stop waiting for server
-  c ->> c: DEADLINE_EXCEEDED
+  c ->> c: Stop waiting for server<br>DEADLINE_EXCEEDED
   deactivate c
-  note right of us: Stop waiting for server
-  us ->> us: 
-  us -->> c: DEADLINE_EXCEEDED
+  us ->> us: Stop waiting for server
+  us -->> c: Cancel
   deactivate us
   bs -->> us: Cancel
   bs ->> bs: Clean up resources<br>(after noticing that the<br>call was cancelled)
