@@ -56,6 +56,40 @@ enabled (e.g. C++) and in others it is enabled by default (e.g. Java and Go).
 Using this capability lets you avoid the error-prone approach of manually
 including the deadline to each outgoing RPC.
 
+Since a deadline is set point in time, propagating it as-is to a server can be
+problematic as the clocks on the two servers might not be synchronized. To
+address this gRPC converts the deadline to a timeout from which the already
+elapsed time is already deducted. This shields your system from any clock skew
+issues.
+
+```mermaid
+%%{init: { "sequence": { "mirrorActors": false }}}%%
+sequenceDiagram
+  participant c as Client
+  participant us as User Server
+  participant bs as Billing Server
+  note right of c: Request initiated at 13:00:00<br>Call should complete in 2s
+  activate c
+  c ->> us: GetUserProfile<br>(deadline: 13:00:02)
+  activate us
+  note right of us: 0.5s spent before<br>calling billing server
+  us ->> bs: GetTransactionHistory<br>(timeout: 1.5s)
+  activate bs
+  bs ->> bs: Retrieve transactions
+  note right of bs: It's 13:00:02<br>Time's up!
+  note right of c: Stop waiting for server
+  c ->> c: DEADLINE_EXCEEDED
+  deactivate c
+  note right of us: Stop waiting for server
+  us ->> us: 
+  us -->> c: DEADLINE_EXCEEDED
+  deactivate us
+  bs -->> us: Cancel
+  bs ->> bs: Clean up resources<br>(after noticing that the<br>call was cancelled)
+  deactivate bs
+ 
+```
+
 ### Language Support
 
 | Language | Example          |
