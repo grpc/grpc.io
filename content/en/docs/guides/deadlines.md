@@ -21,7 +21,7 @@ to deadline in this document.
 
 ### Deadlines on the Client
 
-By default, gRPC does not set a deadline, which means it is possible for a
+By default, gRPC does not set a deadline which means it is possible for a
 client to end up waiting for a response effectively forever. To avoid this you
 should always explicitly set a realistic deadline in your clients. To determine
 the appropriate deadline you would ideally start with an educated guess based on
@@ -40,10 +40,10 @@ case scenario, crash the server. A gRPC server deals with this situation by
 automatically cancelling a call (`CANCELLED` status) once a deadline set by the
 client has passed.
 
-Please note that the application is responsible for stopping any activity it has
-spawned to service the request. If your application is running a long-running
-process you should periodically check if the request that initiated it has 
-actually been cancelled and stop the processing if so.
+Please note that the server application is responsible for stopping any activity
+it has spawned to service the request. If your application is running a
+long-running process you should periodically check if the request that initiated
+it has been cancelled and if so, stop the processing.
 
 #### Deadline Propagation
 
@@ -54,7 +54,7 @@ an incoming request to an outgoing one is supported by some gRPC
 implementations. In some languages this behavior needs to be explicitly
 enabled (e.g. C++) and in others it is enabled by default (e.g. Java and Go).
 Using this capability lets you avoid the error-prone approach of manually
-including the deadline to each outgoing RPC.
+including the deadline for each outgoing RPC.
 
 Since a deadline is set point in time, propagating it as-is to a server can be
 problematic as the clocks on the two servers might not be synchronized. To
