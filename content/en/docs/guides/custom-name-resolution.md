@@ -64,7 +64,7 @@ intelligently to backend failure as well as backend scale-ups and backend
 scale-downs.
 
 In addition, a custom name resolver may provide the client connection with a
-_service config_. A service config is essentially a JSON object that defines
+_service config_. A service config is a JSON object that defines
 arbitrary configuration specifying how traffic should be routed to and load
 balanced across a particular service. At its most basic, this can be used to
 specify things like that a particular service should use the round robin load
