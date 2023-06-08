@@ -79,7 +79,7 @@ While the exact interface for custom name resolvers differs from language to
 language, the general structure is the same. The client registers an
 implementation of a _name resolver provider_ to a process-global registry close
 to the start of the process. The name resolver provider will be called by the
-gRPC library with a target strings intended for the custom name resolver.. Given
+gRPC library with a target strings intended for the custom name resolver. Given
 that target string, the name resolver provider will return an instance of a name
 resolver, which will interact with the client connection to direct the request
 according to the target string.
@@ -90,7 +90,7 @@ sequenceDiagram
   gRPC ->> NameResolverProvider: requests NameResolver
   NameResolverProvider -->> gRPC: returns NameResolver
   gRPC ->> NameResolver: delegates resolution
-  NameResolver -->> gRPC: connects
+  NameResolver -->> gRPC: addresses
 ```
 
 ### Language Support
