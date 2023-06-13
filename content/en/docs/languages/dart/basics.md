@@ -42,7 +42,7 @@ Then change your current directory to `grpc-dart/example/route_guide`:
 $ cd grpc-dart/example/route_guide
 ```
 
-You should have already installed the tools needed to generate client and server
+You should have already installed the tools needed to generate client and (
 interface code -- if you haven't, see [Quick start][] for setup instructions.
 
 ### Defining the service
@@ -351,7 +351,7 @@ do this for our `RouteGuide` service:
 
 ```dart
 Future<void> main(List<String> args) async {
-  final server = grpc.Server([RouteGuideService()]);
+  final server = grpc.Server.create([RouteGuideService()]);
   await server.serve(port: 8080);
   print('Server listening...');
 }
@@ -359,7 +359,7 @@ Future<void> main(List<String> args) async {
 
 To build and start a server, we:
 
-1. Create an instance of the gRPC server using `grpc.Server()`,
+1. Create an instance of the gRPC server using `grpc.Server.create()`,
    giving a list of service implementations.
 1. Call `serve()` on the server to start listening for requests, optionally passing
    in the address and port to listen on. The server will continue to serve requests
