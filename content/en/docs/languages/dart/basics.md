@@ -42,7 +42,7 @@ Then change your current directory to `grpc-dart/example/route_guide`:
 $ cd grpc-dart/example/route_guide
 ```
 
-You should have already installed the tools needed to generate client and (
+You should have already installed the tools needed to generate client and server
 interface code -- if you haven't, see [Quick start][] for setup instructions.
 
 ### Defining the service
