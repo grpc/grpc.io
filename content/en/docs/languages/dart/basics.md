@@ -351,7 +351,7 @@ do this for our `RouteGuide` service:
 
 ```dart
 Future<void> main(List<String> args) async {
-  final server = grpc.Server([RouteGuideService()]);
+  final server = grpc.Server.create([RouteGuideService()]);
   await server.serve(port: 8080);
   print('Server listening...');
 }
@@ -359,7 +359,7 @@ Future<void> main(List<String> args) async {
 
 To build and start a server, we:
 
-1. Create an instance of the gRPC server using `grpc.Server()`,
+1. Create an instance of the gRPC server using `grpc.Server.create()`,
    giving a list of service implementations.
 1. Call `serve()` on the server to start listening for requests, optionally passing
    in the address and port to listen on. The server will continue to serve requests
