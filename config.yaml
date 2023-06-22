@@ -29,6 +29,7 @@ params:
     core: v1.55.0
     go: v1.56.1
     java: v1.56.0
+    node: master
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
   ui:
