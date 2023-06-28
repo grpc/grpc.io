@@ -226,9 +226,10 @@ c - Component (Aware of its content/context...)
   width: 100%;
   position: fixed;
   margin-left: -15px;
+  padding-top: 15px;
   z-index: 32;
   top: 4rem;
-  background: $gray-100;
+  background: $light;
   text-align: center;
 
   & p {
