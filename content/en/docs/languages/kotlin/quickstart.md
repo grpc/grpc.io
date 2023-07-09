@@ -125,15 +125,13 @@ method like this:
 
 ```kotlin
 private class HelloWorldService : GreeterGrpcKt.GreeterCoroutineImplBase() {
-  override suspend fun sayHello(request: HelloRequest) = HelloReply
-      .newBuilder()
-      .setMessage("Hello ${request.name}")
-      .build()
+  override suspend fun sayHello(request: HelloRequest) = helloReply {
+    message = "Hello ${request.name}"
+  }
 
-    override suspend fun sayHelloAgain(request: HelloRequest) = HelloReply
-      .newBuilder()
-      .setMessage("Hello again ${request.name}")
-      .build()
+  override suspend fun sayHelloAgain(request: HelloRequest) = helloReply {
+    message = "Hello again ${request.name}"
+  }
 }
 ```
 
@@ -150,7 +148,7 @@ class HelloWorldClient(
   private val stub: GreeterCoroutineStub = GreeterCoroutineStub(channel)
 
   suspend fun greet(name: String) {
-    val request = HelloRequest.newBuilder().setName(name).build()
+    val request = helloRequest { this.name = name }
     val response = stub.sayHello(request)
     println("Received: ${response.message}")
     val againResponse = stub.sayHelloAgain(request)
