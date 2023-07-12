@@ -190,7 +190,7 @@ class RouteGuideService(
 }
 ```
 
-#### Simple RPC
+##### Simple RPC
 
 `RouteGuideService` implements all the service methods. Consider the simplest
 method first, `GetFeature()`, which gets a `Point` from the client and returns a
