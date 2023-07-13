@@ -9,7 +9,7 @@ to working with gRPC.
 
 By walking through this example you'll learn how to:
 
-- Define a service in a .proto file.
+- Define a service in a `.proto` file.
 - Generate server and client code using the protocol buffer compiler.
 - Use the Python gRPC API to write a simple client and server for your service.
 
@@ -52,10 +52,10 @@ Your first step (as you'll know from the [Introduction to gRPC](/docs/what-is-gr
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://protobuf.dev/overview). You can
-see the complete .proto file in
+see the complete `.proto` file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 
-To define a service, you specify a named `service` in your .proto file:
+To define a service, you specify a named `service` in your `.proto` file:
 
 ```protobuf
 service RouteGuide {
@@ -133,7 +133,7 @@ message Point {
 
 ### Generating client and server code
 
-Next you need to generate the gRPC client and server interfaces from your .proto
+Next you need to generate the gRPC client and server interfaces from your `.proto`
 service definition.
 
 First, install the grpcio-tools package:
@@ -153,17 +153,17 @@ example directory, running this command regenerates the appropriate file rather
 than creates a new one. The generated code files are called
 `route_guide_pb2.py` and `route_guide_pb2_grpc.py` and contain:
 
-- classes for the messages defined in route_guide.proto
-- classes for the service defined in route_guide.proto
+- classes for the messages defined in `route_guide.proto`
+- classes for the service defined in `route_guide.proto`
    - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
    - `RouteGuideServicer`, which defines the interface for implementations
      of the RouteGuide service
-- a function for the service defined in route_guide.proto
+- a function for the service defined in `route_guide.proto`
    - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
      a `grpc.Server`
 
 {{% alert title="Note" color="info" %}}
-The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a .proto file.
+The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a `.proto` file.
 {{% /alert %}}
 
 ### Creating the server {#server}
@@ -314,7 +314,7 @@ You can see the complete example client code in
 To call service methods, we first need to create a *stub*.
 
 We instantiate the `RouteGuideStub` class of the `route_guide_pb2_grpc`
-module, generated from our .proto.
+module, generated from our `.proto`.
 
 ```python
 channel = grpc.insecure_channel('localhost:50051')
