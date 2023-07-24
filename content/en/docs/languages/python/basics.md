@@ -166,6 +166,31 @@ than creates a new one. The generated code files are called
 The `2` in pb2 indicates that the generated code is following Protocol Buffers Python API version 2. Version 1 is obsolete. It has no relation to the Protocol Buffers Language version, which is the one indicated by `syntax = "proto3"` or `syntax = "proto2"` in a `.proto` file.
 {{% /alert %}}
 
+#### Generating gRPC interfaces with custom package path
+
+To generate gRPC client interfaces with a custom package path, you can use the `-I` parameter along with the `grpc_tools.protoc` command. This approach allows you to specify a custom package name for the generated files.
+
+Here's an example command to generate the gRPC client interfaces with a custom package path:
+
+```sh
+$ python -m grpc_tools.protoc -Igrpc/example/custom/path=../../protos \
+  --python_out=. --grpc_python_out=. \
+  ../../protos/route_guide.proto
+```
+
+The generated files will be placed in the `./grpc/example/custom/path/` directory:
+
+- `./grpc/example/custom/path/route_guide_pb2.py`
+- `./grpc/example/custom/path/route_guide_pb2_grpc.py`
+
+With this setup, the generated `route_guide_pb2_grpc.py` file will correctly import the protobuf definitions using the custom package structure, as shown below:
+
+```python
+import grpc.example.custom.path.route_guide_pb2 as route_guide_pb2
+```
+
+By following this approach, you can ensure that the files will call each other correctly with respect to the specified package path. This method allows you to maintain a custom package structure for your gRPC client interfaces.
+
 ### Creating the server {#server}
 
 First let's look at how you create a `RouteGuide` server. If you're only
