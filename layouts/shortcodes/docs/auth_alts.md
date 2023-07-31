@@ -18,10 +18,9 @@ ALTS in gRPC has the following features:
 gRPC users can configure their applications to use ALTS as a transport security
 protocol with few lines of code.
 
-Note that ALTS is fully functional if the application runs on
-[Google Cloud Platform](https://cloud.google.com). ALTS could be run on any
-platforms with a pluggable
-[ALTS handshaker service](https://github.com/grpc/grpc/blob/7e367da22a137e2e7caeae8342c239a91434ba50/src/proto/grpc/gcp/handshaker.proto#L224-L234).
+Note that ALTS is fully functional if the application runs on 
+[Compute Engine](https://cloud.google.com/compute) or
+[Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine).
 
 {{ with .Page.Params.code.client_credentials -}}
 
