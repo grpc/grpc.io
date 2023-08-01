@@ -10,7 +10,7 @@ to working with gRPC.
 
 By walking through this example you'll learn how to:
 
-- Define a service in a .proto file.
+- Define a service in a `.proto` file.
 - Use the Node.js gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Introduction to gRPC](/docs/what-is-grpc/introduction/) and are familiar
@@ -69,7 +69,7 @@ buffers](https://protobuf.dev/overview). You can
 see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc-node/grpc/blob/{{< param grpc_vers.node >}}/examples/protos/route_guide.proto).
 
-To define a service, you specify a named `service` in your .proto file:
+To define a service, you specify a named `service` in your `.proto` file:
 
 ```protobuf
 service RouteGuide {

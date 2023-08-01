@@ -26,9 +26,9 @@ params:
   branch: main
   locale: en_US
   grpc_vers:
-    core: v1.55.0
-    go: v1.56.1
-    java: v1.56.0
+    core: v1.56.0
+    go: v1.57.0
+    java: v1.57.0
     node: "@grpc/grpc-js@1.9.0"
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
@@ -38,7 +38,7 @@ params:
     navbar_translucent_over_cover_disable: true
     sidebar_menu_compact: true
 
-  show_banner: false
+  show_banner: true
 
   fonts:
     - name: Open Sans

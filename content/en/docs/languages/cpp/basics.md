@@ -8,7 +8,7 @@ This tutorial provides a basic C++ programmer's introduction to working with gRP
 
 By walking through this example you'll learn how to:
 
-- Define a service in a .proto file.
+- Define a service in a `.proto` file.
 - Generate server and client code using the protocol buffer compiler.
 - Use the C++ gRPC API to write a simple client and server for your service.
 
@@ -51,10 +51,10 @@ Get the example code and build gRPC:
 Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grpc/introduction/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://protobuf.dev/overview).
-You can see the complete .proto file in
+You can see the complete `.proto` file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
 
-To define a service, you specify a named `service` in your .proto file:
+To define a service, you specify a named `service` in your `.proto` file:
 
 ```protobuf
 service RouteGuide {
@@ -132,7 +132,7 @@ message Point {
 
 ### Generating client and server code
 
-Next we need to generate the gRPC client and server interfaces from our .proto
+Next we need to generate the gRPC client and server interfaces from our `.proto`
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC C++ plugin.
 
@@ -362,7 +362,7 @@ grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`.
 {{% /alert %}}
 
-Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
+Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our `.proto`.
 
 ```cpp
 public:
