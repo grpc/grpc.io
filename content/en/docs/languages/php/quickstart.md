@@ -175,7 +175,7 @@ $message = $reply->getMessage();
 
 #### Run!
 
-Just like we did before, from the `examples/node/dynamic_codegen` directory:
+Just like we did before, from the `grpc-node/examples/helloworld/dynamic_codegen` directory:
 
  1. Run the server:
 
