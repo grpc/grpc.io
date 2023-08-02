@@ -18,18 +18,18 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.node >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc-node
 # Navigate to the node example
-$ cd grpc/examples/node
+$ cd grpc-node/examples
 # Install the example's dependencies
 $ npm install
 # Navigate to the dynamic codegen "hello, world" Node example:
-$ cd dynamic_codegen
+$ cd helloworld/dynamic_codegen
 ```
 
 ### Run a gRPC application
 
-From the `examples/node/dynamic_codegen` directory:
+From the `examples/helloworld/dynamic_codegen` directory:
 
  1. Run the server:
 
@@ -148,7 +148,7 @@ function main() {
 
 #### Run!
 
-Just like we did before, from the `examples/node/dynamic_codegen` directory:
+Just like we did before, from the `examples/helloworld/dynamic_codegen` directory:
 
  1. Run the server:
 

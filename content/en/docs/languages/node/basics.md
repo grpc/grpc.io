@@ -28,10 +28,10 @@ buffers language. You can find out more in the
 ### Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/node/dynamic_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide).
+[grpc/grpc-node/examples/routeguide/dynamic_codegen](https://github.com/grpc/grpc-node/tree/{{< param grpc_vers.node >}}/examples/routeguide/dynamic_codegen).
 As you'll see if you look at the repository, there's also a very similar-looking
 example in
-[grpc/grpc/examples/node/static_codegen/route_guide](https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}/examples/node/static_codegen/route_guide).
+[grpc/grpc-node/examples/routeguide/static_codegen](https://github.com/grpc/grpc-node/tree/{{< param grpc_vers.node >}}/examples/routeguide/static_codegen).
 We have two versions of our route guide example because there are two ways to
 generate the code needed to work with protocol buffers in Node.js - one approach
 uses `Protobuf.js` to dynamically generate the code at runtime, the other uses
@@ -45,14 +45,14 @@ To download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+$ git clone -b {{< param grpc_vers.node >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc-node
 $ cd grpc
 ```
 
-Then change your current directory to `examples/node`:
+Then change your current directory to `examples`:
 
 ```sh
-$ cd examples/node
+$ cd examples
 ```
 
 You also should have the relevant tools installed to generate the server and
@@ -66,8 +66,8 @@ Our first step (as you'll know from the [Introduction to gRPC](/docs/what-is-grp
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://protobuf.dev/overview). You can
-see the complete `.proto` file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/route_guide.proto).
+see the complete .proto file in
+[`examples/protos/route_guide.proto`](https://github.com/grpc-node/grpc/blob/{{< param grpc_vers.node >}}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your `.proto` file:
 
@@ -154,7 +154,7 @@ To load a `.proto` file, simply `require` the gRPC proto loader library and use 
 `loadSync()` method, then pass the output to the gRPC library's `loadPackageDefinition` method:
 
 ```js
-var PROTO_PATH = __dirname + '/../../../protos/route_guide.proto';
+var PROTO_PATH = __dirname + '/../../protos/route_guide.proto';
 var grpc = require('@grpc/grpc-js');
 var protoLoader = require('@grpc/proto-loader');
 // Suggested options for similarity to existing grpc.load behavior
@@ -190,7 +190,7 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/node/dynamic_codegen/route_guide/route_guide_server.js](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide/route_guide_server.js).
+[examples/routeguide/dynamic_codegen/route_guide_server.js](https://github.com/grpc/grpc-node/blob/{{< param grpc_vers.node >}}/examples/routeguide/dynamic_codegen/route_guide_server.js).
 Let's take a closer look at how it works.
 
 #### Implementing RouteGuide
@@ -355,7 +355,7 @@ As you can see, we build and start our server with the following steps:
 
 In this section, we'll look at creating a Node.js client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/node/dynamic_codegen/route_guide/route_guide_client.js](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/node/dynamic_codegen/route_guide/route_guide_client.js).
+[examples/routeguide/dynamic_codegen/route_guide_client.js](https://github.com/grpc/grpc-node/blob/{{< param grpc_vers.node >}}/examples/routeguide/dynamic_codegen/route_guide_client.js).
 
 #### Creating a stub
 
@@ -501,11 +501,11 @@ $ npm install
 Run the server:
 
 ```sh
-$ node ./dynamic_codegen/route_guide/route_guide_server.js --db_path=./dynamic_codegen/route_guide/route_guide_db.json
+$ node ./routeguide/dynamic_codegen/route_guide_server.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
 ```
 
 From a different terminal, run the client:
 
 ```sh
-$ node ./dynamic_codegen/route_guide/route_guide_client.js --db_path=./dynamic_codegen/route_guide/route_guide_db.json
+$ node ./routeguide/dynamic_codegen/route_guide_client.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
 ```
