@@ -27,7 +27,8 @@ The following authentication mechanisms are built-in to gRPC:
 - **ALTS**: gRPC supports
   [ALTS](https://cloud.google.com/security/encryption-in-transit/application-layer-transport-security)
   as a transport security mechanism, if the application is running on
-  [Google Cloud Platform (GCP)](https://cloud.google.com).
+  [Compute Engine](https://cloud.google.com/compute) or
+  [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine).
   For details, see one of the following
   language-specific pages:
   [ALTS in C++]({{< relref "docs/languages/cpp/alts" >}}),
