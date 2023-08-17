@@ -78,6 +78,11 @@ To forward the gRPC requests to the backend server, we need a block like
 this:
 
 ```yaml
+admin:
+  address:
+    socket_address: { address: 0.0.0.0, port_value: 9901 }
+
+static_resources:
   listeners:
   - name: listener_0
     address:
@@ -85,7 +90,8 @@ this:
     filter_chains:
     - filters:
       - name: envoy.http_connection_manager
-        config:
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           codec_type: auto
           stat_prefix: ingress_http
           route_config:
@@ -98,14 +104,26 @@ this:
                 route: { cluster: echo_service }
           http_filters:
           - name: envoy.grpc_web
-          - name: envoy.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
   clusters:
   - name: echo_service
     connect_timeout: 0.25s
-    type: logical_dns
+    type: LOGICAL_DNS
     http2_protocol_options: {}
-    lb_policy: round_robin
-    hosts: [{ socket_address: { address: node-server, port_value: 9090 }}]
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: echo_service
+      endpoints:
+        - lb_endpoints:
+          - endpoint:
+              address:
+                socket_address:
+                  address: node-server
+                  port_value: 9090
 ```
 
 You may also need to add some CORS setup to make sure the browser can request
