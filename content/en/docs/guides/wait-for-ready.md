@@ -102,6 +102,6 @@ stateDiagram-v2
 | Python   | [Python example]  |
 
 [Java example]: https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/waitforready/WaitForReadyClient.java
-[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/name_resolving
+[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/wait_for_ready
 [Python example]: https://github.com/grpc/grpc/tree/master/examples/python/wait_for_ready
 [grpc doc]: https://github.com/grpc/grpc/blob/master/doc/wait-for-ready.md
