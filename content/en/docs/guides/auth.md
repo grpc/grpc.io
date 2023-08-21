@@ -179,73 +179,28 @@ A deeper integration can be achieved by plugging in a gRPC credentials
 implementation at the core level. gRPC internals also allow switching out
 SSL/TLS with other encryption mechanisms.
 
-### Examples
+### Language guides and examples
 
 These authentication mechanisms will be available in all gRPC's supported
 languages. The following sections demonstrate how authentication and
 authorization features described above appear in each language: more languages
 are coming soon.
 
-#### Go
+| Language | Example                                   | Documentation          |
+|----------|-------------------------------------------|------------------------|
+| C++      | N/A                                       | N/A                    |
+| Go       | [Go Example]                              | [Go Documentation]     |
+| Java     | [Java Example TLS] ([Java Example ATLS])  | [Java Documentation]   |
+| Python   | [Python Example]                          | [Python Documentation] |
 
-##### Base case - no encryption or authentication
 
-Client:
-
-``` go
-conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
-// error handling omitted
-client := pb.NewGreeterClient(conn)
-// ...
-```
-
-Server:
-
-``` go
-s := grpc.NewServer()
-lis, _ := net.Listen("tcp", "localhost:50051")
-// error handling omitted
-s.Serve(lis)
-```
-
-##### With server authentication SSL/TLS
-
-Client:
-
-``` go
-creds, _ := credentials.NewClientTLSFromFile(certFile, "")
-conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
-// error handling omitted
-client := pb.NewGreeterClient(conn)
-// ...
-```
-
-Server:
-
-``` go
-creds, _ := credentials.NewServerTLSFromFile(certFile, keyFile)
-s := grpc.NewServer(grpc.Creds(creds))
-lis, _ := net.Listen("tcp", "localhost:50051")
-// error handling omitted
-s.Serve(lis)
-```
-
-##### Authenticate with Google
-
-``` go
-pool, _ := x509.SystemCertPool()
-// error handling omitted
-creds := credentials.NewClientTLSFromCert(pool, "")
-perRPC, _ := oauth.NewServiceAccountFromFile("service-account.json", scope)
-conn, _ := grpc.Dial(
-	"greeter.googleapis.com",
-	grpc.WithTransportCredentials(creds),
-	grpc.WithPerRPCCredentials(perRPC),
-)
-// error handling omitted
-client := pb.NewGreeterClient(conn)
-// ...
-```
+[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption
+[Go Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption#encryption
+[Java Example TLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls
+[Java Example ATLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-alts
+[Java Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls#hello-world-example-with-tls
+[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/auth
+[Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#authentication-extension-example-in-grpc-python
 
 #### Ruby
 
@@ -274,259 +229,6 @@ authentication = Google::Auth.get_application_default()
 call_creds = GRPC::Core::CallCredentials.new(authentication.updater_proc)
 combined_creds = ssl_creds.compose(call_creds)
 stub = Helloworld::Greeter::Stub.new('greeter.googleapis.com', combined_creds)
-```
-
-#### C++
-
-##### Base case - no encryption or authentication
-```cpp
-auto channel = grpc::CreateChannel("localhost:50051", InsecureChannelCredentials());
-std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
-...
-```
-
-##### With server authentication SSL/TLS
-
-```cpp
-auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
-auto channel = grpc::CreateChannel("myservice.example.com", channel_creds);
-std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
-...
-```
-
-##### Authenticate with Google
-
-```cpp
-auto creds = grpc::GoogleDefaultCredentials();
-auto channel = grpc::CreateChannel("greeter.googleapis.com", creds);
-std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
-...
-```
-
-#### Python
-
-##### Base case - No encryption or authentication
-
-```python
-import grpc
-import helloworld_pb2
-
-channel = grpc.insecure_channel('localhost:50051')
-stub = helloworld_pb2.GreeterStub(channel)
-```
-
-##### With server authentication SSL/TLS
-
-Client:
-
-```python
-import grpc
-import helloworld_pb2
-
-with open('roots.pem', 'rb') as f:
-    creds = grpc.ssl_channel_credentials(f.read())
-channel = grpc.secure_channel('myservice.example.com:443', creds)
-stub = helloworld_pb2.GreeterStub(channel)
-```
-
-Server:
-
-```python
-import grpc
-import helloworld_pb2
-from concurrent import futures
-
-server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-with open('key.pem', 'rb') as f:
-    private_key = f.read()
-with open('chain.pem', 'rb') as f:
-    certificate_chain = f.read()
-server_credentials = grpc.ssl_server_credentials( ( (private_key, certificate_chain), ) )
-# Adding GreeterServicer to server omitted
-server.add_secure_port('myservice.example.com:443', server_credentials)
-server.start()
-# Server sleep omitted
-```
-
-##### Authenticate with Google using a JWT
-
-```python
-import grpc
-import helloworld_pb2
-
-from google import auth as google_auth
-from google.auth import jwt as google_auth_jwt
-from google.auth.transport import grpc as google_auth_transport_grpc
-
-credentials, _ = google_auth.default()
-jwt_creds = google_auth_jwt.OnDemandCredentials.from_signing_credentials(
-    credentials)
-channel = google_auth_transport_grpc.secure_authorized_channel(
-    jwt_creds, None, 'greeter.googleapis.com:443')
-stub = helloworld_pb2.GreeterStub(channel)
-```
-
-##### Authenticate with Google using an Oauth2 token
-
-```python
-import grpc
-import helloworld_pb2
-
-from google import auth as google_auth
-from google.auth.transport import grpc as google_auth_transport_grpc
-from google.auth.transport import requests as google_auth_transport_requests
-
-credentials, _ = google_auth.default(scopes=(scope,))
-request = google_auth_transport_requests.Request()
-channel = google_auth_transport_grpc.secure_authorized_channel(
-    credentials, request, 'greeter.googleapis.com:443')
-stub = helloworld_pb2.GreeterStub(channel)
-```
-
-##### With server authentication SSL/TLS and a custom header with token
-
-Client:
-
-```python
-import grpc
-import helloworld_pb2
-
-class GrpcAuth(grpc.AuthMetadataPlugin):
-    def __init__(self, key):
-        self._key = key
-
-    def __call__(self, context, callback):
-        callback((('rpc-auth-header', self._key),), None)
-
-with open('path/to/root-cert', 'rb') as fh:
-    root_cert = fh.read()
-
-channel = grpc.secure_channel(
-    'myservice.example.com:443',
-    grpc.composite_channel_credentials(
-        grpc.ssl_channel_credentials(root_cert),
-        grpc.metadata_call_credentials(
-            GrpcAuth('access_key')
-        )
-    )
-)
-
-stub = helloworld_pb2.GreeterStub(channel)
-```
-
-Server:
-
-```python
-from concurrent import futures
-
-import grpc
-import helloworld_pb2
-
-class AuthInterceptor(grpc.ServerInterceptor):
-    def __init__(self, key):
-        self._valid_metadata = ('rpc-auth-header', key)
-
-        def deny(_, context):
-            context.abort(grpc.StatusCode.UNAUTHENTICATED, 'Invalid key')
-
-        self._deny = grpc.unary_unary_rpc_method_handler(deny)
-
-    def intercept_service(self, continuation, handler_call_details):
-        meta = handler_call_details.invocation_metadata
-
-        if meta and meta[0] == self._valid_metadata:
-            return continuation(handler_call_details)
-        else:
-            return self._deny
-
-server = grpc.server(
-    futures.ThreadPoolExecutor(max_workers=10),
-    interceptors=(AuthInterceptor('access_key'),)
-)
-with open('key.pem', 'rb') as f:
-    private_key = f.read()
-with open('chain.pem', 'rb') as f:
-    certificate_chain = f.read()
-server_credentials = grpc.ssl_server_credentials( ( (private_key, certificate_chain), ) )
-# Adding GreeterServicer to server omitted
-server.add_secure_port('myservice.example.com:443', server_credentials)
-server.start()
-# Server sleep omitted
-```
-
-#### Java
-
-##### Base case - no encryption or authentication
-
-```java
-ManagedChannel channel = Grpc.newChannelBuilder(
-        "localhost:50051", InsecureChannelCredentials.create())
-    .build();
-GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
-
-```
-
-##### With server authentication SSL/TLS
-
-In Java we recommend that you use netty-tcnative with BoringSSL when using gRPC
-over TLS. You can find details about installing and using netty-tcnative and
-other required libraries for both Android and non-Android Java in the gRPC Java
-[Security](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#transport-security-tls)
-documentation.
-
-To enable TLS on a server, a certificate chain and private key need to be
-specified in PEM format. Such private key should not be using a password.
-The order of certificates in the chain matters: more specifically, the certificate
-at the top has to be the host CA, while the one at the very bottom
-has to be the root CA. The standard TLS port is 443, but we use 8443 below to
-avoid needing extra permissions from the OS.
-
-```java
-ServerCredentials creds = TlsServerCredentials.create(certChainFile, privateKeyFile);
-Server server = Grpc.newServerBuilderForPort(8443, creds)
-    .addService(TestServiceGrpc.bindService(serviceImplementation))
-    .build();
-server.start();
-```
-
-If the issuing certificate authority is not known to the client then
-it can be configured using `TlsChannelCredentials.newBuilder()`.
-
-On the client side, server authentication with SSL/TLS looks like this:
-
-```java
-// With server authentication SSL/TLS
-ManagedChannel channel = Grpc.newChannelBuilder(
-        "myservice.example.com:443", TlsChannelCredentials.create())
-    .build();
-GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
-
-// With server authentication SSL/TLS; custom CA root certificates
-ChannelCredentials creds = TlsChannelCredentials.newBuilder()
-    .trustManager(new File("roots.pem"))
-    .build();
-ManagedChannel channel = Grpc.newChannelBuilder("myservice.example.com:443", creds)
-    .build();
-GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
-```
-
-##### Authenticate with Google
-
-The following code snippet shows how you can call the [Google Cloud PubSub
-API](https://cloud.google.com/pubsub/overview) using gRPC with a service
-account. The credentials are loaded from a key stored in a well-known location
-or by detecting that the application is running in an environment that can
-provide one automatically, e.g. Google Compute Engine. While this example is
-specific to Google and its services, similar patterns can be followed for other
-service providers.
-
-```java
-ChannelCredentials creds = CompositeChannelCredentials.create(
-    TlsChannelCredentials.create(),
-    MoreCallCredentials.from(GoogleCredentials.getApplicationDefault()));
-ManagedChannel channel = ManagedChannelBuilder.forTarget("greeter.googleapis.com", creds)
-    .build();
-GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 ```
 
 #### Node.js
