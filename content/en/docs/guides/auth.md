@@ -182,9 +182,8 @@ SSL/TLS with other encryption mechanisms.
 ### Language guides and examples
 
 These authentication mechanisms will be available in all gRPC's supported
-languages. The following sections demonstrate how authentication and
-authorization features described above appear in each language: more languages
-are coming soon.
+languages. The following table links to examples demonstrating authentication
+and authorization in various languages.
 
 | Language | Example                                   | Documentation          |
 |----------|-------------------------------------------|------------------------|
@@ -201,6 +200,11 @@ are coming soon.
 [Java Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls#hello-world-example-with-tls
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/auth
 [Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#authentication-extension-example-in-grpc-python
+
+### Additional Examples
+
+The following sections demonstrate how authentication and authorization features
+described above appear in other languages not listed above.
 
 #### Ruby
 
