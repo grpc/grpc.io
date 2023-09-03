@@ -225,10 +225,12 @@ def ListFeatures(self, request, context):
     top = max(request.lo.latitude, request.hi.latitude)
     bottom = min(request.lo.latitude, request.hi.latitude)
     for feature in self.db:
-        if (feature.location.longitude >= left and
+        if (
+            feature.location.longitude >= left and
             feature.location.longitude <= right and
             feature.location.latitude >= bottom and
-            feature.location.latitude <= top):
+            feature.location.latitude <= top
+        ):
             yield feature
 ```
 
@@ -262,7 +264,7 @@ def RecordRoute(self, request_iterator, context):
     return route_guide_pb2.RouteSummary(point_count=point_count,
                                         feature_count=feature_count,
                                         distance=int(distance),
-                                      elapsed_time=int(elapsed_time))
+                                        elapsed_time=int(elapsed_time))
 ```
 
 ##### Bidirectional streaming RPC
