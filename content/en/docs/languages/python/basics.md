@@ -202,11 +202,11 @@ database in a `Feature`.
 
 ```python
 def GetFeature(self, request, context):
-  feature = get_feature(self.db, request)
-  if feature is None:
-    return route_guide_pb2.Feature(name="", location=request)
-  else:
-    return feature
+    feature = get_feature(self.db, request)
+    if feature is None:
+        return route_guide_pb2.Feature(name="", location=request)
+    else:
+        return feature
 ```
 
 The method is passed a `route_guide_pb2.Point` request for the RPC, and a
@@ -220,16 +220,16 @@ that sends multiple `Feature`s to the client.
 
 ```python
 def ListFeatures(self, request, context):
-  left = min(request.lo.longitude, request.hi.longitude)
-  right = max(request.lo.longitude, request.hi.longitude)
-  top = max(request.lo.latitude, request.hi.latitude)
-  bottom = min(request.lo.latitude, request.hi.latitude)
-  for feature in self.db:
-    if (feature.location.longitude >= left and
-        feature.location.longitude <= right and
-        feature.location.latitude >= bottom and
-        feature.location.latitude <= top):
-      yield feature
+    left = min(request.lo.longitude, request.hi.longitude)
+    right = max(request.lo.longitude, request.hi.longitude)
+    top = max(request.lo.latitude, request.hi.latitude)
+    bottom = min(request.lo.latitude, request.hi.latitude)
+    for feature in self.db:
+        if (feature.location.longitude >= left and
+            feature.location.longitude <= right and
+            feature.location.latitude >= bottom and
+            feature.location.latitude <= top):
+            yield feature
 ```
 
 Here the request message is a `route_guide_pb2.Rectangle` within which the
@@ -244,24 +244,24 @@ request values and returns a single response value.
 
 ```python
 def RecordRoute(self, request_iterator, context):
-  point_count = 0
-  feature_count = 0
-  distance = 0.0
-  prev_point = None
+    point_count = 0
+    feature_count = 0
+    distance = 0.0
+    prev_point = None
 
-  start_time = time.time()
-  for point in request_iterator:
-    point_count += 1
-    if get_feature(self.db, point):
-      feature_count += 1
-    if prev_point:
-      distance += get_distance(prev_point, point)
-    prev_point = point
+    start_time = time.time()
+    for point in request_iterator:
+        point_count += 1
+        if get_feature(self.db, point):
+            feature_count += 1
+        if prev_point:
+            distance += get_distance(prev_point, point)
+        prev_point = point
 
-  elapsed_time = time.time() - start_time
-  return route_guide_pb2.RouteSummary(point_count=point_count,
-                                      feature_count=feature_count,
-                                      distance=int(distance),
+    elapsed_time = time.time() - start_time
+    return route_guide_pb2.RouteSummary(point_count=point_count,
+                                        feature_count=feature_count,
+                                        distance=int(distance),
                                       elapsed_time=int(elapsed_time))
 ```
 
@@ -271,12 +271,12 @@ Lastly let's look at the bidirectionally-streaming method `RouteChat`.
 
 ```python
 def RouteChat(self, request_iterator, context):
-  prev_notes = []
-  for new_note in request_iterator:
-    for prev_note in prev_notes:
-      if prev_note.location == new_note.location:
-        yield prev_note
-    prev_notes.append(new_note)
+    prev_notes = []
+    for new_note in request_iterator:
+        for prev_note in prev_notes:
+            if prev_note.location == new_note.location:
+                yield prev_note
+        prev_notes.append(new_note)
 ```
 
 This method's semantics are a combination of those of the request-streaming
@@ -290,12 +290,12 @@ start up a gRPC server so that clients can actually use your service:
 
 ```python
 def serve():
-  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  route_guide_pb2_grpc.add_RouteGuideServicer_to_server(
-      RouteGuideServicer(), server)
-  server.add_insecure_port('[::]:50051')
-  server.start()
-  server.wait_for_termination()
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    route_guide_pb2_grpc.add_RouteGuideServicer_to_server(
+        RouteGuideServicer(), server)
+    server.add_insecure_port('[::]:50051')
+    server.start()
+    server.wait_for_termination()
 ```
 
 The server `start()` method is non-blocking. A new thread will be instantiated
