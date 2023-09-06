@@ -226,10 +226,10 @@ def ListFeatures(self, request, context):
     bottom = min(request.lo.latitude, request.hi.latitude)
     for feature in self.db:
         if (
-            feature.location.longitude >= left and
-            feature.location.longitude <= right and
-            feature.location.latitude >= bottom and
-            feature.location.latitude <= top
+            feature.location.longitude >= left
+            and feature.location.longitude <= right
+            and feature.location.latitude >= bottom
+            and feature.location.latitude <= top
         ):
             yield feature
 ```
@@ -261,10 +261,12 @@ def RecordRoute(self, request_iterator, context):
         prev_point = point
 
     elapsed_time = time.time() - start_time
-    return route_guide_pb2.RouteSummary(point_count=point_count,
-                                        feature_count=feature_count,
-                                        distance=int(distance),
-                                        elapsed_time=int(elapsed_time))
+    return route_guide_pb2.RouteSummary(
+        point_count=point_count,
+        feature_count=feature_count,
+        distance=int(distance),
+        elapsed_time=int(elapsed_time),
+    )
 ```
 
 ##### Bidirectional streaming RPC
@@ -293,9 +295,8 @@ start up a gRPC server so that clients can actually use your service:
 ```python
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    route_guide_pb2_grpc.add_RouteGuideServicer_to_server(
-        RouteGuideServicer(), server)
-    server.add_insecure_port('[::]:50051')
+    route_guide_pb2_grpc.add_RouteGuideServicer_to_server(RouteGuideServicer(), server)
+    server.add_insecure_port("[::]:50051")
     server.start()
     server.wait_for_termination()
 ```
