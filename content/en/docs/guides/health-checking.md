@@ -64,7 +64,9 @@ Enabling health checking changes some behavior around calling a server:
 
   - The client will additionally call the `Watch` RPC on the health check
   service when a connection is established
-    - If the call fails, retries will be made (with exponential backoff)
+    - If the call fails, retries will be made (with exponential backoff), unless
+    the call fails with the status UNIMPLEMENTED, in which case health checking
+    will be disabled.
   - Requests won't be sent until the health check service sends a healthy
   status for the service being called
   - If a healthy service becomes unhealthy the client will no longer send
@@ -79,14 +81,19 @@ connection to the server goes through these states based on the health of
 the service it is connecting to.
 
 ```mermaid
+---
+title: Subchannel state transitions with health checking enabled
+---
 stateDiagram-v2
-    [*] --> CONNECTING : Health checking\nenabled
-    [*] --> READY : Health checking\nNOT enabled
-    CONNECTING --> READY : Health check service\nreturns SERVING
-    CONNECTING --> TRANSIENT_FAILURE : Health check service\ncall fails (will be retried)
-    CONNECTING --> TRANSIENT_FAILURE : Health check service\nreturns NOT_SERVING
-    TRANSIENT_FAILURE --> READY : Health check service\nreturns SERVING
+    [*] --> IDLE
+    IDLE --> CONNECTING : Connection requested
+    CONNECTING --> READY : Health check#colon;\nSERVING
+    CONNECTING --> TRANSIENT_FAILURE : Health check#colon;\nNOT_SERVING\nor call fails
+    READY --> TRANSIENT_FAILURE : Health check#colon;\nNOT_SERVING
+    READY --> IDLE : Connection breaks\nor times out
+    TRANSIENT_FAILURE --> READY : Health check#colon;\nSERVING
 ```
+
 
 Again, the specifics on how to enable client side health checking varies by
 language, see the examples in the **Language Support** section.
