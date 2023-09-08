@@ -57,8 +57,9 @@ the health of the `foo` service you would use (in JSON format):
 }
 ```
 
-Note that here you can also use an empty string if you want the channel to
-react to any service on the server becoming unhealthy.
+Note that if your server reports health for the empty string ("") service,
+signifying the health of the whole server, you can also use an empty string
+here.
 
 Enabling health checking changes some behavior around calling a server:
 
@@ -72,8 +73,8 @@ Enabling health checking changes some behavior around calling a server:
   - If a healthy service becomes unhealthy the client will no longer send
   requests for that service
   - The calls will resume if the service later becomes healthy
-  - Some load balancing policies can choose to disable health checking is
-  it the feature does not make sense with the policy (e.g. `pick_first` does
+  - Some load balancing policies can choose to disable health checking if
+  the feature does not make sense with the policy (e.g. `pick_first` does
   this)
 
 More specifically the state of the subchannel (that represents the physical
@@ -92,6 +93,7 @@ stateDiagram-v2
     READY --> TRANSIENT_FAILURE : Health check#colon;\nNOT_SERVING
     READY --> IDLE : Connection breaks\nor times out
     TRANSIENT_FAILURE --> READY : Health check#colon;\nSERVING
+    note right of TRANSIENT_FAILURE : Allows the load balancer to choose\nanother, working subchannel 
 ```
 
 
