@@ -82,9 +82,6 @@ connection to the server goes through these states based on the health of
 the service it is connecting to.
 
 ```mermaid
----
-title: Subchannel state transitions with health checking enabled
----
 stateDiagram-v2
     [*] --> IDLE
     IDLE --> CONNECTING : Connection requested
