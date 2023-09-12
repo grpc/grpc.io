@@ -33,10 +33,10 @@ Enabling the health check service on your server involves the following steps:
   2. Add the health check service to your server.
   3. Notify the health check library when the health of one of your services
   changes.
-    - `NOT_SERVING` if your service cannot accept requests at the moment
-    - `SERVING` if your service is open for business
-    - If you don't care about the health of individual services, you can use
-    an empty string ("") to represent the health of your whole server.
+     - `NOT_SERVING` if your service cannot accept requests at the moment
+     - `SERVING` if your service is open for business
+     - If you don't care about the health of individual services, you can use
+     an empty string ("") to represent the health of your whole server.
   4. Make sure you inform the health check library about server shutdown so
   that it can notify all the connected clients.
 
