@@ -67,7 +67,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://protobuf.dev/overview). You can
 see the complete .proto file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc-node/grpc/blob/{{< param grpc_vers.node >}}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc-node//blob/{{< param grpc_vers.node >}}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your `.proto` file:
 
