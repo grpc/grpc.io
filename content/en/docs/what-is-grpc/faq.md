@@ -31,9 +31,7 @@ Google has been using a lot of the underlying technologies and concepts in gRPC 
 
 ### Which programming languages are supported?
 
-See [Officially supported languages and platforms][].
-
-[Officially supported languages and platforms]: /about/#officially-supported-languages-and-platforms
+For officially supported languages and platforms, see [Official support](/docs/#official-support).
 
 ### How do I get started using gRPC?
 
