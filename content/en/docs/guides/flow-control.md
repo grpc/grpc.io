@@ -10,7 +10,7 @@ Flow control is a mechanism to ensure that a receiver of messages does not get
 overwhelmed by a fast sender.  Flow control prevents data loss, improves
 performance and increases reliability.  It applies to streaming
 RPCs and is not relevant for unary RPCs.  By default, gRPC handles the
-interactions with flow control for you, though some languages allow you to take
+interactions with flow control for you, though some languages allow you to
 override the default behavior and take explicit control.
 
 gRPC utilizes the underlying transport to detect when it is safe to send more
