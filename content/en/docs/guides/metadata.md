@@ -69,10 +69,9 @@ Custom header handling is language dependent, generally through interceptors.
 
 Trailers are a special kind of header that is sent after the message data. They
 are used internally to communicate the outcome of an RPC. At the application
-level, custom trailers can be used to communicate
-values known only after the message data has been completely generated such as
-digital signatures and integrity checks, or anything else the server wants to
-communicate outside of the return values.
+level, custom trailers can be used to communicate things not directly part of
+the data, such as server utilization and query cost.  Trailers can be sent by
+either the server or the client.
 
 ### For more details, please see the following gRPCs
 
