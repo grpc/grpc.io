@@ -1,7 +1,7 @@
 ---
 title: Metadata
 description: >-
-Explains what metadata is, how it is transmitted, and what it is used for.
+  Explains what metadata is, how it is transmitted, and what it is used for.
 ---
 
 ### Overview
