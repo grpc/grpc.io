@@ -20,9 +20,9 @@ are case insensitive
 and must not start with the prefix `grpc-`, which is reserved for gRPC itself.
 
 gRPC metadata can be sent and received by both the client and the server.
-Headers are sent from the client to the server on the initial request and from
-the server to the client on the initial response of an RPC call. Similarly, each
-will send trailers when closing the RPC call (from the client it is half close).
+Headers are sent from the client to the server before the initial request and
+from the server to the client before the initial response of an RPC call.
+Trailers are sent by the server when it closes an RPC.
 
 gRPC metadata is useful for a variety of purposes, such as:
 
@@ -70,8 +70,8 @@ Custom header handling is language dependent, generally through interceptors.
 Trailers are a special kind of header that is sent after the message data. They
 are used internally to communicate the outcome of an RPC. At the application
 level, custom trailers can be used to communicate things not directly part of
-the data, such as server utilization and query cost.  Trailers can be sent by
-either the server or the client.
+the data, such as server utilization and query cost.  Trailers are sent only by
+the server.  
 
 ### For more details, please see the following gRPCs
 
