@@ -53,11 +53,11 @@ application.
 #### Hedging policy
 
 When the application makes an RPC call that contains a `hedgingPolicy`
-configuration in the Service Cconfig, the original RPC is sent immediately, as
-with a standard non-hedged call. After `hedgingDelay`` has elapsed without a
+configuration in the Service Config, the original RPC is sent immediately, as
+with a standard non-hedged call. After `hedgingDelay` has elapsed without a
 successful response, the second RPC will be issued. If neither RPC has received
-a response after `hedgingDelay`` has elapsed again, a third RPC is sent, and so
-on, up to` maxAttempts`. gRPC call deadlines apply to the entire chain of hedged
+a response after `hedgingDelay` has elapsed again, a third RPC is sent, and so
+on, up to `maxAttempts`. gRPC call deadlines apply to the entire chain of hedged
 requests. Once the deadline has passed, the operation fails regardless of
 in-flight RPCS, and regardless of the hedging configuration.
 
