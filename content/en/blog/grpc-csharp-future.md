@@ -7,7 +7,7 @@ author:
   link: https://github.com/jtattermusch
 ---
 
-**Update 2023-10-02: The maintenance period for `Grpc.Core` has been extended again, until at least October 2024. See [announcement][updates2023] up to date info on `Grpc.Core`.**
+**Update 2023-10-02: The maintenance period for `Grpc.Core` has been extended again, until at least October 2024. See [announcement][updates2023] for up to date info on `Grpc.Core`.**
 
 **Update 2022-05-03: The maintenance period for `Grpc.Core` has been extended until May 2023. See [announcement][updates2022] for more info on the future of `Grpc.Core`.**
 
