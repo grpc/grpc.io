@@ -11,7 +11,7 @@ hedging, a gRPC client sends multiple copies of the same request to different
 backends and uses the first response it receives. Subsequently, the client
 cancels any outstanding requests and forwards the response to the application.
 
-![Basic hedging diagram](../../../../static/img/basic_hedge.svg)
+![Basic hedging diagram](/img/basic_hedge.svg)
 
 ### Use cases
 
