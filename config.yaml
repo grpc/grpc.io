@@ -28,7 +28,7 @@ params:
   grpc_vers:
     core: v1.58.0
     go: v1.58.2
-    java: v1.58.0
+    java: v1.59.0
     node: "@grpc/grpc-js@1.9.0"
   font_awesome_version: 5.12.1
   gcs_engine_id: 788f3b1ec3a111a2f
