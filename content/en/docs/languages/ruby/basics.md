@@ -358,7 +358,7 @@ end
 # controls for the operation
 op.status
 op.cancelled?
-op.cancel # terminates the connection and raises GRPC::Cancelled in the blocking thread if successful.
+op.cancel # attempts to cancel the RPC with a GRPC::Cancelled status; there's a fundamental race condition where cancelling the RPC can race against RPC termination for a different reason - invoking `cancel` doesn't necessarily guarantee a `Cancelled` status
 ```
 
 
