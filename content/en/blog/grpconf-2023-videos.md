@@ -36,8 +36,8 @@ the presentations during the day:
 Stay tuned to gRPC on many platforms for new releases, announcements and events:
 * [gRPC YouTube Channel](https://www.youtube.com/@grpcio)
 * [gRPC meetup group](https://www.meetup.com/grpcio/)
-* [Website](gRPC.io)
-* [Blog](grpc.io/blog)
-* [GitHub](github.com/grpc/grpc)
-* [Google Group Forum](groups.google.com/g/grpc-io)
+* [Website](https://grpc.io)
+* [Blog](https://grpc.io/blog/)
+* [GitHub](https://github.com/grpc)
+* [Google Group Forum](https://groups.google.com/g/grpc-io)
 * [Twitter](https://twitter.com/grpcio)
