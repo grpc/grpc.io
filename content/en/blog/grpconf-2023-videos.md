@@ -24,3 +24,12 @@ the presentations during the day:
 - [Integrating gRPC with the Homa Transport Protocol John Ousterhout, Stanford University](https://youtu.be/_hvdAqid0r0)
 - [Load Testing gRPC Services in Node js Kenny Nguyen, gRPSeek](https://youtu.be/e2K5XdIIduE)
 - [Our Journey Connecting Millions of Containers with gRPC Antoine Tollenaere Sergey Matyukevich](https://youtu.be/OHU81_TeiLI)
+
+
+![Conference Gate](/img/grpc-conf-2023-image1.jpg)
+
+![Ahhishek Opening Keynote](/img/grpc-conf-2023-image2.jpg)
+
+![gRPConf 2023 Audiences](/img/grpc-conf-2023-image3.jpg)
+
+![gRPConf 2023 professor asks questions](/img/grpc-conf-2023-image4.jpg)
