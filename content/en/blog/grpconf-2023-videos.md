@@ -32,3 +32,12 @@ the presentations during the day:
 ![gRPConf 2023 Audiences](/img/grpc-conf-2023-image3.jpg)
 
 ![gRPConf 2023 professor asks questions](/img/grpc-conf-2023-image4.jpg)
+
+Stay tuned to gRPC on many platforms for new releases, announcements and events:
+* [gRPC YouTube Channel](https://www.youtube.com/@grpcio)
+* [gRPC meetup group](https://www.meetup.com/grpcio/)
+* [Website](gRPC.io)
+* [Blog](grpc.io/blog)
+* [GitHub](github.com/grpc/grpc)
+* [Google Group Forum](groups.google.com/g/grpc-io)
+* [Twitter](https://twitter.com/grpcio)
