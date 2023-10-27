@@ -1,5 +1,5 @@
 ---
-title: Highlights in gRPConf 2023: Customer Showcase, Developer Engagement, Birds of Feathers Discussions and more.
+title: Highlights in gRPConf 2023:Customer Showcase, Developer Engagement, Birds of Feathers Discussions and more.
 date: 2023-10-27
 ---
 
@@ -24,7 +24,6 @@ the presentations during the day:
 - [Integrating gRPC with the Homa Transport Protocol John Ousterhout, Stanford University](https://youtu.be/_hvdAqid0r0)
 - [Load Testing gRPC Services in Node js Kenny Nguyen, gRPSeek](https://youtu.be/e2K5XdIIduE)
 - [Our Journey Connecting Millions of Containers with gRPC Antoine Tollenaere Sergey Matyukevich](https://youtu.be/OHU81_TeiLI)
-
 
 ![Conference Gate](/img/grpc-conf-2023-image1.jpg)
 
