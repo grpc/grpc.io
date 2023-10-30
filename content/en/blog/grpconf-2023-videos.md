@@ -29,13 +29,17 @@ the presentations during the day:
 
 ![Abhishek Opening Keynote](/img/grpc-conf-2023-image2.jpg)
 
+![Ivy Keynote Talk: gRPC Overview](/img/grpc-conf-2023-image6.jpg)
+
 ![Gina Keynote Talk: What's new in gRPC](/img/grpc-conf-2023-image5.jpg)
 
 ![gRPConf 2023 Audiences](/img/grpc-conf-2023-image3.jpg)
 
 ![gRPConf 2023 Stanford Professor John Ousterhout asks questions](/img/grpc-conf-2023-image4.jpg)
 
-Stay tuned to gRPC on many platforms for new releases, announcements and events:
+We received a wealth of feedbacks from everyone throughout the day which has 
+helped us shape our future roadmap. Stay tuned to gRPC on many platforms for new
+releases, announcements and events:
 * [gRPC YouTube Channel](https://www.youtube.com/@grpcio)
 * [gRPC Meetup Group](https://www.meetup.com/grpcio/)
 * [Website](https://grpc.io)
