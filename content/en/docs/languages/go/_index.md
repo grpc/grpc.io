@@ -22,8 +22,8 @@ spelling: cSpell:ignore Isberner Klerk Malte youtube
 
 ### Developer stories and talks {#dev-stories}
 
-- **[Stubbing gRPC in Go](https://jadekler.github.io/2020/10/08/stubbing-grpc.html)**,
-  by [Jean de Klerk](https://github.com/jadekler), Google. October 8, 2020.
+- **[Stubbing gRPC in Go](https://github.com/jeanbza/jadekler.github.io/blob/master/_posts/2020-10-09-stubbing-grpc.md)**,
+  by [Jean de Klerk](https://github.com/jeanbza), Google. October 8, 2020.
 - **Talking to Go gRPC Services Via HTTP/1**
   <a class="o-icon" href="https://youtu.be/Vbw8h0RCn2E"><i class="fab fa-youtube"></i></a>
   <a class="o-icon" href="https://static.sched.com/hosted_files/grpcconf20/c9/TalkingToGoGRPCviaHTTP1-gRPCConf2020-MalteIsberner.pdf"><i class="fas fa-file"></i></a><br>
