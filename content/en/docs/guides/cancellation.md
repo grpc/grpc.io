@@ -68,5 +68,5 @@ flowchart LR
 |----------|----------------|----------------------------------|
 | Java     |[Example](https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/cancellation)|Automatically cancels outgoing RPCs|
 | Go       |[Example](https://github.com/grpc/grpc-go/tree/master/examples/features/cancellation)|Automatically cancels outgoing RPCs|
-| C++      |Upcoming|Automatically cancels outgoing RPCs|
+| C++      |[Example](https://github.com/grpc/grpc/tree/master/examples/cpp/cancellation)|Automatically cancels outgoing RPCs|
 | Python | [Example](https://github.com/grpc/grpc/tree/master/examples/python/cancellation)||
