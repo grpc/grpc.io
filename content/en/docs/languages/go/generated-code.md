@@ -186,4 +186,4 @@ When the `protoc` compiler is invoked with `--go_out=plugins=grpc:`, the `proto 
 works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin.
 
 So, for example, if `foo.proto` declares itself to be in `package foo`, then the generated `foo.pb.go` file will also be in
-the Go package `foo`.
+the Go `package foo`.
