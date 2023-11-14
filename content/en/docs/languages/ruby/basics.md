@@ -324,7 +324,7 @@ information from the server from our response object.
 Now let's look at our streaming methods. If you've already read [Creating the
 server](#server) some of this may look very familiar - streaming RPCs are
 implemented in a similar way on both sides. Here's where we call the server-side
-streaming method `list_features`, which returns an `Enumerable` of `Features`
+streaming method `list_features`, which returns an `Enumerable` of `Features`.
 
 ```ruby
 resps = stub.list_features(LIST_FEATURES_RECT)
@@ -332,6 +332,34 @@ resps.each do |r|
   p "- found '#{r.name}' at #{r.location.inspect}"
 end
 ```
+
+Non-blocking usage of the RPC stream can be achieved with multiple threads and 
+the `return_op: true` flag. When passing the `return_op: true` flag, the 
+execution of the RPC is deferred and an `Operation` object is returned. The RPC 
+can then be executed in another thread by calling the operation `execute` 
+function. The main thread can utilize contextual methods and getters such as 
+`status`, `cancelled?`, and `cancel` to manage the RPC. This can be useful for 
+persistent or long running RPC sessions that would block the main thread for an
+unacceptable period of time.
+
+
+```ruby
+op = stub.list_features(LIST_FEATURES_RECT, return_op: true)
+Thread.new do 
+  resps = op.execute
+  resps.each do |r|
+    p "- found '#{r.name}' at #{r.location.inspect}"
+  end
+rescue GRPC::Cancelled => e
+  p "operation cancel called - #{e}"
+end
+
+# controls for the operation
+op.status
+op.cancelled?
+op.cancel # attempts to cancel the RPC with a GRPC::Cancelled status; there's a fundamental race condition where cancelling the RPC can race against RPC termination for a different reason - invoking `cancel` doesn't necessarily guarantee a `Cancelled` status
+```
+
 
 The client-side streaming method `record_route` is similar, except there we pass
 the server an `Enumerable`.
