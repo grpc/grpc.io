@@ -113,7 +113,11 @@ static_resources:
   - name: echo_service
     connect_timeout: 0.25s
     type: LOGICAL_DNS
-    http2_protocol_options: {}
+    typed_extension_protocol_options:
+      envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+        "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+        explicit_http_config:
+          http2_protocol_options: {}
     lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: echo_service
