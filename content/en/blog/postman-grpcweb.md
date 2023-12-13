@@ -33,15 +33,14 @@ Buffers (Protobuf)](https://protobuf.dev/), which facilitates smaller payloads
 and well-defined interface descriptions that streamline the development process.
 
 Before diving into the technicalities, let’s examine the potential shift that
-gRPC-Web represents. Unlike REST, which uses HTTP/1.1 for stateless server
-communication, gRPC operates over HTTP/2, allowing for multiplexed data streams,
-reduced latency through compression, and server push capabilities. In a
-WebSocket scenario, a persistent connection is maintained for full-duplex
-communication, but WebSockets can introduce complexity in managing various
-connection states. gRPC-Web offers a compelling alternative with its server
-streaming capabilities, leading to a more efficient real-time data flow. At
-present, gRPC-Web does not support client-side streaming due to browser
-constraints.
+gRPC-Web represents. Unlike the native gRPC protocol, which requires HTTP/2,
+gRPC-Web relaxes this requirement, allowing it to support any HTTP/* protocols
+available in a browser environment. In a WebSocket scenario, a persistent
+connection is maintained for full-duplex communication, but WebSockets can
+introduce complexity in managing various connection states. gRPC-Web offers a
+compelling alternative with its server streaming capabilities, leading to a
+more efficient real-time data flow. At present, gRPC-Web does not support
+client-side streaming due to browser constraints.
 
 
 ## The Mechanics of gRPC-Web: How It Works
@@ -232,10 +231,8 @@ that can be error-prone with RESTful services.
 ## Replacing a Typical WebSocket Connection with gRPC-Web
 
 WebSockets provide a full-duplex communication channel over a single long-lived
-connection. There are technical limitations of
-[WebTransport](https://developer.chrome.com/articles/webtransport/) in browsers
-which currently block client streaming over HTTP/2. In scenarios where gRPC-Web
-cannot fully replace WebSockets due to its [lack of client streaming
+connection. In scenarios where gRPC-Web cannot fully replace WebSockets due to
+its [lack of client streaming
 capabilities](https://github.com/grpc/grpc-web/blob/master/doc/streaming-roadmap.md#client-streaming-and-half-duplex-streaming),
 it can still be used for efficient server-to-client streaming.
 
