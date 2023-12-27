@@ -28,6 +28,8 @@ more importantly about where things could be better.
 
 To schedule a 30 minute session, please fill out <a name="this-short-form" href="https://docs.google.com/forms/d/e/1FAIpQLSe1klQIom5SnpL7czmNFI9MZHy_eNwOCHghV0e61hTzY93qWw/viewform?usp=sf_link">this short form</a>.
 
+Also, coming to the monthly <a name="Community Meetup with Office Hours" href="https://www.meetup.com/grpcio/events">Community Meetup with Office Hours</a> is a great way to improve your gRPC proficiency and get questions answered by the maintainers.
+
 </div>
 
 {{< page/toc placement="sidebar" >}}
