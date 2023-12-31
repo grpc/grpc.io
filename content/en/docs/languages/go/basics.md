@@ -359,8 +359,7 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```go
-flag.Parse()
-lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", *port))
+lis, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", port))
 if err != nil {
   log.Fatalf("failed to listen: %v", err)
 }
