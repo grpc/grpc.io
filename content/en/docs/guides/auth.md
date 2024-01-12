@@ -121,12 +121,12 @@ gRPC offers a set of simple APIs to integrate OAuth 2.0 into applications, strea
 
 At a high level, using OAuth token-based authentication includes 3 steps:
 
-1. Get OAuth token on client side.
-   * You can obtain OAuth tokens using libraries like
-   [oauth2 package](https://pkg.go.dev/golang.org/x/oauth2#section-readme) in Go and
-   [google-auth](https://google-auth.readthedocs.io/en/master/user-guide.html) in Python.
-2. Create Channel credentials or per-call credentials with the OAuth token.
-   * The token will be send to server, normally as part of metadata.
+1. Get or generate an OAuth token on client side.
+   * You can generate Google-specific tokens following instructions below.
+2. Create credentials with the OAuth token.
+   * OAuth token is always part of per-call credentials, you can also attach the per-call credentials
+   to some channel credentials.
+   * The token will be send to server, normally as part of HTTP Authorization header.
 3. Server side verifies the token.
    * In most implementations, the validation is done using a server side interceptor.
 
@@ -235,7 +235,7 @@ authentication and authorization in various languages.
 
 
 [Go OAuth Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#authentication
-[Go OAuth Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth#authentication-example
+[Go OAuth Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#oauth2
 [Java OAuth Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth#authentication-example
 [Java OAuth Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth
 [Python OAuth Example]: https://github.com/grpc/grpc/blob/master/examples/python/auth/token_based_auth_client.py
