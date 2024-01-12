@@ -126,7 +126,7 @@ At a high level, using OAuth token-based authentication includes 3 steps:
 2. Create credentials with the OAuth token.
    * OAuth token is always part of per-call credentials, you can also attach the per-call credentials
    to some channel credentials.
-   * The token will be send to server, normally as part of HTTP Authorization header.
+   * The token will be sent to server, normally as part of HTTP Authorization header.
 3. Server side verifies the token.
    * In most implementations, the validation is done using a server side interceptor.
 
