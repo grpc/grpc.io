@@ -119,10 +119,16 @@ websites or applications to obtain limited access to user accounts using OAuth t
 
 gRPC offers a set of simple APIs to integrate OAuth 2.0 into applications, streamlining authentication.
 
-On client side, token can be fetch using Google APIs or other customized method, then client application
-can send this token to server using metadata.
+At a high level, using OAuth token-based authentication includes 3 steps:
 
-On server side, most gRPC implementations provides a way to create server interceptors to validate the OAuth token.
+1. Get OAuth token on client side.
+   * You can obtain OAuth tokens using libraries like
+   [oauth2 package](https://pkg.go.dev/golang.org/x/oauth2#section-readme) in Go and
+   [google-auth](https://google-auth.readthedocs.io/en/master/user-guide.html) in Python.
+2. Create Channel credentials or per-call credentials with the OAuth token.
+   * The token will be send to server, normally as part of metadata.
+3. Server side verifies the token.
+   * In most implementations, the validation is done using a server side interceptor.
 
 For details of how to use OAuth token in different languages, please refer to our examples below.
 
