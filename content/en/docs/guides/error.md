@@ -105,9 +105,32 @@ Invalid host set in authority metadata | `GRPC_STATUS_UNAUTHENTICATED`
 Error parsing response protocol buffer | `GRPC_STATUS_INTERNAL`
 Error parsing request protocol buffer | `GRPC_STATUS_INTERNAL`
 
-### Sample code
+### Language Support
 
-For sample code illustrating how to handle various gRPC errors, see the
-[grpc-errors][] repo.
+Examples code is avilable for multiple languages on how to deal with standard
+errors as well as with the richer error details.
 
+| Language | Example                        |
+|----------|--------------------------------|
+| C++      | [C++ error handling example]   |
+|          | [C++ error details example]    |
+| Go       | [Go error handling example]    |
+|          | [Go error details example]     |
+| Java     | [Java error handling example]  |
+|          | [Java error details example]   |
+| Node     | [Node error handling example]  |
+| Python   | [Python error details example] |
+
+The [grpc-errors] repo also contains additional error handling examples.
+
+[C++ error handling example]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_handling
+[C++ error details example]: https://github.com/grpc/grpc/tree/master/examples/cpp/error_details
+[Go error handling example]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_handling
+[Go error details example]: https://github.com/grpc/grpc-go/tree/master/examples/features/error_details
+[Java error handling example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errorhandling
+[Java error details example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/errordetails
+[Node error handling example]: https://github.com/grpc/grpc-node/tree/master/examples/error_handling
+[Python error details example]: https://github.com/grpc/grpc/tree/master/examples/python/errors
 [grpc-errors]: https://github.com/avinassh/grpc-errors
+
+
