@@ -112,6 +112,26 @@ passed to the factory method.
   configured for POSIX filesystems.
 {{% /alert %}}
 
+#### Using OAuth token-based authentication
+
+OAuth 2.0 Protocol is the industry-standard protocol for authorization. It enables
+websites or applications to obtain limited access to user accounts using OAuth tokens.
+
+gRPC offers a set of simple APIs to integrate OAuth 2.0 into applications, streamlining authentication.
+
+At a high level, using OAuth token-based authentication includes 3 steps:
+
+1. Get or generate an OAuth token on client side.
+   * You can generate Google-specific tokens following instructions below.
+2. Create credentials with the OAuth token.
+   * OAuth token is always part of per-call credentials, you can also attach the per-call credentials
+   to some channel credentials.
+   * The token will be sent to server, normally as part of HTTP Authorization header.
+3. Server side verifies the token.
+   * In most implementations, the validation is done using a server side interceptor.
+
+For details of how to use OAuth token in different languages, please refer to our examples below.
+
 #### Using Google token-based authentication
 
 gRPC applications can use a simple API to create a credential that works for
@@ -201,6 +221,27 @@ and authorization in various languages.
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/auth
 [Python Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#authentication-extension-example-in-grpc-python
 
+### Language guides and examples for OAuth token-based authentication
+
+The following table links to examples demonstrating OAuth token-based
+authentication and authorization in various languages.
+
+| Language | Example                                   | Documentation                 |
+|----------|-------------------------------------------|-------------------------------|
+| C++      | N/A                                       | N/A                           |
+| Go       | [Go OAuth Example]                        | [Go OAuth Documentation]      |
+| Java     | [Java OAuth Example]                      | [Java OAuth Documentation]    |
+| Python   | [Python OAuth Example]                    | [Python OAuth Documentation]  |
+
+
+[Go OAuth Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#authentication
+[Go OAuth Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#oauth2
+[Java OAuth Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth#authentication-example
+[Java OAuth Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-oauth
+[Python OAuth Example]: https://github.com/grpc/grpc/blob/master/examples/python/auth/token_based_auth_client.py
+[Python OAuth Documentation]: https://github.com/grpc/grpc/tree/master/examples/python/auth#token-based-authentication
+
+
 ### Additional Examples
 
 The following sections demonstrate how authentication and authorization features
@@ -265,7 +306,7 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 });
 ```
 
-##### Authenticate with Google using Oauth2 token (legacy approach)
+##### Authenticate with Google using OAuth2 token (legacy approach)
 
 ```js
 var GoogleAuth = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
@@ -333,7 +374,7 @@ $opts = [
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 ```
 
-##### Authenticate with Google using Oauth2 token (legacy approach)
+##### Authenticate with Google using OAuth2 token (legacy approach)
 
 ```php
 // the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
