@@ -77,8 +77,8 @@ Enabling health checking changes some behavior around calling a server:
   the feature does not make sense with the policy (e.g. `pick_first` does
   this)
 
-More specifically the state of the subchannel (that represents the physical
-connection to the server goes through these states based on the health of
+More specifically, the state of the subchannel (that represents the physical
+connection to the server) goes through these states based on the health of
 the service it is connecting to.
 
 ```mermaid
