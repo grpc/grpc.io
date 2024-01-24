@@ -90,19 +90,21 @@ with the same request and response types as `SayHello()`:
 ```protobuf
 // The greeting service definition.
 service Greeter {
-  // Sends a greeting
+  // Sends a greeting. Original method.
   rpc SayHello (HelloRequest) returns (HelloReply) {}
-  // Sends another greeting
+  // Sends another greeting. New method.
   rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
 }
 
 // The request message containing the user's name.
 message HelloRequest {
+  // The name of the user.
   string name = 1;
 }
 
 // The response message containing the greetings
 message HelloReply {
+  // The greeting message.
   string message = 1;
 }
 ```
@@ -126,19 +128,30 @@ In the same directory, open
 new method like this:
 
 ```java
+// Implementation of the gRPC service on the server-side.
 private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
   @Override
   public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
+    // Generate a greeting message for the original method
     HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
+
+    // Send the reply back to the client.
     responseObserver.onNext(reply);
+
+    // Indicate that no further messages will be sent to the client.
     responseObserver.onCompleted();
   }
 
   @Override
   public void sayHelloAgain(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
+    // Generate another greeting message for the new method.
     HelloReply reply = HelloReply.newBuilder().setMessage("Hello again " + req.getName()).build();
+
+    // Send the reply back to the client.
     responseObserver.onNext(reply);
+
+    // Indicate that no further messages will be sent to the client.
     responseObserver.onCompleted();
   }
 }
@@ -151,23 +164,36 @@ In the same directory, open
 method like this:
 
 ```java
+// Client-side logic for interacting with the gRPC service.
 public void greet(String name) {
+  // Log a message indicating the intention to greet a user.
   logger.info("Will try to greet " + name + " ...");
+
+  // Creating a request with the user's name.
   HelloRequest request = HelloRequest.newBuilder().setName(name).build();
   HelloReply response;
   try {
+    // Call the original method on the server.
     response = blockingStub.sayHello(request);
   } catch (StatusRuntimeException e) {
+    // Log a warning if the RPC fails.
     logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
     return;
   }
+
+  // Log the response from the original method.
   logger.info("Greeting: " + response.getMessage());
+
   try {
+    // Call the new method on the server.
     response = blockingStub.sayHelloAgain(request);
   } catch (StatusRuntimeException e) {
+    // Log a warning if the RPC fails.
     logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
     return;
   }
+
+  // Log the response from the new method.
   logger.info("Greeting: " + response.getMessage());
 }
 ```
