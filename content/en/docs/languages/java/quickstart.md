@@ -139,7 +139,7 @@ private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
     // Send the reply back to the client.
     responseObserver.onNext(reply);
 
-    // Notify the client that the response is complete.
+    // Indicate that no further messages will be sent to the client.
     responseObserver.onCompleted();
   }
 
@@ -151,7 +151,7 @@ private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
     // Send the reply back to the client.
     responseObserver.onNext(reply);
 
-    // Notify the client that the response is complete.
+    // Indicate that no further messages will be sent to the client.
     responseObserver.onCompleted();
   }
 }
