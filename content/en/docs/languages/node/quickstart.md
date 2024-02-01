@@ -100,6 +100,36 @@ message HelloReply {
 
 Remember to save the file!
 
+### Regenerate gRPC code
+
+Before you can use the new service method, you need to recompile the updated
+`.proto` file.
+
+You need to install protoc-gen-js globally to generate gRPC code in javascript using bellow command
+```sh
+npm install -g protoc-gen-js
+```
+
+While still in the `examples/helloworld` directory, run the following command:
+
+If you want to use CommonJS imports, your build should run a command like this:
+```sh
+$ protoc --js_out=import_style=commonjs,binary:. helloworld/helloworld.proto
+```
+or,
+If you want to use Closure imports, your build should run a command like this:
+```sh
+$ protoc --js_out=library=helloworld_libs,binary:. helloworld/helloworld.proto
+```
+For Closure imports, protoc will generate a single output file (helloworld_libs.js in this example).
+
+
+This will regenerate the `helloworld/helloworld_pb.js` and  `helloworld/helloworld_grpc_pb.js` files, which contain:
+
+- Code for populating, serializing, and retrieving `HelloRequest` and
+  `HelloReply` message types.
+- Generated client and server code.
+
 ### Update and run the application
 
 We now have a new service definition, but we still need to implement and call
