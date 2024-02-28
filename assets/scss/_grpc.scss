@@ -119,7 +119,7 @@ sections site wide to the original site's background svg.
   max-width: 1140px;
 }
 
-# without this the tables can have horribly narrow columns
+// Without this the tables can have horribly narrow columns
 .td-content table {
   word-break: normal;
 }
