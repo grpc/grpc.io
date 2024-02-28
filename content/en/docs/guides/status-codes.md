@@ -27,7 +27,7 @@ statuses are defined as such:
 
 | Code               | Number | Description |
 |--------------------|--------|------------------------------------------------------------------------------------|
-| OK                 | 0      | Not an error; returned on success. |
+| OK                \| | 0      \|| Not an error; returned on success. |
 | CANCELLED          | 1      | The operation was cancelled, typically by the caller. |
 | UNKNOWN            | 2      | Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. |
 | INVALID_ARGUMENT   | 3      | The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). |
