@@ -8,7 +8,7 @@ description: >-
 ### Overview
 
 The service config specifies how gRPC clients should behave when interacting
-with a gRPC service. Service owners can provide a service config with expected
+with a gRPC server. Service owners can provide a service config with expected
 behavior of all service clients.
 
 ### Behavior controlled by the Service Config
@@ -16,64 +16,62 @@ behavior of all service clients.
 The settings in the service config affect client side load balancing, call
 behavior and health checking.
 
-This section outlines the options in the service config, but the full service
+This page outlines the options in the service config, but the full service
 config data structure is documented with a [protobuf definition].
 
 #### Load Balancing
 
 A service can be composed of multiple servers and the load balancing
-configuration how calls from client will be distributed among those servers.
-By default the `pick_first` load balancing policy is utilized, but another
-one can be specified in the service config. E.g. by specifying the
+configuration specifies how calls from clients should be distributed among
+those servers. By default the `pick_first` load balancing policy is utilized,
+but another policy can be specified in the service config. E.g. by specifying the
 `round_robin` policy will make the clients rotate through the servers when
-calling the service instead of repeatedly using the first server they know of.
+calling the service instead of repeatedly using the first server.
 
 #### Call Behavior
 
-The way remote calls are made can be configured in many ways:
+RPCs can be configured in many ways:
 
-- [Wait-for-ready] can be enabled, which will instruct the client to wait for
-  the backend to become available instead of failing a call.
-- A call [timeout] can be provided, indicating the maximum time the client is
-  willing to wait for a server to respond.
+- With [wait-for-ready] enabled, if a client cannot connect to a backend, the
+  RPC will be delayed instead of immediately failing. a backend to become
+  available instead of failing a call.
+- A call [timeout] can be provided, indicating the maximum time the client
+  should wait before giving up on the RPC.
 - One of:
-  - Retry policy (max attempts, backoff settings, retryable status codes)
+  - [Retry] policy (max attempts, backoff settings, retryable status codes)
   - [Hedging] policy (max attempts, delay, non-fatal status codes)
-- Maximum size of request or response messages
 
 {{% alert title="Note" color="info" %}}
-These call behavior settings can be specified either *globally*, at a
-*service level* or at individual *method level*.
+These call behavior settings can be limited to an individual service or a
+method.
 
 Retry and hedging policies can be further adjusted by setting a *retry
-throttling policy* but it will always apply globally across all services
-and methods.
+throttling policy* but it will apply across all services and methods.
 {{% /alert %}}
 
 #### Health Checking
 
-A client can be configured to perform [health checking] by providing the name
-of the service that provides the standard gRPC health checking service API.
-
+A client can be configured to perform [health checking] by providing a health
+checking name. The client will then use the standard gRPC health checking
+service.
 
 ### Acquiring a Service Config
 
-The service config is provided to a client either via name resolution or
+A service config can be provided to a client either via name resolution or
 programatically by the client application. 
 
 #### Name Resolution
 
 The gRPC [name resolution mechanism] allows for pluggable name resolver
-implementations. It is the responsibility of these implementation to both
-return the addresses associated with a name as well as well as an associated
-service config. This is the mechanism that service owners can use to distribute
-their service config out to a fleet of gRPC clients.
+implementations. These implementations return the addresses associated with a
+name as well as an associated service config. This is the mechanism
+that service owners can use to distribute their service config out to a fleet
+of gRPC clients.
 
-- The DNS name resolver that comes with gRPC clients supports service configs
-  [stored as TXT records] on the name server.
-- The xDS name resolver used with a control plane server in a microservices
-  architecture uses the responses it gets from the control plane to construct
-  the service config.
+- The xDS name resolver converts the xDS configuration it receives from the
+  control plane to a corresponding service config
+- The standard DNS name resolver in the Go implementation supports service
+  configs [stored as TXT records] on the name server.
 
 {{% alert title="Note" color="info" %}}
 Even though the service config structure is documented with a protobuf
@@ -86,17 +84,18 @@ prefer as long as they provide it in JSON format at name resolution time.
 #### Programatically
 
 The gRPC client API provides a way to specify a service config in JSON format.
-This is used to provide default values for settings that the name resolver might
-not provide values for. It can also be useful in some testing situations.
+This is used to provide a default service config that will be used in situation
+where the name resolver does not provide a service config. It can also be
+useful in some testing situations.
 
 ### Example Service Config
 
 The below example does the following:
 
 - Enables the `round_robin` load balancing policy.
-- Sets a default call timeout of 0.1s that applies to all methods in all
+- Sets a default call timeout of 1s that applies to all methods in all
   services.
-- Overides that timeout to be 1s for the `bar` method in the `foo` service as
+- Overides that timeout to be 2s for the `bar` method in the `foo` service as
   well as all the methods in the `baz` service.
 
 
@@ -105,15 +104,15 @@ The below example does the following:
   "loadBalancingConfig": [ { "round_robin": {} } ],
   "methodConfig": [
     {
-      "name": [],
-      "timeout": "0.2s"
+      "name": [{}],
+      "timeout": "1s"
     },
     {
       "name": [
         { "service": "foo", "method": "bar" },
         { "service": "baz" }
       ],
-      "timeout": "1s"
+      "timeout": "2s"
     }
   ]
 }
@@ -121,9 +120,10 @@ The below example does the following:
 
 [protobuf definition]:https://github.com/grpc/grpc-proto/blob/master/grpc/service_config/service_config.proto
 [timeout]:https://grpc.io/docs/guides/deadlines/
+[Retry]:https://grpc.io/docs/guides/retry/
 [health checking]:https://grpc.io/docs/guides/health-checking/
 [Hedging]:https://grpc.io/docs/guides/request-hedging/
-[Wait-for-ready]:https://grpc.io/docs/guides/wait-for-ready/
+[wait-for-ready]:https://grpc.io/docs/guides/wait-for-ready/
 [name resolution mechanism]:https://github.com/grpc/grpc/blob/master/doc/naming.md
 [stored as TXT records]:https://github.com/grpc/proposal/blob/master/A2-service-configs-in-dns.md
 
