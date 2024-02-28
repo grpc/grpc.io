@@ -26,7 +26,7 @@ gRPC uses a set of well defined status codes as part of the RPC API. These
 statuses are defined as such:
 
 | Code | Number | Description |
-|------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------------------|--------|------------------------------------------------------------------------------------|
 | OK | 0 | Not an error; returned on success. |
 | CANCELLED | 1 | The operation was cancelled, typically by the caller. |
 | UNKNOWN | 2 | Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. |
