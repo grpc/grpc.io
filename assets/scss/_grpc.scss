@@ -119,6 +119,11 @@ sections site wide to the original site's background svg.
   max-width: 1140px;
 }
 
+// Without this the tables can have horribly narrow columns
+.td-content table {
+  word-break: normal;
+}
+
 /* To ensure that the top page header and description are rendered
 above the inline ToC, this hides them from displaying in the main
 content block */
