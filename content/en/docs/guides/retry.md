@@ -6,45 +6,36 @@ description: >-
 
 ### Overview
 
-Retries are a key pattern for making services more reliable. By re-attempting failed operations, applications can overcome temporary issues like network glitches or server timeouts. This is essential for modern cloud applications to handle the inevitable transient faults that occur.
+Retries are a key pattern for making services more reliable. By re-attempting failed operations, applications can overcome temporary issues like network or server glitches. This is essential for modern cloud applications to handle the inevitable transient faults that occur.
 
-For the best practice, applications should understand what failed operation is suitable for retry, define exponential backoff parameters for retry delay, determine the number of retry attempts, and also monitor retry metrics.
+For the best practice, applications should understand what failed operations are suitable for retry, define exponential backoff parameters for retry delay, determine the number of retry attempts, and also monitor retry metrics.
 
-gRPC takes the stress out of failures with retry policies support, default transparent retry and detailed insights with OpenCensus and OpenTelemetry support.
 
 ### How gRPC client retry works
 
-Once enabled (transparent retry is enabled by default, see later sections), gRPC's built-in retry logic saves the call history for potential retries and monitors RPC events. Note that 'retry' means creating a new transport stream when a previous connection attempt failed and replaying the saved calls on the newly created stream.
+gRPC’s built-in retry logic saves the call's history for potential retries and monitors RPC events. Even if there is no retry policy configured, gRPC still saves the call's history in case it needs to perform transparent retry (discussed in a later section). Note that ‘retry’ means replacing a failed call with a new call and replaying the call's history on that newly created call.
 
 If certain criteria are met – the RPC closes with a failure status code matching the retry policy's retryable status codes and remains within the retry attempt limit – gRPC will create a new retry stream after an exponential backoff delay.
 
 gRPC also supports other features like retry throttling and server push back. See [gRFC for client side retry] for further details.
 
-Once the response header is received, the connection is considered successful. No further retries will be attempted, and gRPC hands over the RPC to the application.
+Once the response header is received, the RPC is committed. No further retries will be attempted, and gRPC hands over the RPC to the application.
 
 The graph below shows architectural overview of gRPC retry internal.
 
 
 ```mermaid
 sequenceDiagram
-  Application ->> gRPC: Configure retry. Send request to dns:///my-service
-  gRPC ->> Transport: create retry attempt 1 
-  Transport ->> Server: create TCP connection (the request may or may not leave client transport)
-  Server -->> Transport: error 
-  Transport ->> gRPC: stream closed with error
-  gRPC ->> Transport: create retry attempt 2 
-  Transport ->> Server: create TCP connection 
-  Server -->> Transport: successful 
-  Transport ->> gRPC: header received 
-  gRPC -->> Application: process next 
+  Application ->> gRPC Client: Configure retry policy. <br> Send request to dns:///my-service
+  gRPC Client ->> Server: Create retry attempt 1 
+  Server -->> gRPC Client : RPC closed with error 
+  gRPC Client ->> Server: Create retry attempt 2 
+  Server -->> gRPC Client: Successful 
+  gRPC Client ->> Application: No more retry. Proceed.
 ```
 
-
-### Transparent Retry 
-As indicated in the graph above, a failure can occur when the request never leaves the client host. In this case, gRPC performs a transparent retry, which does not count towards the limit of configured RPC attempts. Transparent retries are the default behavior when retry functionality is enabled (which it is by default).
-
 ### Retry configuration
-Retries are enabled by default. Without a specific retry policy, gRPC will perform a single transparent retry. You can also disable retries entirely.
+Retries are enabled by default even without specifying a retry policy. You can also disable retries entirely.
 
 You can optimize your application's retry functionality by focusing on key steps and configurations that gRPC supports.
 * Max number of retry attempts
@@ -66,7 +57,9 @@ Retry is configurable via [gRPC Service Config], at a per-method granularity.
 }
 ```
 
-gRPC prevents server overload due to retries, and throttle limit can be configured:
+The actual initial backoff delay is a random time period within `initialBackoff` value configured above (between 0-100ms).
+
+gRPC supports throttle limit that prevents server overload due to retries. Below is an examples of retry throttle configuration:
 
 ```
 "retryThrottling": {
@@ -74,6 +67,8 @@ gRPC prevents server overload due to retries, and throttle limit can be configur
   "tokenRatio": 0.1
 }
 ```
+
+For each server, the gRPC client tracks a `token_count` (initially set to `maxTokens`). Failed RPCs decrement the count by 1, successful RPCs increment it by  `tokenRatio`.  If the `token_count` falls below half of `maxTokens`, retries are paused until the count recovers.
 
 Further, hedging is a complementary feature to retries and can be configured similarly. For more details, see the [hedging guide].
 
@@ -87,14 +82,21 @@ gRPC supports exposing OpenCensus and OpenTelemetry metrics when retry functiona
 
 Metrics at per cal level:
 * `grpc.client.call.duration`
-* 
+
 And server side metrics:
 * `grpc.server.call.started`
 * `grpc.server.call.sent_total_compressed_message_size`
 * `grpc.server.call.rcvd_total_compressed_message_size`
 * `grpc.server.call.duration`
 
-Find in-depth metrics and tracing information, along with configuration instructions, in the [gRFC for Otel metrics], [gRFC for retry status]. 
+Find in-depth metrics and tracing information, along with configuration instructions, in the [gRFC for Otel metrics], [gRFC for retry status].
+
+
+{{% alert title="Transparent Retry" color="info" %}}
+Failure can occur in different stages. Even without an explicit retry policy, gRPC may perform transparent retries. The extent of these retries depends on when the failure happens:
+* gRPC may do unlimited transparent retry when RPC never leaves the client.
+* gRPC perform a single transparent retry when RPC reaches the gRPC server library, but has never been seen by the server application logic. Use caution with this type of retry, as it adds load to the network.
+{{% /alert %}}
 
 ### Language guides and examples
 
