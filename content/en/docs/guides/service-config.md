@@ -9,7 +9,8 @@ description: >-
 
 The service config specifies how gRPC clients should behave when interacting
 with a gRPC server. Service owners can provide a service config with expected
-behavior of all service clients.
+behavior of all service clients. The settings in a service config always apply
+to a specific target string (e.g. "api.myapp.com"), not globally.
 
 ### Behavior controlled by the Service Config
 
