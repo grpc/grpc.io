@@ -123,7 +123,7 @@ Failure can occur in different stages. Even without an explicit retry policy, gR
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/retry
 [Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
 [Hedging Guide]: https://grpc.io/docs/guides/request-hedging
-[gRPC Service Config]: https://github.com/grpc/grpc/blob/master/doc/service_config.md 
+[gRPC Service Config]: https://grpc.io/docs/guides/service-config
 [gRFC for Otel metrics]:https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
 
 
