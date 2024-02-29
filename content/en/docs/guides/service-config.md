@@ -24,17 +24,16 @@ config data structure is documented with a [protobuf definition].
 A service can be composed of multiple servers and the load balancing
 configuration specifies how calls from clients should be distributed among
 those servers. By default the `pick_first` load balancing policy is utilized,
-but another policy can be specified in the service config. E.g. by specifying the
-`round_robin` policy will make the clients rotate through the servers when
-calling the service instead of repeatedly using the first server.
+but another policy can be specified in the service config. E.g. specifying the
+`round_robin` policy will make the clients rotate through the servers instead
+of repeatedly using the first server.
 
 #### Call Behavior
 
 RPCs can be configured in many ways:
 
 - With [wait-for-ready] enabled, if a client cannot connect to a backend, the
-  RPC will be delayed instead of immediately failing. a backend to become
-  available instead of failing a call.
+  RPC will be delayed instead of immediately failing.
 - A call [timeout] can be provided, indicating the maximum time the client
   should wait before giving up on the RPC.
 - One of:
@@ -69,7 +68,7 @@ that service owners can use to distribute their service config out to a fleet
 of gRPC clients.
 
 - The xDS name resolver converts the xDS configuration it receives from the
-  control plane to a corresponding service config
+  control plane to a corresponding service config.
 - The standard DNS name resolver in the Go implementation supports service
   configs [stored as TXT records] on the name server.
 
@@ -84,9 +83,9 @@ prefer as long as they provide it in JSON format at name resolution time.
 #### Programatically
 
 The gRPC client API provides a way to specify a service config in JSON format.
-This is used to provide a default service config that will be used in situation
-where the name resolver does not provide a service config. It can also be
-useful in some testing situations.
+This is used to provide a default service config that will be used in
+situations where the name resolver does not provide a service config. It can
+also be useful in some testing situations.
 
 ### Example Service Config
 
