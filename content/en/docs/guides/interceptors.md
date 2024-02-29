@@ -31,10 +31,12 @@ Some example use cases for interceptors are:
  * Server-side Authentication
  * Server-side Authorization
 
+{{% alert title="Note" color="info" %}}
 While _client-side_ authentication could be done via an interceptor, gRPC
 provides a specialized "call credentials" API that is better suited to the task.
 See the [Authentication Guide](/docs/guides/auth/) for details about client-side
 authentication.
+{{% /alert %}}
 
 ### How to Use Interceptors
 
