@@ -59,12 +59,8 @@ application" which have a better view into the application's behavior.
 Suppose you have two client interceptors: a caching interceptor and a logging
 interceptor. What order should they be in? You might want the logging
 interceptor closer to the network to better monitor your application's
-communication and ignore cached RPCs. Or you might want it closer to the
-application to understand what your app's behavior and see what information it
-is loading. You can choose between these options without modifying either
-interceptor.
+communication and ignore cached RPCs:
 
-Caching closer to the application:
 ```mermaid
 flowchart LR
 APP(Application) --> INT1
@@ -73,7 +69,9 @@ INT2(Logging\nInterceptor) --> NET
 NET(Network)
 ```
 
-Logging closer to the application:
+Or you might want it closer to the application to understand what your app's
+behavior and see what information it is loading:
+
 ```mermaid
 flowchart LR
 APP(Application) --> INT2
@@ -81,6 +79,9 @@ INT1(Caching\nInterceptor) -->|Cache miss| NET
 INT2(Logging\nInterceptor) --> INT1
 NET(Network)
 ```
+
+You can choose between these options by just changing the order of the
+interceptors.
 
 ### Language Support
 
