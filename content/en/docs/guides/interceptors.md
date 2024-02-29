@@ -71,8 +71,8 @@ INT2(Logging\nInterceptor) --> NET
 NET(Network)
 ```
 
-Or you might want it closer to the application to understand what your app's
-behavior and see what information it is loading:
+Or you might want it closer to the application to understand your app's behavior
+and see what information it is loading:
 
 ```mermaid
 flowchart LR
