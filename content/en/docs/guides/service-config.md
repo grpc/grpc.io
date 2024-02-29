@@ -119,11 +119,11 @@ The below example does the following:
 ```
 
 [protobuf definition]:https://github.com/grpc/grpc-proto/blob/master/grpc/service_config/service_config.proto
-[timeout]:https://grpc.io/docs/guides/deadlines/
-[Retry]:https://grpc.io/docs/guides/retry/
-[health checking]:https://grpc.io/docs/guides/health-checking/
-[Hedging]:https://grpc.io/docs/guides/request-hedging/
-[wait-for-ready]:https://grpc.io/docs/guides/wait-for-ready/
+[timeout]:/docs/guides/deadlines/
+[Retry]:/docs/guides/retry/
+[health checking]:/docs/guides/health-checking/
+[Hedging]:/docs/guides/request-hedging/
+[wait-for-ready]:/docs/guides/wait-for-ready/
 [name resolution mechanism]:https://github.com/grpc/grpc/blob/master/doc/naming.md
 [stored as TXT records]:https://github.com/grpc/proposal/blob/master/A2-service-configs-in-dns.md
 

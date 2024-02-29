@@ -8,7 +8,7 @@ description: >-
 
 When a gRPC client is no longer interested in the result of an RPC call, it may
 _cancel_ to signal this discontinuation of interest to the server.
-[Deadline](https://grpc.io/docs/guides/deadlines/) expiration and I/O errors
+[Deadline](/docs/guides/deadlines/) expiration and I/O errors
 also trigger cancellation.  When an RPC is cancelled, the server should stop
 any ongoing computation and end its side of the stream. Often, servers are also
 clients to upstream servers, so that cancellation operation should ideally
