@@ -42,7 +42,7 @@ gRPC metadata is useful for a variety of purposes, such as:
 * **Internal usages**: gRPC uses HTTP/2 headers and trailers, which will be
   integrated with the metadata specified by your application.
 
-See [Concepts guide](https://grpc.io/docs/guides/concepts.html#metadata)
+See [Core Concepts](/docs/what-is-grpc/core-concepts/#metadata)
 
 #### Be Aware
 
