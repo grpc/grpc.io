@@ -72,10 +72,6 @@ languages.
 
 #### General errors
 
-<style>
-  td code { word-break: normal; }
-</style>
-
 Case | Status code
 -----|-----------
 Client application cancelled the request | `GRPC_STATUS_CANCELLED`
