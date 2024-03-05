@@ -40,7 +40,7 @@ Retries are enabled by default, but there is no default retry policy. Without a 
 {{% alert title="Transparent Retry" color="info" %}}
 Failure can occur in different stages. Even without an explicit retry policy, gRPC may perform transparent retries. The extent of these retries depends on when the failure happens:
 * gRPC may do unlimited transparent retry when RPC never leaves the client.
-* gRPC perform a single transparent retry when RPC reaches the gRPC server library, but has never been seen by the server application logic. Be aware of this type of  retry, as it adds load to the network.
+* gRPC performs a single transparent retry when RPC reaches the gRPC server library, but has never been seen by the server application logic. Be aware of this type of retry, as it adds load to the network.
   {{% /alert %}}
 
 You can optimize your application's retry functionality by focusing on key steps and configurations that gRPC supports.
