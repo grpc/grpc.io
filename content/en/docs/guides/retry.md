@@ -35,7 +35,13 @@ sequenceDiagram
 ```
 
 ### Retry configuration
-Retries are enabled by default even without specifying a retry policy. You can also disable retries entirely.
+Retries are enabled by default, but there is no default retry policy. Without a retry policy, gRPC cannot safely retry RPCs in most cases. Only RPCs that failed due to low-level races are retried, and only if gRPC is certain the RPCs have not been processed by a server. This is known as "transparent retry." You can configure a retry policy to allow gRPC to retry RPCs in more circumstances and more aggressively. You can also disable retries entirely when creating a channel, which disables transparent retries and any configured retry policies.
+
+{{% alert title="Transparent Retry" color="info" %}}
+Failure can occur in different stages. Even without an explicit retry policy, gRPC may perform transparent retries. The extent of these retries depends on when the failure happens:
+* gRPC may do unlimited transparent retry when RPC never leaves the client.
+* gRPC perform a single transparent retry when RPC reaches the gRPC server library, but has never been seen by the server application logic. Be aware of this type of  retry, as it adds load to the network.
+  {{% /alert %}}
 
 You can optimize your application's retry functionality by focusing on key steps and configurations that gRPC supports.
 * Max number of retry attempts
@@ -92,11 +98,7 @@ And server side metrics:
 Find in-depth metrics and tracing information, along with configuration instructions, in the [gRFC for Otel metrics], [gRFC for retry status].
 
 
-{{% alert title="Transparent Retry" color="info" %}}
-Failure can occur in different stages. Even without an explicit retry policy, gRPC may perform transparent retries. The extent of these retries depends on when the failure happens:
-* gRPC may do unlimited transparent retry when RPC never leaves the client.
-* gRPC perform a single transparent retry when RPC reaches the gRPC server library, but has never been seen by the server application logic. Use caution with this type of retry, as it adds load to the network.
-{{% /alert %}}
+
 
 ### Language guides and examples
 
@@ -122,8 +124,8 @@ Failure can occur in different stages. Even without an explicit retry policy, gR
 [Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/retry
 [Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#enableRetry()
-[Hedging Guide]: https://grpc.io/docs/guides/request-hedging
-[gRPC Service Config]: https://grpc.io/docs/guides/service-config
+[Hedging Guide]: /docs/guides/request-hedging/
+[gRPC Service Config]: /docs/guides/service-config
 [gRFC for Otel metrics]:https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
 
 
