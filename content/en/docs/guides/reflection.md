@@ -7,10 +7,12 @@ description: >-
 
 ### Overview
 
-Reflection is a protocol that gRPC servers can use to declare the APIs they
-export over a standardized RPC service, including all types referenced by the
-request and response messages. Clients can then use this information to
-encode requests and decode responses in human-readable manner.
+Reflection is [a
+protocol](https://github.com/grpc/grpc-proto/blob/master/grpc/reflection/v1/reflection.proto)
+that gRPC servers can use to declare the APIs they export over a standardized
+RPC service, including all types referenced by the request and response
+messages. Clients can then use this information to encode requests and decode
+responses in human-readable manner.
 
 Reflection is used heavily by debugging tools such as
 [`grpcurl`](https://github.com/fullstorydev/grpcurl) and
@@ -23,13 +25,13 @@ an OpenAPI document on the HTTP server presenting the REST API being described.
 A big contributor to gRPC's stellar performance is the use of Protobuf for
 serialization -- a _binary_ non-human-readable protocol. While this greatly
 speeds up an RPC, it can also make it more difficult to manually interact with a
-server. In order to send a gRPC request to a server over HTTP/2 using `curl`,
-you would have to:
+server. In order to manually send a gRPC request to a server over HTTP/2 using
+`curl`, you would have to:
 
 1. Know which RPC services the server exposed.
 2. Know the protobuf definition of the request message and all types it
 references.
-3. Know the protobuf definition of the response message all it types _it_
+3. Know the protobuf definition of the response message all the types _it_
 references.
 
 Then, you'd have to use that knowledge to hand-craft your request message(s) into
@@ -40,11 +42,11 @@ automates this whole process, making it invisible.
 ### Enabling Reflection on a gRPC Server
 
 Reflection is _not_ automatically enabled on a gRPC server. The server author
-must call a few additional functions to add a reflection server. These API calls
+must call a few additional functions to add a reflection service. These API calls
 differ slightly from language to language and, in some languages, require adding
 a dependency on a separate package, named something like `grpc-reflection`
 
-Follow these links below for details in your specific language:
+Follow these links below for details on your specific language:
 
 | Language | Guide            |
 |----------|------------------|
@@ -72,5 +74,5 @@ routed to the appropriate backend as well as the application's main RPC service.
 
 If your gRPC API is accessible to public users, you may _not_ want to expose
 the reflection service, as you may consider this a security issue. Ultimately,
-you will need to make a call here that strikes the best balanced between
+you will need to make a call here that strikes the best balance between
 security and ease-of-use for you and your users.
