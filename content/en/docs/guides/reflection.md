@@ -9,10 +9,10 @@ description: >-
 
 Reflection is [a
 protocol](https://github.com/grpc/grpc-proto/blob/master/grpc/reflection/v1/reflection.proto)
-that gRPC servers can use to declare the APIs they export over a standardized
-RPC service, including all types referenced by the request and response
-messages. Clients can then use this information to encode requests and decode
-responses in human-readable manner.
+that gRPC servers can use to declare the protobuf-defined APIs they export over
+a standardized RPC service, including all types referenced by the request and
+response messages. Clients can then use this information to encode requests and
+decode responses in human-readable manner.
 
 Reflection is used heavily by debugging tools such as
 [`grpcurl`](https://github.com/fullstorydev/grpcurl) and
@@ -25,8 +25,8 @@ an OpenAPI document on the HTTP server presenting the REST API being described.
 A big contributor to gRPC's stellar performance is the use of Protobuf for
 serialization -- a _binary_ non-human-readable protocol. While this greatly
 speeds up an RPC, it can also make it more difficult to manually interact with a
-server. In order to manually send a gRPC request to a server over HTTP/2 using
-`curl`, you would have to:
+server. Hypothetically, in order to manually send a gRPC request to a server
+over HTTP/2 using `curl`, you would have to:
 
 1. Know which RPC services the server exposed.
 2. Know the protobuf definition of the request message and all types it
@@ -37,7 +37,7 @@ references.
 Then, you'd have to use that knowledge to hand-craft your request message(s) into
 binary and painstakingly decode the response message(s). This would be time
 consuming, frustrating, and error prone. Instead, the reflection protocol
-automates this whole process, making it invisible.
+enables tools to automate this whole process, making it invisible.
 
 ### Enabling Reflection on a gRPC Server
 
@@ -68,11 +68,11 @@ Follow these links below for details on your specific language:
 Reflection works so seamlessly with tools such as `grpcurl` that oftentimes,
 people aren't even aware that it's happening under the hood. However, if
 reflection isn't exposed, things won't work seamlessly at all. Instead, the
-client will fail with nasty errors. People often run into this when writing
+client will fail with nasty errors. People often run into this when writing the
 routing configuration for a gRPC service. The _reflection_ service must be
 routed to the appropriate backend as well as the application's main RPC service.
 
-If your gRPC API is accessible to public users, you may _not_ want to expose
-the reflection service, as you may consider this a security issue. Ultimately,
-you will need to make a call here that strikes the best balance between
-security and ease-of-use for you and your users.
+If your gRPC API is accessible to public users, you may _not_ want to expose the
+reflection service, as you may consider this a security issue. Ultimately, you
+will need to make a call here that strikes the best balance between security and
+ease-of-use for you and your users.
