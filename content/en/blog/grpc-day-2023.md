@@ -1,12 +1,12 @@
 ---
 title: Celebrate gRPC Day
-date: 2023-10-09
+date: 2024-03-12
 author:
   name: Ivy Zhuang
   position: Google
 ---
 
-The gRPC core engineering team is excited to share a new video playlist that accelerates your getting started with gRPC and helps you better understand recently introduced innovations such as gRPC Microservices Observability in GCP (for the full announcement, see [blog](https://cloud.google.com/blog/products/networking/introducing-grpc-observability-for-microservices) and codelab).
+The gRPC core engineering team is excited to share a new video playlist that accelerates your getting started with gRPC and helps you better understand recently introduced innovations such as gRPC Microservices Observability in GCP (for the full announcement, see [blog](https://cloud.google.com/blog/products/networking/introducing-grpc-observability-for-microservices) and [codelab](https://cloud.google.com/stackdriver/docs/solutions/grpc).
 
 The materials are for any audience, including individuals starting their gRPC journey as well as established gRPC coders, and place the core technologies of gRPC at your fingertips.
 
