@@ -68,12 +68,7 @@ description: A user guide of both general and language-specific best practices t
 *   For the async completion-queue API, make sure to **register enough server
     requests for the desired level of concurrency** to avoid the server
     continuously getting stuck in a slow path that results in essentially serial
-    request processing. 
-
-*   *(Special topic)* **Enable write batching in streams** if message k + 1 does not rely on
-    responses from message k by passing a WriteOptions argument to Write with
-    buffer_hint set: \
-    `stream_writer->Write(message, WriteOptions().set_buffer_hint());`
+    request processing.
 
 *   *(Special topic)*
     [gRPC::GenericStub](https://grpc.github.io/grpc/cpp/grpcpp_2generic_2generic__stub_8h.html)
