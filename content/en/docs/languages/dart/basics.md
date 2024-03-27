@@ -290,7 +290,7 @@ Future<RouteSummary> recordRoute(
   await for (var location in request) {
     if (!timer.isRunning) timer.start();
     pointCount++;
-    final feature = featuresDb.firstWhere((f) => f.location == location,
+    final feature = featuresDb.firstWhereOrNull((f) => f.location == location,
         orElse: () => null);
     if (feature != null) {
       featureCount++;
