@@ -266,7 +266,7 @@ method yields zero or more responses.
 ##### Request-streaming RPC
 
 The request-streaming method `RecordRoute` uses an
-[iterator](https://docs.python.org/2/library/stdtypes.html#iterator-types) of
+[iterator](https://docs.python.org/3/library/stdtypes.html#iterator-types) of
 request values and returns a single response value.
 
 ```python
