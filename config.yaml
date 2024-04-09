@@ -61,6 +61,9 @@ params:
       - name: Gitter
         url: https://gitter.im/grpc/grpc
         icon: fab fa-gitter
+      - name: YouTube
+        url: https://www.youtube.com/@grpcio
+        icon: fab fa-youtube
     developer:
       - name: GitHub
         url: https://github.com/grpc
