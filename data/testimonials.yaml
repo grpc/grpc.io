@@ -24,16 +24,6 @@
     Google's team that manages the project. We expect to see many improvements
     to developer productivity, and the ability to allow development in non-JVM
     languages as a result of adopting gRPC.
-- name: CoreOS
-  date: 2015-12-29
-  link: https://blog.gopheracademy.com/advent-2015/etcd-distributed-key-value-store-with-grpc-http2
-  image: coreos-1.png
-  quote: >
-    At CoreOS we are excited by the gRPC v1.0 release and the opportunities it
-    opens up for people consuming and building what we like to call Google
-    Infrastructure for Everyone Else. Today gRPC is in use in a number of our
-    critical open source projects such as the etcd consensus database and the
-    rkt container engine.
 - name: Cockroach Labs
   date: 2016-05-11
   link: https://www.cockroachlabs.com/blog/a-tale-of-two-ports/
