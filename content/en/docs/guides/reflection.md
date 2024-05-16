@@ -48,12 +48,13 @@ a dependency on a separate package, named something like `grpc-reflection`
 
 Follow these links below for details on your specific language:
 
-| Language | Guide            |
-|----------|------------------|
-| Java     | [Java example]   |
-| Go       | [Go example]     |
-| C++      | [C++ example]    |
-| Python   | [Python example] |
+| Language   | Guide                |
+|------------|----------------------|
+| Java       | [Java example]       |
+| Go         | [Go example]         |
+| C++        | [C++ example]        |
+| Python     | [Python example]     |
+| Javascript | [Javascript example] |
 
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/example-reflection 
 
@@ -62,6 +63,8 @@ Follow these links below for details on your specific language:
 [C++ example]: https://github.com/grpc/grpc/tree/master/examples/cpp/reflection
 
 [Python example]: https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server_with_reflection.py
+
+[Javascript example]: https://github.com/grpc/grpc-node/blob/master/examples/reflection/server.js
 
 ### Tips
  
