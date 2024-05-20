@@ -99,12 +99,12 @@ language, see the examples in the **Language Support** section.
 
 ### Language Support
 
-| Language | Example           | 
-|----------|-------------------|
-| Java     | [Java example]    |
-| Go       | [Go example]      |
-| Python   | [Python example]  |
-| C++      | Not yet available |
+| Language | Example          | 
+|----------|------------------|
+| Java     | [Java example]   |
+| Go       | [Go example]     |
+| Python   | [Python example] |
+| C++      | [C++ example]    |
 
 
 [health/v1]:https://github.com/grpc/grpc-proto/blob/master/grpc/health/v1/health.proto
@@ -112,3 +112,4 @@ language, see the examples in the **Language Support** section.
 [Java example]:https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/healthservice
 [Go example]:https://github.com/grpc/grpc-go/tree/master/examples/features/health
 [Python example]:https://github.com/grpc/grpc/tree/master/examples/python/health_checking
+[C++ example]:https://github.com/grpc/grpc/tree/master/examples/cpp/health
