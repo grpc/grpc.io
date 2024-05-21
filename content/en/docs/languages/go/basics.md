@@ -389,12 +389,12 @@ service. You can see our complete example client code in
 
 To call service methods, we first need to create a gRPC *channel* to communicate
 with the server. We create this by passing the server address and port number to
-`grpc.Dial()` as follows:
+`grpc.NewClient()` as follows:
 
 ```go
 var opts []grpc.DialOption
 ...
-conn, err := grpc.Dial(*serverAddr, opts...)
+conn, err := grpc.NewClient(*serverAddr, opts...)
 if err != nil {
   ...
 }
@@ -402,8 +402,8 @@ defer conn.Close()
 ```
 
 You can use `DialOptions` to set the auth credentials (for example, TLS, GCE
-credentials, or JWT credentials) in `grpc.Dial` when a service requires them.
-The `RouteGuide` service doesn't require any credentials.
+credentials, or JWT credentials) in `grpc.NewClient` when a service requires
+them. The `RouteGuide` service doesn't require any credentials.
 
 Once the gRPC *channel* is setup, we need a client *stub* to perform RPCs. We
 get it using the `NewRouteGuideClient` method provided by the `pb` package
