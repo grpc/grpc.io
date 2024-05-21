@@ -96,9 +96,8 @@ As the error is on the client side, let's first click on
 TopChannels is a collection of root channels which don't have parents. In
 gRPC-Go, a top channel is a
 [ClientConn](https://godoc.org/google.golang.org/grpc#ClientConn) created by the
-user through [Dial](https://godoc.org/google.golang.org/grpc#Dial) or
-[DialContext](https://godoc.org/google.golang.org/grpc#DialContext), and used
-for making RPC calls. Top channels are of
+user through [NewClient](https://godoc.org/google.golang.org/grpc#NewClient),
+and used for making RPC calls. Top channels are of
 [Channel](https://github.com/grpc/grpc-proto/blob/9b13d199cc0d4703c7ea26c9c330ba695866eb23/grpc/channelz/v1/channelz.proto#L37)
 type in channelz, which is an abstraction of a connection that an RPC can be
 issued to.

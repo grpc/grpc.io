@@ -15,7 +15,7 @@ code:
     )
 
     altsTC := alts.NewClientCreds(alts.DefaultClientOptions())
-    conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
+    conn, err := grpc.NewClient(serverAddr, grpc.WithTransportCredentials(altsTC))
     ```
   server_credentials: |
     ```go
@@ -37,7 +37,7 @@ code:
     clientOpts := alts.DefaultClientOptions()
     clientOpts.TargetServiceAccounts = []string{expectedServerSA}
     altsTC := alts.NewClientCreds(clientOpts)
-    conn, err := grpc.Dial(serverAddr, grpc.WithTransportCredentials(altsTC))
+    conn, err := grpc.NewClient(serverAddr, grpc.WithTransportCredentials(altsTC))
     ```
   client_authorization: |
     ```go
