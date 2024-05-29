@@ -81,8 +81,9 @@ For more details, please see gRPC [proposal A52].
 | Language | Example        | Notes                            |
 |----------|----------------|----------------------------------|
 | Java     | [Java example] |                                  |
-| Go       |                | Example and xDS support upcoming |
-| C++      |                | Not yet supported                |
+| Go       | [Go example]   | Example and xDS support upcoming |
+| C++      |                |                                  |
 
 [proposal A52]:https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
+[Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/customloadbalancer
