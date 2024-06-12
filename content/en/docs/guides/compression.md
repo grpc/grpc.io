@@ -39,7 +39,7 @@ If the user requests to disable compression, the next message will be sent uncom
 
 * [gRPC Compression]
 * [gRPC (Core) Compression Cookbook]
-* [gRFC for Python Compression API]
+* [gRPC for Python Compression API]
 
 [C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
 [C++ Documentation]: https://github.com/grpc/grpc/tree/master/examples/cpp/compression
