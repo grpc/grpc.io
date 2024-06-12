@@ -29,7 +29,7 @@ More and more gRPC components are being instrumented for observability. Currentl
 * XdsClient (experimental)
 
 > [!NOTE]
-> Some instruments are off by default and need to be explicitly enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are always off by default.
+> Some instruments are off by default and need to be explicitly enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are always off by default. ([Reference C++ API](https://github.com/grpc/grpc/blob/ccfc163607a15faa16aea179e0a0ea673c2353c6/include/grpcpp/ext/otel_plugin.h#L139))
 
 ### Per-Call Metrics
 
