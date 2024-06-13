@@ -28,7 +28,7 @@ More and more gRPC components are being instrumented for observability. Currentl
   * Pick-First (experimental)
 * XdsClient (experimental)
 
-> [!NOTE]
+> __**NOTE**__
 > Some instruments are off by default and need to be explicitly enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are always off by default. ([Reference C++ API](https://github.com/grpc/grpc/blob/ccfc163607a15faa16aea179e0a0ea673c2353c6/include/grpcpp/ext/otel_plugin.h#L139))
 
 ### Per-Call Metrics
@@ -102,7 +102,7 @@ Refer [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient] for details.
 
 With a recorded measurement for an instrument, gRPC might provide some additional information as attributes or labels. For example, `grpc.client.attempt.started` has the labels `grpc.method` and `grpc.target` along with each measurement that tell us the method and the target associated with the RPC attempt being observed.
 
-> [!NOTE]
+> __**NOTE**__
 > Some attributes are marked as optional on the instruments. These need to be explicitly enabled from the gRPC OpenTelemetry Plugin API. ([Reference C++ API](https://github.com/grpc/grpc/blob/ccfc163607a15faa16aea179e0a0ea673c2353c6/include/grpcpp/ext/otel_plugin.h#L151))
 
 | Name        | Description |
