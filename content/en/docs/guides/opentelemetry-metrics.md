@@ -43,7 +43,7 @@ Refer [A66: OpenTelemetry Metrics] for details.
 
 #### Client Per-Attempt Instruments
 
-| Name | Type | Unit | Labels | Description |
+| Name | Type | Unit | Labels (disposition) | Description |
 |------|------|------|--------|-------------|
 | grpc.client.attempt.<br>started | Counter | {attempt} | grpc.method (required), grpc.target (required) | The total number of RPC attempts started, including those that have not completed. |
 | grpc.client.attempt.<br>duration | Histogram | s | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel. |
