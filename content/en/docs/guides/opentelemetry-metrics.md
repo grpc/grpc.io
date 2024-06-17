@@ -48,7 +48,7 @@ Refer [A66: OpenTelemetry Metrics] for details.
 | grpc.client.attempt.<br>started | Counter | {attempt} | grpc.method (required), grpc.target (required) | The total number of RPC attempts started, including those that have not completed. |
 | grpc.client.attempt.<br>duration | Histogram | s | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel. |
 | grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | Total bytes (compressed but not encrypted) sent across all request messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes. |
-| grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By | grpc.method (required), grpc.target (required), grpc.lb.locality (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes. |
+| grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes. |
 
 Refer [A66: OpenTelemetry Metrics] for details.
 
