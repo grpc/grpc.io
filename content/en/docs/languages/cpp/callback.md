@@ -13,10 +13,10 @@ gRPC's asynchronous callback APIs. The example used in this tutorial follows the
 
 gRPC C++ offers two kinds of APIs: sync APIs and async APIs. More specifically,
 we have two kinds of async APIs: the old one is completion-queue based; the new
-one is callback-based, which is easier to use. In this codelab, we will focus on
-the callback-based async APIs (callback APIs for short). You will learn how to
-use the callback APIs to implement the server and the client for the following
-kinds of RPCs:
+one is callback-based, which is easier to use. In this tutorial, we will focus
+on the callback-based async APIs (callback APIs for short). You will learn how
+to use the callback APIs to implement the server and the client for the
+following kinds of RPCs:
 
 *   Unary RPC
 *   Server-side streaming RPC
@@ -139,9 +139,12 @@ both actions.
   }
 ```
 
-Different reactors have different callback methods. We need to override the
-methods we are interested in to implement our RPC. For `ServerUnaryReactor`, we
-need to override `OnDone()`, and optionally `OnCancel()`.
+For `ServerUnaryReactor`, we need to override `OnDone()`, and optionally
+`OnCancel()`.
+
+> **NOTE** The callback methods (e.g., `OnDone()`) are supposed to return
+> quickly. Never perform blocking work (e.g., waiting for an event) in such
+> callbacks.
 
 The `ServerUnaryReactor`'s constructor is called when `GetFeature()` constructs
 and provides the reactor in response to the started RPC. It collects the request
@@ -158,7 +161,7 @@ of a cancellation in this method.
 ### Client
 
 NOTE: For simplicity, we will not discuss how to create a channel and a stub in
-this codelab. Please refer to [Basics tutorial](basics.md) for that.
+this tutorial. Please refer to [Basics tutorial](basics.md) for that.
 
 To start a `GetFeature` RPC, besides a `ClientContext`, a request (i.e.,
 `Point`), and a response (i.e., `Feature`), the client also needs to pass a
@@ -222,7 +225,7 @@ server-side streaming RPC. The client sends a `Rectangle` to the server, and the
 server will return a sequence of `Feature`s to the client, each of which is sent
 in a separate message.
 
-### Server {#server-side-streaming-server}
+### Server
 
 For any streaming RPC, including the server-side streaming RPC, the RPC
 handler's interface is similar. The handler does not have any input parameters;
@@ -311,10 +314,6 @@ RPC.
 Different reactors have different callback methods. We need to override the
 methods we are interested in to implement our RPC. For `ListFeatures`, we need
 to override `OnWriteDone()`, `OnDone()` and optionally `OnCancel`.
-
-IMPORTANT: The callback methods (e.g., `OnWriteDone()`) are supposed to return
-quickly. So please never do blocking work (e.g., waiting for an event) in such
-callbacks.
 
 The `ServerWriteReactor`'s constructor is called when `ListFeatures()`
 constructs and provides the reactor in response to the started RPC. It collects
