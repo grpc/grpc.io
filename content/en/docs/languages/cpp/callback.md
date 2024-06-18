@@ -161,7 +161,8 @@ of a cancellation in this method.
 ### Client
 
 NOTE: For simplicity, we will not discuss how to create a channel and a stub in
-this tutorial. Please refer to [Basics tutorial](basics/) for that.
+this tutorial. Please refer to [Basics tutorial](/docs/languages/cpp/basics/)
+for that.
 
 To start a `GetFeature` RPC, besides a `ClientContext`, a request (i.e.,
 `Point`), and a response (i.e., `Feature`), the client also needs to pass a
@@ -436,9 +437,8 @@ a sequence of `Point`s to the server, and the server will return a
 
 ### Server
 
-As we mentioned in the [previous section](#server-side-streaming-server), the
-RPC handler's interface for a client-side streaming RPC does not have any input
-parameters, and its return type is a server reactor, namely, a
+The RPC handler's interface for a client-side streaming RPC does not have any
+input parameters, and its return type is a server reactor, namely, a
 `ServerReadReactor`.
 
 The `ServerReadReactor` has two template parameters: `Point` is the type of each
