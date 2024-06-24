@@ -63,7 +63,7 @@ out-of-band as separate RPCs from the backends. Standard metrics like
 CPU and memory utilization are provided, but you can also implement 
 your own custom metrics.
 
-For more information on this, please see the custom backend metrics guide (TBD)
+For more information on this, please see the custom backend metrics [guide][custom backend metrics guide]
 
 ### Service Mesh
 
@@ -87,3 +87,4 @@ For more details, please see gRPC [proposal A52].
 [proposal A52]:https://github.com/grpc/proposal/blob/master/A52-xds-custom-lb-policies.md
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/customloadbalance 
 [Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/customloadbalancer
+[custom backend metrics guide]: /docs/guides/custom-backend-metrics/
