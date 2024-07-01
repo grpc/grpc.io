@@ -229,10 +229,9 @@ c - Component (Aware of its content/context...)
 // Object
 .o-banner {
   width: 100%;
-  position: fixed;
-  margin-left: -15px;
+  position: absolute;
   padding-top: 15px;
-  z-index: 32;
+  z-index: $z-index-navbar - 1;
   top: 4rem;
   background: $light;
   text-align: center;
@@ -240,6 +239,10 @@ c - Component (Aware of its content/context...)
   & p {
     padding: 0.5rem;
   }
+}
+
+.banner-container{
+  height: 60px; 
 }
 
 .o-icon {
