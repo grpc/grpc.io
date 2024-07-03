@@ -7,7 +7,7 @@ Attention gRPC community!
 
 Mark your calendars for **August 27th, 2024**, as gRPConf returns to the Google Cloud Campus in Sunnyvale, California.
 
-The schedule is live now at: [events.linuxfoundation.org/grpconf/program/schedule](https://events.linuxfoundation.org/grpconf/program/schedule).
+The [schedule](https://events.linuxfoundation.org/grpconf/program/schedule) is now live!
 
 This is your chance to dive deep into the world of gRPC, connect with fellow developers, and stay ahead of the curve in all things gRPC.
 
