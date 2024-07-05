@@ -18,6 +18,7 @@ enableGitInfo: true
 enableRobotsTXT: true
 
 params:
+  gtmID: "GTM-55D2HXLW"
   copyright: gRPC Authors
   repo: &repo https://github.com/grpc/grpc.io
   github_repo: *repo
