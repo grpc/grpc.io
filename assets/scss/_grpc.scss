@@ -43,7 +43,6 @@ sections site wide to the original site's background svg.
 .td-navbar .navbar-brand span:last-child {
   display: none;
 }
-
 // This adds rounded corners to the search inputs, since a Docsy
 // flag affecting these and other elements has been disabled.
 .td-search-input {
@@ -229,10 +228,9 @@ c - Component (Aware of its content/context...)
 // Object
 .o-banner {
   width: 100%;
-  position: fixed;
-  margin-left: -15px;
+  position: absolute;
   padding-top: 15px;
-  z-index: 32;
+  z-index: $z-index-navbar - 1;
   top: 4rem;
   background: $light;
   text-align: center;
@@ -444,4 +442,8 @@ c - Component (Aware of its content/context...)
   .c-global-meta-links {
     display: none;
   }
+}
+
+.banner-container{
+  height: 60px; 
 }
