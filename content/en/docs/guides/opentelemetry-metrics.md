@@ -3,6 +3,8 @@ title: OpenTelemetry Metrics
 description: OpenTelemetry Metrics available in gRPC
 ---
 
+{{< youtube L6FAtc8N8Vk youtube-video >}}
+
 ## Overview
 
 gRPC provides support for an OpenTelemetry plugin that provides metrics that can help you -

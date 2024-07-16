@@ -5,6 +5,8 @@ description: >-
   under unique circumstances.
 ---
 
+{{< youtube 7LYvl-nr0t8 youtube-video >}}
+
 ### Overview
 
 One of the key features of gRPC is load balancing, which allows requests from

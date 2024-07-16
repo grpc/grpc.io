@@ -445,3 +445,9 @@ c - Component (Aware of its content/context...)
     display: none;
   }
 }
+
+.youtube-video iframe {
+  width: 560px;
+  height: 315px;
+  border: 0;
+}
