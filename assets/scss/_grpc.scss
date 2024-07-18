@@ -43,6 +43,7 @@ sections site wide to the original site's background svg.
 .td-navbar .navbar-brand span:last-child {
   display: none;
 }
+
 // This adds rounded corners to the search inputs, since a Docsy
 // flag affecting these and other elements has been disabled.
 .td-search-input {
@@ -230,7 +231,8 @@ c - Component (Aware of its content/context...)
   width: 100%;
   position: absolute;
   padding-top: 15px;
-  z-index: $z-index-navbar - 1;
+  // keep banner's z-index value less than the navbar, so that banner moves beneath the navbar when user scrolls the page
+  z-index: if(variable-exists("z-index-navbar"), $z-index-navbar, 32) - 1;
   top: 4rem;
   background: $light;
   text-align: center;
