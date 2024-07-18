@@ -14,8 +14,6 @@ If you just want to dive in and see gRPC in action first,
 
 ## Overview
 
-{{< youtube cSGBbwvW1y4 youtube-video >}}
-
 In gRPC, a client application can directly call a method on a server application
 on a different machine as if it were a local object, making it easier for you to
 create distributed applications and services. As in many RPC systems, gRPC is
@@ -33,6 +31,8 @@ written in any of gRPC's supported languages. So, for example, you can easily
 create a gRPC server in Java with clients in Go, Python, or Ruby. In addition,
 the latest Google APIs will have gRPC versions of their interfaces, letting you
 easily build Google functionality into your applications.
+
+{{< youtube id="cSGBbwvW1y4" class="youtube-video" title="getting started with gRPC" >}}
 
 ### Working with Protocol Buffers
 

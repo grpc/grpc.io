@@ -2,4 +2,4 @@
 title: Web
 ---
 
-{{< youtube l-W15x-Ked8 youtube-video >}}
+{{< youtube id="l-W15x-Ked8" class="youtube-video" title="gRPC on Web" >}}

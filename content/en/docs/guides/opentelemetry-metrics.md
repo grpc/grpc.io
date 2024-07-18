@@ -3,14 +3,14 @@ title: OpenTelemetry Metrics
 description: OpenTelemetry Metrics available in gRPC
 ---
 
-{{< youtube L6FAtc8N8Vk youtube-video >}}
-
 ## Overview
 
 gRPC provides support for an OpenTelemetry plugin that provides metrics that can help you -
 * Troubleshoot your system
 * Iterate on improving system performance
 * Setup continuous monitoring and alerting.
+
+{{< youtube id="L6FAtc8N8Vk" class="youtube-video" title="OpenTelemetry - The future of Observability" >}}
 
 ## Background
 

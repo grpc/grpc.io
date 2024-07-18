@@ -10,7 +10,7 @@ Not familiar with gRPC? First read [Introduction to gRPC](../introduction/). For
 language-specific details, see the quick start, tutorial, and reference
 documentation for your language of choice.
 
-{{< youtube njC24ts24Pg youtube-video >}}
+{{< youtube id="njC24ts24Pg" class="youtube-video" title="gRPC in 5 minutes" >}}
 
 ### Overview
 
