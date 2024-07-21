@@ -9,6 +9,11 @@ what the workaround is for
   cursor: pointer;
 }
 
+//ensure enough space for banner without overlapping with the main section
+.banner-container { 
+  height: 60px;
+}
+
 // External link icon
 a > .fa-external-link-alt::before,
 a > span > .fa-external-link-alt::before {
@@ -229,10 +234,9 @@ c - Component (Aware of its content/context...)
 // Object
 .o-banner {
   width: 100%;
-  position: fixed;
-  margin-left: -15px;
+  position: absolute;
   padding-top: 15px;
-  z-index: 32;
+  z-index: $navbar-z-index - 1;
   top: 4rem;
   background: $light;
   text-align: center;
