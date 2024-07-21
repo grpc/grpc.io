@@ -49,6 +49,11 @@ sections site wide to the original site's background svg.
   display: none;
 }
 
+//use variable for navbar z-index as banner z-index depends on it
+.td-navbar {
+  z-index: $navbar-z-index;
+}
+
 // This adds rounded corners to the search inputs, since a Docsy
 // flag affecting these and other elements has been disabled.
 .td-search-input {
