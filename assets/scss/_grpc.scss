@@ -44,6 +44,12 @@ sections site wide to the original site's background svg.
   display: none;
 }
 
+// Override Docsy theme padding values to reduce vertical space taken up by the hero section
+.td-default main > section:first-of-type {
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+}
+
 // This adds rounded corners to the search inputs, since a Docsy
 // flag affecting these and other elements has been disabled.
 .td-search-input {
