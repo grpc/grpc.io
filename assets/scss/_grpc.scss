@@ -49,12 +49,6 @@ sections site wide to the original site's background svg.
   display: none;
 }
 
-// Override Docsy theme padding values to reduce vertical space taken up by the hero section
-.td-default main > section:first-of-type {
-  padding-top: 6rem;
-  padding-bottom: 3rem;
-}
-
 // use variable for navbar z-index as banner z-index depends on it
 .td-navbar {
   z-index: $navbar-z-index;
