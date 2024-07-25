@@ -252,10 +252,12 @@ c - Component (Aware of its content/context...)
   }
 }
 
-// Adjust the top value for smaller screens of banner banner medium and large screens to avoid overlapping with banner
-@media (max-width: 768px), (max-width: 576px) {
-  .o-banner {
-    top: 6rem; 
+@include media-breakpoint-down(sm){
+  .o-banner{
+    top: 6rem;
+  }
+  .td-sidebar{
+    padding-top: 1rem;
   }
 }
 
