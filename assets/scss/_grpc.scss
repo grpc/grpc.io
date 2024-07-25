@@ -446,8 +446,15 @@ c - Component (Aware of its content/context...)
   }
 }
 
+.youtube-video {
+  position: relative;
+  width: 100%; 
+  padding-bottom: 46%; 
+}
+
 .youtube-video iframe {
-  width: 560px;
-  height: 315px;
-  border: 0;
+  position: absolute;
+  width: 80%; 
+  height: 100%; 
+  border: 0; 
 }
