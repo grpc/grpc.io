@@ -10,6 +10,8 @@ gRPC provides support for an OpenTelemetry plugin that provides metrics that can
 * Iterate on improving system performance
 * Setup continuous monitoring and alerting.
 
+{{< youtube id="L6FAtc8N8Vk" class="youtube-video" title="OpenTelemetry - The future of Observability" >}}
+
 ## Background
 
 OpenTelemetry is an observability framework to create and manage telemetry data. gRPC previously provided observability support through OpenCensus which has been [sunsetted](https://opentelemetry.io/blog/2023/sunsetting-opencensus/) in the favor of OpenTelemetry.

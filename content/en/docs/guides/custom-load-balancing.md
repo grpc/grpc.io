@@ -16,6 +16,8 @@ A gRPC load balancing policy is given a list of server IP addresses by the name
 resolver. The policy is responsible for maintaining connections (subchannels)
 to the servers and picking a connection to use when an RPC is sent.
 
+{{< youtube id="7LYvl-nr0t8" class="youtube-video" title="gRPC Weighted Round Robin LB Policy" >}}
+
 ### Implementing Your Own Policy
 
 By default the `pick_first` policy will be used. This policy actually does no

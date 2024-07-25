@@ -32,6 +32,8 @@ create a gRPC server in Java with clients in Go, Python, or Ruby. In addition,
 the latest Google APIs will have gRPC versions of their interfaces, letting you
 easily build Google functionality into your applications.
 
+{{< youtube id="cSGBbwvW1y4" class="youtube-video" title="getting started with gRPC" >}}
+
 ### Working with Protocol Buffers
 
 By default, gRPC uses [Protocol Buffers][], Google’s
