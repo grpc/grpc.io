@@ -9,11 +9,6 @@ what the workaround is for
   cursor: pointer;
 }
 
-// ensure enough space for banner without overlapping with the main section
-.banner-container { 
-  height: 60px;
-}
-
 // External link icon
 a > .fa-external-link-alt::before,
 a > span > .fa-external-link-alt::before {
@@ -239,7 +234,7 @@ c - Component (Aware of its content/context...)
 // Object
 .o-banner {
   width: 100%;
-  position: absolute;
+  position: relative;
   padding-top: 15px;
   // keep banner's z-index value less than the navbar, so that banner moves beneath the navbar when user scrolls the page
   z-index: $navbar-z-index - 1;
@@ -250,14 +245,12 @@ c - Component (Aware of its content/context...)
   & p {
     padding: 0.5rem;
   }
+  padding-bottom: 0.01rem;
 }
 
 @include media-breakpoint-down(sm){
   .o-banner{
-    top: 6rem;
-  }
-  .td-sidebar{
-    padding-top: 1rem;
+    top: 0rem;
   }
 }
 
