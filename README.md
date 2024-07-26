@@ -61,7 +61,7 @@ $ npm run serve
    ```
     Check GTM setup using Preview mode and verify that Tag Assistant displays "Connected" for your website URL.
    
-Build the site by setting Hugo environment to production to make sure GA and GTM work correctly
+Build the site by setting Hugo environment to production to make sure GA and GTM work.
 ```console
 $ HUGO_ENV=production npm run serve
 ```
