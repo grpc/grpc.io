@@ -60,7 +60,12 @@ $ npm run serve
      gtmID: "GTM-XXXXXXXX" # Replace with your GTM ID
    ```
     Check GTM setup using Preview mode and verify that Tag Assistant displays "Connected" for your website URL.
-    
+   
+Build the site by setting Hugo environment to production to make sure GA and GTM work correctly
+```console
+$ HUGO_ENV=production npm run serve
+```
+
 ## Site deploys and PR previews
 
 If you submit a PR, Netlify will create a [deploy preview][] so that you can
