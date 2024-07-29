@@ -44,6 +44,11 @@ sections site wide to the original site's background svg.
   display: none;
 }
 
+// use variable for navbar z-index as banner z-index depends on it
+.td-navbar {
+  z-index: $navbar-z-index;
+}
+
 // This adds rounded corners to the search inputs, since a Docsy
 // flag affecting these and other elements has been disabled.
 .td-search-input {
@@ -229,16 +234,24 @@ c - Component (Aware of its content/context...)
 // Object
 .o-banner {
   width: 100%;
-  position: fixed;
-  margin-left: -15px;
+  position: relative;
   padding-top: 15px;
-  z-index: 32;
+  // keep banner's z-index value less than the navbar, so that banner moves beneath the navbar when user scrolls the page
+  z-index: $navbar-z-index - 1;
   top: 4rem;
   background: $light;
   text-align: center;
 
   & p {
     padding: 0.5rem;
+  }
+  padding-bottom: 0.01rem;
+}
+
+// Ensure no empty space left when navbar changes it's position from fixed to relative on small screens
+@include media-breakpoint-down(sm){
+  .o-banner{
+    top: 0rem;
   }
 }
 
