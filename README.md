@@ -39,6 +39,33 @@ To locally serve the site at [localhost:8888][], run the following command:
 $ npm run serve
 ```
 
+## Setup Google Analytics (GA) and Google Tag Manager (GTM)
+
+1. **Google Analytics (GA):**
+   - Follow the [GA setup guide](https://support.google.com/analytics/answer/9304153) to create your account, property, and data stream.
+   - Update `config.yaml` with your GA Measurement ID:
+
+   ```yaml
+   params:
+     googleAnalytics: "G-XXXXXXXXXX" # Replace with your GA Measurement ID
+   ```
+    Verify GA setup using real-time reports to ensure data from your website is being tracked.
+  
+2. **Google Tag Manager (GTM):**
+   - Follow the [GTM setup guide](https://developers.google.com/tag-platform/tag-manager/web) to create your account and container.
+   - Update `config.yaml` with your GTM ID:
+
+   ```yaml
+   params:
+     gtmID: "GTM-XXXXXXXX" # Replace with your GTM ID
+   ```
+    Check GTM setup using Preview mode and verify that Tag Assistant displays "Connected" for your website URL.
+   
+Build the site by setting Hugo environment to production to make sure GA and GTM work.
+```console
+$ HUGO_ENV=production npm run serve
+```
+
 ## Site deploys and PR previews
 
 If you submit a PR, Netlify will create a [deploy preview][] so that you can
