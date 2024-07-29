@@ -1,3 +1,5 @@
 {{ partial "meta.html" . -}}
 {{ partial "favicons.html" . -}}
-{{ partial "gtm.html" . }}
+{{ if hugo.IsProduction -}}
+    {{ partial "gtm.html" . }}
+{{ end -}}
