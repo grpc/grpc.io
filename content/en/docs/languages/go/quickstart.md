@@ -7,7 +7,7 @@ spelling: cSpell:ignore Fatalf GOPATH
 
 ### Prerequisites
 
-- **[Go][]**, any one of the **three latest major** [releases of Go][].
+- **[Go][]**, any one of the **two latest major** [releases of Go][].
 
   For installation instructions, see Go's [Getting Started][] guide.
 
