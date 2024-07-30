@@ -7,7 +7,7 @@ spelling: cSpell:ignore Fatalf GOPATH
 
 ### Prerequisites
 
-- **[Go][]**, any one of the **three latest major** [releases of Go][].
+- **[Go][]**, any one of the **two latest major** [releases of Go][].
 
   For installation instructions, see Go's [Getting Started][] guide.
 
@@ -21,8 +21,8 @@ spelling: cSpell:ignore Fatalf GOPATH
    1. Install the protocol compiler plugins for Go using the following commands:
 
       ```sh
-      $ go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28
-      $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+      $ go install google.golang.org/protobuf/cmd/protoc-gen-go
+      $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugins:
