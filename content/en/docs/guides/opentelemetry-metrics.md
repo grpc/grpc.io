@@ -134,6 +134,8 @@ Error counts can be calculated by using a filter `grpc.status != OK` value on th
 | Language | Example          |
 |----------|------------------|
 | C++      | [C++ Example]    |
+| Go       | [Go Example]     |
+| Java     | [Java Example]   |
 | Python   | [Python Example] |
 
 
@@ -144,6 +146,8 @@ Error counts can be calculated by using a filter `grpc.status != OK` value on th
 * [A79: Non-per-call Metrics Architecture]
 
 [C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
+[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
+[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry 
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/observability
 [A66: OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
 [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
