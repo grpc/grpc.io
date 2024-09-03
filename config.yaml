@@ -39,7 +39,7 @@ params:
     navbar_translucent_over_cover_disable: true
     sidebar_menu_compact: true
 
-  show_banner: true
+  show_banner: false
 
   fonts:
     - name: Open Sans
