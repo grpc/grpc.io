@@ -77,13 +77,13 @@ From the `examples/python/helloworld` directory:
 1. Run the server:
 
    ```sh
-   $ python greeter_server.py
+   python greeter_server.py
    ```
 
 2. From another terminal, run the client:
 
    ```sh
-   $ python greeter_client.py
+   python greeter_client.py
    ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -200,13 +200,13 @@ Just like we did before, from the `examples/python/helloworld` directory:
  1. Run the server:
 
     ```sh
-    $ python greeter_server.py
+    python greeter_server.py
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ python greeter_client.py
+    python greeter_client.py
     ```
 
 ### What's next

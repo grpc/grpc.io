@@ -16,13 +16,13 @@ The example code is part of the [grpc-java][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java
+    git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java
     ```
 
  2. Change to the examples directory:
 
     ```sh
-    $ cd grpc-java/examples
+    cd grpc-java/examples
     ```
 
 ### Run the example
@@ -32,20 +32,20 @@ From the `examples` directory:
  1. Compile the client and server
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-server
+    ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-client
+    ./build/install/examples/bin/hello-world-client
     INFO: Will try to greet world ...
     INFO: Greeting: Hello world
     ```
@@ -206,20 +206,20 @@ from the `examples` directory:
  1. Compile the client and server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-server
+    ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-client
+    ./build/install/examples/bin/hello-world-client
     INFO: Will try to greet world ...
     INFO: Greeting: Hello world
     INFO: Greeting: Hello again world

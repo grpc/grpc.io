@@ -19,7 +19,7 @@ weight: 10
       the following environment variable:
 
       ```sh
-      $ export ANDROID_SDK_ROOT="<path-to-your-android-sdk>"
+      export ANDROID_SDK_ROOT="<path-to-your-android-sdk>"
       ```
 
 - An android device set up for [USB debugging][] or an
@@ -39,13 +39,13 @@ The example code is part of the [grpc-kotlin][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-kotlin
+    git clone https://github.com/grpc/grpc-kotlin
     ```
 
  2. Change to the examples directory:
 
     ```sh
-    $ cd grpc-kotlin/examples
+    cd grpc-kotlin/examples
     ```
 
 ### Run the example
@@ -53,20 +53,20 @@ The example code is part of the [grpc-kotlin][] repo.
  1. Compile the server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./server/build/install/server/bin/hello-world-server
+    ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
  3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ ./gradlew :android:installDebug
+    ./gradlew :android:installDebug
     ```
 
  4. Launch the client app from your device.
@@ -182,20 +182,20 @@ from the `examples` directory:
  1. Compile the server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./server/build/install/server/bin/hello-world-server
+    ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
  3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ ./gradlew :android:installDebug
+    ./gradlew :android:installDebug
     ```
 
  4. Launch the client app from your device.
