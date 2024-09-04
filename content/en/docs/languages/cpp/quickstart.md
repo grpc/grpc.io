@@ -47,13 +47,13 @@ following these instructions:
 - Linux
 
   ```sh
-  $ sudo apt install -y cmake
+  sudo apt install -y cmake
   ```
 
 - macOS:
 
   ```sh
-  $ brew install cmake
+  brew install cmake
   ```
 
 - For general `cmake` installation instructions, see [Installing CMake][].
@@ -82,13 +82,13 @@ Install the basic tools required to build gRPC:
 - Linux
 
   ```sh
-  $ sudo apt install -y build-essential autoconf libtool pkg-config
+  sudo apt install -y build-essential autoconf libtool pkg-config
   ```
 
 - macOS:
 
   ```sh
-  $ brew install autoconf automake libtool pkg-config
+  brew install autoconf automake libtool pkg-config
   ```
 
 #### Clone the `grpc` repo
@@ -140,16 +140,16 @@ the steps of the previous section.
  1. Change to the example's directory:
 
     ```sh
-    $ cd examples/cpp/helloworld
+    cd examples/cpp/helloworld
     ```
 
  2. Build the example using `cmake`:
 
     ```sh
-    $ mkdir -p cmake/build
-    $ pushd cmake/build
-    $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
-    $ make -j 4
+    mkdir -p cmake/build
+    pushd cmake/build
+    cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+    make -j 4
     ```
 
     {{% alert title="Note" color="info" %}}
@@ -166,13 +166,13 @@ Run the example from the example **build** directory
  1. Run the server:
 
     ```sh
-    $ ./greeter_server
+    ./greeter_server
     ```
 
  1. From a different terminal, run the client and see the client output:
 
     ```sh
-    $ ./greeter_client
+    ./greeter_client
     Greeter received: Hello world
     ```
 
@@ -330,19 +330,19 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
  1. Build the client and server after having made changes:
 
     ```sh
-    $ make -j 4
+    make -j 4
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./greeter_server
+    ./greeter_server
     ```
 
  3. On a different terminal, run the client:
 
     ```sh
-    $ ./greeter_client
+    ./greeter_client
     ```
 
     You'll see the following output:

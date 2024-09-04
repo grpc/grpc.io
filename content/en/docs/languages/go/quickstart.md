@@ -21,14 +21,14 @@ spelling: cSpell:ignore Fatalf GOPATH
    1. Install the protocol compiler plugins for Go using the following commands:
 
       ```sh
-      $ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-      $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+      go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+      go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugins:
 
       ```sh
-      $ export PATH="$PATH:$(go env GOPATH)/bin"
+      export PATH="$PATH:$(go env GOPATH)/bin"
       ```
 
 ### Get the example code
@@ -39,13 +39,13 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.go >}} --depth 1 https://github.com/grpc/grpc-go
+    git clone -b {{< param grpc_vers.go >}} --depth 1 https://github.com/grpc/grpc-go
     ```
 
  2. Change to the quick start example directory:
 
     ```sh
-    $ cd grpc-go/examples/helloworld
+    cd grpc-go/examples/helloworld
     ```
 
 ### Run the example
@@ -55,14 +55,14 @@ From the `examples/helloworld` directory:
  1. Compile and execute the server code:
 
     ```sh
-    $ go run greeter_server/main.go
+    go run greeter_server/main.go
     ```
 
  2. From a different terminal, compile and execute the client code to see the
     client output:
 
     ```sh
-    $ go run greeter_client/main.go
+    go run greeter_client/main.go
     Greeting: Hello world
     ```
 
@@ -178,14 +178,14 @@ from the `examples/helloworld` directory:
  1. Run the server:
 
     ```sh
-    $ go run greeter_server/main.go
+    go run greeter_server/main.go
     ```
 
  2. From another terminal, run the client. This time, add a name as a
     command-line argument:
 
     ```sh
-    $ go run greeter_client/main.go --name=Alice
+    go run greeter_client/main.go --name=Alice
     ```
 
     You'll see the following output:

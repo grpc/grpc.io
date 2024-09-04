@@ -23,20 +23,20 @@ The example code is part of the [grpc][] repo.
  1. Clone the [grpc][] repo and its submodules:
 
     ```sh
-    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+    git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
     ```
 
  2. Change to the quick start example directory:
 
     ```sh
-    $ cd grpc/examples/php
+    cd grpc/examples/php
     ```
 
  3. Install the `grpc` composer package:
 
     ```sh
-    $ ./greeter_proto_gen.sh
-    $ composer install
+    ./greeter_proto_gen.sh
+    composer install
     ```
 
 ### Run the example
@@ -47,7 +47,7 @@ The example code is part of the [grpc][] repo.
  2. From the `examples/php` directory, run the PHP client:
 
     ```sh
-    $ ./run_greeter_client.sh
+    ./run_greeter_client.sh
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -180,14 +180,14 @@ Just like we did before, from the `grpc-node/examples/helloworld/dynamic_codegen
  1. Run the server:
 
     ```sh
-    $ node greeter_server.js
+    node greeter_server.js
     ```
 
  2. From another terminal, from the `examples/php` directory,
     run the client:
 
     ```sh
-    $ ./run_greeter_client.sh
+    ./run_greeter_client.sh
     ```
 
 ### What's next

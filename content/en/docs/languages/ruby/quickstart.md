@@ -53,13 +53,13 @@ From the `examples/ruby` directory:
  1. Run the server:
 
     ```sh
-    $ ruby greeter_server.rb
+    ruby greeter_server.rb
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ ruby greeter_client.rb
+    ruby greeter_client.rb
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -170,13 +170,13 @@ Just like we did before, from the `examples/ruby` directory:
  1. Run the server:
 
     ```sh
-    $ ruby greeter_server.rb
+    ruby greeter_server.rb
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ ruby greeter_client.rb
+    ruby greeter_client.rb
     ```
 
 ### What's next
