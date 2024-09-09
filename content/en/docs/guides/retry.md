@@ -63,7 +63,7 @@ Retry is configurable via [gRPC Service Config], at a per-method granularity.
 }
 ```
 
-Jitter of plus or minus 0.2 is applied to the backoff delay to avoid hammering servers at the same time from a large number of clients.  In the example configuration above `initialBackoff` is set to 100ms, so the actual backoff delay after the first attempt will be for a random time period within the range `[80ms, 120ms]`.
+Jitter of plus or minus 20% is applied to the backoff delay to avoid hammering servers at the same time from a large number of clients.  In the example configuration above `initialBackoff` is set to 100ms, so the actual backoff delay after the first attempt will be for a random time period within the range `[80ms, 120ms]`.
 
 gRPC supports throttle limit that prevents server overload due to retries. Below is an examples of retry throttle configuration:
 
