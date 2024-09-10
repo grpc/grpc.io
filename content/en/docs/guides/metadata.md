@@ -73,7 +73,7 @@ level, custom trailers can be used to communicate things not directly part of
 the data, such as server utilization and query cost.  Trailers are sent only by
 the server.  
 
-### For more details, please see the following gRPCs
+### For more details, please see the following gRFCs
 
 * [proposal: G1 true binary metadata][proposal G1]
 * [proposal: L7 go metadata api][proposal L7]
