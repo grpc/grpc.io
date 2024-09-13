@@ -18,7 +18,7 @@ weight: 10
   Check the status and version of CocoaPods on your system:
 
   ```sh
-  $ pod --version
+  pod --version
   ```
 
   If CocoaPods is not installed, follow the [CocoaPods install
@@ -32,7 +32,7 @@ weight: 10
   Make sure the command line developer tools are installed:
 
   ```sh
-  $ xcode-select --install
+  xcode-select --install
   ```
 
 - [Homebrew](https://brew.sh/)
@@ -40,7 +40,7 @@ weight: 10
 - `autoconf`, `automake`, `libtool`, `pkg-config`
 
   ```sh
-  $ brew install autoconf automake libtool pkg-config
+  brew install autoconf automake libtool pkg-config
   ```
 
 ### Download the example
@@ -267,8 +267,8 @@ When installing CocoaPods, error `activesupport requires Ruby version >= 2.2.2`
 : Install an older version of `activesupport`, then install CocoaPods:
 
   ```sh
-  $ [sudo] gem install activesupport -v 4.2.6
-  $ [sudo] gem install cocoapods
+  [sudo] gem install activesupport -v 4.2.6
+  [sudo] gem install cocoapods
   ```
 
 When installing dependencies with CocoaPods, error `Unable to find a specification for !ProtoCompiler-gRPCPlugin`

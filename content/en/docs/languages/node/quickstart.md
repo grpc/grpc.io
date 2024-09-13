@@ -34,13 +34,13 @@ From the `examples/helloworld/dynamic_codegen` directory:
  1. Run the server:
 
     ```sh
-    $ node greeter_server.js
+    node greeter_server.js
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ node greeter_client.js
+    node greeter_client.js
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -153,13 +153,13 @@ Just like we did before, from the `examples/helloworld/dynamic_codegen` director
  1. Run the server:
 
     ```sh
-    $ node greeter_server.js
+    node greeter_server.js
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ node greeter_client.js
+    node greeter_client.js
     ```
 
 ### What's next

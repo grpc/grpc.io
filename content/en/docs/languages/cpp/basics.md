@@ -36,14 +36,14 @@ Get the example code and build gRPC:
  2. From the repo folder, change to the route guide example directory:
 
     ```sh
-    $ cd examples/cpp/route_guide
+    cd examples/cpp/route_guide
     ```
  3. Run `cmake`
 
     ```sh
-    $ mkdir -p cmake/build
-    $ cd cmake/build
-    $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+    mkdir -p cmake/build
+    cd cmake/build
+    cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
     ```
 
 ### Defining the service

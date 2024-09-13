@@ -18,13 +18,13 @@ The example code is part of the [grpc-kotlin][] repo.
     the repo:
 
     ```sh
-    $ git clone --depth 1 https://github.com/grpc/grpc-kotlin
+    git clone --depth 1 https://github.com/grpc/grpc-kotlin
     ```
 
  2. Change to the examples directory:
 
     ```sh
-    $ cd grpc-kotlin/examples
+    cd grpc-kotlin/examples
     ```
 
 ### Run the example
@@ -34,20 +34,20 @@ From the `examples` directory:
  1. Compile the client and server
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./server/build/install/server/bin/hello-world-server
+    ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./client/build/install/client/bin/hello-world-client
+    ./client/build/install/client/bin/hello-world-client
     Received: Hello world
     ```
 
@@ -169,13 +169,13 @@ from the `examples` directory:
  1. Compile the client and server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./server/build/install/server/bin/hello-world-server
+    ./server/build/install/server/bin/hello-world-server
     Server started, listening on 50051
     ```
 
@@ -183,7 +183,7 @@ from the `examples` directory:
     command-line argument:
 
     ```sh
-    $ ./client/build/install/client/bin/hello-world-client Alice
+    ./client/build/install/client/bin/hello-world-client Alice
     Received: Hello Alice
     Received: Hello again Alice
     ```
