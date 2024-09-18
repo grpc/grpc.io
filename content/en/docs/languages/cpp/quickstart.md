@@ -3,8 +3,8 @@ title: Quick start
 description: This guide gets you started with gRPC in C++ with a simple working example.
 weight: 10
 spelling: cSpell:ignore autoconf automake cmake cout DCMAKE endl libtool mkdir popd pushd
-cmake-min-version: 3.13
-cmake-version: 3.19.6
+cmake-min-version: 3.16
+cmake-version: 3.30.3
 ---
 
 In the C++ world, there's no universally accepted standard for managing project
@@ -96,7 +96,7 @@ can install a more recent version into your local installation directory as
 follows:
 
 ```sh
-$ wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-Linux-x86_64.sh
+$ wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-linux-x86_64.sh
 $ sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
 $ rm cmake-linux.sh
 ```
