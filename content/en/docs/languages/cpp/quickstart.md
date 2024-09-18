@@ -23,6 +23,8 @@ Choose a directory to hold locally installed packages. This page assumes that
 the environment variable `MY_INSTALL_DIR` holds this directory path. For
 example:
 
+- Linux / macOS
+
 ```sh
 $ export MY_INSTALL_DIR=$HOME/.local
 ```
@@ -39,10 +41,28 @@ Add the local `bin` folder to your path variable, for example:
 $ export PATH="$MY_INSTALL_DIR/bin:$PATH"
 ```
 
+- Windows
+
+```sh
+> set MY_INSTALL_DIR=%USERPROFILE%\cmake
+```
+
+Ensure that the directory exists:
+
+```
+> mkdir %INSTALL_DIR%
+```
+
+Add the local `bin` folder to your path variable, for example:
+
+```sh
+> set PATH=%PATH%;$MY_INSTALL_DIR\bin
+```
+
 #### Install cmake
 
 You need version {{< param cmake-min-version >}} or later of `cmake`. Install it by
-following these instructions:
+following these instructions if you don't have it:
 
 - Linux
 
@@ -54,6 +74,12 @@ following these instructions:
 
   ```sh
   $ brew install cmake
+  ```
+
+- Windows:
+
+  ```sh
+  $ choco install cmake
   ```
 
 - For general `cmake` installation instructions, see [Installing CMake][].
@@ -106,18 +132,30 @@ for service definitions and data serialization, and the example code uses
 
 The following commands build and locally install gRPC and Protocol Buffers:
 
-```sh
-$ cd grpc
-$ mkdir -p cmake/build
-$ pushd cmake/build
-$ cmake -DgRPC_INSTALL=ON \
-      -DgRPC_BUILD_TESTS=OFF \
-      -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
-      ../..
-$ make -j 4
-$ make install
-$ popd
-```
+- Linux & macOS
+
+  ```sh
+  $ cd grpc
+  $ mkdir -p cmake/build
+  $ pushd cmake/build
+  $ cmake -DgRPC_INSTALL=ON \
+        -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+        ../..
+  $ make -j 4
+  $ make install
+  $ popd
+  ```
+
+- Windows
+
+  ```sh
+  > mkdir "cmake\build"
+  > pushd "cmake\build"
+  > cmake -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=%MY_INSTALL_DIR% -DgRPC_BUILD_TESTS=OFF ..\..
+  > cmake --build . --config Release --target install -j 4
+  > popd
+  ```
 
 {{% alert title="Important" color="warning" %}}
   We **strongly** encourage you to install gRPC _locally_ &mdash; using an
@@ -145,12 +183,24 @@ the steps of the previous section.
 
  2. Build the example using `cmake`:
 
-    ```sh
-    $ mkdir -p cmake/build
-    $ pushd cmake/build
-    $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
-    $ make -j 4
-    ```
+    - Linux & macOS
+
+      ```sh
+      $ mkdir -p cmake/build
+      $ pushd cmake/build
+      $ cmake -DCMAKE_PREFIX_PATH=$MY_INSTALL_DIR ../..
+      $ make -j 4
+      ```
+
+    - Windows
+
+      ```sh
+      > mkdir "cmake\build"
+      > pushd "cmake\build"
+      > cmake -DCMAKE_INSTALL_PREFIX=%MY_INSTALL_DIR% ..\..
+      > cmake --build . --config Release -j 4
+      > popd
+      ```
 
     {{% alert title="Note" color="info" %}}
   **Getting build failures?** Most issues, at this point, are the result of a
@@ -239,8 +289,16 @@ proto file.
 
 From the example **build** directory `examples/cpp/helloworld/cmake/build`, run:
 
+- Linux & macOS
+
 ```sh
 $ make -j 4
+```
+
+- Windows
+
+```sh
+> cmake --build . --config Release -j 4
 ```
 
 This regenerates `helloworld.pb.{h,cc}` and `helloworld.grpc.pb.{h,cc}`, which
@@ -329,8 +387,14 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 
  1. Build the client and server after having made changes:
 
+    - Linux & macOS
     ```sh
     $ make -j 4
+    ```
+
+    - Windows
+    ```sh
+    > cmake --build . --config Release -j 4
     ```
 
  2. Run the server:
