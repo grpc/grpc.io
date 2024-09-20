@@ -3,40 +3,27 @@ title: Community
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
-      [<i class="fab fa-twitter hk-no-external-icon"></i>Twitter][@grpcio]
-    desc: >
-      Follow us at [@grpcio][] for real-time news on blogs posts, events, and
-      more.
-  - title: >
       [<i class="fab fa-google hk-no-external-icon"></i>Google Group][grpc-io]
     desc: >
       Join the [grpc-io][] forum to ask questions and get the latest
       developer news, including [gRFCs][].
-other_channels:
   - title: >
-      [<i class="fab fa-gitter hk-no-external-icon"></i>Gitter][grpc/grpc]
+      [<i class="fab fa-twitter hk-no-external-icon"></i>Twitter][@grpcio]
     desc: >
-      Chat with other gRPC developers in the [grpc/grpc][] community.
+      Follow us at [@grpcio][] for real-time news on blogs posts, events, and
+      more.
+other_channels:
   - title: >
       [<i class="fab fa-stack-overflow hk-no-external-icon"></i>Stack Overflow][grpc-tag]
     desc: >
       Ask technical questions about [gRPC][grpc-tag] & [protoc,][protoc-tag] and
       find answers.
-  - title: >
-      [<i class="fab fa-reddit hk-no-external-icon"></i>Reddit][r/grpc]
-    desc: >
-      Consult the [r/grpc][] subreddit for discussions related to gRPC.
 community_resources:
   - title: >
       [<i class="fab fa-meetup hk-no-external-icon"></i>Meetup][gRPCio]
     desc: >
       Mark your [calendars][calendar] and
       join us [online][gRPCio] for project updates, live demos, and more.
-  - title: >
-      [<i class="fas fa-file-alt hk-no-external-icon"></i>Meeting doc][meeting-doc]
-    desc: >
-      Consult the [gRPC Community Meeting Working Doc][meeting-doc] for meeting
-      details.
   - title: >
       [<i class="fab fa-youtube hk-no-external-icon"></i>YouTube][grpc-youtube]
     desc: >
