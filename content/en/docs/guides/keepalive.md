@@ -12,6 +12,8 @@ HTTP/2 PING-based keepalives are a way to keep an HTTP/2 connection alive even w
   There is a related but separate concern called [Health Checking]. Health checking allows a server to signal whether a *service* is healthy while keepalive is only about the *connection*.
 {{% /alert %}}
 
+{{< youtube id="yPNHn6lXndo" class="youtube-video" title="gRPC Keepalive" >}}
+
 ### Background
 
 [TCP keepalive] is a well-known method of maintaining connections and detecting broken connections. When TCP keepalive was enabled, either side of the connection can send redundant packets. Once ACKed by the other side, the connection will be considered as good. If no ACK is received after repeated attempts, the connection is deemed broken.
