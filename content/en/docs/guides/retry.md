@@ -27,9 +27,10 @@ The graph below shows architectural overview of gRPC retry internal.
 ```mermaid
 sequenceDiagram
   Application ->> gRPC Client: Configure retry policy. <br> Send request to dns:///my-service
-  gRPC Client ->> Server: Create retry attempt 1 
+  gRPC Client ->> gRPC Client: Save message
+  gRPC Client ->> Server: Create initial attempt
   Server -->> gRPC Client : RPC closed with error 
-  gRPC Client ->> Server: Create retry attempt 2 
+  gRPC Client ->> Server: Create retry attempt 1 
   Server -->> gRPC Client: Successful 
   gRPC Client ->> Application: No more retry. Proceed.
 ```
