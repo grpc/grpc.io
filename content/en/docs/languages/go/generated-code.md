@@ -34,68 +34,54 @@ In this context, `MsgA` is the protobuf message sent from the client, and `MsgB`
 ### Server-streaming methods
 
 These methods have the following signature on the generated service interface:
+`Foo(*MsgA, grpc.ServerStreamingServer[*MsgB]) error`
 
-`Foo(*MsgA, <ServiceName>_FooServer) error`
+In this context, `MsgA` is the single request from the client, and , and `grpc.ServerStreamingServer` represents the  server side of server-to-client stream of response type `MsgB`.
 
-In this context, `MsgA` is the single request from the client, and the `<ServiceName>_FooServer` parameter represents the server-to-client stream
-of `MsgB` messages.
-
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+`<ServiceName>_FooServer` has a  `grpc.SreverStreamingServer` interface that takes `MsgB` i.e. the response type as the input:
 
 ```go
-type <ServiceName>_FooServer interface {
-	Send(*MsgB) error
-	grpc.ServerStream
-}
+type <ServiceName>_FooServer = grpc.ServerStreamingServer[*MsgB]
 ```
 
-The server-side handler can send a stream of protobuf messages to the client through this parameter's `Send` method. End-of-stream for the server-to-client
-stream is caused by the `return` of the handler method.
+The `grpc.SreverStreamingServer` has a `Send(*MsgB)` method and has `ServerStream` embedded in it.
+The server-side handler can send a stream of protobuf messages to the client through this parameter’s `Send` method. End-of-stream for the server-to-client stream is caused by the return of the handler method.
 
 ### Client-streaming methods
 
 These methods have the following signature on the generated service interface:
 
-`Foo(<ServiceName>_FooServer) error`
+`Foo(grpc.ClientStreamingServer[*MsgA, *MsgB]) error`
 
-In this context, `<ServiceName>_FooServer` can be used both to read the client-to-server message stream and to send the single server response message.
+Where `MsgA` is the message type of the stream sent from client-to-server and `MsgB` is the type of response from server to client.
 
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+In this context, `grpc.ClientStreamingServer` can be used both to read the client-to-server message stream and to send the single server response message.
+
+`<ServiceName>_FooServer` has a `grpc.ClientStreamingServer` interface that takes `MsgA` and `MsgB` as input:
 
 ```go
-type <ServiceName>_FooServer interface {
-	SendAndClose(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ServerStream
-}
+type <ServiceName>_FooServer = grpc.ClientStreamingServer[*MsgA, *MsgB]
 ```
 
-The server-side handler can repeatedly call `Recv` on this parameter in order to receive the full stream of
-messages from the client. `Recv` returns `(nil, io.EOF)` once it has reached the end of the stream.
-The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter.
-Note that `SendAndClose` must be called once and only once.
+The `grpc.ClientStreamingServer` has two methods `Recv()` and `SendAndClose(*MsgB)` , has an embedded `ServerStream`. The server-side handler can repeatedly call `Recv` on `<ServiceName>_FooServer`  in order to receive the full stream of messages from the client. `Recv` returns `(nil, io.EOF)` once it has reached the end of the stream. The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter. Note that `SendAndClose` must be called once and only once.
 
 ### Bidi-streaming methods
 
 These methods have the following signature on the generated service interface:
 
-`Foo(<ServiceName>_FooServer) error`
+`Foo(grpc.BidiStreamingServer[*MsgA, *MsgB]) error`
 
-In this context, `<ServiceName>_FooServer` can be used to access both the client-to-server message stream and the server-to-client message stream.
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+Where `MsgA` is the message type of the stream sent from client-to-server and `MsgB` is the type of stream from server-to-client.
+
+In this context, `grpc.BidiStreamingServer` can be used to access both the client-to-server message stream and the server-to-client message stream. 
+
+`<ServiceName>_FooServer` has a `grpc.BidiStreamingServer` interface as follows:
 
 ```go
-type <ServiceName>_FooServer interface {
-	Send(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ServerStream
-}
+type <ServiceName>_FooServer = grpc.BidiStreamingServer[*MsgA, *MsgB]
 ```
 
-The server-side handler can repeatedly call `Recv` on this parameter in order to read the client-to-server message stream.
-`Recv` returns `(nil, io.EOF)` once it has reached the end of the client-to-server stream.
-The response server-to-client message stream is sent by repeatedly calling the `Send` method of on this `ServiceName>_FooServer` parameter.
-End-of-stream for the server-to-client stream is indicated by the `return` of the bidi method handler.
+The `grpc.BidiStreamingServer` has two methods  `Recv()`  and `Send()` and `ServerStream` embedded in it. The server-side handler can repeatedly call `Recv` on this parameter in order to read the client-to-server message stream. `Recv` returns `(nil, io.EOF)` once it has reached the end of the client-to-server stream. The response server-to-client message stream is sent by repeatedly calling the `Send` method of on this `<ServiceName>_FooServer` parameter. End-of-stream for the server-to-client stream is indicated by the return of the bidi method handler.
 
 ## Methods on generated client interfaces
 
@@ -114,71 +100,51 @@ In this context, `MsgA` is the single request from client to server, and `MsgB` 
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (grpc.ServerStreamClient[*MsgB], error)`
 
-In this context, `<ServiceName>_FooClient` represents the server-to-client `stream` of `MsgB` messages.
+In this context, `grpc.ServerStreamClient`  represents the client side of server-to-client stream of `MsgB` messages.
 
-This stream has an embedded `grpc.ClientStream` and the following interface:
+The `<ServiceName>_FooClient` has a `grpc.ServerStreamClient` interface:
 
-```go
-type <ServiceName>_FooClient interface {
-	Recv() (*MsgB, error)
-	grpc.ClientStream
-}
+```go 
+type <ServiceName>_FooClient = grpc.ServerStreamingClient[*MsgB] 
 ```
 
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` <i>stream</i> in order to read the server-to-client response stream.
-This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
+`grpc.ServerStreamingClient` has an embedded `ClientStream` and a `Recv()` method. The stream begins when the client calls the `Foo` method on the stub. The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` stream in order to read the server-to-client response stream. This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
 
 ### Client-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[*MsgA, *MsgB], error)`
 
-In this context, `<ServiceName>_FooClient` represents the client-to-server `stream` of `MsgA` messages.
+In this context, `grpc.ClientStreamingClient` represents the client side of client-to-server stream of `MsgA` messages. It can be used both to send the client-to-server message stream and to receive the single server response message.
 
-`<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
+`<ServiceName>_FooServe`r has a `grpc.ClientStreamingClient` interface that takes `MsgA` and `MsgB` as input:
 
-```go
-type <ServiceName>_FooClient interface {
-	Send(*MsgA) error
-	CloseAndRecv() (*MsgB, error)
-	grpc.ClientStream
-}
+```go 
+type <ServiceName>_FooClient = grpc.ClientStreamingClient[*MsgA, *MsgB]
 ```
 
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<ServiceName>_FooClient` stream in order to send the client-to-server message stream.
-The `CloseAndRecv` method on this stream must be called once and only once, in order to both close the client-to-server stream
-and receive the single response message from the server.
+The stream begins when the client calls the `Foo` method on the stub. The `grpc.ClientStreamingClient` interface has an embedded `ClientStream` as well as `Send()` and `CloseAndRecv()` methods. The client can then repeatedly call the `Send` method on the returned `<ServiceName>_FooClient` stream in order to send the client-to-server message stream. The `CloseAndRecv` method on this stream must be called once and only once, in order to both close the client-to-server stream and receive the single response message from the server.
 
 ### Bidi-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[*MsgA, *MsgB], error)`
 
-In this context, `<ServiceName>_FooClient` represents both the client-to-server and server-to-client message streams.
+In this context, `grpc.BidiStreamingClien`t represents both the client-to-server and server-to-client message streams.
 
-`<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
+`<ServiceName>_FooClient` has a `grpc.BidiStreamingClient` interface:
 
 ```go
-type <ServiceName>_FooClient interface {
-	Send(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ClientStream
-}
+type <ServiceName>_FooClient = grpc.BidiStreamingClient[*MsgA, *MsgB]
 ```
 
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the
-client-to-server message stream. The client can also repeatedly call `Recv` on this stream in order to
-receive the full server-to-client message stream.
+The stream begins when the client calls the `Foo` method on the stub. The `grpc.BidiStreamingClient` interface has an embedded `ClientStream` as well as `Send()` and `CloseAndRecv()` methods. The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the client-to-server message stream. The client can also repeatedly call `Recv` on this stream in order to receive the full server-to-client message stream.
 
-End-of-stream for the server-to-client stream is indicated by a return value of `(nil, io.EOF)` on the `Recv` method of the stream.
-End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
+End-of-stream for the server-to-client stream is indicated by a return value of `(nil, io.EOF)` on the Recv method of the stream. End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ## Packages and Namespaces
 
