@@ -11,7 +11,6 @@ content:
   - reference:
     - "[API](api/)"
     - "[Generated code](generated-code/)"
-    - "[Generated code(non-generic)](generated-code-non-generic/)"
   - other:
     - $src_repo_link
     - "[Performance benchmark](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5180705743044608)"
