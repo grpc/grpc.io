@@ -103,4 +103,4 @@ works the same as when the `protoc-gen-go` plugin is used without the `grpc` plu
 So, for example, if `foo.proto` declares itself to be in `package foo`, then the generated `foo.pb.go` file will also be in
 the Go `package foo`.
 
-For reference to the generated code that does not use generic interfaces for streams (i.e., the older version of the generated code), please refer to [old generated code]().
+For reference to the generated code that does not use generic interfaces for streams (i.e., the older version of the generated code), please refer to [generated code(non-generic)](generated-code-non-generic/).
