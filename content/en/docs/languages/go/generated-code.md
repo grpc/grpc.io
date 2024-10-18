@@ -105,10 +105,7 @@ the Go `package foo`.
 
 For reference to the generated code that does not use generic interfaces for streams see below.
 
----
-title: Generated-code(non-generic) reference
-weight: 95
----
+# Generated-code(non-generic) reference
 
 This page describes the code generated with the [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc), `protoc-gen-go-grpc`,
 when compiling `.proto` files with `protoc`.
