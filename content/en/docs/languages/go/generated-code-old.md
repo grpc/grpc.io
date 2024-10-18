@@ -1,6 +1,6 @@
 ---
-title: Generated-code reference
-linkTitle: Generated code
+title: Generated-code-old reference
+linkTitle: Generated code old
 weight: 95
 ---
 
