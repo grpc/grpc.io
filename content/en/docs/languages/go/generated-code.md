@@ -108,7 +108,7 @@ For reference to the generated code that does not use generic interfaces for str
 # Generated-code(non-generic) reference
 
 This describes the code generated with the [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc), `protoc-gen-go-grpc`,
-when compiling `.proto` files with `protoc` with the generic stream interfaces.
+when compiling `.proto` files with `protoc` without the generics.
 
 
 ## Methods on generated server interfaces
