@@ -1,6 +1,6 @@
 ---
-title: Generated-code(non-generic) reference    
-LinkTitle: Generated-code(non-generic) reference
+title: Generated-code (legacy non-generic) reference    
+LinkTitle: Generated-code (legacy)
 weight: 95
 ---
 

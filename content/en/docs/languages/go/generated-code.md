@@ -3,10 +3,7 @@ title: Generated-code reference
 linkTitle: Generated code
 weight: 95
 ---
-The following documents the latest generated code guide which uses generics.  For documentation about the older version of generated code that did not use generics, please see the doc for [old generated code](/docs/languages/go/generated-code-old).
-
-This page describes the code generated with the [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc), `protoc-gen-go-grpc`,
-when compiling `.proto` files with `protoc`.
+This page describes the code generated when compiling `.proto` files with `protoc`, using the `protoc-gen-go-grpc` [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc). This latest version of generated code uses generics by default. If you're working with older generated code that doesn't use generics, you can find the relevant documentation [here](/docs/languages/go/generated-code-old).  While we encourage using this latest version with generics, you can temporarily revert to the old behavior by setting the `useGenericStreams` flag to `false`.
 
 You can find out how to define a gRPC service in a `.proto` file in [Service definition](/docs/what-is-grpc/core-concepts/#service-definition).
 
@@ -28,24 +25,24 @@ The application can define a concrete implementation of the `BarServer` interfac
 
 These methods have the following signature on the generated service interface:
 
-`Foo(context.Context, *MsgA) (*MsgB, error)`
+`Foo(context.Context, *RequestMsg) (*ResponseMsg, error)`
 
-In this context, `MsgA` is the protobuf message sent from the client, and `MsgB` is the protobuf message sent back from the server.
+In this context, `RequestMsg` is the protobuf message sent from the client, and `ResponseMsg` is the protobuf message sent back from the server.
 
 ### Server-streaming methods
 
 These methods have the following signature on the generated service interface:
-`Foo(*MsgA, grpc.ServerStreamingServer[*MsgB]) error`
+`Foo(*RequestMsg, grpc.ServerStreamingServer[*ResponseMsg]) error`
 
-In this context, `MsgA` is the single request from the client, and [`grpc.ServerStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingServer) represents the server side of server-to-client stream of response type `MsgB`.
+In this context, `RequestMsg` is the single request from the client, and [`grpc.ServerStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingServer) represents the server side of server-to-client stream of response type `ResponseMsg`.
 
 ### Client-streaming methods
 
 These methods have the following signature on the generated service interface:
 
-`Foo(grpc.ClientStreamingServer[*MsgA, *MsgB]) error`
+`Foo(grpc.ClientStreamingServer[*RequestMsg, *ResponseMsg]) error`
 
-Where `MsgA` is the message type of the stream, sent from client-to-server and `MsgB` is the type of response from server to client.
+Where `RequestMsg` is the message type of the stream, sent from client-to-server and `ResponseMsg` is the type of response from server to client.
 
 In this context, [`grpc.ClientStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingServer) can be used both to read the client-to-server message stream and to send the single server response message.
 
@@ -53,9 +50,9 @@ In this context, [`grpc.ClientStreamingServer`](https://pkg.go.dev/google.golang
 
 These methods have the following signature on the generated service interface:
 
-`Foo(grpc.BidiStreamingServer[*MsgA, *MsgB]) error`
+`Foo(grpc.BidiStreamingServer[*RequestMsg, *ResponseMsg]) error`
 
-Where `MsgA` is the message type of the stream, sent from client-to-server and `MsgB` is the type of stream from server-to-client.
+Where `RequestMsg` is the message type of the stream, sent from client-to-server and `ResponseMsg` is the type of stream from server-to-client.
 
 In this context, [`grpc.BidiStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingServer) can be used to access both the client-to-server message stream and the server-to-client message stream. 
 
@@ -68,31 +65,31 @@ returns a concrete implementation of the `BarClient` interface (this concrete im
 
 These methods have the following signature on the generated client stub:
 
-`(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (*MsgB, error)`
+`(ctx context.Context, in *RequestMsg, opts ...grpc.CallOption) (*ResponseMsg, error)`
 
-In this context, `MsgA` is the single request from client to server, and `MsgB` contains the response sent back from the server.
+In this context, `RequestMsg` is the single request from client to server, and `ResponseMsg` contains the response sent back from the server.
 
 ### Server-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (grpc.ServerStreamingClient[*MsgB], error)`
+`Foo(ctx context.Context, in *RequestMsg, opts ...grpc.CallOption) (grpc.ServerStreamingClient[*ResponseMsg], error)`
 
-In this context, [`grpc.ServerStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingClient) represents the client side of server-to-client stream of `MsgB` messages.
+In this context, [`grpc.ServerStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingClient) represents the client side of server-to-client stream of `ResponseMsg` messages.
 
 ### Client-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[*MsgA, *MsgB], error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[*RequestMsg, *ResponseMsg], error)`
 
-In this context, [`grpc.ClientStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingClient) represents the client side of client-to-server stream of `MsgA` messages. It can be used both to send the client-to-server message stream and to receive the single server response message.
+In this context, [`grpc.ClientStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingClient) represents the client side of client-to-server stream of `RequestMsg` messages. It can be used both to send the client-to-server message stream and to receive the single server response message.
 
 ### Bidi-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[*MsgA, *MsgB], error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[*RequestMsg, *ResponseMsg], error)`
 
 In this context, [`grpc.BidiStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingClient) represents both the client-to-server and server-to-client message streams.
 
