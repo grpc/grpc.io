@@ -7,6 +7,8 @@ This page describes the code generated when compiling `.proto` files with `proto
 
 You can find out how to define a gRPC service in a `.proto` file in [Service definition](/docs/what-is-grpc/core-concepts/#service-definition).
 
+To implement streaming in gRPC, refer directly to the [ServerStream](https://pkg.go.dev/google.golang.org/grpc#ServerStream) and [ClientStream](https://pkg.go.dev/google.golang.org/grpc#ClientStream) documentation, which provides comprehensive instructions for effectively using these types in your service methods.
+
 <p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
 to be run on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
 so e.g. <i>individual streams</i> do not support <i>concurrent reads</i> or <i>concurrent writes</i> (but reads are safely concurrent <i>with</i> writes).
