@@ -2,7 +2,7 @@
 title: Performance Best Practices
 description: A user guide of both general and language-specific best practices to improve performance.
 ---
-
+{{< youtube id="uQh9ZVGkrak" class="youtube-video" title="" >}}
 ### General
 
 *   Always **re-use stubs and channels** when possible.

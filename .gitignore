@@ -21,3 +21,6 @@ $RECYCLE.BIN/
 # Link checker
 bin/
 tmp/
+
+# Local Netlify folder
+.netlify
