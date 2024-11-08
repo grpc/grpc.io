@@ -4,7 +4,7 @@ description: >-
   Explains how custom load balancing policies can help optimize load balancing
   under unique circumstances.
 ---
-{{< youtube id="G6PRjmXuBG8" class="youtube-video" title="gRPC Weighted Round Robin LB Policy" >}}
+{{< youtube id="G6PRjmXuBG8" class="youtube-video" title="Load Balancing in gRPC" >}}
 ### Overview
 
 One of the key features of gRPC is load balancing, which allows requests from

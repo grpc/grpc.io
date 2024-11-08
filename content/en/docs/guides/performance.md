@@ -2,7 +2,7 @@
 title: Performance Best Practices
 description: A user guide of both general and language-specific best practices to improve performance.
 ---
-{{< youtube id="uQh9ZVGkrak" class="youtube-video" title="" >}}
+{{< youtube id="uQh9ZVGkrak" class="youtube-video" title="gRPC Performance and Testing: a Maintainer Perspective" >}}
 ### General
 
 *   Always **re-use stubs and channels** when possible.

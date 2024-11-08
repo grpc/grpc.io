@@ -3,7 +3,7 @@ title: Metadata
 description: >-
   Explains what metadata is, how it is transmitted, and what it is used for.
 ---
-{{< youtube id="psYQFbPgIOI" class="youtube-video" title="gRPC in 5 minutes" >}}
+{{< youtube id="psYQFbPgIOI" class="youtube-video" title="gRPC metadata limits:The Good, The Bad and The Ugly" >}}
 ### Overview
 
 Metadata is a side channel that allows clients and servers to provide

@@ -53,7 +53,7 @@ backend services.
     <div class="video-wrapper">
         <iframe 
             src="https://www.youtube.com/embed/5dMK5OW6WSw" 
-            title="YouTube video player 
+            title="Ten Years of gRPC" 
             frameborder="0" 
             allowfullscreen>
         </iframe>
