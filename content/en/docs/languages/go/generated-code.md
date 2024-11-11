@@ -3,9 +3,7 @@ title: Generated-code reference
 linkTitle: Generated code
 weight: 95
 ---
-
-This page describes the code generated with the [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc), `protoc-gen-go-grpc`,
-when compiling `.proto` files with `protoc`.
+This page describes the code generated when compiling `.proto` files with `protoc`, using the `protoc-gen-go-grpc` [grpc plugin](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc). This latest version of generated code uses generics by default. If you're working with older generated code that doesn't use generics, you can find the relevant documentation [here](/docs/languages/go/generated-code-old).  While we encourage using this latest version with generics, you can temporarily revert to the old behavior by setting the `useGenericStreams` flag to `false`.
 
 You can find out how to define a gRPC service in a `.proto` file in [Service definition](/docs/what-is-grpc/core-concepts/#service-definition).
 
@@ -27,75 +25,42 @@ The application can define a concrete implementation of the `BarServer` interfac
 
 These methods have the following signature on the generated service interface:
 
-`Foo(context.Context, *MsgA) (*MsgB, error)`
+`Foo(context.Context, *RequestMsg) (*ResponseMsg, error)`
 
-In this context, `MsgA` is the protobuf message sent from the client, and `MsgB` is the protobuf message sent back from the server.
+In this context, `RequestMsg` is the protobuf message sent from the client, and `ResponseMsg` is the protobuf message sent back from the server.
 
 ### Server-streaming methods
 
 These methods have the following signature on the generated service interface:
+`Foo(*RequestMsg, grpc.ServerStreamingServer[*ResponseMsg]) error`
 
-`Foo(*MsgA, <ServiceName>_FooServer) error`
+In this context, `RequestMsg` is the single request from the client, and [`grpc.ServerStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingServer) represents the server side of server-to-client stream of response type `ResponseMsg`.
 
-In this context, `MsgA` is the single request from the client, and the `<ServiceName>_FooServer` parameter represents the server-to-client stream
-of `MsgB` messages.
-
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
-
-```go
-type <ServiceName>_FooServer interface {
-	Send(*MsgB) error
-	grpc.ServerStream
-}
-```
-
-The server-side handler can send a stream of protobuf messages to the client through this parameter's `Send` method. End-of-stream for the server-to-client
-stream is caused by the `return` of the handler method.
+Refer to [`grpc.ServerStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingServer) documentation for detailed usage information.
 
 ### Client-streaming methods
 
 These methods have the following signature on the generated service interface:
 
-`Foo(<ServiceName>_FooServer) error`
+`Foo(grpc.ClientStreamingServer[*RequestMsg, *ResponseMsg]) error`
 
-In this context, `<ServiceName>_FooServer` can be used both to read the client-to-server message stream and to send the single server response message.
+Where `RequestMsg` is the message type of the stream, sent from client-to-server and `ResponseMsg` is the type of response from server to client.
 
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+In this context, [`grpc.ClientStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingServer) can be used both to read the client-to-server message stream and to send the single server response message.
 
-```go
-type <ServiceName>_FooServer interface {
-	SendAndClose(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ServerStream
-}
-```
-
-The server-side handler can repeatedly call `Recv` on this parameter in order to receive the full stream of
-messages from the client. `Recv` returns `(nil, io.EOF)` once it has reached the end of the stream.
-The single response message from the server is sent by calling the `SendAndClose` method on this `<ServiceName>_FooServer` parameter.
-Note that `SendAndClose` must be called once and only once.
+Refer to [`grpc.ClientStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingServer) documentation for detailed usage information.
 
 ### Bidi-streaming methods
 
 These methods have the following signature on the generated service interface:
 
-`Foo(<ServiceName>_FooServer) error`
+`Foo(grpc.BidiStreamingServer[*RequestMsg, *ResponseMsg]) error`
 
-In this context, `<ServiceName>_FooServer` can be used to access both the client-to-server message stream and the server-to-client message stream.
-`<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
+Where `RequestMsg` is the message type of the stream, sent from client-to-server and `ResponseMsg` is the type of stream from server-to-client.
 
-```go
-type <ServiceName>_FooServer interface {
-	Send(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ServerStream
-}
-```
+In this context, [`grpc.BidiStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingServer) can be used to access both the client-to-server message stream and the server-to-client message stream. 
 
-The server-side handler can repeatedly call `Recv` on this parameter in order to read the client-to-server message stream.
-`Recv` returns `(nil, io.EOF)` once it has reached the end of the client-to-server stream.
-The response server-to-client message stream is sent by repeatedly calling the `Send` method of on this `ServiceName>_FooServer` parameter.
-End-of-stream for the server-to-client stream is indicated by the `return` of the bidi method handler.
+Refer to [`grpc.BidiStreamingServer`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingServer) documentation for detailed usage information.
 
 ## Methods on generated client interfaces
 
@@ -106,79 +71,42 @@ returns a concrete implementation of the `BarClient` interface (this concrete im
 
 These methods have the following signature on the generated client stub:
 
-`(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (*MsgB, error)`
+`(ctx context.Context, in *RequestMsg, opts ...grpc.CallOption) (*ResponseMsg, error)`
 
-In this context, `MsgA` is the single request from client to server, and `MsgB` contains the response sent back from the server.
+In this context, `RequestMsg` is the single request from client to server, and `ResponseMsg` contains the response sent back from the server.
 
 ### Server-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, in *MsgA, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, in *RequestMsg, opts ...grpc.CallOption) (grpc.ServerStreamingClient[*ResponseMsg], error)`
 
-In this context, `<ServiceName>_FooClient` represents the server-to-client `stream` of `MsgB` messages.
+In this context, [`grpc.ServerStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingClient) represents the client side of server-to-client stream of `ResponseMsg` messages.
 
-This stream has an embedded `grpc.ClientStream` and the following interface:
+Refer to [`grpc.ServerStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ServerStreamingClient) documentation for detailed usage information.
 
-```go
-type <ServiceName>_FooClient interface {
-	Recv() (*MsgB, error)
-	grpc.ClientStream
-}
-```
-
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` <i>stream</i> in order to read the server-to-client response stream.
-This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
 
 ### Client-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[*RequestMsg, *ResponseMsg], error)`
 
-In this context, `<ServiceName>_FooClient` represents the client-to-server `stream` of `MsgA` messages.
+In this context, [`grpc.ClientStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingClient) represents the client side of client-to-server stream of `RequestMsg` messages. It can be used both to send the client-to-server message stream and to receive the single server response message.
 
-`<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
+Refer to [`grpc.ClientStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#ClientStreamingClient) documentation for detailed usage information.
 
-```go
-type <ServiceName>_FooClient interface {
-	Send(*MsgA) error
-	CloseAndRecv() (*MsgB, error)
-	grpc.ClientStream
-}
-```
-
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<ServiceName>_FooClient` stream in order to send the client-to-server message stream.
-The `CloseAndRecv` method on this stream must be called once and only once, in order to both close the client-to-server stream
-and receive the single response message from the server.
 
 ### Bidi-Streaming methods
 
 These methods have the following signature on the generated client stub:
 
-`Foo(ctx context.Context, opts ...grpc.CallOption) (<ServiceName>_FooClient, error)`
+`Foo(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[*RequestMsg, *ResponseMsg], error)`
 
-In this context, `<ServiceName>_FooClient` represents both the client-to-server and server-to-client message streams.
+In this context, [`grpc.BidiStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingClient) represents both the client-to-server and server-to-client message streams.
 
-`<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
+Refer to [`grpc.BidiStreamingClient`](https://pkg.go.dev/google.golang.org/grpc#BidiStreamingClient) documentation for detailed usage information.
 
-```go
-type <ServiceName>_FooClient interface {
-	Send(*MsgA) error
-	Recv() (*MsgB, error)
-	grpc.ClientStream
-}
-```
-
-The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the
-client-to-server message stream. The client can also repeatedly call `Recv` on this stream in order to
-receive the full server-to-client message stream.
-
-End-of-stream for the server-to-client stream is indicated by a return value of `(nil, io.EOF)` on the `Recv` method of the stream.
-End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ## Packages and Namespaces
 
