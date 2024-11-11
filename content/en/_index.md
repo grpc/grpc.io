@@ -63,5 +63,4 @@ backend services.
 {{< home/features >}}
 {{< home/used-by >}}
 {{< home/cncf >}}
-
 </div>
