@@ -19,6 +19,8 @@ menu:
 <div class="row">
 <div class="col-12 col-lg-8">
 
+{{< youtube id="5dMK5OW6WSw" class="youtube-video" title="Ten Years of gRPC" >}}
+
 gRPC is a modern open source high performance Remote Procedure Call (RPC)
 framework that can run in any environment. It can efficiently connect services
 in and across data centers with pluggable support for load balancing, tracing,

@@ -69,7 +69,15 @@ find developer stories for your [preferred language](/docs/languages/) on each
 </div>
 
 Other developer stories are provided next.
-
+- **Adapting our xDS control plane for proxyless gRPC**
+  <a class="o-icon" href="https://youtu.be/gc3kNMvgrHQ"><i class="fab fa-youtube"></i></a><br>
+  by Antoine Tollenaere, Datadog
+- **Building SpiceDB: a gRPC-first database**
+  <a class="o-icon" href="https://youtu.be/v_e2ExQwphQ"><i class="fab fa-youtube"></i></a><br>
+  by Jimmy Zelinskie, authzed
+- **Enhancing gRPC micro-services**
+  <a class="o-icon" href="https://youtu.be/GDJrw36wwWY"><i class="fab fa-youtube"></i></a><br>
+  by Holly Casaletto and Yucong Sun, Coinbase
 - **[Expedia Group Case Study: Bootiful APIs With GraphQL and Kotlin][Expedia]**,
   by [Anton Arhipov](https://blog.jetbrains.com/author/antonarhipov),
   [JetBrains](https://www.jetbrains.com/),

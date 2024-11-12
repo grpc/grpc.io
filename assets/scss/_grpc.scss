@@ -471,3 +471,24 @@ c - Component (Aware of its content/context...)
   height: 100%; 
   border: 0; 
 }
+
+.youtube-video-center {
+  display: flex;
+  justify-content: center;
+}
+
+.youtube-video-center .video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.youtube-video-center iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+

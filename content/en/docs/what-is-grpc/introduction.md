@@ -12,6 +12,8 @@ interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
 [select a language](/docs/languages/) and try its **Quick start**.
 
+{{< youtube id="njC24ts24Pg" class="youtube-video" title="gRPC in 5 minutes" >}}
+
 ## Overview
 
 In gRPC, a client application can directly call a method on a server application
@@ -31,8 +33,6 @@ written in any of gRPC's supported languages. So, for example, you can easily
 create a gRPC server in Java with clients in Go, Python, or Ruby. In addition,
 the latest Google APIs will have gRPC versions of their interfaces, letting you
 easily build Google functionality into your applications.
-
-{{< youtube id="cSGBbwvW1y4" class="youtube-video" title="getting started with gRPC" >}}
 
 ### Working with Protocol Buffers
 
