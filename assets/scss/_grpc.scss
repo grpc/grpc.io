@@ -167,6 +167,19 @@ body:not(.td-blog) .td-content:not(.list-page) {
   }
 }
 
+// Render the powershell > prefix indicator to enable easier copy of cli commands
+.td-content div.highlight pre {
+  padding-left: 0.5rem;
+  code.language-powershell:before {
+    content: ">";
+    margin-left: 0.5rem;
+  }
+  code.language-powershell span {
+    display: inline !important;
+    margin-left: 0.25rem;
+  }
+}
+
 /*
 The following contains some styles in use on the top-level pages
 (About, Community...). Bootstrap provides many responsive utilities

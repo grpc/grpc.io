@@ -26,37 +26,37 @@ example:
 - Linux / macOS
 
 ```sh
-$ export MY_INSTALL_DIR=$HOME/.local
+export MY_INSTALL_DIR=$HOME/.local
 ```
 
 Ensure that the directory exists:
 
 ```sh
-$ mkdir -p $MY_INSTALL_DIR
+mkdir -p $MY_INSTALL_DIR
 ```
 
 Add the local `bin` folder to your path variable, for example:
 
 ```sh
-$ export PATH="$MY_INSTALL_DIR/bin:$PATH"
+export PATH="$MY_INSTALL_DIR/bin:$PATH"
 ```
 
 - Windows
 
-```sh
-> set MY_INSTALL_DIR=%USERPROFILE%\cmake
+```powershell
+set MY_INSTALL_DIR=%USERPROFILE%\cmake
 ```
 
 Ensure that the directory exists:
 
-```
-> mkdir %INSTALL_DIR%
+```powershell
+mkdir %INSTALL_DIR%
 ```
 
 Add the local `bin` folder to your path variable, for example:
 
-```sh
-> set PATH=%PATH%;$MY_INSTALL_DIR\bin
+```powershell
+set PATH=%PATH%;$MY_INSTALL_DIR\bin
 ```
 
 #### Install cmake
@@ -87,7 +87,7 @@ following these instructions if you don't have it:
 Check the version of `cmake`:
 
 ```sh
-$ cmake --version
+cmake --version
 cmake version {{< param cmake-version >}}
 ```
 
@@ -96,9 +96,9 @@ can install a more recent version into your local installation directory as
 follows:
 
 ```sh
-$ wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-linux-x86_64.sh
-$ sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
-$ rm cmake-linux.sh
+wget -q -O cmake-linux.sh https://github.com/Kitware/CMake/releases/download/v{{< param cmake-version >}}/cmake-{{< param cmake-version >}}-linux-x86_64.sh
+sh cmake-linux.sh -- --skip-license --prefix=$MY_INSTALL_DIR
+rm cmake-linux.sh
 ```
 
 #### Install other required tools
@@ -122,7 +122,7 @@ Install the basic tools required to build gRPC:
 Clone the `grpc` repo and its submodules:
 
 ```sh
-$ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 ```
 #### Build and install gRPC and Protocol Buffers
 
@@ -291,14 +291,14 @@ From the example **build** directory `examples/cpp/helloworld/cmake/build`, run:
 
 - Linux & macOS
 
-```sh
-$ make -j 4
+```powershell
+make -j 4
 ```
 
 - Windows
 
-```sh
-> cmake --build . --config Release -j 4
+```powershell
+cmake --build . --config Release -j 4
 ```
 
 This regenerates `helloworld.pb.{h,cc}` and `helloworld.grpc.pb.{h,cc}`, which
