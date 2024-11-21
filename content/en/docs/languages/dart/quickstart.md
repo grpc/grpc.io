@@ -138,7 +138,7 @@ Before you can use the new service method, you need to recompile the updated
 proto file. From the `example/helloworld` directory, run the following command:
 
 ```sh
-$ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
+protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 ```
 
 You'll find the regenerated request and response classes, and client and server

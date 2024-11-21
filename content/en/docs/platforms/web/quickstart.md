@@ -69,7 +69,7 @@ Once you are done, shutdown the services that you launched earlier by running
 the following command:
 
 ```sh
-$ docker-compose down
+docker-compose down
 ```
 
 ### What is happening?

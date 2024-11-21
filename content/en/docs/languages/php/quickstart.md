@@ -113,7 +113,7 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the `grpc` root directory:
 
 ```sh
-$ protoc --proto_path=examples/protos \
+protoc --proto_path=examples/protos \
   --php_out=examples/php \
   --grpc_out=examples/php \
   --plugin=protoc-gen-grpc=bins/opt/grpc_php_plugin \
@@ -124,7 +124,7 @@ or running the helper script under the `grpc/example/php` directory if you build
 grpc-php-plugin by source:
 
 ```sh
-$ ./greeter_proto_gen.sh
+./greeter_proto_gen.sh
 ```
 
 This regenerates the protobuf files, which contain our generated client classes,

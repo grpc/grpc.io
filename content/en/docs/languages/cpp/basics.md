@@ -142,14 +142,14 @@ you want to run this yourself, make sure you've installed protoc and followed
 the gRPC code [installation instructions](https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/src/cpp/README.md#cmake) first):
 
 ```sh
-$ make route_guide.grpc.pb.o
+make route_guide.grpc.pb.o
 ```
 
 which actually runs:
 
 ```sh
-$ protoc -I ../../protos --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../protos/route_guide.proto
-$ protoc -I ../../protos --cpp_out=. ../../protos/route_guide.proto
+protoc -I ../../protos --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../protos/route_guide.proto
+protoc -I ../../protos --cpp_out=. ../../protos/route_guide.proto
 ```
 
 Running this command generates the following files in your current directory:
@@ -502,19 +502,19 @@ independently.
 Build the client and server:
 
 ```sh
-$ make
+make
 ```
 
 Run the server:
 
 ```sh
-$ ./route_guide_server --db_path=path/to/route_guide_db.json
+./route_guide_server --db_path=path/to/route_guide_db.json
 ```
 
 From a different terminal, run the client:
 
 ```sh
-$ ./route_guide_client --db_path=path/to/route_guide_db.json
+./route_guide_client --db_path=path/to/route_guide_db.json
 ```
 
 [build and locally install gRPC from source]: {{< relref "quickstart#install-grpc" >}}

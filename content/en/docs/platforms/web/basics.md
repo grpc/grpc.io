@@ -142,7 +142,7 @@ To generate the protobuf message classes from our `echo.proto`, run the
 following command:
 
 ```sh
-$ protoc -I=$DIR echo.proto \
+protoc -I=$DIR echo.proto \
   --js_out=import_style=commonjs:$OUT_DIR
 ```
 
@@ -155,14 +155,14 @@ protoc plugin. To compile the plugin `protoc-gen-grpc-web`, you need to run
 this from the repo's root directory:
 
 ```sh
-$ cd grpc-web
-$ sudo make install-plugin
+cd grpc-web
+sudo make install-plugin
 ```
 
 To generate the service client stub file, run this command:
 
 ```sh
-$ protoc -I=$DIR echo.proto \
+protoc -I=$DIR echo.proto \
   --grpc-web_out=import_style=commonjs,mode=grpcwebtext:$OUT_DIR
 ```
 
@@ -214,8 +214,8 @@ Finally, putting all these together, we can compile all the relevant JS files
 into one single JS library that can be used in the browser.
 
 ```sh
-$ npm install
-$ npx webpack client.js
+npm install
+npx webpack client.js
 ```
 
 Now embed `dist/main.js` into your project and see it in action!

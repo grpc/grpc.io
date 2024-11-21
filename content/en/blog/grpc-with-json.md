@@ -172,8 +172,8 @@ final class KvService extends KvGson.KeyValueServiceImplBase {
 After implementing all the methods on the server, we now have a fully functioning gRPC Java, JSON encoding RPC system.  And to show you there is nothing up my sleeve:
 
 ```sh
-$ ./gradlew :dependencies | grep -i proto
-$ # no proto deps!
+./gradlew :dependencies | grep -i proto
+# no proto deps!
 ```
 
 ## Optimizing the Code
@@ -181,8 +181,8 @@ $ # no proto deps!
 While Gson is not as fast as Protobuf, there's no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:
 
 ```sh
-$ ./gradlew installDist
-$ time ./build/install/kvstore/bin/kvstore
+./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
 
 INFO: Did 215.883 RPCs/s
 ```
@@ -213,8 +213,8 @@ That's not right!  Looking at a `RetrieveRequest`, we see that the key bytes are
 Using this in our marshallers, we can see a dramatic performance difference:
 
 ```sh
-$ ./gradlew installDist
-$ time ./build/install/kvstore/bin/kvstore
+./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
 
 INFO: Did 2,202.2 RPCs/s
 ```

@@ -13,17 +13,17 @@ weight: 10
 If necessary, upgrade your version of `pip`:
 
 ```sh
-$ python -m pip install --upgrade pip
+python -m pip install --upgrade pip
 ```
 
 If you cannot upgrade `pip` due to a system-owned installation, you can
 run the example in a virtualenv:
 
 ```sh
-$ python -m pip install virtualenv
-$ virtualenv venv
-$ source venv/bin/activate
-$ python -m pip install --upgrade pip
+python -m pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+python -m pip install --upgrade pip
 ```
 
 #### gRPC
@@ -31,13 +31,13 @@ $ python -m pip install --upgrade pip
 Install gRPC:
 
 ```sh
-$ python -m pip install grpcio
+python -m pip install grpcio
 ```
 
 Or, to install it system wide:
 
 ```sh
-$ sudo python -m pip install grpcio
+sudo python -m pip install grpcio
 ```
 
 #### gRPC tools
@@ -53,7 +53,7 @@ tutorials and your own projects.
 To install gRPC tools, run:
 
 ```sh
-$ python -m pip install grpcio-tools
+python -m pip install grpcio-tools
 ```
 
 ### Download the example
@@ -65,9 +65,9 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code:
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 # Navigate to the "hello, world" Python example:
-$ cd grpc/examples/python/helloworld
+cd grpc/examples/python/helloworld
 ```
 
 ### Run a gRPC application
@@ -151,7 +151,7 @@ service definition.
 From the `examples/python/helloworld` directory, run:
 
 ```sh
-$ python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
+python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
 ```
 
 This regenerates `helloworld_pb2.py` which contains our generated request and

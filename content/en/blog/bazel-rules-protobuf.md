@@ -41,8 +41,8 @@ To best follow along,
 and clone the rules_protobuf repository:
 
 ```sh
-~$ git clone https://github.com/pubref/rules_protobuf
-~$ cd rules_protobuf
+git clone https://github.com/pubref/rules_protobuf
+cd rules_protobuf
 ~/rules_protobuf$
 ```
 
@@ -89,7 +89,7 @@ Let's look at the file tree, showing only those folder having a
 `BUILD` file:
 
 ```diff
-$ tree -P 'BUILD|WORKSPACE' -I 'third_party|bzl' examples/
+tree -P 'BUILD|WORKSPACE' -I 'third_party|bzl' examples/
 .
 ├── BUILD
 ├── WORKSPACE
@@ -130,7 +130,7 @@ within the examples folder, and say what kind of thing it is in
 addition to its path label"*:
 
 
-```sh
+```bash
 ~/rules_protobuf$ bazel query //examples/... --output label_kind | sort | column -t
 
 cc_binary                   rule  //examples/helloworld/cpp:client
@@ -174,7 +174,7 @@ named as an external repository (more on this later) and we can also
 address targets in that workspace in the same way.  Here's a partial
 list:
 
-```sh
+```bash
 ~/rules_protobuf$ bazel query @com_github_google_protobuf//... --output label_kind | sort | column -t
 
 cc_binary       rule  @com_github_google_protobuf//:protoc
@@ -201,7 +201,7 @@ build all the dependent libraries, build a pristine executable binary
 from source, and call it (pass command line arguments to binary rules
 after the double-dash):
 
-```sh
+```bash
 ~/rules_protobuf$ bazel run @com_github_google_protobuf//:protoc -- --help
 Usage: /private/var/tmp/_bazel_pcj/63330772b4917b139280caef8bb81867/execroot/rules_protobuf/bazel-out/local-fastbuild/bin/external/com_github_google_protobuf/protoc [OPTION] PROTO_FILES
 Parse PROTO_FILES and generate output based on the options given:
@@ -322,7 +322,7 @@ via a compromised network.
 For example, we can peek at the generated BUILD file for the
 `maven_jar` guava dependency via:
 
-```sh
+```bash
 ~/rules_protobuf$ cat $(bazel info execution_root)/external/com_google_guava_guava/jar/BUILD
 ```
 
@@ -361,7 +361,7 @@ root package of the external workspace com_github_madler_zlib.*" Bazel
 reports this reverse dependency set.  We request the output in
 graphviz format and pipe this to dot to generate the figure:
 
-```sh
+```bash
 ~/rules_protobuf$ bazel query "rdeps(deps(//examples/...), @com_github_madler_zlib//:zlib)" \
                   --output graph | dot -Tpng -O
 ```
@@ -461,7 +461,7 @@ simultaneously:
 ```
 
 ```sh
-$ bazel build :pluriproto
+bazel build :pluriproto
 # ************************************************************
 cd $(bazel info execution_root) && bazel-out/host/bin/external/com_github_google_protobuf/protoc \
 --plugin=protoc-gen-grpc-java=bazel-out/host/genfiles/third_party/protoc_gen_grpc_java/protoc_gen_grpc_java \
@@ -637,7 +637,7 @@ This demo application can be cloned at
 Here's the directory layout and relevant BUILD files we'll be using:
 
 ```sh
-~$ mkdir grpc_greetertimer && cd grpc_greetertimer
+mkdir grpc_greetertimer && cd grpc_greetertimer
 ~/grpc_greetertimer$ mkdir -p proto/ go/ java/org/pubref/grpc/greetertimer/
 ~/grpc_greetertimer$ touch WORKSPACE
 ~/grpc_greetertimer$ touch proto/BUILD
@@ -795,7 +795,7 @@ go_binary(
 )
 ```
 
-```sh
+```bash
 ~/grpc_greetertimer$ bazel build //go:client
 ```
 
@@ -864,7 +864,7 @@ executable jar.  If these jar files have not yet been downloaded from
 maven central, they will be fetch as soon as we need them:
 
 
-```sh
+```bash
 ~/grpc_greetertimer$ bazel build java/org/pubref/grpc/greetertimer:server
 ~/grpc_greetertimer$ bazel build java/org/pubref/grpc/greetertimer:server_deploy.jar
 ```
@@ -878,7 +878,7 @@ that can be run independently in a jvm.
 
 First, we'll start a greeter server (one at a time):
 
-```sh
+```bash
 ~/grpc_greetertimer$ cd ~/rules_protobuf
 ~/rules_protobuf$ bazel run examples/helloworld/go/server
 ~/rules_protobuf$ bazel run examples/helloworld/cpp/server
@@ -889,7 +889,7 @@ INFO: Server started, listening on 50051
 
 In a separate terminal, start the greetertimer server:
 
-```sh
+```bash
 ~/grpc_greetertimer$ bazel build //java/org/pubref/grpc/greetertimer:server_deploy.jar
 ~/grpc_greetertimer$ java -jar bazel-bin/java/org/pubref/grpc/greetertimer/server_deploy.jar
 ```

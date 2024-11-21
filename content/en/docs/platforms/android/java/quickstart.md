@@ -236,7 +236,7 @@ To run the app on a physical device via USB debugging, you must configure USB
 port forwarding using the `adb` command as follows:
 
 ```sh
-$ adb reverse tcp:8080 tcp:50051
+adb reverse tcp:8080 tcp:50051
 ```
 
 This sets up port forwarding from port `8080` on the device to port `50051` on
