@@ -42,6 +42,11 @@ Linux or macOS using the following commands.
   brew install protobuf
   protoc --version  # Ensure compiler version is 3+
   ```
+- Windows, using [Winget][]
+
+  ```sh
+  > winget install protobuf
+  > protoc --version # Ensure compiler version is 3+
 
 <a name="binary-install"></a>
 
@@ -86,3 +91,4 @@ Buffers][download].
 [latest release]: https://protobuf.dev/downloads#release-packages
 [pb]: https://developers.google.com/protocol-buffers
 [proto3]: https://protobuf.dev/programming-guides/proto3
+[winget]: https://learn.microsoft.com/en-us/windows/package-manager/winget/
