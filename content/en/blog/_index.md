@@ -2,5 +2,5 @@
 title: gRPC Blog
 linkTitle: Blog
 menu:
-  main: {weight: 4}
+  main: {weight: 6}
 ---
