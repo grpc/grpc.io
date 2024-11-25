@@ -1,9 +1,9 @@
 ---
 title: Highlights in gRPConf 2024:Customer Showcase, Developer Engagement, Birds of Feathers Discussions and more.
-date: 2024-07-03
+date: 2024-11-25
 ---
 
-We loved hosting gRPConf 2024 last month in Sunnyvale, California. Thank you to 
+We loved hosting gRPConf 2024 this summer in Sunnyvale, California. Thank you to 
 hundreds of developers from Netflix, Apple, Turso, Microsoft, Cisco, Coinbase, 
 LinkedIn, Datadog, Mercari, Aspect Build, Signeen, Authzed, Reboot.dev, 
 to name a few, who joined our special event. We were overwhelmed by the 
