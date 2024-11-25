@@ -56,7 +56,10 @@ menu:
 
 - [Load Balancing in gRPC | Easwar Swaminathan, Google](https://youtu.be/G6PRjmXuBG8)
 
-  In this session, we will cover Basics of client-side load balancing support in gRPC, Overview of supported load balancing policies, Custom load balancing policy support in gRPC.
+  In this session, we will cover the following: 
+    - Basics of client-side load balancing support in gRPC: Here, we will cover the interaction between the gRPC channel and the load balancing policy. We will also go over the load balancing API in gRPC that allows our users to implement their own policies. 
+    - Overview of supported load balancing policies: gRPC ships with a bunch of load balancing policy implementations. We will go through a subset of them and talk about ideal deployment scenarios for each of them. 
+    - Custom load balancing policy support in gRPC: gRPC supports configuration of custom load balancing policies on the client by the control plane.
 
 <br>
 
