@@ -23,20 +23,20 @@ The example code is part of the [grpc][] repo.
  1. Clone the [grpc][] repo and its submodules:
 
     ```sh
-    $ git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+    git clone --recurse-submodules -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
     ```
 
  2. Change to the quick start example directory:
 
     ```sh
-    $ cd grpc/examples/php
+    cd grpc/examples/php
     ```
 
  3. Install the `grpc` composer package:
 
     ```sh
-    $ ./greeter_proto_gen.sh
-    $ composer install
+    ./greeter_proto_gen.sh
+    composer install
     ```
 
 ### Run the example
@@ -47,7 +47,7 @@ The example code is part of the [grpc][] repo.
  2. From the `examples/php` directory, run the PHP client:
 
     ```sh
-    $ ./run_greeter_client.sh
+    ./run_greeter_client.sh
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -113,7 +113,7 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the `grpc` root directory:
 
 ```sh
-$ protoc --proto_path=examples/protos \
+protoc --proto_path=examples/protos \
   --php_out=examples/php \
   --grpc_out=examples/php \
   --plugin=protoc-gen-grpc=bins/opt/grpc_php_plugin \
@@ -124,7 +124,7 @@ or running the helper script under the `grpc/example/php` directory if you build
 grpc-php-plugin by source:
 
 ```sh
-$ ./greeter_proto_gen.sh
+./greeter_proto_gen.sh
 ```
 
 This regenerates the protobuf files, which contain our generated client classes,
@@ -180,14 +180,14 @@ Just like we did before, from the `grpc-node/examples/helloworld/dynamic_codegen
  1. Run the server:
 
     ```sh
-    $ node greeter_server.js
+    node greeter_server.js
     ```
 
  2. From another terminal, from the `examples/php` directory,
     run the client:
 
     ```sh
-    $ ./run_greeter_client.sh
+    ./run_greeter_client.sh
     ```
 
 ### What's next

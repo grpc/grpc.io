@@ -22,13 +22,13 @@ spelling: cSpell:ignore Iprotos
       the following command:
 
       ```sh
-      $ dart pub global activate protoc_plugin
+      dart pub global activate protoc_plugin
       ```
 
    2. Update your `PATH` so that the `protoc` compiler can find the plugin:
 
       ```sh
-      $ export PATH="$PATH:$HOME/.pub-cache/bin"
+      export PATH="$PATH:$HOME/.pub-cache/bin"
       ```
 
 {{% alert title="Note" color="info" %}}
@@ -43,13 +43,13 @@ The example code is part of the [grpc-dart][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-dart
+    git clone https://github.com/grpc/grpc-dart
     ```
 
  2. Change to the quick start example directory:
 
     ```sh
-    $ cd grpc-dart/example/helloworld
+    cd grpc-dart/example/helloworld
     ```
 
 ### Run the example
@@ -59,19 +59,19 @@ From the `example/helloworld` directory:
  1. Download package dependencies:
 
     ```sh
-    $ dart pub get
+    dart pub get
     ```
 
  2. Run the server:
 
     ```sh
-    $ dart bin/server.dart
+    dart bin/server.dart
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ dart bin/client.dart
+    dart bin/client.dart
     Greeter client received: Hello, world!
     ```
 
@@ -138,7 +138,7 @@ Before you can use the new service method, you need to recompile the updated
 proto file. From the `example/helloworld` directory, run the following command:
 
 ```sh
-$ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
+protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 ```
 
 You'll find the regenerated request and response classes, and client and server
@@ -200,14 +200,14 @@ from the `example/helloworld` directory:
  1. Run the server:
 
     ```sh
-    $ dart bin/server.dart
+    dart bin/server.dart
     ```
 
  2. From another terminal, run the client. This time, add a name as a command-line
     argument:
 
     ```sh
-    $ dart bin/client.dart Alice
+    dart bin/client.dart Alice
     ```
 
     You'll see the following output:

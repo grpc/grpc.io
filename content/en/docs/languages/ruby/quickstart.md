@@ -13,7 +13,7 @@ weight: 10
 To install gRPC, run the following command:
 
 ```sh
-$ gem install grpc
+gem install grpc
 ```
 
 #### gRPC tools
@@ -29,7 +29,7 @@ tutorials and your own projects.
 To install gRPC tools, run the following command:
 
 ```sh
-$ gem install grpc-tools
+gem install grpc-tools
 ```
 
 ### Download the example
@@ -41,9 +41,9 @@ and other tutorials):
 
 ```sh
 # Clone the repository to get the example code:
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 # Navigate to the "hello, world" Ruby example:
-$ cd grpc/examples/ruby
+cd grpc/examples/ruby
 ```
 
 ### Run a gRPC application
@@ -53,13 +53,13 @@ From the `examples/ruby` directory:
  1. Run the server:
 
     ```sh
-    $ ruby greeter_server.rb
+    ruby greeter_server.rb
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ ruby greeter_client.rb
+    ruby greeter_client.rb
     ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -125,7 +125,7 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the `examples/ruby/` directory:
 
 ```sh
-$ grpc_tools_ruby_protoc -I ../protos --ruby_out=lib --grpc_out=lib ../protos/helloworld.proto
+grpc_tools_ruby_protoc -I ../protos --ruby_out=lib --grpc_out=lib ../protos/helloworld.proto
 ```
 
 This regenerates `lib/helloworld_services_pb.rb`, which contains our generated
@@ -170,13 +170,13 @@ Just like we did before, from the `examples/ruby` directory:
  1. Run the server:
 
     ```sh
-    $ ruby greeter_server.rb
+    ruby greeter_server.rb
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ ruby greeter_client.rb
+    ruby greeter_client.rb
     ```
 
 ### What's next

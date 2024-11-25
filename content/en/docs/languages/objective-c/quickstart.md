@@ -18,7 +18,7 @@ weight: 10
   Check the status and version of CocoaPods on your system:
 
   ```sh
-  $ pod --version
+  pod --version
   ```
 
   If CocoaPods is not installed, follow the [CocoaPods install
@@ -32,7 +32,7 @@ weight: 10
   Make sure the command line developer tools are installed:
 
   ```sh
-  $ xcode-select --install
+  xcode-select --install
   ```
 
 - [Homebrew](https://brew.sh/)
@@ -40,7 +40,7 @@ weight: 10
 - `autoconf`, `automake`, `libtool`, `pkg-config`
 
   ```sh
-  $ brew install autoconf automake libtool pkg-config
+  brew install autoconf automake libtool pkg-config
   ```
 
 ### Download the example
@@ -50,22 +50,22 @@ Quickstart. Copy the source code from GitHub
 [repository](https://github.com/grpc/grpc):
 
 ```sh
-$ git clone --recursive -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+git clone --recursive -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
 ```
 
 ### Install gRPC plugins and libraries
 
 ```sh
-$ cd grpc
-$ make
-$ [sudo] make install
+cd grpc
+make
+[sudo] make install
 ```
 
 ### Install protoc compiler
 
 ```sh
-$ brew tap grpc/grpc
-$ brew install protobuf
+brew tap grpc/grpc
+brew install protobuf
 ```
 
 ### Run the server:
@@ -75,9 +75,9 @@ Objective-C API supports creating gRPC clients but not gRPC servers. Therefore
 instead we build and run the C++ server in the same repository:
 
 ```sh
-$ cd examples/cpp/helloworld
-$ make
-$ ./greeter_server &
+cd examples/cpp/helloworld
+make
+./greeter_server &
 ```
 
 ### Run the client:
@@ -88,8 +88,8 @@ Have CocoaPods generate and install the client library from our .proto files, as
 well as installing several dependencies:
 
 ```sh
-$ cd ../../objective-c/helloworld
-$ pod install
+cd ../../objective-c/helloworld
+pod install
 ```
 
 (This might have to compile OpenSSL, which takes around 15 minutes if Cocoapods
@@ -100,7 +100,7 @@ doesn't have it yet on your computer's cache.)
 Open the Xcode workspace created by CocoaPods:
 
 ```sh
-$ open HelloWorld.xcworkspace
+open HelloWorld.xcworkspace
 ```
 
 This will open the app project with Xcode. Run the app in an iOS simulator
@@ -229,32 +229,32 @@ int main(int argc, char * argv[]) {
 
 First terminate the server process already running in the background:
 ```sh
-$ pkill greeter_server
+pkill greeter_server
 ```
 
 Then in directory `examples/cpp/helloworld`, build and run the updated server
 with the following commands:
 
 ```sh
-$ make
-$ ./greeter_server &
+make
+./greeter_server &
 ```
 
 Change directory to `examples/objective-c/helloworld`, then clean up and
 reinstall Pods for the client app with the following commands:
 
 ```sh
-$ rm -Rf Pods
-$ rm Podfile.lock
-$ rm -Rf HelloWorld.xcworkspace
-$ pod install
+rm -Rf Pods
+rm Podfile.lock
+rm -Rf HelloWorld.xcworkspace
+pod install
 ```
 
 This regenerates files in `Pods/HelloWorld` based on the new proto file we wrote
 above. Open the client Xcode project in Xcode:
 
 ```sh
-$ open HelloWorld.xcworkspace
+open HelloWorld.xcworkspace
 ```
 
 and run the client app. If you look at the console messages, You'll see two RPC calls,
@@ -267,8 +267,8 @@ When installing CocoaPods, error `activesupport requires Ruby version >= 2.2.2`
 : Install an older version of `activesupport`, then install CocoaPods:
 
   ```sh
-  $ [sudo] gem install activesupport -v 4.2.6
-  $ [sudo] gem install cocoapods
+  [sudo] gem install activesupport -v 4.2.6
+  [sudo] gem install cocoapods
   ```
 
 When installing dependencies with CocoaPods, error `Unable to find a specification for !ProtoCompiler-gRPCPlugin`

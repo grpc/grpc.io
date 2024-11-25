@@ -45,14 +45,14 @@ To download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.node >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc-node
-$ cd grpc
+git clone -b {{< param grpc_vers.node >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc-node
+cd grpc
 ```
 
 Then change your current directory to `examples`:
 
 ```sh
-$ cd examples
+cd examples
 ```
 
 You also should have the relevant tools installed to generate the server and
@@ -495,17 +495,17 @@ independently.
 Build the client and server:
 
 ```sh
-$ npm install
+npm install
 ```
 
 Run the server:
 
 ```sh
-$ node ./routeguide/dynamic_codegen/route_guide_server.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
+node ./routeguide/dynamic_codegen/route_guide_server.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
 ```
 
 From a different terminal, run the client:
 
 ```sh
-$ node ./routeguide/dynamic_codegen/route_guide_client.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
+node ./routeguide/dynamic_codegen/route_guide_client.js --db_path=./routeguide/dynamic_codegen/route_guide_db.json
 ```

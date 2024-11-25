@@ -24,13 +24,13 @@ This guide also does not cover anything on the server side. You can check the [J
 The example code for our tutorial is in [grpc-java's examples/android](https://github.com/grpc/grpc-java/tree/{{< param grpc_vers.java >}}/examples/android). To download the example, clone the `grpc-java` repository by running the following command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java.git
+git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java.git
 ```
 
 Then change your current directory to `grpc-java/examples/android`:
 
 ```sh
-$ cd grpc-java/examples/android
+cd grpc-java/examples/android
 ```
 
 You also should have the relevant tools installed to generate the client

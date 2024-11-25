@@ -316,6 +316,6 @@ If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:
 
 ```sh
-$ protoc --plugin=protoc-gen-grpc-java \
+protoc --plugin=protoc-gen-grpc-java \
     --grpc-java_out="$OUTPUT_FILE" --proto_path="$DIR_OF_PROTO_FILE" "$PROTO_FILE"
 ```

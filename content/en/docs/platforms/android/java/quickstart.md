@@ -18,7 +18,7 @@ weight: 10
       the following environment variable:
 
       ```sh
-      $ export ANDROID_SDK_ROOT="<path-to-your-android-sdk>"
+      export ANDROID_SDK_ROOT="<path-to-your-android-sdk>"
       ```
 
 - An android device set up for [USB debugging][] or an
@@ -38,13 +38,13 @@ The example code is part of the [grpc-java][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
+    git clone -b {{< param grpc_vers.java >}} https://github.com/grpc/grpc-java
     ```
 
  2. Change to the examples directory:
 
     ```sh
-    $ cd grpc-java/examples
+    cd grpc-java/examples
     ```
 
 ### Run the example
@@ -52,20 +52,20 @@ The example code is part of the [grpc-java][] repo.
  1. Compile the server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-server
+    ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
  3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ (cd android/helloworld; ../../gradlew installDebug)
+    (cd android/helloworld; ../../gradlew installDebug)
     ```
 
  4. Launch the client app from your device.
@@ -190,20 +190,20 @@ from the `examples` directory:
  1. Compile the server:
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./build/install/examples/bin/hello-world-server
+    ./build/install/examples/bin/hello-world-server
     INFO: Server started, listening on 50051
     ```
 
  3. From another terminal, build the client and install it on your device:
 
     ```sh
-    $ (cd android/helloworld; ../../gradlew installDebug)
+    (cd android/helloworld; ../../gradlew installDebug)
     ```
 
  4. Launch the client app from your device.
@@ -236,7 +236,7 @@ To run the app on a physical device via USB debugging, you must configure USB
 port forwarding using the `adb` command as follows:
 
 ```sh
-$ adb reverse tcp:8080 tcp:50051
+adb reverse tcp:8080 tcp:50051
 ```
 
 This sets up port forwarding from port `8080` on the device to port `50051` on

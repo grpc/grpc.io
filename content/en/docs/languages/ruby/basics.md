@@ -32,14 +32,14 @@ To download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
-$ cd grpc
+git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+cd grpc
 ```
 
 Then change your current directory to `examples/ruby/route_guide`:
 
 ```sh
-$ cd examples/ruby/route_guide
+cd examples/ruby/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and
@@ -143,7 +143,7 @@ If you want to run this yourself, make sure you have installed
 Once that's done, the following command can be used to generate the ruby code.
 
 ```sh
-$ grpc_tools_ruby_protoc -I ../../protos --ruby_out=../lib --grpc_out=../lib ../../protos/route_guide.proto
+grpc_tools_ruby_protoc -I ../../protos --ruby_out=../lib --grpc_out=../lib ../../protos/route_guide.proto
 ```
 
 Running this command regenerates the following files in the lib directory:
@@ -388,19 +388,19 @@ streams operate completely independently.
 Work from the example directory:
 
 ```sh
-$ cd examples/ruby
+cd examples/ruby
 ```
 
 Build the client and server:
 
 ```sh
-$ gem install bundler && bundle install
+gem install bundler && bundle install
 ```
 
 Run the server:
 
 ```sh
-$ bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
+bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
 ```
 
 {{% alert title="Note" color="info" %}}
@@ -410,5 +410,5 @@ The `route_guide_db.json` file is actually language-agnostic, it happens to be l
 From a different terminal, run the client:
 
 ```sh
-$ bundle exec route_guide/route_guide_client.rb ../python/route_guide/route_guide_db.json
+bundle exec route_guide/route_guide_client.rb ../python/route_guide/route_guide_db.json
 ```

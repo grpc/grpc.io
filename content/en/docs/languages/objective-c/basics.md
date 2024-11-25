@@ -34,15 +34,15 @@ To download the example, clone the `grpc` repository by running the following
 commands:
 
 ```sh
-$ git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
-$ cd grpc
-$ git submodule update --init
+git clone -b {{< param grpc_vers.core >}} --depth 1 --shallow-submodules https://github.com/grpc/grpc
+cd grpc
+git submodule update --init
 ```
 
 Then change your current directory to `examples/objective-c/route_guide`:
 
 ```sh
-$ cd examples/objective-c/route_guide
+cd examples/objective-c/route_guide
 ```
 
 Our example is a simple route mapping application that lets clients get
@@ -61,16 +61,16 @@ To try the sample app, we need a gRPC server running locally. Let's compile and
 run, for example, the C++ server in this repository:
 
 ```sh
-$ pushd ../../cpp/route_guide
-$ make
-$ ./route_guide_server &
-$ popd
+pushd ../../cpp/route_guide
+make
+./route_guide_server &
+popd
 ```
 
 Now have Cocoapods generate and install the client library for our .proto files:
 
 ```sh
-$ pod install
+pod install
 ```
 
 (This might have to compile OpenSSL, which takes around 15 minutes if Cocoapods
@@ -186,13 +186,13 @@ describes how to compile the generated files. You just need to run in this
 directory (`examples/objective-c/route_guide`):
 
 ```sh
-$ pod install
+pod install
 ```
 
 which, before installing the generated library in the XCode project of this sample, runs:
 
 ```sh
-$ protoc -I ../../protos --objc_out=Pods/RouteGuide --objcgrpc_out=Pods/RouteGuide ../../protos/route_guide.proto
+protoc -I ../../protos --objc_out=Pods/RouteGuide --objcgrpc_out=Pods/RouteGuide ../../protos/route_guide.proto
 ```
 
 Running this command generates the following files under `Pods/RouteGuide/`:

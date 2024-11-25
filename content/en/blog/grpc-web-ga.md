@@ -78,7 +78,7 @@ service TodoService {
 CommonJS client-side code can be generated from this `.proto` definition with the following command:
 
 ```sh
-$ protoc echo.proto \
+protoc echo.proto \
   --js_out=import_style=commonjs:./output \
   --grpc-web_out=import_style=commonjs:./output
 ```

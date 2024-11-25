@@ -170,8 +170,8 @@ per RPC, but a lot more are happening at the same time.  Let's see if our hypoth
 Before:
 
 ```sh
-$ ./gradlew installDist
-$ time ./build/install/kvstore/bin/kvstore
+./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
 Apr 16, 2018 10:38:42 AM io.grpc.examples.KvRunner runClient
 INFO: Did 24.067 RPCs/s
 

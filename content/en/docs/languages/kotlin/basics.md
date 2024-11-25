@@ -34,13 +34,13 @@ The example code is part of the [grpc-kotlin][] repo.
     the repo:
 
     ```sh
-    $ git clone --depth 1 https://github.com/grpc/grpc-kotlin
+    git clone --depth 1 https://github.com/grpc/grpc-kotlin
     ```
 
  2. Change to the examples directory:
 
     ```sh
-    $ cd grpc-kotlin/examples
+    cd grpc-kotlin/examples
     ```
 
 ### Defining the service
@@ -474,20 +474,20 @@ Run the following commands from the `grpc-kotlin/examples` directory:
  1. Compile the client and server
 
     ```sh
-    $ ./gradlew installDist
+    ./gradlew installDist
     ```
 
  2. Run the server:
 
     ```sh
-    $ ./server/build/install/server/bin/route-guide-server
+    ./server/build/install/server/bin/route-guide-server
     Server started, listening on 8980
     ```
 
  3. From another terminal, run the client:
 
     ```sh
-    $ ./client/build/install/client/bin/route-guide-client
+    ./client/build/install/client/bin/route-guide-client
     ```
 
 You'll see client output like this:

@@ -40,13 +40,13 @@ The example code is part of the [grpc-go][] repo.
     the repo:
 
     ```sh
-    $ git clone -b {{< param grpc_vers.go >}} --depth 1 https://github.com/grpc/grpc-go
+    git clone -b {{< param grpc_vers.go >}} --depth 1 https://github.com/grpc/grpc-go
     ```
 
  2. Change to the example directory:
 
     ```sh
-    $ cd grpc-go/examples/route_guide
+    cd grpc-go/examples/route_guide
     ```
 
 ### Defining the service
@@ -142,7 +142,7 @@ a special gRPC Go plugin. This is similar to what we did in the [Quick start][].
 From the `examples/route_guide` directory, run the following command:
 
 ```sh
-$ protoc --go_out=. --go_opt=paths=source_relative \
+protoc --go_out=. --go_opt=paths=source_relative \
     --go-grpc_out=. --go-grpc_opt=paths=source_relative \
     routeguide/route_guide.proto
 ```
@@ -566,13 +566,13 @@ Execute the following commands from the `examples/route_guide` directory:
  1. Run the server:
 
     ```sh
-    $ go run server/server.go
+    go run server/server.go
     ```
 
  2. From another terminal, run the client:
 
     ```sh
-    $ go run client/client.go
+    go run client/client.go
     ```
 
 You'll see output like this:

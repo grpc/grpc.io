@@ -20,13 +20,13 @@ The example code is part of the [grpc-web][] repo.
     the repo:
 
     ```sh
-    $ git clone https://github.com/grpc/grpc-web
+    git clone https://github.com/grpc/grpc-web
     ```
 
  2. Change to the repo's root directory:
 
     ```sh
-    $ cd grpc-web
+    cd grpc-web
     ```
 
 ### Run an Echo example from your browser!
@@ -36,7 +36,7 @@ From the `grpc-web` directory:
  1. Fetch required packages and tools:
 
     ```sh
-    $ docker-compose pull prereqs node-server envoy commonjs-client
+    docker-compose pull prereqs node-server envoy commonjs-client
     ```
 
     {{% alert title="Note" color="info" %}}
@@ -51,7 +51,7 @@ WARNING: Some service image(s) must be built from source
  2. Launch services as background processes:
 
     ```sh
-    $ docker-compose up -d node-server envoy commonjs-client
+    docker-compose up -d node-server envoy commonjs-client
     ```
 
  3. From your browser:
@@ -69,7 +69,7 @@ Once you are done, shutdown the services that you launched earlier by running
 the following command:
 
 ```sh
-$ docker-compose down
+docker-compose down
 ```
 
 ### What is happening?

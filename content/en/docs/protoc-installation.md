@@ -32,15 +32,15 @@ Linux or macOS using the following commands.
 - Linux, using `apt` or `apt-get`, for example:
 
   ```sh
-  $ apt install -y protobuf-compiler
-  $ protoc --version  # Ensure compiler version is 3+
+  apt install -y protobuf-compiler
+  protoc --version  # Ensure compiler version is 3+
   ```
 
 - MacOS, using [Homebrew][]:
 
   ```sh
-  $ brew install protobuf
-  $ protoc --version  # Ensure compiler version is 3+
+  brew install protobuf
+  protoc --version  # Ensure compiler version is 3+
   ```
 
 <a name="binary-install"></a>
@@ -56,22 +56,22 @@ binaries, follow these instructions:
     as the following:
 
     ```sh
-    $ PB_REL="https://github.com/protocolbuffers/protobuf/releases"
-    $ curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
+    PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+    curl -LO $PB_REL/download/v{{< param protoc-version >}}/protoc-{{< param protoc-version >}}-linux-x86_64.zip
     ```
 
  2. Unzip the file under `$HOME/.local` or a directory of your choice. For
     example:
 
     ```sh
-    $ unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/.local
+    unzip protoc-{{< param protoc-version >}}-linux-x86_64.zip -d $HOME/.local
     ```
 
  3. Update your environment's path variable to include the path to the
     `protoc` executable. For example:
 
     ```sh
-    $ export PATH="$PATH:$HOME/.local/bin"
+    export PATH="$PATH:$HOME/.local/bin"
     ```
 
 ### Other installation options

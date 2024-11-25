@@ -35,13 +35,13 @@ To download the example, clone the latest release in `grpc-java` repository by
 running the following command:
 
 ```sh
-$ git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java
+git clone -b {{< param grpc_vers.java >}} --depth 1 https://github.com/grpc/grpc-java
 ```
 
 Then change your current directory to `grpc-java/examples`:
 
 ```sh
-$ cd grpc-java/examples
+cd grpc-java/examples
 ```
 
 ### Defining the service

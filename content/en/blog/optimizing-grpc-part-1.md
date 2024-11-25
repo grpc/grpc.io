@@ -133,8 +133,8 @@ Since the code is safe and correct, let's see how it performs.  For my measureme
 Ubuntu system with a 12 core processor and 32 GB of memory.  Let's build and run the code:
 
 ```sh
-$ ./gradlew installDist
-$ time ./build/install/kvstore/bin/kvstore
+./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
 Feb 26, 2018 1:10:07 PM io.grpc.examples.KvRunner runClient
 INFO: Starting
 Feb 26, 2018 1:11:07 PM io.grpc.examples.KvRunner runClient
@@ -345,8 +345,8 @@ Now the code runs successfully, and doesn't run out of memory.
 Building and running the code again looks a lot better:
 
 ```sh
-$ ./gradlew installDist
-$ time ./build/install/kvstore/bin/kvstore
+./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
 Feb 26, 2018 2:40:47 PM io.grpc.examples.KvRunner runClient
 INFO: Starting
 Feb 26, 2018 2:41:47 PM io.grpc.examples.KvRunner runClient

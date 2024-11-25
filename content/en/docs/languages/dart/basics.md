@@ -33,13 +33,13 @@ To download the example, clone the `grpc-dart` repository by running the followi
 command:
 
 ```sh
-$ git clone --depth 1 https://github.com/grpc/grpc-dart
+git clone --depth 1 https://github.com/grpc/grpc-dart
 ```
 
 Then change your current directory to `grpc-dart/example/route_guide`:
 
 ```sh
-$ cd grpc-dart/example/route_guide
+cd grpc-dart/example/route_guide
 ```
 
 You should have already installed the tools needed to generate client and server
@@ -507,25 +507,25 @@ write in any order — the streams operate completely independently.
 Work from the example directory:
 
 ```sh
-$ cd example/route_guide
+cd example/route_guide
 ```
 
 Get packages:
 
 ```sh
-$ dart pub get
+dart pub get
 ```
 
 Run the server:
 
 ```sh
-$ dart bin/server.dart
+dart bin/server.dart
 ```
 
 From a different terminal, run the client:
 
 ```sh
-$ dart bin/client.dart
+dart bin/client.dart
 ```
 
 ### Reporting issues
