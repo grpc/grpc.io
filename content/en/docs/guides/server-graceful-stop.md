@@ -8,34 +8,36 @@ description: >-
 
 gRPC servers often need to shut down gracefully, ensuring that in-flight RPCs
 are completed within a reasonable timeframe and new RPCs are no longer
-accepted. "Graceful shutdown function" facilitates this process, allowing the server to
-transition smoothly without abruptly terminating active connections.
+accepted. The "Graceful shutdown function" facilitates this process, allowing
+the server to transition smoothly without abruptly terminating active
+connections.
 
-When "Graceful shutdown function" is called, the server immediately stops accepting new
-RPCs. In-flight RPCs are allowed to continue until they complete or a specified
-deadline is reached. Once all active RPCs finish or the deadline expires, the
-server shuts down completely.
+When the "Graceful shutdown function" is called, the server immediately stops
+accepting new RPCs. In-flight RPCs are allowed to continue until they complete
+or a specified deadline is reached. Once all active RPCs finish or the deadline
+expires, the server shuts down completely.
 
-### How to use Wait-for-Ready
+### How to do Graceful Server Shutdown
 
-The exact implementation of "Graceful shutdown function" varies depending on the
-programming language you are using. However, the general pattern
+The exact implementation of the "Graceful shutdown function" varies depending on
+the programming language you are using. However, the general pattern
 involves:
 
 - Initiating the graceful shutdown process by calling "Graceful shutdown
   Function" on your gRPC server object. This function blocks until all
-  currently running RPCs completed. This ensures that in-flight requests are
+  currently running RPCs complete. This ensures that in-flight requests are
   allowed to finish processing.
 - Specify a timeout period to limit the time allowed for in-progress RPCs to
-  finish. It's crucial to call "Forceful Shutdown Function" on server object
-  with a timeout before calling "Graceful shutdown function". This acts as a
-  safety net, ensuring that the server eventually shuts down even if some
-  in-flight RPCs don't complete within a reasonable timeframe. This prevents
-  indefinite blocking.
+  finish. It's crucial to call the "Forceful shutdown function" on the server
+  object with a timeout before calling the "Graceful shutdown function". This
+  acts as a safety net, ensuring that the server eventually shuts down even if
+  some in-flight RPCs don't complete within a reasonable timeframe. This
+  prevents indefinite blocking.
 
-The following shows the sequence of events that occur, when a server graceful
-stop is invoked, in-flight RPCs continue to prorcess but new RPCs are rejected.
-If all in-flight RPCs are not finished in time, server is forcefully shutdown.
+The following shows the sequence of events that occur, when a server's graceful
+stop is invoked, in-flight RPCs continue to prorcess, but new RPCs are
+rejected. If some in-flight RPCs are not finished in time, server is forcefully
+shutdown.
 ```mermaid
 sequenceDiagram
 Client->>Server: New RPC Request 1
