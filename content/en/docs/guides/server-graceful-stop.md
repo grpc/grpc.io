@@ -28,8 +28,9 @@ involves:
   currently running RPCs complete. This ensures that in-flight requests are
   allowed to finish processing.
 - Specify a timeout period to limit the time allowed for in-progress RPCs to
-  finish. It's crucial to call the "Forceful shutdown function" on the server
-  object with a timeout before calling the "Graceful shutdown function". This
+  finish. It's crucial to separately call the "Forceful shutdown function" on
+  the server object using a timer mechanism (depending on your language) to
+  trigger a forceful shutdown after a predefined duration. This
   acts as a safety net, ensuring that the server eventually shuts down even if
   some in-flight RPCs don't complete within a reasonable timeframe. This
   prevents indefinite blocking.
@@ -79,8 +80,9 @@ stateDiagram-v2
 
 | Language | Example           |
 |----------|-------------------|
-| Java     |                   |
+| Java     | [Java example]    |
 | Go       | [Go example]      |
 | Python   |                   |
 
 [Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/gracefulstop
+[Java example]: https://github.com/grpc/grpc-java/tree/master/examples/example-hostname/src/main/java/io/grpc/examples/hostname
