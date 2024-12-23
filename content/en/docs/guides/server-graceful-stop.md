@@ -1,8 +1,8 @@
 ---
 title: Graceful Shutdown
 description: >-
-  Explains how to gracefully shut down [or stop, if you prefer] a gRPC server
-  to avoid causing RPC failures for connected clients.
+  Explains how to gracefully shut down a gRPC server to avoid causing RPC
+  failures for connected clients.
 ---
 
 ### Overview
@@ -14,11 +14,11 @@ the server to transition smoothly without abruptly terminating active
 connections.
 
 When the "Graceful shutdown function" is called, the server immediately
-notifies all clients that they should stop sending new RPCs. Then after the
-clients have received that notification, the server will stop accepting new
-RPCs. In-flight RPCs are allowed to continue until they complete or a specified
-deadline is reached. Once all active RPCs finish or the deadline expires, the
-server shuts down completely.
+notifies all clients to stop sending new RPCs. Then after the clients have
+received that notification, the server will stop accepting new RPCs. In-flight
+RPCs are allowed to continue until they complete or a specified deadline is
+reached. Once all active RPCs finish or the deadline expires, the server shuts
+down completely.
 
 Because graceful shutdown helps prevent clients from encountering RPC failures,
 it should be used if possible.  However, gRPC also provides a forceful shutdown
@@ -43,17 +43,17 @@ involves:
   some in-flight RPCs don't complete within a reasonable time frame. This
   prevents indefinite blocking.
 
-The following shows the sequence of events that occur, when a server's graceful
-stop is invoked, in-flight RPCs continue to process, but new RPCs are
-rejected. If some in-flight RPCs are not finished in time, server is forcefully
-shutdown.
+The following shows the sequence of events that occur during the graceful
+shutdown process. When a server's graceful shutdown is invoked, in-flight RPCs
+continue to process, but new RPCs are rejected. If some in-flight RPCs are not
+finished in time, server is forcefully shut down.
 ```mermaid
 sequenceDiagram
 Client->>Server: New RPC Request 1
 Client->>Server: New RPC Request 2
 Server-->>Server: Graceful Shutdown Invoked
 Server->>Client: Continues Processing In-Flight RPCs
-Client->>Client: Detects server shutdown and go finds other servers if available
+Client->>Client: Detects server shutdown and finds other servers if available
 alt RPCs complete within timeout
     Server->>Client: Completes RPC 1
     Server->>Client: Completes RPC 2
@@ -66,12 +66,11 @@ end
 The following is a state based view
 ```mermaid
 stateDiagram-v2
-    [*] --> RUNNING : Server Started
-    RUNNING --> GRACEFUL_STOP_INITIATED : Graceful Stop Called (with Timeout)
-    GRACEFUL_STOP_INITIATED --> GRACEFUL_STOPPING
-    GRACEFUL_STOPPING --> TERMINATED : In-Flight RPCs Completed (Before Timeout)
-    GRACEFUL_STOPPING --> TIMER_EXPIRED : Timeout Reached
-    TIMER_EXPIRED --> TERMINATED : Force Stop Called
+    [*] --> SERVING : Server Started
+    SERVING --> GRACEFUL_SHUTDOWN : Graceful Shutdown Called (with Timeout)
+    GRACEFUL_SHUTDOWN --> TERMINATED : In-Flight RPCs Completed (Before Timeout)
+    GRACEFUL_SHUTDOWN --> TIMER_EXPIRED : Timeout Reached
+    TIMER_EXPIRED --> TERMINATED : Forceful Shutdown Called
 ```
 
 ### Language Support
