@@ -50,7 +50,7 @@ set MY_INSTALL_DIR=%USERPROFILE%\cmake
 Ensure that the directory exists:
 
 ```powershell
-mkdir %INSTALL_DIR%
+mkdir %MY_INSTALL_DIR%
 ```
 
 Add the local `bin` folder to your path variable, for example:
