@@ -29,7 +29,7 @@
   os: [macOS 10.10+, iOS 9.0+]
   compilers: [Xcode 12+]
 - language: PHP
-  os: [Linux, Mac]
+  os: [Windows, Linux, Mac]
   compilers: [PHP 7.0+]
 - language: Python
   os: [Windows, Linux, Mac]
