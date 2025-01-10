@@ -46,7 +46,7 @@ involves:
 The following shows the sequence of events that occur during the graceful
 shutdown process. When a server's graceful shutdown is invoked, in-flight RPCs
 continue to process, but new RPCs are rejected. If some in-flight RPCs are not
-finished in time, server is forcefully shut down.
+finished in time, the server is forcefully shut down.
 ```mermaid
 sequenceDiagram
 Client->>Server: New RPC Request 1
