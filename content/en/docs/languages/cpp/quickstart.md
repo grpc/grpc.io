@@ -140,6 +140,7 @@ The following commands build and locally install gRPC and Protocol Buffers:
   pushd cmake/build
   cmake -DgRPC_INSTALL=ON \
         -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_CXX_STANDARD=17 \
         -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
         ../..
   make -j 4
@@ -152,7 +153,7 @@ The following commands build and locally install gRPC and Protocol Buffers:
   ```powershell
   mkdir "cmake\build"
   pushd "cmake\build"
-  cmake -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=%MY_INSTALL_DIR% -DgRPC_BUILD_TESTS=OFF ..\..
+  cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_PREFIX=%MY_INSTALL_DIR% ..\..
   cmake --build . --config Release --target install -j 4
   popd
   ```
