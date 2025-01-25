@@ -10,7 +10,7 @@ gRPC provides support for an OpenTelemetry plugin that provides metrics that can
 * Iterate on improving system performance
 * Setup continuous monitoring and alerting.
 
-{{< youtube id="L6FAtc8N8Vk" class="youtube-video" title="OpenTelemetry - The future of Observability" >}}
+{{< youtube id="qcxdLHm2LKM" class="youtube-video" title="gRPC OpenTelemetry Metrics" >}}
 
 ## Background
 
