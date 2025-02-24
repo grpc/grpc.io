@@ -18,8 +18,9 @@ The example code is part of the [grpc][] repo.
 {{% alert title="Note" color="info" %}}
   This library only supports creating gRPC clients in PHP. To implement a gRPC
   server in PHP, use a third party application server such as
-  [RoadRunner](https://docs.roadrunner.dev/docs/plugins/grpc), or implement using
-  [another language](/docs/languages/).
+  [RoadRunner](https://docs.roadrunner.dev/docs/plugins/grpc) or
+  [Open Swoole](https://openswoole.com/docs/modules/grpc-server), or implement
+  using [another language](/docs/languages/).
 {{% /alert %}}
 
  1. Clone the [grpc][] repo and its submodules:
