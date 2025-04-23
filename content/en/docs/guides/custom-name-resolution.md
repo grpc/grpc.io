@@ -20,7 +20,7 @@ used. However, various other name resolution mechanisms may be used:
 |-|-|-|
 |DNS|`grpc.io:50051`|By default, DNS is assumed.|
 |DNS|`dns:///grpc.io:50051`|The extra slash is used to provide an authority|
-|Unix Domain Socket|`uds:///run/containerd/containerd.sock`|
+|Unix Domain Socket|`unix:///run/containerd/containerd.sock`|
 |xDS|`xds:///wallet.grpcwallet.io`||
 |IPv4|`ipv4:198.51.100.123:50051`|Only supported in some languages|
 
