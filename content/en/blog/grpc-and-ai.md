@@ -31,7 +31,7 @@ At the same time, feel free to start trying Gemini Code Assist with your own pro
 
 Catch the [recording of our demo](https://www.youtube.com/watch?v=IZsYnCftm7w) in the below YouTube video to see these prompt-based transformations in action. And don't miss the opportunity to connect with the gRPC community and explore more innovations at the upcoming gRPC Conference on August 26th, Sunnyvale, CA. You can
 
-* sign up for the upcoming gRPC Conference in 2025 at [https://events.linuxfoundation.org/grpconf/](https://events.linuxfoundation.org/grpconf/)   
-* submit a talk proposal before May 28th 11:59pm at: [https://events.linuxfoundation.org/grpconf/program/cfp/](https://events.linuxfoundation.org/grpconf/program/cfp/)
+* Sign up for the upcoming gRPC Conference in 2025 at [https://events.linuxfoundation.org/grpconf/](https://events.linuxfoundation.org/grpconf/)   
+* Submit a talk proposal before May 28th, 11:59 PM PDT at: [https://events.linuxfoundation.org/grpconf/program/cfp/](https://events.linuxfoundation.org/grpconf/program/cfp/)
 
 Stay tuned for more exciting advancements in the gRPC and AI space at the upcoming gRPC Conference in 2025\! 
