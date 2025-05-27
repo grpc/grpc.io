@@ -28,7 +28,7 @@ params:
   locale: en_US
   grpc_vers:
     core: v1.72.0
-    go: v1.72.0
+    go: v1.72.2
     java: v1.72.0
     node: "@grpc/grpc-js@1.9.0"
   font_awesome_version: 5.12.1
