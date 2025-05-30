@@ -38,7 +38,7 @@ gRPC supports these needs in several key ways:
 - **Lightweight and efficient serialization**: gRPC also helps in bandwidth-constrained environments or on embedded devices, enabled by Protobuf’s lightweight binary encoding.
 - **Security benefits**: gRPC is designed with end-to-end encryption (TLS by default) and authentication capabilities baked in, ensuring secure communication between machine parts, whether across local networks or the public internet, without requiring developers to bolt on separate security layers.
 - **Service abstraction for machine parts**: With gRPC and Protobuf, every part of a robot, from motors to cameras to sensors, can be modeled as a standardized, language-agnostic service.
-  ![Every robot part becomes an encapsulated, language-agnostic service](/img/blog/robotics/ComponentProtos.png)
+  ![Every robot part becomes an encapsulated, language-agnostic service](/img/blog/robotics/component-protos.png)
 
 In [Viam’s public API](https://github.com/viamrobotics/api), each robot component is defined as a gRPC service using Protobuf. Components like arms, cameras, and sensors expose typed methods that can be called remotely. Here's an excerpt from the [`arm.proto`](https://github.com/viamrobotics/api/blob/main/proto/viam/component/arm/v1/arm.proto) file that defines basic movement and pose retrieval methods for a robotic arm:
 
@@ -86,7 +86,7 @@ Because gRPC defines a consistent interface at the API layer, we can change the 
 
 Picture a remote-controlled claw machine, like the ones you'd find in an arcade. It has two main components: a camera and a robotic arm. A user interface, such as a [web app](https://docs.viam.com/dev/reference/sdks/#frontend-sdks) or [mobile app](https://docs.viam.com/dev/reference/sdks/#mobile-sdk), sends control commands and receives a live video stream to help guide the claw to its prize.
 
-![Viam enclosed robotic arm as a claw game at a conference](/img/blog/robotics/Viam-Enclosed-Robotic-Arm-2.jpg)
+![Viam enclosed robotic arm as a claw game at a conference](/img/blog/robotics/viam-enclosed-robotic-arm.jpg)
 
 Here's how gRPC and WebRTC work together behind the scenes:
 
@@ -94,7 +94,7 @@ Here's how gRPC and WebRTC work together behind the scenes:
 - **Connection**: gRPC coordinates the exchange of peer metadata and signaling to set up a WebRTC session between the SDK and machine parts.
 - **Real-time operation**: WebRTC now handles the media and data streams directly between peers. Commands are sent using gRPC method calls, routed over the WebRTC transport. Video and sensor streams flow the other way.
 
-![Viam uses gRPC to initialize connections and WebRTC for peer-to-peer communication in this robot claw game](/img/blog/robotics/gRPCAndWebRTC.png)
+![Viam uses gRPC to initialize connections and WebRTC for peer-to-peer communication in this robot claw game](/img/blog/robotics/grpc-and-webrtc.png)
 
 This dual-protocol approach allows real-time interaction, smooth streaming, and resilient fallback behavior, even in unpredictable network conditions.
 
