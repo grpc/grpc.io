@@ -1,15 +1,9 @@
 - language: C/C++
-  os: [Linux, Mac]
-  compilers: [GCC 7.3.1+, Clang 6+]
-- language: C/C++
-  os: [Windows 10+]
-  compilers: [Visual Studio 2019+]
+  os: [Linux, Mac, Windows]
+  compilers: [See https://opensource.google/documentation/policies/cplusplus-support]
 - language: C#
-  os: [Linux, Mac]
-  compilers: [.NET Core, Mono 4+]
-- language: C#
-  os: [Windows 10+]
-  compilers: [.NET Core, NET 4.5+]
+  os: [Windows, Linux, Mac]
+  compilers: [.NET Core 3.0+]
 - language: Dart
   os: [Windows, Linux, Mac]
   compilers: [Dart 2.12+]
@@ -26,14 +20,14 @@
   os: [Windows, Linux, Mac]
   compilers: [Node v8+]
 - language: Objective-C
-  os: [macOS 10.10+, iOS 9.0+]
-  compilers: [Xcode 12+]
+  os: [macOS, iOS]
+  compilers: [See https://opensource.google/documentation/policies/cplusplus-support]
 - language: PHP
   os: [Linux, Mac]
   compilers: [PHP 7.0+]
 - language: Python
   os: [Windows, Linux, Mac]
-  compilers: [Python 3.7+]
+  compilers: [Python 3.8+]
 - language: Ruby
   os: [Windows, Linux, Mac]
-  compilers: [Ruby 2.3+]
+  compilers: [Ruby 3.1+]
