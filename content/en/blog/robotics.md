@@ -1,6 +1,6 @@
 ---
 title: "How robots talk: building distributed robots with gRPC and WebRTC"
-date: 2025-04-30
+date: 2025-06-18
 author:
   name: Joyce Lin
   position: Viam
