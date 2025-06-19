@@ -69,6 +69,10 @@ params:
       - name: GitHub
         url: https://github.com/grpc
         icon: fab fa-github
+    externalDocs:
+      Swift:
+        quickstart: "https://swiftpackageindex.com/grpc/grpc-swift-2/tutorials/grpccore/hello-world"
+        basics: "https://swiftpackageindex.com/grpc/grpc-swift-2/tutorials/grpccore/route-guide"
 
   mermaid:
     enable: true
