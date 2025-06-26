@@ -3,7 +3,6 @@
 The active maintainers of this repository (in alphabetical order) are:
 
 - [chalin](https://github.com/chalin), Linux Foundation
-- [srini100](https://github.com/srini100), Google
 - [thisisnotapril](https://github.com/thisisnotapril), Google
 
 # Emeritus maintainers
@@ -11,6 +10,7 @@ The active maintainers of this repository (in alphabetical order) are:
 The emeritus maintainers of this repository (in alphabetical order) are:
 
 - [lucperkins](https://github.com/lucperkins), Linux Foundation
+- [srini100](https://github.com/srini100), Google
 
 # Notes
 
