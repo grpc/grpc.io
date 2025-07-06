@@ -96,12 +96,14 @@ sequenceDiagram
 |----------|------------------|
 | Java     | [Java example]   |
 | Go       | [Go example]     |
-| C++      |                  |
+| C++      | [C++ example]    |
 | Python   | [Python example] |
 
 [Java example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/deadline
 
 [Go example]: https://github.com/grpc/grpc-go/tree/master/examples/features/deadline
+
+[C++ example]: https://github.com/grpc/grpc/tree/master/examples/cpp/deadline
 
 [Python example]: https://github.com/grpc/grpc/tree/master/examples/python/timeout
 
