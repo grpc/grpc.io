@@ -71,9 +71,9 @@ Refer [A66: OpenTelemetry Metrics] for details.
 Name                                                       | Type      | Unit      | Labels (disposition)                                                                                | Description
 ---------------------------------------------------------- | --------- | --------- | --------------------------------------------------------------------------------------------------- | -----------
 grpc.client.attempt.<br>started                            | Counter   | {attempt} | grpc.method (required), grpc.target (required)                                                      | The total number of RPC attempts started, including those that have not completed.
-grpc.client.attempt.<br>duration                           | Histogram | s         | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel.
-grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | Total bytes (compressed but not encrypted) sent across all request messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
-grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
+grpc.client.attempt.<br>duration                           | Histogram | s         | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel.
+grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | Total bytes (compressed but not encrypted) sent across all request messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
+grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
 
 Refer [A66: OpenTelemetry Metrics] for details.
 
@@ -94,10 +94,10 @@ Refer [A66: OpenTelemetry Metrics] for details.
 
 Name                                           | Type      | Unit       | Labels (disposition)                                | Description
 ---------------------------------------------- | --------- | ---------- | --------------------------------------------------- | -----------
-grpc.lb.wrr.<br>rr_fallback                    | Counter   | {update}   | grpc.target (required), grpc.lb.locality (optional) | EXPERIMENTAL: Number of scheduler updates in which there were not enough endpoints with valid weight, which caused the WRR policy to fall back to RR behavior.
-grpc.lb.wrr.<br>endpoint_weight_not_yet_usable | Counter   | {endpoint} | grpc.target (required), grpc.lb.locality (optional) | EXPERIMENTAL: Number of endpoints from each scheduler update that don't yet have usable weight information (i.e., either the load report has not yet been received, or it is within the blackout period).
-grpc.lb.wrr.<br>endpoint_weight_stale          | Counter   | {endpoint} | grpc.target (required), grpc.lb.locality (optional) | EXPERIMENTAL: Number of endpoints from each scheduler update whose latest weight is older than the expiration period.
-grpc.lb.wrr.<br>endpoint_weights               | Histogram | {weight}   | grpc.target (required), grpc.lb.locality (optional) | EXPERIMENTAL: Weight of an endpoint recorded every scheduler update.
+grpc.lb.wrr.<br>rr_fallback                    | Counter   | {update}   | grpc.target (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | EXPERIMENTAL: Number of scheduler updates in which there were not enough endpoints with valid weight, which caused the WRR policy to fall back to RR behavior.
+grpc.lb.wrr.<br>endpoint_weight_not_yet_usable | Counter   | {endpoint} | grpc.target (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | EXPERIMENTAL: Number of endpoints from each scheduler update that don't yet have usable weight information (i.e., either the load report has not yet been received, or it is within the blackout period).
+grpc.lb.wrr.<br>endpoint_weight_stale          | Counter   | {endpoint} | grpc.target (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | EXPERIMENTAL: Number of endpoints from each scheduler update whose latest weight is older than the expiration period.
+grpc.lb.wrr.<br>endpoint_weights               | Histogram | {weight}   | grpc.target (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | EXPERIMENTAL: Weight of an endpoint recorded every scheduler update.
 
 Refer [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient] for details.
 
@@ -140,6 +140,7 @@ Name                   | Description
 grpc.method            | Full gRPC method name, including package, service and method, e.g. "google.bigtable.v2.Bigtable/CheckAndMutateRow".
 grpc.status            | gRPC server status code received, e.g. "OK", "CANCELLED", "DEADLINE_EXCEEDED".
 grpc.target            | Canonicalized target URI used when creating gRPC Channel, e.g. "dns:///pubsub.googleapis.com:443", "xds:///helloworld-gke:8000".
+grpc.lb.backend_service       | The backend service to which the traffic is being sent. This is relevant when a single channel target can be sent to different sets of servers. When using xDS, this will be the cluster name. When not relevant, the value will be the empty string.
 grpc.lb.locality       | The locality to which the traffic is being sent.
 grpc.xds.server        | For clients, indicates the target of the gRPC channel in which the XdsClient is used. For servers, will be the string "#server".
 grpc.xds.authority     | The xDS authority. The value will be "#old" for old-style non-xdstp resource names.
