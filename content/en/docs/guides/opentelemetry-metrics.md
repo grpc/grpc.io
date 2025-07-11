@@ -1,7 +1,9 @@
+<!-- mdformat off(Disabling for netlify header) -->
 ---
 title: OpenTelemetry Metrics
 description: OpenTelemetry Metrics available in gRPC
 ---
+<!-- mdformat on -->
 
 ## Overview
 
@@ -9,8 +11,9 @@ gRPC provides support for an OpenTelemetry plugin that provides metrics that can
 help you - * Troubleshoot your system * Iterate on improving system performance
 * Setup continuous monitoring and alerting.
 
-{{< youtube id="qcxdLHm2LKM" class="youtube-video" title="gRPC OpenTelemetry
-Metrics" >}}
+<!-- mdformat off(Disabling for youtube video link) -->
+{{< youtube id="qcxdLHm2LKM" class="youtube-video" title="gRPC OpenTelemetry Metrics" >}}
+<!-- mdformat on -->
 
 ## Background
 
@@ -42,7 +45,7 @@ Server : Observe a call received at the server. * LB Policy : Observe various
 load-balancing policies * Weighted Round Robin (experimental) * Pick-First
 (experimental) * XdsClient (experimental)
 
-> ****NOTE**** Some instruments are off by default and need to be explicitly
+> __**NOTE**__ Some instruments are off by default and need to be explicitly
 > enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are
 > always off by default.
 > ([Reference C++ API](https://github.com/grpc/grpc/blob/ccfc163607a15faa16aea179e0a0ea673c2353c6/include/grpcpp/ext/otel_plugin.h#L139))
@@ -122,7 +125,7 @@ additional information as attributes or labels. For example,
 along with each measurement that tell us the method and the target associated
 with the RPC attempt being observed.
 
-> ****NOTE**** Some attributes are marked as optional on the instruments. These
+> __**NOTE**__ Some attributes are marked as optional on the instruments. These
 > need to be explicitly enabled from the gRPC OpenTelemetry Plugin API.
 > ([Reference C++ API](https://github.com/grpc/grpc/blob/ccfc163607a15faa16aea179e0a0ea673c2353c6/include/grpcpp/ext/otel_plugin.h#L151))
 
