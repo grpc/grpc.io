@@ -37,13 +37,15 @@ should employ the
 customize the views exported by OpenTelemetry.
 
 More and more gRPC components are being instrumented for observability.
-Currently, we have the following components instrumented - * Per-call (stable,
-on by default) : Observe RPCs themselves (for example, latency.) * Client
-Per-Call : Observe a client call * Client Per-Attempt : Observe attempts for a
-client call, since a call can have multiple attempts due to retry or hedging. *
-Server : Observe a call received at the server. * LB Policy : Observe various
-load-balancing policies * Weighted Round Robin (experimental) * Pick-First
-(experimental) * XdsClient (experimental)
+Currently, we have the following components instrumented -
+* Per-call (stable, on by default) : Observe RPCs themselves (for example, latency.) 
+  * Client Per-Call : Observe a client call 
+  * Client Per-Attempt : Observe attempts for a client call, since a call can have multiple attempts due to retry or hedging. 
+  * Server : Observe a call received at the server. 
+* LB Policy : Observe various load-balancing policies 
+  * Weighted Round Robin (experimental) 
+  * Pick-First (experimental) 
+* XdsClient (experimental)
 
 > __**NOTE**__ Some instruments are off by default and need to be explicitly
 > enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are
