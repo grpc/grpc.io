@@ -8,8 +8,11 @@ description: OpenTelemetry Metrics available in gRPC
 ## Overview
 
 gRPC provides support for an OpenTelemetry plugin that provides metrics that can
-help you - * Troubleshoot your system * Iterate on improving system performance
-* Setup continuous monitoring and alerting.
+help you -
+
+*   Troubleshoot your system
+*   Iterate on improving system performance
+*   Setup continuous monitoring and alerting.
 
 <!-- mdformat off(Disabling for youtube video link) -->
 {{< youtube id="qcxdLHm2LKM" class="youtube-video" title="gRPC OpenTelemetry Metrics" >}}
@@ -38,6 +41,7 @@ customize the views exported by OpenTelemetry.
 
 More and more gRPC components are being instrumented for observability.
 Currently, we have the following components instrumented -
+
 * Per-call (stable, on by default) : Observe RPCs themselves (for example, latency.) 
   * Client Per-Call : Observe a client call 
   * Client Per-Attempt : Observe attempts for a client call, since a call can have multiple attempts due to retry or hedging. 
