@@ -31,11 +31,13 @@ instruments are created using this meter. Users should employ the
 More and more gRPC components are being instrumented for observability.
 Currently, we have the following components instrumented -
 
-*   Per-call (stable, on by default) : Observe RPCs themselves (for example,
-    latency.)
-    *   Client Per-Call : Observe a client call
-    *   Client Per-Attempt : Observe attempts for a client call, since a call
-        can have multiple attempts due to retry or hedging.
+*   Per-call : Observe RPCs themselves (for example, latency.)
+    *   Client Per-Call (stable, on by default) : Observe a client call
+    *   Client Per-Attempt (stable, on by default) : Observe attempts for a
+        client call, since a call can have multiple attempts due to retry or
+        hedging.
+    *   Client Per-Call Retry (experimental) : Observe retry, transparent retry
+        and hedging,
     *   Server : Observe a call received at the server.
 *   LB Policy : Observe various load-balancing policies
     *   Weighted Round Robin (experimental)
@@ -67,6 +69,17 @@ grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By     
 grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
 
 Refer [A66: OpenTelemetry Metrics] for details.
+
+#### Client Per-Call Retry Instruments
+
+Name                                 | Type      | Unit                | Labels (required)        | Description
+------------------------------------ | --------- | ------------------- | ------------------------ | -----------
+grpc.client.call.retries             | Histogram | {retry}             | grpc.method, grpc.target | Number of retries during the client call. If there were no retries, 0 is not reported.
+grpc.client.call.transparent_retries | Histogram | {transparent_retry} | grpc.method, grpc.target | Number of transparent retries during the client call. If there were no transparent retries, 0 is not reported.
+grpc.client.call.hedges              | Histogram | {hedge}             | grpc.method, grpc.target | Number of hedges during the client call. If there were no hedges, 0 is not reported.
+grpc.client.call.retry_delay         | Histogram | s                   | grpc.method, grpc.target | Total time of delay while there is no active attempt during the client call.
+
+Refer [A96: OTel Metrics for Retries] for details.
 
 #### Server Instruments
 
@@ -167,6 +180,7 @@ Python   | [Python Example]
 *   [A66: OpenTelemetry Metrics]
 *   [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]
 *   [A79: Non-per-call Metrics Architecture]
+*   [A96: OTel Metrics for Retries]
 
 [sunsetted]: https://opentelemetry.io/blog/2023/sunsetting-opencensus/
 [MeterProvider]: https://opentelemetry.io/docs/specs/otel/metrics/api/#meterprovider
@@ -181,3 +195,4 @@ Python   | [Python Example]
 [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
 [A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
 [A89: Backend Service Metric Label]: https://github.com/grpc/proposal/blob/master/A89-backend-service-metric-label.md
+[A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-otel-metrics-for-retries.md
