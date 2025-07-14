@@ -1,9 +1,7 @@
-<!-- mdformat off(Disabling for netlify header) -->
 ---
 title: OpenTelemetry Metrics
 description: OpenTelemetry Metrics available in gRPC
 ---
-<!-- mdformat on -->
 
 ## Overview
 
@@ -14,42 +12,35 @@ help you -
 *   Iterate on improving system performance
 *   Setup continuous monitoring and alerting.
 
-<!-- mdformat off(Disabling for youtube video link) -->
 {{< youtube id="qcxdLHm2LKM" class="youtube-video" title="gRPC OpenTelemetry Metrics" >}}
-<!-- mdformat on -->
 
 ## Background
 
 OpenTelemetry is an observability framework to create and manage telemetry data.
 gRPC previously provided observability support through OpenCensus which has been
-[sunsetted](https://opentelemetry.io/blog/2023/sunsetting-opencensus/) in the
-favor of OpenTelemetry.
+[sunsetted] in the favor of OpenTelemetry.
 
 ## Instruments
 
-The gRPC OpenTelemetry plugin accepts a
-[MeterProvider](https://opentelemetry.io/docs/specs/otel/metrics/api/#meterprovider)
-and depends on the
-[OpenTelemetry API](https://opentelemetry.io/docs/specs/otel/overview/#api) to
-create a
-[Meter](https://opentelemetry.io/docs/specs/otel/metrics/api/#get-a-meter) that
-identifies the gRPC library being used, for example, `grpc-c++` at version
-`1.57.1`. The following listed instruments are created using this meter. Users
-should employ the
-[OpenTelemetry SDK](https://opentelemetry.io/docs/specs/otel/overview/#sdk) to
-customize the views exported by OpenTelemetry.
+The gRPC OpenTelemetry plugin accepts a [MeterProvider] and depends on the
+[OpenTelemetry API] to create a [Meter] that identifies the gRPC library being
+used, for example, `grpc-c++` at version `1.57.1`. The following listed
+instruments are created using this meter. Users should employ the
+[OpenTelemetry SDK] to customize the views exported by OpenTelemetry.
 
 More and more gRPC components are being instrumented for observability.
 Currently, we have the following components instrumented -
 
-* Per-call (stable, on by default) : Observe RPCs themselves (for example, latency.) 
-  * Client Per-Call : Observe a client call 
-  * Client Per-Attempt : Observe attempts for a client call, since a call can have multiple attempts due to retry or hedging. 
-  * Server : Observe a call received at the server. 
-* LB Policy : Observe various load-balancing policies 
-  * Weighted Round Robin (experimental) 
-  * Pick-First (experimental) 
-* XdsClient (experimental)
+*   Per-call (stable, on by default) : Observe RPCs themselves (for example,
+    latency.)
+    *   Client Per-Call : Observe a client call
+    *   Client Per-Attempt : Observe attempts for a client call, since a call
+        can have multiple attempts due to retry or hedging.
+    *   Server : Observe a call received at the server.
+*   LB Policy : Observe various load-balancing policies
+    *   Weighted Round Robin (experimental)
+    *   Pick-First (experimental)
+*   XdsClient (experimental)
 
 > __**NOTE**__ Some instruments are off by default and need to be explicitly
 > enabled from the gRPC OpenTelemetry plugin API. Experimental metrics are
@@ -176,6 +167,19 @@ Python   | [Python Example]
 *   [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]
 *   [A79: Non-per-call Metrics Architecture]
 
+[sunsetted]: https://opentelemetry.io/blog/2023/sunsetting-opencensus/
+[MeterProvider]: https://opentelemetry.io/docs/specs/otel/metrics/api/#meterprovider
+[OpenTelemetry API]: https://opentelemetry.io/docs/specs/otel/overview/#api
+[Meter]: https://opentelemetry.io/docs/specs/otel/metrics/api/#get-a-meter
+[OpenTelemetry SDK]: https://opentelemetry.io/docs/specs/otel/overview/#sdk
+[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
+[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
+[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry
+[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/observability
+[A66: OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
+[A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
+[A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
+[A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-otel-metrics-for-retries.md
 [C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
 [Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
 [Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry
