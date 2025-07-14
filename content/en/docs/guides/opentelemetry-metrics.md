@@ -179,11 +179,3 @@ Python   | [Python Example]
 [A66: OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
 [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
 [A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
-[A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-otel-metrics-for-retries.md
-[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/otel
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/opentelemetry
-[Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/example-opentelemetry
-[Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/observability
-[A66: OpenTelemetry Metrics]: https://github.com/grpc/proposal/blob/master/A66-otel-stats.md
-[A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
-[A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
