@@ -32,8 +32,8 @@ weight: 10
   quick start, the Android client app will connect to a server running on your
   local (non-Android) computer.
 
-For AGP 7.x, it's recommended to use Java 11, 17, or 20 to avoid DexWorkAction / D8 issues.
-While Java 21 might technically work, it's safer to avoid it due to potential compatibility quirks.
+For AGP 7.x, it's recommended to use Java 11 - 20 to avoid DexWorkAction / D8 issues.
+Java 21+ (which produces bytecode version 65+) is not supported by AGP 7.x and will cause build failures due to bytecode incompatibility. AGP 7.x supports up to bytecode version 61.
 Note that AGP 8.x and later explicitly require Java 17 as the minimum version.{{% /alert %}}
 
 ### Get the example code
