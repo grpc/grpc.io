@@ -32,8 +32,9 @@ weight: 10
   quick start, the Android client app will connect to a server running on your
   local (non-Android) computer.
 
-  Since the AGP version used is 7.x, you need to use Java versions 17 - 21 to avoid DexWorkAction / D8 errors.
-{{% /alert %}}
+For AGP 7.x, it's recommended to use Java 11, 17, or 20 to avoid DexWorkAction / D8 issues.
+While Java 21 might technically work, it's safer to avoid it due to potential compatibility quirks.
+Note that AGP 8.x and later explicitly require Java 17 as the minimum version.{{% /alert %}}
 
 ### Get the example code
 
