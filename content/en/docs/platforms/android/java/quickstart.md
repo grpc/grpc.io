@@ -24,11 +24,17 @@ weight: 10
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
 
+- Add the following line in your gradle.properties to ensure compatibility with Android tooling and libraries:
+   **android.useAndroidX=true**
+
 {{% alert title="Note" color="info" %}}
   gRPC Java does not support running a server on an Android device. For this
   quick start, the Android client app will connect to a server running on your
   local (non-Android) computer.
-{{% /alert %}}
+
+For AGP 7.x, it's recommended to use Java 11 - 20 to avoid DexWorkAction / D8 issues.
+Java 21+ (which produces bytecode version 65+) is not supported by AGP 7.x and will result in build failures due to bytecode incompatibility. AGP 7.x supports up to bytecode version 61.
+Note that AGP 8.x and later explicitly require Java 17 as the minimum version.{{% /alert %}}
 
 ### Get the example code
 
