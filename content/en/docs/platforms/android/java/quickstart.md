@@ -8,7 +8,7 @@ weight: 10
 
 - [JDK][] version 11 or higher.
 
-   1. The example uses AGP 7.x (compatible with Java 11–17). If you upgrade it to AGP 8.x requires Java 17+.
+   1. The example uses AGP 7.x (compatible with Java 11–17). If you upgrade it to AGP 8.x, it requires Java 17+.
 
 - Android SDK, API level 16 or higher
 
