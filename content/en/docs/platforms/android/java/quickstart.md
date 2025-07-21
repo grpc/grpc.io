@@ -6,7 +6,10 @@ weight: 10
 
 ### Prerequisites
 
-- [JDK][] version 7 or higher
+- [JDK][] version 11 or higher.
+
+   1. The example uses AGP 7.x (compatible with Java 11–17). If you upgrade it to AGP 8.x, it requires Java 17+.
+
 - Android SDK, API level 16 or higher
 
    1. Install [Android Studio][] or the Android [command-line tools][].
@@ -23,6 +26,9 @@ weight: 10
 
 - An android device set up for [USB debugging][] or an
   [Android Virtual Device][]
+
+- Add the following line in your gradle.properties to ensure compatibility with Android tooling and libraries:
+   **android.useAndroidX=true**
 
 {{% alert title="Note" color="info" %}}
   gRPC Java does not support running a server on an Android device. For this
