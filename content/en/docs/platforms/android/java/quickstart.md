@@ -6,7 +6,7 @@ weight: 10
 
 ### Prerequisites
 
-- [JDK][] version 11–17 is required.
+- [JDK][] version 11 or higher.
 
    1. The example uses AGP 7.x (compatible with Java 11–17). If you upgrade it to AGP 8.x requires Java 17+.
 
