@@ -30,8 +30,6 @@ weight: 10
 - Add the following line in your gradle.properties to ensure compatibility with Android tooling and libraries:
    **android.useAndroidX=true**
 
-- The examples default to AGP 7.x which needs Java 11 to 17. If you upgrade it to AGP 8.x, it needs Java 17+
-
 {{% alert title="Note" color="info" %}}
   gRPC Java does not support running a server on an Android device. For this
   quick start, the Android client app will connect to a server running on your
