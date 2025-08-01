@@ -1,11 +1,16 @@
 {{ $Lang := .Params.title | default .Params.language }}
+{{ $externalLinks := index site.Params.links.externalDocs $Lang }}
 
   <div class="row">
     <div class="col-sm col-md-6 mb-4 mb-md-0">
       <div class="h-100 card shadow" href="#">
         <div class="card-body">
           <h4 class="card-title">
-            <a class="" href="quickstart/">Quick start</a>
+            {{ if and $externalLinks $externalLinks.quickstart }}
+              <a class="" href="{{ $externalLinks.quickstart }}" target="_blank" rel="noopener">Quick start</a>
+            {{ else }}
+              <a class="" href="quickstart/">Quick start</a>
+            {{ end }}
           </h4>
           <p>
             Run your first {{ replace $Lang " " "-" }} gRPC app in minutes!
@@ -13,13 +18,19 @@
         </div>
       </div>
     </div>
-  
-    {{ if .GetPage "basics" }}
+
+    {{ $hasExternalBasics := and $externalLinks $externalLinks.basics }}
+    {{ $hasLocalBasics := .GetPage "basics" }}
+    {{ if or $hasExternalBasics $hasLocalBasics }}
     <div class="col-sm col-md-6 mb-4 mb-md-0">
       <div class="h-100 card shadow">
         <div class="card-body">
           <h4 class="card-title">
-            <a class="" href="basics/">Basics tutorial</a>
+            {{ if $hasExternalBasics }}
+              <a class="" href="{{ $externalLinks.basics }}" target="_blank" rel="noopener">Basics tutorial</a>
+            {{ else }}
+              <a class="" href="basics/">Basics tutorial</a>
+            {{ end }}
           </h4>
           <p>
             Learn about {{ replace $Lang " " "-" }} gRPC basics.
