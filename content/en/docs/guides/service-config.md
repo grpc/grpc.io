@@ -58,7 +58,7 @@ service.
 ### Acquiring a Service Config
 
 A service config can be provided to a client either via name resolution or
-programatically by the client application. 
+programmatically by the client application. 
 
 #### Name Resolution
 
@@ -81,7 +81,7 @@ prefer as long as they provide it in JSON format at name resolution time.
 {{% /alert %}}
 
 
-#### Programatically
+#### Programmatically
 
 The gRPC client API provides a way to specify a service config in JSON format.
 This is used to provide a default service config that will be used in
@@ -95,7 +95,7 @@ The below example does the following:
 - Enables the `round_robin` load balancing policy.
 - Sets a default call timeout of 1s that applies to all methods in all
   services.
-- Overides that timeout to be 2s for the `bar` method in the `foo` service as
+- Overrides that timeout to be 2s for the `bar` method in the `foo` service as
   well as all the methods in the `baz` service.
 
 

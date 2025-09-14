@@ -290,7 +290,7 @@ foreach ($features as $feature) {
 
 The `$call->responses()` method call returns an iterator. When the server sends
 a response, a `$feature` object will be returned in the `foreach` loop, until
-the server indiciates that there will be no more responses to be sent.
+the server indicates that there will be no more responses to be sent.
 
 The client-side streaming method `RecordRoute` is similar, except that we call
 `$call->write($point)` for each point we want to write from the client side and

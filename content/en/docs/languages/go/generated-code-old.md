@@ -173,7 +173,7 @@ type <ServiceName>_FooClient interface {
 ```
 
 The stream begins when the client calls the `Foo` method on the stub.
-The client can then repeatedly call the `Send` method on the returned `<SericeName>_FooClient` stream in order to send the
+The client can then repeatedly call the `Send` method on the returned `<ServiceName>_FooClient` stream in order to send the
 client-to-server message stream. The client can also repeatedly call `Recv` on this stream in order to
 receive the full server-to-client message stream.
 
