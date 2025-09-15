@@ -56,7 +56,7 @@ mkdir %MY_INSTALL_DIR%
 Add the local `bin` folder to your path variable, for example:
 
 ```powershell
-set PATH=%PATH%;$MY_INSTALL_DIR\bin
+set PATH=%PATH%;%MY_INSTALL_DIR%\bin
 ```
 
 #### Install cmake
