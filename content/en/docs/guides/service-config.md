@@ -101,8 +101,8 @@ The below example does the following:
 
 ```json
 {
-  "loadBalancingConfig": [ { "round_robin": {} } ],
-  "methodConfig": [
+  "load_balancing_config": [ { "round_robin": {} } ],
+  "method_config": [
     {
       "name": [{}],
       "timeout": "1s"
