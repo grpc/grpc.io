@@ -61,7 +61,7 @@ We found that regardless of the serialization/deserialization method used for pr
 
 ## gRPC vs. HTTP JSON
 
-To benchmark RPC calls, we want to measure end-to-end latency and bandwidth. To do this, we ping pong with a server for 60 seconds, using the same message each time, and measure the latency and message size. The message consists of some fields for the server to read, and a payload of bytes. We compared gRPC's unary call to a simple RESTful HTTP JSON service. The gRPC benchmark creates a channel, and starts a unary call that repeats when it recieves a response until 60 seconds have passed. The response contains a proto with the same payload sent.
+To benchmark RPC calls, we want to measure end-to-end latency and bandwidth. To do this, we ping pong with a server for 60 seconds, using the same message each time, and measure the latency and message size. The message consists of some fields for the server to read, and a payload of bytes. We compared gRPC's unary call to a simple RESTful HTTP JSON service. The gRPC benchmark creates a channel, and starts a unary call that repeats when it receives a response until 60 seconds have passed. The response contains a proto with the same payload sent.
 
 Similarly for the HTTP JSON benchmarks, it sends a POST request to the server with an equivalent JSON object, and the server sends back a JSON object with the same payload.
 

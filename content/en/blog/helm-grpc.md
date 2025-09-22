@@ -20,7 +20,7 @@ used to enable communication between Helm and its in-cluster server component, T
 
 We chose to use protocol buffers - the default framework gRPC uses for serialization and over-the-air
 transmission - as our data definition language. By the end of that first day hacking with the Helm team,
-gRPC and protocol buffers proved to be a powerful combination. We had successfully had acheived communication
+gRPC and protocol buffers proved to be a powerful combination. We had successfully had achieved communication
 between the Helm client and Tiller server using code generated from the protobuf and gRPC service definitions.
 As a personal preference, we found that the protobuf files and resulting generated gRPC
 code provided an aesthetic, nearly self-documenting developer experience compared to something like Swagger.

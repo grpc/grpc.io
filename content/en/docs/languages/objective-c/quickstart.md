@@ -280,7 +280,7 @@ Compiler error when compiling `objective_c_plugin.cc`
 : Removing `protobuf` package with Homebrew before building gRPC may solve this
   problem. We are working on a more elegant fix.
 
-When building HellowWorld, error `ld: unknown option: --no-as-needed`
+When building HelloWorld, error `ld: unknown option: --no-as-needed`
 
 : This problem is due to linker `ld` in Apple LLVM not supporting the
   `--no-as-needed` option. We are working on a fix right now and will merge the

@@ -103,7 +103,7 @@ Error parsing request protocol buffer | `GRPC_STATUS_INTERNAL`
 
 ### Language Support
 
-Examples code is avilable for multiple languages on how to deal with standard
+Examples code is available for multiple languages on how to deal with standard
 errors as well as with the richer error details.
 
 | Language | Example                        |

@@ -331,7 +331,7 @@ and the gRPC status is received from the server (or when there's any error
 happens during the call).
 
 The request-streaming method `RecordRoute` expects a stream of `RTGPoint`s from
-the cient. This stream can be written to the gRPC call object after the call
+the client. This stream can be written to the gRPC call object after the call
 starts.
 
 ```objective-c

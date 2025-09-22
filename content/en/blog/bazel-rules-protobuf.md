@@ -60,7 +60,7 @@ there are some core concepts & terminology to understand:
 
 1. **Bazel command**: a function that does some type of work when
    called from the command line. Common ones include `bazel build`
-   (compile a libary), `bazel run` (run a binary executable), `bazel
+   (compile a library), `bazel run` (run a binary executable), `bazel
    test` (execute tests), and `bazel query` (tell me something about
    the build dependency graph).  See all with `bazel help`.
 
@@ -258,7 +258,7 @@ bad. Here's a closer look:
 *Common shortcut*: if there exists a rule having the same name as the
 package, this is the implied target and can be omitted.  For example,
 there is a `:jar` target in the `//jar` package in the external
-workspace `com_google_guava_guava`, so the following are eqivalent:
+workspace `com_google_guava_guava`, so the following are equivalent:
 
 ```python
 deps = ["@com_google_guava_guava//jar:jar"]
@@ -430,7 +430,7 @@ extension to bazel that takes care of:
    libraries.
 
 3. Invoking protoc for you (on demand), smoothing out the
-  idiosyncracies of different protoc plugins.
+  idiosyncrasies of different protoc plugins.
 
 It works by passing one or more `proto_language` specifications to the
 `proto_compile` rule.  A `proto_language` rule contains the metadata
@@ -556,7 +556,7 @@ languages:
 ## 2.3: Protobuf Definitions
 
 GreeterTimer accepts a unary `TimerRequest` and streams back a
-sequence of `BatchReponse` until all messages have been processed, at
+sequence of `BatchResponse` until all messages have been processed, at
 which point the remote procedure call is complete.
 
 ```c
