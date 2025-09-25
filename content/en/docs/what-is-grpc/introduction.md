@@ -99,7 +99,10 @@ gRPC plugin in your chosen language, see the [protocol buffers documentation][pr
 While [protocol buffers][] have been available to open source users for some time,
 most examples from this site use protocol buffers version 3 (proto3), which has
 a slightly simplified syntax, some useful new features, and supports more
-languages. Proto3 is currently available in Java, C++, Dart, Python,
+languages. More-recently, [protobuf editions]() have been implemented. Editions
+provide a way for the implementation and behaviors of protos to shift over time.
+
+Proto implementations are currently available in Java, C++, Dart, Python,
 Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the
 [protocol buffers GitHub repo][], as well as a Go language generator from the
 [golang/protobuf official package][], with more languages in development. You can
@@ -107,10 +110,8 @@ find out more in the [proto3 language guide][] and the [reference
 documentation][] available for each language. The reference documentation also
 includes a [formal specification][] for the `.proto` file format.
 
-In general, while you can use proto2 (the current default protocol buffers
-version), we recommend that you use proto3 with gRPC as it lets you use the
-full range of gRPC-supported languages, as well as avoiding compatibility
-issues with proto2 clients talking to proto3 servers and vice versa.
+In general, while you can use proto2 or proto3, we recommend that you adopt editions
+for your gRPC implementations.
 
 [formal specification]: https://protobuf.dev/reference/protobuf/proto3-spec
 [golang/protobuf official package]: https://pkg.go.dev/google.golang.org/protobuf
