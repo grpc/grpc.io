@@ -16,8 +16,11 @@ spelling: cSpell:ignore autogen chmod devel PECL phar phpize phpunit RHEL
 The example code is part of the [grpc][] repo.
 
 {{% alert title="Note" color="info" %}}
-  You can only create gRPC clients in PHP. Use [another
-  language](/docs/languages/) to create a gRPC server.
+  This library only supports creating gRPC clients in PHP. To implement a gRPC
+  server in PHP, use a third party application server such as
+  [RoadRunner](https://docs.roadrunner.dev/docs/plugins/grpc) or
+  [Open Swoole](https://openswoole.com/docs/modules/grpc-server), or implement
+  using [another language](/docs/languages/).
 {{% /alert %}}
 
  1. Clone the [grpc][] repo and its submodules:
