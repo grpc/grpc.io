@@ -136,6 +136,11 @@ public:
 
   void Proceed() {
     if (status_ == CREATE) {
+      // Make this instance progress to the PROCESS state.
+      // To ensure thread safe implementations, status_ should always be updated
+      // before instructions that can put the Call Data instance back in the cq_.
+      status_ = PROCESS;
+
       // As part of the initial CREATE state, we *request* that the system
       // start processing SayHello requests. In this request, "this" acts are
       // the tag uniquely identifying the request (so that different CallData
@@ -143,8 +148,7 @@ public:
       // the memory address of this CallData instance.
       service_->RequestSayHello(&ctx_, &request_, &responder_, cq_, cq_,
                                 this);
-      // Make this instance progress to the PROCESS state.
-      status_ = PROCESS;
+
     } else if (status_ == PROCESS) {
       // Spawn a new CallData instance to serve new clients while we process
       // the one for this CallData. The instance will deallocate itself as
@@ -158,8 +162,8 @@ public:
       // And we are done! Let the gRPC runtime know we've finished, using the
       // memory address of this instance as the uniquely identifying tag for
       // the event.
-      responder_.Finish(reply_, Status::OK, this);
       status_ = FINISH;
+      responder_.Finish(reply_, Status::OK, this);
     } else {
       GPR_ASSERT(status_ == FINISH);
       // Once in the FINISH state, deallocate ourselves (CallData).
