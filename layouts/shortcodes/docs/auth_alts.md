@@ -18,7 +18,7 @@ ALTS in gRPC has the following features:
 gRPC users can configure their applications to use ALTS as a transport security
 protocol with few lines of code.
 
-Note that ALTS is fully support for connections between GCP and Google if the application runs on 
+Note that ALTS is fully supported for connections between GCP and Google if the application runs on 
 [Compute Engine](https://cloud.google.com/compute) or
 [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine). ALTS does not support workload-to-workload authentication between GCP workloads.
 
