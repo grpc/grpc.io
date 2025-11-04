@@ -6,7 +6,7 @@ description: OpenTelemetry Metrics available in gRPC
 ## Overview
 
 gRPC provides support for an OpenTelemetry plugin that provides metrics that can
-help you -
+help you:
 
 *   Troubleshoot your system
 *   Iterate on improving system performance
@@ -29,7 +29,7 @@ instruments are created using this meter. Users should employ the
 [OpenTelemetry SDK] to customize the views exported by OpenTelemetry.
 
 More and more gRPC components are being instrumented for observability.
-Currently, we have the following components instrumented -
+Currently, we have the following components instrumented:
 
 *   Per-call : Observe RPCs themselves (for example, latency.)
     *   Client Per-Call (stable, on by default) : Observe a client call
@@ -155,7 +155,7 @@ grpc.xds.resource_type  | xDS resource type, such as "envoy.config.listener.v3.L
 
 #### Q. How do I get throughput or QPS (queries per second)?
 
-Use a count aggregation on the latency histogram metrics -
+Use a count aggregation on the latency histogram metrics:
 `grpc.client.attempt.duration` / `grpc.client.call.duration` (for clients) or
 `grpc.server.call.duration` (for servers).
 
