@@ -60,6 +60,20 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
   Some languages may provide additional options, please refer to language examples and additional resource for more details.
 {{% /alert %}}
 
+### TCP User Timeout
+
+Linux provides a TCP_USER_TIMEOUT socket option that fails a connection when
+_any_ sent packet fails to receive a TCP acknowledgement before the timeout.
+gRPC implementations may enable TCP_USER_TIMEOUT (or equivalent on another
+platform) automatically when keepalive is enabled, and use the same
+KEEPALIVE_TIMEOUT for TCP_USER_TIMEOUT. This has the advantage of monitoring the
+connection more often, with no additional networking cost nor configuration.
+
+If a TCP load balancer is used, then TCP_USER_TIMEOUT will only monitor the
+connection between gRPC and the load balancer. The regular keepalive PINGs,
+however, are propagated through TCP load balancers, so they can detect broken
+connections "hidden" by the TCP load balancer from TCP_USER_TIMEOUT.
+
 ### Language guides and examples
 
 | Language | Example          | Documentation          |
@@ -74,6 +88,7 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
 
 * [gRFC for Client-side Keepalive]
 * [gRFC for Server-side Connection Management]
+* [gRFC for TCP User Timeout]
 * [Using gRPC for Long-lived and Streaming RPCs]
 
 
@@ -89,5 +104,6 @@ gRPC HTTP/2 keepalives can be useful in a variety of situations, including but n
 [Python Documentation]: https://github.com/grpc/grpc/blob/master/doc/keepalive.md
 [gRFC for Client-side Keepalive]: https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md
 [gRFC for Server-side Connection Management]: https://github.com/grpc/proposal/blob/master/A9-server-side-conn-mgt.md
+[gRFC for TCP User Timeout]: https://github.com/grpc/proposal/blob/master/A18-tcp-user-timeout.md
 [Using gRPC for Long-lived and Streaming RPCs]: https://www.youtube.com/watch?v=Naonb2XD_2Q
 [Java Documentation]: https://grpc.github.io/grpc-java/javadoc/io/grpc/ManagedChannelBuilder.html#keepAliveTime-long-java.util.concurrent.TimeUnit-
