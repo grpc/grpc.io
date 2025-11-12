@@ -105,8 +105,8 @@ Find in-depth metrics and tracing information, along with configuration instruct
 
 | Language | Example          | Documentation        |
 |----------|------------------|----------------------|
-| C++      |                  |                      |
-| Go       | [Go Example]     | 		                   |
+| C++      | [C++ Example]    |                      |
+| Go       | [Go Example]     | 		                 |
 | Java     | [Java Example]   | [Java Documentation] |
 | Python   | [Python Example] |                      | 
 
@@ -121,6 +121,7 @@ Find in-depth metrics and tracing information, along with configuration instruct
 
 [gRFC for client side retry]: https://github.com/grpc/proposal/blob/master/A6-client-retries.md  
 [gRFC for retry status]:https://github.com/grpc/proposal/blob/master/A45-retry-stats.md
+[C++ Example]: https://github.com/grpc/grpc/tree/master/examples/cpp/retry
 [Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/retry
 [Java Example]: https://github.com/grpc/grpc-java/tree/master/examples/src/main/java/io/grpc/examples/retrying
 [Python Example]: https://github.com/grpc/grpc/tree/master/examples/python/retry
