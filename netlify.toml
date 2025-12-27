@@ -1,11 +1,18 @@
-[build]
-publish = "public"
-command = "npm run build:preview"
+1. Create or open the `netlify.toml` file at the root of your project.
+2. Add a `[[rewrites]]` rule.
 
-[context.production]
-command = "npm run build:production"
+```toml  theme={null}
+# netlify.toml
 
-[[redirects]]
-from = "https://www.grpc.io/*"
-to = "https://grpc.io/:splat"
-force = true
+[[rewrites]]
+  from = "/help/*"
+  to = "https://chatbase.co/{agentId}/help/:splat"
+  status = 200 # A 200 status indicates a rewrite, not a redirect
+
+[[rewrites]]
+  from = "/help"
+  to = "https://chatbase.co/{agentId}/help"
+  status = 200
+```
+
+Commit and push this file to your repository, and Netlify will apply the rule on the next build.
