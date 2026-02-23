@@ -27,7 +27,7 @@ params:
   branch: main
   locale: en_US
   grpc_vers:
-    core: v1.76.0
+    core: v1.78.1
     go: v1.79.1
     java: v1.79.0
     node: "@grpc/grpc-js@1.9.0"
