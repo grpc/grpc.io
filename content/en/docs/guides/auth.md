@@ -213,8 +213,8 @@ and authorization in various languages.
 | Python   | [Python Example]                          | [Python Documentation] |
 
 
-[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption
-[Go Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/encryption#encryption
+[Go Example]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication
+[Go Documentation]: https://github.com/grpc/grpc-go/tree/master/examples/features/authentication#encryption
 [Java Example TLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls
 [Java Example ATLS]: https://github.com/grpc/grpc-java/tree/master/examples/example-alts
 [Java Documentation]: https://github.com/grpc/grpc-java/tree/master/examples/example-tls#hello-world-example-with-tls
