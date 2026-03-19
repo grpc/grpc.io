@@ -12,7 +12,7 @@ protocol](https://github.com/grpc/grpc-proto/blob/master/grpc/reflection/v1/refl
 that gRPC servers can use to declare the protobuf-defined APIs they export over
 a standardized RPC service, including all types referenced by the request and
 response messages. Clients can then use this information to encode requests and
-decode responses in human-readable manner.
+decode responses in a human-readable manner.
 
 Reflection is used heavily by debugging tools such as
 [`grpcurl`](https://github.com/fullstorydev/grpcurl) and
@@ -29,9 +29,9 @@ server. Hypothetically, in order to manually send a gRPC request to a server
 over HTTP/2 using `curl`, you would have to:
 
 1. Know which RPC services the server exposed.
-2. Know the protobuf definition of the request message and all types it
+2. Know the protobuf definition of the request message and all the types _it_
 references.
-3. Know the protobuf definition of the response message all the types _it_
+3. Know the protobuf definition of the response message and all the types _it_
 references.
 
 Then, you'd have to use that knowledge to hand-craft your request message(s) into
