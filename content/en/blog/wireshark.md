@@ -237,11 +237,11 @@ Buffers dissector][pbd] wiki pages.
 [gRPC dissector]: https://gitlab.com/wireshark/wireshark/-/wikis/gRPC
 [grpc_person_search_protobuf_with_image.pcapng]: https://gitlab.com/wireshark/wireshark/-/wikis/uploads/f6fcdceb0248669c0b057bd15d45ab6f/grpc_person_search_protobuf_with_image.pcapng
 [pb-ab.proto]: https://github.com/protocolbuffers/protobuf/blob/master/examples/addressbook.proto
-[protocol buffer wire format]: https://developers.google.com/protocol-buffers/docs/encoding
+[protocol buffer wire format]: https://protobuf.dev/programming-guides/encoding/
 [pbd]: https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf
-[Protocol Buffers tutorials]: https://developers.google.com/protocol-buffers/docs/tutorials
-[Protocol Buffers Well-Known Types]: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf
+[Protocol Buffers tutorials]: https://protobuf.dev/getting-started/
+[Protocol Buffers Well-Known Types]: https://protobuf.dev/reference/protobuf/google.protobuf/
 [Protobuf field subdissectors]: https://gitlab.com/wireshark/wireshark/-/wikis/Protobuf#protobuf-field-subdissectors
 [SampleCaptures page]: https://gitlab.com/wireshark/wireshark/-/wikis/SampleCaptures
-[Timestamp]: https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp
+[Timestamp]: https://protobuf.dev/reference/protobuf/google.protobuf#google.protobuf.Timestamp
 [Wireshark User’s Guide]: https://www.wireshark.org/docs/wsug_html_chunked/

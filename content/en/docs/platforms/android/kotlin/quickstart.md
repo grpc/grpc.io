@@ -222,6 +222,6 @@ from the `examples` directory:
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
 [JDK]: https://jdk.java.net
 [Kotlin]: https://kotlinlang.org
-[pb]: https://developers.google.com/protocol-buffers
+[pb]: https://protobuf.dev
 [protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
 [USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling

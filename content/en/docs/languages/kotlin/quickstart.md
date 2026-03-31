@@ -201,6 +201,6 @@ from the `examples` directory:
 [grpc-kotlin]: https://github.com/grpc/grpc-kotlin
 [JDK]: https://jdk.java.net
 [Kotlin]: https://kotlinlang.org
-[pb]: https://developers.google.com/protocol-buffers
+[pb]: https://protobuf.dev
 [protos-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/protos/src/main/proto/io/grpc/examples
 [server-src]: https://github.com/grpc/grpc-kotlin/tree/master/examples/server/src/main/kotlin/io/grpc/examples
