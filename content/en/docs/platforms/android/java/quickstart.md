@@ -266,5 +266,5 @@ In the app, use the following values:
 [download]: https://github.com/grpc/grpc-java/archive/{{< param grpc_vers.java >}}.zip
 [grpc-java]: https://github.com/grpc/grpc-java
 [JDK]: https://jdk.java.net
-[pb]: https://developers.google.com/protocol-buffers
+[pb]: https://protobuf.dev
 [USB debugging]: https://developer.android.com/studio/command-line/adb.html#Enabling

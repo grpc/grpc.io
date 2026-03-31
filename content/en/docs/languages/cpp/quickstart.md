@@ -438,7 +438,7 @@ from the example **build** directory `examples/cpp/helloworld/cmake/build`:
 [examples/protos/helloworld.proto]: https://github.com/grpc/grpc/blob/{{< param grpc_vers.core >}}/examples/protos/helloworld.proto
 [github.com/google/protobuf/releases]: https://github.com/google/protobuf/releases
 [Installing CMake]: https://cmake.org/install
-[pb]: https://developers.google.com/protocol-buffers
+[pb]: https://protobuf.dev
 [proto3]: https://protobuf.dev/programming-guides/proto3
 [repo]: https://github.com/grpc/grpc/tree/{{< param grpc_vers.core >}}
 [using-grpc]: https://github.com/grpc/grpc/tree/master/src/cpp#to-start-using-grpc-c

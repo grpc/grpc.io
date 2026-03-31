@@ -19,7 +19,7 @@ documentation for your language of choice.
 Like many RPC systems, gRPC is based around the idea of defining a service,
 specifying the methods that can be called remotely with their parameters and
 return types. By default, gRPC uses [protocol
-buffers](https://developers.google.com/protocol-buffers) as the Interface
+buffers](https://protobuf.dev) as the Interface
 Definition Language (IDL) for describing both the service interface and the
 structure of the payload messages. It is possible to use other alternatives if
 desired.
