@@ -207,7 +207,7 @@ from the `examples/helloworld` directory:
 [Getting Started]: https://golang.org/doc/install
 [Go]: https://golang.org
 [grpc-go]: https://github.com/grpc/grpc-go
-[pb]: https://developers.google.com/protocol-buffers
+[pb]: https://protobuf.dev
 [proto3]: https://protobuf.dev/programming-guides/proto3
 [pbc-install]: /docs/protoc-installation/
 [releases of Go]: https://golang.org/doc/devel/release.html
