@@ -53,31 +53,31 @@ Currently, we have the following components instrumented:
 
 #### Client Per-Call Instruments
 
-Name                      | Type      | Unit | Labels (required)                      | Description
-------------------------- | --------- | ---- | -------------------------------------- | -----------
-grpc.client.call.duration | Histogram | s    | grpc.method, grpc.target , grpc.status | This metric aims to measure the end-to-end time the gRPC library takes to complete an RPC from the application’s perspective.
+Name                      | Type      | Unit | Labels (required)                                                         | Description
+------------------------- | --------- | ---- | ------------------------------------------------------------------------- | -----------
+grpc.client.call.duration | Histogram | s    | grpc.method, grpc.target, grpc.status, grpc.client.call.custom (optional) | This metric aims to measure the end-to-end time the gRPC library takes to complete an RPC from the application’s perspective.
 
 Refer [A66: OpenTelemetry Metrics] for details.
 
 #### Client Per-Attempt Instruments
 
-Name                                                       | Type      | Unit      | Labels (disposition)                                                                                                                    | Description
----------------------------------------------------------- | --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | -----------
-grpc.client.attempt.<br>started                            | Counter   | {attempt} | grpc.method (required), grpc.target (required)                                                                                          | The total number of RPC attempts started, including those that have not completed.
-grpc.client.attempt.<br>duration                           | Histogram | s         | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel.
-grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | Total bytes (compressed but not encrypted) sent across all request messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
-grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
+Name                                                       | Type      | Unit      | Labels (disposition)                                                                                                                                                        | Description
+---------------------------------------------------------- | --------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -----------
+grpc.client.attempt.<br>started                            | Counter   | {attempt} | grpc.method (required), grpc.target (required), grpc.client.call.custom (optional)                                                                                          | The total number of RPC attempts started, including those that have not completed.
+grpc.client.attempt.<br>duration                           | Histogram | s         | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional), grpc.client.call.custom (optional) | End-to-end time taken to complete an RPC attempt including the time it takes to pick a subchannel.
+grpc.client.attempt.<br>sent_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional), grpc.client.call.custom (optional) | Total bytes (compressed but not encrypted) sent across all request messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
+grpc.client.attempt.<br>rcvd_total_compressed_message_size | Histogram | By        | grpc.method (required), grpc.target (required), grpc.status (required), grpc.lb.locality (optional), grpc.lb.backend_service (optional), grpc.client.call.custom (optional) | Total bytes (compressed but not encrypted) received across all response messages (metadata excluded) per RPC attempt; does not include grpc or transport framing bytes.
 
 Refer [A66: OpenTelemetry Metrics] for details.
 
 #### Client Per-Call Retry Instruments
 
-Name                                 | Type      | Unit                | Labels (required)        | Description
------------------------------------- | --------- | ------------------- | ------------------------ | -----------
-grpc.client.call.retries             | Histogram | {retry}             | grpc.method, grpc.target | Number of retries during the client call. If there were no retries, 0 is not reported.
-grpc.client.call.transparent_retries | Histogram | {transparent_retry} | grpc.method, grpc.target | Number of transparent retries during the client call. If there were no transparent retries, 0 is not reported.
-grpc.client.call.hedges              | Histogram | {hedge}             | grpc.method, grpc.target | Number of hedges during the client call. If there were no hedges, 0 is not reported.
-grpc.client.call.retry_delay         | Histogram | s                   | grpc.method, grpc.target | Total time of delay while there is no active attempt during the client call.
+Name                                 | Type      | Unit                | Labels (required)                                            | Description
+------------------------------------ | --------- | ------------------- | ------------------------------------------------------------ | -----------
+grpc.client.call.retries             | Histogram | {retry}             | grpc.method, grpc.target, grpc.client.call.custom (optional) | Number of retries during the client call. If there were no retries, 0 is not reported.
+grpc.client.call.transparent_retries | Histogram | {transparent_retry} | grpc.method, grpc.target, grpc.client.call.custom (optional) | Number of transparent retries during the client call. If there were no transparent retries, 0 is not reported.
+grpc.client.call.hedges              | Histogram | {hedge}             | grpc.method, grpc.target, grpc.client.call.custom (optional) | Number of hedges during the client call. If there were no hedges, 0 is not reported.
+grpc.client.call.retry_delay         | Histogram | s                   | grpc.method, grpc.target, grpc.client.call.custom (optional) | Total time of delay while there is no active attempt during the client call.
 
 Refer [A96: OTel Metrics for Retries] for details.
 
@@ -144,6 +144,7 @@ Name                    | Description
 grpc.method             | Full gRPC method name, including package, service and method, e.g. "google.bigtable.v2.Bigtable/CheckAndMutateRow".
 grpc.status             | gRPC server status code received, e.g. "OK", "CANCELLED", "DEADLINE_EXCEEDED".
 grpc.target             | Canonicalized target URI used when creating gRPC Channel, e.g. "dns:///pubsub.googleapis.com:443", "xds:///helloworld-gke:8000".
+grpc.client.call.custom | EXPERIMENTAL: Client-provided string for custom application use
 grpc.lb.backend_service | The backend service to which the traffic is being sent. This is relevant when a single channel target can be sent to different sets of servers. When using xDS, this will be the cluster name. When not relevant, the value will be the empty string.
 grpc.lb.locality        | The locality to which the traffic is being sent.
 grpc.xds.server         | For clients, indicates the target of the gRPC channel in which the XdsClient is used. For servers, will be the string "#server".
