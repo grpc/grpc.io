@@ -195,4 +195,4 @@ Python   | [Python Example]
 [A78: gRPC OTel Metrics for WRR, Pick First, and XdsClient]: https://github.com/grpc/proposal/blob/master/A78-grpc-metrics-wrr-pf-xds.md
 [A79: Non-per-call Metrics Architecture]: https://github.com/grpc/proposal/blob/master/A79-non-per-call-metrics-architecture.md#a79-non-per-call-metrics-architecture
 [A89: Backend Service Metric Label]: https://github.com/grpc/proposal/blob/master/A89-backend-service-metric-label.md
-[A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-otel-metrics-for-retries.md
+[A96: OTel Metrics for Retries]: https://github.com/grpc/proposal/blob/master/A96-retry-otel-stats.md
