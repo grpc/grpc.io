@@ -32,6 +32,7 @@ Learn more
 - [Go]({{< relref "/docs/languages/go/quickstart" >}})
 - [C++]({{< relref "/docs/languages/cpp/quickstart" >}})
 - [Java]({{< relref "/docs/languages/java/quickstart" >}})
+- [Rust]({{< relref "/docs/languages/rust/quickstart" >}})
 - [Python]({{< relref "/docs/languages/python/quickstart" >}})
 - [<i class="fas fa-ellipsis-h" aria-label="Supported languages"></i>]({{< relref "languages" >}})
 </div>
@@ -51,10 +52,10 @@ backend services.
 </section>
 <div class="youtube-video-center">
     <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube.com/embed/5dMK5OW6WSw" 
-            title="Ten Years of gRPC" 
-            frameborder="0" 
+        <iframe
+            src="https://www.youtube.com/embed/5dMK5OW6WSw"
+            title="Ten Years of gRPC"
+            frameborder="0"
             allowfullscreen>
         </iframe>
     </div>
