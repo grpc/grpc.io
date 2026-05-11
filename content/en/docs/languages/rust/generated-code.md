@@ -7,6 +7,8 @@ weight: 95
 This page describes the code generated when compiling protobuf definition
 (`.proto`) files with `protoc`, using the `protoc-gen-rust-grpc` [grpc
 plugin](https://github.com/grpc/grpc-rust/tree/master/protoc-gen-rust-grpc).
+For using protobuf messages, please see the [Protobuf Rust Generated Code
+Guide](https://protobuf.dev/reference/rust/rust-generated).
 
 You can find out how to define a gRPC service in a `.proto` file in [Service
 definition](/docs/what-is-grpc/core-concepts/#service-definition).
