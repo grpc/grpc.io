@@ -11,12 +11,13 @@ spelling: cSpell:ignore Rust
 
   For installation instructions, see Rust's [Getting Started][] guide.
 
-- **[Protocol buffer][pb] compiler**, `protoc`, [version 3][proto3].
+- **[Protocol buffer][pb] compiler**, `protoc`, [version 34.0][proto34].
 
   For installation instructions, see [Protocol Buffer Compiler
-  Installation][pbc-install].
+  Installation][pbc-install].  Note that because Rust support in `protoc` is not
+  yet stable, the version installed must be exactly 34.0.
 
-- **Rust plugin** for the protocol compiler:
+- **gRPC-Rust plugin** for the protocol compiler:
 
   1. A C++17 compatible compiler and CMake 3.14 or higher are required to
      compile the protobuf code generation tool.
@@ -204,7 +205,7 @@ from the `examples/` directory:
 [gRPC-Rust MSRV]: https://github.com/grpc/grpc-rust#rust-version
 [Getting Started]: https://rust-lang.org/learn/get-started/
 [pb]: https://protobuf.dev/
-[proto3]: https://protobuf.dev/programming-guides/proto3
+[proto34]: https://github.com/protocolbuffers/protobuf/releases/tag/v34.0
 [pbc-install]: /docs/protoc-installation/
 [grpc-rust]: https://github.com/grpc/grpc-rust
 [download]: https://github.com/grpc/grpc-rust/archive/{{< param grpc_vers.rust >}}.zip
