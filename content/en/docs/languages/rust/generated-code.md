@@ -27,7 +27,9 @@ There are two main ways to generate the stubs you will use in your application:
    plugin and committing the output into revision control as needed.
 
 Both methods require adding the following dependencies to your Rust project:
-`grpc`, `protobuf`, and `grpc-protobuf`.
+`grpc`, `protobuf`, and `grpc-protobuf`.  Your `protobuf` dependency's version
+must match the version of `protobuf` used by `grpc-protobuf` and your `protoc`
+binary, which is currently required to be `4.34.0-release`.
 
 ### Method 1: using `grpc-protobuf-build` with `build.rs`
 
@@ -64,7 +66,7 @@ For more details, please see the crate documentation for
 
 ### Method 2: running `protoc`
 
-With this approach, you only generate code on demand and commit it to revision
+With this approach, you only generate code on demand and commit it to version
 control, reducing the dependencies on the build environment itself.  If updates
 are made to the input `.proto` files, you must remember to re-run these steps.
 
@@ -97,7 +99,7 @@ The exact patterns you use can be customized as desired.  For example, you may
 wish to include these files in a sub-module and `pub(crate)` the module
 definitions.
 
-## Methods on generated server interfaces (TBD)
+## Methods on generated server interfaces (Coming Soon)
 
 The current gRPC-Rust preview does not support server-side code generation.
 This will be added in a future preview version.

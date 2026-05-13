@@ -158,14 +158,14 @@ Running this command generates the following files in the
 
 - `route_guide.u.pb.rs`, which contains all the protocol buffer code to
   populate, serialize, and retrieve request and response message types.
-- `route_guide_grpc.pb.rs`, which contains an interface type (or *stub*) for
+- `route_guide_grpc.pb.rs`, which contains a wrapper type (or *stub*) for
   clients to call with the methods defined in the `RouteGuide` service.
 - `generated.rs`, a helper for the protobuf message generated code.
 
 ### Including the generated code in your application
 
-To include this generated code in our application, add the following somewhere
-in your crate (often in the top-level mod.rs or lib.rs):
+To include this generated code in our application, add the following to your
+crate (often in the top-level mod.rs or lib.rs):
 
 ```rust
 mod generated {
@@ -330,7 +330,7 @@ server is still sending messages to *their* message stream.
 let (mut tx, mut rx) = client.route_chat().await;
 
 // Spawn a task to send the request messages asynchronously.
-let handle = task::spawn(async move {
+let handle = tokio::task::spawn(async move {
     for note in notes {
         if tx.send(note).await.is_err() {
             // RPC terminated early; abort sending and the response stream
@@ -380,7 +380,7 @@ Execute the following commands from the `examples/route_guide` directory:
     cargo run --bin routeguide-server
     ```
 
- 2. From another terminal, run the sample client:
+ 2. From another terminal, run the client:
 
     ```sh
     cargo run --bin grpc-routeguide-client
