@@ -19,16 +19,19 @@ experiment with the APIs and ensure they will be acceptable for their needs.
 
 This release includes:
 
-* Protobuf support using Google's [Protobuf-Rust
+* **gRPC Client APIs**.  Includes all RPC types including unary and streaming.
+  * gRPC Server support is coming soon.
+
+* **Protobuf support** using Google's [Protobuf-Rust
   library](https://github.com/protocolbuffers/protobuf) and tools.
 
   * Messages are generated from Protobuf-Rust via `protoc`.
   * gRPC generated RPC code using our `protoc` plugin.
 
-* Low-level RPC API for creating interceptors and performing RPCs without the
-  need for the protobuf generated code.
+* **Low-level RPC API** for creating interceptors and performing RPCs without
+  the need for the protobuf generated code.
 
-* Support for the [Tokio](https://tokio.rs/) [async
+* Support for the **[Tokio](https://tokio.rs/)** [async
   runtime](https://rust-lang.github.io/async-book/08_ecosystem/00_chapter.html#async-runtimes).
   * Future gRPC-Rust releases intend to work with any runtime; however, for this
     preview we are only targetting Tokio.
