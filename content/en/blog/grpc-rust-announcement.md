@@ -58,3 +58,6 @@ others in the industry, or maybe even sharing your own experiences or advice in
 a talk, please mark your calendar for **Thursday, September 3rd**, when we'll be
 holding this year's gRPC developer's conference at the [Computer History
 Museum](https://computerhistory.org/) in Mountain View, CA.
+
+* **Event Site:** [gRPConf](https://events.linuxfoundation.org/grpconf/)
+* **CFP is open:** [Submit your talk!](https://events.linuxfoundation.org/grpconf/program/cfp/)
