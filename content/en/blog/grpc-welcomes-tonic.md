@@ -24,7 +24,7 @@ If you're a Tonic user and are wondering what this means to you:
   production-ready, long-term replacement for Tonic users.  This crate will
   provide all the advanced features available in our other gRPC libraries like
   connection management and client-side load balancing, and eventually [xDS /
-  envoy support](htts://envoyproxy.io) for [Proxyless Service Mesh
+  envoy support](https://envoyproxy.io) for [Proxyless Service Mesh
   (PSM)](https://docs.cloud.google.com/service-mesh/docs/service-routing/proxyless-overview).
   The Tonic codegen interface will continue to be supported to allow users to
   upgrade to the new transport implementation without needing to rewrite their
