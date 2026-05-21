@@ -1,5 +1,5 @@
 ---
-title: gRPC Welcomes Tonic!
+title: Rust Update: gRPC Welcomes Tonic!
 date: 2026-05-21
 author:
   name: Doug Fawley
@@ -7,25 +7,26 @@ author:
 
 As Lucio Franco [pre-announced on his
 blog](https://luciofranco.com/blog/tonic-joins-grpc/) this week, we have now
-officially moved the Tonic project and its repo into the [CNCF](http://cncf.io)
-and [the gRPC project's github organization](http://github.com/grpc/grpc-rust).
-We have been working together to coordinate this over the last two years, and
-expect to continue to work together in the future as well.
+officially moved the Tonic project into the [gRPC Project](https://grpc.io)
+under the [CNCF](https://cncf.io), and its repo has been moved to
+[grpc/grpc-rust](https://github.com/grpc/grpc-rust).  We have been working
+together to coordinate this over the last two years, and expect to continue to
+work together in the future as well.
 
-If you're a tonic user and are wondering what this means to you:
+If you're a Tonic user and are wondering what this means to you:
 
-* In the short term, hopefully nothing at all!  The tonic project will continue
+* In the short term, hopefully nothing at all!  The Tonic project will continue
   to operate as it did before.  Old links to github commits, issues, etc should
-  continue to work.  tonic is currently not accepting any significant new
+  continue to work.  Tonic is currently not accepting any significant new
   features, but does provide releases for bug fixes, and that status will
   continue for the foreseeable future.
 * In the next few months, we intend to release the `grpc` crate as a
   production-ready, long-term replacement for Tonic users.  This crate will
   provide all the advanced features available in our other gRPC libraries like
   connection management and client-side load balancing, and eventually [xDS /
-  envoy support](http://envoyproxy.io) for [Proxyless Service Mesh
+  envoy support](htts://envoyproxy.io) for [Proxyless Service Mesh
   (PSM)](https://docs.cloud.google.com/service-mesh/docs/service-routing/proxyless-overview).
-  The tonic codegen interface will continue to be supported to allow users to
+  The Tonic codegen interface will continue to be supported to allow users to
   upgrade to the new transport implementation without needing to rewrite their
   application.
 * Going forward, you can expect the gRPC team to continue adding new features
