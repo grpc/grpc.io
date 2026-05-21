@@ -1,5 +1,5 @@
 ---
-title: Rust Update: gRPC Welcomes Tonic!
+title: "Rust Update: gRPC Welcomes Tonic!"
 date: 2026-05-21
 author:
   name: Doug Fawley
