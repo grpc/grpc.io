@@ -38,7 +38,7 @@ This release includes:
 
 ## Learn more
 
-Documentation for this gRPC-Rust preview is now available on
+Documentation for this gRPC-Rust preview can be found on
 [grpc.io](https://grpc.io/docs/languages/rust/).  The following resources are
 available:
 
