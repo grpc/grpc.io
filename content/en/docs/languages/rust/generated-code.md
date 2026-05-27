@@ -35,8 +35,10 @@ binary, which is currently required to be `4.34.0-release`.
 
 Using this approach ensures that your generated code is always up to date as
 changes are made to your proto definitions.  However, it requires anyone who
-wants to compile your crate to have `protoc` installed, and the proper C++
-requirements for building the `protoc-gen-rust-grpc` binary.
+wants to compile your crate to have the proper C++ requirements for building the
+`protoc-gen-rust-grpc` crate.  Alternatively, you can disable the feature flag
+`grpc-protobuf-build/build-plugin` (on by default).  Doing this means users will
+need to have `protoc` and `protoc-gen-rust-grpc` available in their PATH.
 
 To implement this method, add the `grpc-protobuf-build` crate to the
 `[build-dependencies]` section of your project's `Cargo.toml`.  Then, add the

@@ -11,20 +11,30 @@ spelling: cSpell:ignore Rust
 
   For installation instructions, see Rust's [Getting Started][] guide.
 
-- **[Protocol buffer][pb] compiler**, `protoc`, [version 34.0][proto34].
+- **Protobuf code generation tools**
 
-  For installation instructions, see [Protocol Buffer Compiler
-  Installation][pbc-install].  Note that because Rust support in `protoc` is not
-  yet stable, the version installed must be exactly 34.0.
+  There are two tools used to generate the Rust protobuf code:
 
-- **gRPC-Rust plugin** for the protocol compiler:
+  1. **[Protocol buffer][pb] compiler**, `protoc`, [version 34.0][proto34].
+     This generates the defined _message_ data structures.
+  2. **gRPC-Rust plugin**, `protoc-gen-rust-grpc`
+     This generates the defined _services_ and _methods_.
+
+  There are two options for installing these tools.
 
   1. A C++17 compatible compiler and CMake 3.14 or higher are required to
      compile the protobuf code generation tool.
-  2. Follow the detailed instructions on the [`protoc-gen-rust-grpc`][pgrg] page
-     to compile and install the plugin.
-  3. Be sure to update your `PATH` so that the `protoc` compiler can find the
-     plugin.
+  2. Alternatively, compiled versions of the tools can be downloaded from the
+     [protobuf releases] (for `protoc`) and [grpc releases] (for
+     `protoc-gen-rust-grpc`) GitHub pages.
+     * For this option, be sure to update your `PATH` to include both of the
+       binaries.
+     * For `protoc` installation instructions, see [Protocol Buffer Compiler
+       Installation][pbc-install].  Note that because Rust support in `protoc`
+       is not yet stable, the version installed must be exactly 34.0.
+
+[protobuf releases]: https://github.com/protocolbuffers/protobuf/releases
+[grpc releases]: https://github.com/grpc/grpc-rust/releases
 
 ### Get the example code
 
@@ -34,7 +44,7 @@ The example code is part of the [grpc-rust][] repo.
     the repo:
 
     ```sh
-    git clone -b {{< param grpc_vers.rust >}} --depth 1 https://github.com/grpc/grpc-rust
+    git clone -b grpc-{{< param grpc_vers.rust >}} --depth 1 https://github.com/grpc/grpc-rust
     ```
 
  2. Change to the `examples` directory:
@@ -121,12 +131,19 @@ Remember to save the file!
 Before you can use the new service method, you need to recompile the updated
 `.proto` file.
 
-While still in the `examples` directory, run the following command:
+From the `examples/` directory, run the following:
+
+1. If you installed `protoc` and `protoc-gen-rust-grpc` into your path:
 
 ```sh
-protoc --rust_out=src/grpc-helloworld/generated/ --rust_opt=experimental-codegen=enabled,kernel=upb \
-    --rust-grpc_out=src/grpc-helloworld/generated/ --rust-grpc_opt=client_only=true \
-    --proto_path=proto/helloworld/ proto/helloworld/helloworld.proto
+GRPC_RUST_REGENERATE_PROTO=1 cargo build --bin grpc-routeguide-client
+```
+
+2. If you prefer to build these tools from source with a C++ compiler and CMake
+   as described above:
+
+```sh
+GRPC_RUST_REGENERATE_PROTO=1 cargo build --bin grpc-routeguide-client --features grpc-protobuf-build/build-plugin
 ```
 
 This will regenerate the `generated.rs`, `helloworld.u.pb.rs`, and
@@ -136,6 +153,35 @@ contain:
 - Code for populating, serializing, and retrieving `HelloRequest` and
   `HelloReply` message types.
 - Generated client code.
+
+**How does this work?**
+
+We are leveraging the `grpc-protobuf-build` crate in `examples/build.rs` to
+perform the code generation step.  However, this is only executed when you are
+running one of our grpc-based examples _and_ when the environment variable
+`GRPC_RUST_REGENERATE_PROTO` is set.  That is, in `examples/build.rs` you will
+see something like:
+
+```rust
+  if env::var_os("GRPC_RUST_REGENERATE_PROTO").is_some() {
+      grpc_protobuf_build::CodeGen::new()
+          .output_dir(manifest_dir.join("src/grpc-helloworld/generated"))
+          .input("helloworld.proto")
+          .include(manifest_dir.join("proto/helloworld"))
+          .client_only()
+          .compile()
+          .unwrap();
+  }
+```
+
+You can run `protoc` manually, instead, to perform code generation if you don't
+wish to use build.rs integration.  To do that, you would use:
+
+```sh
+protoc --rust_out=src/grpc-helloworld/generated/ --rust_opt=experimental-codegen=enabled,kernel=upb \
+    --rust-grpc_out=src/grpc-helloworld/generated/ --rust-grpc_opt=client_only=true \
+    --proto_path=proto/helloworld/ proto/helloworld/helloworld.proto
+```
 
 ### Update and run the application
 
@@ -208,5 +254,5 @@ from the `examples/` directory:
 [proto34]: https://github.com/protocolbuffers/protobuf/releases/tag/v34.0
 [pbc-install]: /docs/protoc-installation/
 [grpc-rust]: https://github.com/grpc/grpc-rust
-[download]: https://github.com/grpc/grpc-rust/archive/{{< param grpc_vers.rust >}}.zip
+[download]: https://github.com/grpc/grpc-rust/archive/grpc-{{< param grpc_vers.rust >}}.zip
 [pgrg]: https://github.com/grpc/grpc-rust/tree/master/protoc-gen-rust-grpc

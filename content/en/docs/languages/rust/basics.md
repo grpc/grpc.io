@@ -44,7 +44,7 @@ The example code is part of the [grpc-rust][] repo.
     the repo:
 
     ```sh
-    git clone -b {{< param grpc_vers.rust >}} --depth 1 https://github.com/grpc/grpc-rust
+    git clone -b grpc-{{< param grpc_vers.rust >}} --depth 1 https://github.com/grpc/grpc-rust
     ```
 
  2. Change to the examples directory:
@@ -141,9 +141,26 @@ message Point {
 
 Next we need to generate the gRPC client code from our `.proto` service
 definition. We do this using the protocol buffer compiler `protoc` with a
-special gRPC Rust plugin. This is similar to what we did in the [Quick start][].
+special gRPC Rust plugin and `build.rs` integration.  This is similar to what we
+did in the [Quick start][] -- please refer to this guide for more information on
+how this works.
 
-From the `examples/` directory, run the following command:
+From the `examples/` directory, do one of the following:
+
+1. If you installed `protoc` and `protoc-gen-rust-grpc` into your path:
+
+```sh
+GRPC_RUST_REGENERATE_PROTO=1 cargo build --bin grpc-routeguide-client
+```
+
+2. If you prefer to build these tools from source with a C++ compiler and CMake
+   as described above:
+
+```sh
+GRPC_RUST_REGENERATE_PROTO=1 cargo build --bin grpc-routeguide-client --features grpc-protobuf-build/build-plugin
+```
+
+3. If you'd like to run `protoc` manually from the command-line:
 
 ```sh
 protoc \
@@ -153,8 +170,9 @@ protoc \
    proto/routeguide/route_guide.proto
 ```
 
-Running this command generates the following files in the
-[routeguide](https://github.com/grpc/grpc-rust/blob/master/examples/src/grpc-routeguide/generated) directory:
+Doing any of these generates the following files in the
+[routeguide](https://github.com/grpc/grpc-rust/blob/master/examples/src/grpc-routeguide/generated)
+directory:
 
 - `route_guide.u.pb.rs`, which contains all the protocol buffer code to
   populate, serialize, and retrieve request and response message types.
@@ -412,7 +430,7 @@ Got message Message Four at Point: {0, 1}
 Got message Message Five at Point: {0, 1}
 ```
 
-[download]: https://github.com/grpc/grpc-rust/archive/{{< param grpc_vers.rust >}}.zip
+[download]: https://github.com/grpc/grpc-rust/archive/grpc-{{< param grpc_vers.rust >}}.zip
 [grpc-rust]: https://github.com/grpc/grpc-rust
 [Prerequisites]: ../quickstart/#prerequisites
 [Quick start]: ../quickstart/
