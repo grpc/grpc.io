@@ -31,7 +31,11 @@ spelling: cSpell:ignore Rust
        binaries.
      * For `protoc` installation instructions, see [Protocol Buffer Compiler
        Installation][pbc-install].  Note that because Rust support in `protoc`
-       is not yet stable, the version installed must be exactly 34.0.
+       is not yet stable, **the version installed must be exactly 34.0.**
+
+  **NOTE:** For now, to run the examples, which share some setup code with
+  `tonic`, you _must_ ensure `protoc` is in your `PATH` or set the `PROTOC`
+  environment variable to your `protoc` executable's path.
 
 [protobuf releases]: https://github.com/protocolbuffers/protobuf/releases
 [grpc releases]: https://github.com/grpc/grpc-rust/releases
