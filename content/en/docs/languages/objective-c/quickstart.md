@@ -55,21 +55,7 @@ git clone --recursive -b {{< param grpc_vers.core >}} --depth 1 --shallow-submod
 ```
 
 ### Install gRPC plugins and libraries
-#### Using cmake
-```sh
-cd grpc
-mkdir -p cmake/build
-cd cmake/build
-cmake -DCMAKE_CXX_STANDARD=17 ../..
-make
-```
-#### Using Bazel
-```sh
-cd grpc
-bazel build :all
-# Run all the C/C++ tests
-bazel test --config=dbg //test/...
-```
+For instructions on installing gRPC plugins and libraries, see the [C++ Quick start guide](<{{< relref "/docs/languages/cpp/quickstart" >}}>).
 
 ### Install protoc compiler
 
