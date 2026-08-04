@@ -262,7 +262,6 @@ When installing CocoaPods, it might be the case that you are using the system Ru
 Bypasses the system Ruby entirely by installing a pre-compiled, isolated version of CocoaPods using Homebrew.
 
   ```sh
-  sudo gem uninstall activesupport cocoapods
   brew install cocoapods
   ```
 
