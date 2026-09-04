@@ -15,7 +15,7 @@ $ nvm install --lts
 
  1. Clone this repo.
  2. From a terminal window, change to the cloned repo directory.
- 3. Get NPM packages and git submodules, including the the [Docsy][] theme:
+ 3. Get NPM packages and git submodules, including the [Docsy][] theme:
     ```console
     $ npm install 
     ```

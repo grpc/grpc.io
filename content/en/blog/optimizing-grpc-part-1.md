@@ -36,7 +36,7 @@ split into three main classes, and a protobuf file describing the API:
   millisecond delay to make the example act more like a persistent database.
 * [KvRunner](https://github.com/carl-mastrangelo/kvstore/blob/01-start/src/main/java/io/grpc/examples/KvRunner.java)
   orchestrates the interaction between the client and the server.  It is the main entry point,
-  starting both the client and server in process, and waiting for the the client to execute its
+  starting both the client and server in process, and waiting for the client to execute its
   work.  The runner does work for 60 seconds and then records how many RPCs were completed.
 * [kvstore.proto](https://github.com/carl-mastrangelo/kvstore/blob/01-start/src/main/proto/kvstore.proto)
   is the protocol buffer definition of our service.  It describes exactly what clients can expect
