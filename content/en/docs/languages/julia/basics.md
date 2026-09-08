@@ -22,8 +22,8 @@ Julia's gRPC support is split between two primary packages:
 - [gRPCServer.jl](https://github.com/JuliaIO/gRPCServer.jl) for writing gRPC servers.
 
 To follow detailed examples for building clients and servers, please refer directly to the documentation for these packages:
-- [gRPCClient.jl Documentation](https://juliaio.github.io/gRPCClient.jl)
-- [gRPCServer.jl Examples](https://github.com/JuliaIO/gRPCServer.jl)
+- [gRPCClient.jl Documentation](https://juliaio.github.io/gRPCClient.jl/)
+- [gRPCServer.jl Documentation](https://juliaio.github.io/gRPCServer.jl/)
 
 ### Code Generation
 

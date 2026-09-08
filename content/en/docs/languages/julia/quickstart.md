@@ -39,10 +39,10 @@ using gRPCClient
 protojl("test.proto", ".", "gen")
 ```
 
-For more details, see the [gRPCClient.jl documentation](https://juliaio.github.io/gRPCClient.jl).
+For more details, see the [gRPCClient.jl documentation](https://juliaio.github.io/gRPCClient.jl/).
 
 ## Server
 
 To implement a gRPC server in Julia, use `gRPCServer.jl`.
 
-For more details, see the [gRPCServer.jl repository](https://github.com/JuliaIO/gRPCServer.jl).
+For more details, see the [gRPCServer.jl documentation](https://juliaio.github.io/gRPCServer.jl/).
