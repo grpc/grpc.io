@@ -19,7 +19,10 @@ enableRobotsTXT: true
 
 params:
   gtmID: "GTM-55D2HXLW"
-  copyright: gRPC Authors
+  copyright: >-
+    gRPC Authors<br>Copyright gRPC a Series of LF Projects, LLC<br>
+    For website terms of use, trademark policy and other project policies please see
+    <a href="https://lfprojects.org/policies/">https://lfprojects.org/policies/</a>
   repo: &repo https://github.com/grpc/grpc.io
   github_repo: *repo
   github_project_repo: *repo
@@ -81,7 +84,7 @@ params:
 
 markup:
   goldmark:
-    renderer: {unsafe: true}
+    renderer: { unsafe: true }
   highlight:
     style: manni
   tableOfContents:
