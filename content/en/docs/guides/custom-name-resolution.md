@@ -13,13 +13,15 @@ Name resolution is often thought to be the same as
 [DNS](https://www.ietf.org/rfc/rfc1035.txt). In practice however, DNS is usually
 augmented with extensions or completely replaced to enable name resolution.
 
-When making a request with a gRPC client, by default, DNS name resolution is
-used. However, various other name resolution mechanisms may be used:
+When making a request with a gRPC client, DNS name resolution is used by
+default in most languages. However, various other name resolution mechanisms
+may be used:
 
 |Resolver|Example|Notes|
 |-|-|-|
-|DNS|`grpc.io:50051`|By default, DNS is assumed.|
+|DNS|`grpc.io:50051`|DNS is assumed in most languages when no scheme is given. In gRPC Go, `grpc.NewClient` assumes DNS, but the deprecated `grpc.Dial` assumes `passthrough`.|
 |DNS|`dns:///grpc.io:50051`|The extra slash is used to provide an authority|
+|Passthrough|`passthrough:///grpc.io:50051`|The name is not resolved and is handed as is to the transport. Only supported in some languages|
 |Unix Domain Socket|`unix:///run/containerd/containerd.sock`|
 |xDS|`xds:///wallet.grpcwallet.io`||
 |IPv4|`ipv4:198.51.100.123:50051`|Only supported in some languages|
