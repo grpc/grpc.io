@@ -7,7 +7,7 @@ spelling: cSpell:ignore autogen chmod devel PECL phar phpize phpunit RHEL
 
 ### Prerequisites
 
-- PHP 7.0 or higher, PECL, Composer
+- PHP 7.0 or higher, PIE, Composer
 - grpc extension, protocol buffers compiler: for installation instructions, see
   the [gRPC PHP readme][].
 
