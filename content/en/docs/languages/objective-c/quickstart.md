@@ -8,12 +8,13 @@ weight: 10
 
 #### System requirements
 
-- macOS version 10.11 (El Capitan) or higher
-- iOS version 7.0 or higher
+- macOS version 11 (Big Sur) or higher
+- iOS version 15.0 or higher
 
 #### Prerequisites
 
-- CocoaPods version 1.0 or higher
+- Ruby version 2.7 or higher (Better use latest version using brew)
+- CocoaPods version 1.15.2 or higher
 
   Check the status and version of CocoaPods on your system:
 
@@ -24,7 +25,7 @@ weight: 10
   If CocoaPods is not installed, follow the [CocoaPods install
   instructions](https://cocoapods.org).
 
-- Xcode version 7.2 or higher
+- Xcode version 13 or higher
 
   Check your Xcode version by running Xcode from Lauchpad, then select
   **Xcode > About Xcode** in the menu.
@@ -54,12 +55,7 @@ git clone --recursive -b {{< param grpc_vers.core >}} --depth 1 --shallow-submod
 ```
 
 ### Install gRPC plugins and libraries
-
-```sh
-cd grpc
-make
-[sudo] make install
-```
+For instructions on installing gRPC plugins and libraries, see the [C++ Quick start guide](<{{< relref "/docs/languages/cpp/quickstart" >}}>).
 
 ### Install protoc compiler
 
@@ -262,13 +258,11 @@ one to SayHello and one to SayHelloAgain.
 
 ### Troubleshooting
 
-When installing CocoaPods, error `activesupport requires Ruby version >= 2.2.2`
-
-: Install an older version of `activesupport`, then install CocoaPods:
+When installing CocoaPods, it might be the case that you are using the system Ruby which is not recommended.
+Bypasses the system Ruby entirely by installing a pre-compiled, isolated version of CocoaPods using Homebrew.
 
   ```sh
-  [sudo] gem install activesupport -v 4.2.6
-  [sudo] gem install cocoapods
+  brew install cocoapods
   ```
 
 When installing dependencies with CocoaPods, error `Unable to find a specification for !ProtoCompiler-gRPCPlugin`
