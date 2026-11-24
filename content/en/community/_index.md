@@ -3,6 +3,11 @@ title: Community
 spelling: cSpell:ignore grpcio grpcmeetings subreddit youtube
 main_channels:
   - title: >
+      [<i class="fab fa-google hk-no-external-icon"></i>Announcements][grpc-io-announce]
+    desc: >
+      Join the low-volume [grpc-io-announce][] mailing list to be notified of important
+      security and reliability fixes as well as major project announcements.
+  - title: >
       [<i class="fab fa-google hk-no-external-icon"></i>Google Group][grpc-io]
     desc: >
       Join the [grpc-io][] forum to ask questions and get the latest
@@ -118,6 +123,7 @@ New projects are welcome!][grpc-ecosystem-request].
 [grpc-community/CONTRIBUTING.md]: https://github.com/grpc/grpc-community/blob/main/CONTRIBUTING.md
 [grpc-ecosystem-request]: https://github.com/grpc/grpc-community/blob/main/grpc_ecosystem.md
 [grpc-io]: https://groups.google.com/g/grpc-io
+[grpc-io-announce]: https://groups.google.com/g/grpc-io-announce
 [grpc-org]: https://github.com/grpc
 [grpc-tag]: https://stackoverflow.com/questions/tagged/grpc
 [grpc-youtube]: https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg
